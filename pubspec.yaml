@@ -1,0 +1,50 @@
+name: otadex
+description: The Ultimate Anime Character Encyclopedia
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Navigation
+  go_router: ^13.0.0
+
+  # Fonts
+  google_fonts: ^6.1.0
+
+  # State Management
+  flutter_riverpod: ^2.4.0
+  riverpod_annotation: ^2.3.0
+
+  # Storage local
+  shared_preferences: ^2.2.0
+  flutter_secure_storage: ^9.0.0
+
+  # UI & Animations
+  smooth_page_indicator: ^1.1.0
+  flutter_animate: ^4.3.0
+  shimmer: ^3.0.0
+
+  # Assets & Images
+  cached_network_image: ^3.3.0
+  flutter_svg: ^2.0.0
+
+  # Utils
+  gap: ^3.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  riverpod_generator: ^2.3.0
+  build_runner: ^2.4.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/logo/
+    - assets/images/onboarding/
