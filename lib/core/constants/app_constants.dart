@@ -12,7 +12,7 @@ class AppConstants {
   static const String rankKage = 'kage';
 
   // Splash
-  static const Duration splashDuration = Duration(milliseconds: 2500);
+  static const Duration splashDuration = Duration(milliseconds: 3500);
 
   // App info
   static const String appName = 'OTADEX';
