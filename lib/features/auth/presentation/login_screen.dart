@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/router/app_router.dart';
@@ -46,7 +47,36 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: AppColors.backgroundDeep,
       body: Stack(
         children: [
-          // Dégradé radial violet en haut
+          // ── Layer 0 : Illustration ninja en fond ──
+          Positioned.fill(
+            child: Image.asset(
+              'assets/images/splash/splash_illustration.png',
+              fit: BoxFit.cover,
+              alignment: Alignment.topCenter,
+              opacity: const AlwaysStoppedAnimation(0.22),
+            ),
+          ),
+
+          // ── Layer 1 : Dégradé sombre pour lisibilité du form ──
+          Positioned.fill(
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: const [0.0, 0.38, 0.65, 1.0],
+                  colors: [
+                    AppColors.backgroundDeep.withValues(alpha: 0.30),
+                    AppColors.backgroundDeep.withValues(alpha: 0.65),
+                    AppColors.backgroundDeep.withValues(alpha: 0.92),
+                    AppColors.backgroundDeep,
+                  ],
+                ),
+              ),
+            ),
+          ),
+
+          // ── Layer 2 : Lueur violette en haut ──
           Positioned(
             top: -100,
             left: -50,
@@ -58,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   center: const Alignment(-0.3, -0.5),
                   radius: 0.7,
                   colors: [
-                    AppColors.primary.withValues(alpha: 0.12),
+                    AppColors.primary.withValues(alpha: 0.18),
                     Colors.transparent,
                   ],
                 ),
@@ -70,7 +100,8 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Form(
               key: _formKey,
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -81,7 +112,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       'assets/images/logo/otadex_logo.png',
                       width: 160,
                       fit: BoxFit.contain,
-                    ),
+                    )
+                        .animate()
+                        .fadeIn(duration: 600.ms)
+                        .slideY(begin: 0.12, end: 0, duration: 600.ms),
 
                     const SizedBox(height: AppSpacing.xl),
 
@@ -94,7 +128,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: AppColors.textPrimary,
                       ),
                       textAlign: TextAlign.center,
-                    ),
+                    )
+                        .animate()
+                        .fadeIn(duration: 500.ms, delay: 100.ms)
+                        .slideY(
+                            begin: 0.15,
+                            end: 0,
+                            duration: 500.ms,
+                            delay: 100.ms),
 
                     const SizedBox(height: AppSpacing.sm),
 
@@ -106,7 +147,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: AppColors.textSecondary,
                       ),
                       textAlign: TextAlign.center,
-                    ),
+                    )
+                        .animate()
+                        .fadeIn(duration: 500.ms, delay: 200.ms)
+                        .slideY(
+                            begin: 0.15,
+                            end: 0,
+                            duration: 500.ms,
+                            delay: 200.ms),
 
                     const SizedBox(height: AppSpacing.xl + AppSpacing.sm),
 
@@ -122,7 +170,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         if (!v.contains('@')) return 'Email invalide';
                         return null;
                       },
-                    ),
+                    )
+                        .animate()
+                        .fadeIn(duration: 400.ms, delay: 300.ms)
+                        .slideX(
+                            begin: -0.08,
+                            end: 0,
+                            duration: 400.ms,
+                            delay: 300.ms),
 
                     const SizedBox(height: AppSpacing.md),
 
@@ -136,7 +191,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         if (v.length < 6) return 'Minimum 6 caractères';
                         return null;
                       },
-                    ),
+                    )
+                        .animate()
+                        .fadeIn(duration: 400.ms, delay: 380.ms)
+                        .slideX(
+                            begin: -0.08,
+                            end: 0,
+                            duration: 400.ms,
+                            delay: 380.ms),
 
                     const SizedBox(height: AppSpacing.sm),
 
@@ -158,7 +220,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                    ),
+                    ).animate().fadeIn(duration: 400.ms, delay: 450.ms),
 
                     const SizedBox(height: AppSpacing.xl),
 
@@ -167,7 +229,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       label: 'Se connecter',
                       onPressed: _isLoading ? null : _login,
                       isLoading: _isLoading,
-                    ),
+                    )
+                        .animate()
+                        .fadeIn(duration: 500.ms, delay: 550.ms)
+                        .slideY(
+                            begin: 0.12,
+                            end: 0,
+                            duration: 500.ms,
+                            delay: 550.ms),
 
                     const SizedBox(height: AppSpacing.lg),
 
@@ -198,7 +267,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ],
-                    ),
+                    ).animate().fadeIn(duration: 400.ms, delay: 650.ms),
 
                     const SizedBox(height: AppSpacing.lg),
 
@@ -213,8 +282,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           side: const BorderSide(
                               color: AppColors.borderDefault, width: 1.2),
                           shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.circular(AppSpacing.radiusLg),
+                            borderRadius: BorderRadius.circular(
+                                AppSpacing.radiusLg),
                           ),
                         ),
                         icon: const Icon(Icons.g_mobiledata,
@@ -227,7 +296,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                    ),
+                    )
+                        .animate()
+                        .fadeIn(duration: 400.ms, delay: 730.ms)
+                        .slideY(
+                            begin: 0.1,
+                            end: 0,
+                            duration: 400.ms,
+                            delay: 730.ms),
 
                     const SizedBox(height: AppSpacing.xxl),
 
@@ -255,7 +331,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ],
-                    ),
+                    ).animate().fadeIn(duration: 400.ms, delay: 820.ms),
 
                     const SizedBox(height: AppSpacing.lg),
                   ],

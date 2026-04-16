@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/router/app_router.dart';
@@ -100,7 +101,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
             child: Form(
               key: _formKey,
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -114,17 +116,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         fontWeight: FontWeight.w700,
                         color: AppColors.textPrimary,
                       ),
-                    ),
+                    )
+                        .animate()
+                        .fadeIn(duration: 500.ms)
+                        .slideY(begin: 0.15, end: 0, duration: 500.ms),
 
                     const SizedBox(height: AppSpacing.sm),
 
+                    // Sous-titre
                     Text(
                       'Rejoins des milliers de fans otaku',
                       style: GoogleFonts.nunitoSans(
                         fontSize: 15,
                         color: AppColors.textSecondary,
                       ),
-                    ),
+                    )
+                        .animate()
+                        .fadeIn(duration: 500.ms, delay: 100.ms)
+                        .slideY(
+                            begin: 0.15,
+                            end: 0,
+                            duration: 500.ms,
+                            delay: 100.ms),
 
                     const SizedBox(height: AppSpacing.xl),
 
@@ -139,7 +152,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         if (v.length < 3) return 'Minimum 3 caractères';
                         return null;
                       },
-                    ),
+                    )
+                        .animate()
+                        .fadeIn(duration: 400.ms, delay: 200.ms)
+                        .slideX(
+                            begin: -0.08,
+                            end: 0,
+                            duration: 400.ms,
+                            delay: 200.ms),
 
                     const SizedBox(height: AppSpacing.md),
 
@@ -155,7 +175,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         if (!v.contains('@')) return 'Email invalide';
                         return null;
                       },
-                    ),
+                    )
+                        .animate()
+                        .fadeIn(duration: 400.ms, delay: 290.ms)
+                        .slideX(
+                            begin: -0.08,
+                            end: 0,
+                            duration: 400.ms,
+                            delay: 290.ms),
 
                     const SizedBox(height: AppSpacing.md),
 
@@ -169,7 +196,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         if (v.length < 6) return 'Minimum 6 caractères';
                         return null;
                       },
-                    ),
+                    )
+                        .animate()
+                        .fadeIn(duration: 400.ms, delay: 380.ms)
+                        .slideX(
+                            begin: -0.08,
+                            end: 0,
+                            duration: 400.ms,
+                            delay: 380.ms),
 
                     const SizedBox(height: AppSpacing.md),
 
@@ -184,11 +218,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         }
                         return null;
                       },
-                    ),
+                    )
+                        .animate()
+                        .fadeIn(duration: 400.ms, delay: 460.ms)
+                        .slideX(
+                            begin: -0.08,
+                            end: 0,
+                            duration: 400.ms,
+                            delay: 460.ms),
 
                     const SizedBox(height: AppSpacing.xl),
 
-                    // Section rang
+                    // Section rang — titre
                     Text(
                       'Choisis ton rang de départ',
                       style: GoogleFonts.rajdhani(
@@ -196,7 +237,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         fontWeight: FontWeight.w600,
                         color: AppColors.primary,
                       ),
-                    ),
+                    ).animate().fadeIn(duration: 400.ms, delay: 550.ms),
 
                     const SizedBox(height: 4),
 
@@ -206,15 +247,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         fontSize: 12,
                         color: AppColors.textSecondary,
                       ),
-                    ),
+                    ).animate().fadeIn(duration: 400.ms, delay: 600.ms),
 
                     const SizedBox(height: AppSpacing.md),
 
                     // RankSelector
                     RankSelector(
                       initialRank: _selectedRank,
-                      onRankChanged: (r) => setState(() => _selectedRank = r),
-                    ),
+                      onRankChanged: (r) =>
+                          setState(() => _selectedRank = r),
+                    )
+                        .animate()
+                        .fadeIn(duration: 500.ms, delay: 650.ms)
+                        .slideY(
+                            begin: 0.1,
+                            end: 0,
+                            duration: 500.ms,
+                            delay: 650.ms),
 
                     const SizedBox(height: AppSpacing.lg),
 
@@ -258,7 +307,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                         ),
                       ],
-                    ),
+                    ).animate().fadeIn(duration: 400.ms, delay: 760.ms),
 
                     const SizedBox(height: AppSpacing.xl),
 
@@ -267,7 +316,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       label: 'Créer mon compte →',
                       onPressed: _isLoading ? null : _register,
                       isLoading: _isLoading,
-                    ),
+                    )
+                        .animate()
+                        .fadeIn(duration: 500.ms, delay: 850.ms)
+                        .slideY(
+                            begin: 0.12,
+                            end: 0,
+                            duration: 500.ms,
+                            delay: 850.ms),
 
                     const SizedBox(height: AppSpacing.xl),
 
@@ -297,7 +353,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                         ],
                       ),
-                    ),
+                    ).animate().fadeIn(duration: 400.ms, delay: 950.ms),
 
                     const SizedBox(height: AppSpacing.xl),
                   ],

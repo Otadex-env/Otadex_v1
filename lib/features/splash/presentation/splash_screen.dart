@@ -224,13 +224,13 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   Widget _buildRankTeaserRow() {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _RankTeaser(label: 'GENIN', color: AppColors.rankGenin),
-        const _Dot(),
+        _Dot(),
         _RankTeaser(label: 'JONIN', color: AppColors.rankJonin),
-        const _Dot(),
+        _Dot(),
         _RankTeaser(label: 'KAGE', color: AppColors.rankKage),
       ],
     );
