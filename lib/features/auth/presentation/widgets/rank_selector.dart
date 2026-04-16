@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shimmer/shimmer.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_spacing.dart';
 
@@ -260,12 +259,26 @@ class _RankCard extends StatelessWidget {
       child: _buildCardContent(),
     );
 
+    // KAGE : bordure dégradée orange → accentBright → orange (pas de shimmer qui masque le contenu)
     if (rank == SelectedRank.kage) {
-      return Shimmer.fromColors(
-        baseColor: _bgColor,
-        highlightColor: AppColors.rankKage.withValues(alpha: 0.3),
-        enabled: !selected,
-        child: card,
+      return Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(AppSpacing.radiusLg + 2),
+          gradient: LinearGradient(
+            colors: [
+              AppColors.rankKage,
+              AppColors.accentBright,
+              AppColors.rankKage.withValues(alpha: 0.55),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        padding: const EdgeInsets.all(1.5),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+          child: card,
+        ),
       );
     }
 

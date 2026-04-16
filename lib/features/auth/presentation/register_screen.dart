@@ -3,6 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/router/app_router.dart';
+import '../../../core/services/google_sign_in_service.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/widgets/otadex_button.dart';
@@ -33,6 +34,38 @@ class _RegisterScreenState extends State<RegisterScreen> {
     _passwordController.dispose();
     _confirmPasswordController.dispose();
     super.dispose();
+  }
+
+  Future<void> _registerWithGoogle() async {
+    setState(() => _isLoading = true);
+    final account = await GoogleSignInService.signIn();
+    if (!mounted) return;
+    setState(() => _isLoading = false);
+
+    if (account != null) {
+      // Pré-remplir pseudo + email depuis le compte Google
+      _pseudoController.text = account.displayName ?? '';
+      _emailController.text = account.email;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Compte Google lié — choisis ton rang et confirme',
+            style: GoogleFonts.nunitoSans(color: Colors.white),
+          ),
+          backgroundColor: AppColors.success,
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Connexion Google annulée ou non configurée',
+            style: GoogleFonts.nunitoSans(color: Colors.white),
+          ),
+          backgroundColor: AppColors.error,
+        ),
+      );
+    }
   }
 
   void _register() {
@@ -139,7 +172,70 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             duration: 500.ms,
                             delay: 100.ms),
 
-                    const SizedBox(height: AppSpacing.xl),
+                    const SizedBox(height: AppSpacing.lg),
+
+                    // ── Bouton Google ──
+                    SizedBox(
+                      width: double.infinity,
+                      height: AppSpacing.buttonHeight,
+                      child: OutlinedButton.icon(
+                        onPressed: _isLoading ? null : _registerWithGoogle,
+                        style: OutlinedButton.styleFrom(
+                          backgroundColor: AppColors.backgroundCard,
+                          side: const BorderSide(
+                              color: AppColors.borderDefault, width: 1.2),
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.circular(AppSpacing.radiusLg),
+                          ),
+                        ),
+                        icon: const Icon(Icons.g_mobiledata,
+                            color: Colors.white, size: 24),
+                        label: Text(
+                          'Continuer avec Google',
+                          style: GoogleFonts.nunitoSans(
+                            fontSize: 15,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    )
+                        .animate()
+                        .fadeIn(duration: 400.ms, delay: 150.ms)
+                        .slideY(
+                            begin: 0.1,
+                            end: 0,
+                            duration: 400.ms,
+                            delay: 150.ms),
+
+                    const SizedBox(height: AppSpacing.lg),
+
+                    // ── Séparateur "ou" ──
+                    Row(
+                      children: [
+                        Expanded(
+                            child: Container(
+                                height: 1,
+                                color: AppColors.borderSubtle)),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: AppSpacing.md),
+                          child: Text(
+                            'ou',
+                            style: GoogleFonts.nunitoSans(
+                              fontSize: 14,
+                              color: AppColors.textDisabled,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                            child: Container(
+                                height: 1,
+                                color: AppColors.borderSubtle)),
+                      ],
+                    ).animate().fadeIn(duration: 300.ms, delay: 200.ms),
+
+                    const SizedBox(height: AppSpacing.lg),
 
                     // Pseudo
                     OtadexTextField(

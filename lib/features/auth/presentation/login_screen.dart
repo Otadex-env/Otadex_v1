@@ -3,6 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/router/app_router.dart';
+import '../../../core/services/google_sign_in_service.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/widgets/otadex_button.dart';
@@ -38,6 +39,28 @@ class _LoginScreenState extends State<LoginScreen> {
           context.go(AppRouter.home);
         }
       });
+    }
+  }
+
+  Future<void> _loginWithGoogle() async {
+    setState(() => _isLoading = true);
+    final account = await GoogleSignInService.signIn();
+    if (!mounted) return;
+    setState(() => _isLoading = false);
+
+    if (account != null) {
+      // TODO (Task 02) : Firebase Auth avec credential Google
+      context.go(AppRouter.home);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Connexion Google annulée ou non configurée',
+            style: GoogleFonts.nunitoSans(color: Colors.white),
+          ),
+          backgroundColor: AppColors.error,
+        ),
+      );
     }
   }
 
@@ -276,7 +299,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: double.infinity,
                       height: AppSpacing.buttonHeight,
                       child: OutlinedButton.icon(
-                        onPressed: () {},
+                        onPressed: _isLoading ? null : _loginWithGoogle,
                         style: OutlinedButton.styleFrom(
                           backgroundColor: AppColors.backgroundCard,
                           side: const BorderSide(
