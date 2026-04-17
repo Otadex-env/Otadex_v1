@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../features/splash/presentation/splash_screen.dart';
 import '../../features/onboarding/presentation/onboarding_screen.dart';
+import '../../features/onboarding/presentation/age_verification_screen.dart';
+import '../../features/onboarding/presentation/interests_screen.dart';
 import '../../features/auth/presentation/login_screen.dart';
 import '../../features/auth/presentation/register_screen.dart';
 import '../constants/app_constants.dart';
@@ -12,6 +14,8 @@ class AppRouter {
 
   static const String splash = '/';
   static const String onboarding = '/onboarding';
+  static const String ageVerification = '/onboarding/age';
+  static const String interests = '/onboarding/interests';
   static const String login = '/login';
   static const String register = '/register';
   static const String home = '/home';
@@ -28,6 +32,16 @@ class AppRouter {
         path: onboarding,
         name: 'onboarding',
         builder: (context, state) => const OnboardingScreen(),
+      ),
+      GoRoute(
+        path: ageVerification,
+        name: 'age-verification',
+        builder: (context, state) => const AgeVerificationScreen(),
+      ),
+      GoRoute(
+        path: interests,
+        name: 'interests',
+        builder: (context, state) => const InterestsScreen(),
       ),
       GoRoute(
         path: login,

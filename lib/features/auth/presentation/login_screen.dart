@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../../core/constants/app_constants.dart';
 import '../../../core/router/app_router.dart';
 import '../../../core/services/google_sign_in_service.dart';
 import '../../../core/theme/app_colors.dart';
@@ -29,16 +31,25 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  void _login() {
+  Future<void> _login() async {
     if (_formKey.currentState?.validate() ?? false) {
       setState(() => _isLoading = true);
-      // TODO: implémenter auth réelle (Task 02)
-      Future.delayed(const Duration(seconds: 1), () {
-        if (mounted) {
-          setState(() => _isLoading = false);
-          context.go(AppRouter.home);
-        }
-      });
+      await Future.delayed(const Duration(seconds: 1));
+      if (!mounted) return;
+      setState(() => _isLoading = false);
+      await _navigateAfterAuth();
+    }
+  }
+
+  Future<void> _navigateAfterAuth() async {
+    final prefs = await SharedPreferences.getInstance();
+    final onboardingCompleted =
+        prefs.getBool(AppConstants.keyOnboardingCompleted) ?? false;
+    if (!mounted) return;
+    if (onboardingCompleted) {
+      context.go(AppRouter.home);
+    } else {
+      context.go(AppRouter.ageVerification);
     }
   }
 
@@ -49,8 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() => _isLoading = false);
 
     if (account != null) {
-      // TODO (Task 02) : Firebase Auth avec credential Google
-      context.go(AppRouter.home);
+      await _navigateAfterAuth();
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
