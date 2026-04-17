@@ -55,10 +55,7 @@ class _SlideOneContentState extends State<SlideOneContent>
               fit: BoxFit.contain,
             ),
           ),
-        )
-            .animate()
-            .fadeIn(duration: 700.ms, delay: 200.ms)
-            .scale(
+        ).animate().fadeIn(duration: 700.ms, delay: 200.ms).scale(
               begin: const Offset(0.88, 0.88),
               end: const Offset(1.0, 1.0),
               duration: 700.ms,
@@ -73,31 +70,6 @@ class _SlideOneContentState extends State<SlideOneContent>
           padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
           child: Column(
             children: [
-              // Pill badge
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 14, vertical: 5),
-                decoration: BoxDecoration(
-                  color: AppColors.accent.withValues(alpha: 0.10),
-                  borderRadius:
-                      BorderRadius.circular(AppSpacing.radiusFull),
-                  border: Border.all(
-                    color: AppColors.accent.withValues(alpha: 0.35),
-                  ),
-                ),
-                child: Text(
-                  '✦  ENCYCLOPÉDIE OTAKU  ✦',
-                  style: GoogleFonts.rajdhani(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.accent,
-                    letterSpacing: 1.8,
-                  ),
-                ),
-              ).animate().fadeIn(duration: 400.ms, delay: 400.ms),
-
-              const SizedBox(height: AppSpacing.md),
-
               // Titre
               Text.rich(
                 TextSpan(
