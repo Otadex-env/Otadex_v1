@@ -13,6 +13,7 @@ import 'widgets/home_app_bar.dart';
 import 'widgets/search_bar_widget.dart';
 import 'widgets/trending_section.dart';
 import 'widgets/upsell_banner.dart';
+import '../../profile/presentation/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -39,33 +40,45 @@ class _HomeScreenState extends State<HomeScreen> {
           bottom: false,
           child: Stack(
             children: [
-              CustomScrollView(
-                slivers: [
-                  SliverToBoxAdapter(child: HomeAppBar(rank: rank)),
-                  const SliverPersistentHeader(
-                    delegate: SearchBarSliverDelegate(),
-                    pinned: true,
-                  ),
-                  const SliverToBoxAdapter(child: HeroFeaturedSlider()),
-                  const SliverToBoxAdapter(child: TrendingSection()),
-                  SliverToBoxAdapter(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 8),
-                      child: CategoryChips(
-                        selectedIndex: _selectedCategory,
-                        onChanged: (i) =>
-                            setState(() => _selectedCategory = i),
+              IndexedStack(
+                index: _navIndex,
+                children: [
+                  // Tab 0 — Accueil
+                  CustomScrollView(
+                    slivers: [
+                      SliverToBoxAdapter(child: HomeAppBar(rank: rank)),
+                      const SliverPersistentHeader(
+                        delegate: SearchBarSliverDelegate(),
+                        pinned: true,
                       ),
-                    ),
+                      const SliverToBoxAdapter(child: HeroFeaturedSlider()),
+                      const SliverToBoxAdapter(child: TrendingSection()),
+                      SliverToBoxAdapter(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 8),
+                          child: CategoryChips(
+                            selectedIndex: _selectedCategory,
+                            onChanged: (i) =>
+                                setState(() => _selectedCategory = i),
+                          ),
+                        ),
+                      ),
+                      if (rank == UserRank.genin)
+                        const SliverToBoxAdapter(child: UpsellBanner()),
+                      SliverToBoxAdapter(
+                        child: CharacterGridSection(
+                          selectedCategoryIndex: _selectedCategory,
+                        ),
+                      ),
+                      const SliverToBoxAdapter(child: SizedBox(height: 100)),
+                    ],
                   ),
-                  if (rank == UserRank.genin)
-                    const SliverToBoxAdapter(child: UpsellBanner()),
-                  SliverToBoxAdapter(
-                    child: CharacterGridSection(
-                      selectedCategoryIndex: _selectedCategory,
-                    ),
-                  ),
-                  const SliverToBoxAdapter(child: SizedBox(height: 100)),
+                  // Tab 1 — Explorer (placeholder)
+                  const Center(child: SizedBox.shrink()),
+                  // Tab 2 — Collection (placeholder)
+                  const Center(child: SizedBox.shrink()),
+                  // Tab 3 — Profil
+                  const ProfileScreen(),
                 ],
               ),
               // Debug rank switcher (kDebugMode only)
