@@ -87,33 +87,6 @@ class _CharacterGridCardState extends State<CharacterGridCard> {
                   ),
                 ),
 
-                // Tier badge — top right
-                Positioned(
-                  top: 8,
-                  right: 8,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 5,
-                      vertical: 2,
-                    ),
-                    decoration: BoxDecoration(
-                      color: character.tierColor.withValues(alpha: 0.25),
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(
-                        color: character.tierColor.withValues(alpha: 0.7),
-                      ),
-                    ),
-                    child: Text(
-                      character.tierLabel,
-                      style: GoogleFonts.rajdhani(
-                        fontSize: 10,
-                        fontWeight: FontWeight.w700,
-                        color: character.tierColor,
-                      ),
-                    ),
-                  ),
-                ),
-
                 // NEW badge — top left
                 if (character.isNew)
                   Positioned(

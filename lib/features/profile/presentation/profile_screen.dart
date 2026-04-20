@@ -74,7 +74,8 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
           const AvatarPicker(),
           if (_showKageBanner) ...[
             const SizedBox(height: 20),
-            KageBanner(onDismiss: () => setState(() => _showKageBanner = false)),
+            KageBanner(
+                onDismiss: () => setState(() => _showKageBanner = false)),
           ],
           const SizedBox(height: 24),
           const SubscriptionCard(),
@@ -86,11 +87,14 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
           const SizedBox(height: 28),
           SettingsSection(
             notificationsEnabled: _notificationsEnabled,
-            onNotificationsChanged: (v) => setState(() => _notificationsEnabled = v),
+            onNotificationsChanged: (v) =>
+                setState(() => _notificationsEnabled = v),
             currentLanguage: locale,
             onLanguageToggle: () {
+              const langs = ['fr', 'en', 'ja', 'zh'];
+              final idx = langs.indexOf(locale);
               ref.read(localeProvider.notifier).state =
-                  locale == 'fr' ? 'en' : 'fr';
+                  langs[(idx + 1) % langs.length];
             },
           ),
           const SizedBox(height: 28),

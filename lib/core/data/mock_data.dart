@@ -306,4 +306,12 @@ class MockData {
 
   static List<Character> recommended() =>
       allCharacters.where((c) => c.isRecommended).toList();
+
+  static List<Character> recommendedForInterests(List<String> interests) {
+    if (interests.isEmpty) return recommended();
+    final filtered = allCharacters
+        .where((c) => c.isRecommended && interests.contains(c.category))
+        .toList();
+    return filtered.isEmpty ? recommended() : filtered;
+  }
 }

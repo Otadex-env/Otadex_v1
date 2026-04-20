@@ -67,9 +67,7 @@ Future<String> getInitialRoute() async {
   final prefs = await SharedPreferences.getInstance();
   final hasSeenOnboarding =
       prefs.getBool(AppConstants.keyHasSeenOnboarding) ?? false;
-  final isLoggedIn = prefs.getBool(AppConstants.keyIsLoggedIn) ?? false;
 
   if (!hasSeenOnboarding) return AppRouter.onboarding;
-  if (!isLoggedIn) return AppRouter.login;
   return AppRouter.home;
 }

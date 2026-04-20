@@ -1,10 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../../core/constants/app_constants.dart';
 import '../../../core/models/user_rank.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/otadex_theme.dart';
 import '../../../core/theme/otadex_theme_wrapper.dart';
+import '../../../core/widgets/auth_gate_modal.dart';
 import 'widgets/bottom_nav_bar.dart';
 import 'widgets/category_chips.dart';
 import 'widgets/character_grid_section.dart';
@@ -26,6 +29,18 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _navIndex = 0;
   int _selectedCategory = 0;
+
+  Future<void> _onNavTap(int index) async {
+    if (index == 2 || index == 3) {
+      final prefs = await SharedPreferences.getInstance();
+      final isLoggedIn = prefs.getBool(AppConstants.keyIsLoggedIn) ?? false;
+      if (!isLoggedIn) {
+        if (mounted) showAuthGateModal(context);
+        return;
+      }
+    }
+    if (mounted) setState(() => _navIndex = index);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       bottomNavigationBar: OtadexBottomNavBar(
         currentIndex: _navIndex,
-        onTap: (i) => setState(() => _navIndex = i),
+        onTap: _onNavTap,
       ),
     );
   }
