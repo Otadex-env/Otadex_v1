@@ -14,6 +14,7 @@ import 'widgets/search_bar_widget.dart';
 import 'widgets/trending_section.dart';
 import 'widgets/upsell_banner.dart';
 import '../../profile/presentation/profile_screen.dart';
+import '../../search/presentation/search_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -73,8 +74,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SliverToBoxAdapter(child: SizedBox(height: 100)),
                     ],
                   ),
-                  // Tab 1 — Explorer (placeholder)
-                  const Center(child: SizedBox.shrink()),
+                  // Tab 1 — Recherche
+                  const RechercheScreen(),
                   // Tab 2 — Collection (placeholder)
                   const Center(child: SizedBox.shrink()),
                   // Tab 3 — Profil
