@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/l10n/app_strings.dart';
 import '../../../../core/models/user_rank.dart';
 import '../../../../core/theme/otadex_theme.dart';
 
@@ -23,11 +24,12 @@ class ProfileTabContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = AppStrings.of(context);
     if (selectedTab == 1) {
-      return const _EmptyTabContent(message: "Aucun badge pour l'instant");
+      return _EmptyTabContent(message: s.noBadgesYet);
     }
     if (selectedTab == 2) {
-      return const _EmptyTabContent(message: 'Ton activité récente apparaîtra ici');
+      return _EmptyTabContent(message: s.recentActivityHere);
     }
     return _CollectionTab(
       progressPct: progressPct,
@@ -59,7 +61,8 @@ class _CollectionTab extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _ProgressCard(progressPct: progressPct, currentPts: currentPts, maxPts: maxPts),
+        _ProgressCard(
+            progressPct: progressPct, currentPts: currentPts, maxPts: maxPts),
         _CollectionHeader(collectCount: collectCount),
         _CollectionGrid(items: collectionItems),
       ],
@@ -81,6 +84,7 @@ class _ProgressCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = OtadexTheme.of(context);
+    final s = AppStrings.of(context);
     final rank = OtadexTheme.rankOf(context);
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
@@ -97,7 +101,7 @@ class _ProgressCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '${_rankLabel(rank)} Otaku — Niveau 4 🔥',
+                '${_rankLabel(rank)} Otaku — ${s.level} 4 🔥',
                 style: GoogleFonts.rajdhani(
                   fontSize: 14,
                   fontWeight: FontWeight.w700,
@@ -126,8 +130,9 @@ class _ProgressCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            '$currentPts / $maxPts pts pour Kage Suprême',
-            style: GoogleFonts.nunitoSans(fontSize: 11, color: theme.textSecondary),
+            '$currentPts / $maxPts ${s.ptsForKageSupreme}',
+            style:
+                GoogleFonts.nunitoSans(fontSize: 11, color: theme.textSecondary),
           ),
         ],
       ),
@@ -148,13 +153,14 @@ class _CollectionHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = OtadexTheme.of(context);
+    final s = AppStrings.of(context);
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 20, 16, 12),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            'Ma Collection ($collectCount)',
+            '${s.myCollection} ($collectCount)',
             style: GoogleFonts.rajdhani(
               fontSize: 16,
               fontWeight: FontWeight.w700,
@@ -165,10 +171,11 @@ class _CollectionHeader extends StatelessWidget {
             onTap: () {},
             child: Row(
               children: [
-                Icon(Icons.add_circle_outline_rounded, color: theme.accentColor, size: 14),
+                Icon(Icons.add_circle_outline_rounded,
+                    color: theme.accentColor, size: 14),
                 const SizedBox(width: 4),
                 Text(
-                  'Gérer',
+                  s.manage,
                   style: GoogleFonts.nunitoSans(
                     fontSize: 12,
                     color: theme.accentColor,
@@ -255,7 +262,8 @@ class _CollectionCard extends StatelessWidget {
                           color: t.accentColor,
                           shape: BoxShape.circle,
                         ),
-                        child: const Icon(Icons.star_rounded, color: Colors.white, size: 11),
+                        child: const Icon(Icons.star_rounded,
+                            color: Colors.white, size: 11),
                       ),
                     ),
                   )
@@ -293,7 +301,8 @@ class _EmptyTabContent extends StatelessWidget {
       child: Center(
         child: Text(
           message,
-          style: GoogleFonts.nunitoSans(fontSize: 13, color: theme.textSecondary),
+          style:
+              GoogleFonts.nunitoSans(fontSize: 13, color: theme.textSecondary),
         ),
       ),
     );

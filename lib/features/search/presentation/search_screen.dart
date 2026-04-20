@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../core/l10n/app_strings.dart';
 import '../../../core/theme/otadex_theme.dart';
 import '../../../core/theme/rank_theme.dart';
 
@@ -36,7 +37,6 @@ class _RechercheScreenState extends State<RechercheScreen>
   late Animation<double> _cancelFade;
 
   // ── Mock data ─────────────────────────────────────────────────────────
-  static const _mainFilters = ['Tous', 'Personnages', 'Animés', 'Créateurs'];
   static const _subFilters = ['Shonen', 'Shojo', 'Seinen', 'Manhwa'];
 
   static const _categories = [
@@ -256,7 +256,7 @@ class _RechercheScreenState extends State<RechercheScreen>
                       decoration: InputDecoration(
                         isDense: true,
                         border: InputBorder.none,
-                        hintText: 'Personnage, animé, créateur...',
+                        hintText: AppStrings.of(context).searchHint,
                         hintStyle: GoogleFonts.nunitoSans(
                           color: theme.textSecondary,
                           fontSize: 15,
@@ -296,7 +296,7 @@ class _RechercheScreenState extends State<RechercheScreen>
                   child: Padding(
                     padding: const EdgeInsets.only(left: 12),
                     child: Text(
-                      'Annuler',
+                      AppStrings.of(context).cancel,
                       style: GoogleFonts.nunitoSans(
                         color: theme.textSecondary,
                         fontSize: 14,
@@ -315,6 +315,8 @@ class _RechercheScreenState extends State<RechercheScreen>
 
   // ── Filter chips ──────────────────────────────────────────────────────
   Widget _buildFilterRow(RankTheme theme) {
+    final s = AppStrings.of(context);
+    final mainFilters = [s.all, s.characters, s.animes, s.creators];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -323,7 +325,7 @@ class _RechercheScreenState extends State<RechercheScreen>
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            itemCount: _mainFilters.length,
+            itemCount: mainFilters.length,
             separatorBuilder: (_, __) => const SizedBox(width: 8),
             itemBuilder: (context, i) {
               final active = i == _selectedFilter;
@@ -351,7 +353,7 @@ class _RechercheScreenState extends State<RechercheScreen>
                         const SizedBox(width: 4),
                       ],
                       Text(
-                        _mainFilters[i],
+                        mainFilters[i],
                         style: GoogleFonts.nunitoSans(
                           color: active ? Colors.white : theme.textSecondary,
                           fontSize: 13,
@@ -556,11 +558,11 @@ class _RechercheScreenState extends State<RechercheScreen>
           _buildRecentChipsWrap(theme),
           const SizedBox(height: 24),
         ],
-        _buildSectionTitle(theme, 'Explorer par catégorie'),
+        _buildSectionTitle(theme, AppStrings.of(context).exploreByCategory),
         const SizedBox(height: 12),
         _buildCategoryGrid(theme),
         const SizedBox(height: 24),
-        _buildSectionTitle(theme, '🔥 Tendances du moment'),
+        _buildSectionTitle(theme, AppStrings.of(context).trendingNow),
         const SizedBox(height: 12),
         _buildTrendingList(theme),
         const SizedBox(height: 100),
@@ -573,7 +575,7 @@ class _RechercheScreenState extends State<RechercheScreen>
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          'RECHERCHES RÉCENTES',
+          AppStrings.of(context).recentSearches,
           style: GoogleFonts.rajdhani(
             color: theme.textSecondary,
             fontSize: 13,
@@ -585,7 +587,7 @@ class _RechercheScreenState extends State<RechercheScreen>
           GestureDetector(
             onTap: _clearAll,
             child: Text(
-              'Effacer tout',
+              AppStrings.of(context).clearAll,
               style: GoogleFonts.nunitoSans(
                 color: Colors.redAccent,
                 fontSize: 12,
@@ -812,20 +814,21 @@ class _RechercheScreenState extends State<RechercheScreen>
 
   // ── STATE C — Results ─────────────────────────────────────────────────
   Widget _buildResultsContent(RankTheme theme) {
+    final s = AppStrings.of(context);
     return ListView(
       key: const ValueKey('results'),
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
       children: [
         _buildResultSection(
-          theme, 'PERSONNAGES', 0, _buildCharacterCard(theme)),
+          theme, s.characters.toUpperCase(), 0, _buildCharacterCard(theme)),
         const SizedBox(height: 16),
         _buildResultSection(
-          theme, 'ANIMÉS', 1, _buildAnimeCard(theme)),
+          theme, s.animes.toUpperCase(), 1, _buildAnimeCard(theme)),
         const SizedBox(height: 16),
         _buildResultSection(
-          theme, 'CRÉATEURS', 2, _buildCreatorCard(theme)),
+          theme, s.creators.toUpperCase(), 2, _buildCreatorCard(theme)),
         const SizedBox(height: 24),
-        _buildSectionTitle(theme, 'Tu pourrais aussi aimer'),
+        _buildSectionTitle(theme, s.youMightAlsoLike),
         const SizedBox(height: 12),
         _buildRecommendations(theme),
         const SizedBox(height: 100),

@@ -1,71 +1,108 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/l10n/app_strings.dart';
 import '../../../../core/theme/otadex_theme.dart';
 
 class SettingsSection extends StatelessWidget {
   final bool notificationsEnabled;
   final ValueChanged<bool> onNotificationsChanged;
+  final String currentLanguage;
+  final VoidCallback onLanguageToggle;
 
   const SettingsSection({
     super.key,
     required this.notificationsEnabled,
     required this.onNotificationsChanged,
+    required this.currentLanguage,
+    required this.onLanguageToggle,
   });
 
   @override
   Widget build(BuildContext context) {
+    final s = AppStrings.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const _SectionLabel(label: 'COMPTE'),
-          const SizedBox(height: 8),
-          const _SettingsCard(children: [
-            _SettingsRow(icon: '👤', label: 'Modifier le profil', hasArrow: true),
-            _SettingsDivider(),
-            _SettingsRow(icon: '🔒', label: 'Changer le mot de passe', hasArrow: true),
-            _SettingsDivider(),
-            _SettingsRow(icon: '✉️', label: 'Email', value: 'jean@mail.com', hasArrow: true),
-          ]),
-          const SizedBox(height: 24),
-          const _SectionLabel(label: 'PRÉFÉRENCES'),
+          _SectionLabel(label: s.accountSection),
           const SizedBox(height: 8),
           _SettingsCard(children: [
-            const _SettingsRow(icon: '🌙', label: 'Thème', value: 'Sombre', hasArrow: true),
+            _SettingsRow(icon: '👤', label: s.editProfile, hasArrow: true),
+            const _SettingsDivider(),
+            _SettingsRow(icon: '🔒', label: s.changePassword, hasArrow: true),
+            const _SettingsDivider(),
+            _SettingsRow(
+                icon: '✉️',
+                label: s.email,
+                value: 'jean@mail.com',
+                hasArrow: true),
+          ]),
+          const SizedBox(height: 24),
+          _SectionLabel(label: s.preferencesSection),
+          const SizedBox(height: 8),
+          _SettingsCard(children: [
+            _SettingsRow(
+                icon: '🌙',
+                label: s.theme,
+                value: s.darkTheme,
+                hasArrow: true),
             const _SettingsDivider(),
             _ToggleRow(
               icon: '🔔',
-              label: 'Notifications',
+              label: s.notifications,
               value: notificationsEnabled,
               onChanged: onNotificationsChanged,
             ),
             const _SettingsDivider(),
-            const _SettingsRow(icon: '🌐', label: 'Langue', value: 'Français', hasArrow: true),
+            _SettingsRow(
+              icon: '🌐',
+              label: s.language,
+              value: s.languageValue,
+              hasArrow: true,
+              onTap: onLanguageToggle,
+            ),
             const _SettingsDivider(),
-            const _SettingsRow(icon: '🎨', label: 'Thème Kage', value: 'Verrouillé 🔒', hasArrow: true),
+            _SettingsRow(
+                icon: '🎨',
+                label: s.kageTheme,
+                value: s.locked,
+                hasArrow: true),
           ]),
           const SizedBox(height: 24),
-          const _SectionLabel(label: 'CONTENU'),
+          _SectionLabel(label: s.contentSection),
           const SizedBox(height: 8),
-          const _SettingsCard(children: [
-            _SettingsRow(icon: '📋', label: 'Catégories masquées', value: '0 masquées', hasArrow: true),
-            _SettingsDivider(),
-            _SettingsRow(icon: '📊', label: 'Mon historique', hasArrow: true),
-            _SettingsDivider(),
-            _SettingsRow(icon: '🧹', label: 'Vider le cache', value: '24 MB', hasArrow: true),
+          _SettingsCard(children: [
+            _SettingsRow(
+                icon: '📋',
+                label: s.hiddenCategories,
+                value: s.hiddenCount,
+                hasArrow: true),
+            const _SettingsDivider(),
+            _SettingsRow(icon: '📊', label: s.myHistory, hasArrow: true),
+            const _SettingsDivider(),
+            _SettingsRow(
+                icon: '🧹',
+                label: s.clearCache,
+                value: s.cacheSize,
+                hasArrow: true),
           ]),
           const SizedBox(height: 24),
-          const _SectionLabel(label: 'À PROPOS'),
+          _SectionLabel(label: s.aboutSection),
           const SizedBox(height: 8),
-          const _SettingsCard(children: [
-            _SettingsRow(icon: 'ℹ️', label: 'Version OTADEX', value: '1.0.0', hasArrow: false),
-            _SettingsDivider(),
-            _SettingsRow(icon: '📄', label: "Conditions d'utilisation", hasArrow: true),
-            _SettingsDivider(),
-            _SettingsRow(icon: '🔐', label: 'Politique de confidentialité', hasArrow: true),
-            _SettingsDivider(),
-            _SettingsRow(icon: '⭐', label: "Noter l'app", hasArrow: true),
+          _SettingsCard(children: [
+            _SettingsRow(
+                icon: 'ℹ️',
+                label: s.otadexVersion,
+                value: '1.0.0',
+                hasArrow: false),
+            const _SettingsDivider(),
+            _SettingsRow(
+                icon: '📄', label: s.termsOfService, hasArrow: true),
+            const _SettingsDivider(),
+            _SettingsRow(icon: '🔐', label: s.privacyPolicy, hasArrow: true),
+            const _SettingsDivider(),
+            _SettingsRow(icon: '⭐', label: s.rateApp, hasArrow: true),
           ]),
         ],
       ),
@@ -115,19 +152,21 @@ class _SettingsRow extends StatelessWidget {
   final String label;
   final String? value;
   final bool hasArrow;
+  final VoidCallback? onTap;
 
   const _SettingsRow({
     required this.icon,
     required this.label,
     this.value,
     required this.hasArrow,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = OtadexTheme.of(context);
     return InkWell(
-      onTap: hasArrow ? () {} : null,
+      onTap: onTap ?? (hasArrow ? () {} : null),
       borderRadius: BorderRadius.circular(16),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
@@ -138,18 +177,21 @@ class _SettingsRow extends StatelessWidget {
             Expanded(
               child: Text(
                 label,
-                style: GoogleFonts.nunitoSans(fontSize: 14, color: theme.textPrimary),
+                style:
+                    GoogleFonts.nunitoSans(fontSize: 14, color: theme.textPrimary),
               ),
             ),
             if (value != null) ...[
               Text(
                 value!,
-                style: GoogleFonts.nunitoSans(fontSize: 13, color: theme.textSecondary),
+                style: GoogleFonts.nunitoSans(
+                    fontSize: 13, color: theme.textSecondary),
               ),
               const SizedBox(width: 4),
             ],
             if (hasArrow)
-              Icon(Icons.chevron_right_rounded, color: theme.textSecondary, size: 20),
+              Icon(Icons.chevron_right_rounded,
+                  color: theme.textSecondary, size: 20),
           ],
         ),
       ),
@@ -182,7 +224,8 @@ class _ToggleRow extends StatelessWidget {
           Expanded(
             child: Text(
               label,
-              style: GoogleFonts.nunitoSans(fontSize: 14, color: theme.textPrimary),
+              style:
+                  GoogleFonts.nunitoSans(fontSize: 14, color: theme.textPrimary),
             ),
           ),
           Switch(
@@ -205,6 +248,7 @@ class _SettingsDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = OtadexTheme.of(context);
-    return Divider(height: 1, thickness: 1, indent: 44, color: theme.borderSubtle);
+    return Divider(
+        height: 1, thickness: 1, indent: 44, color: theme.borderSubtle);
   }
 }

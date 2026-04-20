@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/l10n/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/otadex_theme.dart';
 
@@ -9,13 +10,14 @@ class SubscriptionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = OtadexTheme.of(context);
+    final s = AppStrings.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Paramètres & Abonnement',
+            s.settingsAndSubscription,
             style: GoogleFonts.rajdhani(
               fontSize: 18,
               fontWeight: FontWeight.w700,
@@ -38,7 +40,7 @@ class SubscriptionCard extends StatelessWidget {
                     _ActiveBadge(),
                     const SizedBox(width: 10),
                     Text(
-                      'JONIN 🦊',
+                      s.geninPlanLabel,
                       style: GoogleFonts.rajdhani(
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
@@ -48,76 +50,43 @@ class SubscriptionCard extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 8),
-                RichText(
-                  text: TextSpan(children: [
-                    TextSpan(
-                      text: '2 000 FCFA',
-                      style: GoogleFonts.rajdhani(
-                        fontSize: 26,
-                        fontWeight: FontWeight.w700,
-                        color: theme.accentColor,
-                      ),
-                    ),
-                    TextSpan(
-                      text: '/mois',
-                      style: GoogleFonts.nunitoSans(
-                        fontSize: 13,
-                        color: theme.textSecondary,
-                      ),
-                    ),
-                  ]),
+                Text(
+                  s.freeLabel,
+                  style: GoogleFonts.rajdhani(
+                    fontSize: 26,
+                    fontWeight: FontWeight.w700,
+                    color: theme.accentColor,
+                  ),
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Renouvellement dans 18 jours · 20 mai 2026',
+                  s.basicPlanNoRenewal,
                   style: GoogleFonts.nunitoSans(
                     fontSize: 11,
                     color: theme.textSecondary,
                   ),
                 ),
                 const SizedBox(height: 14),
-                Row(
-                  children: [
-                    Expanded(
-                      child: OutlinedButton(
-                        onPressed: () {},
-                        style: OutlinedButton.styleFrom(
-                          side: BorderSide(color: theme.borderDefault),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                        ),
-                        child: Text(
-                          "Gérer l'abonnement",
-                          style: GoogleFonts.nunitoSans(
-                            fontSize: 12,
-                            color: theme.textPrimary,
-                          ),
-                        ),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.rankJonin,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                    ),
+                    child: Text(
+                      s.upgradeToJonin,
+                      style: GoogleFonts.nunitoSans(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
                       ),
                     ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: OutlinedButton(
-                        onPressed: () {},
-                        style: OutlinedButton.styleFrom(
-                          side: const BorderSide(color: AppColors.error),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                        ),
-                        child: Text(
-                          'Annuler',
-                          style: GoogleFonts.nunitoSans(
-                            fontSize: 12,
-                            color: AppColors.error,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ],
             ),
@@ -131,6 +100,7 @@ class SubscriptionCard extends StatelessWidget {
 class _ActiveBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final s = AppStrings.of(context);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
@@ -150,7 +120,7 @@ class _ActiveBadge extends StatelessWidget {
           ),
           const SizedBox(width: 4),
           Text(
-            'ACTIF',
+            s.active,
             style: GoogleFonts.rajdhani(
               fontSize: 10,
               fontWeight: FontWeight.w700,

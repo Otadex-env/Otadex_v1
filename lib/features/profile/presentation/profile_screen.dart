@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../core/l10n/locale_provider.dart';
 import 'widgets/avatar_picker.dart';
 import 'widgets/kage_banner.dart';
 import 'widgets/plan_section.dart';
@@ -10,14 +12,14 @@ import 'widgets/profile_tab_content.dart';
 import 'widgets/settings_section.dart';
 import 'widgets/subscription_card.dart';
 
-class ProfileScreen extends StatefulWidget {
+class ProfileScreen extends ConsumerStatefulWidget {
   const ProfileScreen({super.key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  ConsumerState<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   int _selectedTab = 0;
   bool _notificationsEnabled = true;
   bool _showKageBanner = true;
@@ -43,6 +45,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final locale = ref.watch(localeProvider);
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -84,6 +87,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
           SettingsSection(
             notificationsEnabled: _notificationsEnabled,
             onNotificationsChanged: (v) => setState(() => _notificationsEnabled = v),
+            currentLanguage: locale,
+            onLanguageToggle: () {
+              ref.read(localeProvider.notifier).state =
+                  locale == 'fr' ? 'en' : 'fr';
+            },
           ),
           const SizedBox(height: 28),
           const ProfileLogoutFooter(),

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/l10n/app_strings.dart';
 import '../../../../core/theme/otadex_theme.dart';
 
 class ProfileTabBar extends StatelessWidget {
   final int selectedTab;
   final ValueChanged<int> onTabChanged;
-
-  static const _tabs = ['Collection', 'Badges', 'Activité'];
 
   const ProfileTabBar({
     super.key,
@@ -17,10 +16,12 @@ class ProfileTabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = OtadexTheme.of(context);
+    final s = AppStrings.of(context);
+    final tabs = [s.collection, s.badges, s.activity];
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
-        children: _tabs.asMap().entries.map((entry) {
+        children: tabs.asMap().entries.map((entry) {
           final i = entry.key;
           final label = entry.value;
           final active = i == selectedTab;

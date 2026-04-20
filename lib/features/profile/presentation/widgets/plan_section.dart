@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/l10n/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/otadex_theme.dart';
 
@@ -16,13 +17,15 @@ class PlanSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = OtadexTheme.of(context);
+    final s = AppStrings.of(context);
+    final isAnnual = billingCycle == 'annuel';
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Changer de plan',
+            s.changePlan,
             style: GoogleFonts.rajdhani(
               fontSize: 16,
               fontWeight: FontWeight.w700,
@@ -32,55 +35,58 @@ class PlanSection extends StatelessWidget {
           const SizedBox(height: 12),
           _BillingToggle(cycle: billingCycle, onChanged: onBillingChanged),
           const SizedBox(height: 16),
+          // Genin — current plan
           _PlanCard(
             name: 'Genin',
-            tag: 'GRATUIT',
-            tagColor: theme.textSecondary,
+            tag: s.currentPlanTag,
+            tagColor: AppColors.success,
             price: '0 FCFA',
             priceColor: theme.textPrimary,
-            features: const [
-              (true, 'Fiches & navigation'),
-              (true, 'Likes & commentaires'),
-              (false, 'Publicités affichées'),
-              (false, 'IA désactivée'),
+            features: [
+              (true, s.sheetsNavigation),
+              (true, s.likesComments),
+              (false, s.adsShown),
+              (false, s.aiDisabled),
             ],
-            buttonLabel: 'Rétrograder',
+            buttonLabel: s.planActualButton,
             buttonEnabled: false,
-            borderColor: theme.borderSubtle,
+            borderColor: AppColors.success.withValues(alpha: 0.4),
             isCta: false,
           ),
           const SizedBox(height: 12),
-          const _PlanCard(
+          // Jonin — upgrade
+          _PlanCard(
             name: 'Jonin',
-            tag: 'PLAN ACTUEL ✓',
+            tag: null,
             tagColor: AppColors.rankJonin,
-            price: '2 000 FCFA/mois',
+            price: isAnnual ? s.joninAnnualPrice : s.joninMonthlyPrice,
             priceColor: AppColors.rankJonin,
             features: [
-              (true, 'Collection illimitée'),
-              (true, 'Sans publicités'),
-              (true, 'IA chatbot + quiz'),
-              (true, 'Badge Jonin 🦊'),
+              (true, s.unlimitedCollection),
+              (true, s.noAds),
+              (true, s.aiChatbot),
+              (true, s.joninBadge),
             ],
-            buttonLabel: 'Plan actuel',
-            buttonEnabled: false,
+            buttonLabel: s.upgradeToJoninButton,
+            buttonEnabled: true,
             borderColor: AppColors.rankJonin,
             isCta: false,
           ),
           const SizedBox(height: 12),
-          const _PlanCard(
+          // Kage — top tier CTA
+          _PlanCard(
             name: '⭐ Kage Pass',
             tag: null,
             tagColor: AppColors.rankJonin,
-            price: '5 000 FCFA/mois',
+            price: isAnnual ? s.kageAnnualPrice : s.kageMonthlyPrice,
             priceColor: AppColors.rankJonin,
             features: [
-              (true, 'Tout Jonin inclus'),
-              (true, 'Génération images IA ⭐'),
-              (true, 'Sans watermark'),
-              (true, 'Thèmes exclusifs 👑'),
+              (true, s.joninIncluded),
+              (true, s.aiImageGen),
+              (true, s.noWatermark),
+              (true, s.exclusiveThemes),
             ],
-            buttonLabel: 'Passer Kage 👑',
+            buttonLabel: s.upgradeToKageButton,
             buttonEnabled: true,
             borderColor: AppColors.rankJonin,
             isCta: true,
@@ -100,6 +106,7 @@ class _BillingToggle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = OtadexTheme.of(context);
+    final s = AppStrings.of(context);
     return Container(
       padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
@@ -110,14 +117,14 @@ class _BillingToggle extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           _ToggleOption(
-            label: 'Mensuel',
+            label: s.monthly,
             value: 'mensuel',
             current: cycle,
             badge: null,
             onTap: onChanged,
           ),
           _ToggleOption(
-            label: 'Annuel',
+            label: s.annual,
             value: 'annuel',
             current: cycle,
             badge: '-10%',
@@ -170,7 +177,8 @@ class _ToggleOption extends StatelessWidget {
             if (badge != null) ...[
               const SizedBox(width: 6),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                 decoration: BoxDecoration(
                   color: AppColors.success.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(4),
@@ -243,7 +251,8 @@ class _PlanCard extends StatelessWidget {
               ),
               if (tag != null)
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                   decoration: BoxDecoration(
                     color: tagColor.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(6),
@@ -287,7 +296,8 @@ class _PlanCard extends StatelessWidget {
                     f.$2,
                     style: GoogleFonts.nunitoSans(
                       fontSize: 12,
-                      color: f.$1 ? theme.textPrimary : theme.textSecondary,
+                      color:
+                          f.$1 ? theme.textPrimary : theme.textSecondary,
                     ),
                   ),
                 ],
@@ -320,7 +330,9 @@ class _PlanCard extends StatelessWidget {
                     onPressed: buttonEnabled ? () {} : null,
                     style: OutlinedButton.styleFrom(
                       side: BorderSide(
-                        color: buttonEnabled ? theme.borderDefault : theme.borderSubtle,
+                        color: buttonEnabled
+                            ? theme.borderDefault
+                            : theme.borderSubtle,
                       ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -331,8 +343,12 @@ class _PlanCard extends StatelessWidget {
                       buttonLabel,
                       style: GoogleFonts.rajdhani(
                         fontSize: 14,
-                        fontWeight: buttonEnabled ? FontWeight.w700 : FontWeight.w500,
-                        color: buttonEnabled ? theme.textPrimary : theme.textSecondary,
+                        fontWeight: buttonEnabled
+                            ? FontWeight.w700
+                            : FontWeight.w500,
+                        color: buttonEnabled
+                            ? theme.textPrimary
+                            : theme.textSecondary,
                       ),
                     ),
                   ),

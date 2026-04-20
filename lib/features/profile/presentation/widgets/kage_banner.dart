@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/l10n/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/otadex_theme.dart';
 
@@ -11,6 +12,7 @@ class KageBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = OtadexTheme.of(context);
+    final s = AppStrings.of(context);
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
@@ -25,14 +27,15 @@ class KageBanner extends StatelessWidget {
           const SizedBox(width: 8),
           Expanded(
             child: Text(
-              'Passe Kage — IA images + téléchargement propre',
-              style: GoogleFonts.nunitoSans(fontSize: 12, color: theme.textPrimary),
+              s.kageBannerText,
+              style:
+                  GoogleFonts.nunitoSans(fontSize: 12, color: theme.textPrimary),
             ),
           ),
           GestureDetector(
             onTap: () {},
             child: Text(
-              'Voir →',
+              s.seeOffer,
               style: GoogleFonts.nunitoSans(
                 fontSize: 12,
                 fontWeight: FontWeight.w700,
@@ -43,7 +46,8 @@ class KageBanner extends StatelessWidget {
           const SizedBox(width: 12),
           GestureDetector(
             onTap: onDismiss,
-            child: Icon(Icons.close_rounded, color: theme.textSecondary, size: 16),
+            child:
+                Icon(Icons.close_rounded, color: theme.textSecondary, size: 16),
           ),
         ],
       ),

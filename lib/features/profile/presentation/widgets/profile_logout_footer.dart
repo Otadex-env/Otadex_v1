@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/l10n/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/otadex_theme.dart';
 
@@ -9,6 +10,7 @@ class ProfileLogoutFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = OtadexTheme.of(context);
+    final s = AppStrings.of(context);
     return Column(
       children: [
         Padding(
@@ -26,7 +28,7 @@ class ProfileLogoutFooter extends StatelessWidget {
             child: SizedBox(
               width: double.infinity,
               child: Text(
-                'Se déconnecter',
+                s.logout,
                 textAlign: TextAlign.center,
                 style: GoogleFonts.nunitoSans(
                   fontSize: 15,
@@ -39,7 +41,7 @@ class ProfileLogoutFooter extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         Text(
-          'OTADEX · v1.0.0',
+          s.appVersion,
           style: GoogleFonts.nunitoSans(
             fontSize: 11,
             color: theme.textSecondary.withValues(alpha: 0.5),
