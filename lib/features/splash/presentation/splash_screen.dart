@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -26,11 +27,10 @@ class _SplashScreenState extends State<SplashScreen>
   late final AnimationController _pulseController;
   late final Animation<double> _pulseAnimation;
 
-  // Visibilité badges rang : apparaissent à t=1800ms
   bool _showRankBadges = false;
-
-  // Shimmer tagline : une seule passe (géré par flutter_animate via delay)
   bool _showShimmer = true;
+
+  final List<Timer> _timers = [];
 
   @override
   void initState() {
@@ -53,32 +53,25 @@ class _SplashScreenState extends State<SplashScreen>
       CurvedAnimation(parent: _pulseController, curve: Curves.easeInOut),
     );
 
-    // Séquence temporelle
-    Future.delayed(const Duration(milliseconds: 1200), () {
-      if (!mounted) return;
-      _pulseController.repeat(reverse: true);
-    });
-
-    Future.delayed(const Duration(milliseconds: 1400), () {
-      if (!mounted) return;
-      // Le shimmer sur la tagline est déclenché via flutter_animate delay=1400ms
-      Future.delayed(const Duration(milliseconds: 1200), () {
+    _timers.addAll([
+      Timer(const Duration(milliseconds: 1200), () {
+        if (!mounted) return;
+        _pulseController.repeat(reverse: true);
+      }),
+      Timer(const Duration(milliseconds: 1800), () {
         if (!mounted) return;
         setState(() => _showShimmer = false);
-      });
-    });
-
-    Future.delayed(const Duration(milliseconds: 1800), () {
-      if (!mounted) return;
-      setState(() => _showRankBadges = true);
-    });
-
-    Future.delayed(const Duration(milliseconds: 2000), () {
-      if (!mounted) return;
-      _progressController.forward();
-    });
-
-    Future.delayed(const Duration(milliseconds: 3500), _redirect);
+      }),
+      Timer(const Duration(milliseconds: 1800), () {
+        if (!mounted) return;
+        setState(() => _showRankBadges = true);
+      }),
+      Timer(const Duration(milliseconds: 2000), () {
+        if (!mounted) return;
+        _progressController.forward();
+      }),
+      Timer(const Duration(milliseconds: 3500), _redirect),
+    ]);
   }
 
   Future<void> _redirect() async {
@@ -90,6 +83,9 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   void dispose() {
+    for (final t in _timers) {
+      t.cancel();
+    }
     _progressController.dispose();
     _pulseController.dispose();
     super.dispose();
