@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../../core/data/mock_data.dart';
 import '../../../../../core/models/character.dart';
 import '../../../../../core/providers/recommendation_provider.dart';
@@ -65,7 +66,13 @@ class CharacterGridSection extends ConsumerWidget {
         childAspectRatio: 0.72,
       ),
       itemCount: chars.length,
-      itemBuilder: (_, i) => CharacterGridCard(character: chars[i])
+      itemBuilder: (context, i) => CharacterGridCard(
+        character: chars[i],
+        onTap: () => context.push(
+          '/character/${chars[i].id}',
+          extra: chars[i],
+        ),
+      )
           .animate(delay: (60 * i).ms)
           .fadeIn(duration: 300.ms)
           .slideY(begin: 0.1, end: 0, duration: 300.ms, curve: Curves.easeOut),

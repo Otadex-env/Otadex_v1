@@ -6,8 +6,9 @@ import '../../../../../core/theme/otadex_theme.dart';
 
 class CharacterGridCard extends StatefulWidget {
   final Character character;
+  final VoidCallback? onTap;
 
-  const CharacterGridCard({super.key, required this.character});
+  const CharacterGridCard({super.key, required this.character, this.onTap});
 
   @override
   State<CharacterGridCard> createState() => _CharacterGridCardState();
@@ -32,6 +33,7 @@ class _CharacterGridCardState extends State<CharacterGridCard> {
     final character = widget.character;
 
     return GestureDetector(
+      onTap: widget.onTap,
       onTapDown: _onTapDown,
       onTapUp: _onTapUp,
       onTapCancel: _onTapCancel,

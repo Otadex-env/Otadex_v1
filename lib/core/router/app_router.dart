@@ -7,6 +7,8 @@ import '../../features/onboarding/presentation/interests_screen.dart';
 import '../../features/auth/presentation/login_screen.dart';
 import '../../features/auth/presentation/register_screen.dart';
 import '../../features/home/presentation/home_screen.dart';
+import '../../features/character/presentation/character_detail_screen.dart';
+import '../../core/models/character.dart';
 import '../constants/app_constants.dart';
 
 class AppRouter {
@@ -57,6 +59,14 @@ class AppRouter {
         path: home,
         name: 'home',
         builder: (context, state) => const HomeScreen(),
+      ),
+      GoRoute(
+        path: '/character/:id',
+        name: 'character',
+        builder: (context, state) {
+          final character = state.extra as Character;
+          return CharacterDetailScreen(character: character);
+        },
       ),
     ],
   );

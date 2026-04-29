@@ -31,8 +31,8 @@ class OtadexBottomNavBar extends StatelessWidget {
       ),
       child: SafeArea(
         top: false,
-        child: SizedBox(
-          height: 60,
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(minHeight: 56),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: List.generate(_items.length, (i) {
@@ -40,47 +40,51 @@ class OtadexBottomNavBar extends StatelessWidget {
               return GestureDetector(
                 onTap: () => onTap(i),
                 behavior: HitTestBehavior.opaque,
-                child: SizedBox(
-                  width: 70,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      AnimatedContainer(
-                        duration: const Duration(milliseconds: 200),
-                        child: Icon(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: SizedBox(
+                    width: 70,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
                           _items[i].icon,
                           color: isActive
                               ? theme.accentColor
                               : theme.textSecondary,
                           size: 24,
                         ),
-                      ),
-                      const SizedBox(height: 3),
-                      AnimatedDefaultTextStyle(
-                        duration: const Duration(milliseconds: 200),
-                        style: GoogleFonts.nunitoSans(
-                          fontSize: 10,
-                          fontWeight: isActive
-                              ? FontWeight.w700
-                              : FontWeight.w500,
-                          color: isActive
-                              ? theme.accentColor
-                              : theme.textSecondary,
+                        const SizedBox(height: 3),
+                        AnimatedDefaultTextStyle(
+                          duration: const Duration(milliseconds: 200),
+                          style: GoogleFonts.nunitoSans(
+                            fontSize: 10,
+                            fontWeight: isActive
+                                ? FontWeight.w700
+                                : FontWeight.w500,
+                            color: isActive
+                                ? theme.accentColor
+                                : theme.textSecondary,
+                          ),
+                          child: Text(
+                            _items[i].label,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                          ),
                         ),
-                        child: Text(_items[i].label),
-                      ),
-                      const SizedBox(height: 2),
-                      // Active dot indicator
-                      AnimatedContainer(
-                        duration: const Duration(milliseconds: 200),
-                        width: isActive ? 16 : 0,
-                        height: 3,
-                        decoration: BoxDecoration(
-                          color: theme.accentColor,
-                          borderRadius: BorderRadius.circular(2),
+                        const SizedBox(height: 2),
+                        AnimatedContainer(
+                          duration: const Duration(milliseconds: 200),
+                          width: isActive ? 16 : 0,
+                          height: 3,
+                          decoration: BoxDecoration(
+                            color: theme.accentColor,
+                            borderRadius: BorderRadius.circular(2),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               );

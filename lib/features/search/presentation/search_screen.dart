@@ -694,9 +694,12 @@ class _RechercheScreenState extends State<RechercheScreen>
           padding: const EdgeInsets.all(12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 cat.id,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 style: GoogleFonts.rajdhani(
                   color: Colors.white.withValues(alpha: 0.6),
                   fontSize: 10,
@@ -704,33 +707,38 @@ class _RechercheScreenState extends State<RechercheScreen>
                   letterSpacing: 1.5,
                 ),
               ),
-              const Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        cat.label,
-                        style: GoogleFonts.rajdhani(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w800,
-                          height: 1,
+                  Flexible(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          cat.label,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: GoogleFonts.rajdhani(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w800,
+                            height: 1,
+                          ),
                         ),
-                      ),
-                      Text(
-                        cat.sub,
-                        style: GoogleFonts.nunitoSans(
-                          color: Colors.white.withValues(alpha: 0.7),
-                          fontSize: 10,
+                        Text(
+                          cat.sub,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: GoogleFonts.nunitoSans(
+                            color: Colors.white.withValues(alpha: 0.7),
+                            fontSize: 10,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                  Text(cat.icon, style: const TextStyle(fontSize: 20)),
+                  Text(cat.icon, style: const TextStyle(fontSize: 18)),
                 ],
               ),
             ],
@@ -742,7 +750,7 @@ class _RechercheScreenState extends State<RechercheScreen>
 
   Widget _buildTrendingList(RankTheme theme) {
     return SizedBox(
-      height: 56,
+      height: 64,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: _trending.length,
