@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/l10n/app_strings.dart';
+import '../../../core/models/anime_entry.dart';
+import '../../../core/models/character.dart';
+import '../../../core/models/creator_entry.dart';
+import '../../../core/providers/otadex_providers.dart';
+import '../../../core/services/otadex_data_service.dart';
 import '../../../core/theme/otadex_theme.dart';
 import '../../../core/theme/rank_theme.dart';
 
-class RechercheScreen extends StatefulWidget {
+class RechercheScreen extends ConsumerStatefulWidget {
   const RechercheScreen({super.key});
 
   @override
-  State<RechercheScreen> createState() => _RechercheScreenState();
+  ConsumerState<RechercheScreen> createState() => _RechercheScreenState();
 }
 
-class _RechercheScreenState extends State<RechercheScreen>
+class _RechercheScreenState extends ConsumerState<RechercheScreen>
     with TickerProviderStateMixin {
+  OtadexDataService? _service;
   // ── Controllers ──────────────────────────────────────────────────────
   final _controller = TextEditingController();
   final _focusNode = FocusNode();
@@ -36,13 +43,13 @@ class _RechercheScreenState extends State<RechercheScreen>
   late Animation<Offset> _cancelSlide;
   late Animation<double> _cancelFade;
 
-  // ── Mock data ─────────────────────────────────────────────────────────
-  static const _subFilters = ['Shonen', 'Shojo', 'Seinen', 'Manhwa'];
+  // ── Static data ───────────────────────────────────────────────────────
+  static const _subFilters = ['Shōnen', 'Shōjo', 'Seinen', 'Manhwa'];
 
   static const _categories = [
-    _Category('SHONEN', 'Shonen', 'Action · Aventure', '⚡',
+    _Category('SHŌNEN', 'Shōnen', 'Action · Aventure', '⚡',
         Color(0xFFE67E22), Color(0xFF5D1A00)),
-    _Category('SHOJO', 'Shojo', 'Romance · Émotions', '🌸',
+    _Category('SHŌJO', 'Shōjo', 'Romance · Émotions', '🌸',
         Color(0xFFE91E8C), Color(0xFF7B0052)),
     _Category('SEINEN', 'Seinen', 'Adulte · Psychologique', '✒️',
         Color(0xFF546E7A), Color(0xFF1A2327)),
@@ -57,11 +64,13 @@ class _RechercheScreenState extends State<RechercheScreen>
   static const _trending = [
     _TrendItem('#1', 'Sung Jinwoo', 'Solo Leveling', Color(0xFF1A237E)),
     _TrendItem('#2', 'Gojo Satoru', 'Jujutsu Kaisen', Color(0xFF4A148C)),
-    _TrendItem('#3', 'Teijiro', 'Demon Slayer', Color(0xFF880E4F)),
+    _TrendItem('#3', 'Tanjiro', 'Demon Slayer', Color(0xFF880E4F)),
     _TrendItem('#4', 'Luffy', 'One Piece', Color(0xFFBF360C)),
     _TrendItem('#5', 'Levi', 'Attack on Titan', Color(0xFF212121)),
-    _TrendItem('#6', 'Frieren', 'Frieren BJE', Color(0xFF1A237E)),
+    _TrendItem('#6', 'Frieren', "Frieren: Beyond Journey's End",
+        Color(0xFF283593)),
   ];
+
 
   static const _recommendations = [
     [Color(0xFFFF6B35), Color(0xFF8B1A00)],
@@ -72,23 +81,86 @@ class _RechercheScreenState extends State<RechercheScreen>
 
   // ── Computed ──────────────────────────────────────────────────────────
   bool get _showSuggestions => _isFocused && _query.isNotEmpty;
-  bool get _showResults => _submitted && _query.isNotEmpty && !_isFocused;
+  bool get _showResults =>
+      (_submitted || _selectedSubFilter != null) && !_isFocused;
 
   List<_Suggestion> get _suggestions {
     if (_query.isEmpty) return [];
-    final cap = _query[0].toUpperCase() + _query.substring(1);
-    return [
-      _Suggestion('$cap Satoru', 'Personnage', badge: '10R'),
-      _Suggestion('$cap Jogo', 'Personnage'),
-      _Suggestion('$cap Satoru', 'recent'),
-      const _Suggestion('Jujutsu Kaisen', 'Animé'),
-    ];
+    final q = _query.toLowerCase();
+    final results = <_Suggestion>[];
+    final chars = _service?.characters ?? [];
+    final animes = _service?.animes ?? [];
+    final creators = _service?.creators ?? [];
+
+    for (final c in chars) {
+      if (c.name.toLowerCase().contains(q)) {
+        results.add(_Suggestion(c.name, 'Personnage'));
+        if (results.length >= 3) break;
+      }
+    }
+    for (final a in animes) {
+      if (a.name.toLowerCase().contains(q) && results.length < 5) {
+        results.add(_Suggestion(a.name, 'Animé'));
+      }
+    }
+    for (final c in creators) {
+      if (c.name.toLowerCase().contains(q) && results.length < 6) {
+        results.add(_Suggestion(c.name, 'Créateur'));
+      }
+    }
+    return results.take(5).toList();
+  }
+
+  List<Character> get _filteredCharacters {
+    final q = _query.toLowerCase();
+    final chars = _service?.characters ?? [];
+    return chars.where((c) {
+      final queryMatch = q.isEmpty ||
+          c.name.toLowerCase().contains(q) ||
+          c.animeName.toLowerCase().contains(q) ||
+          c.aliases.any((a) => a.toLowerCase().contains(q));
+      final catMatch =
+          _selectedSubFilter == null || c.category == _selectedSubFilter;
+      final typeFilter = _selectedFilter == 0 || _selectedFilter == 1;
+      return queryMatch && catMatch && typeFilter;
+    }).toList();
+  }
+
+  List<AnimeEntry> get _filteredAnimes {
+    final q = _query.toLowerCase();
+    final animes = _service?.animes ?? [];
+    return animes.where((a) {
+      final queryMatch = q.isEmpty ||
+          a.name.toLowerCase().contains(q) ||
+          a.category.toLowerCase().contains(q) ||
+          a.studio.toLowerCase().contains(q);
+      final catMatch =
+          _selectedSubFilter == null || a.category == _selectedSubFilter;
+      final typeFilter = _selectedFilter == 0 || _selectedFilter == 2;
+      return queryMatch && catMatch && typeFilter;
+    }).toList();
+  }
+
+  List<CreatorEntry> get _filteredCreators {
+    final q = _query.toLowerCase();
+    final creators = _service?.creators ?? [];
+    return creators.where((c) {
+      final queryMatch = q.isEmpty ||
+          c.name.toLowerCase().contains(q) ||
+          c.works.any((w) => w.toLowerCase().contains(q));
+      final typeFilter = _selectedFilter == 0 || _selectedFilter == 3;
+      return queryMatch && typeFilter;
+    }).toList();
   }
 
   // ── Lifecycle ─────────────────────────────────────────────────────────
   @override
   void initState() {
     super.initState();
+    // Load data service asynchronously; rebuilds when ready
+    ref.read(otadexServiceProvider.future).then((s) {
+      if (mounted) setState(() => _service = s);
+    });
 
     _cancelCtrl = AnimationController(
       vsync: this,
@@ -138,6 +210,7 @@ class _RechercheScreenState extends State<RechercheScreen>
       _query = '';
       _isFocused = false;
       _submitted = false;
+      _selectedSubFilter = null;
     });
   }
 
@@ -172,6 +245,18 @@ class _RechercheScreenState extends State<RechercheScreen>
     if (!_recentSearches.contains(_query)) {
       setState(() => _recentSearches.insert(0, _query));
     }
+  }
+
+  void _selectCategory(_Category cat) {
+    setState(() {
+      if (_selectedSubFilter == cat.label) {
+        _selectedSubFilter = null;
+        _submitted = false;
+      } else {
+        _selectedSubFilter = cat.label;
+        _submitted = true;
+      }
+    });
   }
 
   void _removeRecent(String s) => setState(() => _recentSearches.remove(s));
@@ -379,11 +464,18 @@ class _RechercheScreenState extends State<RechercheScreen>
               final active = _selectedSubFilter == _subFilters[i];
               return GestureDetector(
                 onTap: () => setState(() {
-                  _selectedSubFilter = active ? null : _subFilters[i];
+                  if (active) {
+                    _selectedSubFilter = null;
+                    if (_query.isEmpty) _submitted = false;
+                  } else {
+                    _selectedSubFilter = _subFilters[i];
+                    _submitted = true;
+                  }
                 }),
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 200),
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
                   decoration: BoxDecoration(
                     color: active
                         ? theme.accentColor.withValues(alpha: 0.15)
@@ -466,24 +558,6 @@ class _RechercheScreenState extends State<RechercheScreen>
               ),
               const SizedBox(width: 12),
               Expanded(child: _buildHighlightedText(theme, s.text)),
-              if (s.badge != null) ...[
-                const SizedBox(width: 8),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                  decoration: BoxDecoration(
-                    color: theme.accentColor.withValues(alpha: 0.2),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Text(
-                    s.badge!,
-                    style: GoogleFonts.rajdhani(
-                      color: theme.accentColor,
-                      fontSize: 11,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
-              ],
               const SizedBox(width: 8),
               if (!isRecent) ...[
                 Text(
@@ -628,7 +702,8 @@ class _RechercheScreenState extends State<RechercheScreen>
           const SizedBox(width: 6),
           GestureDetector(
             onTap: () => _removeRecent(label),
-            child: Icon(Icons.close_rounded, color: theme.textSecondary, size: 14),
+            child:
+                Icon(Icons.close_rounded, color: theme.textSecondary, size: 14),
           ),
         ],
       ),
@@ -646,6 +721,18 @@ class _RechercheScreenState extends State<RechercheScreen>
     );
   }
 
+  Widget _buildSectionLabel(RankTheme theme, String label) {
+    return Text(
+      label,
+      style: GoogleFonts.rajdhani(
+        color: theme.textSecondary,
+        fontSize: 13,
+        fontWeight: FontWeight.w600,
+        letterSpacing: 1.0,
+      ),
+    );
+  }
+
   Widget _buildCategoryGrid(RankTheme theme) {
     return GridView.builder(
       shrinkWrap: true,
@@ -654,7 +741,7 @@ class _RechercheScreenState extends State<RechercheScreen>
         crossAxisCount: 2,
         mainAxisSpacing: 10,
         crossAxisSpacing: 10,
-        mainAxisExtent: 72,
+        mainAxisExtent: 80,
       ),
       itemCount: _categories.length,
       itemBuilder: (context, i) => _buildCategoryCard(theme, _categories[i], i),
@@ -662,6 +749,7 @@ class _RechercheScreenState extends State<RechercheScreen>
   }
 
   Widget _buildCategoryCard(RankTheme theme, _Category cat, int index) {
+    final isSelected = _selectedSubFilter == cat.label;
     return TweenAnimationBuilder<double>(
       tween: Tween(begin: 0.0, end: 1.0),
       duration: Duration(milliseconds: 300 + index * 50),
@@ -674,10 +762,7 @@ class _RechercheScreenState extends State<RechercheScreen>
         ),
       ),
       child: GestureDetector(
-        onTap: () => setState(() {
-          _selectedSubFilter =
-              _selectedSubFilter == cat.label ? null : cat.label;
-        }),
+        onTap: () => _selectCategory(cat),
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           decoration: BoxDecoration(
@@ -687,14 +772,16 @@ class _RechercheScreenState extends State<RechercheScreen>
               colors: [cat.color1, cat.color2],
             ),
             borderRadius: BorderRadius.circular(12),
-            border: _selectedSubFilter == cat.label
-                ? Border.all(color: Colors.white.withValues(alpha: 0.6), width: 1.5)
+            border: isSelected
+                ? Border.all(
+                    color: Colors.white.withValues(alpha: 0.6), width: 1.5)
                 : null,
           ),
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Text(
                 cat.id,
@@ -714,6 +801,7 @@ class _RechercheScreenState extends State<RechercheScreen>
                   Flexible(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
                           cat.label,
@@ -721,11 +809,12 @@ class _RechercheScreenState extends State<RechercheScreen>
                           overflow: TextOverflow.ellipsis,
                           style: GoogleFonts.rajdhani(
                             color: Colors.white,
-                            fontSize: 18,
+                            fontSize: 17,
                             fontWeight: FontWeight.w800,
                             height: 1,
                           ),
                         ),
+                        const SizedBox(height: 2),
                         Text(
                           cat.sub,
                           maxLines: 1,
@@ -761,61 +850,73 @@ class _RechercheScreenState extends State<RechercheScreen>
   }
 
   Widget _buildTrendCard(RankTheme theme, _TrendItem item) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      decoration: BoxDecoration(
-        color: theme.backgroundCard,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: theme.borderSubtle),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 36,
-            height: 36,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [item.color, item.color.withValues(alpha: 0.4)],
+    return GestureDetector(
+      onTap: () {
+        _controller.text = item.name;
+        setState(() {
+          _query = item.name;
+          _submitted = true;
+        });
+        if (!_recentSearches.contains(item.name)) {
+          setState(() => _recentSearches.insert(0, item.name));
+        }
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        decoration: BoxDecoration(
+          color: theme.backgroundCard,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: theme.borderSubtle),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 36,
+              height: 36,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [item.color, item.color.withValues(alpha: 0.4)],
+                ),
+                borderRadius: BorderRadius.circular(8),
               ),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Center(
-              child: Text(
-                item.rank,
-                style: GoogleFonts.rajdhani(
-                  color: Colors.white,
-                  fontSize: 10,
-                  fontWeight: FontWeight.w700,
+              child: Center(
+                child: Text(
+                  item.rank,
+                  style: GoogleFonts.rajdhani(
+                    color: Colors.white,
+                    fontSize: 10,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
             ),
-          ),
-          const SizedBox(width: 8),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                item.name,
-                style: GoogleFonts.nunitoSans(
-                  color: theme.textPrimary,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w700,
+            const SizedBox(width: 8),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  item.name,
+                  style: GoogleFonts.nunitoSans(
+                    color: theme.textPrimary,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
-              ),
-              Text(
-                item.anime,
-                style: GoogleFonts.nunitoSans(
-                  color: theme.textSecondary,
-                  fontSize: 10,
+                Text(
+                  item.anime,
+                  style: GoogleFonts.nunitoSans(
+                    color: theme.textSecondary,
+                    fontSize: 10,
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -823,61 +924,192 @@ class _RechercheScreenState extends State<RechercheScreen>
   // ── STATE C — Results ─────────────────────────────────────────────────
   Widget _buildResultsContent(RankTheme theme) {
     final s = AppStrings.of(context);
+    final chars = _filteredCharacters;
+    final animes = _filteredAnimes;
+    final creators = _filteredCreators;
+
+    final showChars =
+        (_selectedFilter == 0 || _selectedFilter == 1) && chars.isNotEmpty;
+    final showAnimes =
+        (_selectedFilter == 0 || _selectedFilter == 2) && animes.isNotEmpty;
+    final showCreators =
+        (_selectedFilter == 0 || _selectedFilter == 3) && creators.isNotEmpty;
+
+    if (!showChars && !showAnimes && !showCreators) {
+      return _buildEmptyResults(theme);
+    }
+
     return ListView(
       key: const ValueKey('results'),
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
       children: [
-        _buildResultSection(
-          theme, s.characters.toUpperCase(), 0, _buildCharacterCard(theme)),
-        const SizedBox(height: 16),
-        _buildResultSection(
-          theme, s.animes.toUpperCase(), 1, _buildAnimeCard(theme)),
-        const SizedBox(height: 16),
-        _buildResultSection(
-          theme, s.creators.toUpperCase(), 2, _buildCreatorCard(theme)),
-        const SizedBox(height: 24),
-        _buildSectionTitle(theme, s.youMightAlsoLike),
-        const SizedBox(height: 12),
-        _buildRecommendations(theme),
+        if (_selectedSubFilter != null)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 12),
+            child: Row(
+              children: [
+                Icon(Icons.filter_list_rounded,
+                    color: theme.accentColor, size: 16),
+                const SizedBox(width: 6),
+                Text(
+                  'Catégorie : $_selectedSubFilter',
+                  style: GoogleFonts.nunitoSans(
+                    color: theme.accentColor,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                GestureDetector(
+                  onTap: () => setState(() {
+                    _selectedSubFilter = null;
+                    if (_query.isEmpty) _submitted = false;
+                  }),
+                  child: Icon(Icons.close_rounded,
+                      color: theme.textSecondary, size: 16),
+                ),
+              ],
+            ),
+          ),
+        if (showChars) ...[
+          TweenAnimationBuilder<double>(
+            tween: Tween(begin: 0.0, end: 1.0),
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeOut,
+            builder: (_, v, child) =>
+                Opacity(opacity: v, child: Transform.translate(offset: Offset(0, 16 * (1 - v)), child: child)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildSectionLabel(
+                    theme, '${s.characters.toUpperCase()} (${chars.length})'),
+                const SizedBox(height: 8),
+                ...chars
+                    .take(5)
+                    .map((c) => Padding(
+                          padding: const EdgeInsets.only(bottom: 8),
+                          child: _buildCharacterResultCard(theme, c),
+                        )),
+                if (chars.length > 5)
+                  _buildSeeMoreRow(
+                      theme, '${chars.length - 5} autres personnages'),
+                const SizedBox(height: 16),
+              ],
+            ),
+          ),
+        ],
+        if (showAnimes) ...[
+          TweenAnimationBuilder<double>(
+            tween: Tween(begin: 0.0, end: 1.0),
+            duration: const Duration(milliseconds: 400),
+            curve: Curves.easeOut,
+            builder: (_, v, child) =>
+                Opacity(opacity: v, child: Transform.translate(offset: Offset(0, 16 * (1 - v)), child: child)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildSectionLabel(
+                    theme, '${s.animes.toUpperCase()} (${animes.length})'),
+                const SizedBox(height: 8),
+                ...animes
+                    .take(4)
+                    .map((a) => Padding(
+                          padding: const EdgeInsets.only(bottom: 8),
+                          child: _buildAnimeResultCard(theme, a),
+                        )),
+                if (animes.length > 4)
+                  _buildSeeMoreRow(theme, '${animes.length - 4} autres animés'),
+                const SizedBox(height: 16),
+              ],
+            ),
+          ),
+        ],
+        if (showCreators) ...[
+          TweenAnimationBuilder<double>(
+            tween: Tween(begin: 0.0, end: 1.0),
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.easeOut,
+            builder: (_, v, child) =>
+                Opacity(opacity: v, child: Transform.translate(offset: Offset(0, 16 * (1 - v)), child: child)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildSectionLabel(
+                    theme, '${s.creators.toUpperCase()} (${creators.length})'),
+                const SizedBox(height: 8),
+                ...creators
+                    .take(3)
+                    .map((c) => Padding(
+                          padding: const EdgeInsets.only(bottom: 8),
+                          child: _buildCreatorResultCard(theme, c),
+                        )),
+                const SizedBox(height: 16),
+              ],
+            ),
+          ),
+        ],
+        if (_query.isNotEmpty) ...[
+          _buildSectionTitle(theme, s.youMightAlsoLike),
+          const SizedBox(height: 12),
+          _buildRecommendations(theme),
+        ],
         const SizedBox(height: 100),
       ],
     );
   }
 
-  Widget _buildResultSection(
-      RankTheme theme, String title, int delay, Widget card) {
-    return TweenAnimationBuilder<double>(
-      key: ValueKey(title),
-      tween: Tween(begin: 0.0, end: 1.0),
-      duration: Duration(milliseconds: 300 + delay * 100),
-      curve: Curves.easeOut,
-      builder: (context, value, child) => Opacity(
-        opacity: value,
-        child: Transform.translate(
-          offset: Offset(0, 20 * (1 - value)),
-          child: child,
-        ),
-      ),
+  Widget _buildEmptyResults(RankTheme theme) {
+    return Center(
+      key: const ValueKey('empty'),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
+          Icon(Icons.search_off_rounded,
+              color: theme.textSecondary, size: 48),
+          const SizedBox(height: 12),
           Text(
-            '$title (1)',
+            'Aucun résultat trouvé',
             style: GoogleFonts.rajdhani(
-              color: theme.textSecondary,
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
-              letterSpacing: 1.0,
+              color: theme.textPrimary,
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
             ),
           ),
-          const SizedBox(height: 8),
-          card,
+          const SizedBox(height: 6),
+          Text(
+            'Essaie un autre terme ou change de filtre',
+            style: GoogleFonts.nunitoSans(
+              color: theme.textSecondary,
+              fontSize: 13,
+            ),
+          ),
         ],
       ),
     );
   }
 
-  Widget _buildCharacterCard(RankTheme theme) {
+  Widget _buildSeeMoreRow(RankTheme theme, String label) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Row(
+        children: [
+          Icon(Icons.add_circle_outline_rounded,
+              color: theme.accentColor, size: 14),
+          const SizedBox(width: 6),
+          Text(
+            label,
+            style: GoogleFonts.nunitoSans(
+              color: theme.accentColor,
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCharacterResultCard(RankTheme theme, Character c) {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -889,15 +1121,23 @@ class _RechercheScreenState extends State<RechercheScreen>
         children: [
           Container(
             width: 52,
-            height: 72,
+            height: 68,
             decoration: BoxDecoration(
-              gradient: const LinearGradient(
+              gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [Color(0xFF1A237E), Color(0xFF4A0080)],
+                colors: [c.cardColor, c.accentColor.withValues(alpha: 0.6)],
               ),
               borderRadius: BorderRadius.circular(8),
             ),
+            child: c.imagePath != null
+                ? ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.asset(c.imagePath!,
+                        fit: BoxFit.cover,
+                        errorBuilder: (_, __, ___) => const SizedBox()),
+                  )
+                : null,
           ),
           const SizedBox(width: 12),
           Expanded(
@@ -907,24 +1147,26 @@ class _RechercheScreenState extends State<RechercheScreen>
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'Gojo Satoru',
-                      style: GoogleFonts.rajdhani(
-                        color: theme.textPrimary,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
+                    Flexible(
+                      child: Text(
+                        c.name,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.rajdhani(
+                          color: theme.textPrimary,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                     Row(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(
-                          Icons.favorite_rounded,
-                          color: Colors.redAccent,
-                          size: 14,
-                        ),
+                        const Icon(Icons.favorite_rounded,
+                            color: Colors.redAccent, size: 14),
                         const SizedBox(width: 4),
                         Text(
-                          '38.2k',
+                          '${c.likes}k',
                           style: GoogleFonts.nunitoSans(
                             color: theme.textSecondary,
                             fontSize: 12,
@@ -934,20 +1176,20 @@ class _RechercheScreenState extends State<RechercheScreen>
                     ),
                   ],
                 ),
-                const SizedBox(height: 6),
+                const SizedBox(height: 4),
                 Wrap(
                   spacing: 6,
                   runSpacing: 4,
                   children: [
-                    _buildTag('Spécial Grade 0',
-                        const Color(0xFF81C784), const Color(0xFF1B5E20)),
-                    _buildTag('Protagoniste',
-                        const Color(0xFFFFB74D), const Color(0xFF3E2000)),
+                    _buildTag(c.tierLabel, c.tierColor.withValues(alpha: 0.9),
+                        c.cardColor),
+                    _buildTag(c.category, theme.textSecondary,
+                        theme.backgroundElevated),
                   ],
                 ),
-                const SizedBox(height: 6),
+                const SizedBox(height: 4),
                 Text(
-                  'Jujutsu Kaisen · Shonen',
+                  c.animeName,
                   style: GoogleFonts.nunitoSans(
                     color: theme.textSecondary,
                     fontSize: 11,
@@ -962,7 +1204,7 @@ class _RechercheScreenState extends State<RechercheScreen>
     );
   }
 
-  Widget _buildAnimeCard(RankTheme theme) {
+  Widget _buildAnimeResultCard(RankTheme theme, AnimeEntry a) {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -976,10 +1218,20 @@ class _RechercheScreenState extends State<RechercheScreen>
             width: 52,
             height: 52,
             decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [Color(0xFF4A148C), Color(0xFF880E4F)],
+              gradient: LinearGradient(
+                colors: [a.cardColor, a.accentColor],
               ),
               borderRadius: BorderRadius.circular(8),
+            ),
+            child: Center(
+              child: Text(
+                a.name.substring(0, 1),
+                style: GoogleFonts.rajdhani(
+                  color: Colors.white,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
             ),
           ),
           const SizedBox(width: 12),
@@ -988,23 +1240,25 @@ class _RechercheScreenState extends State<RechercheScreen>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Jujutsu Kaisen',
+                  a.name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.rajdhani(
                     color: theme.textPrimary,
-                    fontSize: 16,
+                    fontSize: 15,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                const SizedBox(height: 4),
+                const SizedBox(height: 3),
                 Text(
-                  'Shonen · 2020 · 24 épisodes',
+                  '${a.category} · ${a.year} · ${a.episodes} épisodes',
                   style: GoogleFonts.nunitoSans(
                     color: theme.textSecondary,
                     fontSize: 11,
                   ),
                 ),
                 Text(
-                  'A-1 Pictures',
+                  a.studio,
                   style: GoogleFonts.nunitoSans(
                     color: theme.textSecondary,
                     fontSize: 11,
@@ -1019,7 +1273,8 @@ class _RechercheScreenState extends State<RechercheScreen>
     );
   }
 
-  Widget _buildCreatorCard(RankTheme theme) {
+  Widget _buildCreatorResultCard(RankTheme theme, CreatorEntry c) {
+    final mainWork = c.works.isNotEmpty ? c.works.first : '';
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -1039,7 +1294,7 @@ class _RechercheScreenState extends State<RechercheScreen>
             ),
             child: Center(
               child: Text(
-                'GA',
+                c.initials,
                 style: GoogleFonts.rajdhani(
                   color: theme.accentColor,
                   fontSize: 16,
@@ -1054,7 +1309,7 @@ class _RechercheScreenState extends State<RechercheScreen>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Gege Akutami',
+                  c.name,
                   style: GoogleFonts.rajdhani(
                     color: theme.textPrimary,
                     fontSize: 16,
@@ -1062,24 +1317,23 @@ class _RechercheScreenState extends State<RechercheScreen>
                   ),
                 ),
                 Text(
-                  'Mangaka · Jujutsu Kaisen',
+                  mainWork.isNotEmpty ? '${c.role} · $mainWork' : c.role,
                   style: GoogleFonts.nunitoSans(
                     color: theme.textSecondary,
                     fontSize: 11,
                   ),
                 ),
-                const SizedBox(height: 4),
-                Wrap(
-                  spacing: 4,
-                  children: [
-                    _buildTag('Shonen',
-                        const Color(0xFF90CAF9), const Color(0xFF0D3B6E)),
-                    _buildTag('Action',
-                        const Color(0xFFFFB74D), const Color(0xFF3E2000)),
-                    _buildTag('Manhwa',
-                        const Color(0xFF80CBC4), const Color(0xFF004D40)),
-                  ],
-                ),
+                if (c.tags.isNotEmpty) ...[
+                  const SizedBox(height: 4),
+                  Wrap(
+                    spacing: 4,
+                    children: c.tags
+                        .take(3)
+                        .map((t) => _buildTag(t, theme.textSecondary,
+                            theme.backgroundElevated))
+                        .toList(),
+                  ),
+                ],
               ],
             ),
           ),
@@ -1158,9 +1412,9 @@ class _TrendItem {
   const _TrendItem(this.rank, this.name, this.anime, this.color);
 }
 
+
 class _Suggestion {
   final String text;
   final String type;
-  final String? badge;
-  const _Suggestion(this.text, this.type, {this.badge});
+  const _Suggestion(this.text, this.type);
 }

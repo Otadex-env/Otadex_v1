@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:otadex/core/l10n/app_strings.dart';
 import '../../../../../core/theme/otadex_theme.dart';
 
 class SearchBarWidget extends StatelessWidget {
@@ -9,6 +10,7 @@ class SearchBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = OtadexTheme.of(context);
+    final s = AppStrings.of(context);
     return GestureDetector(
       onTap: onTap,
       behavior: HitTestBehavior.opaque,
@@ -29,26 +31,10 @@ class SearchBarWidget extends StatelessWidget {
               const SizedBox(width: 10),
               Expanded(
                 child: Text(
-                  'Rechercher un personnage, un animé...',
+                  s.placeholdertext1,
                   style: GoogleFonts.nunitoSans(
                     fontSize: 14,
                     color: theme.textSecondary,
-                  ),
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(right: 8),
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                decoration: BoxDecoration(
-                  color: theme.accentColor.withValues(alpha: 0.15),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Text(
-                  '⌘K',
-                  style: GoogleFonts.nunitoSans(
-                    fontSize: 11,
-                    color: theme.accentColor,
-                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),

@@ -91,8 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       padding: const EdgeInsets.only(top: 8),
                       child: CategoryChips(
                         selectedIndex: _selectedCategory,
-                        onChanged: (i) =>
-                            setState(() => _selectedCategory = i),
+                        onChanged: (i) => setState(() => _selectedCategory = i),
                       ),
                     ),
                   ),
@@ -122,5 +121,4 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
 }

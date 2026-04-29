@@ -1,43 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import '../../../../../core/data/mock_data.dart';
+import '../../../../../core/l10n/app_strings.dart';
+import '../../../../../core/providers/otadex_providers.dart';
 import 'section_header.dart';
 import 'trending_character_card.dart';
 
-class TrendingSection extends StatelessWidget {
+class TrendingSection extends ConsumerWidget {
   const TrendingSection({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final characters = MockData.trending();
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SectionHeader(
-          title: '🔥 Trending',
-          actionLabel: 'Voir tout',
-          onAction: () => context.push('/characters', extra: {
-            'title': '🔥 Trending',
-            'characters': characters,
-          }),
-        ),
-        SizedBox(
-          height: 180,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: characters.length,
-            padding: const EdgeInsets.only(right: 16),
-            itemBuilder: (context, i) => TrendingCharacterCard(
-              character: characters[i],
-              index: i,
-              onTap: () => context.push(
-                '/character/${characters[i].id}',
-                extra: characters[i],
+  Widget build(BuildContext context, WidgetRef ref) {
+    final trendingAsync = ref.watch(trendingCharactersProvider);
+    final trendingTitle = AppStrings.of(context).trendingNow;
+
+    return trendingAsync.when(
+      data: (characters) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SectionHeader(
+            title: trendingTitle,
+            actionLabel: 'Voir tout',
+            onAction: () => context.push('/characters', extra: {
+              'title': trendingTitle,
+              'characters': characters,
+            }),
+          ),
+          SizedBox(
+            height: 180,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: characters.length,
+              padding: const EdgeInsets.only(right: 16),
+              itemBuilder: (context, i) => TrendingCharacterCard(
+                character: characters[i],
+                index: i,
+                onTap: () => context.push(
+                  '/character/${characters[i].id}',
+                  extra: characters[i],
+                ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
+      loading: () => const SizedBox(
+        height: 220,
+        child: Center(child: CircularProgressIndicator(strokeWidth: 2)),
+      ),
+      error: (_, __) => const SizedBox.shrink(),
     );
   }
 }

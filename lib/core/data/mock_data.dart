@@ -29,7 +29,7 @@ class MockData {
       id: 'f2',
       title: 'Demon Slayer',
       subtitle: 'Arc Infinity Castle — Épisodes exclusifs',
-      tag: 'TRENDING',
+      tag: 'TENDANCE',
       primaryColor: Color(0xFF1A0A0A),
       secondaryColor: Color(0xFFE53935),
       category: 'Shōnen',

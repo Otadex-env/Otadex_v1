@@ -13,10 +13,10 @@ class OtadexBottomNavBar extends StatelessWidget {
   });
 
   static const _items = [
-    (icon: Icons.home_rounded, label: 'Accueil'),
-    (icon: Icons.search_rounded, label: 'Recherche'),
-    (icon: Icons.collections_bookmark_rounded, label: 'Collection'),
-    (icon: Icons.person_rounded, label: 'Profil'),
+    (icon: Icons.home_outlined, label: 'Accueil'),
+    (icon: Icons.search_outlined, label: 'Recherche'),
+    (icon: Icons.collections_bookmark_outlined, label: 'Collection'),
+    (icon: Icons.person_2_outlined, label: 'Profil'),
   ];
 
   @override
@@ -25,6 +25,10 @@ class OtadexBottomNavBar extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: theme.backgroundCard,
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(16),
+          topRight: Radius.circular(16),
+        ),
         border: Border(
           top: BorderSide(color: theme.borderSubtle, width: 1),
         ),
@@ -34,7 +38,7 @@ class OtadexBottomNavBar extends StatelessWidget {
         child: ConstrainedBox(
           constraints: const BoxConstraints(minHeight: 56),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: List.generate(_items.length, (i) {
               final isActive = i == currentIndex;
               return GestureDetector(
@@ -60,9 +64,8 @@ class OtadexBottomNavBar extends StatelessWidget {
                           duration: const Duration(milliseconds: 200),
                           style: GoogleFonts.nunitoSans(
                             fontSize: 10,
-                            fontWeight: isActive
-                                ? FontWeight.w700
-                                : FontWeight.w500,
+                            fontWeight:
+                                isActive ? FontWeight.w700 : FontWeight.w500,
                             color: isActive
                                 ? theme.accentColor
                                 : theme.textSecondary,

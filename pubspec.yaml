@@ -52,4 +52,8 @@ flutter:
     - assets/images/logo/
     - assets/images/onboarding/
     - assets/images/splash/
+    - assets/data/
+    # ── Character images ─────────────────────────────────────────────────────
+    # Convention: assets/images/characters/{character_id}/{character_id}_01.jpg
+    # To add a new character: create the folder, add images, declare the path below.
     - assets/images/characters/satoru_gojo/

@@ -1,35 +1,36 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../../core/data/mock_data.dart';
 import '../../../../../core/models/featured_slide.dart';
+import '../../../../../core/providers/otadex_providers.dart';
 import '../../../../../core/theme/otadex_theme.dart';
 
-class HeroFeaturedSlider extends StatefulWidget {
+class HeroFeaturedSlider extends ConsumerStatefulWidget {
   const HeroFeaturedSlider({super.key});
 
   @override
-  State<HeroFeaturedSlider> createState() => _HeroFeaturedSliderState();
+  ConsumerState<HeroFeaturedSlider> createState() =>
+      _HeroFeaturedSliderState();
 }
 
-class _HeroFeaturedSliderState extends State<HeroFeaturedSlider> {
+class _HeroFeaturedSliderState extends ConsumerState<HeroFeaturedSlider> {
   late final PageController _pageCtrl;
   int _currentPage = 0;
   Timer? _timer;
-
-  static const _slides = MockData.featuredSlides;
 
   @override
   void initState() {
     super.initState();
     _pageCtrl = PageController();
-    _startAutoScroll();
   }
 
-  void _startAutoScroll() {
+  void _startAutoScroll(int count) {
+    _timer?.cancel();
+    if (count <= 1) return;
     _timer = Timer.periodic(const Duration(seconds: 4), (_) {
       if (!mounted) return;
-      final next = (_currentPage + 1) % _slides.length;
+      final next = (_currentPage + 1) % count;
       _pageCtrl.animateToPage(
         next,
         duration: const Duration(milliseconds: 500),
@@ -48,48 +49,59 @@ class _HeroFeaturedSliderState extends State<HeroFeaturedSlider> {
   @override
   Widget build(BuildContext context) {
     final theme = OtadexTheme.of(context);
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
-      child: SizedBox(
-        height: 200,
-        child: Stack(
-          children: [
-            // PageView
-            PageView.builder(
-              controller: _pageCtrl,
-              itemCount: _slides.length,
-              onPageChanged: (i) => setState(() => _currentPage = i),
-              itemBuilder: (_, i) => _SlideCard(slide: _slides[i]),
-            ),
-            // Vertical dots (right side)
-            Positioned(
-              right: 12,
-              top: 0,
-              bottom: 0,
-              child: Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: List.generate(_slides.length, (i) {
-                    final isActive = i == _currentPage;
-                    return AnimatedContainer(
-                      duration: const Duration(milliseconds: 300),
-                      margin: const EdgeInsets.symmetric(vertical: 3),
-                      width: 4,
-                      height: isActive ? 20 : 6,
-                      decoration: BoxDecoration(
-                        color: isActive
-                            ? theme.accentColor
-                            : theme.textSecondary.withValues(alpha: 0.4),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                    );
-                  }),
+    final slidesAsync = ref.watch(featuredSlidesProvider);
+
+    return slidesAsync.when(
+      data: (slides) {
+        if (slides.isEmpty) return const SizedBox.shrink();
+        _startAutoScroll(slides.length);
+        return Padding(
+          padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+          child: SizedBox(
+            height: 200,
+            child: Stack(
+              children: [
+                PageView.builder(
+                  controller: _pageCtrl,
+                  itemCount: slides.length,
+                  onPageChanged: (i) => setState(() => _currentPage = i),
+                  itemBuilder: (_, i) => _SlideCard(slide: slides[i]),
                 ),
-              ),
+                Positioned(
+                  right: 12,
+                  top: 0,
+                  bottom: 0,
+                  child: Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: List.generate(slides.length, (i) {
+                        final isActive = i == _currentPage;
+                        return AnimatedContainer(
+                          duration: const Duration(milliseconds: 300),
+                          margin: const EdgeInsets.symmetric(vertical: 3),
+                          width: 4,
+                          height: isActive ? 20 : 6,
+                          decoration: BoxDecoration(
+                            color: isActive
+                                ? theme.accentColor
+                                : theme.textSecondary.withValues(alpha: 0.4),
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                        );
+                      }),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        );
+      },
+      loading: () => const SizedBox(
+        height: 212,
+        child: Center(child: CircularProgressIndicator(strokeWidth: 2)),
       ),
+      error: (_, __) => const SizedBox.shrink(),
     );
   }
 }
@@ -109,7 +121,10 @@ class _SlideCard extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [slide.primaryColor, slide.secondaryColor.withValues(alpha: 0.6)],
+          colors: [
+            slide.primaryColor,
+            slide.secondaryColor.withValues(alpha: 0.6),
+          ],
         ),
         boxShadow: theme.hasGlowEffect
             ? [
@@ -123,7 +138,7 @@ class _SlideCard extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          // Decorative pattern circles
+          // Decorative circles
           Positioned(
             right: -20,
             top: -20,
@@ -155,7 +170,7 @@ class _SlideCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // Tag
+                // Tag badge
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 10,

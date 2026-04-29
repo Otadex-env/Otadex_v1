@@ -80,7 +80,7 @@ class UpsellBanner extends StatelessWidget {
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
             child: Text(
-              'Upgrade',
+              'Débloquer',
               style: GoogleFonts.rajdhani(
                 fontSize: 14,
                 fontWeight: FontWeight.w700,

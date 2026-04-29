@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../core/data/mock_data.dart';
 import '../../../../../core/models/character.dart';
-import '../../../../../core/providers/recommendation_provider.dart';
+import '../../../../../core/providers/otadex_providers.dart';
 import 'character_grid_card.dart';
 import 'section_header.dart';
 
@@ -19,38 +19,45 @@ class CharacterGridSection extends ConsumerWidget {
         ? null
         : MockData.categories[selectedCategoryIndex];
 
-    final newChars = MockData.newCharacters(category: selectedCategory);
+    final newAsync = ref.watch(newCharactersProvider(selectedCategory));
     final recommendedAsync = ref.watch(recommendedCharactersProvider);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // ── Nouveautés ──────────────────────────────────────────────────────
         SectionHeader(
           title: '✨ Nouveautés',
           actionLabel: 'Voir tout',
           onAction: () => context.push('/characters', extra: {
             'title': '✨ Nouveautés',
-            'characters': newChars,
+            'characters': newAsync.valueOrNull ?? [],
           }),
         ),
-        _buildGrid(newChars, startOffset: 0),
+        newAsync.when(
+          data: (chars) => _buildGrid(chars, startOffset: 0),
+          loading: () => const _GridLoader(),
+          error: (_, __) => const SizedBox.shrink(),
+        ),
+
+        // ── Recommandés ─────────────────────────────────────────────────────
         SectionHeader(
           title: '⭐ Recommandés pour toi',
           actionLabel: 'Voir tout',
           onAction: () => context.push('/characters', extra: {
             'title': '⭐ Recommandés pour toi',
-            'characters': MockData.recommended(),
+            'characters': recommendedAsync.valueOrNull ?? [],
           }),
         ),
         recommendedAsync.when(
-          data: (chars) => _buildGrid(chars, startOffset: newChars.length),
-          loading: () => const Padding(
-            padding: EdgeInsets.symmetric(vertical: 32),
-            child: Center(child: CircularProgressIndicator(strokeWidth: 2)),
+          data: (chars) => _buildGrid(
+            chars,
+            startOffset: newAsync.valueOrNull?.length ?? 0,
           ),
-          error: (_, __) =>
-              _buildGrid(MockData.recommended(), startOffset: newChars.length),
+          loading: () => const _GridLoader(),
+          error: (_, __) => const SizedBox.shrink(),
         ),
+
         const SizedBox(height: 16),
       ],
     );
@@ -90,6 +97,18 @@ class CharacterGridSection extends ConsumerWidget {
           .animate(delay: (60 * i).ms)
           .fadeIn(duration: 300.ms)
           .slideY(begin: 0.1, end: 0, duration: 300.ms, curve: Curves.easeOut),
+    );
+  }
+}
+
+class _GridLoader extends StatelessWidget {
+  const _GridLoader();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Padding(
+      padding: EdgeInsets.symmetric(vertical: 32),
+      child: Center(child: CircularProgressIndicator(strokeWidth: 2)),
     );
   }
 }
