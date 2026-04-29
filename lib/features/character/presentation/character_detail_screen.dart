@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../../core/constants/app_constants.dart';
 import '../../../core/models/character.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/otadex_theme.dart';
 import '../../../core/theme/rank_theme.dart';
+import '../../../core/widgets/auth_gate_modal.dart';
+import '../../../core/widgets/subscription_modal.dart';
 import 'widgets/char_ai_card.dart';
 import 'widgets/char_circle_button.dart';
 import 'widgets/char_comment_card.dart';
@@ -26,8 +30,41 @@ class _CharacterDetailScreenState extends State<CharacterDetailScreen> {
   bool _isCollected = false;
   bool _aboutExpanded = false;
   int _userRating = 3;
+  bool _isLoggedIn = false;
 
   Character get c => widget.character;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadLoginStatus();
+  }
+
+  Future<void> _loadLoginStatus() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (mounted) {
+      setState(() =>
+          _isLoggedIn = prefs.getBool(AppConstants.keyIsLoggedIn) ?? false);
+    }
+  }
+
+  void _guardAuth(VoidCallback action) {
+    if (_isLoggedIn) {
+      action();
+    } else {
+      showAuthGateModal(context);
+    }
+  }
+
+  void _guardJonin() {
+    if (!_isLoggedIn) {
+      showAuthGateModal(context,
+          message:
+              'Connecte-toi pour accéder aux fonctionnalités premium Jonin+.');
+    } else {
+      showSubscriptionModal(context, SubscriptionPlan.jonin);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -152,13 +189,14 @@ class _CharacterDetailScreenState extends State<CharacterDetailScreen> {
                   Row(
                     children: [
                       CharCircleButton(
-                        onTap: () {},
+                        onTap: _guardJonin,
                         child: const Icon(Icons.ios_share_rounded,
                             color: Colors.white, size: 20),
                       ),
                       const SizedBox(width: 12),
                       GestureDetector(
-                        onTap: () => setState(() => _isLiked = !_isLiked),
+                        onTap: () =>
+                            _guardAuth(() => setState(() => _isLiked = !_isLiked)),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -781,28 +819,31 @@ class _CharacterDetailScreenState extends State<CharacterDetailScreen> {
                 _fanRow('🥉', 'OtakuPro237', 'JONIN', const Color(0xFF3B82F6),
                     '2 874 pts', theme),
                 const SizedBox(height: 14),
-                Container(
-                  height: 48,
-                  decoration: BoxDecoration(
-                    color: theme.accentColor,
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: [
-                      BoxShadow(
-                        color: theme.accentColor.withValues(alpha: 0.3),
-                        blurRadius: 16,
-                        offset: const Offset(0, 4),
-                      )
-                    ],
-                  ),
-                  child: Center(
-                    child: Text(
-                      '🗳️ Voter pour ${c.name} ce mois-ci',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: GoogleFonts.nunitoSans(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
+                GestureDetector(
+                  onTap: () => _guardAuth(() {}),
+                  child: Container(
+                    height: 48,
+                    decoration: BoxDecoration(
+                      color: theme.accentColor,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: theme.accentColor.withValues(alpha: 0.3),
+                          blurRadius: 16,
+                          offset: const Offset(0, 4),
+                        )
+                      ],
+                    ),
+                    child: Center(
+                      child: Text(
+                        '🗳️ Voter pour ${c.name} ce mois-ci',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.nunitoSans(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
@@ -849,7 +890,8 @@ class _CharacterDetailScreenState extends State<CharacterDetailScreen> {
                   Row(
                     children: List.generate(5, (i) {
                       return GestureDetector(
-                        onTap: () => setState(() => _userRating = i + 1),
+                        onTap: () => _guardAuth(
+                            () => setState(() => _userRating = i + 1)),
                         child: Padding(
                           padding: const EdgeInsets.only(right: 4),
                           child: Icon(
@@ -1292,24 +1334,30 @@ class _CharacterDetailScreenState extends State<CharacterDetailScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Expanded(
-                  child: CharAICard(
-                    bg: const Color(0xFF1A1A2E),
-                    border: const Color(0xFF3B82F6),
-                    icon: '💬',
-                    title: 'Parle à ${c.name}',
-                    subtitle: 'Chatbot IA · Jonin+',
-                    subtitleColor: const Color(0xFF3B82F6),
+                  child: GestureDetector(
+                    onTap: _guardJonin,
+                    child: CharAICard(
+                      bg: const Color(0xFF1A1A2E),
+                      border: const Color(0xFF3B82F6),
+                      icon: '💬',
+                      title: 'Parle à ${c.name}',
+                      subtitle: 'Chatbot IA · Jonin+',
+                      subtitleColor: const Color(0xFF3B82F6),
+                    ),
                   ),
                 ),
                 const SizedBox(width: 10),
                 Expanded(
-                  child: CharAICard(
-                    bg: const Color(0xFF1A0A2E),
-                    border: const Color(0xFF8B5CF6),
-                    icon: '🧠',
-                    title: 'Quiz · ${c.name}?',
-                    subtitle: '5 questions · +5pts · Jonin+',
-                    subtitleColor: const Color(0xFF8B5CF6),
+                  child: GestureDetector(
+                    onTap: _guardJonin,
+                    child: CharAICard(
+                      bg: const Color(0xFF1A0A2E),
+                      border: const Color(0xFF8B5CF6),
+                      icon: '🧠',
+                      title: 'Quiz · ${c.name}?',
+                      subtitle: '5 questions · +5pts · Jonin+',
+                      subtitleColor: const Color(0xFF8B5CF6),
+                    ),
                   ),
                 ),
               ],
@@ -1361,34 +1409,37 @@ class _CharacterDetailScreenState extends State<CharacterDetailScreen> {
                     ),
                     const SizedBox(width: 8),
                     Expanded(
-                      child: Container(
-                        height: 40,
-                        decoration: BoxDecoration(
-                          color: theme.backgroundPrimary,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        padding:
-                            const EdgeInsets.symmetric(horizontal: 12),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                'Ajouter un commentaire...',
+                      child: GestureDetector(
+                        onTap: () => _guardAuth(() {}),
+                        child: Container(
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: theme.backgroundPrimary,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          padding:
+                              const EdgeInsets.symmetric(horizontal: 12),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  'Ajouter un commentaire...',
+                                  style: GoogleFonts.nunitoSans(
+                                      fontSize: 14,
+                                      color: theme.textSecondary),
+                                ),
+                              ),
+                              Text(
+                                'Envoyer',
                                 style: GoogleFonts.nunitoSans(
-                                    fontSize: 14,
-                                    color: theme.textSecondary),
+                                  fontSize: 13,
+                                  color: theme.textSecondary
+                                      .withValues(alpha: 0.5),
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
-                            ),
-                            Text(
-                              'Envoyer',
-                              style: GoogleFonts.nunitoSans(
-                                fontSize: 13,
-                                color: theme.textSecondary
-                                    .withValues(alpha: 0.5),
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -1459,7 +1510,8 @@ class _CharacterDetailScreenState extends State<CharacterDetailScreen> {
       right: 20,
       bottom: 80,
       child: GestureDetector(
-        onTap: () => setState(() => _isCollected = !_isCollected),
+        onTap: () =>
+            _guardAuth(() => setState(() => _isCollected = !_isCollected)),
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           width: 56,

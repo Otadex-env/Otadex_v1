@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../../core/data/mock_data.dart';
 import 'section_header.dart';
 import 'trending_character_card.dart';
@@ -22,9 +23,13 @@ class TrendingSection extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: characters.length,
             padding: const EdgeInsets.only(right: 16),
-            itemBuilder: (_, i) => TrendingCharacterCard(
+            itemBuilder: (context, i) => TrendingCharacterCard(
               character: characters[i],
               index: i,
+              onTap: () => context.push(
+                '/character/${characters[i].id}',
+                extra: characters[i],
+              ),
             ),
           ),
         ),

@@ -7,11 +7,13 @@ import '../../../../../core/theme/otadex_theme.dart';
 class TrendingCharacterCard extends StatefulWidget {
   final Character character;
   final int index;
+  final VoidCallback? onTap;
 
   const TrendingCharacterCard({
     super.key,
     required this.character,
     required this.index,
+    this.onTap,
   });
 
   @override
@@ -37,6 +39,7 @@ class _TrendingCharacterCardState extends State<TrendingCharacterCard> {
     final character = widget.character;
 
     return GestureDetector(
+      onTap: widget.onTap,
       onTapDown: _onTapDown,
       onTapUp: _onTapUp,
       onTapCancel: _onTapCancel,
