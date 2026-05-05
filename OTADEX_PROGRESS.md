@@ -173,12 +173,23 @@
 | `lib/features/profile/presentation/widgets/change_password_sheet.dart` | ✅ Fait | Sheet changement mot de passe |
 | `lib/features/profile/presentation/widgets/profile_logout_footer.dart` | ✅ Fait | Footer déconnexion |
 
+### Features — Anime
+
+| Fichier | Statut | Notes |
+|---|---|---|
+| `lib/features/anime/presentation/anime_detail_screen.dart` | ✅ Fait | Hero gradient, stats band, personnages, synopsis expand, créateur, "aussi aimer" |
+
+### Features — Créateur
+
+| Fichier | Statut | Notes |
+|---|---|---|
+| `lib/features/creator/presentation/creator_screen.dart` | ✅ Fait | Header initiales, bio expand, stats, bibliographie grid 2col, personnages scroll H |
+
 ### Features — Manquants (prochaines tâches)
 
 | Fichier | Statut | Notes |
 |---|---|---|
-| `lib/features/anime/presentation/anime_detail_screen.dart` | ❌ À faire | Fiche animé |
-| `lib/features/creator/presentation/creator_screen.dart` | ❌ À faire | Fiche créateur |
+| `lib/features/character/presentation/gallery_screen.dart` | ❌ À faire | Galerie plein écran |
 | `lib/features/subscription/presentation/plans_screen.dart` | ❌ À faire | Page plans + CinetPay |
 
 ### Features — Legal
@@ -194,7 +205,7 @@
 
 | Bug | Priorité | Description |
 |---|---|---|
-| Auth persistance | 🔴 Haute | `isLoggedInProvider` initialisé à `false` au démarrage — si l'app est relancée, l'utilisateur est déconnecté même si prefs = true. À régler en lisant SharedPreferences dans `main.dart` avant `runApp()` |
+| Auth persistance | ✅ Corrigé | `main.dart` lit `keyIsLoggedIn` avant `runApp()` et override `isLoggedInProvider` via `ProviderScope.overrides` |
 | Avatar non persistant | 🟡 Moyenne | L'avatar sélectionné via image_picker est un chemin temp/cache → perdu au redémarrage. Nécessite Firebase Storage pour persistance réelle |
 | `flutter pub get` | 🟡 Moyenne | À relancer après ajout de `image_picker: ^1.1.0` si pas encore fait |
 
@@ -202,15 +213,19 @@
 
 ## Prochaine tâche recommandée
 
-**Task 03 — AnimeDetailScreen + CreatorScreen**
-- Fiche animé complète (synopsis, personnages, galerie)
-- Fiche créateur (bio, œuvres)
-- Navigation depuis les cards personnage (`/anime/:id`, `/creator/:id`)
+**Task 04 — GalleryScreen + PlansScreen**
 
-**Ou Task 03 alternative — Firebase Auth réelle**
-- Connecter `login_screen.dart` + `register_screen.dart` à Firebase Authentication
-- Remplacer SharedPreferences mock par `FirebaseAuth.instance`
-- Configurer `android/app/google-services.json`
+Option A — GalleryScreen (galerie plein écran)
+- `lib/features/character/presentation/gallery_screen.dart`
+- Receives `List<String> images` + `initialIndex` via `state.extra`
+- PageView horizontal plein écran, pinch-to-zoom, barre image X/N
+- Route : `/gallery/:charId`
+
+Option B — PlansScreen (abonnement)
+- `lib/features/subscription/presentation/plans_screen.dart`
+- Cards Genin / Jonin / Kage avec features comparatives
+- Toggle mensuel / annuel, bouton CTA orange
+- Route : `/subscription`
 
 ---
 
@@ -220,6 +235,7 @@
 |---|---|
 | Mai 2026 | Initialisation projet — Task 01 : Splash, Onboarding, Auth (mock) |
 | Mai 2026 | Task 02 : HomeScreen réactif (isLoggedInProvider), ProfileScreen complet, avatar picker avec Jonin gate, permissions Android image_picker |
+| 5 mai 2026 | Task 03 : Fix bug auth persistance (main.dart override isLoggedInProvider), AnimeDetailScreen complet, CreatorScreen complet, router mis à jour (/anime/:id, /creator/:id) |
 
 ---
 *À mettre à jour par Claude Code à la fin de chaque session.*

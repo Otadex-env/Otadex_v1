@@ -9,6 +9,8 @@ import '../../features/auth/presentation/register_screen.dart';
 import '../../features/home/presentation/home_screen.dart';
 import '../../features/character/presentation/character_detail_screen.dart';
 import '../../features/character/presentation/character_list_screen.dart';
+import '../../features/anime/presentation/anime_detail_screen.dart';
+import '../../features/creator/presentation/creator_screen.dart';
 import '../../features/legal/presentation/privacy_policy_screen.dart';
 import '../../features/legal/presentation/terms_screen.dart';
 import '../../core/models/character.dart';
@@ -80,6 +82,22 @@ class AppRouter {
             title: extra['title'] as String,
             characters: extra['characters'] as List<Character>,
           );
+        },
+      ),
+      GoRoute(
+        path: '/anime/:id',
+        name: 'anime',
+        builder: (context, state) {
+          final animeId = state.pathParameters['id']!;
+          return AnimeDetailScreen(animeId: animeId);
+        },
+      ),
+      GoRoute(
+        path: '/creator/:id',
+        name: 'creator',
+        builder: (context, state) {
+          final creatorId = state.pathParameters['id']!;
+          return CreatorScreen(creatorId: creatorId);
         },
       ),
       GoRoute(
