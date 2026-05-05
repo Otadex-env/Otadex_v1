@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/l10n/app_strings.dart';
+import '../../../core/providers/auth_provider.dart';
 import '../../../core/router/app_router.dart';
 import '../../../core/services/google_sign_in_service.dart';
 import '../../../core/theme/app_colors.dart';
@@ -12,14 +14,14 @@ import '../../../core/theme/app_spacing.dart';
 import '../../../core/widgets/otadex_button.dart';
 import '../../../core/widgets/otadex_text_field.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends ConsumerState<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -39,6 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
       if (!mounted) return;
       final prefs = await SharedPreferences.getInstance();
       await prefs.setBool(AppConstants.keyIsLoggedIn, true);
+      ref.read(isLoggedInProvider.notifier).state = true;
       setState(() => _isLoading = false);
       await _navigateAfterAuth();
     }
@@ -71,6 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (account != null) {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setBool(AppConstants.keyIsLoggedIn, true);
+      ref.read(isLoggedInProvider.notifier).state = true;
       await _navigateAfterAuth();
     } else {
       if (!mounted) return;

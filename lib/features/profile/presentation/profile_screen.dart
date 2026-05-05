@@ -57,7 +57,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          ProfileHero(username: profile.pseudo, bio: profile.bio),
+          ProfileHero(username: profile.pseudo, bio: profile.bio, avatarPath: profile.avatarUrl),
           const SizedBox(height: 20),
           ProfileStatRow(
             collectCount: profile.collectCount,

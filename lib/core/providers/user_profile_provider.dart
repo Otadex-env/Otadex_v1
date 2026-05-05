@@ -12,6 +12,13 @@ class UserProfileNotifier extends StateNotifier<UserProfile> {
       updatedAt: DateTime.now(),
     );
   }
+
+  void updateAvatar(String? avatarPath) {
+    state = state.copyWith(
+      avatarUrl: avatarPath,
+      updatedAt: DateTime.now(),
+    );
+  }
 }
 
 final userProfileProvider =

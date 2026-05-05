@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/models/user_rank.dart';
+import '../../../core/providers/auth_provider.dart';
 import '../../../core/theme/otadex_theme.dart';
 import '../../../core/widgets/auth_gate_modal.dart';
 import 'widgets/bottom_nav_bar.dart';
@@ -15,29 +17,28 @@ import 'widgets/upsell_banner.dart';
 import '../../profile/presentation/profile_screen.dart';
 import '../../search/presentation/search_screen.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen> {
   int _navIndex = 0;
   int _selectedCategory = 0;
-  bool _isLoggedIn = false;
 
   @override
   void initState() {
     super.initState();
-    _loadLoginStatus();
+    _syncAuthState();
   }
 
-  Future<void> _loadLoginStatus() async {
+  Future<void> _syncAuthState() async {
     final prefs = await SharedPreferences.getInstance();
     if (mounted) {
-      setState(() =>
-          _isLoggedIn = prefs.getBool(AppConstants.keyIsLoggedIn) ?? false);
+      ref.read(isLoggedInProvider.notifier).state =
+          prefs.getBool(AppConstants.keyIsLoggedIn) ?? false;
     }
   }
 
@@ -57,6 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final theme = OtadexTheme.of(context);
     final rank = OtadexTheme.rankOf(context);
+    final isLoggedIn = ref.watch(isLoggedInProvider);
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -74,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   SliverToBoxAdapter(
                     child: HomeAppBar(
                       rank: rank,
-                      isLoggedIn: _isLoggedIn,
+                      isLoggedIn: isLoggedIn,
                       onLoginTap: () => showAuthGateModal(context),
                     ),
                   ),

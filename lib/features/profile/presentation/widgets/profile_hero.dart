@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/models/user_rank.dart';
@@ -6,6 +7,7 @@ import '../../../../core/theme/otadex_theme.dart';
 class ProfileHero extends StatelessWidget {
   final String username;
   final String bio;
+  final String? avatarPath;
 
   static const _avatarGradient = [Color(0xFFD4621A), Color(0xFF5A1A00)];
 
@@ -13,6 +15,7 @@ class ProfileHero extends StatelessWidget {
     super.key,
     required this.username,
     required this.bio,
+    this.avatarPath,
   });
 
   @override
@@ -26,7 +29,8 @@ class ProfileHero extends StatelessWidget {
         children: [
           Align(
             alignment: Alignment.centerRight,
-            child: Icon(Icons.settings_rounded, color: theme.textSecondary, size: 22),
+            child:
+                Icon(Icons.settings_rounded, color: theme.textSecondary, size: 22),
           ),
           const SizedBox(height: 12),
           Container(
@@ -34,11 +38,19 @@ class ProfileHero extends StatelessWidget {
             height: 96,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(44),
-              gradient: const LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: _avatarGradient,
-              ),
+              gradient: avatarPath == null
+                  ? const LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: _avatarGradient,
+                    )
+                  : null,
+              image: avatarPath != null
+                  ? DecorationImage(
+                      image: FileImage(File(avatarPath!)),
+                      fit: BoxFit.cover,
+                    )
+                  : null,
               boxShadow: [
                 BoxShadow(
                   color: theme.accentGlow,
@@ -47,6 +59,9 @@ class ProfileHero extends StatelessWidget {
                 ),
               ],
             ),
+            child: avatarPath == null
+                ? null
+                : null,
           ),
           const SizedBox(height: 12),
           Container(
@@ -54,7 +69,8 @@ class ProfileHero extends StatelessWidget {
             decoration: BoxDecoration(
               color: theme.rankBadgeBg,
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: theme.rankBadgeColor.withValues(alpha: 0.5)),
+              border:
+                  Border.all(color: theme.rankBadgeColor.withValues(alpha: 0.5)),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -85,7 +101,8 @@ class ProfileHero extends StatelessWidget {
           const SizedBox(height: 4),
           Text(
             bio,
-            style: GoogleFonts.nunitoSans(fontSize: 13, color: theme.textSecondary),
+            style: GoogleFonts.nunitoSans(
+                fontSize: 13, color: theme.textSecondary),
           ),
         ],
       ),
