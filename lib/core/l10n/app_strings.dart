@@ -558,7 +558,7 @@ class AppStrings {
       animes: 'Animés',
       creators: 'Créateurs',
       all: 'Tous',
-      placeholdertext1: 'Search a character, an anime...',
+      placeholdertext1: 'Rechercher un personnage, un animé...',
       saveChanges: 'Enregistrer',
       currentPassword: 'Mot de passe actuel',
       bioLabel: 'Bio',

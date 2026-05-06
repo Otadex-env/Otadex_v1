@@ -19,6 +19,30 @@ class UserProfileNotifier extends StateNotifier<UserProfile> {
       updatedAt: DateTime.now(),
     );
   }
+
+  void addToCollection(String characterId) {
+    if (state.rank == 'genin' && state.collectedCharacterIds.length >= 10) {
+      throw Exception('LIMIT_REACHED');
+    }
+    if (state.collectedCharacterIds.contains(characterId)) return;
+    final newIds = [...state.collectedCharacterIds, characterId];
+    state = state.copyWith(
+      collectedCharacterIds: newIds,
+      collectCount: newIds.length,
+      updatedAt: DateTime.now(),
+    );
+  }
+
+  void removeFromCollection(String characterId) {
+    final newIds = state.collectedCharacterIds
+        .where((id) => id != characterId)
+        .toList();
+    state = state.copyWith(
+      collectedCharacterIds: newIds,
+      collectCount: newIds.length,
+      updatedAt: DateTime.now(),
+    );
+  }
 }
 
 final userProfileProvider =

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../core/data/mock_data.dart';
 import '../../../core/l10n/locale_provider.dart';
 import '../../../core/providers/user_profile_provider.dart';
 import '../../../core/theme/theme_mode_provider.dart';
@@ -29,7 +30,6 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   bool _showKageBanner = true;
   String _billingCycle = 'mensuel';
 
-  static const _collectionItems = <(String, Color, Color, bool)>[];
 
   void _showEditProfile() {
     showModalBottomSheet(
@@ -53,6 +53,11 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   Widget build(BuildContext context) {
     final locale = ref.watch(localeProvider);
     final profile = ref.watch(userProfileProvider);
+    final collectedIds = profile.collectedCharacterIds;
+    final collectionItems = MockData.allCharacters
+        .where((c) => collectedIds.contains(c.id))
+        .map((c) => (c.name, c.cardColor, c.accentColor, true))
+        .toList();
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -60,7 +65,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
           ProfileHero(username: profile.pseudo, bio: profile.bio, avatarPath: profile.avatarUrl),
           const SizedBox(height: 20),
           ProfileStatRow(
-            collectCount: profile.collectCount,
+            collectCount: collectedIds.length,
             fanScore: profile.fanScore,
             rankCount: profile.rankCount,
           ),
@@ -74,8 +79,8 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
             progressPct: profile.progressPct,
             currentPts: profile.currentPts,
             maxPts: profile.maxPts,
-            collectCount: profile.collectCount,
-            collectionItems: _collectionItems,
+            collectCount: collectedIds.length,
+            collectionItems: collectionItems,
           ),
           const SizedBox(height: 28),
           const AvatarPicker(),

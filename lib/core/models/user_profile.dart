@@ -13,6 +13,7 @@ class UserProfile {
   final int currentPts;
   final int maxPts;
   final String bio;
+  final List<String> collectedCharacterIds;
   final DateTime createdAt;
   final DateTime? updatedAt;
 
@@ -31,6 +32,7 @@ class UserProfile {
     this.currentPts = 0,
     this.maxPts = 5000,
     this.bio = '',
+    this.collectedCharacterIds = const [],
     required this.createdAt,
     this.updatedAt,
   });
@@ -51,6 +53,10 @@ class UserProfile {
       currentPts: (json['current_pts'] as num?)?.toInt() ?? 0,
       maxPts: (json['max_pts'] as num?)?.toInt() ?? 5000,
       bio: json['bio'] as String? ?? '',
+      collectedCharacterIds:
+          (json['collected_character_ids'] as List<dynamic>?)
+              ?.cast<String>() ??
+              const [],
       createdAt: DateTime.parse(json['created_at'] as String),
       updatedAt: json['updated_at'] != null
           ? DateTime.parse(json['updated_at'] as String)
@@ -74,6 +80,7 @@ class UserProfile {
       'current_pts': currentPts,
       'max_pts': maxPts,
       'bio': bio,
+      'collected_character_ids': collectedCharacterIds,
       'created_at': createdAt.toIso8601String(),
       'updated_at': updatedAt?.toIso8601String(),
     };
@@ -94,6 +101,7 @@ class UserProfile {
     int? currentPts,
     int? maxPts,
     String? bio,
+    List<String>? collectedCharacterIds,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) {
@@ -112,6 +120,8 @@ class UserProfile {
       currentPts: currentPts ?? this.currentPts,
       maxPts: maxPts ?? this.maxPts,
       bio: bio ?? this.bio,
+      collectedCharacterIds:
+          collectedCharacterIds ?? this.collectedCharacterIds,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
     );

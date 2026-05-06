@@ -11,8 +11,10 @@ import '../../features/character/presentation/character_detail_screen.dart';
 import '../../features/character/presentation/character_list_screen.dart';
 import '../../features/anime/presentation/anime_detail_screen.dart';
 import '../../features/creator/presentation/creator_screen.dart';
+import '../../features/collection/presentation/collection_screen.dart';
 import '../../features/legal/presentation/privacy_policy_screen.dart';
 import '../../features/legal/presentation/terms_screen.dart';
+import '../../features/search/presentation/search_screen.dart';
 import '../../core/models/character.dart';
 import '../constants/app_constants.dart';
 
@@ -99,6 +101,16 @@ class AppRouter {
           final creatorId = state.pathParameters['id']!;
           return CreatorScreen(creatorId: creatorId);
         },
+      ),
+      GoRoute(
+        path: '/collection',
+        name: 'collection',
+        builder: (context, state) => const CollectionScreen(),
+      ),
+      GoRoute(
+        path: '/search-standalone',
+        name: 'search-standalone',
+        builder: (context, state) => const RechercheScreen(),
       ),
       GoRoute(
         path: '/terms',
