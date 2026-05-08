@@ -36,6 +36,9 @@ dependencies:
   # Auth
   google_sign_in: ^6.2.0
 
+  # HTTP client (AniList GraphQL)
+  http: ^1.2.0
+
   # Utils
   gap: ^3.0.1
 

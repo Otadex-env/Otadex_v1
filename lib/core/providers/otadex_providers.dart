@@ -5,7 +5,6 @@ import '../constants/app_constants.dart';
 import '../models/character.dart';
 import '../models/anime_entry.dart';
 import '../models/creator_entry.dart';
-import '../models/featured_slide.dart';
 import '../services/otadex_data_service.dart';
 
 // ── Root data service ───────────────────────────────────────────────────────
@@ -16,10 +15,6 @@ final otadexServiceProvider = FutureProvider<OtadexDataService>((ref) {
 // ── Characters ──────────────────────────────────────────────────────────────
 final allCharactersProvider = Provider<AsyncValue<List<Character>>>((ref) {
   return ref.watch(otadexServiceProvider).whenData((s) => s.characters);
-});
-
-final trendingCharactersProvider = Provider<AsyncValue<List<Character>>>((ref) {
-  return ref.watch(otadexServiceProvider).whenData((s) => s.trending);
 });
 
 final newCharactersProvider =
@@ -49,7 +44,3 @@ final allCreatorsProvider = Provider<AsyncValue<List<CreatorEntry>>>((ref) {
   return ref.watch(otadexServiceProvider).whenData((s) => s.creators);
 });
 
-// ── Featured slides ──────────────────────────────────────────────────────────
-final featuredSlidesProvider = Provider<AsyncValue<List<FeaturedSlide>>>((ref) {
-  return ref.watch(otadexServiceProvider).whenData((s) => s.featuredSlides);
-});

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../../core/models/featured_slide.dart';
-import '../../../../../core/providers/otadex_providers.dart';
+import '../../../../../core/providers/anilist_providers.dart';
 import '../../../../../core/theme/otadex_theme.dart';
 
 class HeroFeaturedSlider extends ConsumerStatefulWidget {

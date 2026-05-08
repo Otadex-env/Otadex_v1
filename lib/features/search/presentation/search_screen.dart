@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,6 +6,7 @@ import '../../../core/l10n/app_strings.dart';
 import '../../../core/models/anime_entry.dart';
 import '../../../core/models/character.dart';
 import '../../../core/models/creator_entry.dart';
+import '../../../core/providers/anilist_providers.dart';
 import '../../../core/providers/otadex_providers.dart';
 import '../../../core/services/otadex_data_service.dart';
 import '../../../core/theme/otadex_theme.dart';
@@ -24,6 +26,7 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   // ── Controllers ──────────────────────────────────────────────────────
   final _controller = TextEditingController();
   final _focusNode = FocusNode();
+  Timer? _debounce;
 
   // ── State ─────────────────────────────────────────────────────────────
   String _query = '';
@@ -31,6 +34,7 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   bool _submitted = false;
   int _selectedFilter = 0;
   String? _selectedSubFilter;
+  List<Character> _anilistSearchResults = [];
   final List<String> _recentSearches = [
     'Naruto',
     'Solo Leveling',
@@ -113,6 +117,18 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   }
 
   List<Character> get _filteredCharacters {
+    final typeFilter = _selectedFilter == 0 || _selectedFilter == 1;
+    if (!typeFilter) return [];
+
+    // When AniList results are available, use them (query >= 2 chars)
+    if (_query.length >= 2 && _anilistSearchResults.isNotEmpty) {
+      return _anilistSearchResults
+          .where((c) =>
+              _selectedSubFilter == null || c.category == _selectedSubFilter)
+          .toList();
+    }
+
+    // Fallback: filter local mock data
     final q = _query.toLowerCase();
     final chars = _service?.characters ?? [];
     return chars.where((c) {
@@ -122,8 +138,7 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
           c.aliases.any((a) => a.toLowerCase().contains(q));
       final catMatch =
           _selectedSubFilter == null || c.category == _selectedSubFilter;
-      final typeFilter = _selectedFilter == 0 || _selectedFilter == 1;
-      return queryMatch && catMatch && typeFilter;
+      return queryMatch && catMatch;
     }).toList();
   }
 
@@ -179,6 +194,7 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
 
   @override
   void dispose() {
+    _debounce?.cancel();
     _focusNode.removeListener(_onFocusChange);
     _controller.removeListener(_onQueryChange);
     _controller.dispose();
@@ -200,26 +216,42 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   void _onQueryChange() {
     setState(() {
       _query = _controller.text;
-      if (_query.isEmpty) _submitted = false;
+      if (_query.isEmpty) {
+        _submitted = false;
+        _anilistSearchResults = [];
+        ref.read(searchQueryProvider.notifier).state = '';
+      }
     });
+    if (_query.length >= 2) {
+      _debounce?.cancel();
+      _debounce = Timer(const Duration(milliseconds: 400), () {
+        if (mounted) ref.read(searchQueryProvider.notifier).state = _query;
+      });
+    }
   }
 
   void _cancel() {
     _controller.clear();
     _focusNode.unfocus();
+    _debounce?.cancel();
+    ref.read(searchQueryProvider.notifier).state = '';
     setState(() {
       _query = '';
       _isFocused = false;
       _submitted = false;
       _selectedSubFilter = null;
+      _anilistSearchResults = [];
     });
   }
 
   void _clearQuery() {
     _controller.clear();
+    _debounce?.cancel();
+    ref.read(searchQueryProvider.notifier).state = '';
     setState(() {
       _query = '';
       _submitted = false;
+      _anilistSearchResults = [];
     });
   }
 
@@ -267,6 +299,16 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   @override
   Widget build(BuildContext context) {
     final theme = OtadexTheme.of(context);
+
+    // Watch AniList results for the debounced query
+    final debouncedQuery = ref.watch(searchQueryProvider);
+    final anilistAsync = debouncedQuery.length >= 2
+        ? ref.watch(searchResultsProvider(debouncedQuery))
+        : const AsyncValue<List<Character>>.data([]);
+    // Sync results into local cache (triggers re-render of _filteredCharacters)
+    final incoming = anilistAsync.valueOrNull ?? [];
+    if (incoming != _anilistSearchResults) _anilistSearchResults = incoming;
+
     return GestureDetector(
       onTap: () {
         if (_isFocused) _focusNode.unfocus();

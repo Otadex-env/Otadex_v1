@@ -70,7 +70,8 @@
 |---|---|---|
 | `lib/core/providers/auth_provider.dart` | ✅ Fait | `isLoggedInProvider` (StateProvider<bool>) |
 | `lib/core/providers/user_profile_provider.dart` | ✅ Fait | `UserProfileNotifier` + `updateProfile` + `updateAvatar` |
-| `lib/core/providers/otadex_providers.dart` | ✅ Fait | Providers données (personnages, animés, créateurs) |
+| `lib/core/providers/otadex_providers.dart` | ✅ Fait | Providers données mock (allCharacters, animes, creators) |
+| `lib/core/providers/anilist_providers.dart` | ✅ Fait | Providers AniList live (trending, search, featuredSlides, characterDetail) |
 | `lib/core/providers/recommendation_provider.dart` | ✅ Fait | Provider recommandations |
 
 ### Core — Router / Services / Models
@@ -78,7 +79,8 @@
 | Fichier | Statut | Notes |
 |---|---|---|
 | `lib/core/router/app_router.dart` | ✅ Fait | GoRouter complet |
-| `lib/core/services/otadex_data_service.dart` | ✅ Fait | Service données mockées |
+| `lib/core/services/anilist_service.dart` | ✅ Fait | Service AniList GraphQL (search, trending chars/animes, detail) |
+| `lib/core/services/otadex_data_service.dart` | ✅ Fait | Service données mockées (fallback local) |
 | `lib/core/services/google_sign_in_service.dart` | ✅ Fait | Google OAuth wrapper |
 | `lib/core/models/character.dart` | ✅ Fait | Modèle personnage |
 | `lib/core/models/anime_entry.dart` | ✅ Fait | Modèle animé |
@@ -233,7 +235,7 @@
 
 ## Prochaine tâche recommandée
 
-**Task 04 — GalleryScreen + PlansScreen**
+**Task 07 — Firebase Auth réelle + Play Store**
 
 Option A — GalleryScreen (galerie plein écran)
 - `lib/features/character/presentation/gallery_screen.dart`
@@ -258,6 +260,7 @@ Option B — PlansScreen (abonnement)
 | 5 mai 2026 | Task 03 : Fix bug auth persistance (main.dart override isLoggedInProvider), AnimeDetailScreen complet, CreatorScreen complet, router mis à jour (/anime/:id, /creator/:id) |
 | 8 mai 2026 | Task 04 : CollectionScreen branché (Tab 2 BottomNav), UserProfile.collectedCharacterIds + addToCollection/removeFromCollection, placeholder FR corrigé, compteur collection cohérent |
 | 8 mai 2026 | Task 05 : Assets images JJK locales (15 personnages, ~120 images), app_assets.dart, OtadexImage widget (local+réseau), mock_data.dart → 5 personnages JJK avec images réelles, Character.images ajouté |
+| 8 mai 2026 | Task 06 : AniList GraphQL live — http:^1.2.0 ajouté, AniListService (search/trending/detail), anilist_providers.dart (trending, featuredSlides, searchResults, characterDetail), HomeScreen héro + tendances branchés AniList, SearchScreen debounce 400ms + résultats live, fallback mock si réseau indisponible |
 
 ---
 *À mettre à jour par Claude Code à la fin de chaque session.*
