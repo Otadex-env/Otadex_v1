@@ -79,7 +79,7 @@
 | Fichier | Statut | Notes |
 |---|---|---|
 | `lib/core/router/app_router.dart` | ✅ Fait | GoRouter complet |
-| `lib/core/services/anilist_service.dart` | ✅ Fait | Service AniList GraphQL (search, trending chars/animes, detail) |
+| `lib/core/services/anilist_service.dart` | ✅ Fait | Service AniList GraphQL (searchCharacters, searchAnimes, trending chars/animes, detail) |
 | `lib/core/services/otadex_data_service.dart` | ✅ Fait | Service données mockées (fallback local) |
 | `lib/core/services/google_sign_in_service.dart` | ✅ Fait | Google OAuth wrapper |
 | `lib/core/models/character.dart` | ✅ Fait | Modèle personnage |
@@ -88,7 +88,7 @@
 | `lib/core/models/user_profile.dart` | ✅ Fait | Modèle profil utilisateur |
 | `lib/core/models/user_rank.dart` | ✅ Fait | Enum UserRank (genin/jonin/kage) |
 | `lib/core/models/featured_slide.dart` | ✅ Fait | Modèle slide hero carousel |
-| `lib/core/data/mock_data.dart` | ✅ Fait | Données mockées |
+| `lib/core/data/mock_data.dart` | ✅ Fait | Données mockées — tous imagePath → URLs AniList CDN |
 | `lib/core/constants/app_constants.dart` | ✅ Fait | Clés, plans, constantes |
 
 ### Features — Auth
@@ -239,7 +239,7 @@
 
 ## Prochaine tâche recommandée
 
-**Task 07 — Firebase Auth réelle + Play Store**
+**Task 09 — GalleryScreen ou PlansScreen**
 
 Option A — GalleryScreen (galerie plein écran)
 - `lib/features/character/presentation/gallery_screen.dart`
@@ -266,6 +266,7 @@ Option B — PlansScreen (abonnement)
 | 8 mai 2026 | Task 05 : Assets images JJK locales (15 personnages, ~120 images), app_assets.dart, OtadexImage widget (local+réseau), mock_data.dart → 5 personnages JJK avec images réelles, Character.images ajouté |
 | 8 mai 2026 | Task 06 : AniList GraphQL live — http:^1.2.0 ajouté, AniListService (search/trending/detail), anilist_providers.dart (trending, featuredSlides, searchResults, characterDetail), HomeScreen héro + tendances branchés AniList, SearchScreen debounce 400ms + résultats live, fallback mock si réseau indisponible |
 | 8 mai 2026 | Task 07 : Nettoyage assets — pubspec.yaml allégé (logo/splash/onboarding/characters uniquement), app_assets.dart reécrit avec vrais fichiers locaux, assets/images/jujutsu_kaisen/ supprimé (~120 images), assets/images/Animé pictures/ supprimé, mock_data.dart migré vers imagePath réseau (images: [] pour JJK), splash+onboarding utilisent AppAssets.* |
+| 8 mai 2026 | Task 08 : Images mock → URLs AniList CDN — 8 personnages mis à jour (Gojo, Yuji, Sukuna, Megumi, Maki, Sung Jin-Woo, Tanjiro, Levi), plus d'imagePath vide ou placeholder local incorrect. searchAnimes() ajouté à AniListService. dart analyze → 0 erreur. |
 
 ---
 *À mettre à jour par Claude Code à la fin de chaque session.*

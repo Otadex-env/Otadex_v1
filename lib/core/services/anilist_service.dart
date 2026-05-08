@@ -146,6 +146,30 @@ class AniListService {
         .toList();
   }
 
+  Future<List<AnimeEntry>> searchAnimes(String query,
+      {int page = 1, int perPage = 10}) async {
+    const gql = r'''
+      query($search: String, $page: Int, $perPage: Int) {
+        Page(page: $page, perPage: $perPage) {
+          media(search: $search, type: ANIME, isAdult: false, sort: POPULARITY_DESC) {
+            id title { romaji french english } description genres
+            format episodes seasonYear averageScore
+            studios(isMain: true) { nodes { name } }
+          }
+        }
+      }
+    ''';
+    final data = await _query(gql, {
+      'search': query,
+      'page': page,
+      'perPage': perPage,
+    });
+    if (data == null) return [];
+    return ((data['Page']['media'] as List?) ?? [])
+        .map((a) => _mapAnime(a as Map<String, dynamic>))
+        .toList();
+  }
+
   Future<Character?> getCharacterById(int anilistId) async {
     const gql = r'''
       query($id: Int) {
