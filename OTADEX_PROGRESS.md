@@ -249,7 +249,16 @@
 
 ## Prochaine tâche recommandée
 
-**Task 10 — Firebase Auth réelle**
+**Task 11 — Pages légales web publiques**
+
+- Créer une page web publique `privacy-policy` pour Google Play Console
+- Créer une page web publique `terms-of-service`
+- Prévoir une page web publique `account-deletion` avant la publication Play Store
+- Hébergement recommandé : GitHub Pages, Netlify ou Vercel
+- Mettre à jour les écrans légaux Flutter pour pointer vers ces URLs publiques
+- Vérifier que la politique mentionne OTADEX, le contact développeur, les données collectées, les tiers, la sécurité, la conservation et la suppression des données
+
+**Task 12 — Firebase Auth réelle**
 
 - Ajouter `firebase_auth`
 - Remplacer le mock SharedPreferences dans Login/Register par Firebase Authentication
@@ -257,7 +266,7 @@
 - Créer/mettre à jour le document utilisateur dans Firestore après inscription
 - Préparer Google Sign-In Firebase côté Android
 
-**Task 11 — PlansScreen**
+**Task 13 — PlansScreen**
 
 - `lib/features/subscription/presentation/plans_screen.dart`
 - Cards Genin / Jonin / Kage avec features comparatives
@@ -280,6 +289,7 @@
 | 8 mai 2026 | Task 08 : Images mock → URLs AniList CDN — 8 personnages mis à jour (Gojo, Yuji, Sukuna, Megumi, Maki, Sung Jin-Woo, Tanjiro, Levi), plus d'imagePath vide ou placeholder local incorrect. searchAnimes() ajouté à AniListService. dart analyze → 0 erreur. |
 | 9 mai 2026 | Task 09 : GalleryScreen — galerie plein écran (gallery_screen.dart), route /gallery/:charId, route stub /subscription ajoutées à app_router.dart, character_detail_screen.dart migré vers OtadexImage + navigation galerie. dart analyze → 0 erreur. |
 | 9 mai 2026 | Task 10 : Firebase Core — `flutterfire configure` projet `tilqui`, `firebase_options.dart`, `google-services.json`, `firebase_core` ajouté, `Firebase.initializeApp()` branché dans main.dart, Firebase CLI initialisé pour Firestore + Functions, Storage repoussé. flutter analyze → 0 issue. |
+| 9 mai 2026 | Décision conformité Google Play : ajouter avant Firebase Auth des pages légales web publiques pour Politique de confidentialité, Conditions d'utilisation et Suppression de compte. Objectif : disposer d'URLs publiques compatibles Play Console, en plus des écrans légaux intégrés dans l'app. |
 
 ---
 *À mettre à jour par Claude Code à la fin de chaque session.*
