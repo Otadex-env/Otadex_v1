@@ -214,6 +214,10 @@
 |---|---|---|
 | `lib/features/character/presentation/gallery_screen.dart` | ✅ Fait | Galerie plein écran — PageView + InteractiveViewer 4×, watermark Genin/Jonin, miniatures bas, hint swipe, download gate Kage |
 | `lib/features/subscription/presentation/plans_screen.dart` | ❌ À faire | Page plans + CinetPay (route /subscription stub présente dans app_router) |
+| `docs/index.html` | ✅ Fait | Landing page légale GitHub Pages |
+| `docs/privacy-policy.html` | ✅ Fait | Politique de confidentialité FR/EN — toggle langue, conforme Play Store |
+| `docs/terms.html` | ✅ Fait | Conditions d'utilisation FR/EN — tableau plans, toggle langue |
+| `docs/account-deletion.html` | ✅ Fait | Suppression de compte FR/EN — étapes in-app + email CTA, avertissement données |
 
 ### Features — Legal
 
@@ -249,15 +253,6 @@
 
 ## Prochaine tâche recommandée
 
-**Task 11 — Pages légales web publiques**
-
-- Créer une page web publique `privacy-policy` pour Google Play Console
-- Créer une page web publique `terms-of-service`
-- Prévoir une page web publique `account-deletion` avant la publication Play Store
-- Hébergement recommandé : GitHub Pages, Netlify ou Vercel
-- Mettre à jour les écrans légaux Flutter pour pointer vers ces URLs publiques
-- Vérifier que la politique mentionne OTADEX, le contact développeur, les données collectées, les tiers, la sécurité, la conservation et la suppression des données
-
 **Task 12 — Firebase Auth réelle**
 
 - Ajouter `firebase_auth`
@@ -272,6 +267,20 @@
 - Cards Genin / Jonin / Kage avec features comparatives
 - Toggle mensuel / annuel, bouton CTA orange
 - Route : `/subscription` (stub déjà présent dans app_router.dart)
+
+---
+
+### GitHub Pages — activation requise
+
+Pages créées dans `docs/` sur la branche `master`. Pour activer l'hébergement :
+1. Aller sur https://github.com/TilStack/Otadex_v1/settings/pages
+2. Source : **Deploy from a branch** → branche `master` → dossier `/docs`
+3. Sauvegarder → URL publique : `https://tilstack.github.io/Otadex_v1/`
+
+URLs Play Console :
+- Politique de confidentialité : `https://tilstack.github.io/Otadex_v1/privacy-policy.html`
+- CGU : `https://tilstack.github.io/Otadex_v1/terms.html`
+- Suppression de compte : `https://tilstack.github.io/Otadex_v1/account-deletion.html`
 
 ---
 
@@ -290,6 +299,7 @@
 | 9 mai 2026 | Task 09 : GalleryScreen — galerie plein écran (gallery_screen.dart), route /gallery/:charId, route stub /subscription ajoutées à app_router.dart, character_detail_screen.dart migré vers OtadexImage + navigation galerie. dart analyze → 0 erreur. |
 | 9 mai 2026 | Task 10 : Firebase Core — `flutterfire configure` projet `tilqui`, `firebase_options.dart`, `google-services.json`, `firebase_core` ajouté, `Firebase.initializeApp()` branché dans main.dart, Firebase CLI initialisé pour Firestore + Functions, Storage repoussé. flutter analyze → 0 issue. |
 | 9 mai 2026 | Décision conformité Google Play : ajouter avant Firebase Auth des pages légales web publiques pour Politique de confidentialité, Conditions d'utilisation et Suppression de compte. Objectif : disposer d'URLs publiques compatibles Play Console, en plus des écrans légaux intégrés dans l'app. |
+| 10 mai 2026 | Task 11 : Pages légales web — docs/index.html, docs/privacy-policy.html, docs/terms.html, docs/account-deletion.html. Dark OTADEX theme, toggle FR/EN, conforme Play Store. GitHub Pages prêt (activation manuelle requise). |
 
 ---
 *À mettre à jour par Claude Code à la fin de chaque session.*

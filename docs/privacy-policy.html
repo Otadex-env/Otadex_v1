@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OTADEX — Politique de confidentialité / Privacy Policy</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0D0D14;
+      --card: #1A1A28;
+      --accent: #FF6500;
+      --text: #E8E8F0;
+      --muted: #9090A0;
+      --border: #2A2A3A;
+    }
+    body { background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, sans-serif; }
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: var(--card); border-bottom: 1px solid var(--border);
+      padding: 14px 20px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-size: 18px; font-weight: 900; letter-spacing: 3px; color: var(--accent); text-decoration: none; }
+    .lang-toggle {
+      display: flex; gap: 4px; background: var(--bg); border-radius: 8px; padding: 3px;
+    }
+    .lang-btn {
+      border: none; background: transparent; color: var(--muted);
+      font-size: 12px; font-weight: 700; padding: 5px 10px; border-radius: 6px; cursor: pointer;
+      letter-spacing: .5px; transition: background .15s, color .15s;
+    }
+    .lang-btn.active { background: var(--accent); color: #fff; }
+    main { max-width: 720px; margin: 0 auto; padding: 40px 24px 80px; }
+    h1 { font-size: 22px; font-weight: 900; letter-spacing: 1px; color: var(--text); margin-bottom: 6px; }
+    .meta { font-size: 12px; color: var(--muted); font-style: italic; margin-bottom: 36px; }
+    h2 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: .3px; margin: 32px 0 10px; }
+    p { font-size: 14px; line-height: 1.75; color: var(--text); }
+    ul { margin: 10px 0 0 18px; }
+    li { font-size: 14px; line-height: 1.75; color: var(--text); margin-bottom: 4px; }
+    footer { border-top: 1px solid var(--border); margin-top: 60px; padding-top: 20px; font-size: 12px; color: var(--muted); }
+    a { color: var(--accent); }
+    [lang-content] { display: none; }
+    [lang-content].visible { display: block; }
+    .back { font-size: 13px; color: var(--muted); text-decoration: none; margin-bottom: 28px; display: inline-block; }
+    .back:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="index.html">OTADEX</a>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+  </nav>
+  <main>
+    <a class="back" href="index.html">← Retour / Back</a>
+
+    <!-- ── FRANÇAIS ── -->
+    <div lang-content="fr" class="visible">
+      <h1>Politique de confidentialité</h1>
+      <p class="meta">Dernière mise à jour : Avril 2026</p>
+
+      <h2>1. Introduction</h2>
+      <p>TilStack opère l'application mobile OTADEX. La présente Politique de confidentialité décrit comment nous collectons, utilisons et protégeons vos données personnelles lors de l'utilisation de l'application.</p>
+
+      <h2>2. Données collectées</h2>
+      <p>Lors de votre inscription et de l'utilisation d'OTADEX, nous collectons :</p>
+      <ul>
+        <li><strong>Données de compte</strong> : adresse e-mail, pseudo, mot de passe (chiffré)</li>
+        <li><strong>Données de profil</strong> : nom affiché, biographie, photo de profil</li>
+        <li><strong>Données de progression</strong> : rang (Genin / Jonin / Kage), fan score, collection, points, classements</li>
+        <li><strong>Données de préférences</strong> : langue, thème, catégories favorites, historique de navigation</li>
+        <li><strong>Données techniques</strong> : identifiant d'appareil, type d'OS, version de l'application</li>
+      </ul>
+
+      <h2>3. Utilisation des données</h2>
+      <p>Vos données personnelles sont utilisées pour :</p>
+      <ul>
+        <li>Créer et gérer votre compte utilisateur</li>
+        <li>Personnaliser votre expérience et vos recommandations</li>
+        <li>Gérer votre abonnement (Genin, Jonin, Kage)</li>
+        <li>Assurer le bon fonctionnement des fonctionnalités communautaires</li>
+        <li>Améliorer continuellement nos services</li>
+        <li>Vous envoyer des notifications relatives à votre compte (si activées)</li>
+      </ul>
+
+      <h2>4. Partage des données</h2>
+      <p>Nous ne vendons jamais vos données personnelles à des tiers. Elles peuvent être partagées uniquement avec :</p>
+      <ul>
+        <li><strong>Firebase (Google LLC)</strong> : pour l'authentification et le stockage sécurisé, dans le cadre de leur propre politique de confidentialité</li>
+        <li><strong>Prestataires techniques</strong> : soumis à des obligations contractuelles strictes de confidentialité</li>
+      </ul>
+
+      <h2>5. Conservation des données</h2>
+      <p>Vos données sont conservées tant que votre compte est actif. En cas de demande de suppression de compte, vos données personnelles sont effacées dans un délai maximum de 30 jours, à l'exception des données requises par la loi.</p>
+
+      <h2>6. Vos droits</h2>
+      <p>Conformément aux réglementations applicables, vous disposez des droits suivants :</p>
+      <ul>
+        <li>Droit d'accès à vos données personnelles</li>
+        <li>Droit de rectification des données inexactes</li>
+        <li>Droit à la suppression de votre compte et de vos données</li>
+        <li>Droit à la portabilité de vos données</li>
+        <li>Droit d'opposition au traitement de vos données</li>
+      </ul>
+      <p style="margin-top:12px">Pour exercer ces droits, contactez-nous à <a href="mailto:contact@otadex.app">contact@otadex.app</a> ou consultez notre <a href="account-deletion.html">page de suppression de compte</a>.</p>
+
+      <h2>7. Sécurité</h2>
+      <p>Nous mettons en œuvre des mesures de sécurité appropriées incluant le chiffrement des données en transit et au repos, la restriction des accès et des audits réguliers de nos systèmes.</p>
+
+      <h2>8. Mineurs</h2>
+      <p>OTADEX est accessible à partir de 13 ans. Si vous avez moins de 18 ans, l'accord parental est recommandé. Nous ne collectons pas sciemment de données de mineurs de moins de 13 ans.</p>
+
+      <h2>9. Modifications</h2>
+      <p>Nous nous réservons le droit de modifier cette politique à tout moment. Toute modification significative vous sera notifiée via l'application. La poursuite de l'utilisation du service vaut acceptation des nouvelles conditions.</p>
+
+      <h2>10. Contact</h2>
+      <p>TilStack · <a href="mailto:contact@otadex.app">contact@otadex.app</a></p>
+
+      <footer>© 2026 TilStack — OTADEX</footer>
+    </div>
+
+    <!-- ── ENGLISH ── -->
+    <div lang-content="en">
+      <h1>Privacy Policy</h1>
+      <p class="meta">Last updated: April 2026</p>
+
+      <h2>1. Introduction</h2>
+      <p>TilStack operates the OTADEX mobile application. This Privacy Policy describes how we collect, use and protect your personal data when you use the application.</p>
+
+      <h2>2. Data collected</h2>
+      <p>When you register and use OTADEX, we collect:</p>
+      <ul>
+        <li><strong>Account data</strong>: email address, username, password (encrypted)</li>
+        <li><strong>Profile data</strong>: display name, bio, profile picture</li>
+        <li><strong>Progression data</strong>: rank (Genin / Jonin / Kage), fan score, collection, points, leaderboard position</li>
+        <li><strong>Preference data</strong>: language, theme, favourite categories, browsing history</li>
+        <li><strong>Technical data</strong>: device identifier, OS type, app version</li>
+      </ul>
+
+      <h2>3. Use of data</h2>
+      <p>Your personal data is used to:</p>
+      <ul>
+        <li>Create and manage your user account</li>
+        <li>Personalise your experience and recommendations</li>
+        <li>Manage your subscription (Genin, Jonin, Kage)</li>
+        <li>Enable community features</li>
+        <li>Continuously improve our services</li>
+        <li>Send you account-related notifications (if enabled)</li>
+      </ul>
+
+      <h2>4. Data sharing</h2>
+      <p>We never sell your personal data to third parties. Data may be shared only with:</p>
+      <ul>
+        <li><strong>Firebase (Google LLC)</strong>: for authentication and secure storage, under their own privacy policy</li>
+        <li><strong>Technical partners</strong>: bound by strict confidentiality obligations</li>
+      </ul>
+
+      <h2>5. Data retention</h2>
+      <p>Your data is retained while your account is active. Upon account deletion request, your personal data is erased within 30 days, except for data required by law.</p>
+
+      <h2>6. Your rights</h2>
+      <p>Under applicable regulations, you have the following rights:</p>
+      <ul>
+        <li>Right to access your personal data</li>
+        <li>Right to correct inaccurate data</li>
+        <li>Right to delete your account and data</li>
+        <li>Right to data portability</li>
+        <li>Right to object to data processing</li>
+      </ul>
+      <p style="margin-top:12px">To exercise these rights, contact us at <a href="mailto:contact@otadex.app">contact@otadex.app</a> or visit our <a href="account-deletion.html">account deletion page</a>.</p>
+
+      <h2>7. Security</h2>
+      <p>We implement appropriate security measures including data encryption in transit and at rest, access restrictions and regular security audits.</p>
+
+      <h2>8. Minors</h2>
+      <p>OTADEX is accessible from age 13. If you are under 18, parental consent is recommended. We do not knowingly collect data from children under 13.</p>
+
+      <h2>9. Changes</h2>
+      <p>We reserve the right to modify this policy at any time. Any significant change will be notified via the application. Continued use of the service constitutes acceptance of the updated policy.</p>
+
+      <h2>10. Contact</h2>
+      <p>TilStack · <a href="mailto:contact@otadex.app">contact@otadex.app</a></p>
+
+      <footer>© 2026 TilStack — OTADEX</footer>
+    </div>
+  </main>
+
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('[lang-content]').forEach(el => {
+        el.classList.toggle('visible', el.getAttribute('lang-content') === lang);
+      });
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+      });
+      document.documentElement.lang = lang;
+    }
+  </script>
+</body>
+</html>

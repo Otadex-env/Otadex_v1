@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OTADEX — Suppression de compte / Account Deletion</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0D0D14;
+      --card: #1A1A28;
+      --accent: #FF6500;
+      --text: #E8E8F0;
+      --muted: #9090A0;
+      --border: #2A2A3A;
+      --danger: #E53935;
+    }
+    body { background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, sans-serif; }
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: var(--card); border-bottom: 1px solid var(--border);
+      padding: 14px 20px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-size: 18px; font-weight: 900; letter-spacing: 3px; color: var(--accent); text-decoration: none; }
+    .lang-toggle { display: flex; gap: 4px; background: var(--bg); border-radius: 8px; padding: 3px; }
+    .lang-btn {
+      border: none; background: transparent; color: var(--muted);
+      font-size: 12px; font-weight: 700; padding: 5px 10px; border-radius: 6px; cursor: pointer;
+      letter-spacing: .5px; transition: background .15s, color .15s;
+    }
+    .lang-btn.active { background: var(--accent); color: #fff; }
+    main { max-width: 720px; margin: 0 auto; padding: 40px 24px 80px; }
+    h1 { font-size: 22px; font-weight: 900; letter-spacing: 1px; color: var(--text); margin-bottom: 6px; }
+    .meta { font-size: 12px; color: var(--muted); font-style: italic; margin-bottom: 36px; }
+    h2 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: .3px; margin: 32px 0 10px; }
+    p { font-size: 14px; line-height: 1.75; color: var(--text); }
+    ul { margin: 10px 0 0 18px; }
+    li { font-size: 14px; line-height: 1.75; color: var(--text); margin-bottom: 4px; }
+    footer { border-top: 1px solid var(--border); margin-top: 60px; padding-top: 20px; font-size: 12px; color: var(--muted); }
+    a { color: var(--accent); }
+    [lang-content] { display: none; }
+    [lang-content].visible { display: block; }
+    .back { font-size: 13px; color: var(--muted); text-decoration: none; margin-bottom: 28px; display: inline-block; }
+    .back:hover { color: var(--accent); }
+
+    .steps { counter-reset: step; margin-top: 16px; display: flex; flex-direction: column; gap: 16px; }
+    .step {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 18px 20px;
+    }
+    .step-num {
+      counter-increment: step;
+      min-width: 32px; height: 32px; border-radius: 50%;
+      background: var(--accent); color: #fff;
+      font-size: 14px; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-num::before { content: counter(step); }
+    .step-text { font-size: 14px; line-height: 1.65; color: var(--text); padding-top: 4px; }
+    .step-label { font-weight: 700; margin-bottom: 4px; }
+
+    .warn-box {
+      background: #1E1010; border: 1px solid #5C2020;
+      border-radius: 10px; padding: 16px 20px; margin-top: 20px;
+    }
+    .warn-box p { color: #F08080; }
+    .warn-title { font-weight: 700; margin-bottom: 6px; color: var(--danger) !important; }
+
+    .email-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--accent); color: #fff; font-weight: 700; font-size: 14px;
+      padding: 14px 24px; border-radius: 10px; text-decoration: none;
+      margin-top: 20px; transition: opacity .15s;
+    }
+    .email-cta:hover { opacity: .85; color: #fff; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="index.html">OTADEX</a>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+  </nav>
+  <main>
+    <a class="back" href="index.html">← Retour / Back</a>
+
+    <!-- ── FRANÇAIS ── -->
+    <div lang-content="fr" class="visible">
+      <h1>Suppression de compte</h1>
+      <p class="meta">Conformément aux exigences de Google Play et aux réglementations sur la protection des données</p>
+
+      <h2>Comment supprimer votre compte</h2>
+      <p>Vous pouvez supprimer votre compte OTADEX directement depuis l'application ou en contactant notre équipe par e-mail.</p>
+
+      <h2>Option 1 — Depuis l'application</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-text">
+            <div class="step-label">Ouvrez l'application OTADEX</div>
+            Lancez l'application et connectez-vous à votre compte si ce n'est pas déjà fait.
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-text">
+            <div class="step-label">Accédez à votre profil</div>
+            Appuyez sur l'onglet <strong>Profil</strong> dans la barre de navigation en bas de l'écran.
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-text">
+            <div class="step-label">Ouvrez les paramètres</div>
+            Faites défiler jusqu'à la section <strong>Paramètres</strong> et appuyez sur <strong>Supprimer mon compte</strong>.
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-text">
+            <div class="step-label">Confirmez la suppression</div>
+            Lisez attentivement les informations affichées, puis confirmez la suppression définitive de votre compte.
+          </div>
+        </div>
+      </div>
+
+      <h2>Option 2 — Par e-mail</h2>
+      <p>Si vous ne pouvez pas accéder à l'application, envoyez-nous un e-mail depuis l'adresse associée à votre compte OTADEX en indiquant votre pseudo et votre demande de suppression.</p>
+      <a class="email-cta" href="mailto:contact@otadex.app?subject=Suppression%20de%20compte%20OTADEX&body=Bonjour%2C%0A%0AJe%20souhaite%20supprimer%20mon%20compte%20OTADEX.%0A%0APseudo%20%3A%20[votre%20pseudo]%0AE-mail%20du%20compte%20%3A%20[votre%20e-mail]%0A%0AMerci.">
+        ✉ Envoyer une demande de suppression
+      </a>
+
+      <div class="warn-box" style="margin-top:32px">
+        <p class="warn-title">⚠ Données supprimées définitivement</p>
+        <p>La suppression de votre compte est <strong>irréversible</strong>. Les données suivantes seront effacées :</p>
+        <ul style="margin-top:10px">
+          <li>Votre profil et vos informations personnelles</li>
+          <li>Votre collection de personnages</li>
+          <li>Votre historique de progression (rang, points, fan score)</li>
+          <li>Vos commentaires et interactions communautaires</li>
+          <li>Votre avatar et vos préférences</li>
+        </ul>
+        <p style="margin-top:12px">Le traitement de votre demande prend jusqu'à <strong>30 jours</strong>. Certaines données peuvent être conservées plus longtemps si la loi l'exige.</p>
+      </div>
+
+      <h2>Abonnement actif</h2>
+      <p>Si vous avez un abonnement Jonin ou Kage actif, pensez à le résilier depuis les paramètres de l'application <strong>avant</strong> de supprimer votre compte afin d'éviter tout prélèvement futur. La suppression du compte n'entraîne pas automatiquement la résiliation de l'abonnement.</p>
+
+      <h2>Contact</h2>
+      <p>Pour toute question concernant la suppression de vos données :<br><a href="mailto:contact@otadex.app">contact@otadex.app</a></p>
+
+      <footer>© 2026 TilStack — OTADEX</footer>
+    </div>
+
+    <!-- ── ENGLISH ── -->
+    <div lang-content="en">
+      <h1>Account Deletion</h1>
+      <p class="meta">In compliance with Google Play requirements and data protection regulations</p>
+
+      <h2>How to delete your account</h2>
+      <p>You can delete your OTADEX account directly from the app or by contacting our team by email.</p>
+
+      <h2>Option 1 — From the app</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-text">
+            <div class="step-label">Open the OTADEX app</div>
+            Launch the app and log in to your account if you haven't already.
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-text">
+            <div class="step-label">Go to your profile</div>
+            Tap the <strong>Profile</strong> tab in the bottom navigation bar.
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-text">
+            <div class="step-label">Open settings</div>
+            Scroll to the <strong>Settings</strong> section and tap <strong>Delete my account</strong>.
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-text">
+            <div class="step-label">Confirm deletion</div>
+            Read the information carefully, then confirm the permanent deletion of your account.
+          </div>
+        </div>
+      </div>
+
+      <h2>Option 2 — By email</h2>
+      <p>If you cannot access the app, send us an email from the address linked to your OTADEX account, including your username and your deletion request.</p>
+      <a class="email-cta" href="mailto:contact@otadex.app?subject=OTADEX%20Account%20Deletion%20Request&body=Hello%2C%0A%0AI%20would%20like%20to%20delete%20my%20OTADEX%20account.%0A%0AUsername%3A%20[your%20username]%0AAccount%20email%3A%20[your%20email]%0A%0AThank%20you.">
+        ✉ Send a deletion request
+      </a>
+
+      <div class="warn-box" style="margin-top:32px">
+        <p class="warn-title">⚠ Data permanently deleted</p>
+        <p>Account deletion is <strong>irreversible</strong>. The following data will be erased:</p>
+        <ul style="margin-top:10px">
+          <li>Your profile and personal information</li>
+          <li>Your character collection</li>
+          <li>Your progression history (rank, points, fan score)</li>
+          <li>Your comments and community interactions</li>
+          <li>Your avatar and preferences</li>
+        </ul>
+        <p style="margin-top:12px">Your request will be processed within <strong>30 days</strong>. Some data may be retained longer if required by law.</p>
+      </div>
+
+      <h2>Active subscription</h2>
+      <p>If you have an active Jonin or Kage subscription, remember to cancel it from the app settings <strong>before</strong> deleting your account to avoid future charges. Deleting your account does not automatically cancel your subscription.</p>
+
+      <h2>Contact</h2>
+      <p>For any questions about data deletion:<br><a href="mailto:contact@otadex.app">contact@otadex.app</a></p>
+
+      <footer>© 2026 TilStack — OTADEX</footer>
+    </div>
+  </main>
+
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('[lang-content]').forEach(el => {
+        el.classList.toggle('visible', el.getAttribute('lang-content') === lang);
+      });
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+      });
+      document.documentElement.lang = lang;
+    }
+  </script>
+</body>
+</html>
