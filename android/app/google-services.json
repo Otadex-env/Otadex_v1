@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1009958721208",
+    "project_id": "tilqui",
+    "storage_bucket": "tilqui.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1009958721208:android:21ff4caa02d896d8d0c64d",
+        "android_client_info": {
+          "package_name": "com.otadex.otadex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1009958721208-fqd3u15ddibijkh9dlos984b5o030j97.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbLPjJ6BoMTM95uttNk8oS-AAOOuhXcLQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1009958721208-fqd3u15ddibijkh9dlos984b5o030j97.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

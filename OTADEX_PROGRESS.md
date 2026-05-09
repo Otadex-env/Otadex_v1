@@ -3,7 +3,7 @@
 ## État actuel du projet
 - Flutter SDK : `>=3.0.0 <4.0.0` (Flutter 3.x)
 - App version : `1.0.0+1`
-- Firebase configuré : **NON** — `google-services.json` absent, auth est encore mockée via SharedPreferences
+- Firebase configuré : **PARTIEL** — FlutterFire Android + `firebase_core` OK, Firestore/Functions initialisés, auth app encore mockée via SharedPreferences, Storage non utilisé
 - Dernier écran complété : **ProfileScreen** (avatar picker + Jonin gate, mai 2026)
 
 ## Dépendances installées (`pubspec.yaml`)
@@ -22,6 +22,7 @@
 | cached_network_image | ^3.3.0 | Images réseau |
 | flutter_svg | ^2.0.0 | Icônes SVG |
 | google_sign_in | ^6.2.0 | OAuth Google |
+| firebase_core | ^3.15.2 | Initialisation Firebase |
 | gap | ^3.0.1 | Espacement |
 | image_picker | ^1.1.0 | Avatar picker |
 
@@ -82,6 +83,13 @@
 | `lib/core/services/anilist_service.dart` | ✅ Fait | Service AniList GraphQL (searchCharacters, searchAnimes, trending chars/animes, detail) |
 | `lib/core/services/otadex_data_service.dart` | ✅ Fait | Service données mockées (fallback local) |
 | `lib/core/services/google_sign_in_service.dart` | ✅ Fait | Google OAuth wrapper |
+| `lib/firebase_options.dart` | ✅ Fait | Généré par FlutterFire pour le projet Firebase `tilqui` |
+| `android/app/google-services.json` | ✅ Fait | Config Android Firebase pour `com.otadex.otadex` |
+| `firebase.json` | ✅ Fait | Config Firebase CLI créée |
+| `.firebaserc` | ✅ Fait | Projet Firebase associé à `tilqui` |
+| `firestore.rules` | ✅ Fait | Rules Firestore téléchargées depuis la console |
+| `firestore.indexes.json` | ✅ Fait | Index Firestore initialisés |
+| `functions/` | ✅ Fait | Cloud Functions initialisées en TypeScript + ESLint |
 | `lib/core/models/character.dart` | ✅ Fait | Modèle personnage |
 | `lib/core/models/anime_entry.dart` | ✅ Fait | Modèle animé |
 | `lib/core/models/creator_entry.dart` | ✅ Fait | Modèle créateur |
@@ -232,14 +240,24 @@
 | Bug | Priorité | Description |
 |---|---|---|
 | Auth persistance | ✅ Corrigé | `main.dart` lit `keyIsLoggedIn` avant `runApp()` et override `isLoggedInProvider` via `ProviderScope.overrides` |
-| Avatar non persistant | 🟡 Moyenne | L'avatar sélectionné via image_picker est un chemin temp/cache → perdu au redémarrage. Nécessite Firebase Storage pour persistance réelle |
-| `flutter pub get` | 🟡 Moyenne | À relancer après ajout de `image_picker: ^1.1.0` si pas encore fait |
+| Auth Firebase réelle | 🔴 Haute | Firebase Core est initialisé, mais login/register utilisent encore le mock SharedPreferences |
+| Avatar non persistant | 🟡 Moyenne | L'avatar sélectionné via image_picker est un chemin temp/cache → perdu au redémarrage. Firebase Storage repoussé car payant/à utiliser plus tard |
+| Storage Firebase | 🟡 Moyenne | Non initialisé volontairement pour l'instant |
+| `flutter pub get` | ✅ Corrigé | Relancé après ajout de `firebase_core`; `flutter analyze` → 0 issue |
 
 ---
 
 ## Prochaine tâche recommandée
 
-**Task 10 — PlansScreen**
+**Task 10 — Firebase Auth réelle**
+
+- Ajouter `firebase_auth`
+- Remplacer le mock SharedPreferences dans Login/Register par Firebase Authentication
+- Garder `isLoggedInProvider` comme état réactif UI
+- Créer/mettre à jour le document utilisateur dans Firestore après inscription
+- Préparer Google Sign-In Firebase côté Android
+
+**Task 11 — PlansScreen**
 
 - `lib/features/subscription/presentation/plans_screen.dart`
 - Cards Genin / Jonin / Kage avec features comparatives
@@ -261,6 +279,7 @@
 | 8 mai 2026 | Task 07 : Nettoyage assets — pubspec.yaml allégé (logo/splash/onboarding/characters uniquement), app_assets.dart reécrit avec vrais fichiers locaux, assets/images/jujutsu_kaisen/ supprimé (~120 images), assets/images/Animé pictures/ supprimé, mock_data.dart migré vers imagePath réseau (images: [] pour JJK), splash+onboarding utilisent AppAssets.* |
 | 8 mai 2026 | Task 08 : Images mock → URLs AniList CDN — 8 personnages mis à jour (Gojo, Yuji, Sukuna, Megumi, Maki, Sung Jin-Woo, Tanjiro, Levi), plus d'imagePath vide ou placeholder local incorrect. searchAnimes() ajouté à AniListService. dart analyze → 0 erreur. |
 | 9 mai 2026 | Task 09 : GalleryScreen — galerie plein écran (gallery_screen.dart), route /gallery/:charId, route stub /subscription ajoutées à app_router.dart, character_detail_screen.dart migré vers OtadexImage + navigation galerie. dart analyze → 0 erreur. |
+| 9 mai 2026 | Task 10 : Firebase Core — `flutterfire configure` projet `tilqui`, `firebase_options.dart`, `google-services.json`, `firebase_core` ajouté, `Firebase.initializeApp()` branché dans main.dart, Firebase CLI initialisé pour Firestore + Functions, Storage repoussé. flutter analyze → 0 issue. |
 
 ---
 *À mettre à jour par Claude Code à la fin de chaque session.*
