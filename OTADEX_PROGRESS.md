@@ -3,7 +3,7 @@
 ## État actuel du projet
 - Flutter SDK : `>=3.0.0 <4.0.0` (Flutter 3.x)
 - App version : `1.0.0+1`
-- Firebase configuré : **PARTIEL** — FlutterFire Android + `firebase_core` OK, Firestore/Functions initialisés, auth app encore mockée via SharedPreferences, Storage non utilisé
+- Firebase configuré : **OUI (hors Storage)** — FlutterFire Android + Firebase Auth email/Google + Firestore profil utilisateur + Functions initialisés, Storage non utilisé
 - Dernier écran complété : **ProfileScreen** (avatar picker + Jonin gate, mai 2026)
 
 ## Dépendances installées (`pubspec.yaml`)
@@ -22,7 +22,9 @@
 | cached_network_image | ^3.3.0 | Images réseau |
 | flutter_svg | ^2.0.0 | Icônes SVG |
 | google_sign_in | ^6.2.0 | OAuth Google |
-| firebase_core | ^3.15.2 | Initialisation Firebase |
+| firebase_core | ^2.27.0 | Initialisation Firebase |
+| firebase_auth | ^4.17.0 | Auth email/password + Google |
+| cloud_firestore | ^4.15.0 | Profil utilisateur Firestore |
 | gap | ^3.0.1 | Espacement |
 | image_picker | ^1.1.0 | Avatar picker |
 
@@ -83,6 +85,7 @@
 | `lib/core/services/anilist_service.dart` | ✅ Fait | Service AniList GraphQL (searchCharacters, searchAnimes, trending chars/animes, detail) |
 | `lib/core/services/otadex_data_service.dart` | ✅ Fait | Service données mockées (fallback local) |
 | `lib/core/services/google_sign_in_service.dart` | ✅ Fait | Google OAuth wrapper |
+| `lib/core/services/firebase_auth_service.dart` | ✅ Fait | Firebase Auth email + Google, signOut, reset password, création profil Firestore |
 | `lib/firebase_options.dart` | ✅ Fait | Généré par FlutterFire pour le projet Firebase `tilqui` |
 | `android/app/google-services.json` | ✅ Fait | Config Android Firebase pour `com.otadex.otadex` |
 | `firebase.json` | ✅ Fait | Config Firebase CLI créée |
@@ -103,8 +106,8 @@
 
 | Fichier | Statut | Notes |
 |---|---|---|
-| `lib/features/auth/presentation/login_screen.dart` | ✅ Fait | ConsumerStatefulWidget, écrit isLoggedInProvider |
-| `lib/features/auth/presentation/register_screen.dart` | ✅ Fait | Écran d'inscription |
+| `lib/features/auth/presentation/login_screen.dart` | ✅ Fait | FirebaseAuthService email + Google, écrit isLoggedInProvider, affiche erreurs auth |
+| `lib/features/auth/presentation/register_screen.dart` | ✅ Fait | FirebaseAuthService email + Google, création profil Firestore |
 | `lib/features/auth/presentation/widgets/rank_selector.dart` | ✅ Fait | Widget sélection rang à l'inscription |
 
 ### Features — Onboarding
@@ -244,24 +247,26 @@
 | Bug | Priorité | Description |
 |---|---|---|
 | Auth persistance | ✅ Corrigé | `main.dart` lit `keyIsLoggedIn` avant `runApp()` et override `isLoggedInProvider` via `ProviderScope.overrides` |
-| Auth Firebase réelle | 🔴 Haute | Firebase Core est initialisé, mais login/register utilisent encore le mock SharedPreferences |
+| Auth Firebase réelle | ✅ Corrigé | Email/password + Google branchés via FirebaseAuthService, profil Firestore créé à l'inscription |
 | Avatar non persistant | 🟡 Moyenne | L'avatar sélectionné via image_picker est un chemin temp/cache → perdu au redémarrage. Firebase Storage repoussé car payant/à utiliser plus tard |
 | Storage Firebase | 🟡 Moyenne | Non initialisé volontairement pour l'instant |
-| `flutter pub get` | ✅ Corrigé | Relancé après ajout de `firebase_core`; `flutter analyze` → 0 issue |
+| `flutter pub get` | ✅ Corrigé | Relancé après ajout de `firebase_auth` + `cloud_firestore`; `flutter analyze` + `dart analyze` → 0 issue |
 
 ---
 
 ## Prochaine tâche recommandée
 
-**Task 12 — Firebase Auth réelle**
+**Task 13 — Play Store preparation**
 
-- Ajouter `firebase_auth`
-- Remplacer le mock SharedPreferences dans Login/Register par Firebase Authentication
-- Garder `isLoggedInProvider` comme état réactif UI
-- Créer/mettre à jour le document utilisateur dans Firestore après inscription
-- Préparer Google Sign-In Firebase côté Android
+- Activer GitHub Pages pour les pages légales `docs/`
+- Vérifier les URLs publiques Play Console : privacy policy, CGU, suppression de compte
+- Préparer les textes Play Store : description courte, description complète, catégorie, tags
+- Préparer Data Safety : données collectées, finalités, partage avec tiers
+- Vérifier Firebase Auth providers activés dans Firebase Console : Email/Password + Google
+- Tester login/register/logout sur Android réel ou émulateur
+- Préparer captures d'écran Play Store
 
-**Task 13 — PlansScreen**
+**Task 14 — PlansScreen**
 
 - `lib/features/subscription/presentation/plans_screen.dart`
 - Cards Genin / Jonin / Kage avec features comparatives
@@ -300,6 +305,7 @@ URLs Play Console :
 | 9 mai 2026 | Task 10 : Firebase Core — `flutterfire configure` projet `tilqui`, `firebase_options.dart`, `google-services.json`, `firebase_core` ajouté, `Firebase.initializeApp()` branché dans main.dart, Firebase CLI initialisé pour Firestore + Functions, Storage repoussé. flutter analyze → 0 issue. |
 | 9 mai 2026 | Décision conformité Google Play : ajouter avant Firebase Auth des pages légales web publiques pour Politique de confidentialité, Conditions d'utilisation et Suppression de compte. Objectif : disposer d'URLs publiques compatibles Play Console, en plus des écrans légaux intégrés dans l'app. |
 | 10 mai 2026 | Task 11 : Pages légales web — docs/index.html, docs/privacy-policy.html, docs/terms.html, docs/account-deletion.html. Dark OTADEX theme, toggle FR/EN, conforme Play Store. GitHub Pages prêt (activation manuelle requise). |
+| 10 mai 2026 | Task 12 : Firebase Auth réelle — dépendances `firebase_auth` + `cloud_firestore`, `firebase_auth_service.dart`, login/register email + Google branchés, logout profil branché, profil utilisateur créé dans Firestore à l'inscription, rang initial restauré depuis SharedPreferences. flutter analyze + dart analyze → 0 issue. |
 
 ---
 *À mettre à jour par Claude Code à la fin de chaque session.*

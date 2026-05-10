@@ -1,8 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/user_profile.dart';
+import '../models/user_rank.dart';
 
 class UserProfileNotifier extends StateNotifier<UserProfile> {
-  UserProfileNotifier() : super(UserProfile.mock());
+  UserProfileNotifier({UserRank initialRank = UserRank.genin})
+      : super(UserProfile.mock().copyWith(rank: initialRank.name));
 
   void updateProfile({String? pseudo, String? bio}) {
     state = state.copyWith(
@@ -34,9 +36,8 @@ class UserProfileNotifier extends StateNotifier<UserProfile> {
   }
 
   void removeFromCollection(String characterId) {
-    final newIds = state.collectedCharacterIds
-        .where((id) => id != characterId)
-        .toList();
+    final newIds =
+        state.collectedCharacterIds.where((id) => id != characterId).toList();
     state = state.copyWith(
       collectedCharacterIds: newIds,
       collectCount: newIds.length,

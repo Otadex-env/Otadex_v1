@@ -8,7 +8,7 @@ import '../../../core/constants/app_constants.dart';
 import '../../../core/l10n/app_strings.dart';
 import '../../../core/providers/auth_provider.dart';
 import '../../../core/router/app_router.dart';
-import '../../../core/services/google_sign_in_service.dart';
+import '../../../core/services/firebase_auth_service.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/widgets/otadex_button.dart';
@@ -26,6 +26,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _isLoading = false;
+  String? _authError;
 
   @override
   void dispose() {
@@ -36,26 +37,30 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   Future<void> _login() async {
     if (_formKey.currentState?.validate() ?? false) {
-      setState(() => _isLoading = true);
-      await Future.delayed(const Duration(seconds: 1));
-      if (!mounted) return;
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setBool(AppConstants.keyIsLoggedIn, true);
-      ref.read(isLoggedInProvider.notifier).state = true;
-      setState(() => _isLoading = false);
-      await _navigateAfterAuth();
-    }
-  }
-
-  Future<void> _navigateAfterAuth() async {
-    final prefs = await SharedPreferences.getInstance();
-    final onboardingCompleted =
-        prefs.getBool(AppConstants.keyOnboardingCompleted) ?? false;
-    if (!mounted) return;
-    if (onboardingCompleted) {
-      context.go(AppRouter.home);
-    } else {
-      context.go(AppRouter.ageVerification);
+      setState(() {
+        _authError = null;
+        _isLoading = true;
+      });
+      try {
+        await FirebaseAuthService().signInWithEmail(
+          email: _emailController.text.trim(),
+          password: _passwordController.text,
+        );
+        if (!mounted) return;
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setBool(AppConstants.keyIsLoggedIn, true);
+        await prefs.setBool('isLoggedIn', true);
+        ref.read(isLoggedInProvider.notifier).state = true;
+        if (!mounted) return;
+        setState(() => _isLoading = false);
+        context.pushReplacement(AppRouter.home);
+      } catch (e) {
+        if (!mounted) return;
+        setState(() {
+          _authError = e.toString();
+          _isLoading = false;
+        });
+      }
     }
   }
 
@@ -66,23 +71,30 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   }
 
   Future<void> _loginWithGoogle() async {
-    setState(() => _isLoading = true);
-    final account = await GoogleSignInService.signIn();
-    if (!mounted) return;
-    setState(() => _isLoading = false);
-
-    if (account != null) {
+    setState(() {
+      _authError = null;
+      _isLoading = true;
+    });
+    try {
+      await FirebaseAuthService().signInWithGoogle();
+      if (!mounted) return;
       final prefs = await SharedPreferences.getInstance();
       await prefs.setBool(AppConstants.keyIsLoggedIn, true);
+      await prefs.setBool('isLoggedIn', true);
       ref.read(isLoggedInProvider.notifier).state = true;
-      await _navigateAfterAuth();
-    } else {
+      setState(() => _isLoading = false);
       if (!mounted) return;
-      final s = AppStrings.of(context);
+      context.pushReplacement(AppRouter.home);
+    } catch (e) {
+      if (!mounted) return;
+      setState(() {
+        _authError = e.toString();
+        _isLoading = false;
+      });
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            s.googleAuthCancelled,
+            e.toString(),
             style: GoogleFonts.nunitoSans(color: Colors.white),
           ),
           backgroundColor: AppColors.error,
@@ -151,8 +163,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             child: Form(
               key: _formKey,
               child: SingleChildScrollView(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -178,10 +189,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         color: AppColors.textPrimary,
                       ),
                       textAlign: TextAlign.center,
-                    )
-                        .animate()
-                        .fadeIn(duration: 500.ms, delay: 100.ms)
-                        .slideY(begin: 0.15, end: 0, duration: 500.ms, delay: 100.ms),
+                    ).animate().fadeIn(duration: 500.ms, delay: 100.ms).slideY(
+                        begin: 0.15, end: 0, duration: 500.ms, delay: 100.ms),
 
                     const SizedBox(height: AppSpacing.sm),
 
@@ -192,10 +201,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         color: AppColors.textSecondary,
                       ),
                       textAlign: TextAlign.center,
-                    )
-                        .animate()
-                        .fadeIn(duration: 500.ms, delay: 200.ms)
-                        .slideY(begin: 0.15, end: 0, duration: 500.ms, delay: 200.ms),
+                    ).animate().fadeIn(duration: 500.ms, delay: 200.ms).slideY(
+                        begin: 0.15, end: 0, duration: 500.ms, delay: 200.ms),
 
                     const SizedBox(height: AppSpacing.xl + AppSpacing.sm),
 
@@ -211,10 +218,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         if (!v.contains('@')) return s.emailInvalid;
                         return null;
                       },
-                    )
-                        .animate()
-                        .fadeIn(duration: 400.ms, delay: 300.ms)
-                        .slideX(begin: -0.08, end: 0, duration: 400.ms, delay: 300.ms),
+                    ).animate().fadeIn(duration: 400.ms, delay: 300.ms).slideX(
+                        begin: -0.08, end: 0, duration: 400.ms, delay: 300.ms),
 
                     const SizedBox(height: AppSpacing.md),
 
@@ -228,10 +233,19 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         if (v.length < 6) return s.passwordMinLength;
                         return null;
                       },
-                    )
-                        .animate()
-                        .fadeIn(duration: 400.ms, delay: 380.ms)
-                        .slideX(begin: -0.08, end: 0, duration: 400.ms, delay: 380.ms),
+                    ).animate().fadeIn(duration: 400.ms, delay: 380.ms).slideX(
+                        begin: -0.08, end: 0, duration: 400.ms, delay: 380.ms),
+
+                    if (_authError != null) ...[
+                      const SizedBox(height: AppSpacing.sm),
+                      Text(
+                        _authError!,
+                        style: GoogleFonts.nunitoSans(
+                          fontSize: 13,
+                          color: AppColors.error,
+                        ),
+                      ),
+                    ],
 
                     const SizedBox(height: AppSpacing.sm),
 
@@ -262,10 +276,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       label: s.login,
                       onPressed: _isLoading ? null : _login,
                       isLoading: _isLoading,
-                    )
-                        .animate()
-                        .fadeIn(duration: 500.ms, delay: 550.ms)
-                        .slideY(begin: 0.12, end: 0, duration: 500.ms, delay: 550.ms),
+                    ).animate().fadeIn(duration: 500.ms, delay: 550.ms).slideY(
+                        begin: 0.12, end: 0, duration: 500.ms, delay: 550.ms),
 
                     const SizedBox(height: AppSpacing.lg),
 
@@ -273,10 +285,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     Row(
                       children: [
                         Expanded(
-                          child: Container(height: 1, color: AppColors.borderSubtle),
+                          child: Container(
+                              height: 1, color: AppColors.borderSubtle),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: AppSpacing.md),
                           child: Text(
                             s.orSeparator,
                             style: GoogleFonts.nunitoSans(
@@ -286,7 +300,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           ),
                         ),
                         Expanded(
-                          child: Container(height: 1, color: AppColors.borderSubtle),
+                          child: Container(
+                              height: 1, color: AppColors.borderSubtle),
                         ),
                       ],
                     ).animate().fadeIn(duration: 400.ms, delay: 650.ms),
@@ -306,7 +321,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             width: 1.2,
                           ),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(AppSpacing.radiusLg),
+                            borderRadius:
+                                BorderRadius.circular(AppSpacing.radiusLg),
                           ),
                         ),
                         icon: const Icon(Icons.g_mobiledata,
@@ -319,10 +335,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           ),
                         ),
                       ),
-                    )
-                        .animate()
-                        .fadeIn(duration: 400.ms, delay: 730.ms)
-                        .slideY(begin: 0.1, end: 0, duration: 400.ms, delay: 730.ms),
+                    ).animate().fadeIn(duration: 400.ms, delay: 730.ms).slideY(
+                        begin: 0.1, end: 0, duration: 400.ms, delay: 730.ms),
 
                     const SizedBox(height: AppSpacing.xxl),
 

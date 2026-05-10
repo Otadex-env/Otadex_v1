@@ -5,7 +5,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/constants/app_constants.dart';
+import 'core/models/user_rank.dart';
 import 'core/providers/auth_provider.dart';
+import 'core/providers/user_profile_provider.dart';
 import 'core/theme/app_colors.dart';
 import 'firebase_options.dart';
 import 'app.dart';
@@ -17,7 +19,15 @@ void main() async {
   );
 
   final prefs = await SharedPreferences.getInstance();
-  final isLoggedIn = prefs.getBool(AppConstants.keyIsLoggedIn) ?? false;
+  final isLoggedIn = prefs.getBool(AppConstants.keyIsLoggedIn) ??
+      prefs.getBool('isLoggedIn') ??
+      false;
+  final rankStr =
+      prefs.getString(AppConstants.keyUserRank) ?? AppConstants.rankGenin;
+  final userRank = UserRank.values.firstWhere(
+    (r) => r.name == rankStr,
+    orElse: () => UserRank.genin,
+  );
 
   // DEBUG : réinitialise l'onboarding à chaque démarrage pour tester le flux complet
   if (kDebugMode) {
@@ -44,6 +54,9 @@ void main() async {
     ProviderScope(
       overrides: [
         isLoggedInProvider.overrideWith((ref) => isLoggedIn),
+        userProfileProvider.overrideWith(
+          (ref) => UserProfileNotifier(initialRank: userRank),
+        ),
       ],
       child: const OtadexApp(),
     ),
