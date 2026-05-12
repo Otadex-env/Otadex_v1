@@ -252,6 +252,7 @@
 | Bug                                           | Priorité   | Description                                                                                                                                      |
 | --------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Auth persistance                              | ✅ Corrigé | `main.dart` lit `keyIsLoggedIn` avant `runApp()` et override `isLoggedInProvider` via `ProviderScope.overrides`                                  |
+| Splash initial route                          | ✅ Corrigé | `getInitialRoute()` respecte maintenant l'état `isLoggedIn` et redirige vers `/login` si l'utilisateur n'est pas connecté après l'onboarding.    |
 | Auth Firebase réelle                          | ✅ Corrigé | Email/password + Google branchés via FirebaseAuthService, profil Firestore créé à l'inscription                                                  |
 | Déconnexion reste sur Home                    | ✅ Corrigé | Le footer profil appelle Firebase signOut, passe isLoggedInProvider à false et redirige vers `/login`                                            |
 | Profil affiche NouveauGenin                   | ✅ Corrigé | Le pseudo Firebase/SharedPreferences est restauré dans userProfileProvider après login/register                                                  |
