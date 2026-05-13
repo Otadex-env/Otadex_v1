@@ -1,3 +1,4 @@
+// @ts-nocheck
 const admin = require('firebase-admin');
 const fs = require('fs');
 const path = require('path');
@@ -11,6 +12,11 @@ admin.initializeApp({
 
 const bucket = admin.storage().bucket();
 const baseDir = './assets/images/Animé pictures';
+
+/** @param {string} filename */
+function contentTypeFor(filename) {
+  return filename.toLowerCase().endsWith('.png') ? 'image/png' : 'image/jpeg';
+}
 
 async function uploadAll() {
   const animes = fs.readdirSync(baseDir);
@@ -33,8 +39,8 @@ async function uploadAll() {
         try {
           await bucket.upload(localPath, {
             destination: storagePath,
-            metadata: { contentType: 'image/jpeg' },
-            public: true,
+            metadata: { contentType: contentTypeFor(image) },
+            predefinedAcl: 'publicRead',
           });
           console.log(`✅ ${storagePath}`);
         } catch (e) {
