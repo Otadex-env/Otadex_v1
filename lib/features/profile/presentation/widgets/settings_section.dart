@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/l10n/app_strings.dart';
+import '../../../../core/services/url_launcher_service.dart';
 import '../../../../core/theme/otadex_theme.dart';
 
 class SettingsSection extends StatelessWidget {
@@ -118,19 +118,9 @@ class SettingsSection extends StatelessWidget {
     );
   }
 
-  Future<void> _openTerms() async {
-    final url = Uri.parse('https://otadex.tilstack.me/terms.html');
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url, mode: LaunchMode.externalApplication);
-    }
-  }
+  Future<void> _openTerms() => UrlLauncherService.openTerms();
 
-  Future<void> _openPrivacyPolicy() async {
-    final url = Uri.parse('https://otadex.tilstack.me/privacy-policy.html');
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url, mode: LaunchMode.externalApplication);
-    }
-  }
+  Future<void> _openPrivacyPolicy() => UrlLauncherService.openPrivacyPolicy();
 
   Future<void> _openKageTheme(BuildContext context, AppStrings s) async {
     await _showFeatureSheet(
@@ -156,10 +146,8 @@ class SettingsSection extends StatelessWidget {
     );
   }
 
-  Future<void> _openRateApp(BuildContext context, AppStrings s) async {
-    final url = Uri.parse('https://otadex.tilstack.me');
-    await launchUrl(url, mode: LaunchMode.externalApplication);
-  }
+  Future<void> _openRateApp(BuildContext context, AppStrings s) =>
+      UrlLauncherService.openUrl('https://otadex.tilstack.me');
 
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/gestures.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/l10n/app_strings.dart';
@@ -12,6 +11,7 @@ import '../../../core/providers/auth_provider.dart';
 import '../../../core/providers/user_profile_provider.dart';
 import '../../../core/router/app_router.dart';
 import '../../../core/services/firebase_auth_service.dart';
+import '../../../core/services/url_launcher_service.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/widgets/otadex_button.dart';
@@ -45,19 +45,9 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
     super.dispose();
   }
 
-  Future<void> _openTerms() async {
-    final url = Uri.parse('https://otadex.tilstack.me/terms.html');
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url, mode: LaunchMode.externalApplication);
-    }
-  }
+  Future<void> _openTerms() => UrlLauncherService.openTerms();
 
-  Future<void> _openPrivacyPolicy() async {
-    final url = Uri.parse('https://otadex.tilstack.me/privacy-policy.html');
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url, mode: LaunchMode.externalApplication);
-    }
-  }
+  Future<void> _openPrivacyPolicy() => UrlLauncherService.openPrivacyPolicy();
 
   Future<void> _registerWithGoogle() async {
     setState(() {
