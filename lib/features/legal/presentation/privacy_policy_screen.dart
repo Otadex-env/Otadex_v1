@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../../core/l10n/app_strings.dart';
 import '../../../core/l10n/locale_provider.dart';
 import '../../../core/theme/otadex_theme.dart';
@@ -81,38 +80,6 @@ class PrivacyPolicyScreen extends ConsumerWidget {
         ),
       );
 
-  Future<void> _openPrivacyPolicyWeb() async {
-    final url = Uri.parse('https://otadex.tilstack.me/privacy-policy.html');
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url, mode: LaunchMode.externalApplication);
-    }
-  }
-
-  Widget _webLinkButton(dynamic theme, String text) => Padding(
-        padding: const EdgeInsets.only(top: 16),
-        child: ElevatedButton.icon(
-          onPressed: _openPrivacyPolicyWeb,
-          icon: Icon(Icons.open_in_browser, size: 16, color: theme.textPrimary),
-          label: Text(
-            text,
-            style: GoogleFonts.nunitoSans(
-              fontSize: 14,
-              color: theme.textPrimary,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: theme.backgroundCard,
-            foregroundColor: theme.textPrimary,
-            elevation: 0,
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
-              side: BorderSide(color: theme.accentColor.withOpacity(0.3)),
-            ),
-          ),
-        ),
-      );
 
   List<Widget> _frContent(dynamic theme) => [
         _label(theme, 'Dernière mise à jour : Avril 2026'),

@@ -140,9 +140,9 @@ class _PasswordResetSheetState extends ConsumerState<PasswordResetSheet> {
         ? 'Réinitialiser le mot de passe'
         : 'Valider le code de réinitialisation';
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: AppColors.backgroundCard,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
       padding: EdgeInsets.fromLTRB(
         24,
