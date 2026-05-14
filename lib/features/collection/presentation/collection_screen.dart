@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/data/mock_data.dart';
 import '../../../core/models/character.dart';
+import '../../../core/providers/anilist_providers.dart';
 import '../../../core/providers/user_profile_provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/widgets/otadex_image.dart';
@@ -14,56 +15,69 @@ class CollectionScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final profile = ref.watch(userProfileProvider);
-    final collectedIds = profile.collectedCharacterIds;
-    final characters = MockData.allCharacters
-        .where((c) => collectedIds.contains(c.id))
-        .toList();
+    final collectionAsync = ref.watch(collectionStreamProvider);
     final isGenin = profile.rank == 'genin';
-    final showLimitBanner = isGenin && collectedIds.length >= 8;
 
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-            child: Text(
-              'Ma Collection',
-              style: GoogleFonts.dmSans(
-                fontSize: 22,
-                fontWeight: FontWeight.w800,
-                color: AppColors.textPrimary,
-              ),
-            ),
-          ),
+    return collectionAsync.when(
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (_, __) => const Center(
+        child: Text(
+          'Erreur de chargement',
+          style: TextStyle(color: AppColors.textSecondary),
         ),
-        if (showLimitBanner)
-          SliverToBoxAdapter(
-            child: _LimitBanner(collected: collectedIds.length),
-          ),
-        if (characters.isEmpty)
-          const SliverFillRemaining(
-            hasScrollBody: false,
-            child: _EmptyState(),
-          )
-        else ...[
-          SliverToBoxAdapter(child: _CollectionHeader(count: characters.length)),
-          SliverPadding(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 100),
-            sliver: SliverGrid(
-              delegate: SliverChildBuilderDelegate(
-                (ctx, i) => _CharCard(character: characters[i]),
-                childCount: characters.length,
-              ),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                crossAxisSpacing: 8,
-                mainAxisSpacing: 8,
-                childAspectRatio: 112 / 170,
+      ),
+      data: (collectedIds) {
+        final characters = MockData.allCharacters
+            .where((c) => collectedIds.contains(c.id))
+            .toList();
+        final showLimitBanner = isGenin && collectedIds.length >= 8;
+
+        return CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+                child: Text(
+                  'Ma Collection',
+                  style: GoogleFonts.dmSans(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w800,
+                    color: AppColors.textPrimary,
+                  ),
+                ),
               ),
             ),
-          ),
-        ],
-      ],
+            if (showLimitBanner)
+              SliverToBoxAdapter(
+                child: _LimitBanner(collected: collectedIds.length),
+              ),
+            if (characters.isEmpty)
+              const SliverFillRemaining(
+                hasScrollBody: false,
+                child: _EmptyState(),
+              )
+            else ...[
+              SliverToBoxAdapter(
+                  child: _CollectionHeader(count: characters.length)),
+              SliverPadding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 100),
+                sliver: SliverGrid(
+                  delegate: SliverChildBuilderDelegate(
+                    (ctx, i) => _CharCard(character: characters[i]),
+                    childCount: characters.length,
+                  ),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 8,
+                    mainAxisSpacing: 8,
+                    childAspectRatio: 112 / 170,
+                  ),
+                ),
+              ),
+            ],
+          ],
+        );
+      },
     );
   }
 }

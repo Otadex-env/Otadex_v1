@@ -4,6 +4,7 @@ import '../models/anime_entry.dart';
 import '../models/featured_slide.dart';
 import '../theme/app_colors.dart';
 import '../services/anilist_service.dart';
+import '../services/collection_service.dart';
 import '../services/storage_service.dart';
 import 'otadex_providers.dart';
 
@@ -67,6 +68,24 @@ final characterDetailProvider =
 final storageServiceProvider = Provider<StorageService>(
   (ref) => StorageService(),
 );
+
+// ── Collection Firestore ──────────────────────────────────────────────────────
+final collectionServiceProvider = Provider<CollectionService>(
+  (ref) => CollectionService(),
+);
+
+final collectionStreamProvider = StreamProvider<List<String>>((ref) {
+  final service = ref.watch(collectionServiceProvider);
+  return service.collectionStream();
+});
+
+final isCollectedProvider = Provider.family<bool, String>((ref, charId) {
+  final collection = ref.watch(collectionStreamProvider);
+  return collection.maybeWhen(
+    data: (list) => list.contains(charId),
+    orElse: () => false,
+  );
+});
 
 final characterImagesProvider = FutureProvider.autoDispose
     .family<List<String>, Map<String, String>>((ref, params) async {

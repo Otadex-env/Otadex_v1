@@ -314,7 +314,7 @@
 
 ## Prochaine tâche recommandée
 
-**Task 13 — Play Store preparation**
+**Task 13 — Play Store preparation** ✅ Fait
 
 - Activer GitHub Pages pour les pages légales `docs/`
 - Vérifier les URLs publiques Play Console : privacy policy, CGU, suppression de compte
@@ -325,19 +325,18 @@
 - Déployer `firestore.rules` avant release
 - Préparer captures d'écran Play Store
 
-**Task 14 — PlansScreen**
+**Task 14 — PlansScreen** ✅ Fait
+
+**Task 16 — PlansScreen**
 
 - `lib/features/subscription/presentation/plans_screen.dart`
 - Cards Genin / Jonin / Kage avec features comparatives
 - Toggle mensuel / annuel, bouton CTA orange
 - Route : `/subscription` (stub déjà présent dans app_router.dart)
 
-**Task 15 — Collection persistante et affichage**
+**Task 17 — Play Store soumission**
 
-- Synchroniser la collection persistante dans `CharacterDetailScreen` avec `CollectionScreen` et `CharacterGridCard`.
-- Enregistrer les IDs de collection dans `SharedPreferences` ou Firestore.
-- Ajouter un badge / état bookmark dans les listes, résultats de recherche et fiches.
-- Vérifier la limite Genin de 10 personnages et rediriger vers Jonin quand elle est atteinte.
+- APK signé, captures d'écran, soumission Google Play Console
 
 ---
 
@@ -395,6 +394,7 @@ URLs Play Console :
 | 10 mai 2026 | Retours test auth/home — déconnexion redirige vers login, pseudo utilisateur restauré dans profil et HomeAppBar, page notifications avec état vide ajoutée, route `/notifications` créée, FirebaseAuthService persiste uid/email/pseudo/rang localement après login/register. flutter analyze + dart analyze → 0 issue.                                       |
 | 10 mai 2026 | Vérification accès invité/connecté — Home et Search restent accessibles publiquement, Collection et Notifications sont protégées en accès direct par AuthRequiredScreen, la réhydratation du profil local ne se fait que si l'utilisateur est connecté.                                                                                                       |
 | 14 mai 2026 | Firebase Storage images — upload_images.js créé (Node.js, upload 131 images vers Storage bucket tilqui.appspot.com), firebase_storage ^11.6.0 ajouté, StorageService créé (getCharacterImages + getCharacterCover), storageServiceProvider + characterImagesProvider ajoutés dans anilist_providers.dart, _effectiveImages dans CharacterDetailScreen priorise Storage → images AniList → imagePath → fallback. dart analyze → 0 issue. |
+| 15 mai 2026 | Task 15 — Collection persistante Firestore — CollectionService créé (getCollection, collectionStream, addToCollection/removeFromCollection avec gate Genin 10 persos), collectionServiceProvider + collectionStreamProvider + isCollectedProvider ajoutés dans anilist_providers.dart, CharacterDetailScreen FAB branché sur Firestore (FieldValue.arrayUnion/Remove) + gate LIMIT_REACHED → modal upgrade Jonin, CollectionScreen migré vers collectionStreamProvider (when loading/error/data). dart analyze → 0 issue. |
 
 ---
 

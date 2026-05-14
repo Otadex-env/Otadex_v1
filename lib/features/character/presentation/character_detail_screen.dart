@@ -127,7 +127,9 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
     final theme = OtadexTheme.of(context);
     final mq = MediaQuery.of(context);
     final profile = ref.watch(userProfileProvider);
-    final isCollected = profile.collectedCharacterIds.contains(c.id);
+    final isCollected = ref.watch(isCollectedProvider(c.id));
+
+    final collectionAsync = ref.watch(collectionStreamProvider);
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -154,7 +156,7 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
                 ),
               ],
             ),
-            _buildFAB(theme, isCollected),
+            _buildFAB(theme, isCollected, collectionAsync, profile.rank),
           ],
         ),
       ),
@@ -1570,23 +1572,23 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
 
   // ── FAB ───────────────────────────────────────────────────────────
 
-  Widget _buildFAB(RankTheme theme, bool isCollected) {
+  Widget _buildFAB(
+    RankTheme theme,
+    bool isCollected,
+    AsyncValue<List<String>> collectionAsync,
+    String rank,
+  ) {
     return Positioned(
       right: 20,
       bottom: 24,
       child: GestureDetector(
-        onTap: () => _guardAuth(() {
-          final notifier = ref.read(userProfileProvider.notifier);
-          try {
-            if (isCollected) {
-              notifier.removeFromCollection(c.id);
-            } else {
-              notifier.addToCollection(c.id);
-            }
-          } catch (_) {
-            showSubscriptionModal(context, SubscriptionPlan.jonin);
+        onTap: () {
+          if (!ref.read(isLoggedInProvider)) {
+            showAuthGateModal(context);
+            return;
           }
-        }),
+          _handleCollectTap(isCollected, collectionAsync, rank);
+        },
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           width: 48,
@@ -1615,6 +1617,114 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
             color: isCollected ? Colors.white : theme.accentColor,
             size: 22,
           ),
+        ),
+      ),
+    );
+  }
+
+  Future<void> _handleCollectTap(
+    bool isCollected,
+    AsyncValue<List<String>> collectionAsync,
+    String rank,
+  ) async {
+    final service = ref.read(collectionServiceProvider);
+
+    if (isCollected) {
+      await service.removeFromCollection(c.id);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Retiré de ta collection')),
+        );
+      }
+      return;
+    }
+
+    final currentCount = collectionAsync.valueOrNull?.length ?? 0;
+    final isGenin = rank == 'genin';
+
+    try {
+      await service.addToCollection(
+        c.id,
+        isGenin: isGenin,
+        currentCount: currentCount,
+      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('${c.name} ajouté à ta collection !'),
+            backgroundColor: AppColors.statGreen,
+          ),
+        );
+      }
+    } catch (e) {
+      if (e == 'LIMIT_REACHED' && mounted) {
+        _showLimitModal();
+      }
+    }
+  }
+
+  void _showLimitModal() {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: AppColors.backgroundCard,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (_) => Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text('🎴', style: TextStyle(fontSize: 48)),
+            const SizedBox(height: 16),
+            Text(
+              'Collection complète !',
+              style: GoogleFonts.dmSans(
+                fontSize: 20,
+                fontWeight: FontWeight.w800,
+                color: AppColors.textPrimary,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Tu as atteint la limite de 10 personnages.\nPasse Jonin pour une collection illimitée.',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.nunitoSans(
+                color: AppColors.textSecondary,
+              ),
+            ),
+            const SizedBox(height: 24),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.statBlue,
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                  context.push('/subscription');
+                },
+                child: const Text(
+                  'Devenir Jonin — 2 000 FCFA/mois',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text(
+                'Pas maintenant',
+                style: TextStyle(color: AppColors.textSecondary),
+              ),
+            ),
+          ],
         ),
       ),
     );
