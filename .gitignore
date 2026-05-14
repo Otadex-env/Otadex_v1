@@ -48,4 +48,4 @@ app.*.map.json
 .claude/
 
 .serviceAccountKey.json
-.jsonserviceAccountKey.json
+serviceAccountKey.json
