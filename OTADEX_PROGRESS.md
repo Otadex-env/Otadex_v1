@@ -327,12 +327,17 @@
 
 **Task 14 — PlansScreen** ✅ Fait
 
-**Task 16 — PlansScreen**
+**Task 16 — PlansScreen** ✅ Fait
 
-- `lib/features/subscription/presentation/plans_screen.dart`
-- Cards Genin / Jonin / Kage avec features comparatives
-- Toggle mensuel / annuel, bouton CTA orange
-- Route : `/subscription` (stub déjà présent dans app_router.dart)
+- `lib/features/subscription/presentation/plans_screen.dart` — Rewritten complet
+- Header "Débloque OTADEX Premium ⭐" + sous-titre centré
+- Toggle mensuel/annuel (BillingToggle réutilisé)
+- Genin card (PlanCard) — disabled si currentRank == genin, AlertDialog confirmation si rétrograder
+- Jonin card (PlanCard + _GlowWrapper bleu) — badge POPULAIRE, glow statBlue
+- Kage card (_KageCard) — gradient #1A0A2E→#0D0D0F, border statPurple, glow violet, ShaderMask titre, bouton GestureDetector gradient
+- Payment sheet — 3 boutons (Orange Money / MTN MoMo / Carte), simulation 1 500ms, updateIdentity + SharedPreferences + Firestore
+- Pills modes de paiement + note légale bas de page
+- dart analyze → 0 erreur
 
 **Task 17 — Play Store soumission**
 
@@ -395,6 +400,7 @@ URLs Play Console :
 | 10 mai 2026 | Vérification accès invité/connecté — Home et Search restent accessibles publiquement, Collection et Notifications sont protégées en accès direct par AuthRequiredScreen, la réhydratation du profil local ne se fait que si l'utilisateur est connecté.                                                                                                       |
 | 14 mai 2026 | Firebase Storage images — upload_images.js créé (Node.js, upload 131 images vers Storage bucket tilqui.appspot.com), firebase_storage ^11.6.0 ajouté, StorageService créé (getCharacterImages + getCharacterCover), storageServiceProvider + characterImagesProvider ajoutés dans anilist_providers.dart, _effectiveImages dans CharacterDetailScreen priorise Storage → images AniList → imagePath → fallback. dart analyze → 0 issue. |
 | 15 mai 2026 | Task 15 — Collection persistante Firestore — CollectionService créé (getCollection, collectionStream, addToCollection/removeFromCollection avec gate Genin 10 persos), collectionServiceProvider + collectionStreamProvider + isCollectedProvider ajoutés dans anilist_providers.dart, CharacterDetailScreen FAB branché sur Firestore (FieldValue.arrayUnion/Remove) + gate LIMIT_REACHED → modal upgrade Jonin, CollectionScreen migré vers collectionStreamProvider (when loading/error/data). dart analyze → 0 issue. |
+| 15 mai 2026 | Task 16 — PlansScreen complet — plans_screen.dart réécrit (ConsumerStatefulWidget), toggle BillingToggle réutilisé, Genin PlanCard + confirmation rétrograder, Jonin PlanCard + _GlowWrapper bleu + badge POPULAIRE, Kage _KageCard gradient violet + ShaderMask + boxShadow, _showPaymentSheet (3 boutons paiement) + simulation succès 1 500ms + updateIdentity + SharedPreferences + Firestore, pills modes paiement, note légale. dart analyze → 0 issue. |
 
 ---
 

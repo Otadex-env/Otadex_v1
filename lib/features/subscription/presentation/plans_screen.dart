@@ -1,356 +1,595 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../core/l10n/app_strings.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../../core/providers/user_profile_provider.dart';
 import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/otadex_theme.dart';
-import '../../../core/theme/rank_theme.dart';
-import '../../../core/widgets/subscription_feature_item.dart';
+import '../../profile/presentation/widgets/billing_toggle.dart';
 import '../../profile/presentation/widgets/plan_card.dart';
 
-class PlansScreen extends StatefulWidget {
+class PlansScreen extends ConsumerStatefulWidget {
   const PlansScreen({super.key});
 
   @override
-  State<PlansScreen> createState() => _PlansScreenState();
+  ConsumerState<PlansScreen> createState() => _PlansScreenState();
 }
 
-enum BillingCycle { monthly, annual }
-
-class _PlansScreenState extends State<PlansScreen> {
-  BillingCycle _billingCycle = BillingCycle.monthly;
-  final TextEditingController _licenseController = TextEditingController();
-
-  @override
-  void dispose() {
-    _licenseController.dispose();
-    super.dispose();
-  }
-
-  void _toggleBillingCycle(BillingCycle value) {
-    setState(() {
-      _billingCycle = value;
-    });
-  }
-
-  void _showLicenseDialog() {
-    showDialog<void>(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Tu as déjà une licence ?'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextField(
-              controller: _licenseController,
-              decoration: const InputDecoration(
-                labelText: 'Code de licence',
-                border: OutlineInputBorder(),
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: const Text('Annuler'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text(
-                    'Code de licence soumis. La vérification sera disponible prochainement.',
-                  ),
-                ),
-              );
-            },
-            child: const Text('Valider'),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _showPurchaseDialog(String planName) {
-    showDialog<void>(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text('Passer au plan $planName'),
-        content: const Text(
-          'La gestion de l\'abonnement sera bientôt connectée au paiement réel.',
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: const Text('Fermer'),
-          ),
-        ],
-      ),
-    );
-  }
+class _PlansScreenState extends ConsumerState<PlansScreen> {
+  bool _isAnnual = false;
 
   @override
   Widget build(BuildContext context) {
-    final theme = OtadexTheme.of(context);
-    final s = AppStrings.of(context);
-    final joninPrice = _billingCycle == BillingCycle.annual
-        ? s.joninAnnualPrice
-        : s.joninMonthlyPrice;
-    final kagePrice = _billingCycle == BillingCycle.annual
-        ? s.kageAnnualPrice
-        : s.kageMonthlyPrice;
+    final profile = ref.watch(userProfileProvider);
+    final currentRank = profile.rank;
 
     return Scaffold(
       backgroundColor: AppColors.backgroundDeep,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        foregroundColor: Colors.white,
-        elevation: 0,
-        title: Text(s.manageSubscription),
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(16, 20, 16, 30),
+      body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              s.subscriptionObtainPass,
-              style: GoogleFonts.rajdhani(
-                fontSize: 28,
-                fontWeight: FontWeight.w700,
-                color: theme.textPrimary,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              s.subscriptionRankUpgradeDesc,
-              style: GoogleFonts.nunitoSans(
-                fontSize: 14,
-                color: theme.textSecondary,
-                height: 1.6,
-              ),
-            ),
-            const SizedBox(height: 24),
-            _buildBillingToggle(theme, s),
-            const SizedBox(height: 16),
-            PlanCard(
-              name: 'Genin',
-              tag: s.currentPlanTag,
-              tagColor: AppColors.success,
-              price: '0 FCFA',
-              priceColor: theme.textPrimary,
-              features: [
-                (true, s.sheetsNavigation),
-                (true, s.likesComments),
-                (false, s.adsShown),
-                (false, s.aiDisabled),
-              ],
-              buttonLabel: s.planActualButton,
-              buttonEnabled: false,
-              borderColor: AppColors.success.withValues(alpha: 0.4),
-              isCta: false,
-            ),
-            const SizedBox(height: 16),
-            PlanCard(
-              name: 'Jonin',
-              tag: null,
-              tagColor: AppColors.rankJonin,
-              price: joninPrice,
-              priceColor: AppColors.rankJonin,
-              features: [
-                (true, s.unlimitedCollection),
-                (true, s.noAds),
-                (true, s.aiChatbot),
-                (true, s.joninBadge),
-              ],
-              buttonLabel: s.upgradeToJoninButton,
-              buttonEnabled: true,
-              borderColor: AppColors.rankJonin,
-              isCta: true,
-              onUpgrade: () => _showPurchaseDialog('Jonin'),
-            ),
-            const SizedBox(height: 16),
-            PlanCard(
-              name: 'Kage',
-              tag: null,
-              tagColor: AppColors.rankKage,
-              price: kagePrice,
-              priceColor: AppColors.rankKage,
-              features: [
-                (true, s.joninIncluded),
-                (true, s.aiImageGen),
-                (true, s.noWatermark),
-                (true, s.exclusiveThemes),
-              ],
-              buttonLabel: s.upgradeToKageButton,
-              buttonEnabled: true,
-              borderColor: AppColors.rankKage,
-              isCta: true,
-              onUpgrade: () => _showPurchaseDialog('Kage'),
-            ),
-            const SizedBox(height: 28),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  s.subscriptionAlreadyLicense,
-                  style: GoogleFonts.nunitoSans(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                    color: theme.textPrimary,
-                  ),
+            Align(
+              alignment: Alignment.topLeft,
+              child: IconButton(
+                icon: const Icon(
+                  Icons.arrow_back_ios_new,
+                  color: AppColors.textPrimary,
+                  size: 20,
                 ),
-                TextButton(
-                  onPressed: _showLicenseDialog,
-                  child: Text(
-                    'Entrer le code',
-                    style: GoogleFonts.nunitoSans(
-                      color: AppColors.rankJonin,
-                      fontWeight: FontWeight.w700,
+                onPressed: () => context.pop(),
+              ),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.only(bottom: 40),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Débloque OTADEX Premium ⭐',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.dmSans(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w800,
+                              color: AppColors.textPrimary,
+                            ),
+                          ),
+                          const SizedBox(height: 6),
+                          Text(
+                            'Rejoins +2 000 fans déjà abonnés',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.nunitoSans(
+                              fontSize: 13,
+                              color: AppColors.textSecondary,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
+                    const SizedBox(height: 24),
+                    Center(
+                      child: BillingToggle(
+                        cycle: _isAnnual ? 'annuel' : 'mensuel',
+                        onChanged: (v) =>
+                            setState(() => _isAnnual = v == 'annuel'),
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Column(
+                        children: [
+                          // Genin
+                          PlanCard(
+                            name: 'Genin',
+                            tag: currentRank == 'genin' ? 'ACTUEL' : null,
+                            tagColor: AppColors.success,
+                            price: 'Gratuit',
+                            priceColor: AppColors.textPrimary,
+                            features: const [
+                              (true, 'Fiches & navigation'),
+                              (true, 'Likes & commentaires'),
+                              (true, 'Collection · 10 max'),
+                              (false, 'Publicités affichées'),
+                              (false, 'IA désactivée'),
+                            ],
+                            buttonLabel: currentRank == 'genin'
+                                ? 'Plan actuel'
+                                : 'Rétrograder',
+                            buttonEnabled: currentRank != 'genin',
+                            borderColor:
+                                AppColors.success.withValues(alpha: 0.4),
+                            isCta: false,
+                            onUpgrade: currentRank == 'genin'
+                                ? null
+                                : () => _confirmDowngrade(),
+                          ),
+                          const SizedBox(height: 12),
+                          // Jonin — blue glow
+                          _GlowWrapper(
+                            color: AppColors.statBlue,
+                            child: PlanCard(
+                              name: 'Jonin',
+                              tag: 'POPULAIRE',
+                              tagColor: AppColors.statBlue,
+                              price: _isAnnual
+                                  ? '1 800 FCFA/mois\nfacturé 21 600/an'
+                                  : '2 000 FCFA/mois',
+                              priceColor: AppColors.statBlue,
+                              features: const [
+                                (true, 'Collection illimitée'),
+                                (true, 'Sans publicités'),
+                                (true, 'IA chatbot + quiz'),
+                                (true, 'Badge Jonin 🥷'),
+                                (false, 'Génération images IA'),
+                              ],
+                              buttonLabel: currentRank == 'jonin'
+                                  ? 'Plan actuel'
+                                  : 'Devenir Jonin',
+                              buttonEnabled: currentRank != 'jonin',
+                              borderColor: AppColors.statBlue,
+                              isCta: currentRank != 'jonin',
+                              onUpgrade: currentRank == 'jonin'
+                                  ? null
+                                  : () => _showPaymentSheet('jonin'),
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          // Kage — gradient
+                          _KageCard(
+                            isAnnual: _isAnnual,
+                            isCurrentPlan: currentRank == 'kage',
+                            onUpgrade: () => _showPaymentSheet('kage'),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 28),
+                    Text(
+                      'Modes de paiement acceptés',
+                      style: GoogleFonts.nunitoSans(
+                        fontSize: 12,
+                        color: AppColors.textSecondary,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        _PaymentPill(label: '🟠 Orange Money'),
+                        SizedBox(width: 8),
+                        _PaymentPill(label: '🟡 MTN MoMo'),
+                        SizedBox(width: 8),
+                        _PaymentPill(label: '💳 Visa/MC'),
+                      ],
+                    ),
+                    const SizedBox(height: 24),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Annulation possible à tout moment',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.nunitoSans(
+                              fontSize: 11,
+                              color: AppColors.textSecondary,
+                            ),
+                          ),
+                          Text(
+                            'Renouvellement automatique · Prix en FCFA',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.nunitoSans(
+                              fontSize: 11,
+                              color: AppColors.textSecondary,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            const SizedBox(height: 16),
-            Text(
-              s.subscriptionFeaturesTitle,
-              style: GoogleFonts.rajdhani(
-                fontSize: 16,
-                fontWeight: FontWeight.w700,
-                color: theme.textPrimary,
               ),
             ),
-            const SizedBox(height: 12),
-            ..._buildFeatureItems(s),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildBillingToggle(RankTheme theme, AppStrings s) {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: theme.backgroundCard,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: theme.borderDefault),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _BillingChip(
-            label: s.subscriptionBillingMonthly,
-            selected: _billingCycle == BillingCycle.monthly,
-            onTap: () => _toggleBillingCycle(BillingCycle.monthly),
+  void _confirmDowngrade() {
+    showDialog<void>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: AppColors.backgroundCard,
+        title: Text(
+          'Rétrograder vers Genin ?',
+          style: GoogleFonts.dmSans(
+            color: AppColors.textPrimary,
+            fontWeight: FontWeight.w700,
           ),
-          const SizedBox(width: 8),
-          _BillingChip(
-            label: s.subscriptionBillingAnnual,
-            selected: _billingCycle == BillingCycle.annual,
-            onTap: () => _toggleBillingCycle(BillingCycle.annual),
+        ),
+        content: Text(
+          'Tu perdras tes avantages premium.',
+          style: GoogleFonts.nunitoSans(color: AppColors.textSecondary),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text(
+              'Annuler',
+              style: TextStyle(color: AppColors.textSecondary),
+            ),
+          ),
+          ElevatedButton(
+            style:
+                ElevatedButton.styleFrom(backgroundColor: AppColors.error),
+            onPressed: () async {
+              Navigator.pop(ctx);
+              ref
+                  .read(userProfileProvider.notifier)
+                  .updateIdentity(rank: 'genin');
+              final prefs = await SharedPreferences.getInstance();
+              await prefs.setString('user_rank', 'genin');
+              final uid = FirebaseAuth.instance.currentUser?.uid;
+              if (uid != null) {
+                await FirebaseFirestore.instance
+                    .collection('users')
+                    .doc(uid)
+                    .update({'abonnement': 'genin'});
+              }
+            },
+            child: const Text(
+              'Confirmer',
+              style: TextStyle(color: Colors.white),
+            ),
           ),
         ],
       ),
     );
   }
 
-  List<SubscriptionFeatureItem> _buildFeatureItems(AppStrings s) {
-    return [
-      SubscriptionFeatureItem(
-        title: s.joninFeature1Title,
-        description: s.joninFeature1Desc,
-        icon: Icons.collections_bookmark_rounded,
-        color: AppColors.rankJonin,
-        isLast: false,
+  void _showPaymentSheet(String plan) {
+    final isAnnual = _isAnnual;
+    showModalBottomSheet<void>(
+      context: context,
+      backgroundColor: AppColors.backgroundCard,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
-      SubscriptionFeatureItem(
-        title: s.joninFeature2Title,
-        description: s.joninFeature2Desc,
-        icon: Icons.block_rounded,
-        color: AppColors.rankJonin,
-        isLast: false,
+      builder: (_) => Padding(
+        padding: const EdgeInsets.fromLTRB(24, 12, 24, 32),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 40,
+              height: 4,
+              decoration: BoxDecoration(
+                color: AppColors.textDisabled,
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Text(
+              'Finaliser ton abonnement',
+              style: GoogleFonts.dmSans(
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                color: AppColors.textPrimary,
+              ),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              _planRecap(plan, isAnnual),
+              style: GoogleFonts.nunitoSans(
+                fontSize: 14,
+                color: AppColors.textSecondary,
+              ),
+            ),
+            const SizedBox(height: 20),
+            _PaymentOptionButton(
+              label: '🟠 Payer avec Orange Money',
+              onTap: () => _processPayment(plan),
+            ),
+            const SizedBox(height: 8),
+            _PaymentOptionButton(
+              label: '🟡 Payer avec MTN MoMo',
+              onTap: () => _processPayment(plan),
+            ),
+            const SizedBox(height: 8),
+            _PaymentOptionButton(
+              label: '💳 Payer par carte bancaire',
+              onTap: () => _processPayment(plan),
+            ),
+            const SizedBox(height: 12),
+            Text(
+              'Intégration Chariow activée — Phase 2',
+              style: GoogleFonts.nunitoSans(
+                fontSize: 12,
+                color: AppColors.textDisabled,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+          ],
+        ),
       ),
-      SubscriptionFeatureItem(
-        title: s.joninFeature3Title,
-        description: s.joninFeature3Desc,
-        icon: Icons.smart_toy_outlined,
-        color: AppColors.rankJonin,
-        isLast: false,
+    );
+  }
+
+  String _planRecap(String plan, bool isAnnual) {
+    if (plan == 'jonin') {
+      return isAnnual
+          ? 'Jonin · 1 800 FCFA/mois facturé annuellement'
+          : 'Jonin · 2 000 FCFA/mois';
+    }
+    return isAnnual
+        ? 'Kage · 4 500 FCFA/mois facturé annuellement'
+        : 'Kage · 5 000 FCFA/mois';
+  }
+
+  Future<void> _processPayment(String plan) async {
+    showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (_) => const Center(
+        child: CircularProgressIndicator(color: AppColors.accent),
       ),
-      SubscriptionFeatureItem(
-        title: s.joninFeature4Title,
-        description: s.joninFeature4Desc,
-        icon: Icons.verified_outlined,
-        color: AppColors.rankJonin,
-        isLast: false,
+    );
+    await Future.delayed(const Duration(milliseconds: 1500));
+    if (!mounted) return;
+    Navigator.pop(context); // dismiss dialog
+    Navigator.pop(context); // dismiss sheet
+    ref.read(userProfileProvider.notifier).updateIdentity(rank: plan);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('user_rank', plan);
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid != null) {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(uid)
+          .update({'abonnement': plan});
+    }
+    if (!mounted) return;
+    final rankName = plan == 'jonin' ? 'Jonin' : 'Kage';
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('🎉 Bienvenue chez les $rankName !'),
+        backgroundColor:
+            plan == 'jonin' ? AppColors.statBlue : AppColors.statPurple,
       ),
-      SubscriptionFeatureItem(
-        title: s.kageFeature1Title,
-        description: s.kageFeature1Desc,
-        icon: Icons.workspace_premium_rounded,
-        color: AppColors.rankKage,
-        isLast: false,
-      ),
-      SubscriptionFeatureItem(
-        title: s.kageFeature2Title,
-        description: s.kageFeature2Desc,
-        icon: Icons.auto_awesome_outlined,
-        color: AppColors.rankKage,
-        isLast: false,
-      ),
-      SubscriptionFeatureItem(
-        title: s.kageFeature3Title,
-        description: s.kageFeature3Desc,
-        icon: Icons.download_rounded,
-        color: AppColors.rankKage,
-        isLast: false,
-      ),
-      SubscriptionFeatureItem(
-        title: s.kageFeature4Title,
-        description: s.kageFeature4Desc,
-        icon: Icons.palette_outlined,
-        color: AppColors.rankKage,
-        isLast: true,
-      ),
-    ];
+    );
+    context.pop();
   }
 }
 
-class _BillingChip extends StatelessWidget {
-  final String label;
-  final bool selected;
-  final VoidCallback onTap;
+// ── Helpers ──────────────────────────────────────────────────────────────────
 
-  const _BillingChip({
-    required this.label,
-    required this.selected,
-    required this.onTap,
+class _GlowWrapper extends StatelessWidget {
+  final Color color;
+  final Widget child;
+  const _GlowWrapper({required this.color, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: color.withValues(alpha: 0.25),
+            blurRadius: 16,
+            spreadRadius: 2,
+          ),
+        ],
+      ),
+      child: child,
+    );
+  }
+}
+
+class _KageCard extends StatelessWidget {
+  final bool isAnnual;
+  final bool isCurrentPlan;
+  final VoidCallback onUpgrade;
+
+  const _KageCard({
+    required this.isAnnual,
+    required this.isCurrentPlan,
+    required this.onUpgrade,
   });
 
   @override
   Widget build(BuildContext context) {
-    final theme = OtadexTheme.of(context);
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-        decoration: BoxDecoration(
-          color: selected ? theme.accentColor : theme.backgroundPrimary,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: selected ? theme.accentColor : theme.borderDefault,
+    final price = isAnnual
+        ? '4 500 FCFA/mois\nfacturé 54 000/an'
+        : '5 000 FCFA/mois';
+
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Color(0xFF1A0A2E), Color(0xFF0D0D0F)],
+        ),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: AppColors.statPurple, width: 1.5),
+        boxShadow: const [
+          BoxShadow(
+            color: Color(0x408B5CF6),
+            blurRadius: 16,
+            spreadRadius: 2,
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ShaderMask(
+                shaderCallback: (bounds) => const LinearGradient(
+                  colors: [AppColors.statPurple, AppColors.statPurplePastel],
+                ).createShader(bounds),
+                child: Text(
+                  'Kage',
+                  style: GoogleFonts.rajdhani(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              if (isCurrentPlan)
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                  decoration: BoxDecoration(
+                    color: AppColors.statPurple.withValues(alpha: 0.15),
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Text(
+                    'ACTUEL',
+                    style: GoogleFonts.rajdhani(
+                      fontSize: 10,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.statPurple,
+                    ),
+                  ),
+                ),
+            ],
+          ),
+          const SizedBox(height: 4),
+          Text(
+            price,
+            style: GoogleFonts.rajdhani(
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+              color: AppColors.statPurple,
+            ),
+          ),
+          const SizedBox(height: 10),
+          for (final label in const [
+            'Tout Jonin inclus',
+            'Génération images IA ⭐',
+            'Sans watermark',
+            'Thèmes exclusifs 👑',
+            'Priorité Fan du Mois',
+          ])
+            Padding(
+              padding: const EdgeInsets.only(bottom: 6),
+              child: Row(
+                children: [
+                  const Text(
+                    '✓',
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.success,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Text(
+                    label,
+                    style: GoogleFonts.nunitoSans(
+                      fontSize: 12,
+                      color: AppColors.textPrimary,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          const SizedBox(height: 10),
+          GestureDetector(
+            onTap: isCurrentPlan ? null : onUpgrade,
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                gradient: isCurrentPlan
+                    ? null
+                    : const LinearGradient(
+                        colors: [AppColors.statPurple, Color(0xFF6D28D9)],
+                      ),
+                color: isCurrentPlan ? AppColors.backgroundElevated : null,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Text(
+                isCurrentPlan ? 'Plan actuel 👑' : 'Obtenir Kage Pass 👑',
+                style: GoogleFonts.rajdhani(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                  color: isCurrentPlan ? AppColors.textDisabled : Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _PaymentOptionButton extends StatelessWidget {
+  final String label;
+  final VoidCallback onTap;
+
+  const _PaymentOptionButton({required this.label, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      height: 52,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.backgroundElevated,
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
           ),
         ),
+        onPressed: onTap,
         child: Text(
           label,
           style: GoogleFonts.nunitoSans(
-            fontSize: 13,
-            fontWeight: FontWeight.w700,
-            color: selected ? Colors.white : theme.textPrimary,
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            color: AppColors.textPrimary,
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _PaymentPill extends StatelessWidget {
+  final String label;
+  const _PaymentPill({required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 80,
+      height: 32,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: AppColors.backgroundElevated,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Text(
+        label,
+        style: GoogleFonts.nunitoSans(
+          fontSize: 10,
+          color: AppColors.textSecondary,
         ),
       ),
     );

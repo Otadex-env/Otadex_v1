@@ -48,3 +48,5 @@ app.*.map.json
 .claude/
 
 serviceAccountkey.json
+otadex-key
+key.properties
