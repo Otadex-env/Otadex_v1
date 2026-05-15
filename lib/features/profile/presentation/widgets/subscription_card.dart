@@ -80,7 +80,7 @@ class SubscriptionCard extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 12),
                     ),
                     child: Text(
-                      s.upgradeToJonin,
+                      'Obtenir une licence',
                       style: GoogleFonts.nunitoSans(
                         fontSize: 13,
                         fontWeight: FontWeight.w700,

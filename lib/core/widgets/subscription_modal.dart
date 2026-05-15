@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../l10n/app_strings.dart';
+import '../services/url_launcher_service.dart';
 import '../theme/app_colors.dart';
 import '../theme/otadex_theme.dart';
 import 'subscription_billing_card.dart';
@@ -112,6 +114,18 @@ _PlanData _buildKagePlan(AppStrings s) => _PlanData(
         ),
       ],
     );
+
+const _joninMonthlyUrl = 'https://store.tilstack.me/prd_1epnxl';
+const _joninAnnualUrl = 'https://store.tilstack.me/prd_xqbqdx';
+const _kageMonthlyUrl = 'https://store.tilstack.me/prd_hdj1oy';
+const _kageAnnualUrl = 'https://store.tilstack.me/prd_0jx2mh';
+
+String _licenseUrl(SubscriptionPlan plan, bool isAnnual) {
+  if (plan == SubscriptionPlan.jonin) {
+    return isAnnual ? _joninAnnualUrl : _joninMonthlyUrl;
+  }
+  return isAnnual ? _kageAnnualUrl : _kageMonthlyUrl;
+}
 
 // ── Modal ─────────────────────────────────────────────────────────────────────
 
@@ -266,7 +280,9 @@ class _SubscriptionModalState extends State<_SubscriptionModal> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton.icon(
-                      onPressed: () {},
+                      onPressed: () => UrlLauncherService.openUrl(
+                        _licenseUrl(widget.plan, _isAnnual),
+                      ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: data.color,
                         foregroundColor: Colors.white,
@@ -292,7 +308,8 @@ class _SubscriptionModalState extends State<_SubscriptionModal> {
                   // Already have a license
                   Center(
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () =>
+                          GoRouter.of(context).push('/subscription'),
                       child: Text(
                         s.subscriptionAlreadyLicense,
                         style: GoogleFonts.nunitoSans(

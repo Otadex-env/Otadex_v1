@@ -35,6 +35,6 @@ class AppConstants {
 
   // App info
   static const String appName = 'OTADEX';
-  static const String appVersion = '1.0.0';
+  static const String appVersion = '1.5.0';
   static const String appTagline = 'The Ultimate Anime Character Encyclopedia';
 }

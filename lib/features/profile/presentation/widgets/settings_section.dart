@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/l10n/app_strings.dart';
 import '../../../../core/services/url_launcher_service.dart';
 import '../../../../core/theme/otadex_theme.dart';
@@ -118,9 +119,16 @@ class SettingsSection extends StatelessWidget {
     );
   }
 
-  Future<void> _openTerms() => UrlLauncherService.openTerms();
-
   Future<void> _openPrivacyPolicy() => UrlLauncherService.openPrivacyPolicy();
+
+  Future<void> _openDeveloper() =>
+      UrlLauncherService.openUrl('https://tilstack.me');
+
+  Future<void> _openGithub() =>
+      UrlLauncherService.openUrl('https://github.com/TilStack');
+
+  Future<void> _openSupportPage() =>
+      UrlLauncherService.openUrl('https://store.tilstack.me/');
 
   Future<void> _openKageTheme(BuildContext context, AppStrings s) async {
     await _showFeatureSheet(
@@ -147,7 +155,7 @@ class SettingsSection extends StatelessWidget {
   }
 
   Future<void> _openRateApp(BuildContext context, AppStrings s) =>
-      UrlLauncherService.openUrl('https://otadex.tilstack.me');
+      UrlLauncherService.openUrl('https://store.tilstack.me/');
 
   @override
   Widget build(BuildContext context) {
@@ -157,6 +165,24 @@ class SettingsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          _SectionLabel(label: 'Support'),
+          const SizedBox(height: 8),
+          _SettingsCard(children: [
+            _SettingsRow(
+              icon: '⭐',
+              label: 'Noter l\'application',
+              hasArrow: true,
+              onTap: () => _openRateApp(context, s),
+            ),
+            const _SettingsDivider(),
+            _SettingsRow(
+              icon: '💛',
+              label: 'Me soutenir',
+              hasArrow: true,
+              onTap: _openSupportPage,
+            ),
+          ]),
+          const SizedBox(height: 24),
           _SectionLabel(label: s.accountSection),
           const SizedBox(height: 8),
           _SettingsCard(children: [
@@ -238,28 +264,40 @@ class SettingsSection extends StatelessWidget {
           _SettingsCard(children: [
             _SettingsRow(
                 icon: 'ℹ️',
-                label: s.otadexVersion,
-                value: '1.0.0',
+                label: 'Version',
+                value: AppConstants.appVersion,
                 hasArrow: false),
             const _SettingsDivider(),
             _SettingsRow(
-                icon: '📄',
-                label: s.termsOfService,
+                icon: '👨‍💻',
+                label: 'Développeur',
+                value: 'TilStack',
                 hasArrow: true,
-                onTap: _openTerms),
+                onTap: _openDeveloper),
+            const _SettingsDivider(),
+            _SettingsRow(
+                icon: '🐙',
+                label: 'GitHub',
+                value: 'TilStack',
+                hasArrow: true,
+                onTap: _openGithub),
             const _SettingsDivider(),
             _SettingsRow(
                 icon: '🔐',
                 label: s.privacyPolicy,
                 hasArrow: true,
                 onTap: _openPrivacyPolicy),
-            const _SettingsDivider(),
-            _SettingsRow(
-                icon: '⭐',
-                label: s.rateApp,
-                hasArrow: true,
-                onTap: () => _openRateApp(context, s)),
           ]),
+          const SizedBox(height: 16),
+          Center(
+            child: Text(
+              'Fait avec ❤️ au Cameroun',
+              style: GoogleFonts.nunitoSans(
+                fontSize: 12,
+                color: OtadexTheme.of(context).textSecondary,
+              ),
+            ),
+          ),
         ],
       ),
     );
