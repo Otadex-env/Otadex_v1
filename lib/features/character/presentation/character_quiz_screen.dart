@@ -58,7 +58,12 @@ class _CharacterQuizScreenState extends ConsumerState<CharacterQuizScreen> {
       ),
       QuizQuestion(
         question: 'Dans quel type d\'univers évolue $name ?',
-        options: ['Science-fiction', 'Fantasy/Magie', 'Sport', 'Tranche de vie'],
+        options: [
+          'Science-fiction',
+          'Fantasy/Magie',
+          'Sport',
+          'Tranche de vie'
+        ],
         correctIndex: 1,
       ),
       QuizQuestion(
@@ -110,7 +115,7 @@ class _CharacterQuizScreenState extends ConsumerState<CharacterQuizScreen> {
     setState(() {
       _validated = false;
       _selectedAnswer = null;
-      if (_currentQuestion < 4) {
+      if (_currentQuestion < _questions.length - 1) {
         _currentQuestion++;
       } else {
         _quizFinished = true;
@@ -236,8 +241,7 @@ class _CharacterQuizScreenState extends ConsumerState<CharacterQuizScreen> {
             children: [
               // ── Header ──
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 child: Row(
                   children: [
                     IconButton(

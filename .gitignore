@@ -47,6 +47,8 @@ app.*.map.json
 #Claude IA
 .claude/
 
+serviceAccountKey.json
 serviceAccountkey.json
+*.jks
 otadex-key
 key.properties

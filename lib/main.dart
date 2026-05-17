@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'core/constants/app_constants.dart';
 import 'core/models/user_rank.dart';
 import 'core/providers/auth_provider.dart';
+import 'core/providers/currency_provider.dart';
 import 'core/providers/user_profile_provider.dart';
 import 'core/theme/app_colors.dart';
 import 'firebase_options.dart';
@@ -27,6 +28,7 @@ void main() async {
   final userId = prefs.getString(AppConstants.keyUserId);
   final pseudo = prefs.getString(AppConstants.keyUserPseudo);
   final email = prefs.getString(AppConstants.keyUserEmail);
+  final currency = prefs.getString(AppConstants.keyUserCurrency) ?? 'XAF';
   final userRank = UserRank.values.firstWhere(
     (r) => r.name == rankStr,
     orElse: () => UserRank.genin,
@@ -57,6 +59,7 @@ void main() async {
     ProviderScope(
       overrides: [
         isLoggedInProvider.overrideWith((ref) => isLoggedIn),
+        currencyProvider.overrideWith((ref) => currency),
         userProfileProvider.overrideWith(
           (ref) => UserProfileNotifier(
             initialRank: userRank,

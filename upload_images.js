@@ -11,7 +11,7 @@ admin.initializeApp({
 });
 
 const bucket = admin.storage().bucket();
-const baseDir = './assets/images/Animé pictures';
+const baseDir = process.argv[2] || './assets/upload/characters';
 
 /** @param {string} filename */
 function contentTypeFor(filename) {
@@ -19,6 +19,11 @@ function contentTypeFor(filename) {
 }
 
 async function uploadAll() {
+  if (!fs.existsSync(baseDir)) {
+    throw new Error(
+      `Dossier introuvable: ${baseDir}. Passe le dossier source en argument.`
+    );
+  }
   const animes = fs.readdirSync(baseDir);
   for (const anime of animes) {
     const animePath = path.join(baseDir, anime);

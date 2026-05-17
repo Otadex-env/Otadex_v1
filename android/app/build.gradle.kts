@@ -17,6 +17,7 @@ val keystoreProperties = Properties().apply {
         load(FileInputStream(keystorePropertiesFile))
     }
 }
+val hasReleaseKeystore = keystorePropertiesFile.exists()
 
 android {
     namespace = "com.otadex.otadex"
@@ -33,7 +34,6 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.otadex.otadex"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
@@ -45,16 +45,22 @@ android {
 
     signingConfigs {
         create("release") {
-            keyAlias = keystoreProperties.getProperty("keyAlias", "otadex")
-            keyPassword = keystoreProperties.getProperty("keyPassword", "1root1")
-            storeFile = file(keystoreProperties.getProperty("storeFile", "otadex-key.jks"))
-            storePassword = keystoreProperties.getProperty("storePassword", "1root1")
+            if (hasReleaseKeystore) {
+                keyAlias = keystoreProperties.getProperty("keyAlias")
+                keyPassword = keystoreProperties.getProperty("keyPassword")
+                storeFile = file(keystoreProperties.getProperty("storeFile"))
+                storePassword = keystoreProperties.getProperty("storePassword")
+            }
         }
     }
 
     buildTypes {
         release {
-            signingConfig = signingConfigs.getByName("release")
+            signingConfig = if (hasReleaseKeystore) {
+                signingConfigs.getByName("release")
+            } else {
+                signingConfigs.getByName("debug")
+            }
             isMinifyEnabled = true
             isShrinkResources = true
         }
@@ -64,4 +70,3 @@ android {
 flutter {
     source = "../.."
 }
-

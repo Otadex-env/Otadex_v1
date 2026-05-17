@@ -19,12 +19,12 @@
 - Auth : Firebase Authentication (email + Google OAuth)
 - Base de données : Cloud Firestore
 - Stockage : Firebase Storage
-- Fonctions serveur : Firebase Cloud Functions (Node.js)
+- Fonctions serveur : Firebase Cloud Functions (Node.js) — prévues pour plus tard, non nécessaires au flow premium local actuel
 - API animés principale : AniList GraphQL (https://graphql.anilist.co)
 - API animés backup : Jikan REST API (https://api.jikan.moe/v4)
-- IA Chatbot : Anthropic Claude API (via Cloud Functions uniquement)
-- IA Image gen : Pollinations.ai (gratuit, sans clé)
-- Paiement : CinetPay / FedaPay (Mobile Money Cameroun)
+- IA Chatbot : assistant local OTADEX en attendant un branchement Cloud Function
+- IA Image gen : rendu local d'image citation Kage en attendant un générateur distant
+- Paiement : Chariow via liens externes + activation locale de licence
 - Analytics : Firebase Analytics
 - Monitoring : Firebase Crashlytics
 - CI/CD : GitHub Actions + Fastlane
@@ -266,13 +266,12 @@ Chaque feature suit : `data/` | `domain/` | `presentation/screens/` | `presentat
 
 ### 🔜 À faire
 
-- Connexion Firebase Auth réelle (remplacer mock SharedPreferences)
-- HomeScreen : données mockées → vraies données Firestore
-- CharacterDetailScreen
-- SearchScreen
-- Fiche Animé + Fiche Créateur
-- PlansScreen + intégration CinetPay
-- Image persistance avatar (Firebase Storage)
+- Soumission Play Store : AAB/APK signé, captures finales, Play Console.
+- Tester login/register/logout et achats licence sur appareil réel.
+- Déployer/valider `firestore.rules` côté Firebase.
+- Remplacer progressivement les données enrichies mock par AniList/Firestore live.
+- Brancher plus tard Cloud Functions pour IA distante et validation serveur des licences.
+- Image persistance avatar complète via Firebase Storage.
 
 ## 12. Providers Riverpod existants
 
@@ -294,7 +293,7 @@ Chaque feature suit : `data/` | `domain/` | `presentation/screens/` | `presentat
 7. SearchScreen + Firestore fulltext
 8. ProfileScreen
 9. Fiche Animé + Fiche Créateur
-10. PlansScreen + CinetPay intégration
+10. PlansScreen + Chariow/licence locale
 
 ---
 

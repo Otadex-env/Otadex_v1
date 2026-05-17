@@ -5,8 +5,8 @@
 - Flutter SDK : `>=3.0.0 <4.0.0` (Flutter 3.x)
 - App version : `1.0.0+1`
 - Firebase configuré : **OUI (Storage inclus)** — FlutterFire Android + Firebase Auth email/Google + Firestore profil utilisateur + Functions + Storage initialisés
-- Dernier écran complété : **ProfileScreen** (avatar picker + Jonin gate, mai 2026)
-- Dernière mise à jour : **Flow abonnement / licence Chariow + section About sur la page profil**, mai 2026
+- Dernier écran complété : **PlansScreen + ProfileScreen** (licence Chariow, préférence monnaie, mai 2026)
+- Dernière mise à jour : **Correctifs release + prix multi-devises + premium local sans Cloud Function**, 17 mai 2026
 
 ## Dépendances installées (`pubspec.yaml`)
 
@@ -77,6 +77,7 @@
 | ------------------------------------------------- | ------- | -------------------------------------------------------------------------- |
 | `lib/core/providers/auth_provider.dart`           | ✅ Fait | `isLoggedInProvider` (StateProvider<bool>)                                 |
 | `lib/core/providers/user_profile_provider.dart`   | ✅ Fait | `UserProfileNotifier` + `updateProfile` + `updateAvatar`                   |
+| `lib/core/providers/currency_provider.dart`       | ✅ Fait | Préférence monnaie utilisateur (XAF/USD/EUR/GBP/CAD/NGN)                   |
 | `lib/core/providers/otadex_providers.dart`        | ✅ Fait | Providers données mock (allCharacters, animes, creators)                   |
 | `lib/core/providers/anilist_providers.dart`       | ✅ Fait | Providers AniList live (trending, search, featuredSlides, characterDetail) |
 | `lib/core/providers/recommendation_provider.dart` | ✅ Fait | Provider recommandations                                                   |
@@ -336,8 +337,8 @@
 - Genin card (PlanCard) — disabled si currentRank == genin, AlertDialog confirmation si rétrograder
 - Jonin card (PlanCard + \_GlowWrapper bleu) — badge POPULAIRE, glow statBlue
 - Kage card (\_KageCard) — gradient #1A0A2E→#0D0D0F, border statPurple, glow violet, ShaderMask titre, bouton GestureDetector gradient
-- Payment sheet — 3 boutons (Orange Money / MTN MoMo / Carte), simulation 1 500ms, updateIdentity + SharedPreferences + Firestore
-- Pills modes de paiement + note légale bas de page
+- Flow Chariow — liens d'achat externes + activation locale de licence Jonin/Kage
+- Prix multi-devises selon préférence profil
 - dart analyze → 0 erreur
 
 **Task 18 — CharacterDetailScreen enrichi + nouveaux écrans** ✅ Fait
@@ -383,9 +384,21 @@
 - `mockStudios` (5 studios) et `mockMangakas` (6 auteurs) ajoutés dans `MockData`
 - Onglets Relations / Médias / Doubleurs : priorité mock → AniList → fallback texte
 - `CharacterQuizScreen` accepte `List<QuizQuestion>` spécifique au personnage
-- Note : Remplacer mock par AniList API en **Task 21**
+- Note : Remplacer mock par AniList API live dans une prochaine tâche post-release
 
-**Task 21 — Play Store soumission**
+**Task 21 — Correctifs release + premium local** ✅ Fait
+
+- Android label corrigé : `Otadex`
+- `build.gradle.kts` nettoyé : plus de mots de passe release hardcodés, fallback debug si `key.properties` absent
+- `.gitignore` renforcé : `serviceAccountKey.json`, `*.jks`, `key.properties`
+- `upload_images.js` ne pointe plus vers le vieux dossier supprimé `assets/images/Animé pictures`; dossier source passé en argument possible
+- Préférence monnaie ajoutée dans le profil : XAF, USD, EUR, GBP, CAD, NGN
+- Prix centralisés via `PlanPrices` : Jonin 2 000 FCFA/mois, Kage 5 000 FCFA/mois, affichage selon monnaie utilisateur
+- `PlansScreen` affiche mensuel/annuel avec `BillingToggle` et active localement Jonin/Kage via licence Chariow
+- Fonctions premium finalisées sans Cloud Function : chatbot local OTADEX, quiz variable selon nombre de questions, génération locale d'image citation Kage
+- `flutter analyze` → 0 issue
+
+**Task 22 — Play Store soumission**
 
 - APK signé, captures d'écran, soumission Google Play Console
 
@@ -446,11 +459,12 @@ URLs Play Console :
 | 10 mai 2026 | Vérification accès invité/connecté — Home et Search restent accessibles publiquement, Collection et Notifications sont protégées en accès direct par AuthRequiredScreen, la réhydratation du profil local ne se fait que si l'utilisateur est connecté.                                                                                                                                                                                                                                                                   |
 | 14 mai 2026 | Firebase Storage images — upload_images.js créé (Node.js, upload 131 images vers Storage bucket tilqui.appspot.com), firebase_storage ^11.6.0 ajouté, StorageService créé (getCharacterImages + getCharacterCover), storageServiceProvider + characterImagesProvider ajoutés dans anilist_providers.dart, \_effectiveImages dans CharacterDetailScreen priorise Storage → images AniList → imagePath → fallback. dart analyze → 0 issue.                                                                                  |
 | 15 mai 2026 | Task 15 — Collection persistante Firestore — CollectionService créé (getCollection, collectionStream, addToCollection/removeFromCollection avec gate Genin 10 persos), collectionServiceProvider + collectionStreamProvider + isCollectedProvider ajoutés dans anilist_providers.dart, CharacterDetailScreen FAB branché sur Firestore (FieldValue.arrayUnion/Remove) + gate LIMIT_REACHED → modal upgrade Jonin, CollectionScreen migré vers collectionStreamProvider (when loading/error/data). dart analyze → 0 issue. |
-| 15 mai 2026 | Task 16 — PlansScreen complet — plans_screen.dart réécrit (ConsumerStatefulWidget), toggle BillingToggle réutilisé, Genin PlanCard + confirmation rétrograder, Jonin PlanCard + \_GlowWrapper bleu + badge POPULAIRE, Kage \_KageCard gradient violet + ShaderMask + boxShadow, \_showPaymentSheet (3 boutons paiement) + simulation succès 1 500ms + updateIdentity + SharedPreferences + Firestore, pills modes paiement, note légale. dart analyze → 0 issue.                                                          |
+| 15 mai 2026 | Task 16 — PlansScreen complet — plans_screen.dart réécrit (ConsumerStatefulWidget), toggle BillingToggle réutilisé, flow premium ensuite migré vers Chariow/licence locale. dart analyze → 0 issue.                                                          |
 
 | 16 mai 2026 | Task 18 — CharacterDetailScreen enrichi (5 onglets rank-aware : Infos / Galerie / Relations / Médias / Exclusif 👑), StudioScreen + VoiceActorScreen + CharacterChatScreen + CharacterQuizScreen créés, Character model enrichi (bloodType/dateOfBirth/quotes/trivia/aiPersonality/voiceActorIds), AniListService enrichi (getFullCharacterData/getStudioById/getVoiceActorById), app_router 4 nouvelles routes. dart analyze → 0 erreur, 0 warning. |
 | 16 mai 2026 | Task 19 correctif — Stratégie freemium corrigée : contenu encyclopédique 100% libre pour Genin (bio complète, tous pouvoirs, citations, doubleurs, relations), Trivia Kage uniquement, onglet Exclusif refait en 3 niveaux (Genin locked / Jonin quiz + upsell banners / Kage all), _buildUpsellBanner contextuel, bannière ads simulée Genin en galerie. dart analyze → 0 erreur. |
-| 17 mai 2026 | Task 20 — Mock data enrichie : quotes, trivia, aiPersonality, relations, voiceActors, mediaAppearances, quizQuestions pour 8 personnages existants + ajout Luffy (One Piece) et Frieren (FBJ). Modèles CharacterRelation/VoiceActorMock/MediaAppearanceMock/QuizQuestion créés dans character.dart. mockStudios (5) et mockMangakas (6) ajoutés dans MockData. Onglets Relations/Médias/Doubleurs branchés sur mock data (priorité mock → AniList → fallback). Quiz screen accepte List<QuizQuestion> spécifique au personnage (fallback générique si absent). app_router passe quizQuestions via extra. dart analyze → 0 erreur. Note : Remplacer mock par AniList API live en Task 21. |
+| 17 mai 2026 | Task 20 — Mock data enrichie : quotes, trivia, aiPersonality, relations, voiceActors, mediaAppearances, quizQuestions pour 8 personnages existants + ajout Luffy (One Piece) et Frieren (FBJ). Modèles CharacterRelation/VoiceActorMock/MediaAppearanceMock/QuizQuestion créés dans character.dart. mockStudios (5) et `mockMangakas` (6) ajoutés dans MockData. Onglets Relations/Médias/Doubleurs branchés sur mock data (priorité mock → AniList → fallback). Quiz screen accepte List<QuizQuestion> spécifique au personnage (fallback générique si absent). app_router passe quizQuestions via extra. dart analyze → 0 erreur. |
+| 17 mai 2026 | Task 21 — Correctifs release + premium local : label Android `Otadex`, signing release sans secrets hardcodés, `.gitignore` renforcé, `upload_images.js` nettoyé, préférence monnaie profil ajoutée, prix plans multi-devises centralisés, Kage fixé à 5 000 FCFA/mois, activation licence Chariow locale Jonin/Kage, assistant local OTADEX, génération locale d'image citation Kage, quiz sans limite fixe à 5 questions. flutter analyze → 0 issue. |
 
 ---
 

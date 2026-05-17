@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../../core/constants/app_constants.dart';
+import '../../../core/providers/currency_provider.dart';
 import '../../../core/providers/user_profile_provider.dart';
 import '../../../core/services/url_launcher_service.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../core/utils/price_formatter.dart';
+import '../../profile/presentation/widgets/billing_toggle.dart';
 import '../../profile/presentation/widgets/plan_card.dart';
 
 class PlansScreen extends ConsumerStatefulWidget {
@@ -73,16 +77,23 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
     }
 
     setState(() => _isActivating = true);
+    final plan = _planFromLicense(license);
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_licensePrefKey, license);
+    await prefs.setString(AppConstants.keyUserRank, plan);
+    await prefs.setString(AppConstants.keySubscriptionPlan, plan);
     await Future.delayed(const Duration(milliseconds: 500));
     if (!mounted) return;
+    ref.read(userProfileProvider.notifier).updateIdentity(rank: plan);
     setState(() {
       _savedLicense = license;
       _isActivating = false;
     });
     _showMessage(
-        'Licence activée avec succès. Ton accès premium est maintenant prêt.');
+      plan == AppConstants.rankKage
+          ? 'Licence Kage activée. Tes fonctionnalités premium sont prêtes.'
+          : 'Licence Jonin activée. Tes fonctionnalités premium sont prêtes.',
+    );
   }
 
   bool _isValidLicense(String code) {
@@ -94,7 +105,15 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
     if (knownChariowLicenses.isNotEmpty) {
       return knownChariowLicenses.contains(code);
     }
-    return code.length >= 16;
+    final normalized = code.toUpperCase();
+    final hasTier = normalized.contains('JONIN') || normalized.contains('KAGE');
+    return code.length >= 16 && hasTier;
+  }
+
+  String _planFromLicense(String code) {
+    final normalized = code.toUpperCase();
+    if (normalized.contains('KAGE')) return AppConstants.rankKage;
+    return AppConstants.rankJonin;
   }
 
   void _showMessage(String message) {
@@ -105,7 +124,7 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ref.watch(userProfileProvider);
+    final currency = ref.watch(currencyProvider);
 
     return Scaffold(
       backgroundColor: AppColors.backgroundDeep,
@@ -139,6 +158,13 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
                 ),
               ),
               const SizedBox(height: 24),
+              BillingToggle(
+                cycle: _isAnnual ? 'annuel' : 'mensuel',
+                onChanged: (cycle) {
+                  setState(() => _isAnnual = cycle == 'annuel');
+                },
+              ),
+              const SizedBox(height: 18),
               Container(
                 padding: const EdgeInsets.all(18),
                 decoration: BoxDecoration(
@@ -164,7 +190,8 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
                         hintText: 'XXXX-XXXX-XXXX-XXXX-XXXX-XXXX',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(14),
-                          borderSide: BorderSide(color: AppColors.borderSubtle),
+                          borderSide:
+                              const BorderSide(color: AppColors.borderSubtle),
                         ),
                         filled: true,
                         fillColor: AppColors.backgroundElevated,
@@ -251,8 +278,7 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
                 name: 'Jonin',
                 tag: 'POPULAIRE',
                 tagColor: AppColors.statBlue,
-                price:
-                    _isAnnual ? '20 000 FCFA / 1 an' : '2 000 FCFA / 30 jours',
+                price: PlanPrices.jonin(_isAnnual, currency),
                 priceColor: AppColors.statBlue,
                 features: const [
                   (true, 'Collection illimitée'),
@@ -273,8 +299,7 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
                 name: 'Kage',
                 tag: null,
                 tagColor: AppColors.statPurple,
-                price:
-                    _isAnnual ? '20 000 FCFA / 1 an' : '2 000 FCFA / 30 jours',
+                price: PlanPrices.kage(_isAnnual, currency),
                 priceColor: AppColors.statPurple,
                 features: const [
                   (true, 'Tout Jonin inclus'),

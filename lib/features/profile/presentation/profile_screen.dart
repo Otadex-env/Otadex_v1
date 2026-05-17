@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../../core/constants/app_constants.dart';
 import '../../../core/data/mock_data.dart';
 import '../../../core/l10n/locale_provider.dart';
+import '../../../core/providers/currency_provider.dart';
 import '../../../core/providers/user_profile_provider.dart';
 import '../../../core/theme/theme_mode_provider.dart';
 import 'widgets/avatar_picker.dart';
@@ -48,9 +51,16 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     );
   }
 
+  Future<void> _selectCurrency(String currency) async {
+    ref.read(currencyProvider.notifier).state = currency;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(AppConstants.keyUserCurrency, currency);
+  }
+
   @override
   Widget build(BuildContext context) {
     final locale = ref.watch(localeProvider);
+    final currency = ref.watch(currencyProvider);
     final profile = ref.watch(userProfileProvider);
     final collectedIds = profile.collectedCharacterIds;
     final collectionItems = MockData.allCharacters
@@ -107,6 +117,8 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
             currentLanguage: locale,
             onLanguageSelect: (lang) =>
                 ref.read(localeProvider.notifier).state = lang,
+            currentCurrency: currency,
+            onCurrencySelect: _selectCurrency,
             isDarkMode: ref.watch(themeModeProvider) == ThemeMode.dark,
             onThemeToggle: () {
               final current = ref.read(themeModeProvider);

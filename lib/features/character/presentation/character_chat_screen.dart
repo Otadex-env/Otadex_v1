@@ -83,6 +83,20 @@ class _CharacterChatScreenState extends ConsumerState<CharacterChatScreen>
 
   String _simulateResponse(String message) {
     final lower = widget.charName.toLowerCase();
+    final question = message.toLowerCase();
+    if (question.contains('bio') ||
+        question.contains('histoire') ||
+        question.contains('qui es')) {
+      final bio = widget.charBio.trim();
+      if (bio.isNotEmpty) {
+        return bio.length > 220 ? '${bio.substring(0, 220)}...' : bio;
+      }
+    }
+    if (question.contains('pouvoir') ||
+        question.contains('force') ||
+        question.contains('capacite')) {
+      return "Mes capacites dependent de mon univers, mais OTADEX retient surtout mon impact, mes relations et les moments qui ont marque les fans.";
+    }
     if (lower.contains('gojo')) {
       return "Hmm, intéressant comme question... Tu as bon goût de t'intéresser à moi. Mais franchement, peu de gens méritent une vraie réponse. Considère-toi chanceux. 😎";
     } else if (lower.contains('goku') || lower.contains('naruto')) {
@@ -316,8 +330,7 @@ class _CharacterChatScreenState extends ConsumerState<CharacterChatScreen>
             ),
             // IA pill
             Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
               decoration: BoxDecoration(
                 color: AppColors.statPurple.withValues(alpha: 0.15),
                 border: Border.all(color: AppColors.statPurple, width: 1),
@@ -384,8 +397,7 @@ class _CharacterChatScreenState extends ConsumerState<CharacterChatScreen>
               constraints: BoxConstraints(
                 maxWidth: MediaQuery.of(context).size.width * 0.75,
               ),
-              margin: const EdgeInsets.only(
-                  top: 4, bottom: 4, right: 16),
+              margin: const EdgeInsets.only(top: 4, bottom: 4, right: 16),
               padding: const EdgeInsets.all(12),
               decoration: const BoxDecoration(
                 color: AppColors.backgroundElevated,
@@ -479,7 +491,7 @@ class _CharacterChatScreenState extends ConsumerState<CharacterChatScreen>
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'IA alimentée par Claude · Kage exclusif',
+              'Assistant local OTADEX · Kage exclusif',
               style: GoogleFonts.dmSans(
                 fontSize: 11,
                 color: AppColors.textDisabled,
@@ -506,8 +518,7 @@ class _CharacterChatScreenState extends ConsumerState<CharacterChatScreen>
                         color: AppColors.textPrimary,
                       ),
                       decoration: InputDecoration(
-                        hintText:
-                            'Dis quelque chose à ${widget.charName}...',
+                        hintText: 'Dis quelque chose à ${widget.charName}...',
                         hintStyle: GoogleFonts.dmSans(
                           fontSize: 14,
                           color: AppColors.textDisabled,

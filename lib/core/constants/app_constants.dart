@@ -13,6 +13,7 @@ class AppConstants {
   static const String keyUserDisplayName = 'user_display_name';
   static const String keyUserAvatarUrl = 'user_avatar_url';
   static const String keyUserRank = 'user_rank';
+  static const String keyUserCurrency = 'user_currency';
   static const String keySubscriptionPlan = 'subscription_plan';
 
   // SharedPreferences keys — onboarding data

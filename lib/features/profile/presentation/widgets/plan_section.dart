@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/l10n/app_strings.dart';
+import '../../../../core/providers/currency_provider.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/otadex_theme.dart';
+import '../../../../core/utils/price_formatter.dart';
 import '../../../../core/widgets/subscription_modal.dart';
 import 'billing_toggle.dart';
 import 'plan_card.dart';
 
-class PlanSection extends StatelessWidget {
+class PlanSection extends ConsumerWidget {
   final String billingCycle;
   final ValueChanged<String> onBillingChanged;
 
@@ -18,10 +21,11 @@ class PlanSection extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = OtadexTheme.of(context);
     final s = AppStrings.of(context);
     final isAnnual = billingCycle == 'annuel';
+    final currency = ref.watch(currencyProvider);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
@@ -43,7 +47,7 @@ class PlanSection extends StatelessWidget {
             name: 'Genin',
             tag: s.currentPlanTag,
             tagColor: AppColors.success,
-            price: '0 FCFA',
+            price: PlanPrices.free(currency),
             priceColor: theme.textPrimary,
             features: [
               (true, s.sheetsNavigation),
@@ -62,7 +66,7 @@ class PlanSection extends StatelessWidget {
             name: 'Jonin',
             tag: null,
             tagColor: AppColors.rankJonin,
-            price: isAnnual ? s.joninAnnualPrice : s.joninMonthlyPrice,
+            price: PlanPrices.jonin(isAnnual, currency),
             priceColor: AppColors.rankJonin,
             features: [
               (true, s.unlimitedCollection),
@@ -74,7 +78,8 @@ class PlanSection extends StatelessWidget {
             buttonEnabled: true,
             borderColor: AppColors.rankJonin,
             isCta: false,
-            onUpgrade: () => showSubscriptionModal(context, SubscriptionPlan.jonin),
+            onUpgrade: () =>
+                showSubscriptionModal(context, SubscriptionPlan.jonin),
           ),
           const SizedBox(height: 12),
           // Kage — top tier CTA
@@ -82,7 +87,7 @@ class PlanSection extends StatelessWidget {
             name: '⭐ Kage Pass',
             tag: null,
             tagColor: AppColors.rankJonin,
-            price: isAnnual ? s.kageAnnualPrice : s.kageMonthlyPrice,
+            price: PlanPrices.kage(isAnnual, currency),
             priceColor: AppColors.rankJonin,
             features: [
               (true, s.joninIncluded),
@@ -94,7 +99,8 @@ class PlanSection extends StatelessWidget {
             buttonEnabled: true,
             borderColor: AppColors.rankJonin,
             isCta: true,
-            onUpgrade: () => showSubscriptionModal(context, SubscriptionPlan.kage),
+            onUpgrade: () =>
+                showSubscriptionModal(context, SubscriptionPlan.kage),
           ),
         ],
       ),

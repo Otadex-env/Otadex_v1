@@ -5,10 +5,12 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../core/models/character.dart';
 import '../../../core/providers/anilist_providers.dart';
 import '../../../core/providers/auth_provider.dart';
+import '../../../core/providers/currency_provider.dart';
 import '../../../core/providers/user_profile_provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/otadex_theme.dart';
 import '../../../core/theme/rank_theme.dart';
+import '../../../core/utils/price_formatter.dart';
 import '../../../core/widgets/auth_gate_modal.dart';
 import '../../../core/widgets/otadex_image.dart';
 import '../../../core/widgets/subscription_modal.dart';
@@ -19,8 +21,8 @@ import 'widgets/char_pill.dart';
 enum _Tab { infos, galerie, relations, medias, exclusif }
 
 // ─── Provider données enrichies AniList (utilisé dans INFOS, RELATIONS, MEDIAS)
-final _charFullDataProvider =
-    FutureProvider.autoDispose.family<Map<String, dynamic>?, int>((ref, id) async {
+final _charFullDataProvider = FutureProvider.autoDispose
+    .family<Map<String, dynamic>?, int>((ref, id) async {
   return ref.read(anilistServiceProvider).getFullCharacterData(id);
 });
 
@@ -125,6 +127,121 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
   String _formatLikes(int n) {
     if (n >= 1000) return '${(n / 1000).toStringAsFixed(1)}k';
     return n.toString();
+  }
+
+  void _showLocalQuoteImage() {
+    final quote = c.quotes.isNotEmpty
+        ? c.quotes.first
+        : 'Continue d\'avancer, meme quand le monde devient flou.';
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      builder: (_) => Padding(
+        padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
+        child: Container(
+          decoration: BoxDecoration(
+            color: AppColors.backgroundCard,
+            borderRadius: BorderRadius.circular(24),
+            border: Border.all(color: AppColors.accent.withValues(alpha: 0.4)),
+          ),
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              AspectRatio(
+                aspectRatio: 4 / 5,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(18),
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      if (c.imagePath != null)
+                        OtadexImage(imagePath: c.imagePath!, fit: BoxFit.cover)
+                      else
+                        Container(color: AppColors.backgroundElevated),
+                      Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Colors.black.withValues(alpha: 0.10),
+                              Colors.black.withValues(alpha: 0.82),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        left: 18,
+                        right: 18,
+                        bottom: 18,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '"$quote"',
+                              style: GoogleFonts.rajdhani(
+                                fontSize: 24,
+                                height: 1.05,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.white,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              c.name,
+                              style: GoogleFonts.nunitoSans(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w700,
+                                color: AppColors.accent,
+                              ),
+                            ),
+                            Text(
+                              'OTADEX Kage Studio · rendu local',
+                              style: GoogleFonts.nunitoSans(
+                                fontSize: 11,
+                                color: Colors.white70,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                'Image citation generee localement',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.nunitoSans(
+                  fontSize: 13,
+                  color: AppColors.textSecondary,
+                ),
+              ),
+              const SizedBox(height: 12),
+              ElevatedButton(
+                onPressed: () => Navigator.pop(context),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.accent,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                child: Text(
+                  'Terminer',
+                  style: GoogleFonts.nunitoSans(fontWeight: FontWeight.w700),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   // ── Build ────────────────────────────────────────────────────────
@@ -574,8 +691,7 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
                 ),
                 const SizedBox(height: 10),
                 GestureDetector(
-                  onTap: () =>
-                      setState(() => _aboutExpanded = !_aboutExpanded),
+                  onTap: () => setState(() => _aboutExpanded = !_aboutExpanded),
                   child: Text(
                     _aboutExpanded ? 'Réduire ↑' : 'Lire la suite →',
                     style: GoogleFonts.nunitoSans(
@@ -842,15 +958,13 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
                 fontSize: 13, color: AppColors.textSecondary),
           );
         }
-        final edges =
-            (data['media']?['edges'] as List<dynamic>?) ?? [];
+        final edges = (data['media']?['edges'] as List<dynamic>?) ?? [];
         final voiceActors = <Map<String, dynamic>>[];
         for (final edge in edges) {
           final vas = (edge['voiceActors'] as List<dynamic>?) ?? [];
           for (final va in vas) {
             final vaMap = va as Map<String, dynamic>;
-            final alreadyAdded =
-                voiceActors.any((v) => v['id'] == vaMap['id']);
+            final alreadyAdded = voiceActors.any((v) => v['id'] == vaMap['id']);
             if (!alreadyAdded) voiceActors.add(vaMap);
           }
         }
@@ -1167,14 +1281,10 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
                   separatorBuilder: (_, __) => const SizedBox(width: 10),
                   itemBuilder: (_, i) {
                     final edge = edges[i] as Map<String, dynamic>;
-                    final node =
-                        (edge['node'] as Map<String, dynamic>?) ?? {};
-                    final relType =
-                        (edge['relationType'] as String?) ?? 'ALLY';
-                    final name =
-                        (node['name']?['full'] as String?) ?? '—';
-                    final img =
-                        (node['image']?['large'] as String?) ?? '';
+                    final node = (edge['node'] as Map<String, dynamic>?) ?? {};
+                    final relType = (edge['relationType'] as String?) ?? 'ALLY';
+                    final name = (node['name']?['full'] as String?) ?? '—';
+                    final img = (node['image']?['large'] as String?) ?? '';
 
                     final (badgeLabel, badgeColor) = switch (relType) {
                       'FRIEND' => ('Ami', AppColors.statGreen),
@@ -1221,12 +1331,10 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 6, vertical: 2),
                               decoration: BoxDecoration(
-                                color:
-                                    badgeColor.withValues(alpha: 0.15),
+                                color: badgeColor.withValues(alpha: 0.15),
                                 borderRadius: BorderRadius.circular(20),
                                 border: Border.all(
-                                    color:
-                                        badgeColor.withValues(alpha: 0.4),
+                                    color: badgeColor.withValues(alpha: 0.4),
                                     width: 0.8),
                               ),
                               child: Text(
@@ -1411,8 +1519,7 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
                   fontSize: 14, color: AppColors.textSecondary),
             );
           }
-          final edges =
-              (data['media']?['edges'] as List<dynamic>?) ?? [];
+          final edges = (data['media']?['edges'] as List<dynamic>?) ?? [];
 
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -1429,26 +1536,20 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
               const SizedBox(height: 10),
               ...edges.map((edge) {
                 final edgeMap = edge as Map<String, dynamic>;
-                final node =
-                    (edgeMap['node'] as Map<String, dynamic>?) ?? {};
-                final role =
-                    (edgeMap['characterRole'] as String?) ?? '';
+                final node = (edgeMap['node'] as Map<String, dynamic>?) ?? {};
+                final role = (edgeMap['characterRole'] as String?) ?? '';
                 final title = (node['title']?['french'] as String?) ??
                     (node['title']?['romaji'] as String?) ??
                     '—';
                 final format = (node['format'] as String?) ?? '';
-                final year =
-                    (node['seasonYear'] as int?)?.toString() ?? '';
-                final episodes =
-                    (node['episodes'] as int?)?.toString() ?? '?';
-                final cover =
-                    (node['coverImage']?['large'] as String?) ?? '';
+                final year = (node['seasonYear'] as int?)?.toString() ?? '';
+                final episodes = (node['episodes'] as int?)?.toString() ?? '?';
+                final cover = (node['coverImage']?['large'] as String?) ?? '';
                 final mediaId = (node['id'] as int?);
 
                 return GestureDetector(
                   onTap: mediaId != null
-                      ? () => context
-                          .push('/anime/anilist-$mediaId')
+                      ? () => context.push('/anime/anilist-$mediaId')
                       : null,
                   child: Container(
                     height: 80,
@@ -1534,28 +1635,23 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
               const SizedBox(height: 10),
               ...edges.expand((edge) {
                 final edgeMap = edge as Map<String, dynamic>;
-                final node =
-                    (edgeMap['node'] as Map<String, dynamic>?) ?? {};
+                final node = (edgeMap['node'] as Map<String, dynamic>?) ?? {};
                 final staffList =
                     (node['staff']?['nodes'] as List<dynamic>?) ?? [];
                 return staffList.map((staff) {
                   final staffMap = staff as Map<String, dynamic>;
-                  final name =
-                      (staffMap['name']?['full'] as String?) ?? '—';
-                  final img =
-                      (staffMap['image']?['large'] as String?) ?? '';
+                  final name = (staffMap['name']?['full'] as String?) ?? '—';
+                  final img = (staffMap['image']?['large'] as String?) ?? '';
                   final occupations =
                       (staffMap['primaryOccupations'] as List<dynamic>?)
                               ?.cast<String>() ??
                           [];
-                  final occupation = occupations.isNotEmpty
-                      ? occupations.first
-                      : '';
+                  final occupation =
+                      occupations.isNotEmpty ? occupations.first : '';
                   final staffId = (staffMap['id'] as int?);
                   return GestureDetector(
                     onTap: staffId != null
-                        ? () =>
-                            context.push('/creator/anilist-$staffId')
+                        ? () => context.push('/creator/anilist-$staffId')
                         : null,
                     child: Container(
                       height: 72,
@@ -1564,8 +1660,7 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
                         color: AppColors.backgroundElevated,
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 12),
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
                       child: Row(
                         children: [
                           ClipOval(
@@ -1581,10 +1676,8 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
                           const SizedBox(width: 12),
                           Expanded(
                             child: Column(
-                              crossAxisAlignment:
-                                  CrossAxisAlignment.start,
-                              mainAxisAlignment:
-                                  MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
                                   name,
@@ -1624,19 +1717,16 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
               const SizedBox(height: 10),
               ...edges.expand((edge) {
                 final edgeMap = edge as Map<String, dynamic>;
-                final node =
-                    (edgeMap['node'] as Map<String, dynamic>?) ?? {};
+                final node = (edgeMap['node'] as Map<String, dynamic>?) ?? {};
                 final studios =
-                    (node['studios']?['nodes'] as List<dynamic>?) ??
-                        [];
+                    (node['studios']?['nodes'] as List<dynamic>?) ?? [];
                 return studios.map((studio) {
                   final studioMap = studio as Map<String, dynamic>;
                   final name = (studioMap['name'] as String?) ?? '—';
                   final studioId = (studioMap['id'] as int?);
                   return GestureDetector(
                     onTap: studioId != null
-                        ? () =>
-                            context.push('/studio/$studioId')
+                        ? () => context.push('/studio/$studioId')
                         : null,
                     child: Container(
                       height: 64,
@@ -1645,8 +1735,7 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
                         color: AppColors.backgroundElevated,
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 12),
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
                       child: Row(
                         children: [
                           Container(
@@ -1918,6 +2007,9 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
   Widget _buildExclusifTab(RankTheme theme, String rank) {
     final isKage = rank == 'kage';
     final isJonin = rank == 'jonin';
+    final currency = ref.watch(currencyProvider);
+    final joninMonthly = PlanPrices.jonin(false, currency);
+    final kageMonthly = PlanPrices.kage(false, currency);
 
     // ── Genin : tout verrouillé ──────────────────────────────────────
     if (!isKage && !isJonin) {
@@ -1937,13 +2029,17 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
               ),
             ),
             const SizedBox(height: 12),
-            _exclusifFeatureRow(Icons.quiz_rounded, 'Quiz & scoring Fan du Mois', 'Jonin+'),
+            _exclusifFeatureRow(
+                Icons.quiz_rounded, 'Quiz & scoring Fan du Mois', 'Jonin+'),
             const SizedBox(height: 8),
-            _exclusifFeatureRow(Icons.smart_toy_rounded, 'Chatbot IA personnage', 'Kage'),
+            _exclusifFeatureRow(
+                Icons.smart_toy_rounded, 'Chatbot IA personnage', 'Kage'),
             const SizedBox(height: 8),
-            _exclusifFeatureRow(Icons.auto_awesome_rounded, 'Génération d\'image citation', 'Kage'),
+            _exclusifFeatureRow(Icons.auto_awesome_rounded,
+                'Génération d\'image citation', 'Kage'),
             const SizedBox(height: 8),
-            _exclusifFeatureRow(Icons.bolt_rounded, 'Anecdotes exclusives', 'Kage'),
+            _exclusifFeatureRow(
+                Icons.bolt_rounded, 'Anecdotes exclusives', 'Kage'),
             const SizedBox(height: 28),
             SizedBox(
               width: double.infinity,
@@ -1968,9 +2064,10 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
             ),
             const SizedBox(height: 12),
             TextButton(
-              onPressed: () => showSubscriptionModal(context, SubscriptionPlan.jonin),
+              onPressed: () =>
+                  showSubscriptionModal(context, SubscriptionPlan.jonin),
               child: Text(
-                'Commencer par Jonin — 2 000 FCFA/mois',
+                'Commencer par Jonin — $joninMonthly',
                 style: GoogleFonts.nunitoSans(
                   color: AppColors.statBlue,
                   fontSize: 13,
@@ -1993,7 +2090,7 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
             const SizedBox(height: 4),
             _buildUpsellBanner(
               feature: 'Discuter avec ${c.name} via IA',
-              tierLabel: 'Kage Pass (5 000 FCFA/mois)',
+              tierLabel: 'Kage Pass ($kageMonthly)',
               tierColor: AppColors.statPurple,
               onTap: () => context.push('/subscription'),
             ),
@@ -2048,12 +2145,15 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
                           width: 64,
                           height: 64,
                           child: c.imagePath != null
-                              ? OtadexImage(imagePath: c.imagePath!, fit: BoxFit.cover)
+                              ? OtadexImage(
+                                  imagePath: c.imagePath!, fit: BoxFit.cover)
                               : Container(
                                   color: AppColors.backgroundElevated,
                                   child: Center(
                                     child: Text(
-                                      c.name.isNotEmpty ? c.name[0].toUpperCase() : '?',
+                                      c.name.isNotEmpty
+                                          ? c.name[0].toUpperCase()
+                                          : '?',
                                       style: GoogleFonts.rajdhani(
                                         fontSize: 28,
                                         fontWeight: FontWeight.w800,
@@ -2079,7 +2179,7 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              'Chatbot IA · En temps réel',
+                              'Assistant local · Sans Cloud Function',
                               style: GoogleFonts.nunitoSans(
                                 fontSize: 13,
                                 color: AppColors.textSecondary,
@@ -2121,7 +2221,8 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
             decoration: BoxDecoration(
               color: AppColors.backgroundElevated,
               borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: AppColors.accent.withValues(alpha: 0.4)),
+              border:
+                  Border.all(color: AppColors.accent.withValues(alpha: 0.4)),
             ),
             padding: const EdgeInsets.all(20),
             child: Column(
@@ -2145,11 +2246,7 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
                 ),
                 const SizedBox(height: 16),
                 GestureDetector(
-                  onTap: () => ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Fonctionnalité Kage — Bientôt disponible 🎨'),
-                    ),
-                  ),
+                  onTap: _showLocalQuoteImage,
                   child: Container(
                     height: 48,
                     decoration: BoxDecoration(
@@ -2196,9 +2293,7 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
           decoration: BoxDecoration(
-            color: (tier == 'Kage'
-                    ? AppColors.statPurple
-                    : AppColors.statBlue)
+            color: (tier == 'Kage' ? AppColors.statPurple : AppColors.statBlue)
                 .withValues(alpha: 0.15),
             borderRadius: BorderRadius.circular(20),
           ),
@@ -2431,6 +2526,8 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
   }
 
   void _showLimitModal() {
+    final currency = ref.read(currencyProvider);
+    final joninMonthly = PlanPrices.jonin(false, currency);
     showModalBottomSheet(
       context: context,
       backgroundColor: AppColors.backgroundCard,
@@ -2475,9 +2572,9 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
                   Navigator.pop(context);
                   context.push('/subscription');
                 },
-                child: const Text(
-                  'Devenir Jonin — 2 000 FCFA/mois',
-                  style: TextStyle(
+                child: Text(
+                  'Devenir Jonin — $joninMonthly',
+                  style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w600,
                   ),
