@@ -22,6 +22,14 @@ npm install mammoth firebase-admin
 node scripts/import_jjk.js
 ```
 
+Si `node` pointe vers Snap/AppArmor ou si Google Auth refuse le JWT à cause
+d'un décalage d'horloge local, utiliser le binaire Node disponible avec le
+préchargeur d'horloge :
+
+```bash
+env NODE_OPTIONS='--require ./scripts/google_time_offset.js' /home/tilstack/.cache/ms-playwright-go/1.50.1/node scripts/import_jjk.js
+```
+
 ### Collections créées / mises à jour
 
 | Collection | Document ID | Contenu |
@@ -88,5 +96,7 @@ En suivant la même structure que `import_jjk.js` :
 ## Sécurité
 
 - `serviceAccountkey.json` est dans `.gitignore` — ne jamais committer
+- `scripts/google_time_offset.js` compense uniquement le décalage d'horloge
+  local pendant la signature JWT Google Admin SDK.
 - Clé Claude API : uniquement via Firebase Cloud Function, jamais côté client
 - Firestore rules : déployer avant release (`firebase deploy --only firestore:rules`)

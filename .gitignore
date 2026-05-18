@@ -52,3 +52,5 @@ serviceAccountkey.json
 *.jks
 otadex-key
 key.properties
+
+node_modules/

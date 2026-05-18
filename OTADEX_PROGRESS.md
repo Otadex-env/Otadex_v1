@@ -401,6 +401,9 @@
 **Task 22 — Import JJK Firestore** ✅ Fait
 
 - `scripts/import_jjk.js` → Créé (1 415 lignes)
+- Import exécuté le 18 mai 2026 avec `firebase-admin` + `mammoth`
+- Vérification Firestore OK : `animes/jujutsu-kaisen`, `creators/gege-akutami`, `studios/mappa`, 20 personnages, 7 quiz
+- `scripts/google_time_offset.js` ajouté pour compenser le décalage d'horloge local lors de la signature JWT Google Auth
 - Structure Firestore définie : `animes` / `creators` / `studios` / `characters` / `quizzes`
 - 20 personnages JJK complets : nom, nomJaponais, description, pouvoirs, voixJaponaise, voixAnglaise, relations, citations, trivia, popularityRank
 - Créateur Gege Akutami : bio, bibliographie complète, récompenses, influences
@@ -408,7 +411,8 @@
 - 7 quiz créés (5+ questions chacun) : Gojo, Yuji, Sukuna, Megumi, Nobara, Geto, Nanami
 - `firestore.indexes.json` mis à jour : 3 index composites (animeId+popularityRank, animeId+statut, animeId+likesCount)
 - `scripts/README.md` créé : instructions d'exécution + template réutilisable pour futurs animés
-- Note : Lancer `node scripts/import_jjk.js` après avoir placé `serviceAccountkey.json` à la racine
+- Note : dans cet environnement, `node` Snap est inutilisable ; commande validée :
+  `env NODE_OPTIONS='--require ./scripts/google_time_offset.js' /home/tilstack/.cache/ms-playwright-go/1.50.1/node scripts/import_jjk.js`
 - Note : Template réutilisable pour chaque nouvel animé via `scripts/import_[anime_name].js`
 - Prochaine tâche → Brancher Flutter sur Firestore (remplacer mock_data par Firestore queries)
 
