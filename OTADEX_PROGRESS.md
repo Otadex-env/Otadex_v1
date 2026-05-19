@@ -463,9 +463,26 @@
 - Note : "Chaque `scripts/import_[anime].js` ajoute un animé complet — aucune modification de code Flutter requise"
 - dart analyze → 0 erreur, 0 warning
 
-**Task 25 — Play Store soumission**
+**Task 24b — Design OTADEX Character Sheet (handoff Claude Design)** ✅ Fait
 
-- APK signé, captures d'écran, soumission Google Play Console
+- Source : maquette haute-fidélité 6 vues (Infos / Galerie / Relations / Médias / Exclusif Genin / Exclusif Jonin) — 390×844px dark mode
+- `character_detail_screen.dart` :
+  - **Identity grid refactorisée** : cellules individuelles (`Container` + `borderRadius: 10`) sans container parent, labels en sentence-case (Âge / Genre / Statut / Nationalité / Groupe sanguin / Naissance), `childAspectRatio: 2.6`
+  - **Section À propos** : suppression du card wrapper — texte directement sur le fond surface, bouton "Lire la suite ↓" en accent orange sans container intermédiaire
+  - **Section "👥 Découvrir d'autres personnages"** (nouveau) : scroll horizontal `SizedBox(height: 168)`, portrait cards 124px via `allCharactersProvider` (filtre le personnage courant, max 6), gradient bg `cardColor → backgroundDeep`, `OtadexImage` plein cadre, overlay gradient bas, accent strip 4×16px `accentColor`, nom + animeName en bas, tuile "Voir tout / N personnages" orange en dernier item → `/search`
+  - Import `otadex_providers.dart` ajouté
+- dart analyze → 0 erreur, 0 warning
+
+**Task 25 — Play Store préparation** ✅ Fait
+
+- ✅ Fix Quiz → branché sur `firestoreQuizProvider` (déjà présent depuis session précédente — `character_quiz_screen.dart` détecte `jjk-` prefix et charge Firestore)
+- ✅ `android:label` corrigé → `"OTADEX"` (était `"Otadex"`) dans `AndroidManifest.xml`
+- ✅ `PLAY_STORE_SIGNING.md` → créé (instructions keytool + key.properties + note config Kotlin DSL déjà en place)
+- ✅ `PLAY_STORE_TODO.md` → créé (checklist complète Play Store — Firestore import, device test, signing build, assets, soumission)
+- Note : Tester l'app sur device AVANT le build release
+- Note : Lancer manuellement `node scripts/import_jjk.js` (nécessite `serviceAccountKey.json`)
+- Note : `applicationId = "com.otadex.otadex"` (Firebase-bound — ne pas changer)
+- dart analyze → 0 erreur
 
 ---
 
@@ -533,8 +550,10 @@ URLs Play Console :
 | 18 mai 2026 | Task 22 — Import JJK Firestore : `scripts/import_jjk.js` créé (20 personnages JJK, 1 animé, 1 créateur, 1 studio, 7 quiz). Données extraites depuis `JJK_Personnages_OTADEX_v2.docx` via mammoth/python XML. `firestore.indexes.json` mis à jour (3 index composites). `scripts/README.md` créé avec template réutilisable. |
 | 19 mai 2026 | Task 23 — Firestore Flutter integration : `FirestoreCharacterService` créé (mapping Firestore→Character/AnimeEntry/CreatorEntry/QuizQuestion). `jjkCharactersProvider` + `firestoreQuizProvider` ajoutés. `characterDetailProvider` mis à jour (jjk-*→Firestore). `allCharactersProvider` fusionné (JJK Firestore + mock autres séries). `allAnimesProvider` / `allCreatorsProvider` priorité Firestore + fallback mock. dart analyze → 0 erreur. |
 | 19 mai 2026 | Task 24 — Architecture multi-animés : `Character.animeId` ajouté. `searchCharacters`/`searchAnimes`/`getSameAnimeCharacters` ajoutés au service Firestore. `getCharactersByAnimeId` ajouté à AniList service. `searchCharactersProvider` + `searchAnimesProvider` (fusion Firestore+AniList) + `sameAnimeCharactersProvider` créés. `allCharactersProvider` migré vers `getAllCharacters(limit:100)`. Section "Autres personnages de [animé]" dans onglet Médias. dart analyze → 0 erreur. |
+| 19 mai 2026 | Task 24b — Design handoff Claude Design : identity grid refactorisée (cellules individuelles, sentence-case), section À propos sans card wrapper (texte direct), section "👥 Découvrir d'autres personnages" ajoutée bas de l'onglet Infos (scroll horizontal portrait cards 124px, allCharactersProvider, gradient+image+accent strip+voir tout tile). dart analyze → 0 erreur. |
+| 19 mai 2026 | Task 25 — Play Store préparation : `android:label` corrigé "OTADEX", Fix Quiz Firestore confirmé (déjà branché), `PLAY_STORE_SIGNING.md` créé (keytool + Kotlin DSL signing déjà configuré), `PLAY_STORE_TODO.md` créé (checklist complète device test → build → assets → soumission). dart analyze → 0 erreur. |
 
 ---
 
 _À mettre à jour par Claude Code à la fin de chaque session._
-_Dernière mise à jour : mai 2026_
+_Dernière mise à jour : 19 mai 2026_

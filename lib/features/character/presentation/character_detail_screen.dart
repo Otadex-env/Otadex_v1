@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/models/character.dart';
 import '../../../core/providers/anilist_providers.dart';
+import '../../../core/providers/otadex_providers.dart';
 import '../../../core/providers/auth_provider.dart';
 import '../../../core/providers/currency_provider.dart';
 import '../../../core/providers/user_profile_provider.dart';
@@ -594,60 +595,63 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
         if (c.quotes.isNotEmpty) _buildQuotesSection(theme),
         _buildVoiceActorsSection(theme),
         _buildTriviaSection(theme, isKage),
+        _buildDiscoverCharactersSection(),
       ],
     );
   }
 
   Widget _buildIdentiteSection(RankTheme theme) {
     final cells = [
-      ('ÂGE', c.age ?? '—'),
-      ('GENRE', c.gender ?? '—'),
-      ('STATUT', c.status ?? c.role ?? '—'),
-      ('NATIONALITÉ', c.nationality ?? '—'),
-      ('GROUPE SANGUIN', c.bloodType ?? '—'),
-      ('DATE NAISSANCE', c.birthday ?? c.dateOfBirth ?? '—'),
+      ('Âge', c.age ?? '—'),
+      ('Genre', c.gender ?? '—'),
+      ('Statut', c.status ?? c.role ?? '—'),
+      ('Nationalité', c.nationality ?? '—'),
+      ('Groupe sanguin', c.bloodType ?? '—'),
+      ('Naissance', c.birthday ?? c.dateOfBirth ?? '—'),
     ];
 
-    return Container(
-      margin: const EdgeInsets.fromLTRB(16, 20, 16, 0),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColors.backgroundElevated,
-        borderRadius: BorderRadius.circular(12),
-      ),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 20, 16, 0),
       child: GridView.count(
         crossAxisCount: 2,
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
-        childAspectRatio: 2.5,
+        childAspectRatio: 2.6,
         crossAxisSpacing: 8,
         mainAxisSpacing: 8,
         children: cells.map((cell) {
           final (label, value) = cell;
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                label,
-                style: GoogleFonts.nunitoSans(
-                  fontSize: 10,
-                  color: AppColors.textSecondary,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 0.4,
+          return Container(
+            decoration: BoxDecoration(
+              color: AppColors.backgroundElevated,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  label,
+                  style: GoogleFonts.nunitoSans(
+                    fontSize: 10,
+                    color: AppColors.textSecondary,
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: 0.3,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 2),
-              Text(
-                value,
-                overflow: TextOverflow.ellipsis,
-                style: GoogleFonts.nunitoSans(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.textPrimary,
+                const SizedBox(height: 2),
+                Text(
+                  value,
+                  overflow: TextOverflow.ellipsis,
+                  style: GoogleFonts.nunitoSans(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.textPrimary,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           );
         }).toList(),
       ),
@@ -657,51 +661,39 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
   Widget _buildAboutSection(RankTheme theme) {
     final bio = c.bio ?? 'Aucune description disponible.';
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+      padding: const EdgeInsets.fromLTRB(16, 22, 16, 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             'À propos',
-            style: GoogleFonts.dmSans(
+            style: GoogleFonts.nunitoSans(
               fontSize: 16,
               fontWeight: FontWeight.w600,
               color: AppColors.textPrimary,
             ),
           ),
-          const SizedBox(height: 10),
-          Container(
-            decoration: BoxDecoration(
-              color: AppColors.backgroundElevated,
-              borderRadius: BorderRadius.circular(14),
+          const SizedBox(height: 8),
+          Text(
+            bio,
+            maxLines: _aboutExpanded ? null : 6,
+            overflow: _aboutExpanded ? null : TextOverflow.ellipsis,
+            style: GoogleFonts.nunitoSans(
+              fontSize: 14,
+              color: AppColors.textSecondary,
+              height: 1.6,
             ),
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  bio,
-                  maxLines: _aboutExpanded ? null : 6,
-                  overflow: _aboutExpanded ? null : TextOverflow.ellipsis,
-                  style: GoogleFonts.nunitoSans(
-                    fontSize: 14,
-                    color: AppColors.textSecondary,
-                    height: 1.65,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                GestureDetector(
-                  onTap: () => setState(() => _aboutExpanded = !_aboutExpanded),
-                  child: Text(
-                    _aboutExpanded ? 'Réduire ↑' : 'Lire la suite →',
-                    style: GoogleFonts.nunitoSans(
-                      fontSize: 13,
-                      color: theme.accentColor,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ],
+          ),
+          const SizedBox(height: 6),
+          GestureDetector(
+            onTap: () => setState(() => _aboutExpanded = !_aboutExpanded),
+            child: Text(
+              _aboutExpanded ? 'Réduire ↑' : 'Lire la suite ↓',
+              style: GoogleFonts.nunitoSans(
+                fontSize: 13,
+                color: AppColors.accent,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
         ],
@@ -1121,6 +1113,213 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
               }).toList(),
             ),
         ],
+      ),
+    );
+  }
+
+  // ── DISCOVER CHARACTERS (bottom of Infos tab) ────────────────────
+
+  Widget _buildDiscoverCharactersSection() {
+    final allAsync = ref.watch(allCharactersProvider);
+    return allAsync.when(
+      loading: () => const SizedBox.shrink(),
+      error: (_, __) => const SizedBox.shrink(),
+      data: (all) {
+        final others = all.where((ch) => ch.id != c.id).take(6).toList();
+        if (others.isEmpty) return const SizedBox.shrink();
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 26, 16, 4),
+              child: Text(
+                '👥 Découvrir d\'autres personnages',
+                style: GoogleFonts.nunitoSans(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.textPrimary,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                'Touche un portrait pour ouvrir sa fiche',
+                style: GoogleFonts.nunitoSans(
+                  fontSize: 12,
+                  color: AppColors.textSecondary,
+                ),
+              ),
+            ),
+            const SizedBox(height: 12),
+            SizedBox(
+              height: 168,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                separatorBuilder: (_, __) => const SizedBox(width: 10),
+                itemCount: others.length + 1,
+                itemBuilder: (ctx, index) {
+                  if (index == others.length) {
+                    return _buildVoirToutTile(all.length);
+                  }
+                  return _buildPortraitCard(others[index]);
+                },
+              ),
+            ),
+            const SizedBox(height: 16),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _buildPortraitCard(Character char) {
+    final imgPath = char.images.isNotEmpty
+        ? char.images.first
+        : char.imagePath ?? '';
+    final hasImage = imgPath.isNotEmpty;
+
+    return GestureDetector(
+      onTap: () => context.push('/character/${char.id}', extra: char),
+      child: Container(
+        width: 124,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(14),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [char.cardColor, AppColors.backgroundDeep],
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.35),
+              blurRadius: 12,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            if (hasImage)
+              OtadexImage(imagePath: imgPath, fit: BoxFit.cover),
+            // gradient overlay bottom
+            const DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: [0.4, 1.0],
+                  colors: [Colors.transparent, Color(0xD9000000)],
+                ),
+              ),
+            ),
+            // accent strip top-left
+            Positioned(
+              top: 10,
+              left: 10,
+              child: Container(
+                width: 4,
+                height: 16,
+                decoration: BoxDecoration(
+                  color: char.accentColor,
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+            ),
+            // name + anime
+            Positioned(
+              left: 10,
+              right: 10,
+              bottom: 10,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    char.name,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.nunitoSans(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                      height: 1.2,
+                    ),
+                  ),
+                  if (char.animeName.isNotEmpty) ...[
+                    const SizedBox(height: 2),
+                    Text(
+                      char.animeName,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.nunitoSans(
+                        fontSize: 9,
+                        color: Colors.white60,
+                      ),
+                    ),
+                  ],
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildVoirToutTile(int total) {
+    return GestureDetector(
+      onTap: () => context.push('/search'),
+      child: Container(
+        width: 124,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(14),
+          color: AppColors.backgroundElevated,
+          border: Border.all(color: AppColors.borderSubtle),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 36,
+              height: 36,
+              decoration: BoxDecoration(
+                color: AppColors.accent.withValues(alpha: 0.15),
+                shape: BoxShape.circle,
+              ),
+              child: const Center(
+                child: Text(
+                  '→',
+                  style: TextStyle(
+                    color: AppColors.accent,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Voir tout',
+              style: GoogleFonts.nunitoSans(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: AppColors.accent,
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              '$total personnages',
+              style: GoogleFonts.nunitoSans(
+                fontSize: 10,
+                color: AppColors.textSecondary,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
