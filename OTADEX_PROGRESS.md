@@ -6,7 +6,7 @@
 - App version : `1.0.0+1`
 - Firebase configuré : **OUI (Storage inclus)** — FlutterFire Android + Firebase Auth email/Google + Firestore profil utilisateur + Functions + Storage initialisés
 - Dernier écran complété : **PlansScreen + ProfileScreen** (licence Chariow, préférence monnaie, mai 2026)
-- Dernière mise à jour : **Task 28 — Assets locaux JJK branché sur les cards + fiche + import script**, 22 mai 2026
+- Dernière mise à jour : **Task 29 — Import Naruto Shippuden**, 22 May 2026
 
 ## Dépendances installées (`pubspec.yaml`)
 
@@ -269,6 +269,18 @@
 - 14 personnages mis à jour : `images[]` + `imagePath` → chemins assets locaux
 
 ---
+
+
+---
+
+## Task 29 — Import Naruto Shippuden (Automatisé)
+### ✅ Scripts d'import générés
+- `scripts/import_ns.js` créé à partir du fichier `.docx`
+- 20 personnages ajoutés (Minato, Itachi, Sakura, etc.) avec bio, statistiques et rangs de popularité.
+### ✅ Assets et Pubspec
+- `app_assets.dart` mis à jour dynamiquement pour le switch `getByCharacterId()` et les tableaux de 8 images par personnage (`ns_XXXX1.jpeg` à `ns_XXXX8.jpeg`).
+- Déclaration des dossiers cibles dans `pubspec.yaml` pour chaque nouveau personnage.
+- Prêt pour exécution avec `node scripts/import_ns.js`
 
 ## Données mockées — Stratégie images
 
@@ -585,7 +597,8 @@ URLs Play Console :
 
 | 20 mai 2026 | Task 26 — Fix images JJK + AniList : `import_jjk.js` → URLs AniList CDN ajoutées pour les 20 personnages JJK (images[] + imagePath). `anilist_service.dart` → `imagePath: largeImg ?? ''`, filtrage `isNotEmpty` sur images[]. `otadex_image.dart` → `httpHeaders: {'User-Agent': 'OTADEX/1.0'}` ajouté à CachedNetworkImage. `_effectiveImages` dans `character_detail_screen.dart` → priorité images[] custom → imagePath → Firebase Storage → [] vide (plus de fallback local Gojo). `character_grid_card.dart` + `trending_character_card.dart` → logique image : `images.first` si disponible, sinon `imagePath`, sinon gradient. dart analyze → 0 issue. Note : Lancer `node scripts/import_jjk.js` pour pousser les nouvelles URLs vers Firestore. |
 
-| 22 mai 2026 | Task 27 — Architecture données clarifiée + correctifs UX : `otadex_providers.dart` → `allCharactersProvider` simplifié (Firestore 200 persos OU JSON fallback, plus de merge). `trendingCharactersProvider` ajouté (filtre isTrending sur allCharactersProvider, tri likes desc, limit 20) — remplace AniList live dans `trending_section.dart`. `anilistTrendingCharactersProvider` renommé dans `anilist_providers.dart` (suppression conflit). `CollectionScreen` → remplace `MockData.allCharacters` par double-watch `collectionStreamProvider` + `allCharactersProvider` (IDs Firestore désormais résolus). `EmptyState` → bouton "Explorer" route `/search`, icône `bookmark_border_rounded`. `profile_screen.dart` → remplace `MockData` par `allCharactersProvider.valueOrNull`. `UserProfile` → 3 getters calculés dynamiquement : `fanLevel` (seuils 100/500/2000/5000), `fanLevelName` (Spectateur→Kage Suprême), `nextLevelScore`. `ProfileTabContent/_ProgressCard` → affiche `fanLevelName — Niveau fanLevel 🔥` (plus de "4" hardcodé). `search_screen.dart` → historique `_recentSearches` branché sur SharedPreferences : `_loadHistory` (initState), `_saveQuery` (submit/suggestion/trending tap), `_clearHistory`, `_removeRecentQuery` — liste vide au démarrage, persistée sur 5 entrées max. dart analyze → 0 issue. |
+| 22 mai 2026 | Task 27 — Architecture données clarifiée + correctifs UX : `otadex_providers.dart` → `allCharactersProvider` simplifié (Firestore 200 persos OU JSON fallback, plus de merge). `trendingCharactersProvider` ajouté (filtre isTrending sur allCharactersProvider, tri likes desc, limit 20) — remplace AniList live dans `trending_section.dart`. `anilistTrendingCharactersProvider` renommé dans `anilist_providers.dart` (suppression conflit). `CollectionScreen` → remplace `MockData.allCharacters` par double-watch `collectionStreamProvider` + `allCharactersProvider` (IDs Firestore désormais résolus). `EmptyState` → bouton "Explorer" route `/search`, icône `bookmark_border_rounded`. `profile_screen.dart` → remplace `MockData` par `allCharactersProvider.valueOrNull`. `UserProfile` → 3 getters calculés dynamiquement : `fanLevel` (seuils 100/500/2000/5000), `fanLevelName` (Spectateur→Kage Suprême), `nextLevelScore`. `ProfileTabContent/_ProgressCard` → affiche `fanLevelName — Niveau fanLevel 🔥` (plus de "4" hardcodé). `search_screen.dart` → historique `_recentSearches` branché sur SharedPreferences : `_loadHistory` (initState), `_saveQuery` (submit/suggestion/trending tap), `_clearHistory`, `_removeRecentQuery` — liste vide au démarrage, persistée sur 5 entrées max. dart analyze → 0 issue. 
+| 22 May 2026 | Task 29 — Import Naruto Shippuden : Création du script `import_ns.js` à partir du docx, 20 personnages préparés, mise en place des constantes `AppAssets` et mise à jour de `pubspec.yaml`. |
 
 ---
 

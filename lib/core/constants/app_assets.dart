@@ -205,6 +205,250 @@ class AppAssets {
     '$_jjk/Chojo Kamo/jj_chojo9.jpeg',
   ];
 
+
+  // ━━━ Naruto Shippuden — base path ━━━
+  static const String _ns = 'assets/images/Animé pictures/Naruto Shippuden';
+
+  // ── Minato Namikaze ──────────────────────────────────────────────────────────
+  static const List<String> minatoNamikaze = [
+    '$_ns/Minato Namikaze/ns_mina1.jpeg',
+    '$_ns/Minato Namikaze/ns_mina2.jpeg',
+    '$_ns/Minato Namikaze/ns_mina3.jpeg',
+    '$_ns/Minato Namikaze/ns_mina4.jpeg',
+    '$_ns/Minato Namikaze/ns_mina5.jpeg',
+    '$_ns/Minato Namikaze/ns_mina6.jpeg',
+    '$_ns/Minato Namikaze/ns_mina7.jpeg',
+    '$_ns/Minato Namikaze/ns_mina8.jpeg',
+  ];
+
+  // ── Itachi Uchiha ──────────────────────────────────────────────────────────
+  static const List<String> itachiUchiha = [
+    '$_ns/Itachi Uchiha/ns_itac1.jpeg',
+    '$_ns/Itachi Uchiha/ns_itac2.jpeg',
+    '$_ns/Itachi Uchiha/ns_itac3.jpeg',
+    '$_ns/Itachi Uchiha/ns_itac4.jpeg',
+    '$_ns/Itachi Uchiha/ns_itac5.jpeg',
+    '$_ns/Itachi Uchiha/ns_itac6.jpeg',
+    '$_ns/Itachi Uchiha/ns_itac7.jpeg',
+    '$_ns/Itachi Uchiha/ns_itac8.jpeg',
+  ];
+
+  // ── Sakura Haruno ──────────────────────────────────────────────────────────
+  static const List<String> sakuraHaruno = [
+    '$_ns/Sakura Haruno/ns_saku1.jpeg',
+    '$_ns/Sakura Haruno/ns_saku2.jpeg',
+    '$_ns/Sakura Haruno/ns_saku3.jpeg',
+    '$_ns/Sakura Haruno/ns_saku4.jpeg',
+    '$_ns/Sakura Haruno/ns_saku5.jpeg',
+    '$_ns/Sakura Haruno/ns_saku6.jpeg',
+    '$_ns/Sakura Haruno/ns_saku7.jpeg',
+    '$_ns/Sakura Haruno/ns_saku8.jpeg',
+  ];
+
+  // ── Naruto Uzumaki ──────────────────────────────────────────────────────────
+  static const List<String> narutoUzumaki = [
+    '$_ns/Naruto Uzumaki/ns_naru1.jpeg',
+    '$_ns/Naruto Uzumaki/ns_naru2.jpeg',
+    '$_ns/Naruto Uzumaki/ns_naru3.jpeg',
+    '$_ns/Naruto Uzumaki/ns_naru4.jpeg',
+    '$_ns/Naruto Uzumaki/ns_naru5.jpeg',
+    '$_ns/Naruto Uzumaki/ns_naru6.jpeg',
+    '$_ns/Naruto Uzumaki/ns_naru7.jpeg',
+    '$_ns/Naruto Uzumaki/ns_naru8.jpeg',
+  ];
+
+  // ── Kakashi Hatake ──────────────────────────────────────────────────────────
+  static const List<String> kakashiHatake = [
+    '$_ns/Kakashi Hatake/ns_kaka1.jpeg',
+    '$_ns/Kakashi Hatake/ns_kaka2.jpeg',
+    '$_ns/Kakashi Hatake/ns_kaka3.jpeg',
+    '$_ns/Kakashi Hatake/ns_kaka4.jpeg',
+    '$_ns/Kakashi Hatake/ns_kaka5.jpeg',
+    '$_ns/Kakashi Hatake/ns_kaka6.jpeg',
+    '$_ns/Kakashi Hatake/ns_kaka7.jpeg',
+    '$_ns/Kakashi Hatake/ns_kaka8.jpeg',
+  ];
+
+  // ── Sasuke Uchiha ──────────────────────────────────────────────────────────
+  static const List<String> sasukeUchiha = [
+    '$_ns/Sasuke Uchiha/ns_sasu1.jpeg',
+    '$_ns/Sasuke Uchiha/ns_sasu2.jpeg',
+    '$_ns/Sasuke Uchiha/ns_sasu3.jpeg',
+    '$_ns/Sasuke Uchiha/ns_sasu4.jpeg',
+    '$_ns/Sasuke Uchiha/ns_sasu5.jpeg',
+    '$_ns/Sasuke Uchiha/ns_sasu6.jpeg',
+    '$_ns/Sasuke Uchiha/ns_sasu7.jpeg',
+    '$_ns/Sasuke Uchiha/ns_sasu8.jpeg',
+  ];
+
+  // ── Jiraiya ──────────────────────────────────────────────────────────
+  static const List<String> jiraiya = [
+    '$_ns/Jiraiya/ns_jira1.jpeg',
+    '$_ns/Jiraiya/ns_jira2.jpeg',
+    '$_ns/Jiraiya/ns_jira3.jpeg',
+    '$_ns/Jiraiya/ns_jira4.jpeg',
+    '$_ns/Jiraiya/ns_jira5.jpeg',
+    '$_ns/Jiraiya/ns_jira6.jpeg',
+    '$_ns/Jiraiya/ns_jira7.jpeg',
+    '$_ns/Jiraiya/ns_jira8.jpeg',
+  ];
+
+  // ── Gaara ──────────────────────────────────────────────────────────
+  static const List<String> gaara = [
+    '$_ns/Gaara/ns_gaar1.jpeg',
+    '$_ns/Gaara/ns_gaar2.jpeg',
+    '$_ns/Gaara/ns_gaar3.jpeg',
+    '$_ns/Gaara/ns_gaar4.jpeg',
+    '$_ns/Gaara/ns_gaar5.jpeg',
+    '$_ns/Gaara/ns_gaar6.jpeg',
+    '$_ns/Gaara/ns_gaar7.jpeg',
+    '$_ns/Gaara/ns_gaar8.jpeg',
+  ];
+
+  // ── Hinata Hyuga ──────────────────────────────────────────────────────────
+  static const List<String> hinataHyuga = [
+    '$_ns/Hinata Hyuga/ns_hina1.jpeg',
+    '$_ns/Hinata Hyuga/ns_hina2.jpeg',
+    '$_ns/Hinata Hyuga/ns_hina3.jpeg',
+    '$_ns/Hinata Hyuga/ns_hina4.jpeg',
+    '$_ns/Hinata Hyuga/ns_hina5.jpeg',
+    '$_ns/Hinata Hyuga/ns_hina6.jpeg',
+    '$_ns/Hinata Hyuga/ns_hina7.jpeg',
+    '$_ns/Hinata Hyuga/ns_hina8.jpeg',
+  ];
+
+  // ── Pain ──────────────────────────────────────────────────────────
+  static const List<String> pain = [
+    '$_ns/Pain/ns_pain1.jpeg',
+    '$_ns/Pain/ns_pain2.jpeg',
+    '$_ns/Pain/ns_pain3.jpeg',
+    '$_ns/Pain/ns_pain4.jpeg',
+    '$_ns/Pain/ns_pain5.jpeg',
+    '$_ns/Pain/ns_pain6.jpeg',
+    '$_ns/Pain/ns_pain7.jpeg',
+    '$_ns/Pain/ns_pain8.jpeg',
+  ];
+
+  // ── Madara Uchiha ──────────────────────────────────────────────────────────
+  static const List<String> madaraUchiha = [
+    '$_ns/Madara Uchiha/ns_mada1.jpeg',
+    '$_ns/Madara Uchiha/ns_mada2.jpeg',
+    '$_ns/Madara Uchiha/ns_mada3.jpeg',
+    '$_ns/Madara Uchiha/ns_mada4.jpeg',
+    '$_ns/Madara Uchiha/ns_mada5.jpeg',
+    '$_ns/Madara Uchiha/ns_mada6.jpeg',
+    '$_ns/Madara Uchiha/ns_mada7.jpeg',
+    '$_ns/Madara Uchiha/ns_mada8.jpeg',
+  ];
+
+  // ── Obito Uchiha ──────────────────────────────────────────────────────────
+  static const List<String> obitoUchiha = [
+    '$_ns/Obito Uchiha/ns_obit1.jpeg',
+    '$_ns/Obito Uchiha/ns_obit2.jpeg',
+    '$_ns/Obito Uchiha/ns_obit3.jpeg',
+    '$_ns/Obito Uchiha/ns_obit4.jpeg',
+    '$_ns/Obito Uchiha/ns_obit5.jpeg',
+    '$_ns/Obito Uchiha/ns_obit6.jpeg',
+    '$_ns/Obito Uchiha/ns_obit7.jpeg',
+    '$_ns/Obito Uchiha/ns_obit8.jpeg',
+  ];
+
+  // ── Hashirama Senju ──────────────────────────────────────────────────────────
+  static const List<String> hashiramaSenju = [
+    '$_ns/Hashirama Senju/ns_hash1.jpeg',
+    '$_ns/Hashirama Senju/ns_hash2.jpeg',
+    '$_ns/Hashirama Senju/ns_hash3.jpeg',
+    '$_ns/Hashirama Senju/ns_hash4.jpeg',
+    '$_ns/Hashirama Senju/ns_hash5.jpeg',
+    '$_ns/Hashirama Senju/ns_hash6.jpeg',
+    '$_ns/Hashirama Senju/ns_hash7.jpeg',
+    '$_ns/Hashirama Senju/ns_hash8.jpeg',
+  ];
+
+  // ── Shikamaru Nara ──────────────────────────────────────────────────────────
+  static const List<String> shikamaruNara = [
+    '$_ns/Shikamaru Nara/ns_shik1.jpeg',
+    '$_ns/Shikamaru Nara/ns_shik2.jpeg',
+    '$_ns/Shikamaru Nara/ns_shik3.jpeg',
+    '$_ns/Shikamaru Nara/ns_shik4.jpeg',
+    '$_ns/Shikamaru Nara/ns_shik5.jpeg',
+    '$_ns/Shikamaru Nara/ns_shik6.jpeg',
+    '$_ns/Shikamaru Nara/ns_shik7.jpeg',
+    '$_ns/Shikamaru Nara/ns_shik8.jpeg',
+  ];
+
+  // ── Rock Lee ──────────────────────────────────────────────────────────
+  static const List<String> rockLee = [
+    '$_ns/Rock Lee/ns_rock1.jpeg',
+    '$_ns/Rock Lee/ns_rock2.jpeg',
+    '$_ns/Rock Lee/ns_rock3.jpeg',
+    '$_ns/Rock Lee/ns_rock4.jpeg',
+    '$_ns/Rock Lee/ns_rock5.jpeg',
+    '$_ns/Rock Lee/ns_rock6.jpeg',
+    '$_ns/Rock Lee/ns_rock7.jpeg',
+    '$_ns/Rock Lee/ns_rock8.jpeg',
+  ];
+
+  // ── Neji Hyuga ──────────────────────────────────────────────────────────
+  static const List<String> nejiHyuga = [
+    '$_ns/Neji Hyuga/ns_neji1.jpeg',
+    '$_ns/Neji Hyuga/ns_neji2.jpeg',
+    '$_ns/Neji Hyuga/ns_neji3.jpeg',
+    '$_ns/Neji Hyuga/ns_neji4.jpeg',
+    '$_ns/Neji Hyuga/ns_neji5.jpeg',
+    '$_ns/Neji Hyuga/ns_neji6.jpeg',
+    '$_ns/Neji Hyuga/ns_neji7.jpeg',
+    '$_ns/Neji Hyuga/ns_neji8.jpeg',
+  ];
+
+  // ── Tsunade ──────────────────────────────────────────────────────────
+  static const List<String> tsunade = [
+    '$_ns/Tsunade/ns_tsun1.jpeg',
+    '$_ns/Tsunade/ns_tsun2.jpeg',
+    '$_ns/Tsunade/ns_tsun3.jpeg',
+    '$_ns/Tsunade/ns_tsun4.jpeg',
+    '$_ns/Tsunade/ns_tsun5.jpeg',
+    '$_ns/Tsunade/ns_tsun6.jpeg',
+    '$_ns/Tsunade/ns_tsun7.jpeg',
+    '$_ns/Tsunade/ns_tsun8.jpeg',
+  ];
+
+  // ── Might Guy ──────────────────────────────────────────────────────────
+  static const List<String> mightGuy = [
+    '$_ns/Might Guy/ns_migh1.jpeg',
+    '$_ns/Might Guy/ns_migh2.jpeg',
+    '$_ns/Might Guy/ns_migh3.jpeg',
+    '$_ns/Might Guy/ns_migh4.jpeg',
+    '$_ns/Might Guy/ns_migh5.jpeg',
+    '$_ns/Might Guy/ns_migh6.jpeg',
+    '$_ns/Might Guy/ns_migh7.jpeg',
+    '$_ns/Might Guy/ns_migh8.jpeg',
+  ];
+
+  // ── Orochimaru ──────────────────────────────────────────────────────────
+  static const List<String> orochimaru = [
+    '$_ns/Orochimaru/ns_oroc1.jpeg',
+    '$_ns/Orochimaru/ns_oroc2.jpeg',
+    '$_ns/Orochimaru/ns_oroc3.jpeg',
+    '$_ns/Orochimaru/ns_oroc4.jpeg',
+    '$_ns/Orochimaru/ns_oroc5.jpeg',
+    '$_ns/Orochimaru/ns_oroc6.jpeg',
+    '$_ns/Orochimaru/ns_oroc7.jpeg',
+    '$_ns/Orochimaru/ns_oroc8.jpeg',
+  ];
+
+  // ── Konan ──────────────────────────────────────────────────────────
+  static const List<String> konan = [
+    '$_ns/Konan/ns_kona1.jpeg',
+    '$_ns/Konan/ns_kona2.jpeg',
+    '$_ns/Konan/ns_kona3.jpeg',
+    '$_ns/Konan/ns_kona4.jpeg',
+    '$_ns/Konan/ns_kona5.jpeg',
+    '$_ns/Konan/ns_kona6.jpeg',
+    '$_ns/Konan/ns_kona7.jpeg',
+    '$_ns/Konan/ns_kona8.jpeg',
+  ];
+
   // ── Résolution par charId ─────────────────────────────────────────────────
   static List<String> getByCharacterId(String charId) {
     switch (charId) {
@@ -236,6 +480,46 @@ class AppAssets {
         return kenjaku;
       case 'jjk-noritoshi-kamo':
         return noritoshiKamo;
+      case 'ns-minato-namikaze':
+        return minatoNamikaze;
+      case 'ns-itachi-uchiha':
+        return itachiUchiha;
+      case 'ns-sakura-haruno':
+        return sakuraHaruno;
+      case 'ns-naruto-uzumaki':
+        return narutoUzumaki;
+      case 'ns-kakashi-hatake':
+        return kakashiHatake;
+      case 'ns-sasuke-uchiha':
+        return sasukeUchiha;
+      case 'ns-jiraiya':
+        return jiraiya;
+      case 'ns-gaara':
+        return gaara;
+      case 'ns-hinata-hyuga':
+        return hinataHyuga;
+      case 'ns-pain':
+        return pain;
+      case 'ns-madara-uchiha':
+        return madaraUchiha;
+      case 'ns-obito-uchiha':
+        return obitoUchiha;
+      case 'ns-hashirama-senju':
+        return hashiramaSenju;
+      case 'ns-shikamaru-nara':
+        return shikamaruNara;
+      case 'ns-rock-lee':
+        return rockLee;
+      case 'ns-neji-hyuga':
+        return nejiHyuga;
+      case 'ns-tsunade':
+        return tsunade;
+      case 'ns-might-guy':
+        return mightGuy;
+      case 'ns-orochimaru':
+        return orochimaru;
+      case 'ns-konan':
+        return konan;
       default:
         return const [];
     }
