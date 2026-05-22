@@ -24,6 +24,8 @@ class OtadexImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (imagePath.isEmpty) return _errorWidget();
+
     Widget image;
 
     if (_isNetwork) {

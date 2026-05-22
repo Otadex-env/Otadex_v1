@@ -7,6 +7,7 @@ import '../../../../../core/providers/auth_provider.dart';
 import '../../../../../core/providers/user_profile_provider.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/otadex_theme.dart';
+import '../../../../../core/constants/app_assets.dart';
 import '../../../../../core/widgets/auth_gate_modal.dart';
 import '../../../../../core/widgets/otadex_image.dart';
 import '../../../../../core/widgets/subscription_modal.dart';
@@ -71,15 +72,16 @@ class _CharacterGridCardState extends ConsumerState<CharacterGridCard> {
               fit: StackFit.expand,
               children: [
                 // Full-bleed image or fallback gradient
-                if (character.images.isNotEmpty || (character.imagePath?.isNotEmpty == true))
-                  OtadexImage(
-                    imagePath: character.images.isNotEmpty
-                        ? character.images.first
-                        : character.imagePath!,
-                    fit: BoxFit.cover,
-                  )
-                else
-                  _buildFallbackBg(character),
+                Builder(builder: (_) {
+                  final img = AppAssets.getByCharacterId(character.id).isNotEmpty
+                      ? AppAssets.getByCharacterId(character.id).first
+                      : character.images.isNotEmpty
+                          ? character.images.first
+                          : character.imagePath ?? '';
+                  return img.isNotEmpty
+                      ? OtadexImage(imagePath: img, fit: BoxFit.cover)
+                      : _buildFallbackBg(character);
+                }),
 
                 // Cinema-style gradient scrim for readability
                 Container(

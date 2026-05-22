@@ -12,6 +12,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/otadex_theme.dart';
 import '../../../core/theme/rank_theme.dart';
 import '../../../core/utils/price_formatter.dart';
+import '../../../core/constants/app_assets.dart';
 import '../../../core/widgets/auth_gate_modal.dart';
 import '../../../core/widgets/otadex_image.dart';
 import '../../../core/widgets/subscription_modal.dart';
@@ -51,6 +52,8 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
   Character get c => widget.character;
 
   List<String> get _effectiveImages {
+    final local = AppAssets.getByCharacterId(c.id);
+    if (local.isNotEmpty) return local;
     final customImages = c.images.where((url) => url.isNotEmpty).toList();
     if (customImages.isNotEmpty) return customImages;
     if (c.imagePath?.isNotEmpty == true) return [c.imagePath!];

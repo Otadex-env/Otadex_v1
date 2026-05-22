@@ -6,7 +6,7 @@
 - App version : `1.0.0+1`
 - Firebase configuré : **OUI (Storage inclus)** — FlutterFire Android + Firebase Auth email/Google + Firestore profil utilisateur + Functions + Storage initialisés
 - Dernier écran complété : **PlansScreen + ProfileScreen** (licence Chariow, préférence monnaie, mai 2026)
-- Dernière mise à jour : **Correctifs release + prix multi-devises + premium local sans Cloud Function**, 17 mai 2026
+- Dernière mise à jour : **Task 28 — Assets locaux JJK branché sur les cards + fiche + import script**, 22 mai 2026
 
 ## Dépendances installées (`pubspec.yaml`)
 
@@ -216,7 +216,8 @@
 | `assets/images/onboarding/`             | ✅ Fait     | onboarding_1.png, onboarding_2.png, onboarding_2_1.png, onboarding_3.png |
 | `assets/images/characters/satoru_gojo/` | ✅ Fait     | 5 images placeholder (gojo_01–05) — defaultAvatar local                  |
 | `assets/images/jujutsu_kaisen/`         | 🗑️ Supprimé | Task 07 — images animés/persos viennent du réseau                        |
-| `assets/images/Animé pictures/`         | 🗑️ Supprimé | Task 07 — source originale supprimée du bundle Flutter                   |
+| `assets/images/Animé pictures/`         | ✅ Réactivé | Task 28 — 15 dossiers JJK (120+ fichiers) déclarés dans pubspec.yaml     |
+| `lib/core/constants/app_assets.dart`    | ✅ Étendu   | Task 28 — 14 personnages JJK mappés via `getByCharacterId(charId)`       |
 
 ### Features — Manquants (prochaines tâches)
 
@@ -239,16 +240,45 @@
 
 ---
 
+## Task 28 — Assets locaux JJK + Audit sources données (22 mai 2026)
+
+### ✅ FIX A — Sources de données
+- `allCharactersProvider` : Firestore (200) OU JSON mock fallback — déjà correct (task 27)
+- `trendingCharactersProvider` : Firestore-based via `isTrending` — déjà correct (task 27)
+
+### ✅ FIX B — Images locales déclarées dans pubspec.yaml
+- 15 dossiers JJK ajoutés sous `assets/images/Animé pictures/Jujutsu kaizen/`
+- `app_assets.dart` étendu : 14 personnages JJK avec listes complètes de fichiers + `getByCharacterId()`
+
+### ✅ FIX C — OtadexImage
+- Ajout guard `if (imagePath.isEmpty) return _errorWidget()` avant tout traitement
+
+### ✅ FIX D — `_effectiveImages` dans CharacterDetailScreen
+- Priorité 1 : `AppAssets.getByCharacterId(c.id)` (assets locaux)
+- Priorité 2 : `c.images` (Firestore)
+- Priorité 3 : `c.imagePath`
+- Priorité 4 : Firebase Storage
+
+### ✅ FIX E — Cards (grid + trending)
+- `character_grid_card.dart` + `trending_character_card.dart` : image résolue via `AppAssets.getByCharacterId()` en priorité
+
+### ✅ FIX F — CollectionScreen
+- Déjà correct (task 27) : `collectionStreamProvider` + `allCharactersProvider`
+
+### ✅ FIX G — scripts/import_jjk.js
+- 14 personnages mis à jour : `images[]` + `imagePath` → chemins assets locaux
+
+---
+
 ## Données mockées — Stratégie images
 
-| Source                                  | Usage                                                                    |
-| --------------------------------------- | ------------------------------------------------------------------------ |
-| AniList CDN (réseau)                    | Toutes les images personnages/animés — via `OtadexImage(imagePath: url)` |
-| `assets/images/characters/satoru_gojo/` | Placeholder local générique (5 fichiers, ~500 KB)                        |
-| Logo / splash / onboarding              | Assets locaux permanents — référencés via `AppAssets.*`                  |
-
-> APK < 20 MB — seuls logo, splash et onboarding sont bundlés localement.
-> Images animés/persos → réseau uniquement (AniList CDN + Firebase Storage futur).
+| Source                                   | Usage                                                                         |
+| ---------------------------------------- | ----------------------------------------------------------------------------- |
+| Assets locaux JJK                        | Priorité absolue pour les 14 personnages JJK — via `AppAssets.getByCharacterId` |
+| Firestore `images[]`                     | Priorité 2 — URLs stockées dans Firestore                                     |
+| AniList CDN (réseau)                     | Fallback pour personnages non-JJK — via `OtadexImage(imagePath: url)`        |
+| `assets/images/characters/satoru_gojo/` | Placeholder local générique (5 fichiers, ~500 KB)                             |
+| Logo / splash / onboarding               | Assets locaux permanents — référencés via `AppAssets.*`                       |
 
 ## Bugs connus
 

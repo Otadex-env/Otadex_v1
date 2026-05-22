@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../../../../core/models/character.dart';
+import '../../../../../core/constants/app_assets.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/otadex_theme.dart';
 import '../../../../../core/widgets/otadex_image.dart';
@@ -80,15 +81,16 @@ class _TrendingCharacterCardState extends State<TrendingCharacterCard> {
               fit: StackFit.expand,
               children: [
                 // Full-bleed image or fallback gradient
-                if (character.images.isNotEmpty || (character.imagePath?.isNotEmpty == true))
-                  OtadexImage(
-                    imagePath: character.images.isNotEmpty
-                        ? character.images.first
-                        : character.imagePath!,
-                    fit: BoxFit.cover,
-                  )
-                else
-                  _buildFallbackBg(character),
+                Builder(builder: (_) {
+                  final img = AppAssets.getByCharacterId(character.id).isNotEmpty
+                      ? AppAssets.getByCharacterId(character.id).first
+                      : character.images.isNotEmpty
+                          ? character.images.first
+                          : character.imagePath ?? '';
+                  return img.isNotEmpty
+                      ? OtadexImage(imagePath: img, fit: BoxFit.cover)
+                      : _buildFallbackBg(character);
+                }),
 
                 // Cinema-style scrim
                 Container(
