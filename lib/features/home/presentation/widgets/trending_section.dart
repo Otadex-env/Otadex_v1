@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../core/l10n/app_strings.dart';
-import '../../../../../core/providers/anilist_providers.dart';
+import '../../../../../core/providers/otadex_providers.dart';
 import 'section_header.dart';
 import 'trending_character_card.dart';
 

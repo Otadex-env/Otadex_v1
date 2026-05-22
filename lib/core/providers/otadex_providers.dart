@@ -8,7 +8,7 @@ import '../models/creator_entry.dart';
 import '../services/firestore_character_service.dart';
 import '../services/otadex_data_service.dart';
 
-// ── Root data service ───────────────────────────────────────────────────────
+// ── Root data service (fallback JSON) ──────────────────────────────────────
 final otadexServiceProvider = FutureProvider<OtadexDataService>((ref) {
   return OtadexDataService.load();
 });
@@ -18,27 +18,29 @@ final _firestoreServiceProvider = Provider<FirestoreCharacterService>(
   (_) => FirestoreCharacterService(),
 );
 
-// ── Characters fusionnés : tous animés Firestore + mock data non importés ────
-// Firestore est la source principale (tous animés confondus).
-// Le mock complète uniquement les animés pas encore importés.
+// ── PRIORITÉ 1 : Firestore — PRIORITÉ 2 : JSON mock ────────────────────────
 final allCharactersProvider = FutureProvider<List<Character>>((ref) async {
   final firestoreChars = await ref
       .watch(_firestoreServiceProvider)
-      .getAllCharacters(limit: 100);
+      .getAllCharacters(limit: 200);
 
-  final mockAsync = ref.watch(otadexServiceProvider);
-  final mockChars = mockAsync.valueOrNull?.characters ?? [];
+  if (firestoreChars.isNotEmpty) return firestoreChars;
 
-  if (firestoreChars.isNotEmpty) {
-    final firestoreIds = firestoreChars.map((c) => c.id).toSet();
-    final mockOnly =
-        mockChars.where((c) => !firestoreIds.contains(c.id)).toList();
-    return [...firestoreChars, ...mockOnly];
-  }
-
-  return mockChars;
+  final jsonService = await ref.read(otadexServiceProvider.future);
+  return jsonService.characters;
 });
 
+// ── Trending : personnages Firestore les plus populaires ───────────────────
+final trendingCharactersProvider = FutureProvider<List<Character>>((ref) async {
+  final all = await ref.watch(allCharactersProvider.future);
+  if (all.isEmpty) return [];
+  final trending = all.where((c) => c.isTrending).toList();
+  if (trending.isNotEmpty) return trending.take(20).toList();
+  final sorted = [...all]..sort((a, b) => b.likes.compareTo(a.likes));
+  return sorted.take(20).toList();
+});
+
+// ── Nouveaux / récents ──────────────────────────────────────────────────────
 final newCharactersProvider =
     FutureProvider.family<List<Character>, String?>((ref, category) async {
   final all = await ref.watch(allCharactersProvider.future);
@@ -47,6 +49,7 @@ final newCharactersProvider =
   return newChars.where((c) => c.category == category).toList();
 });
 
+// ── Recommandés ─────────────────────────────────────────────────────────────
 final recommendedCharactersProvider =
     FutureProvider<List<Character>>((ref) async {
   final all = await ref.watch(allCharactersProvider.future);
@@ -56,27 +59,26 @@ final recommendedCharactersProvider =
   if (raw == null || raw.isEmpty) return recommended;
   final interests = List<String>.from(jsonDecode(raw) as List);
   if (interests.isEmpty) return recommended;
-  final filtered = recommended.where((c) => interests.contains(c.category)).toList();
+  final filtered =
+      recommended.where((c) => interests.contains(c.category)).toList();
   return filtered.isEmpty ? recommended : filtered;
 });
 
 // ── Animes ──────────────────────────────────────────────────────────────────
 final allAnimesProvider = FutureProvider<List<AnimeEntry>>((ref) async {
-  final firestoreAnimes = await ref
-      .watch(_firestoreServiceProvider)
-      .getAllAnimes();
+  final firestoreAnimes =
+      await ref.watch(_firestoreServiceProvider).getAllAnimes();
   if (firestoreAnimes.isNotEmpty) return firestoreAnimes;
-  final mockAsync = ref.watch(otadexServiceProvider);
-  return mockAsync.valueOrNull?.animes ?? [];
+  final jsonService = await ref.read(otadexServiceProvider.future);
+  return jsonService.animes;
 });
 
 // ── Creators ────────────────────────────────────────────────────────────────
 final allCreatorsProvider = FutureProvider<List<CreatorEntry>>((ref) async {
-  final firestoreCreators = await ref
-      .watch(_firestoreServiceProvider)
-      .getAllCreators();
+  final firestoreCreators =
+      await ref.watch(_firestoreServiceProvider).getAllCreators();
   if (firestoreCreators.isNotEmpty) return firestoreCreators;
-  final mockAsync = ref.watch(otadexServiceProvider);
-  return mockAsync.valueOrNull?.creators ?? [];
+  final jsonService = await ref.read(otadexServiceProvider.future);
+  return jsonService.creators;
 });
 

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../core/data/mock_data.dart';
 import '../../../core/models/character.dart';
 import '../../../core/providers/anilist_providers.dart';
+import '../../../core/providers/otadex_providers.dart';
 import '../../../core/providers/user_profile_provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/widgets/otadex_image.dart';
@@ -16,6 +16,7 @@ class CollectionScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final profile = ref.watch(userProfileProvider);
     final collectionAsync = ref.watch(collectionStreamProvider);
+    final allCharsAsync = ref.watch(allCharactersProvider);
     final isGenin = profile.rank == 'genin';
 
     return collectionAsync.when(
@@ -27,55 +28,80 @@ class CollectionScreen extends ConsumerWidget {
         ),
       ),
       data: (collectedIds) {
-        final characters = MockData.allCharacters
-            .where((c) => collectedIds.contains(c.id))
-            .toList();
-        final showLimitBanner = isGenin && collectedIds.length >= 8;
-
-        return CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-                child: Text(
-                  'Ma Collection',
-                  style: GoogleFonts.dmSans(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w800,
-                    color: AppColors.textPrimary,
-                  ),
-                ),
-              ),
-            ),
-            if (showLimitBanner)
-              SliverToBoxAdapter(
-                child: _LimitBanner(collected: collectedIds.length),
-              ),
-            if (characters.isEmpty)
-              const SliverFillRemaining(
+        if (collectedIds.isEmpty) {
+          return const CustomScrollView(
+            slivers: [
+              SliverFillRemaining(
                 hasScrollBody: false,
                 child: _EmptyState(),
-              )
-            else ...[
-              SliverToBoxAdapter(
-                  child: _CollectionHeader(count: characters.length)),
-              SliverPadding(
-                padding: const EdgeInsets.fromLTRB(16, 0, 16, 100),
-                sliver: SliverGrid(
-                  delegate: SliverChildBuilderDelegate(
-                    (ctx, i) => _CharCard(character: characters[i]),
-                    childCount: characters.length,
-                  ),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 8,
-                    mainAxisSpacing: 8,
-                    childAspectRatio: 112 / 170,
-                  ),
-                ),
               ),
             ],
-          ],
+          );
+        }
+        return allCharsAsync.when(
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (_, __) => const Center(
+            child: Text(
+              'Erreur de chargement',
+              style: TextStyle(color: AppColors.textSecondary),
+            ),
+          ),
+          data: (allChars) {
+            final characters =
+                allChars.where((c) => collectedIds.contains(c.id)).toList();
+            final showLimitBanner = isGenin && collectedIds.length >= 8;
+
+            if (characters.isEmpty) {
+              return const CustomScrollView(
+                slivers: [
+                  SliverFillRemaining(
+                    hasScrollBody: false,
+                    child: _EmptyState(),
+                  ),
+                ],
+              );
+            }
+
+            return CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+                    child: Text(
+                      'Ma Collection',
+                      style: GoogleFonts.dmSans(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w800,
+                        color: AppColors.textPrimary,
+                      ),
+                    ),
+                  ),
+                ),
+                if (showLimitBanner)
+                  SliverToBoxAdapter(
+                    child: _LimitBanner(collected: collectedIds.length),
+                  ),
+                SliverToBoxAdapter(
+                    child: _CollectionHeader(count: characters.length)),
+                SliverPadding(
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 100),
+                  sliver: SliverGrid(
+                    delegate: SliverChildBuilderDelegate(
+                      (ctx, i) => _CharCard(character: characters[i]),
+                      childCount: characters.length,
+                    ),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 8,
+                      mainAxisSpacing: 8,
+                      childAspectRatio: 112 / 170,
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
         );
       },
     );
@@ -94,7 +120,7 @@ class _EmptyState extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
-              Icons.collections_bookmark_outlined,
+              Icons.bookmark_border_rounded,
               size: 64,
               color: AppColors.accent.withValues(alpha: 0.5),
             ),
@@ -109,7 +135,7 @@ class _EmptyState extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              'Explore des personnages et ajoute-les\nà ta collection !',
+              'Explore des personnages et collecte tes favoris !',
               textAlign: TextAlign.center,
               style: GoogleFonts.nunitoSans(
                 fontSize: 14,
@@ -120,7 +146,7 @@ class _EmptyState extends StatelessWidget {
             SizedBox(
               height: 48,
               child: ElevatedButton(
-                onPressed: () => context.push('/search-standalone'),
+                onPressed: () => context.go('/search'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.accent,
                   shape: RoundedRectangleBorder(
@@ -129,11 +155,11 @@ class _EmptyState extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                 ),
                 child: Text(
-                  'Explorer les personnages',
+                  'Explorer',
                   style: GoogleFonts.nunitoSans(
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
-                    color: Colors.white,
+                    color: AppColors.textPrimary,
                   ),
                 ),
               ),

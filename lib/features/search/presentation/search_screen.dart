@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/l10n/app_strings.dart';
 import '../../../core/models/anime_entry.dart';
@@ -35,13 +37,7 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   int _selectedFilter = 0;
   String? _selectedSubFilter;
   List<Character> _anilistSearchResults = [];
-  final List<String> _recentSearches = [
-    'Naruto',
-    'Solo Leveling',
-    'Gojo Satoru',
-    'Attack on Titan',
-    'Demon Slayer',
-  ];
+  List<String> _recentSearches = [];
 
   // ── Animation controllers ─────────────────────────────────────────────
   late AnimationController _cancelCtrl;
@@ -169,10 +165,46 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
     }).toList();
   }
 
+  // ── Historique SharedPreferences ─────────────────────────────────────
+  static const _kHistoryKey = 'search_history';
+
+  Future<void> _loadHistory() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (mounted) {
+      setState(() {
+        _recentSearches = prefs.getStringList(_kHistoryKey) ?? [];
+      });
+    }
+  }
+
+  Future<void> _saveQuery(String query) async {
+    if (query.trim().length < 2) return;
+    final prefs = await SharedPreferences.getInstance();
+    _recentSearches.remove(query);
+    _recentSearches.insert(0, query);
+    _recentSearches = _recentSearches.take(5).toList();
+    await prefs.setStringList(_kHistoryKey, _recentSearches);
+    if (mounted) setState(() {});
+  }
+
+  Future<void> _clearHistory() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_kHistoryKey);
+    if (mounted) setState(() => _recentSearches = []);
+  }
+
+  Future<void> _removeRecentQuery(String query) async {
+    final prefs = await SharedPreferences.getInstance();
+    _recentSearches.remove(query);
+    await prefs.setStringList(_kHistoryKey, _recentSearches);
+    if (mounted) setState(() {});
+  }
+
   // ── Lifecycle ─────────────────────────────────────────────────────────
   @override
   void initState() {
     super.initState();
+    _loadHistory();
     // Load data service asynchronously; rebuilds when ready
     ref.read(otadexServiceProvider.future).then((s) {
       if (mounted) setState(() => _service = s);
@@ -263,9 +295,7 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
       _isFocused = false;
       _submitted = true;
     });
-    if (!_recentSearches.contains(text)) {
-      setState(() => _recentSearches.insert(0, text));
-    }
+    _saveQuery(text);
   }
 
   void _submitSearch() {
@@ -275,9 +305,7 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
       _submitted = true;
       _isFocused = false;
     });
-    if (!_recentSearches.contains(_query)) {
-      setState(() => _recentSearches.insert(0, _query));
-    }
+    _saveQuery(_query);
   }
 
   void _selectCategory(_Category cat) {
@@ -292,8 +320,8 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
     });
   }
 
-  void _removeRecent(String s) => setState(() => _recentSearches.remove(s));
-  void _clearAll() => setState(() => _recentSearches.clear());
+  void _removeRecent(String s) => _removeRecentQuery(s);
+  void _clearAll() => _clearHistory();
 
   // ── Build ─────────────────────────────────────────────────────────────
   @override
@@ -900,9 +928,7 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
           _query = item.name;
           _submitted = true;
         });
-        if (!_recentSearches.contains(item.name)) {
-          setState(() => _recentSearches.insert(0, item.name));
-        }
+        _saveQuery(item.name);
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -1153,7 +1179,9 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   }
 
   Widget _buildCharacterResultCard(RankTheme theme, Character c) {
-    return Container(
+    return GestureDetector(
+      onTap: () => context.push('/character/${c.id}'),
+      child: Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: theme.backgroundCard,
@@ -1243,11 +1271,14 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
           Icon(Icons.chevron_right_rounded, color: theme.textSecondary),
         ],
       ),
+    ),
     );
   }
 
   Widget _buildAnimeResultCard(RankTheme theme, AnimeEntry a) {
-    return Container(
+    return GestureDetector(
+      onTap: () => context.push('/anime/${a.id}'),
+      child: Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: theme.backgroundCard,
@@ -1312,6 +1343,7 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
           Icon(Icons.chevron_right_rounded, color: theme.textSecondary),
         ],
       ),
+    ),
     );
   }
 

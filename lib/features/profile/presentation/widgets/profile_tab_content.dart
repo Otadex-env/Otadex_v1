@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/l10n/app_strings.dart';
-import '../../../../core/models/user_rank.dart';
 import '../../../../core/theme/otadex_theme.dart';
 
 class ProfileTabContent extends StatelessWidget {
@@ -11,6 +10,8 @@ class ProfileTabContent extends StatelessWidget {
   final int maxPts;
   final int collectCount;
   final List<(String, Color, Color, bool)> collectionItems;
+  final int fanLevel;
+  final String fanLevelName;
 
   const ProfileTabContent({
     super.key,
@@ -20,6 +21,8 @@ class ProfileTabContent extends StatelessWidget {
     required this.maxPts,
     required this.collectCount,
     required this.collectionItems,
+    required this.fanLevel,
+    required this.fanLevelName,
   });
 
   @override
@@ -37,6 +40,8 @@ class ProfileTabContent extends StatelessWidget {
       maxPts: maxPts,
       collectCount: collectCount,
       collectionItems: collectionItems,
+      fanLevel: fanLevel,
+      fanLevelName: fanLevelName,
     );
   }
 }
@@ -47,6 +52,8 @@ class _CollectionTab extends StatelessWidget {
   final int maxPts;
   final int collectCount;
   final List<(String, Color, Color, bool)> collectionItems;
+  final int fanLevel;
+  final String fanLevelName;
 
   const _CollectionTab({
     required this.progressPct,
@@ -54,6 +61,8 @@ class _CollectionTab extends StatelessWidget {
     required this.maxPts,
     required this.collectCount,
     required this.collectionItems,
+    required this.fanLevel,
+    required this.fanLevelName,
   });
 
   @override
@@ -62,7 +71,12 @@ class _CollectionTab extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _ProgressCard(
-            progressPct: progressPct, currentPts: currentPts, maxPts: maxPts),
+          progressPct: progressPct,
+          currentPts: currentPts,
+          maxPts: maxPts,
+          fanLevel: fanLevel,
+          fanLevelName: fanLevelName,
+        ),
         _CollectionHeader(collectCount: collectCount),
         _CollectionGrid(items: collectionItems),
       ],
@@ -74,18 +88,21 @@ class _ProgressCard extends StatelessWidget {
   final double progressPct;
   final int currentPts;
   final int maxPts;
+  final int fanLevel;
+  final String fanLevelName;
 
   const _ProgressCard({
     required this.progressPct,
     required this.currentPts,
     required this.maxPts,
+    required this.fanLevel,
+    required this.fanLevelName,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = OtadexTheme.of(context);
     final s = AppStrings.of(context);
-    final rank = OtadexTheme.rankOf(context);
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
       padding: const EdgeInsets.all(16),
@@ -101,7 +118,7 @@ class _ProgressCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '${_rankLabel(rank)} Otaku — ${s.level} 4 🔥',
+                '$fanLevelName — ${s.level} $fanLevel 🔥',
                 style: GoogleFonts.rajdhani(
                   fontSize: 14,
                   fontWeight: FontWeight.w700,
@@ -138,12 +155,6 @@ class _ProgressCard extends StatelessWidget {
       ),
     );
   }
-
-  String _rankLabel(UserRank rank) => switch (rank) {
-        UserRank.genin => 'Genin',
-        UserRank.jonin => 'Jonin',
-        UserRank.kage => 'Kage',
-      };
 }
 
 class _CollectionHeader extends StatelessWidget {

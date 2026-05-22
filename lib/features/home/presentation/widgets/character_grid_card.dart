@@ -71,9 +71,11 @@ class _CharacterGridCardState extends ConsumerState<CharacterGridCard> {
               fit: StackFit.expand,
               children: [
                 // Full-bleed image or fallback gradient
-                if (character.imagePath != null)
+                if (character.images.isNotEmpty || (character.imagePath?.isNotEmpty == true))
                   OtadexImage(
-                    imagePath: character.imagePath!,
+                    imagePath: character.images.isNotEmpty
+                        ? character.images.first
+                        : character.imagePath!,
                     fit: BoxFit.cover,
                   )
                 else

@@ -29,6 +29,7 @@ class OtadexImage extends StatelessWidget {
     if (_isNetwork) {
       image = CachedNetworkImage(
         imageUrl: imagePath,
+        httpHeaders: const {'User-Agent': 'OTADEX/1.0'},
         width: width,
         height: height,
         fit: fit,

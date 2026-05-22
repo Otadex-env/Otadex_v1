@@ -30,8 +30,8 @@ final firestoreQuizProvider =
 // ── AniList service singleton ────────────────────────────────────────────────
 final anilistServiceProvider = Provider<AniListService>((_) => AniListService());
 
-// ── Trending characters (live AniList) ───────────────────────────────────────
-final trendingCharactersProvider =
+// ── Trending characters (live AniList — fallback carousel héro) ─────────────
+final anilistTrendingCharactersProvider =
     FutureProvider.autoDispose<List<Character>>((ref) {
   return ref.watch(anilistServiceProvider).getTrendingCharacters(perPage: 20);
 });

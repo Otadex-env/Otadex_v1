@@ -127,6 +127,45 @@ class UserProfile {
     );
   }
 
+  // ── Niveau fan calculé dynamiquement depuis fanScore ───────────────────────
+  int get fanLevel {
+    if (fanScore >= 5000) return 5;
+    if (fanScore >= 2000) return 4;
+    if (fanScore >= 500) return 3;
+    if (fanScore >= 100) return 2;
+    return 1;
+  }
+
+  String get fanLevelName {
+    switch (fanLevel) {
+      case 5:
+        return 'Kage Suprême';
+      case 4:
+        return 'Jonin Otaku';
+      case 3:
+        return 'Chunin Fan';
+      case 2:
+        return 'Otaku Débutant';
+      default:
+        return 'Spectateur';
+    }
+  }
+
+  int get nextLevelScore {
+    switch (fanLevel) {
+      case 1:
+        return 100;
+      case 2:
+        return 500;
+      case 3:
+        return 2000;
+      case 4:
+        return 5000;
+      default:
+        return 5000;
+    }
+  }
+
   static UserProfile mock() => UserProfile(
         id: 'usr_new_001',
         pseudo: 'NouveauGenin',

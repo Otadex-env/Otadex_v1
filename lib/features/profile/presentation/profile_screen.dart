@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/constants/app_constants.dart';
-import '../../../core/data/mock_data.dart';
 import '../../../core/l10n/locale_provider.dart';
 import '../../../core/providers/currency_provider.dart';
+import '../../../core/providers/otadex_providers.dart';
 import '../../../core/providers/user_profile_provider.dart';
 import '../../../core/theme/theme_mode_provider.dart';
 import 'widgets/avatar_picker.dart';
@@ -63,10 +63,12 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     final currency = ref.watch(currencyProvider);
     final profile = ref.watch(userProfileProvider);
     final collectedIds = profile.collectedCharacterIds;
-    final collectionItems = MockData.allCharacters
-        .where((c) => collectedIds.contains(c.id))
-        .map((c) => (c.name, c.cardColor, c.accentColor, true))
-        .toList();
+    final allCharsAsync = ref.watch(allCharactersProvider);
+    final collectionItems = allCharsAsync.valueOrNull
+            ?.where((c) => collectedIds.contains(c.id))
+            .map((c) => (c.name, c.cardColor, c.accentColor, true))
+            .toList() ??
+        [];
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -94,6 +96,8 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
             maxPts: profile.maxPts,
             collectCount: collectedIds.length,
             collectionItems: collectionItems,
+            fanLevel: profile.fanLevel,
+            fanLevelName: profile.fanLevelName,
           ),
           const SizedBox(height: 28),
           const AvatarPicker(),

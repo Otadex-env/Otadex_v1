@@ -50,15 +50,10 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
 
   Character get c => widget.character;
 
-  static const _kFallbackImages = [
-    'assets/images/characters/satoru_gojo/gojo_01.jpg',
-    'assets/images/characters/satoru_gojo/gojo_02.png',
-    'assets/images/characters/satoru_gojo/gojo_03.png',
-    'assets/images/characters/satoru_gojo/gojo_04_portrait.png',
-    'assets/images/characters/satoru_gojo/gojo_05_portrait.png',
-  ];
-
   List<String> get _effectiveImages {
+    final customImages = c.images.where((url) => url.isNotEmpty).toList();
+    if (customImages.isNotEmpty) return customImages;
+    if (c.imagePath?.isNotEmpty == true) return [c.imagePath!];
     final storageAsync = ref.watch(characterImagesProvider({
       'anime': c.animeName,
       'character': c.name,
@@ -66,9 +61,7 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
     if (storageAsync.hasValue && storageAsync.value!.isNotEmpty) {
       return storageAsync.value!;
     }
-    if (c.images.isNotEmpty) return c.images;
-    if (c.imagePath?.isNotEmpty == true) return [c.imagePath!];
-    return _kFallbackImages;
+    return [];
   }
 
   // ── Computed stats ───────────────────────────────────────────────

@@ -337,10 +337,10 @@ class AniListService {
       tier: _favouritesToTier(favourites),
       rating: (favourites.clamp(0, 100000) / 10000.0).clamp(1.0, 10.0),
       likes: favourites,
-      imagePath: largeImg,
+      imagePath: largeImg ?? '',
       images: [
-        if (largeImg != null) largeImg,
-        if (mediumImg != null) mediumImg,
+        if (largeImg != null && largeImg.isNotEmpty) largeImg,
+        if (mediumImg != null && mediumImg.isNotEmpty) mediumImg,
       ],
       category: _genreToCategory(genres),
       isTrending: isTrending,
