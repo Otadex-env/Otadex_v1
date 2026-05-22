@@ -21,6 +21,20 @@ final jjkCharactersProvider = FutureProvider<List<Character>>((ref) {
       .getCharactersByAnime('jujutsu-kaisen');
 });
 
+// ── CLK characters from Firestore ────────────────────────────────────────────
+final clkCharactersProvider = FutureProvider<List<Character>>((ref) {
+  return ref
+      .watch(firestoreCharacterServiceProvider)
+      .getCharactersByAnime('Classroom-of-the-elite');
+});
+
+// ── At characters from Firestore ────────────────────────────────────────────
+final atCharactersProvider = FutureProvider<List<Character>>((ref) {
+  return ref
+      .watch(firestoreCharacterServiceProvider)
+      .getCharactersByAnime('Attack-on-Titan');
+});
+
 // ── Quiz Firestore pour un personnage ────────────────────────────────────────
 final firestoreQuizProvider =
     FutureProvider.autoDispose.family<List<QuizQuestion>, String>((ref, id) {
@@ -28,7 +42,8 @@ final firestoreQuizProvider =
 });
 
 // ── AniList service singleton ────────────────────────────────────────────────
-final anilistServiceProvider = Provider<AniListService>((_) => AniListService());
+final anilistServiceProvider =
+    Provider<AniListService>((_) => AniListService());
 
 // ── Trending characters (live AniList — fallback carousel héro) ─────────────
 final anilistTrendingCharactersProvider =
@@ -65,9 +80,8 @@ final featuredSlidesProvider =
 // ── Real-time search ─────────────────────────────────────────────────────────
 final searchQueryProvider = StateProvider<String>((_) => '');
 
-final searchCharactersProvider =
-    FutureProvider.autoDispose.family<List<Character>, String>(
-        (ref, query) async {
+final searchCharactersProvider = FutureProvider.autoDispose
+    .family<List<Character>, String>((ref, query) async {
   if (query.trim().length < 2) return [];
   final firestoreService = ref.watch(firestoreCharacterServiceProvider);
   final anilistService = ref.watch(anilistServiceProvider);
@@ -83,9 +97,8 @@ final searchCharactersProvider =
   return [...firestoreChars, ...anilistUniques];
 });
 
-final searchAnimesProvider =
-    FutureProvider.autoDispose.family<List<AnimeEntry>, String>(
-        (ref, query) async {
+final searchAnimesProvider = FutureProvider.autoDispose
+    .family<List<AnimeEntry>, String>((ref, query) async {
   if (query.trim().length < 2) return [];
   final firestoreService = ref.watch(firestoreCharacterServiceProvider);
   final anilistService = ref.watch(anilistServiceProvider);
@@ -128,9 +141,7 @@ final sameAnimeCharactersProvider = FutureProvider.autoDispose
 final characterDetailProvider =
     FutureProvider.autoDispose.family<Character?, String>((ref, id) async {
   if (id.startsWith('jjk-')) {
-    return ref
-        .watch(firestoreCharacterServiceProvider)
-        .getCharacterById(id);
+    return ref.watch(firestoreCharacterServiceProvider).getCharacterById(id);
   }
   if (id.startsWith('anilist-')) {
     final anilistId = int.tryParse(id.replaceFirst('anilist-', ''));
