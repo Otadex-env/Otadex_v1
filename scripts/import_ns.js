@@ -33,8 +33,8 @@ const animeData = {
   ],
   "annee": 2007,
   "episodes": {
-    "total": 500
-    created_at: FieldValue.serverTimestamp(),\n},
+    "total": 500,
+},
   "studio": "Studio Pierrot",
   "studioId": "studio-pierrot",
   "auteur": "Masashi Kishimoto",
@@ -45,8 +45,8 @@ const animeData = {
   "statut": "Terminé",
   "coverImage": "",
   "bannerImage": "",
-  "type": "manga_adapte"
-  created_at: FieldValue.serverTimestamp(),\n};
+  "type": "manga_adapte",
+};
 
 const creatorData = {
   "id": "masashi-kishimoto",
@@ -62,18 +62,18 @@ const creatorData = {
     {
       "titre": "Karakuri",
       "annee": 1996,
-      "type": "One-shot"
-      created_at: FieldValue.serverTimestamp(),\n},
+      "type": "One-shot",
+},
     {
       "titre": "Naruto",
       "annee": 1999,
-      "type": "Manga"
-      created_at: FieldValue.serverTimestamp(),\n},
+      "type": "Manga",
+},
     {
       "titre": "Boruto",
       "annee": 2016,
-      "type": "Manga (Supervision/Scénario)"
-      created_at: FieldValue.serverTimestamp(),\n}
+      "type": "Manga (Supervision/Scénario)",
+}
   ],
   "recompenses": [
     "Prix Hope Step (1995)",
@@ -85,8 +85,8 @@ const creatorData = {
   ],
   "animeIds": [
     "naruto-shippuden"
-  ]
-  created_at: FieldValue.serverTimestamp(),\n};
+  ],
+};
 
 const studioData = {
   "id": "studio-pierrot",
@@ -106,8 +106,8 @@ const studioData = {
   "animeIds": [
     "naruto-shippuden"
   ],
-  "logoUrl": ""
-  created_at: FieldValue.serverTimestamp(),\n};
+  "logoUrl": "",
+};
 
 const characters = [
   {
@@ -159,8 +159,7 @@ const characters = [
     "imagePath": "assets/images/Animé pictures/Naruto Shippuden/Minato Namikaze/ns_mina1.jpeg",
     "likesCount": 0,
     "collectCount": 0,
-    "popularityRank": 1
-    created_at: FieldValue.serverTimestamp()\n  },
+    "popularityRank": 1},
   {
     "id": "ns-itachi-uchiha",
     "nom": "Itachi Uchiha",
@@ -212,8 +211,7 @@ const characters = [
     "imagePath": "assets/images/Animé pictures/Naruto Shippuden/Itachi Uchiha/ns_itac1.jpeg",
     "likesCount": 0,
     "collectCount": 0,
-    "popularityRank": 2
-    created_at: FieldValue.serverTimestamp()\n  },
+    "popularityRank": 2},
   {
     "id": "ns-sakura-haruno",
     "nom": "Sakura Haruno",
@@ -263,8 +261,7 @@ const characters = [
     "imagePath": "assets/images/Animé pictures/Naruto Shippuden/Sakura Haruno/ns_saku1.jpeg",
     "likesCount": 0,
     "collectCount": 0,
-    "popularityRank": 3
-    created_at: FieldValue.serverTimestamp()\n  },
+    "popularityRank": 3},
   {
     "id": "ns-naruto-uzumaki",
     "nom": "Naruto Uzumaki",
@@ -316,8 +313,7 @@ const characters = [
     "imagePath": "assets/images/Animé pictures/Naruto Shippuden/Naruto Uzumaki/ns_naru1.jpeg",
     "likesCount": 0,
     "collectCount": 0,
-    "popularityRank": 4
-    created_at: FieldValue.serverTimestamp()\n  },
+    "popularityRank": 4},
   {
     "id": "ns-kakashi-hatake",
     "nom": "Kakashi Hatake",
@@ -368,8 +364,7 @@ const characters = [
     "imagePath": "assets/images/Animé pictures/Naruto Shippuden/Kakashi Hatake/ns_kaka1.jpeg",
     "likesCount": 0,
     "collectCount": 0,
-    "popularityRank": 5
-    created_at: FieldValue.serverTimestamp()\n  },
+    "popularityRank": 5},
   {
     "id": "ns-sasuke-uchiha",
     "nom": "Sasuke Uchiha",
@@ -420,8 +415,7 @@ const characters = [
     "imagePath": "assets/images/Animé pictures/Naruto Shippuden/Sasuke Uchiha/ns_sasu1.jpeg",
     "likesCount": 0,
     "collectCount": 0,
-    "popularityRank": 6
-    created_at: FieldValue.serverTimestamp()\n  },
+    "popularityRank": 6},
   {
     "id": "ns-jiraiya",
     "nom": "Jiraiya",
@@ -471,8 +465,7 @@ const characters = [
     "imagePath": "assets/images/Animé pictures/Naruto Shippuden/Jiraiya/ns_jira1.jpeg",
     "likesCount": 0,
     "collectCount": 0,
-    "popularityRank": 7
-    created_at: FieldValue.serverTimestamp()\n  },
+    "popularityRank": 7},
   {
     "id": "ns-gaara",
     "nom": "Gaara",
@@ -523,8 +516,7 @@ const characters = [
     "imagePath": "assets/images/Animé pictures/Naruto Shippuden/Gaara/ns_gaar1.jpeg",
     "likesCount": 0,
     "collectCount": 0,
-    "popularityRank": 8
-    created_at: FieldValue.serverTimestamp()\n  },
+    "popularityRank": 8},
   {
     "id": "ns-hinata-hyuga",
     "nom": "Hinata Hyuga",
@@ -573,8 +565,7 @@ const characters = [
     "imagePath": "assets/images/Animé pictures/Naruto Shippuden/Hinata Hyuga/ns_hina1.jpeg",
     "likesCount": 0,
     "collectCount": 0,
-    "popularityRank": 9
-    created_at: FieldValue.serverTimestamp()\n  },
+    "popularityRank": 9},
   {
     "id": "ns-pain",
     "nom": "Pain",
@@ -624,8 +615,7 @@ const characters = [
     "imagePath": "assets/images/Animé pictures/Naruto Shippuden/Pain/ns_pain1.jpeg",
     "likesCount": 0,
     "collectCount": 0,
-    "popularityRank": 10
-    created_at: FieldValue.serverTimestamp()\n  },
+    "popularityRank": 10},
   {
     "id": "ns-madara-uchiha",
     "nom": "Madara Uchiha",
@@ -677,8 +667,7 @@ const characters = [
     "imagePath": "assets/images/Animé pictures/Naruto Shippuden/Madara Uchiha/ns_mada1.jpeg",
     "likesCount": 0,
     "collectCount": 0,
-    "popularityRank": 11
-    created_at: FieldValue.serverTimestamp()\n  },
+    "popularityRank": 11},
   {
     "id": "ns-obito-uchiha",
     "nom": "Obito Uchiha",
@@ -728,8 +717,7 @@ const characters = [
     "imagePath": "assets/images/Animé pictures/Naruto Shippuden/Obito Uchiha/ns_obit1.jpeg",
     "likesCount": 0,
     "collectCount": 0,
-    "popularityRank": 12
-    created_at: FieldValue.serverTimestamp()\n  },
+    "popularityRank": 12},
   {
     "id": "ns-hashirama-senju",
     "nom": "Hashirama Senju",
@@ -778,8 +766,7 @@ const characters = [
     "imagePath": "assets/images/Animé pictures/Naruto Shippuden/Hashirama Senju/ns_hash1.jpeg",
     "likesCount": 0,
     "collectCount": 0,
-    "popularityRank": 13
-    created_at: FieldValue.serverTimestamp()\n  },
+    "popularityRank": 13},
   {
     "id": "ns-shikamaru-nara",
     "nom": "Shikamaru Nara",
@@ -828,8 +815,7 @@ const characters = [
     "imagePath": "assets/images/Animé pictures/Naruto Shippuden/Shikamaru Nara/ns_shik1.jpeg",
     "likesCount": 0,
     "collectCount": 0,
-    "popularityRank": 14
-    created_at: FieldValue.serverTimestamp()\n  },
+    "popularityRank": 14},
   {
     "id": "ns-rock-lee",
     "nom": "Rock Lee",
@@ -878,8 +864,7 @@ const characters = [
     "imagePath": "assets/images/Animé pictures/Naruto Shippuden/Rock Lee/ns_rock1.jpeg",
     "likesCount": 0,
     "collectCount": 0,
-    "popularityRank": 15
-    created_at: FieldValue.serverTimestamp()\n  },
+    "popularityRank": 15},
   {
     "id": "ns-neji-hyuga",
     "nom": "Neji Hyuga",
@@ -927,8 +912,7 @@ const characters = [
     "imagePath": "assets/images/Animé pictures/Naruto Shippuden/Neji Hyuga/ns_neji1.jpeg",
     "likesCount": 0,
     "collectCount": 0,
-    "popularityRank": 16
-    created_at: FieldValue.serverTimestamp()\n  },
+    "popularityRank": 16},
   {
     "id": "ns-tsunade",
     "nom": "Tsunade",
@@ -976,8 +960,7 @@ const characters = [
     "imagePath": "assets/images/Animé pictures/Naruto Shippuden/Tsunade/ns_tsun1.jpeg",
     "likesCount": 0,
     "collectCount": 0,
-    "popularityRank": 17
-    created_at: FieldValue.serverTimestamp()\n  },
+    "popularityRank": 17},
   {
     "id": "ns-might-guy",
     "nom": "Might Guy",
@@ -1026,8 +1009,7 @@ const characters = [
     "imagePath": "assets/images/Animé pictures/Naruto Shippuden/Might Guy/ns_migh1.jpeg",
     "likesCount": 0,
     "collectCount": 0,
-    "popularityRank": 18
-    created_at: FieldValue.serverTimestamp()\n  },
+    "popularityRank": 18},
   {
     "id": "ns-orochimaru",
     "nom": "Orochimaru",
@@ -1076,8 +1058,7 @@ const characters = [
     "imagePath": "assets/images/Animé pictures/Naruto Shippuden/Orochimaru/ns_oroc1.jpeg",
     "likesCount": 0,
     "collectCount": 0,
-    "popularityRank": 19
-    created_at: FieldValue.serverTimestamp()\n  },
+    "popularityRank": 19},
   {
     "id": "ns-konan",
     "nom": "Konan",
@@ -1125,8 +1106,7 @@ const characters = [
     "imagePath": "assets/images/Animé pictures/Naruto Shippuden/Konan/ns_kona1.jpeg",
     "likesCount": 0,
     "collectCount": 0,
-    "popularityRank": 20
-    created_at: FieldValue.serverTimestamp()\n  }
+    "popularityRank": 20}
 ];
 
 async function importData() {
@@ -1135,17 +1115,17 @@ async function importData() {
     
     // Animé
     console.log("1. Importation de l'animé...");
-    await db.collection("animes").doc(animeData.id).set(animeData, { merge: true });
+    await db.collection("animes").doc(animeData.id).set({ ...animeData, created_at: FieldValue.serverTimestamp() }, { merge: true });
     console.log("✅ Animé importé !");
 
     // Créateur
     console.log("2. Importation du créateur...");
-    await db.collection("creators").doc(creatorData.id).set(creatorData, { merge: true });
+    await db.collection("creators").doc(creatorData.id).set({ ...creatorData, created_at: FieldValue.serverTimestamp() }, { merge: true });
     console.log("✅ Créateur importé !");
 
     // Studio
     console.log("3. Importation du studio...");
-    await db.collection("studios").doc(studioData.id).set(studioData, { merge: true });
+    await db.collection("studios").doc(studioData.id).set({ ...studioData, created_at: FieldValue.serverTimestamp() }, { merge: true });
     console.log("✅ Studio importé !");
     
     // Personnages
@@ -1153,7 +1133,7 @@ async function importData() {
     let batch = db.batch();
     for (const char of characters) {
       const docRef = db.collection("characters").doc(char.id);
-      batch.set(docRef, char, { merge: true });
+      batch.set(docRef, { ...char, created_at: FieldValue.serverTimestamp() }, { merge: true });
     }
     await batch.commit();
     console.log("✅ Tous les personnages importés avec succès !");
