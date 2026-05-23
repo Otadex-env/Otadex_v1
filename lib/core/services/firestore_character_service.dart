@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/character.dart';
 import '../models/anime_entry.dart';
 import '../models/creator_entry.dart';
+import '../theme/app_colors.dart';
 
 class FirestoreCharacterService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
@@ -322,19 +323,21 @@ class FirestoreCharacterService {
   }
 
   Color _cardColorForAnime(String animeId) => switch (animeId) {
-        'jujutsu-kaisen' => const Color(0xFF0A1520),
-        'naruto-shippuden' => const Color(0xFF0D1A0A),
-        'attack-on-titan' => const Color(0xFF1A0A0A),
-        'one-piece' => const Color(0xFF1A1200),
-        _ => const Color(0xFF0A1020),
+        'jujutsu-kaisen' => AppColors.animeJjkCard,
+        'naruto-shippuden' => AppColors.animeNsCard,
+        'attack-on-titan' => AppColors.animeAotCard,
+        'one-piece' => AppColors.animeOpCard,
+        'classroom-of-the-elite' => AppColors.animeClkCard,
+        _ => AppColors.animeDefaultCard,
       };
 
   Color _accentColorForAnime(String animeId) => switch (animeId) {
-        'jujutsu-kaisen' => const Color(0xFF1565C0),
-        'naruto-shippuden' => const Color(0xFFFF6F00),
-        'attack-on-titan' => const Color(0xFFC62828),
-        'one-piece' => const Color(0xFFFF9800),
-        _ => const Color(0xFF6A1B9A),
+        'jujutsu-kaisen' => AppColors.animeJjkAccent,
+        'naruto-shippuden' => AppColors.animeNsAccent,
+        'attack-on-titan' => AppColors.animeAotAccent,
+        'one-piece' => AppColors.animeOpAccent,
+        'classroom-of-the-elite' => AppColors.animeClkAccent,
+        _ => AppColors.animeDefaultAccent,
       };
 
   String _categoryForAnime(String animeId) => switch (animeId) {

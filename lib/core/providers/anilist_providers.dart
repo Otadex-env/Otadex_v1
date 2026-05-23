@@ -57,24 +57,28 @@ final trendingAnimesProvider =
   return ref.watch(anilistServiceProvider).getTrendingAnimes(perPage: 5);
 });
 
-// ── Hero carousel slides from live AniList animes ────────────────────────────
+// ── Hero carousel slides depuis Firestore (allAnimesProvider) ────────────────
 final featuredSlidesProvider =
     FutureProvider.autoDispose<List<FeaturedSlide>>((ref) async {
-  final animes = await ref.watch(trendingAnimesProvider.future);
+  final animes = await ref.watch(allAnimesProvider.future);
   if (animes.isEmpty) return _kFallbackSlides;
-  return animes
-      .map((a) => FeaturedSlide(
-            id: a.id,
-            title: a.name,
-            subtitle: a.studio.isNotEmpty
-                ? '${a.year > 0 ? a.year : "Tendance"} · ${a.studio}'
-                : (a.year > 0 ? '${a.year}' : 'Tendance'),
-            tag: 'TENDANCE',
-            primaryColor: a.cardColor,
-            secondaryColor: a.accentColor,
-            category: a.category,
-          ))
-      .toList();
+  final featured = animes.where((a) => a.isFeatured).take(5).toList();
+  if (featured.isEmpty) return _kFallbackSlides;
+  return featured.map((a) {
+    final subtitle = [
+      if (a.year > 0) '${a.year}',
+      if (a.studio.isNotEmpty) a.studio,
+    ].join(' · ');
+    return FeaturedSlide(
+      id: a.id,
+      title: a.name,
+      subtitle: subtitle.isNotEmpty ? subtitle : a.category,
+      tag: 'VEDETTE',
+      primaryColor: a.cardColor,
+      secondaryColor: a.accentColor,
+      category: a.category,
+    );
+  }).toList();
 });
 
 // ── Real-time search ─────────────────────────────────────────────────────────
@@ -109,12 +113,12 @@ final sameAnimeCharactersProvider = FutureProvider.autoDispose
   return [];
 });
 
-// ── Character detail (jjk-*, ns-*, clk-* → Firestore, sinon mock) ───
+// ── Character detail : Firestore en priorité pour tout ID, fallback mock ─────
 final characterDetailProvider =
     FutureProvider.autoDispose.family<Character?, String>((ref, id) async {
-  if (id.startsWith('jjk-') || id.startsWith('ns-') || id.startsWith('clk-')) {
-    return ref.watch(firestoreCharacterServiceProvider).getCharacterById(id);
-  }
+  final fsChar =
+      await ref.watch(firestoreCharacterServiceProvider).getCharacterById(id);
+  if (fsChar != null) return fsChar;
   final service = await ref.read(otadexServiceProvider.future);
   return service.characterById(id);
 });

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../core/constants/app_assets.dart';
 import '../../../core/models/anime_entry.dart';
 import '../../../core/models/character.dart';
 import '../../../core/models/creator_entry.dart';
@@ -29,28 +30,40 @@ class _AnimeDetailScreenState extends ConsumerState<AnimeDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = OtadexTheme.of(context);
-    final serviceAsync = ref.watch(otadexServiceProvider);
+    final animesAsync = ref.watch(allAnimesProvider);
+    final allCharsAsync = ref.watch(allCharactersProvider);
+    final allCreatorsAsync = ref.watch(allCreatorsProvider);
 
     return Scaffold(
       backgroundColor: theme.backgroundPrimary,
       extendBodyBehindAppBar: true,
-      body: serviceAsync.when(
+      body: animesAsync.when(
         loading: () => Center(
           child: CircularProgressIndicator(color: theme.accentColor),
         ),
         error: (_, __) => _buildErrorState(theme),
-        data: (service) {
-          final anime = service.animeById(widget.animeId);
-          if (anime == null) return _buildErrorState(theme);
+        data: (animes) {
+          final matching = animes.where((a) => a.id == widget.animeId).toList();
+          if (matching.isEmpty) return _buildErrorState(theme);
+          final anime = matching.first;
 
-          final characters = service.characters
-              .where((c) => c.animeName == anime.name)
+          final allChars = allCharsAsync.valueOrNull ?? [];
+          final characters = allChars
+              .where((c) =>
+                  c.animeName == anime.name || c.animeId == anime.id)
               .take(6)
               .toList();
-          final creator = anime.creatorId != null
-              ? service.creatorById(anime.creatorId!)
-              : null;
-          final similar = service.animes
+
+          final allCreators = allCreatorsAsync.valueOrNull ?? [];
+          final creatorMatches = anime.creatorId != null
+              ? allCreators
+                  .where((cr) => cr.id == anime.creatorId)
+                  .toList()
+              : <CreatorEntry>[];
+          final creator =
+              creatorMatches.isNotEmpty ? creatorMatches.first : null;
+
+          final similar = animes
               .where((a) =>
                   a.id != anime.id &&
                   a.genres.any(anime.genres.contains))
@@ -289,8 +302,8 @@ class _StatsBand extends StatelessWidget {
           ),
           _Divider(theme: theme),
           _StatCell(
-            label: 'Note AniList',
-            value: anime.rating.toStringAsFixed(1),
+            label: 'Note',
+            value: anime.rating > 0 ? anime.rating.toStringAsFixed(1) : '—',
             theme: theme,
             valueColor: AppColors.starYellow,
           ),
@@ -416,18 +429,22 @@ class _CharacterRow extends StatelessWidget {
         child: Row(
           children: [
             const SizedBox(width: 10),
-            // Avatar
+            // Avatar — assets locaux en priorité
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: SizedBox(
                 width: 52,
                 height: 52,
-                child: character.imagePath != null
-                    ? OtadexImage(
-                        imagePath: character.imagePath!,
-                        fit: BoxFit.cover,
-                      )
-                    : _InitialsBox(character: character),
+                child: Builder(builder: (_) {
+                  final localImgs =
+                      AppAssets.getByCharacterId(character.id);
+                  final imgPath = localImgs.isNotEmpty
+                      ? localImgs.first
+                      : character.imagePath ?? '';
+                  return imgPath.isNotEmpty
+                      ? OtadexImage(imagePath: imgPath, fit: BoxFit.cover)
+                      : _InitialsBox(character: character);
+                }),
               ),
             ),
             const SizedBox(width: 12),

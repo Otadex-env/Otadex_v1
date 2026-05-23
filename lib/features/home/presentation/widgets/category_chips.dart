@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../../core/data/mock_data.dart';
+import '../../../../../core/providers/otadex_providers.dart';
 import '../../../../../core/theme/otadex_theme.dart';
 
-class CategoryChips extends StatelessWidget {
+const _kDefaultCategories = [
+  'Tous', 'Shōnen', 'Seinen', 'Isekai', 'Shōjo', 'Manhwa', 'Mecha',
+];
+
+class CategoryChips extends ConsumerWidget {
   final int selectedIndex;
   final ValueChanged<int> onChanged;
 
@@ -14,9 +19,10 @@ class CategoryChips extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = OtadexTheme.of(context);
-    const categories = MockData.categories;
+    final categories =
+        ref.watch(categoriesProvider).valueOrNull ?? _kDefaultCategories;
 
     return SizedBox(
       height: 44,

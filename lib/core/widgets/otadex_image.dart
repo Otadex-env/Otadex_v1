@@ -78,7 +78,7 @@ class OtadexImage extends StatelessWidget {
     ),
     child: Icon(
       Icons.person_rounded,
-      color: AppColors.textSecondary.withOpacity(0.4),
+      color: AppColors.textSecondary.withValues(alpha: 0.4),
       size: 40,
     ),
   );

@@ -85,4 +85,18 @@ class AppColors {
   static const Color backgroundAIBlue = Color(0xFF151520);
   static const Color backgroundAIPurple = Color(0xFF120A1E);
   static const Color rankKageBgElevated = Color(0xFF3D1500);
+
+  // === ANIME CARD & ACCENT THEMES ===
+  static const Color animeJjkCard = Color(0xFF0A1520);
+  static const Color animeJjkAccent = Color(0xFF1565C0);
+  static const Color animeNsCard = Color(0xFF0D1A0A);
+  static const Color animeNsAccent = Color(0xFFFF6F00);
+  static const Color animeAotCard = Color(0xFF1A0A0A);
+  static const Color animeAotAccent = Color(0xFFC62828);
+  static const Color animeOpCard = Color(0xFF1A1200);
+  static const Color animeOpAccent = Color(0xFFFF9800);
+  static const Color animeClkCard = Color(0xFF0A1520);
+  static const Color animeClkAccent = Color(0xFF00897B);
+  static const Color animeDefaultCard = Color(0xFF0A1020);
+  static const Color animeDefaultAccent = Color(0xFF6A1B9A);
 }

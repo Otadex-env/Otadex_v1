@@ -1174,9 +1174,12 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
   }
 
   Widget _buildPortraitCard(Character char) {
-    final imgPath = char.images.isNotEmpty
-        ? char.images.first
-        : char.imagePath ?? '';
+    final localImgs = AppAssets.getByCharacterId(char.id);
+    final imgPath = localImgs.isNotEmpty
+        ? localImgs.first
+        : char.images.isNotEmpty
+            ? char.images.first
+            : char.imagePath ?? '';
     final hasImage = imgPath.isNotEmpty;
 
     return GestureDetector(
@@ -1410,7 +1413,7 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
         padding: const EdgeInsets.all(24),
         child: Center(
           child: Text(
-            'Relations à venir via AniList',
+            'Aucune relation disponible pour ce personnage',
             textAlign: TextAlign.center,
             style: GoogleFonts.nunitoSans(
                 fontSize: 14, color: AppColors.textSecondary),
@@ -1584,6 +1587,10 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
                   'amber' => AppColors.warning,
                   _ => AppColors.textSecondary,
                 };
+                final relLocalImgs = AppAssets.getByCharacterId(rel.id);
+                final relImgPath = relLocalImgs.isNotEmpty
+                    ? relLocalImgs.first
+                    : rel.imageUrl;
                 return SizedBox(
                   width: 90,
                   child: Container(
@@ -1600,7 +1607,7 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
                             width: 60,
                             height: 60,
                             child: OtadexImage(
-                              imagePath: rel.imageUrl,
+                              imagePath: relImgPath,
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -1684,9 +1691,12 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
                 itemCount: chars.length,
                 itemBuilder: (context, index) {
                   final char = chars[index];
-                  final imgPath = char.images.isNotEmpty
-                      ? char.images.first
-                      : char.imagePath ?? '';
+                  final charLocalImgs = AppAssets.getByCharacterId(char.id);
+                  final imgPath = charLocalImgs.isNotEmpty
+                      ? charLocalImgs.first
+                      : char.images.isNotEmpty
+                          ? char.images.first
+                          : char.imagePath ?? '';
                   return GestureDetector(
                     onTap: () => context.push('/character/${char.id}',
                         extra: char),
@@ -1737,6 +1747,210 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
     );
   }
 
+  // ── FIRESTORE ANIME + CREATOR (onglet Médias quand pas d'AniList) ─────────
+  Widget _buildFirestoreAnimeContent(RankTheme theme) {
+    final animesAsync = ref.watch(allAnimesProvider);
+    final creatorsAsync = ref.watch(allCreatorsProvider);
+
+    return animesAsync.when(
+      loading: () => const Padding(
+        padding: EdgeInsets.all(32),
+        child: Center(child: CircularProgressIndicator(strokeWidth: 2, color: AppColors.accent)),
+      ),
+      error: (_, __) => const SizedBox.shrink(),
+      data: (animes) {
+        final anime = animes.where((a) =>
+          a.id == c.animeId || a.name == c.animeName
+        ).firstOrNull;
+
+        if (anime == null) {
+          return Padding(
+            padding: const EdgeInsets.all(24),
+            child: Center(
+              child: Text(
+                'Informations média non disponibles',
+                style: GoogleFonts.nunitoSans(fontSize: 13, color: AppColors.textSecondary),
+              ),
+            ),
+          );
+        }
+
+        final allCreators = creatorsAsync.valueOrNull ?? [];
+        final creator = anime.creatorId != null
+            ? allCreators.where((cr) => cr.id == anime.creatorId).firstOrNull
+            : null;
+
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // ── Animé ───────────────────────────────────────────────────────
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 20, 16, 12),
+              child: Text('📺 Animé', style: GoogleFonts.nunitoSans(
+                fontSize: 16, fontWeight: FontWeight.w600, color: AppColors.textPrimary,
+              )),
+            ),
+            GestureDetector(
+              onTap: () => context.push('/anime/${anime.id}'),
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: AppColors.backgroundElevated,
+                  borderRadius: BorderRadius.circular(14),
+                  border: Border.all(color: AppColors.borderSubtle),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Vignette couleur animé
+                    Container(
+                      width: 56,
+                      height: 72,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [anime.cardColor, anime.accentColor],
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          anime.name.isNotEmpty ? anime.name[0].toUpperCase() : '?',
+                          style: GoogleFonts.rajdhani(
+                            fontSize: 28, fontWeight: FontWeight.w800, color: AppColors.textPrimary,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 14),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(anime.name, style: GoogleFonts.nunitoSans(
+                            fontSize: 15, fontWeight: FontWeight.w700, color: AppColors.textPrimary,
+                          )),
+                          if (anime.year > 0 || anime.studio.isNotEmpty) ...[
+                            const SizedBox(height: 4),
+                            Text(
+                              [if (anime.year > 0) '${anime.year}', if (anime.studio.isNotEmpty) anime.studio].join(' · '),
+                              style: GoogleFonts.nunitoSans(fontSize: 12, color: AppColors.textSecondary),
+                            ),
+                          ],
+                          if (anime.episodes > 0) ...[
+                            const SizedBox(height: 2),
+                            Text('${anime.episodes} épisodes · ${anime.status}',
+                              style: GoogleFonts.nunitoSans(fontSize: 11, color: AppColors.textSecondary)),
+                          ],
+                          if (anime.genres.isNotEmpty) ...[
+                            const SizedBox(height: 8),
+                            Wrap(
+                              spacing: 6, runSpacing: 4,
+                              children: anime.genres.take(4).map((g) => Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                                decoration: BoxDecoration(
+                                  color: anime.accentColor.withValues(alpha: 0.15),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Text(g, style: GoogleFonts.nunitoSans(
+                                  fontSize: 10, color: anime.accentColor, fontWeight: FontWeight.w600,
+                                )),
+                              )).toList(),
+                            ),
+                          ],
+                          if (anime.synopsis.isNotEmpty) ...[
+                            const SizedBox(height: 8),
+                            Text(anime.synopsis, maxLines: 3, overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.nunitoSans(fontSize: 12, color: AppColors.textSecondary, height: 1.4)),
+                          ],
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 4),
+                    const Icon(Icons.chevron_right_rounded, color: AppColors.textSecondary, size: 18),
+                  ],
+                ),
+              ),
+            ),
+
+            // ── Créateur ─────────────────────────────────────────────────────
+            if (creator != null) ...[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 24, 16, 12),
+                child: Text('✍️ Créateur', style: GoogleFonts.nunitoSans(
+                  fontSize: 16, fontWeight: FontWeight.w600, color: AppColors.textPrimary,
+                )),
+              ),
+              GestureDetector(
+                onTap: () => context.push('/creator/${creator.id}'),
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 16),
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: AppColors.backgroundElevated,
+                    borderRadius: BorderRadius.circular(14),
+                    border: Border.all(color: AppColors.borderSubtle),
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 52, height: 52,
+                        decoration: BoxDecoration(
+                          color: anime.accentColor.withValues(alpha: 0.2),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Center(
+                          child: Text(
+                            creator.initials.isNotEmpty ? creator.initials : creator.name[0].toUpperCase(),
+                            style: GoogleFonts.rajdhani(
+                              fontSize: 20, fontWeight: FontWeight.w700, color: anime.accentColor,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 14),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(creator.name, style: GoogleFonts.nunitoSans(
+                              fontSize: 15, fontWeight: FontWeight.w600, color: AppColors.textPrimary,
+                            )),
+                            if (creator.role.isNotEmpty) ...[
+                              const SizedBox(height: 2),
+                              Text(creator.role, style: GoogleFonts.nunitoSans(
+                                fontSize: 12, color: anime.accentColor,
+                              )),
+                            ],
+                            if (creator.nationality != null && creator.nationality!.isNotEmpty) ...[
+                              const SizedBox(height: 2),
+                              Text(creator.nationality!, style: GoogleFonts.nunitoSans(
+                                fontSize: 11, color: AppColors.textSecondary,
+                              )),
+                            ],
+                            if (creator.bio != null && creator.bio!.isNotEmpty) ...[
+                              const SizedBox(height: 6),
+                              Text(creator.bio!, maxLines: 2, overflow: TextOverflow.ellipsis,
+                                style: GoogleFonts.nunitoSans(fontSize: 12, color: AppColors.textSecondary, height: 1.4)),
+                            ],
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 4),
+                      const Icon(Icons.chevron_right_rounded, color: AppColors.textSecondary, size: 18),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ],
+        );
+      },
+    );
+  }
+
   Widget _buildMediasTab(RankTheme theme) {
     // Priorité aux mock media appearances
     if (c.mediaAppearances.isNotEmpty) {
@@ -1753,38 +1967,9 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(24),
-            child: Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
-                    height: 80,
-                    margin: const EdgeInsets.only(bottom: 8),
-                    decoration: BoxDecoration(
-                      color: AppColors.backgroundElevated,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  Container(
-                    height: 80,
-                    decoration: BoxDecoration(
-                      color: AppColors.backgroundElevated.withValues(alpha: 0.6),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    'Médias à venir via AniList',
-                    style: GoogleFonts.nunitoSans(
-                        fontSize: 13, color: AppColors.textSecondary),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          _buildFirestoreAnimeContent(theme),
           _buildSameAnimeSection(theme),
+          const SizedBox(height: 16),
         ],
       );
     }

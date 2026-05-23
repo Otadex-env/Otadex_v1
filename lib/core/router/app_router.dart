@@ -127,6 +127,11 @@ class AppRouter {
         ),
       ),
       GoRoute(
+        path: '/search',
+        name: 'search',
+        builder: (context, state) => const RechercheScreen(),
+      ),
+      GoRoute(
         path: '/search-standalone',
         name: 'search-standalone',
         builder: (context, state) => const RechercheScreen(),

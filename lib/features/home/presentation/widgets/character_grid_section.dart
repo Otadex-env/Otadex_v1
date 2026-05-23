@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import '../../../../../core/data/mock_data.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/models/character.dart';
 import '../../../../../core/providers/otadex_providers.dart';
 import 'character_grid_card.dart';
 import 'section_header.dart';
+
+const _kDefaultCategories = [
+  'Tous', 'Shōnen', 'Seinen', 'Isekai', 'Shōjo', 'Manhwa', 'Mecha',
+];
 
 class CharacterGridSection extends ConsumerWidget {
   final int selectedCategoryIndex;
@@ -16,9 +19,12 @@ class CharacterGridSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedCategory = selectedCategoryIndex == 0
+    final categories =
+        ref.watch(categoriesProvider).valueOrNull ?? _kDefaultCategories;
+    final selectedCategory = selectedCategoryIndex == 0 ||
+            selectedCategoryIndex >= categories.length
         ? null
-        : MockData.categories[selectedCategoryIndex];
+        : categories[selectedCategoryIndex];
 
     final newAsync = ref.watch(newCharactersProvider(selectedCategory));
     final recommendedAsync = ref.watch(recommendedCharactersProvider);

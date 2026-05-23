@@ -6,7 +6,7 @@
 - App version : `1.0.0+1`
 - Firebase configuré : **OUI (Storage inclus)** — FlutterFire Android + Firebase Auth email/Google + Firestore profil utilisateur + Functions + Storage initialisés
 - Dernier écran complété : **PlansScreen + ProfileScreen** (licence Chariow, préférence monnaie, mai 2026)
-- Dernière mise à jour : **Task 29 — Import Naruto Shippuden**, 22 May 2026
+- Dernière mise à jour : **Task 30 — Migration complète Firestore-only + catégories dynamiques**, 23 mai 2026
 
 ## Dépendances installées (`pubspec.yaml`)
 
@@ -281,6 +281,53 @@
 - `app_assets.dart` mis à jour dynamiquement pour le switch `getByCharacterId()` et les tableaux de 8 images par personnage (`ns_XXXX1.jpeg` à `ns_XXXX8.jpeg`).
 - Déclaration des dossiers cibles dans `pubspec.yaml` pour chaque nouveau personnage.
 - Prêt pour exécution avec `node scripts/import_ns.js`
+
+---
+
+## Task 30 — Migration Firestore-only + Dynamisme (23 mai 2026)
+
+### Audit réalisé
+- Contrôle complet des 8 couches de données : providers, services, écrans, widgets
+- Identification de 6 problèmes bloquants (RÈGLE ABSOLUE + AniList résiduel + données figées)
+
+### ✅ FIX 1 — RÈGLE ABSOLUE rétablie : `AppColors` tokens anime
+- `lib/core/theme/app_colors.dart` : 12 nouveaux tokens `animeJjkCard/Accent`, `animeNsCard/Accent`, `animeAotCard/Accent`, `animeOpCard/Accent`, `animeClkCard/Accent`, `animeDefaultCard/Accent`
+- `lib/core/services/firestore_character_service.dart` : `_cardColorForAnime` + `_accentColorForAnime` utilisent désormais `AppColors.*` — plus aucun `Color(0xFF...)` hardcodé hors de `app_colors.dart`
+
+### ✅ FIX 2 — Hero Slider branché sur Firestore
+- `featuredSlidesProvider` reécrit : dérive les slides depuis `allAnimesProvider` (Firestore)
+- Fallback `_kFallbackSlides` si Firestore vide (premier lancement)
+- Quand un nouvel animé est importé → il apparaît automatiquement dans le hero carousel
+
+### ✅ FIX 3 — `characterDetailProvider` Firestore-first universel
+- Plus de liste de préfixes hardcodés (`jjk-`, `ns-`, `clk-`)
+- Logique : Firestore → si null → fallback mock
+- Tout nouveau préfixe d'animé importé dans Firestore sera automatiquement résolu
+
+### ✅ FIX 4 — Catégories de filtre dynamiques
+- `categoriesProvider` ajouté dans `otadex_providers.dart` : dérive les genres uniques depuis `allAnimesProvider` (Firestore), priorité aux genres standards, fallback liste statique
+- `category_chips.dart` converti en `ConsumerWidget` : watch `categoriesProvider`
+- `character_grid_section.dart` : watch `categoriesProvider`, suppression import `MockData`
+- Quand un nouvel animé avec un genre inédit est importé → le chip filtre apparaît automatiquement
+
+### ✅ FIX 5 — `AnimeDetailScreen` branché sur Firestore
+- Remplace `otadexServiceProvider` (JSON mock) par `allAnimesProvider` + `allCharactersProvider` + `allCreatorsProvider`
+- Personnages filtrés par `animeName == anime.name || animeId == anime.id`
+- Créateur résolu depuis `allCreatorsProvider`
+- Animés similaires depuis `allAnimesProvider`
+- Images personnages : `AppAssets.getByCharacterId` en priorité
+- Label "Note AniList" → "Note"
+
+### ✅ FIX 6 — Messages UI nettoyés
+- `character_detail_screen.dart` : "Relations à venir via AniList" → "Aucune relation disponible pour ce personnage"
+- `character_detail_screen.dart` : "Médias à venir via AniList" → "Médias non disponibles pour ce personnage"
+- `otadex_image.dart` : `.withOpacity()` déprecié → `.withValues(alpha:)`
+
+### Règle d'extensibilité
+> Importer un nouvel animé via `node scripts/import_[anime].js` suffit.
+> Aucune modification Flutter requise : hero slider, catégories, personnages, fiche détail se mettent à jour automatiquement.
+
+---
 
 ## Données mockées — Stratégie images
 
@@ -600,7 +647,43 @@ URLs Play Console :
 | 22 mai 2026 | Task 27 — Architecture données clarifiée + correctifs UX : `otadex_providers.dart` → `allCharactersProvider` simplifié (Firestore 200 persos OU JSON fallback, plus de merge). `trendingCharactersProvider` ajouté (filtre isTrending sur allCharactersProvider, tri likes desc, limit 20) — remplace AniList live dans `trending_section.dart`. `anilistTrendingCharactersProvider` renommé dans `anilist_providers.dart` (suppression conflit). `CollectionScreen` → remplace `MockData.allCharacters` par double-watch `collectionStreamProvider` + `allCharactersProvider` (IDs Firestore désormais résolus). `EmptyState` → bouton "Explorer" route `/search`, icône `bookmark_border_rounded`. `profile_screen.dart` → remplace `MockData` par `allCharactersProvider.valueOrNull`. `UserProfile` → 3 getters calculés dynamiquement : `fanLevel` (seuils 100/500/2000/5000), `fanLevelName` (Spectateur→Kage Suprême), `nextLevelScore`. `ProfileTabContent/_ProgressCard` → affiche `fanLevelName — Niveau fanLevel 🔥` (plus de "4" hardcodé). `search_screen.dart` → historique `_recentSearches` branché sur SharedPreferences : `_loadHistory` (initState), `_saveQuery` (submit/suggestion/trending tap), `_clearHistory`, `_removeRecentQuery` — liste vide au démarrage, persistée sur 5 entrées max. dart analyze → 0 issue. 
 | 22 May 2026 | Task 29 — Import Naruto Shippuden : Création du script `import_ns.js` à partir du docx, 20 personnages préparés, mise en place des constantes `AppAssets` et mise à jour de `pubspec.yaml`. |
 | 22 mai 2026 | Task 32 - Migration AniList vers Locale & refactor Images : [x] Importer images locals (JJK, NS, COE...), `OtadexImage` refactorisé pour prioriser locals assets, nettoyage des dépendances AniList dans les providers et scripts d'import. |
+| 23 mai 2026 | Task 30 — Migration complète Firestore-only : tokens anime `AppColors`, `featuredSlidesProvider` depuis Firestore, `characterDetailProvider` Firestore-first universel, `categoriesProvider` dynamique (genres Firestore), `AnimeDetailScreen` branché Firestore, messages "via AniList" supprimés. `dart analyze → No issues found!` |
+| 23 mai 2026 | Task 33 — Import Classroom of the Elite : `scripts/import_clk.js` créé (20 personnages, 1 animé Studio Lerche, 1 créateur Shōgo Kinugasa, 4 quiz — Ayanokoji/Horikita/Sakayanagi/Ryuen). Vérification images : tous les comptes assets↔app_assets.dart sont cohérents (JJK ✅ NS ✅ CLK ✅). 11 dossiers images créés pour personnages sans images : Kikyo Kushida, Sae Chabashira, Rokusuke Koenji, Airi Sakura, Miyabi Nagumo, Hiyori Shiina, Tsubasa Nanase, Ichika Amasawa, Takuya Yagami, Kohei Katsuragi, Mio Ibuki. `app_assets.dart` — 11 nouvelles listes vides + cases switch. `pubspec.yaml` — 11 nouveaux dossiers CLK déclarés. `flutter analyze → No issues found!` |
+---
+
+## Task 31 — Audit Firestore + Corrections source données (23 mai 2026)
+
+### Audit réalisé
+- A. `allCharactersProvider` : Firestore prioritaire ✅, fallback JSON mock si vide ✅
+- B. `mock_data.dart` : Sung Jin-Woo, Gojo mock (c1-c6) — apparaissent seulement si Firestore vide (avant import)
+- C. Route `/search` : ❌ MANQUANTE — `/search-standalone` existait, `/search` non → crash `_buildVoirToutTile`
+- D. Assets : `hiromi higumura` (9 fichiers) présent dans `assets/` mais absent de `app_assets.dart`
+
+### ✅ FIX 1 — Route `/search` ajoutée
+- `lib/core/router/app_router.dart` : ajout route `/search` → `RechercheScreen()`
+- Plus de crash quand "Voir tout" est tapé depuis la fiche personnage
+
+### ✅ FIX 2 — Hiromi Higumura mappé dans app_assets.dart
+- `lib/core/constants/app_assets.dart` : liste `hiromiHigumura` (jj_hiro1–9.jpeg) ajoutée
+- Case `jjk-hiromi-higumura` ajouté dans `getByCharacterId()`
+- pubspec.yaml : dossier `hiromi higumura/` déjà déclaré ✅
+
+### ✅ FIX 3 — Images AppAssets prioritaires dans les cards
+- `character_detail_screen.dart` `_buildPortraitCard` : `AppAssets.getByCharacterId` en priorité 1
+- `character_detail_screen.dart` `_buildSameAnimeSection` : idem
+- `character_detail_screen.dart` `_buildMockRelations` : relations utilisent `AppAssets.getByCharacterId(rel.id)` en priorité, fallback `rel.imageUrl`
+
+### ✅ FIX 4 — Onglet Médias branché sur Firestore
+- `character_detail_screen.dart` : `_buildFirestoreAnimeContent()` créé
+  - Watch `allAnimesProvider` → résout l'animé du personnage (`c.animeId` ou `c.animeName`)
+  - Watch `allCreatorsProvider` → résout le créateur via `anime.creatorId`
+  - Card animé : nom, studio, année, episodes, status, genres (badges), synopsis (3 lignes) → tap → `/anime/:id`
+  - Card créateur : initiales, role, nationalité, bio (2 lignes) → tap → `/creator/:id`
+- Quand `_anilistId == null` et `mediaAppearances.isEmpty` : affiche `_buildFirestoreAnimeContent` + `_buildSameAnimeSection` (plus de message "non disponibles")
+
+### dart analyze → No issues found!
+
 ---
 
 _À mettre à jour par Claude Code à la fin de chaque session._
-_Dernière mise à jour : 22 mai 2026_
+_Dernière mise à jour : Task 31 — Audit + Corrections données Firestore, 23 mai 2026_
