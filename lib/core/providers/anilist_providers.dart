@@ -84,34 +84,14 @@ final searchCharactersProvider = FutureProvider.autoDispose
     .family<List<Character>, String>((ref, query) async {
   if (query.trim().length < 2) return [];
   final firestoreService = ref.watch(firestoreCharacterServiceProvider);
-  final anilistService = ref.watch(anilistServiceProvider);
-  final results = await Future.wait([
-    firestoreService.searchCharacters(query),
-    anilistService.searchCharacters(query, perPage: 15),
-  ]);
-  final firestoreChars = results[0];
-  final anilistChars = results[1];
-  final firestoreNames = firestoreChars.map((c) => c.name).toSet();
-  final anilistUniques =
-      anilistChars.where((c) => !firestoreNames.contains(c.name)).toList();
-  return [...firestoreChars, ...anilistUniques];
+  return firestoreService.searchCharacters(query);
 });
 
 final searchAnimesProvider = FutureProvider.autoDispose
     .family<List<AnimeEntry>, String>((ref, query) async {
   if (query.trim().length < 2) return [];
   final firestoreService = ref.watch(firestoreCharacterServiceProvider);
-  final anilistService = ref.watch(anilistServiceProvider);
-  final results = await Future.wait([
-    firestoreService.searchAnimes(query),
-    anilistService.searchAnimes(query, perPage: 10),
-  ]);
-  final firestoreAnimes = results[0];
-  final anilistAnimes = results[1];
-  final firestoreTitres = firestoreAnimes.map((a) => a.name).toSet();
-  final anilistUniques =
-      anilistAnimes.where((a) => !firestoreTitres.contains(a.name)).toList();
-  return [...firestoreAnimes, ...anilistUniques];
+  return firestoreService.searchAnimes(query);
 });
 
 final sameAnimeCharactersProvider = FutureProvider.autoDispose
@@ -126,27 +106,14 @@ final sameAnimeCharactersProvider = FutureProvider.autoDispose
     limit: 5,
   );
   if (firestoreChars.isNotEmpty) return firestoreChars;
-  if (animeId.startsWith('anilist-')) {
-    final anilistId = int.tryParse(animeId.replaceFirst('anilist-', ''));
-    if (anilistId != null) {
-      return ref
-          .watch(anilistServiceProvider)
-          .getCharactersByAnimeId(anilistId, perPage: 5);
-    }
-  }
   return [];
 });
 
-// ── Character detail (jjk-* → Firestore, anilist-* → AniList, sinon mock) ───
+// ── Character detail (jjk-*, ns-*, clk-* → Firestore, sinon mock) ───
 final characterDetailProvider =
     FutureProvider.autoDispose.family<Character?, String>((ref, id) async {
-  if (id.startsWith('jjk-')) {
+  if (id.startsWith('jjk-') || id.startsWith('ns-') || id.startsWith('clk-')) {
     return ref.watch(firestoreCharacterServiceProvider).getCharacterById(id);
-  }
-  if (id.startsWith('anilist-')) {
-    final anilistId = int.tryParse(id.replaceFirst('anilist-', ''));
-    if (anilistId == null) return null;
-    return ref.watch(anilistServiceProvider).getCharacterById(anilistId);
   }
   final service = await ref.read(otadexServiceProvider.future);
   return service.characterById(id);

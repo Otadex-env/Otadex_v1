@@ -3,7 +3,11 @@
     {
       "id": "gojo-satoru",
       "name": "Gojo Satoru",
-      "aliases": ["Le Sorcier Invincible", "Six Yeux", "Senseï aux yeux d'Infini"],
+      "aliases": [
+        "Le Sorcier Invincible",
+        "Six Yeux",
+        "Senseï aux yeux d'Infini"
+      ],
       "anime_id": "jujutsu-kaisen",
       "animeName": "Jujutsu Kaisen",
       "category": "Shōnen",
@@ -23,10 +27,16 @@
       "isFeatured": true,
       "cardColor": "#0A1520",
       "accentColor": "#1565C0",
-      "imagePath": "assets/images/characters/satoru_gojo/gojo_01.jpg",
+      "imagePath": "assets/images/Animé pictures/Jujutsu kaizen/Gojo satoru/jj_gojo.jpeg",
       "bio": "Considéré comme le sorcier le plus puissant de son époque, Gojo Satoru est un maître des arts occultes et professeur à l'École Supérieure de Jujutsu de Tokyo. Porteur des Six Yeux — une technique rarissime n'apparaissant qu'une fois par siècle — il maîtrise l'Infini, une barrière invisible qui le rend quasi-invincible.",
       "quote": "Dans ce monde, le talent bat le travail acharné. Et le talent né est battu par le talent éveillé.",
-      "powers": ["L'Infini", "Vide Illimité", "Technique Inversée", "Domaine Expansif", "Infini Pourpre"],
+      "powers": [
+        "L'Infini",
+        "Vide Illimité",
+        "Technique Inversée",
+        "Domaine Expansif",
+        "Infini Pourpre"
+      ],
       "stats": {
         "force": 95,
         "vitesse": 97,
@@ -34,13 +44,25 @@
         "endurance": 88,
         "intelligence": 96
       },
-      "tags": ["Spécial Grade 0", "Professeur", "Six Yeux", "Invincible"],
-      "creator_id": "gege-akutami"
+      "tags": [
+        "Spécial Grade 0",
+        "Professeur",
+        "Six Yeux",
+        "Invincible"
+      ],
+      "creator_id": "gege-akutami",
+      "images": [
+        "assets/images/Animé pictures/Jujutsu kaizen/Gojo satoru/jj_gojo.jpeg"
+      ]
     },
     {
       "id": "sung-jin-woo",
       "name": "Sung Jin-Woo",
-      "aliases": ["Le Chasseur le plus faible", "L'Ombre du Monarque", "Shadow Monarch"],
+      "aliases": [
+        "Le Chasseur le plus faible",
+        "L'Ombre du Monarque",
+        "Shadow Monarch"
+      ],
       "anime_id": "solo-leveling",
       "animeName": "Solo Leveling",
       "category": "Manhwa",
@@ -60,10 +82,15 @@
       "isFeatured": true,
       "cardColor": "#1A0D2E",
       "accentColor": "#9B59B6",
-      "imagePath": null,
+      "imagePath": "assets/images/Animé pictures/Jujutsu kaizen/Yuta Okkotsu/jj_yuta1.jpeg",
       "bio": "Autrefois classé comme le chasseur le plus faible de Corée du Sud (rang E), Sung Jin-Woo est le seul humain à avoir reçu le statut de 'Joueur' par le Système. À travers une série d'épreuves mortelles, il est devenu l'héritier du Monarque des Ombres.",
       "quote": "Je vais devenir plus fort. Assez fort pour protéger tout ce qui compte.",
-      "powers": ["Invocation d'Armée des Ombres", "Dague de l'Ombre", "Domaine de l'Obscurité", "Conqueror's Will"],
+      "powers": [
+        "Invocation d'Armée des Ombres",
+        "Dague de l'Ombre",
+        "Domaine de l'Obscurité",
+        "Conqueror's Will"
+      ],
       "stats": {
         "force": 100,
         "vitesse": 99,
@@ -71,13 +98,24 @@
         "endurance": 98,
         "intelligence": 90
       },
-      "tags": ["Shadow Monarch", "Chasseur Rang S", "Joueur du Système", "Invocateur"],
-      "creator_id": "chugong"
+      "tags": [
+        "Shadow Monarch",
+        "Chasseur Rang S",
+        "Joueur du Système",
+        "Invocateur"
+      ],
+      "creator_id": "chugong",
+      "images": [
+        "assets/images/Animé pictures/Jujutsu kaizen/Yuta Okkotsu/jj_yuta1.jpeg"
+      ]
     },
     {
       "id": "tanjiro-kamado",
       "name": "Tanjiro Kamado",
-      "aliases": ["Le Chasseur de démons au hanafuda", "Le Fils du soleil"],
+      "aliases": [
+        "Le Chasseur de démons au hanafuda",
+        "Le Fils du soleil"
+      ],
       "anime_id": "demon-slayer",
       "animeName": "Demon Slayer",
       "category": "Shōnen",
@@ -97,10 +135,15 @@
       "isFeatured": false,
       "cardColor": "#1A0A0A",
       "accentColor": "#E53935",
-      "imagePath": null,
+      "imagePath": "assets/images/Animé pictures/Jujutsu kaizen/Megumi Fushiguro/jj_megu1.jpeg",
       "bio": "Fils aîné d'une famille de charbonniers, Tanjiro Kamado devient chasseur de démons après que sa famille est massacrée par Muzan Kibutsuji et que sa sœur Nezuko se retrouve transformée en démon. Sa gentillesse naturelle, même envers ses ennemis, est l'une de ses particularités.",
       "quote": "Peu importe combien de fois tu tombes, je te relèverai — car c'est ce que font les aînés.",
-      "powers": ["Souffle de l'Eau", "Souffle du Soleil (Kagura)", "Odorat surnaturel", "Résistance mentale"],
+      "powers": [
+        "Souffle de l'Eau",
+        "Souffle du Soleil (Kagura)",
+        "Odorat surnaturel",
+        "Résistance mentale"
+      ],
       "stats": {
         "force": 82,
         "vitesse": 85,
@@ -108,13 +151,25 @@
         "endurance": 90,
         "intelligence": 78
       },
-      "tags": ["Pilier potentiel", "Maîtrise du Souffle", "Boucles Hanafuda", "Cœur pur"],
-      "creator_id": "koyoharu-gotouge"
+      "tags": [
+        "Pilier potentiel",
+        "Maîtrise du Souffle",
+        "Boucles Hanafuda",
+        "Cœur pur"
+      ],
+      "creator_id": "koyoharu-gotouge",
+      "images": [
+        "assets/images/Animé pictures/Jujutsu kaizen/Megumi Fushiguro/jj_megu1.jpeg"
+      ]
     },
     {
       "id": "levi-ackerman",
       "name": "Levi Ackerman",
-      "aliases": ["L'Humanité la plus forte", "Capitaine Levi", "Le Faucon de la Nuit"],
+      "aliases": [
+        "L'Humanité la plus forte",
+        "Capitaine Levi",
+        "Le Faucon de la Nuit"
+      ],
       "anime_id": "attack-on-titan",
       "animeName": "Attack on Titan",
       "category": "Seinen",
@@ -134,10 +189,15 @@
       "isFeatured": false,
       "cardColor": "#0D1A0A",
       "accentColor": "#388E3C",
-      "imagePath": null,
+      "imagePath": "assets/images/Animé pictures/Jujutsu kaizen/Kenjaku/jj_kenj1.jpeg",
       "bio": "Capitaine du Bataillon d'Exploration et membre du Clan Ackerman, Levi est reconnu comme le soldat le plus puissant de l'humanité. Malgré sa stature imposée par sa petite taille, son niveau de combat dépasse celui de n'importe quel autre humain connu.",
       "quote": "Une fois que tu choisis de te battre, peu importe combien il te reste de regrets, continue d'avancer.",
-      "powers": ["Maîtrise des équipements ODM", "Régénération Ackerman", "Vitesse surhumaine", "Combat au sabre"],
+      "powers": [
+        "Maîtrise des équipements ODM",
+        "Régénération Ackerman",
+        "Vitesse surhumaine",
+        "Combat au sabre"
+      ],
       "stats": {
         "force": 90,
         "vitesse": 99,
@@ -145,13 +205,25 @@
         "endurance": 85,
         "intelligence": 88
       },
-      "tags": ["Humanité la plus forte", "Clan Ackerman", "Bataillon d'Exploration", "Légendaire"],
-      "creator_id": "hajime-isayama"
+      "tags": [
+        "Humanité la plus forte",
+        "Clan Ackerman",
+        "Bataillon d'Exploration",
+        "Légendaire"
+      ],
+      "creator_id": "hajime-isayama",
+      "images": [
+        "assets/images/Animé pictures/Jujutsu kaizen/Kenjaku/jj_kenj1.jpeg"
+      ]
     },
     {
       "id": "rimuru-tempest",
       "name": "Rimuru Tempest",
-      "aliases": ["Grand Démon Seigneur", "Maître Slime", "Roi de Tempest"],
+      "aliases": [
+        "Grand Démon Seigneur",
+        "Maître Slime",
+        "Roi de Tempest"
+      ],
       "anime_id": "tensura",
       "animeName": "That Time I Got Reincarnated as a Slime",
       "category": "Isekai",
@@ -171,10 +243,15 @@
       "isFeatured": false,
       "cardColor": "#0A1520",
       "accentColor": "#00BCD4",
-      "imagePath": null,
+      "imagePath": "assets/images/Animé pictures/Jujutsu kaizen/Toge Inumaki/jj_toge1.jpeg",
       "bio": "Ancien salaryman japonais tué dans un accident et réincarné en slime dans un monde fantastique. Il absorbe les capacités de ses ennemis vaincus grâce à son habileté unique et fonde rapidement le Pays de Tempest.",
       "quote": "Je ne me bats pas pour gloire ou vengeance. Je me bats pour que mes amis puissent vivre heureux.",
-      "powers": ["Prédateur Unique", "Grand Sage", "Haki des Conquérants", "Bénédiction Divine"],
+      "powers": [
+        "Prédateur Unique",
+        "Grand Sage",
+        "Haki des Conquérants",
+        "Bénédiction Divine"
+      ],
       "stats": {
         "force": 92,
         "vitesse": 88,
@@ -182,13 +259,25 @@
         "endurance": 95,
         "intelligence": 97
       },
-      "tags": ["Grand Démon Seigneur", "Fondateur de Tempest", "Isekai", "Réincarnation"],
-      "creator_id": "fuse"
+      "tags": [
+        "Grand Démon Seigneur",
+        "Fondateur de Tempest",
+        "Isekai",
+        "Réincarnation"
+      ],
+      "creator_id": "fuse",
+      "images": [
+        "assets/images/Animé pictures/Jujutsu kaizen/Toge Inumaki/jj_toge1.jpeg"
+      ]
     },
     {
       "id": "denji",
       "name": "Denji",
-      "aliases": ["Chainsaw Man", "Le Diable à la Tronçonneuse", "Devil Hunter"],
+      "aliases": [
+        "Chainsaw Man",
+        "Le Diable à la Tronçonneuse",
+        "Devil Hunter"
+      ],
       "anime_id": "chainsaw-man",
       "animeName": "Chainsaw Man",
       "category": "Seinen",
@@ -208,10 +297,15 @@
       "isFeatured": false,
       "cardColor": "#200A0A",
       "accentColor": "#FF5722",
-      "imagePath": null,
+      "imagePath": "assets/images/Animé pictures/Jujutsu kaizen/Mahito/jj_mahi1.jpeg",
       "bio": "Garçon pauvre criblé de dettes, Denji fusionnait avec Pochita son petit démon-tronçonneuse pour survivre. Après avoir été tué par la mafia, Pochita sacrifie son cœur pour le ramener à la vie, transformant Denji en hybride Démon-Humain capable de faire sortir des tronçonneuses de son corps.",
       "quote": "Rêver d'un repas chaud, d'une fille qui me serre dans ses bras... c'est tout ce que je voulais.",
-      "powers": ["Tronçonneuses corporelles", "Régénération accélérée", "Fusion avec Pochita", "Démon de la Tronçonneuse"],
+      "powers": [
+        "Tronçonneuses corporelles",
+        "Régénération accélérée",
+        "Fusion avec Pochita",
+        "Démon de la Tronçonneuse"
+      ],
       "stats": {
         "force": 88,
         "vitesse": 84,
@@ -219,13 +313,25 @@
         "endurance": 95,
         "intelligence": 55
       },
-      "tags": ["Hybride Démon", "Devil Hunter", "Tronçonneuse", "Public Safety"],
-      "creator_id": "tatsuki-fujimoto"
+      "tags": [
+        "Hybride Démon",
+        "Devil Hunter",
+        "Tronçonneuse",
+        "Public Safety"
+      ],
+      "creator_id": "tatsuki-fujimoto",
+      "images": [
+        "assets/images/Animé pictures/Jujutsu kaizen/Mahito/jj_mahi1.jpeg"
+      ]
     },
     {
       "id": "anya-forger",
       "name": "Anya Forger",
-      "aliases": ["Agent Anya", "Sujet 007", "Princess Anya"],
+      "aliases": [
+        "Agent Anya",
+        "Sujet 007",
+        "Princess Anya"
+      ],
       "anime_id": "spy-x-family",
       "animeName": "Spy x Family",
       "category": "Shōnen",
@@ -245,10 +351,14 @@
       "isFeatured": false,
       "cardColor": "#1A1020",
       "accentColor": "#E91E63",
-      "imagePath": null,
+      "imagePath": "assets/images/Animé pictures/Jujutsu kaizen/Maki Zenin/jj_maki1.jpeg",
       "bio": "Enfant orpheline issue d'expérimentations secrètes lui conférant la télépathie, Anya est adoptée par l'espion Loid Forger dans le cadre de la mission Strix. Bien que consciente du vrai rôle de ses parents adoptifs (espion et assassin), elle garde le secret, ravie de vivre dans une famille si extraordinaire.",
       "quote": "Heh~ (✿◠‿◠)",
-      "powers": ["Télépathie", "Lecture des pensées", "Résistance émotionnelle surprenante"],
+      "powers": [
+        "Télépathie",
+        "Lecture des pensées",
+        "Résistance émotionnelle surprenante"
+      ],
       "stats": {
         "force": 20,
         "vitesse": 30,
@@ -256,13 +366,25 @@
         "endurance": 40,
         "intelligence": 65
       },
-      "tags": ["Télépathe", "Sujet Expérimental", "Élève d'Eden", "Adorable"],
-      "creator_id": "tatsuya-endo"
+      "tags": [
+        "Télépathe",
+        "Sujet Expérimental",
+        "Élève d'Eden",
+        "Adorable"
+      ],
+      "creator_id": "tatsuya-endo",
+      "images": [
+        "assets/images/Animé pictures/Jujutsu kaizen/Maki Zenin/jj_maki1.jpeg"
+      ]
     },
     {
       "id": "askeladd",
       "name": "Askeladd",
-      "aliases": ["Lucius Artorius Castus", "Le Chef Viking", "Le Renard"],
+      "aliases": [
+        "Lucius Artorius Castus",
+        "Le Chef Viking",
+        "Le Renard"
+      ],
       "anime_id": "vinland-saga",
       "animeName": "Vinland Saga",
       "category": "Seinen",
@@ -282,10 +404,14 @@
       "isFeatured": false,
       "cardColor": "#0D1520",
       "accentColor": "#607D8B",
-      "imagePath": null,
+      "imagePath": "assets/images/Animé pictures/Jujutsu kaizen/Toji fushiguro/jj_toji1.jpeg",
       "bio": "Fils d'un seigneur gallois et d'une esclave nordique, Askeladd masqua pendant des années ses véritables ambitions sous l'apparence d'un chef mercenaire viking brutal. Stratège brillant et combattant redoutable, il reste l'un des personnages les plus complexes de Vinland Saga.",
       "quote": "Un vrai guerrier n'a pas besoin d'épée.",
-      "powers": ["Stratégie de combat avancée", "Maîtrise du sabre", "Manipulation psychologique"],
+      "powers": [
+        "Stratégie de combat avancée",
+        "Maîtrise du sabre",
+        "Manipulation psychologique"
+      ],
       "stats": {
         "force": 88,
         "vitesse": 91,
@@ -293,13 +419,25 @@
         "endurance": 82,
         "intelligence": 99
       },
-      "tags": ["Stratège", "Mercenaire Viking", "Chef de bande", "Gallois"],
-      "creator_id": "makoto-yukimura"
+      "tags": [
+        "Stratège",
+        "Mercenaire Viking",
+        "Chef de bande",
+        "Gallois"
+      ],
+      "creator_id": "makoto-yukimura",
+      "images": [
+        "assets/images/Animé pictures/Jujutsu kaizen/Toji fushiguro/jj_toji1.jpeg"
+      ]
     },
     {
       "id": "roronoa-zoro",
       "name": "Roronoa Zoro",
-      "aliases": ["Pirate Hunter Zoro", "Le Démon à trois sabres", "L'Œil du Démon"],
+      "aliases": [
+        "Pirate Hunter Zoro",
+        "Le Démon à trois sabres",
+        "L'Œil du Démon"
+      ],
       "anime_id": "one-piece",
       "animeName": "One Piece",
       "category": "Shōnen",
@@ -319,10 +457,16 @@
       "isFeatured": false,
       "cardColor": "#0A200A",
       "accentColor": "#2E7D32",
-      "imagePath": null,
+      "imagePath": "assets/images/Animé pictures/Jujutsu kaizen/Kenjaku/jj_kenj2.jpeg",
       "bio": "Premier membre de l'équipage de Luffy, Zoro aspire à devenir le meilleur épéiste du monde pour honorer la promesse faite à son amie d'enfance décédée. Combattant au style Trois Sabres unique, il est le bras droit du futur Roi des Pirates.",
       "quote": "Rien n'arrivera quand je serai là. Vous pouvez dormir sur vos deux oreilles.",
-      "powers": ["Santōryū (Trois Sabres)", "Haki des Armements", "Haki de l'Observation", "Ashura", "Enma"],
+      "powers": [
+        "Santōryū (Trois Sabres)",
+        "Haki des Armements",
+        "Haki de l'Observation",
+        "Ashura",
+        "Enma"
+      ],
       "stats": {
         "force": 96,
         "vitesse": 93,
@@ -330,13 +474,25 @@
         "endurance": 94,
         "intelligence": 75
       },
-      "tags": ["Trois Sabres", "Chapeau de Paille", "Futur Meilleur Épéiste", "Vice-Capitaine"],
-      "creator_id": "eiichiro-oda"
+      "tags": [
+        "Trois Sabres",
+        "Chapeau de Paille",
+        "Futur Meilleur Épéiste",
+        "Vice-Capitaine"
+      ],
+      "creator_id": "eiichiro-oda",
+      "images": [
+        "assets/images/Animé pictures/Jujutsu kaizen/Kenjaku/jj_kenj2.jpeg"
+      ]
     },
     {
       "id": "rem",
       "name": "Rem",
-      "aliases": ["La Démon aux cheveux bleus", "Ram's little sister", "Oni bleue"],
+      "aliases": [
+        "La Démon aux cheveux bleus",
+        "Ram's little sister",
+        "Oni bleue"
+      ],
       "anime_id": "re-zero",
       "animeName": "Re:Zero",
       "category": "Isekai",
@@ -356,10 +512,15 @@
       "isFeatured": false,
       "cardColor": "#0A1020",
       "accentColor": "#1976D2",
-      "imagePath": null,
+      "imagePath": "assets/images/Animé pictures/Jujutsu kaizen/Aoi Todo/jj_aoi1.jpeg",
       "bio": "Démon domestique au service de la Margrave Roswaal, Rem forme une paire avec sa sœur Ram. Loyale, dévouée et dotée d'une force de combat phénoménale malgré ses apparences de femme de chambre, elle est l'une des héroïnes les plus populaires du genre isekai.",
       "quote": "Subaru-kun, il faut que tu vives. Peu importe combien de fois tu recommences, tu dois vivre.",
-      "powers": ["Magie de la glace", "Forme Démon Oni", "Fléau de Glacons", "Régénération"],
+      "powers": [
+        "Magie de la glace",
+        "Forme Démon Oni",
+        "Fléau de Glacons",
+        "Régénération"
+      ],
       "stats": {
         "force": 85,
         "vitesse": 83,
@@ -367,13 +528,25 @@
         "endurance": 78,
         "intelligence": 82
       },
-      "tags": ["Démon Oni", "Servante", "Magie de glace", "Heroine populaire"],
-      "creator_id": "nagatsuki-tappei"
+      "tags": [
+        "Démon Oni",
+        "Servante",
+        "Magie de glace",
+        "Heroine populaire"
+      ],
+      "creator_id": "nagatsuki-tappei",
+      "images": [
+        "assets/images/Animé pictures/Jujutsu kaizen/Aoi Todo/jj_aoi1.jpeg"
+      ]
     },
     {
       "id": "mikasa-ackerman",
       "name": "Mikasa Ackerman",
-      "aliases": ["La Meilleure Soldate", "Mikasa d'Acier", "La Protectrice d'Eren"],
+      "aliases": [
+        "La Meilleure Soldate",
+        "Mikasa d'Acier",
+        "La Protectrice d'Eren"
+      ],
       "anime_id": "attack-on-titan",
       "animeName": "Attack on Titan",
       "category": "Seinen",
@@ -393,10 +566,15 @@
       "isFeatured": false,
       "cardColor": "#1A0A0A",
       "accentColor": "#C62828",
-      "imagePath": null,
+      "imagePath": "assets/images/Animé pictures/Jujutsu kaizen/Mahito/jj_mahi2.jpeg",
       "bio": "Membre du Clan Ackerman, Mikasa est la soldate la plus puissante de sa génération au sein du Bataillon d'Exploration. Adoptée par la famille Yeager après la mort de ses parents, sa loyauté envers Eren est absolue — peut-être à son propre détriment.",
       "quote": "Ce monde est cruel, mais aussi très beau.",
-      "powers": ["Capacités Ackerman", "Maîtrise des ODM", "Vitesse surhumaine", "Force décuplée"],
+      "powers": [
+        "Capacités Ackerman",
+        "Maîtrise des ODM",
+        "Vitesse surhumaine",
+        "Force décuplée"
+      ],
       "stats": {
         "force": 92,
         "vitesse": 96,
@@ -404,13 +582,25 @@
         "endurance": 88,
         "intelligence": 85
       },
-      "tags": ["Clan Ackerman", "Bataillon d'Exploration", "Légendaire", "Féminine puissante"],
-      "creator_id": "hajime-isayama"
+      "tags": [
+        "Clan Ackerman",
+        "Bataillon d'Exploration",
+        "Légendaire",
+        "Féminine puissante"
+      ],
+      "creator_id": "hajime-isayama",
+      "images": [
+        "assets/images/Animé pictures/Jujutsu kaizen/Mahito/jj_mahi2.jpeg"
+      ]
     },
     {
       "id": "killua-zoldyck",
       "name": "Killua Zoldyck",
-      "aliases": ["L'Assassin de la Famille Zoldyck", "Killu", "L'Étoile Filante"],
+      "aliases": [
+        "L'Assassin de la Famille Zoldyck",
+        "Killu",
+        "L'Étoile Filante"
+      ],
       "anime_id": "hunter-x-hunter",
       "animeName": "Hunter x Hunter",
       "category": "Shōnen",
@@ -430,10 +620,15 @@
       "isFeatured": false,
       "cardColor": "#0A1520",
       "accentColor": "#00BCD4",
-      "imagePath": null,
+      "imagePath": "assets/images/Animé pictures/Jujutsu kaizen/Yuta Okkotsu/jj_yuta2.jpeg",
       "bio": "Héritier de la légendaire famille d'assassins Zoldyck, Killua a été entraîné dès l'enfance pour devenir une machine à tuer. Sa rencontre avec Gon Freecss lors des examens Hunter marque le début de sa véritable liberté. Son Nen de type Transmutation lui permet de transformer son aura en électricité.",
       "quote": "Je suis un assassin depuis ma naissance. Mais maintenant, je veux décider de ma propre voie.",
-      "powers": ["Godspeed (Nen Électricité)", "Whirlwind", "Lightning Palm", "Yo-yo Killua"],
+      "powers": [
+        "Godspeed (Nen Électricité)",
+        "Whirlwind",
+        "Lightning Palm",
+        "Yo-yo Killua"
+      ],
       "stats": {
         "force": 85,
         "vitesse": 99,
@@ -441,13 +636,25 @@
         "endurance": 83,
         "intelligence": 95
       },
-      "tags": ["Assassin", "Clan Zoldyck", "Transmutateur", "Électricité"],
-      "creator_id": "yoshihiro-togashi"
+      "tags": [
+        "Assassin",
+        "Clan Zoldyck",
+        "Transmutateur",
+        "Électricité"
+      ],
+      "creator_id": "yoshihiro-togashi",
+      "images": [
+        "assets/images/Animé pictures/Jujutsu kaizen/Yuta Okkotsu/jj_yuta2.jpeg"
+      ]
     },
     {
       "id": "saitama",
       "name": "Saitama",
-      "aliases": ["One Punch Man", "Le Héros Chauve", "Le Héros par Passe-temps"],
+      "aliases": [
+        "One Punch Man",
+        "Le Héros Chauve",
+        "Le Héros par Passe-temps"
+      ],
       "anime_id": "one-punch-man",
       "animeName": "One Punch Man",
       "category": "Seinen",
@@ -467,10 +674,15 @@
       "isFeatured": false,
       "cardColor": "#1A1000",
       "accentColor": "#FF9800",
-      "imagePath": null,
+      "imagePath": "assets/images/Animé pictures/Jujutsu kaizen/Megumi Fushiguro/jj_megu2.jpeg",
       "bio": "Héros amateur ayant atteint un pouvoir absolu au prix de ses cheveux et de toute émotion lors du combat. Saitama peut vaincre n'importe quel adversaire d'un seul coup de poing, rendant ses combats dépourvus du frisson qu'il recherchait autrefois.",
       "quote": "Depuis quand les héros doivent-ils annoncer leur nom ? Un héros, c'est quelqu'un qui fait ce qui est juste au bon moment.",
-      "powers": ["Force infinie", "Résistance absolue", "Vitesse lumineuse", "Coup de poing Sérieux"],
+      "powers": [
+        "Force infinie",
+        "Résistance absolue",
+        "Vitesse lumineuse",
+        "Coup de poing Sérieux"
+      ],
       "stats": {
         "force": 100,
         "vitesse": 100,
@@ -478,13 +690,25 @@
         "endurance": 100,
         "intelligence": 60
       },
-      "tags": ["Puissance absolue", "Un seul coup", "Héros amateur", "Classe S Rang 1"],
-      "creator_id": "one"
+      "tags": [
+        "Puissance absolue",
+        "Un seul coup",
+        "Héros amateur",
+        "Classe S Rang 1"
+      ],
+      "creator_id": "one",
+      "images": [
+        "assets/images/Animé pictures/Jujutsu kaizen/Megumi Fushiguro/jj_megu2.jpeg"
+      ]
     },
     {
       "id": "itachi-uchiha",
       "name": "Itachi Uchiha",
-      "aliases": ["L'Aîné Uchiha", "Le Traître du Clan", "Le Pacifiste"],
+      "aliases": [
+        "L'Aîné Uchiha",
+        "Le Traître du Clan",
+        "Le Pacifiste"
+      ],
       "anime_id": "naruto",
       "animeName": "Naruto",
       "category": "Shōnen",
@@ -504,10 +728,16 @@
       "isFeatured": false,
       "cardColor": "#1A0A1A",
       "accentColor": "#7B1FA2",
-      "imagePath": null,
+      "imagePath": "assets/images/Animé pictures/Jujutsu kaizen/Kenjaku/jj_kenj3.jpeg",
       "bio": "Génie militaire du clan Uchiha, Itachi a massacré sa famille sur ordre des anciens de Konoha pour prévenir un coup d'état. Il a choisi de porter le fardeau du traître afin de préserver la paix du village, laissant son frère Sasuke en vie pour qu'il ait la force de le tuer — et comprenne un jour la vérité.",
       "quote": "Tu ne possèdes que des yeux. Tu ne vis que dans le présent. La véritable connaissance viendra avec le temps.",
-      "powers": ["Sharingan", "Mangekyō Sharingan", "Tsukuyomi", "Amaterasu", "Susanoo"],
+      "powers": [
+        "Sharingan",
+        "Mangekyō Sharingan",
+        "Tsukuyomi",
+        "Amaterasu",
+        "Susanoo"
+      ],
       "stats": {
         "force": 88,
         "vitesse": 94,
@@ -515,13 +745,25 @@
         "endurance": 80,
         "intelligence": 100
       },
-      "tags": ["Clan Uchiha", "Mangekyō Sharingan", "Akatsuki", "Sacrifice héroïque"],
-      "creator_id": "masashi-kishimoto"
+      "tags": [
+        "Clan Uchiha",
+        "Mangekyō Sharingan",
+        "Akatsuki",
+        "Sacrifice héroïque"
+      ],
+      "creator_id": "masashi-kishimoto",
+      "images": [
+        "assets/images/Animé pictures/Jujutsu kaizen/Kenjaku/jj_kenj3.jpeg"
+      ]
     },
     {
       "id": "violet-evergarden",
       "name": "Violet Evergarden",
-      "aliases": ["La Poupée Automobile", "L'Outil du Major", "Auto Memory Doll"],
+      "aliases": [
+        "La Poupée Automobile",
+        "L'Outil du Major",
+        "Auto Memory Doll"
+      ],
       "anime_id": "violet-evergarden",
       "animeName": "Violet Evergarden",
       "category": "Shōjo",
@@ -541,10 +783,15 @@
       "isFeatured": false,
       "cardColor": "#0A1020",
       "accentColor": "#5C6BC0",
-      "imagePath": null,
+      "imagePath": "assets/images/Animé pictures/Jujutsu kaizen/Yuta Okkotsu/jj_yuta3.jpeg",
       "bio": "Ancienne enfant-soldat élevée pour être une arme de guerre, Violet Evergarden cherche à comprendre le sens des derniers mots du Major Gilbert — 'Je t'aime' — en devenant Poupée Automatique, une profession consistant à rédiger des lettres en retranscrivant les sentiments de clients.",
       "quote": "Je veux comprendre ce que signifient ces mots. Je t'aime.",
-      "powers": ["Bras mécaniques (armes)", "Intelligence tactique", "Calligraphie experte", "Empathie développée"],
+      "powers": [
+        "Bras mécaniques (armes)",
+        "Intelligence tactique",
+        "Calligraphie experte",
+        "Empathie développée"
+      ],
       "stats": {
         "force": 75,
         "vitesse": 78,
@@ -552,13 +799,24 @@
         "endurance": 70,
         "intelligence": 90
       },
-      "tags": ["Poupée Automatique", "Ancienne Soldate", "Reconstruction émotionnelle"],
-      "creator_id": "kana-akatsuki"
+      "tags": [
+        "Poupée Automatique",
+        "Ancienne Soldate",
+        "Reconstruction émotionnelle"
+      ],
+      "creator_id": "kana-akatsuki",
+      "images": [
+        "assets/images/Animé pictures/Jujutsu kaizen/Yuta Okkotsu/jj_yuta3.jpeg"
+      ]
     },
     {
       "id": "zero-two",
       "name": "Zero Two",
-      "aliases": ["Code : 002", "La Partenaire d'un homme", "Le Diable aux cornes"],
+      "aliases": [
+        "Code : 002",
+        "La Partenaire d'un homme",
+        "Le Diable aux cornes"
+      ],
       "anime_id": "darling-in-the-franxx",
       "animeName": "Darling in the FranXX",
       "category": "Mecha",
@@ -578,10 +836,15 @@
       "isFeatured": false,
       "cardColor": "#200A10",
       "accentColor": "#F06292",
-      "imagePath": null,
+      "imagePath": "assets/images/Animé pictures/Jujutsu kaizen/Suguru Geto/jj_sugu1.jpeg",
       "bio": "Hybride mi-humaine mi-Klaxosaure, Zero Two est partenaire de Strelitzia, un FranXX de classe S. Ses tentatives de pilotage multiples avec des partenaires humains les tuait systématiquement, lui valant le surnom 'd'Eater of Pistils' — jusqu'à sa rencontre avec Hiro, son 'Darling'.",
       "quote": "Tu es mon Darling. Mon seul et unique partenaire.",
-      "powers": ["Pilotage FranXX Strelitzia", "Régénération rapide", "Force physique augmentée", "Instinct Klaxosaure"],
+      "powers": [
+        "Pilotage FranXX Strelitzia",
+        "Régénération rapide",
+        "Force physique augmentée",
+        "Instinct Klaxosaure"
+      ],
       "stats": {
         "force": 87,
         "vitesse": 88,
@@ -589,13 +852,25 @@
         "endurance": 85,
         "intelligence": 80
       },
-      "tags": ["Code 002", "Hybride", "FranXX", "Pilote de guerre"],
-      "creator_id": "trigger-studio"
+      "tags": [
+        "Code 002",
+        "Hybride",
+        "FranXX",
+        "Pilote de guerre"
+      ],
+      "creator_id": "trigger-studio",
+      "images": [
+        "assets/images/Animé pictures/Jujutsu kaizen/Suguru Geto/jj_sugu1.jpeg"
+      ]
     },
     {
       "id": "thorfinn",
       "name": "Thorfinn",
-      "aliases": ["Fils de Thors", "Thorfinn Karlsefni", "Le Viking sans épée"],
+      "aliases": [
+        "Fils de Thors",
+        "Thorfinn Karlsefni",
+        "Le Viking sans épée"
+      ],
       "anime_id": "vinland-saga",
       "animeName": "Vinland Saga",
       "category": "Seinen",
@@ -615,10 +890,15 @@
       "isFeatured": false,
       "cardColor": "#101520",
       "accentColor": "#78909C",
-      "imagePath": null,
+      "imagePath": "assets/images/Animé pictures/Jujutsu kaizen/Nanami Kento/jj_nana1.jpeg",
       "bio": "Fils du légendaire guerrier Thors, Thorfinn a suivi Askeladd pour venger son père, le traversant d'une vie de violence et de haine. Après des années d'esclavage et de réflexion, il entreprend un voyage vers le Vinland pour fonder une terre sans guerre.",
       "quote": "Tu n'as pas d'ennemi. Personne n'a le droit de tuer qui que ce soit.",
-      "powers": ["Vitesse extrême", "Daggers jumelés", "Combat rapproché", "Endurance légendaire"],
+      "powers": [
+        "Vitesse extrême",
+        "Daggers jumelés",
+        "Combat rapproché",
+        "Endurance légendaire"
+      ],
       "stats": {
         "force": 84,
         "vitesse": 96,
@@ -626,13 +906,25 @@
         "endurance": 88,
         "intelligence": 78
       },
-      "tags": ["Fils de Thors", "Pacifiste", "Vinland", "Ancien mercenaire"],
-      "creator_id": "makoto-yukimura"
+      "tags": [
+        "Fils de Thors",
+        "Pacifiste",
+        "Vinland",
+        "Ancien mercenaire"
+      ],
+      "creator_id": "makoto-yukimura",
+      "images": [
+        "assets/images/Animé pictures/Jujutsu kaizen/Nanami Kento/jj_nana1.jpeg"
+      ]
     },
     {
       "id": "nami",
       "name": "Nami",
-      "aliases": ["La Navigatrice des Chapeaux de Paille", "La Voleuse de Carte", "Le Chat Voleur"],
+      "aliases": [
+        "La Navigatrice des Chapeaux de Paille",
+        "La Voleuse de Carte",
+        "Le Chat Voleur"
+      ],
       "anime_id": "one-piece",
       "animeName": "One Piece",
       "category": "Shōnen",
@@ -652,10 +944,15 @@
       "isFeatured": false,
       "cardColor": "#1A1200",
       "accentColor": "#FFC107",
-      "imagePath": null,
+      "imagePath": "assets/images/Animé pictures/Jujutsu kaizen/Maki Zenin/jj_maki2.jpeg",
       "bio": "Navigatrice de l'équipage de Luffy, Nami est une cartographe de génie qui rêvait de cartographier le monde entier depuis son enfance. Ancienne voleuse pour la guilde Arlong afin de libérer son village, elle est désormais l'un des membres les plus importants de l'équipage du Chapeau de Paille.",
       "quote": "Je volerai le Trésor du Roi des Pirates !",
-      "powers": ["Climatact (bâton climatique)", "Manipulation météorologique", "Navigation perfectionnée", "Mantra Économique"],
+      "powers": [
+        "Climatact (bâton climatique)",
+        "Manipulation météorologique",
+        "Navigation perfectionnée",
+        "Mantra Économique"
+      ],
       "stats": {
         "force": 45,
         "vitesse": 65,
@@ -663,8 +960,16 @@
         "endurance": 50,
         "intelligence": 95
       },
-      "tags": ["Navigatrice", "Chapeau de Paille", "Cartographe", "Météo"],
-      "creator_id": "eiichiro-oda"
+      "tags": [
+        "Navigatrice",
+        "Chapeau de Paille",
+        "Cartographe",
+        "Météo"
+      ],
+      "creator_id": "eiichiro-oda",
+      "images": [
+        "assets/images/Animé pictures/Jujutsu kaizen/Maki Zenin/jj_maki2.jpeg"
+      ]
     }
   ],
   "animes": [
@@ -673,7 +978,12 @@
       "name": "Jujutsu Kaisen",
       "originalTitle": "呪術廻戦",
       "category": "Shōnen",
-      "genres": ["Action", "Surnaturel", "Arts martiaux", "École"],
+      "genres": [
+        "Action",
+        "Surnaturel",
+        "Arts martiaux",
+        "École"
+      ],
       "year": 2020,
       "seasons": 2,
       "episodes": 47,
@@ -685,7 +995,12 @@
       "cardColor": "#0A1520",
       "accentColor": "#4A148C",
       "isFeatured": true,
-      "tags": ["Populaire", "Combat", "Sorcellerie", "Démons"],
+      "tags": [
+        "Populaire",
+        "Combat",
+        "Sorcellerie",
+        "Démons"
+      ],
       "airedSeason": "Automne 2020"
     },
     {
@@ -693,7 +1008,12 @@
       "name": "Solo Leveling",
       "originalTitle": "나 혼자만 레벨업",
       "category": "Manhwa",
-      "genres": ["Action", "Fantaisie", "Aventure", "Progression de puissance"],
+      "genres": [
+        "Action",
+        "Fantaisie",
+        "Aventure",
+        "Progression de puissance"
+      ],
       "year": 2024,
       "seasons": 1,
       "episodes": 12,
@@ -705,7 +1025,12 @@
       "cardColor": "#1A0D2E",
       "accentColor": "#9B59B6",
       "isFeatured": true,
-      "tags": ["Manhwa", "Système de jeu", "Puissance infinie", "Coréen"],
+      "tags": [
+        "Manhwa",
+        "Système de jeu",
+        "Puissance infinie",
+        "Coréen"
+      ],
       "airedSeason": "Hiver 2024"
     },
     {
@@ -713,7 +1038,12 @@
       "name": "Demon Slayer",
       "originalTitle": "鬼滅の刃",
       "category": "Shōnen",
-      "genres": ["Action", "Historique", "Surnaturel", "Famille"],
+      "genres": [
+        "Action",
+        "Historique",
+        "Surnaturel",
+        "Famille"
+      ],
       "year": 2019,
       "seasons": 4,
       "episodes": 44,
@@ -725,7 +1055,12 @@
       "cardColor": "#1A0A0A",
       "accentColor": "#E53935",
       "isFeatured": true,
-      "tags": ["Ère Taisho", "Animé de l'année 2019", "ufotable", "Épique"],
+      "tags": [
+        "Ère Taisho",
+        "Animé de l'année 2019",
+        "ufotable",
+        "Épique"
+      ],
       "airedSeason": "Printemps 2019"
     },
     {
@@ -733,7 +1068,12 @@
       "name": "Attack on Titan",
       "originalTitle": "進撃の巨人",
       "category": "Seinen",
-      "genres": ["Action", "Horreur", "Dystopie", "Politique"],
+      "genres": [
+        "Action",
+        "Horreur",
+        "Dystopie",
+        "Politique"
+      ],
       "year": 2013,
       "seasons": 4,
       "episodes": 87,
@@ -745,7 +1085,12 @@
       "cardColor": "#0D1A0A",
       "accentColor": "#388E3C",
       "isFeatured": true,
-      "tags": ["Masterpiece", "Fin explosive", "Politique", "Dystopie"],
+      "tags": [
+        "Masterpiece",
+        "Fin explosive",
+        "Politique",
+        "Dystopie"
+      ],
       "airedSeason": "Printemps 2013"
     },
     {
@@ -753,7 +1098,12 @@
       "name": "One Piece",
       "originalTitle": "ワンピース",
       "category": "Shōnen",
-      "genres": ["Aventure", "Action", "Comédie", "Drame"],
+      "genres": [
+        "Aventure",
+        "Action",
+        "Comédie",
+        "Drame"
+      ],
       "year": 1999,
       "seasons": 21,
       "episodes": 1000,
@@ -765,7 +1115,12 @@
       "cardColor": "#1A1200",
       "accentColor": "#FFC107",
       "isFeatured": true,
-      "tags": ["Légendaire", "1000+ épisodes", "Nakama", "En cours depuis 1999"],
+      "tags": [
+        "Légendaire",
+        "1000+ épisodes",
+        "Nakama",
+        "En cours depuis 1999"
+      ],
       "airedSeason": "Automne 1999"
     },
     {
@@ -773,7 +1128,12 @@
       "name": "Vinland Saga",
       "originalTitle": "ヴィンランド・サガ",
       "category": "Seinen",
-      "genres": ["Historique", "Action", "Aventure", "Psychologique"],
+      "genres": [
+        "Historique",
+        "Action",
+        "Aventure",
+        "Psychologique"
+      ],
       "year": 2019,
       "seasons": 2,
       "episodes": 48,
@@ -785,7 +1145,12 @@
       "cardColor": "#0D1520",
       "accentColor": "#607D8B",
       "isFeatured": false,
-      "tags": ["Historique", "Viking", "Redemption", "Épique"],
+      "tags": [
+        "Historique",
+        "Viking",
+        "Redemption",
+        "Épique"
+      ],
       "airedSeason": "Été 2019"
     },
     {
@@ -793,7 +1158,12 @@
       "name": "Hunter x Hunter",
       "originalTitle": "HUNTER×HUNTER",
       "category": "Shōnen",
-      "genres": ["Aventure", "Action", "Fantaisie", "Psychologique"],
+      "genres": [
+        "Aventure",
+        "Action",
+        "Fantaisie",
+        "Psychologique"
+      ],
       "year": 2011,
       "seasons": 1,
       "episodes": 148,
@@ -805,7 +1175,12 @@
       "cardColor": "#0A1520",
       "accentColor": "#00BCD4",
       "isFeatured": false,
-      "tags": ["Underrated masterpiece", "Nen", "Chimera Ant Arc", "Togashi"],
+      "tags": [
+        "Underrated masterpiece",
+        "Nen",
+        "Chimera Ant Arc",
+        "Togashi"
+      ],
       "airedSeason": "Automne 2011"
     },
     {
@@ -813,7 +1188,12 @@
       "name": "Naruto",
       "originalTitle": "ナルト",
       "category": "Shōnen",
-      "genres": ["Action", "Arts martiaux", "Aventure", "Amitié"],
+      "genres": [
+        "Action",
+        "Arts martiaux",
+        "Aventure",
+        "Amitié"
+      ],
       "year": 2002,
       "seasons": 5,
       "episodes": 720,
@@ -825,7 +1205,12 @@
       "cardColor": "#1A1000",
       "accentColor": "#FF9800",
       "isFeatured": false,
-      "tags": ["Classique", "Ninja", "Démon 9 queues", "Génération 2000s"],
+      "tags": [
+        "Classique",
+        "Ninja",
+        "Démon 9 queues",
+        "Génération 2000s"
+      ],
       "airedSeason": "Automne 2002"
     },
     {
@@ -833,7 +1218,12 @@
       "name": "Re:Zero",
       "originalTitle": "Re:ゼロから始める異世界生活",
       "category": "Isekai",
-      "genres": ["Fantaisie", "Psychologique", "Horreur", "Romance"],
+      "genres": [
+        "Fantaisie",
+        "Psychologique",
+        "Horreur",
+        "Romance"
+      ],
       "year": 2016,
       "seasons": 3,
       "episodes": 50,
@@ -845,7 +1235,12 @@
       "cardColor": "#0A1020",
       "accentColor": "#1976D2",
       "isFeatured": false,
-      "tags": ["Isekai sombre", "Boucle temporelle", "Psychologique", "Rem"],
+      "tags": [
+        "Isekai sombre",
+        "Boucle temporelle",
+        "Psychologique",
+        "Rem"
+      ],
       "airedSeason": "Printemps 2016"
     },
     {
@@ -853,7 +1248,12 @@
       "name": "One Punch Man",
       "originalTitle": "ワンパンマン",
       "category": "Seinen",
-      "genres": ["Action", "Comédie", "Super-héros", "Parodie"],
+      "genres": [
+        "Action",
+        "Comédie",
+        "Super-héros",
+        "Parodie"
+      ],
       "year": 2015,
       "seasons": 2,
       "episodes": 24,
@@ -865,7 +1265,12 @@
       "cardColor": "#1A1000",
       "accentColor": "#FF9800",
       "isFeatured": false,
-      "tags": ["Parodie", "Héros classe S", "Comédie", "Action épique"],
+      "tags": [
+        "Parodie",
+        "Héros classe S",
+        "Comédie",
+        "Action épique"
+      ],
       "airedSeason": "Automne 2015"
     },
     {
@@ -873,7 +1278,12 @@
       "name": "Spy x Family",
       "originalTitle": "スパイファミリー",
       "category": "Shōnen",
-      "genres": ["Comédie", "Action", "Famille", "Romance"],
+      "genres": [
+        "Comédie",
+        "Action",
+        "Famille",
+        "Romance"
+      ],
       "year": 2022,
       "seasons": 2,
       "episodes": 37,
@@ -885,7 +1295,12 @@
       "cardColor": "#1A1020",
       "accentColor": "#E91E63",
       "isFeatured": false,
-      "tags": ["Famille comique", "Espion", "Anya", "Feel-good"],
+      "tags": [
+        "Famille comique",
+        "Espion",
+        "Anya",
+        "Feel-good"
+      ],
       "airedSeason": "Printemps 2022"
     },
     {
@@ -893,7 +1308,12 @@
       "name": "Chainsaw Man",
       "originalTitle": "チェンソーマン",
       "category": "Seinen",
-      "genres": ["Action", "Horreur", "Démons", "Dark"],
+      "genres": [
+        "Action",
+        "Horreur",
+        "Démons",
+        "Dark"
+      ],
       "year": 2022,
       "seasons": 1,
       "episodes": 12,
@@ -905,7 +1325,12 @@
       "cardColor": "#200A0A",
       "accentColor": "#FF5722",
       "isFeatured": false,
-      "tags": ["Dark", "Gore", "MAPPA", "Tronçonneuse"],
+      "tags": [
+        "Dark",
+        "Gore",
+        "MAPPA",
+        "Tronçonneuse"
+      ],
       "airedSeason": "Automne 2022"
     },
     {
@@ -913,7 +1338,12 @@
       "name": "That Time I Got Reincarnated as a Slime",
       "originalTitle": "転生したらスライムだった件",
       "category": "Isekai",
-      "genres": ["Fantaisie", "Comédie", "Isekai", "Construction de monde"],
+      "genres": [
+        "Fantaisie",
+        "Comédie",
+        "Isekai",
+        "Construction de monde"
+      ],
       "year": 2018,
       "seasons": 3,
       "episodes": 48,
@@ -925,7 +1355,12 @@
       "cardColor": "#0A1520",
       "accentColor": "#00BCD4",
       "isFeatured": false,
-      "tags": ["Isekai", "Slime", "Construction de nation", "Gentil protagoniste"],
+      "tags": [
+        "Isekai",
+        "Slime",
+        "Construction de nation",
+        "Gentil protagoniste"
+      ],
       "airedSeason": "Automne 2018"
     },
     {
@@ -933,7 +1368,12 @@
       "name": "Violet Evergarden",
       "originalTitle": "ヴァイオレット・エヴァーガーデン",
       "category": "Shōjo",
-      "genres": ["Drame", "Romance", "Slice of Life", "Émotionnel"],
+      "genres": [
+        "Drame",
+        "Romance",
+        "Slice of Life",
+        "Émotionnel"
+      ],
       "year": 2018,
       "seasons": 1,
       "episodes": 13,
@@ -945,7 +1385,12 @@
       "cardColor": "#0A1020",
       "accentColor": "#5C6BC0",
       "isFeatured": false,
-      "tags": ["Émouvant", "KyoAni", "Larmes garanties", "Beauté visuelle"],
+      "tags": [
+        "Émouvant",
+        "KyoAni",
+        "Larmes garanties",
+        "Beauté visuelle"
+      ],
       "airedSeason": "Hiver 2018"
     },
     {
@@ -953,7 +1398,12 @@
       "name": "Darling in the FranXX",
       "originalTitle": "ダーリン・イン・ザ・フランキス",
       "category": "Mecha",
-      "genres": ["Mecha", "Science-Fiction", "Romance", "Action"],
+      "genres": [
+        "Mecha",
+        "Science-Fiction",
+        "Romance",
+        "Action"
+      ],
       "year": 2018,
       "seasons": 1,
       "episodes": 24,
@@ -965,7 +1415,12 @@
       "cardColor": "#200A10",
       "accentColor": "#F06292",
       "isFeatured": false,
-      "tags": ["Mecha", "Zero Two", "Romance sombre", "Post-apocalyptique"],
+      "tags": [
+        "Mecha",
+        "Zero Two",
+        "Romance sombre",
+        "Post-apocalyptique"
+      ],
       "airedSeason": "Hiver 2018"
     }
   ],
@@ -977,10 +1432,16 @@
       "role": "Mangaka",
       "nationality": "Japonaise",
       "bornYear": 1992,
-      "works": ["jujutsu-kaisen"],
+      "works": [
+        "jujutsu-kaisen"
+      ],
       "initials": "GA",
       "bio": "Gege Akutami est un mangaka japonais né en 1992 dont l'identité réelle reste confidentielle. Son manga Jujutsu Kaisen, publié dans Weekly Shōnen Jump depuis 2018, est devenu l'un des plus populaires de sa génération avec plus de 80 millions d'exemplaires vendus.",
-      "tags": ["Shōnen", "Surnaturel", "Populaire"],
+      "tags": [
+        "Shōnen",
+        "Surnaturel",
+        "Populaire"
+      ],
       "serializedIn": "Weekly Shōnen Jump",
       "debutYear": 2018
     },
@@ -991,10 +1452,16 @@
       "role": "Webtooniste",
       "nationality": "Coréenne",
       "bornYear": null,
-      "works": ["solo-leveling"],
+      "works": [
+        "solo-leveling"
+      ],
       "initials": "CH",
       "bio": "Chugong est l'auteur du roman web coréen 'Solo Leveling', originellement publié sur KakaoPage en 2016. Sa série a été adaptée en manhwa (BD coréenne) puis en anime en 2024, connaissant un succès mondial phénoménal.",
-      "tags": ["Manhwa", "Action", "Webtoon"],
+      "tags": [
+        "Manhwa",
+        "Action",
+        "Webtoon"
+      ],
       "serializedIn": "KakaoPage",
       "debutYear": 2016
     },
@@ -1005,10 +1472,16 @@
       "role": "Mangaka",
       "nationality": "Japonaise",
       "bornYear": null,
-      "works": ["demon-slayer"],
+      "works": [
+        "demon-slayer"
+      ],
       "initials": "KG",
       "bio": "Koyoharu Gotouge est la mangaka japonaise derrière Demon Slayer: Kimetsu no Yaiba. Son manga, publié dans Weekly Shōnen Jump de 2016 à 2020, a établi des records de ventes historiques au Japon.",
-      "tags": ["Shōnen", "Historique", "Arts martiaux"],
+      "tags": [
+        "Shōnen",
+        "Historique",
+        "Arts martiaux"
+      ],
       "serializedIn": "Weekly Shōnen Jump",
       "debutYear": 2016
     },
@@ -1019,10 +1492,16 @@
       "role": "Mangaka",
       "nationality": "Japonaise",
       "bornYear": 1986,
-      "works": ["attack-on-titan"],
+      "works": [
+        "attack-on-titan"
+      ],
       "initials": "HI",
       "bio": "Né en 1986 dans la préfecture d'Ōita, Hajime Isayama a créé L'Attaque des Titans (Shingeki no Kyojin) pour Bessatsu Shōnen Magazine en 2009. Sa série de 34 tomes est connue pour ses retournements de situation audacieux et sa complexité narrative.",
-      "tags": ["Seinen", "Action", "Politique"],
+      "tags": [
+        "Seinen",
+        "Action",
+        "Politique"
+      ],
       "serializedIn": "Bessatsu Shōnen Magazine",
       "debutYear": 2009
     },
@@ -1033,10 +1512,16 @@
       "role": "Mangaka",
       "nationality": "Japonaise",
       "bornYear": 1975,
-      "works": ["one-piece"],
+      "works": [
+        "one-piece"
+      ],
       "initials": "EO",
       "bio": "Né le 1er janvier 1975, Eiichiro Oda est le créateur de One Piece, le manga le plus vendu de l'histoire avec plus de 500 millions d'exemplaires. Sa passion pour les pirates et son sens créatif unique ont engendré un univers d'une richesse exceptionnelle.",
-      "tags": ["Shōnen", "Légende", "Record mondial"],
+      "tags": [
+        "Shōnen",
+        "Légende",
+        "Record mondial"
+      ],
       "serializedIn": "Weekly Shōnen Jump",
       "debutYear": 1997
     },
@@ -1047,10 +1532,16 @@
       "role": "Mangaka",
       "nationality": "Japonaise",
       "bornYear": 1976,
-      "works": ["vinland-saga"],
+      "works": [
+        "vinland-saga"
+      ],
       "initials": "MY",
       "bio": "Makoto Yukimura est un mangaka japonais né en 1976, connu pour Planetes (2000) et Vinland Saga (2005). Ses œuvres sont reconnues pour leur profondeur philosophique et leur recherche historique méticuleuse.",
-      "tags": ["Seinen", "Historique", "Viking"],
+      "tags": [
+        "Seinen",
+        "Historique",
+        "Viking"
+      ],
       "serializedIn": "Afternoon (Kodansha)",
       "debutYear": 2005
     },
@@ -1061,10 +1552,16 @@
       "role": "Mangaka",
       "nationality": "Japonaise",
       "bornYear": 1966,
-      "works": ["hunter-x-hunter"],
+      "works": [
+        "hunter-x-hunter"
+      ],
       "initials": "YT",
       "bio": "Né en 1966, Yoshihiro Togashi est l'auteur de Yu Yu Hakusho et Hunter x Hunter, deux des shōnen les plus influents. Marié à la créatrice de Sailor Moon, Naoko Takeuchi, il est aussi connu pour ses longues pauses de publication dues à des problèmes de santé.",
-      "tags": ["Shōnen", "Légende", "HxH"],
+      "tags": [
+        "Shōnen",
+        "Légende",
+        "HxH"
+      ],
       "serializedIn": "Weekly Shōnen Jump",
       "debutYear": 1998
     },
@@ -1075,10 +1572,16 @@
       "role": "Mangaka",
       "nationality": "Japonaise",
       "bornYear": 1974,
-      "works": ["naruto"],
+      "works": [
+        "naruto"
+      ],
       "initials": "MK",
       "bio": "Né le 8 novembre 1974 dans la préfecture d'Okayama, Masashi Kishimoto a créé Naruto, l'un des trois grands shōnen de la génération 2000s. Sa série a été publiée de 1999 à 2014 dans Weekly Shōnen Jump, totalisant 700 chapitres.",
-      "tags": ["Shōnen", "Classique", "Ninja"],
+      "tags": [
+        "Shōnen",
+        "Classique",
+        "Ninja"
+      ],
       "serializedIn": "Weekly Shōnen Jump",
       "debutYear": 1999
     },
@@ -1089,10 +1592,16 @@
       "role": "Light Noveliste",
       "nationality": "Japonaise",
       "bornYear": null,
-      "works": ["re-zero"],
+      "works": [
+        "re-zero"
+      ],
       "initials": "NT",
       "bio": "Nagatsuki Tappei est l'auteur japonais du light novel Re:Zero − Starting Life in Another World, publié à l'origine sur le site d'auto-publication Shōsetsuka ni Narō en 2012. La série a été adaptée en manga puis en anime à succès.",
-      "tags": ["Isekai", "Light Novel", "Psychologique"],
+      "tags": [
+        "Isekai",
+        "Light Novel",
+        "Psychologique"
+      ],
       "serializedIn": "Shōsetsuka ni Narō / MF Bunko J",
       "debutYear": 2012
     },
@@ -1103,10 +1612,16 @@
       "role": "Mangaka / Webcomiciste",
       "nationality": "Japonaise",
       "bornYear": null,
-      "works": ["one-punch-man"],
+      "works": [
+        "one-punch-man"
+      ],
       "initials": "ON",
       "bio": "ONE est un mangaka japonais dont l'identité réelle reste inconnue. Il est le créateur original de One Punch Man (webcomic, 2009) et Mob Psycho 100. Son style graphique amateur contraste avec l'action épique de ses récits, créant un attrait unique.",
-      "tags": ["Webcomic", "Comédie", "Action"],
+      "tags": [
+        "Webcomic",
+        "Comédie",
+        "Action"
+      ],
       "serializedIn": "Webcomic personnel / Young Jump",
       "debutYear": 2009
     },
@@ -1117,10 +1632,16 @@
       "role": "Mangaka",
       "nationality": "Japonaise",
       "bornYear": 1994,
-      "works": ["chainsaw-man"],
+      "works": [
+        "chainsaw-man"
+      ],
       "initials": "TF",
       "bio": "Né en 1994, Tatsuki Fujimoto est l'auteur de Chainsaw Man et de Fire Punch. Son style unique mêle horreur viscérale, humour absurde et émotions déchirantes. Chainsaw Man, publié dans Weekly Shōnen Jump, est rapidement devenu un phénomène mondial.",
-      "tags": ["Seinen", "Dark", "Innovant"],
+      "tags": [
+        "Seinen",
+        "Dark",
+        "Innovant"
+      ],
       "serializedIn": "Weekly Shōnen Jump",
       "debutYear": 2018
     },
@@ -1131,10 +1652,16 @@
       "role": "Mangaka",
       "nationality": "Japonaise",
       "bornYear": 1988,
-      "works": ["spy-x-family"],
+      "works": [
+        "spy-x-family"
+      ],
       "initials": "TE",
       "bio": "Né en 1988, Tatsuya Endo est l'auteur de Spy x Family, publié dans Shōnen Jump+ depuis 2019. Sa série mêle comédie, espionnage et tendresse familiale pour un résultat particulièrement rafraîchissant dans le paysage manga contemporain.",
-      "tags": ["Shōnen", "Comédie", "Famille"],
+      "tags": [
+        "Shōnen",
+        "Comédie",
+        "Famille"
+      ],
       "serializedIn": "Shōnen Jump+",
       "debutYear": 2019
     },
@@ -1145,10 +1672,16 @@
       "role": "Light Noveliste",
       "nationality": "Japonaise",
       "bornYear": null,
-      "works": ["violet-evergarden"],
+      "works": [
+        "violet-evergarden"
+      ],
       "initials": "KA",
       "bio": "Kana Akatsuki est l'auteure du light novel Violet Evergarden, primé au 5e Prix Kyoto Animation & Animation DO. L'adaptation animée réalisée par Kyoto Animation en 2018 est universellement saluée pour sa beauté visuelle et sa charge émotionnelle.",
-      "tags": ["Light Novel", "Romance", "Émouvant"],
+      "tags": [
+        "Light Novel",
+        "Romance",
+        "Émouvant"
+      ],
       "serializedIn": "KA Esuma Bunko (KyoAni)",
       "debutYear": 2015
     },
@@ -1159,10 +1692,16 @@
       "role": "Light Noveliste",
       "nationality": "Japonaise",
       "bornYear": null,
-      "works": ["tensura"],
+      "works": [
+        "tensura"
+      ],
       "initials": "FU",
       "bio": "Fuse est le pseudonyme de l'auteur japonais de That Time I Got Reincarnated as a Slime (Tensei Shitara Suraimu Datta Ken), d'abord publié sur Shōsetsuka ni Narō en 2013. La série a depuis été adaptée en manga et en anime à succès mondial.",
-      "tags": ["Isekai", "Light Novel", "Construction de monde"],
+      "tags": [
+        "Isekai",
+        "Light Novel",
+        "Construction de monde"
+      ],
       "serializedIn": "Shōsetsuka ni Narō / GC Novels",
       "debutYear": 2013
     },
@@ -1173,10 +1712,16 @@
       "role": "Studio d'animation",
       "nationality": "Japonaise",
       "bornYear": 2011,
-      "works": ["darling-in-the-franxx"],
+      "works": [
+        "darling-in-the-franxx"
+      ],
       "initials": "TR",
       "bio": "Studio Trigger est un studio d'animation japonais fondé en 2011 par d'anciens membres de Gainax. Connu pour Kill la Kill et Gurren Lagann (héritage), Trigger a co-produit Darling in the FranXX avec A-1 Pictures.",
-      "tags": ["Studio", "Mecha", "Animé original"],
+      "tags": [
+        "Studio",
+        "Mecha",
+        "Animé original"
+      ],
       "serializedIn": "Productions originales",
       "debutYear": 2011
     }

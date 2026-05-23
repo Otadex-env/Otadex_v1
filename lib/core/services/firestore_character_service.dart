@@ -323,16 +323,25 @@ class FirestoreCharacterService {
 
   Color _cardColorForAnime(String animeId) => switch (animeId) {
         'jujutsu-kaisen' => const Color(0xFF0A1520),
+        'naruto-shippuden' => const Color(0xFF0D1A0A),
+        'attack-on-titan' => const Color(0xFF1A0A0A),
+        'one-piece' => const Color(0xFF1A1200),
         _ => const Color(0xFF0A1020),
       };
 
   Color _accentColorForAnime(String animeId) => switch (animeId) {
         'jujutsu-kaisen' => const Color(0xFF1565C0),
+        'naruto-shippuden' => const Color(0xFFFF6F00),
+        'attack-on-titan' => const Color(0xFFC62828),
+        'one-piece' => const Color(0xFFFF9800),
         _ => const Color(0xFF6A1B9A),
       };
 
   String _categoryForAnime(String animeId) => switch (animeId) {
         'jujutsu-kaisen' => 'Shōnen',
+        'naruto-shippuden' => 'Shōnen',
+        'attack-on-titan' => 'Seinen',
+        'one-piece' => 'Shōnen',
         _ => 'Shōnen',
       };
 }

@@ -19,39 +19,44 @@ class OtadexImage extends StatelessWidget {
     this.borderRadius,
   });
 
+  bool get _isAsset =>
+      imagePath.startsWith('assets/');
+
   bool get _isNetwork =>
       imagePath.startsWith('http://') || imagePath.startsWith('https://');
 
   @override
   Widget build(BuildContext context) {
-    if (imagePath.isEmpty) return _errorWidget();
+    if (imagePath.isEmpty) return _placeholder();
 
-    Widget image;
+    if (_isAsset) {
+      return ClipRRect(
+        borderRadius: borderRadius ?? BorderRadius.zero,
+        child: Image.asset(
+          imagePath,
+          width: width,
+          height: height,
+          fit: fit,
+          errorBuilder: (_, __, ___) => _placeholder(),
+        ),
+      );
+    }
 
     if (_isNetwork) {
-      image = CachedNetworkImage(
-        imageUrl: imagePath,
-        httpHeaders: const {'User-Agent': 'OTADEX/1.0'},
-        width: width,
-        height: height,
-        fit: fit,
-        placeholder: (_, __) => _shimmer(),
-        errorWidget: (_, __, ___) => _errorWidget(),
-      );
-    } else {
-      image = Image.asset(
-        imagePath,
-        width: width,
-        height: height,
-        fit: fit,
-        errorBuilder: (_, __, ___) => _errorWidget(),
+      return ClipRRect(
+        borderRadius: borderRadius ?? BorderRadius.zero,
+        child: CachedNetworkImage(
+          imageUrl: imagePath,
+          width: width,
+          height: height,
+          fit: fit,
+          placeholder: (_, __) => _shimmer(),
+          errorWidget: (_, __, ___) => _placeholder(),
+        ),
       );
     }
 
-    if (borderRadius != null) {
-      return ClipRRect(borderRadius: borderRadius!, child: image);
-    }
-    return image;
+    return _placeholder();
   }
 
   Widget _shimmer() => Shimmer.fromColors(
@@ -64,14 +69,17 @@ class OtadexImage extends StatelessWidget {
         ),
       );
 
-  Widget _errorWidget() => Container(
-        width: width,
-        height: height,
-        color: AppColors.backgroundElevated,
-        child: const Icon(
-          Icons.broken_image_rounded,
-          color: AppColors.textDisabled,
-          size: 32,
-        ),
-      );
+  Widget _placeholder() => Container(
+    width: width,
+    height: height,
+    decoration: BoxDecoration(
+      color: AppColors.backgroundElevated,
+      borderRadius: borderRadius,
+    ),
+    child: Icon(
+      Icons.person_rounded,
+      color: AppColors.textSecondary.withOpacity(0.4),
+      size: 40,
+    ),
+  );
 }

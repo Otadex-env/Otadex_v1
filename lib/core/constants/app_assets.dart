@@ -22,7 +22,7 @@ class AppAssets {
 
   // ━━━ Characters UI ━━━
   static const String defaultAvatar =
-      'assets/images/characters/satoru_gojo/gojo_02.png';
+      'assets/images/Animé pictures/Jujutsu kaizen/Gojo satoru/jj_gojo.jpeg';
 
   // ━━━ JJK — base path ━━━
   static const String _jjk = 'assets/images/Animé pictures/Jujutsu kaizen';

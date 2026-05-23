@@ -52,18 +52,21 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
   Character get c => widget.character;
 
   List<String> get _effectiveImages {
-    final local = AppAssets.getByCharacterId(c.id);
-    if (local.isNotEmpty) return local;
-    final customImages = c.images.where((url) => url.isNotEmpty).toList();
-    if (customImages.isNotEmpty) return customImages;
-    if (c.imagePath?.isNotEmpty == true) return [c.imagePath!];
-    final storageAsync = ref.watch(characterImagesProvider({
-      'anime': c.animeName,
-      'character': c.name,
-    }));
-    if (storageAsync.hasValue && storageAsync.value!.isNotEmpty) {
-      return storageAsync.value!;
+    // 1. Images locales assets (priorité)
+    final localImages = AppAssets.getByCharacterId(c.id);
+    if (localImages.isNotEmpty) return localImages;
+
+    // 2. Images dans character.images (URLs Firestore)
+    final firestoreImages = c.images
+      .where((url) => url.isNotEmpty)
+      .toList();
+    if (firestoreImages.isNotEmpty) return firestoreImages;
+
+    // 3. imagePath seul
+    if (c.imagePath?.isNotEmpty == true) {
+      return [c.imagePath!];
     }
+
     return [];
   }
 
