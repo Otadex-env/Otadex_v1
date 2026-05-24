@@ -30,8 +30,8 @@ final _charFullDataProvider = FutureProvider.autoDispose
 });
 
 class CharacterDetailScreen extends ConsumerStatefulWidget {
-  final Character character;
-  const CharacterDetailScreen({super.key, required this.character});
+  final String characterId;
+  const CharacterDetailScreen({super.key, required this.characterId});
 
   @override
   ConsumerState<CharacterDetailScreen> createState() =>
@@ -44,13 +44,14 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
   _Tab _activeTab = _Tab.infos;
   bool _isLiked = false;
   bool _aboutExpanded = false;
+  Character? _character;
 
   // ── Hero animation ───────────────────────────────────────────────
   late final AnimationController _heroCtrl;
   late final Animation<double> _heroScale;
   late final Animation<double> _heroFade;
 
-  Character get c => widget.character;
+  Character get c => _character!;
 
   List<String> get _effectiveImages {
     // 1. Images locales assets (priorité)
@@ -249,6 +250,41 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
 
   @override
   Widget build(BuildContext context) {
+    final characterAsync =
+        ref.watch(characterDetailProvider(widget.characterId));
+    return characterAsync.when(
+      loading: () => const Scaffold(
+        backgroundColor: AppColors.backgroundDeep,
+        body: SkeletonScreen(),
+      ),
+      error: (e, _) => Scaffold(
+        backgroundColor: AppColors.backgroundDeep,
+        body: Center(
+          child: Text(
+            'Erreur de chargement',
+            style: GoogleFonts.nunitoSans(color: AppColors.textSecondary),
+          ),
+        ),
+      ),
+      data: (character) {
+        if (character == null) {
+          return Scaffold(
+            backgroundColor: AppColors.backgroundDeep,
+            body: Center(
+              child: Text(
+                'Personnage introuvable',
+                style: GoogleFonts.nunitoSans(color: AppColors.textSecondary),
+              ),
+            ),
+          );
+        }
+        _character = character;
+        return _buildScaffold(context);
+      },
+    );
+  }
+
+  Widget _buildScaffold(BuildContext context) {
     final theme = OtadexTheme.of(context);
     final mq = MediaQuery.of(context);
     final profile = ref.watch(userProfileProvider);

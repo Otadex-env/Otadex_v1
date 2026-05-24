@@ -80,7 +80,6 @@ class _AnimeDetailScreenState extends ConsumerState<AnimeDetailScreen> {
                   _CharactersList(
                     characters: characters,
                     theme: theme,
-                    onTap: (c) => context.push('/character/${c.id}'),
                   ),
                 ],
                 _SynopsisSection(
@@ -380,12 +379,10 @@ class _Divider extends StatelessWidget {
 class _CharactersList extends StatelessWidget {
   final List<Character> characters;
   final RankTheme theme;
-  final void Function(Character) onTap;
 
   const _CharactersList({
     required this.characters,
     required this.theme,
-    required this.onTap,
   });
 
   @override
@@ -394,7 +391,7 @@ class _CharactersList extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: characters
-            .map((c) => _CharacterRow(character: c, theme: theme, onTap: () => onTap(c)))
+            .map((c) => _CharacterRow(character: c, theme: theme))
             .toList(),
       ),
     );
@@ -404,98 +401,87 @@ class _CharactersList extends StatelessWidget {
 class _CharacterRow extends StatelessWidget {
   final Character character;
   final RankTheme theme;
-  final VoidCallback onTap;
 
   const _CharacterRow({
     required this.character,
     required this.theme,
-    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      behavior: HitTestBehavior.opaque,
-      child: Container(
-        height: 72,
-        margin: const EdgeInsets.only(bottom: 8),
-        decoration: BoxDecoration(
-          color: theme.backgroundElevated,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: theme.borderSubtle),
-        ),
-        child: Row(
-          children: [
-            const SizedBox(width: 10),
-            // Avatar — assets locaux en priorité
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: SizedBox(
-                width: 52,
-                height: 52,
-                child: Builder(builder: (_) {
-                  final localImgs =
-                      AppAssets.getByCharacterId(character.id);
-                  final imgPath = localImgs.isNotEmpty
-                      ? localImgs.first
-                      : character.imagePath ?? '';
-                  return imgPath.isNotEmpty
-                      ? OtadexImage(imagePath: imgPath, fit: BoxFit.cover)
-                      : _InitialsBox(character: character);
-                }),
-              ),
+    return Container(
+      height: 72,
+      margin: const EdgeInsets.only(bottom: 8),
+      decoration: BoxDecoration(
+        color: theme.backgroundElevated,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: theme.borderSubtle),
+      ),
+      child: Row(
+        children: [
+          const SizedBox(width: 10),
+          // Avatar — assets locaux en priorité
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: SizedBox(
+              width: 52,
+              height: 52,
+              child: Builder(builder: (_) {
+                final localImgs =
+                    AppAssets.getByCharacterId(character.id);
+                final imgPath = localImgs.isNotEmpty
+                    ? localImgs.first
+                    : character.imagePath ?? '';
+                return imgPath.isNotEmpty
+                    ? OtadexImage(imagePath: imgPath, fit: BoxFit.cover)
+                    : _InitialsBox(character: character);
+              }),
             ),
-            const SizedBox(width: 12),
-            // Info
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    children: [
-                      Flexible(
-                        child: Text(
-                          character.name,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: GoogleFonts.rajdhani(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: theme.textPrimary,
-                          ),
+          ),
+          const SizedBox(width: 12),
+          // Info
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  children: [
+                    Flexible(
+                      child: Text(
+                        character.name,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.rajdhani(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: theme.textPrimary,
                         ),
                       ),
-                      if (character.role != null) ...[
-                        const SizedBox(width: 6),
-                        CharPill(
-                          character.role!,
-                          bg: theme.accentColor.withValues(alpha: 0.15),
-                          color: theme.accentColor,
-                          fontSize: 9,
-                        ),
-                      ],
-                    ],
-                  ),
-                  Text(
-                    character.animeName,
-                    style: GoogleFonts.nunitoSans(
-                      fontSize: 12,
-                      color: theme.textSecondary,
                     ),
+                    if (character.role != null) ...[
+                      const SizedBox(width: 6),
+                      CharPill(
+                        character.role!,
+                        bg: theme.accentColor.withValues(alpha: 0.15),
+                        color: theme.accentColor,
+                        fontSize: 9,
+                      ),
+                    ],
+                  ],
+                ),
+                Text(
+                  character.animeName,
+                  style: GoogleFonts.nunitoSans(
+                    fontSize: 12,
+                    color: theme.textSecondary,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            Icon(
-              Icons.chevron_right_rounded,
-              color: theme.textSecondary,
-              size: 20,
-            ),
-            const SizedBox(width: 8),
-          ],
-        ),
+          ),
+          const SizedBox(width: 12),
+        ],
       ),
     );
   }

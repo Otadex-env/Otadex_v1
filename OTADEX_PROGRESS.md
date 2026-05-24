@@ -716,5 +716,39 @@ URLs Play Console :
 
 ---
 
+---
+
+## Task 35 — Fix crash navigation + UX corrections (24 mai 2026)
+
+### ✅ FIX 1 — Crash navigation /character/:id résolu (CRITIQUE)
+- **Cause** : `state.extra as Character` → crash quand `extra` est null (navigation depuis URL directe, deep link, ou appel sans extra)
+- `lib/core/router/app_router.dart` : route `/character/:id` utilise désormais `state.pathParameters['id']!` — plus aucune dépendance à `state.extra`
+- `lib/features/character/presentation/character_detail_screen.dart` :
+  - Constructeur : `final Character character` → `final String characterId`
+  - Champ `Character? _character` ajouté dans le State
+  - Getter `c` : `widget.character` → `_character!` (alimenté avant chaque build)
+  - `build()` → wrappé dans `characterDetailProvider(widget.characterId).when(loading / error / data)`
+  - Loading → `SkeletonScreen` | Error → message erreur | Null → "Personnage introuvable"
+  - Méthode `_buildScaffold(context)` extraite pour le contenu existant inchangé
+- Tous les `context.push('/character/${id}')` existants restent valides (extra ignoré si présent)
+
+### ✅ FIX 2 — Personnages animé non cliquables
+- `lib/features/anime/presentation/anime_detail_screen.dart`
+- `_CharactersList` : suppression du paramètre `onTap`
+- `_CharacterRow` : suppression `GestureDetector` + `VoidCallback onTap` + chevron `Icons.chevron_right_rounded`
+- Les rows restent visuellement identiques (avatar, nom, pill rang, animeName) mais ne réagissent plus au tap
+
+### ✅ FIX 3 — "Tu pourrais aussi aimer" avec images réelles
+- `lib/features/search/presentation/search_screen.dart`
+- Suppression de `_recommendations` (liste statique de `Color()` hardcodés)
+- `_buildRecommendations()` réécrit : utilise `_localChars.take(3)` (données Firestore)
+- Chaque card : gradient `cardColor → accentColor` + `OtadexImage` (priorité assets locaux → `images[]` → `imagePath`) + scrim bas + nom + animeName
+- OnTap : `context.push('/character/${c.id}')` — navigation vers la fiche
+- Imports ajoutés : `app_assets.dart`, `app_colors.dart`
+
+### dart analyze → No issues found!
+
+---
+
 _À mettre à jour par Claude Code à la fin de chaque session._
-_Dernière mise à jour : Task 34 — Fix source mock + Shimmer global, 24 mai 2026_
+_Dernière mise à jour : Task 35 — Fix crash navigation + UX corrections, 24 mai 2026_

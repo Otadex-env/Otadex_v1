@@ -4,12 +4,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../core/constants/app_assets.dart';
 import '../../../core/l10n/app_strings.dart';
 import '../../../core/models/anime_entry.dart';
 import '../../../core/models/character.dart';
 import '../../../core/models/creator_entry.dart';
 import '../../../core/providers/anilist_providers.dart';
 import '../../../core/providers/otadex_providers.dart';
+import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/otadex_theme.dart';
 import '../../../core/theme/rank_theme.dart';
 import '../../../core/widgets/otadex_image.dart';
@@ -73,13 +75,6 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
         Color(0xFF283593)),
   ];
 
-
-  static const _recommendations = [
-    [Color(0xFFFF6B35), Color(0xFF8B1A00)],
-    [Color(0xFF9B59B6), Color(0xFF4A0080)],
-    [Color(0xFFE91E8C), Color(0xFF7B0052)],
-    [Color(0xFF26C6DA), Color(0xFF004D56)],
-  ];
 
   // ── Computed ──────────────────────────────────────────────────────────
   bool get _showSuggestions => _isFocused && _query.isNotEmpty;
@@ -1443,6 +1438,9 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   }
 
   Widget _buildRecommendations(RankTheme theme) {
+    final chars = _localChars.take(3).toList();
+    if (chars.isEmpty) return const SizedBox.shrink();
+
     return TweenAnimationBuilder<double>(
       tween: Tween(begin: 0.0, end: 1.0),
       duration: const Duration(milliseconds: 500),
@@ -1453,19 +1451,95 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
         height: 180,
         child: ListView.separated(
           scrollDirection: Axis.horizontal,
-          itemCount: _recommendations.length,
+          itemCount: chars.length,
           separatorBuilder: (_, __) => const SizedBox(width: 10),
-          itemBuilder: (context, i) => Container(
-            width: 120,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: _recommendations[i],
+          itemBuilder: (context, i) {
+            final c = chars[i];
+            final localImgs = AppAssets.getByCharacterId(c.id);
+            final imgPath = localImgs.isNotEmpty
+                ? localImgs.first
+                : c.images.isNotEmpty
+                    ? c.images.first
+                    : c.imagePath ?? '';
+
+            return GestureDetector(
+              onTap: () => context.push('/character/${c.id}'),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: SizedBox(
+                  width: 120,
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      // Gradient background (toujours visible)
+                      Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [c.cardColor, c.accentColor],
+                          ),
+                        ),
+                      ),
+                      // Image personnage
+                      if (imgPath.isNotEmpty)
+                        OtadexImage(imagePath: imgPath, fit: BoxFit.cover),
+                      // Scrim bas pour lisibilité du texte
+                      Positioned(
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        child: Container(
+                          height: 72,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                AppColors.backgroundDeep.withValues(alpha: 0.0),
+                                AppColors.backgroundDeep.withValues(alpha: 0.92),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      // Nom + animé
+                      Positioned(
+                        bottom: 8,
+                        left: 8,
+                        right: 8,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              c.name,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.rajdhani(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
+                                color: AppColors.textPrimary,
+                              ),
+                            ),
+                            Text(
+                              c.animeName,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.nunitoSans(
+                                fontSize: 10,
+                                color: AppColors.textSecondary,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-              borderRadius: BorderRadius.circular(12),
-            ),
-          ),
+            );
+          },
         ),
       ),
     );

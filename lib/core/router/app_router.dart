@@ -87,8 +87,8 @@ class AppRouter {
         path: '/character/:id',
         name: 'character',
         builder: (context, state) {
-          final character = state.extra as Character;
-          return CharacterDetailScreen(character: character);
+          final id = state.pathParameters['id']!;
+          return CharacterDetailScreen(characterId: id);
         },
       ),
       GoRoute(
