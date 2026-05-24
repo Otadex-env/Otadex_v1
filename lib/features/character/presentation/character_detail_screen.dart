@@ -487,9 +487,9 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
           child: child,
         ),
       ),
-      child: c.imagePath != null
+      child: _effectiveImages.isNotEmpty
           ? OtadexImage(
-              imagePath: c.imagePath!,
+              imagePath: _effectiveImages.first,
               fit: BoxFit.contain,
             )
           : _buildSilhouette(),

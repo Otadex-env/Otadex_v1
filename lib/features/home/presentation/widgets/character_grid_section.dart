@@ -43,7 +43,7 @@ class CharacterGridSection extends ConsumerWidget {
           }),
         ),
         newAsync.when(
-          data: (chars) => _buildGrid(chars, startOffset: 0),
+          data: (chars) => _buildGrid(chars, startOffset: 0, maxItems: 6),
           loading: () => const _GridLoader(),
           error: (_, __) => const SizedBox.shrink(),
         ),
@@ -61,6 +61,7 @@ class CharacterGridSection extends ConsumerWidget {
           data: (chars) => _buildGrid(
             chars,
             startOffset: newAsync.valueOrNull?.length ?? 0,
+            maxItems: 6,
           ),
           loading: () => const _GridLoader(),
           error: (_, __) => const SizedBox.shrink(),
@@ -71,8 +72,9 @@ class CharacterGridSection extends ConsumerWidget {
     );
   }
 
-  Widget _buildGrid(List<Character> chars, {required int startOffset}) {
-    if (chars.isEmpty) {
+  Widget _buildGrid(List<Character> chars, {required int startOffset, int? maxItems}) {
+    final display = maxItems != null ? chars.take(maxItems).toList() : chars;
+    if (display.isEmpty) {
       return const Padding(
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 24),
         child: Center(
@@ -94,12 +96,12 @@ class CharacterGridSection extends ConsumerWidget {
         crossAxisSpacing: 10,
         childAspectRatio: 0.72,
       ),
-      itemCount: chars.length,
+      itemCount: display.length,
       itemBuilder: (context, i) => CharacterGridCard(
-        character: chars[i],
+        character: display[i],
         onTap: () => context.push(
-          '/character/${chars[i].id}',
-          extra: chars[i],
+          '/character/${display[i].id}',
+          extra: display[i],
         ),
       )
           .animate(delay: (60 * i).ms)

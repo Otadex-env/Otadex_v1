@@ -46,7 +46,8 @@ final trendingCharactersProvider = FutureProvider<List<Character>>((ref) async {
 final newCharactersProvider =
     FutureProvider.family<List<Character>, String?>((ref, category) async {
   final all = await ref.watch(allCharactersProvider.future);
-  final newChars = all.where((c) => c.isNew || c.isTrending).toList();
+  var newChars = all.where((c) => c.isNew || c.isTrending).toList()
+    ..sort((a, b) => b.likes.compareTo(a.likes));
   if (category == null || category == 'Tous') return newChars;
   return newChars.where((c) => c.category == category).toList();
 });
@@ -57,12 +58,12 @@ final recommendedCharactersProvider =
   final all = await ref.watch(allCharactersProvider.future);
   final prefs = await SharedPreferences.getInstance();
   final raw = prefs.getString(AppConstants.keyUserInterests);
-  final recommended = all.where((c) => c.isRecommended).toList();
+  final recommended = all.where((c) => c.isRecommended).toList()
+    ..sort((a, b) => b.likes.compareTo(a.likes));
   if (raw == null || raw.isEmpty) return recommended;
   final interests = List<String>.from(jsonDecode(raw) as List);
   if (interests.isEmpty) return recommended;
-  final filtered =
-      recommended.where((c) => interests.contains(c.category)).toList();
+  final filtered = recommended.where((c) => interests.contains(c.category)).toList();
   return filtered.isEmpty ? recommended : filtered;
 });
 
