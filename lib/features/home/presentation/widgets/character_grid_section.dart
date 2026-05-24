@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/models/character.dart';
 import '../../../../../core/providers/otadex_providers.dart';
+import '../../../../../core/widgets/skeleton_loader.dart';
 import 'character_grid_card.dart';
 import 'section_header.dart';
 
@@ -114,8 +115,8 @@ class _GridLoader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.symmetric(vertical: 32),
-      child: Center(child: CircularProgressIndicator(strokeWidth: 2)),
+      padding: EdgeInsets.only(top: 8, bottom: 16),
+      child: SkeletonGrid(columns: 3, rows: 2),
     );
   }
 }

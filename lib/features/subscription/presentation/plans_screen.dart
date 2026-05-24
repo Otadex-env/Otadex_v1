@@ -10,6 +10,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/price_formatter.dart';
 import '../../profile/presentation/widgets/billing_toggle.dart';
 import '../../profile/presentation/widgets/plan_card.dart';
+import '../../../core/widgets/skeleton_loader.dart';
 
 class PlansScreen extends ConsumerStatefulWidget {
   const PlansScreen({super.key});
@@ -210,14 +211,7 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
                           ),
                         ),
                         child: _isActivating
-                            ? const SizedBox(
-                                height: 20,
-                                width: 20,
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 2,
-                                  color: Colors.white,
-                                ),
-                              )
+                            ? shimmerBox(width: 20, height: 20, radius: 10)
                             : Text(
                                 'Activer',
                                 style: GoogleFonts.nunitoSans(

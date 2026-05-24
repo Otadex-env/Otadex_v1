@@ -8,6 +8,7 @@ import '../../../core/models/character.dart';
 import '../../../core/models/creator_entry.dart';
 import '../../../core/providers/otadex_providers.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../core/widgets/skeleton_loader.dart';
 import '../../../core/widgets/otadex_image.dart';
 import '../../../core/theme/otadex_theme.dart';
 import '../../../core/theme/rank_theme.dart';
@@ -35,9 +36,7 @@ class _CreatorScreenState extends ConsumerState<CreatorScreen> {
       backgroundColor: theme.backgroundPrimary,
       extendBodyBehindAppBar: true,
       body: serviceAsync.when(
-        loading: () => Center(
-          child: CircularProgressIndicator(color: theme.accentColor),
-        ),
+        loading: () => const SkeletonScreen(),
         error: (_, __) => _buildErrorState(theme),
         data: (service) {
           final creator = service.creatorById(widget.creatorId);

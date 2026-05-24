@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../core/l10n/app_strings.dart';
 import '../../../../../core/providers/otadex_providers.dart';
+import '../../../../../core/widgets/skeleton_loader.dart';
 import 'section_header.dart';
 import 'trending_character_card.dart';
 
@@ -44,9 +45,12 @@ class TrendingSection extends ConsumerWidget {
           ),
         ],
       ),
-      loading: () => const SizedBox(
-        height: 220,
-        child: Center(child: CircularProgressIndicator(strokeWidth: 2)),
+      loading: () => const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 8),
+          SkeletonRow(height: 180, cardWidth: 120, count: 4),
+        ],
       ),
       error: (_, __) => const SizedBox.shrink(),
     );

@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../core/services/anilist_service.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/widgets/otadex_image.dart';
+import '../../../core/widgets/skeleton_loader.dart';
 
 // ─── Provider ──────────────────────────────────────────────────────────────
 final _voiceActorProvider =
@@ -76,9 +77,7 @@ class _VoiceActorScreenState extends ConsumerState<VoiceActorScreen> {
     return Scaffold(
       backgroundColor: AppColors.backgroundDeep,
       body: actorAsync.when(
-        loading: () => const Center(
-          child: CircularProgressIndicator(color: AppColors.accent),
-        ),
+        loading: () => const SkeletonScreen(),
         error: (_, __) => _buildError(),
         data: (actor) {
           if (actor == null) return _buildError();

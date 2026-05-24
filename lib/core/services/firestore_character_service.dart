@@ -26,12 +26,12 @@ class FirestoreCharacterService {
     try {
       final snap = await _db
           .collection('characters')
-          .orderBy('animeId')
           .orderBy('popularityRank')
           .limit(limit)
           .get();
       return snap.docs.map((d) => _characterFromFirestore(d.id, d.data())).toList();
-    } catch (_) {
+    } catch (e) {
+      debugPrint('⚠️ Firestore getAllCharacters error: $e');
       return [];
     }
   }
@@ -327,7 +327,7 @@ class FirestoreCharacterService {
         'naruto-shippuden' => AppColors.animeNsCard,
         'attack-on-titan' => AppColors.animeAotCard,
         'one-piece' => AppColors.animeOpCard,
-        'classroom-of-the-elite' => AppColors.animeClkCard,
+        'classroom-of-elite' => AppColors.animeClkCard,
         _ => AppColors.animeDefaultCard,
       };
 
@@ -336,7 +336,7 @@ class FirestoreCharacterService {
         'naruto-shippuden' => AppColors.animeNsAccent,
         'attack-on-titan' => AppColors.animeAotAccent,
         'one-piece' => AppColors.animeOpAccent,
-        'classroom-of-the-elite' => AppColors.animeClkAccent,
+        'classroom-of-elite' => AppColors.animeClkAccent,
         _ => AppColors.animeDefaultAccent,
       };
 
@@ -345,6 +345,7 @@ class FirestoreCharacterService {
         'naruto-shippuden' => 'Shōnen',
         'attack-on-titan' => 'Seinen',
         'one-piece' => 'Shōnen',
+        'classroom-of-elite' => 'Seinen',
         _ => 'Shōnen',
       };
 }

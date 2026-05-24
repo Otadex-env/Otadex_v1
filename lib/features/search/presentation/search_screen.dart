@@ -10,7 +10,6 @@ import '../../../core/models/character.dart';
 import '../../../core/models/creator_entry.dart';
 import '../../../core/providers/anilist_providers.dart';
 import '../../../core/providers/otadex_providers.dart';
-import '../../../core/services/otadex_data_service.dart';
 import '../../../core/theme/otadex_theme.dart';
 import '../../../core/theme/rank_theme.dart';
 import '../../../core/widgets/otadex_image.dart';
@@ -24,7 +23,9 @@ class RechercheScreen extends ConsumerStatefulWidget {
 
 class _RechercheScreenState extends ConsumerState<RechercheScreen>
     with TickerProviderStateMixin {
-  OtadexDataService? _service;
+  List<Character> _localChars = [];
+  List<AnimeEntry> _localAnimes = [];
+  List<CreatorEntry> _localCreators = [];
   // ── Controllers ──────────────────────────────────────────────────────
   final _controller = TextEditingController();
   final _focusNode = FocusNode();
@@ -89,9 +90,9 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
     if (_query.isEmpty) return [];
     final q = _query.toLowerCase();
     final results = <_Suggestion>[];
-    final chars = _service?.characters ?? [];
-    final animes = _service?.animes ?? [];
-    final creators = _service?.creators ?? [];
+    final chars = _localChars;
+    final animes = _localAnimes;
+    final creators = _localCreators;
 
     for (final c in chars) {
       if (c.name.toLowerCase().contains(q)) {
@@ -126,7 +127,7 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
 
     // Fallback: filter local mock data
     final q = _query.toLowerCase();
-    final chars = _service?.characters ?? [];
+    final chars = _localChars;
     return chars.where((c) {
       final queryMatch = q.isEmpty ||
           c.name.toLowerCase().contains(q) ||
@@ -140,7 +141,7 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
 
   List<AnimeEntry> get _filteredAnimes {
     final q = _query.toLowerCase();
-    final animes = _service?.animes ?? [];
+    final animes = _localAnimes;
     return animes.where((a) {
       final queryMatch = q.isEmpty ||
           a.name.toLowerCase().contains(q) ||
@@ -155,7 +156,7 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
 
   List<CreatorEntry> get _filteredCreators {
     final q = _query.toLowerCase();
-    final creators = _service?.creators ?? [];
+    final creators = _localCreators;
     return creators.where((c) {
       final queryMatch = q.isEmpty ||
           c.name.toLowerCase().contains(q) ||
@@ -205,9 +206,15 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   void initState() {
     super.initState();
     _loadHistory();
-    // Load data service asynchronously; rebuilds when ready
-    ref.read(otadexServiceProvider.future).then((s) {
-      if (mounted) setState(() => _service = s);
+    // Charger depuis Firestore (priorité) → fallback JSON si vide
+    ref.read(allCharactersProvider.future).then((chars) {
+      if (mounted) setState(() => _localChars = chars);
+    });
+    ref.read(allAnimesProvider.future).then((animes) {
+      if (mounted) setState(() => _localAnimes = animes);
+    });
+    ref.read(allCreatorsProvider.future).then((creators) {
+      if (mounted) setState(() => _localCreators = creators);
     });
 
     _cancelCtrl = AnimationController(

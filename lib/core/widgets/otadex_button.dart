@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_spacing.dart';
 import '../theme/otadex_theme.dart';
+import 'skeleton_loader.dart';
 
 class OtadexButton extends StatefulWidget {
   final String label;
@@ -64,14 +65,7 @@ class _OtadexButtonState extends State<OtadexButton> {
             ),
             child: Center(
               child: widget.isLoading
-                  ? const SizedBox(
-                      width: 24,
-                      height: 24,
-                      child: CircularProgressIndicator(
-                        color: Colors.white,
-                        strokeWidth: 2.5,
-                      ),
-                    )
+                  ? shimmerBox(width: 24, height: 24, radius: 12)
                   : Text(
                       widget.label,
                       style: GoogleFonts.rajdhani(

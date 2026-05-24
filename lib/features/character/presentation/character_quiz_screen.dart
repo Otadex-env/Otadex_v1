@@ -8,6 +8,7 @@ import '../../../core/models/character.dart';
 import '../../../core/providers/anilist_providers.dart';
 import '../../../core/providers/user_profile_provider.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../core/widgets/skeleton_loader.dart';
 import '../../../core/widgets/subscription_modal.dart';
 
 // ── Screen ────────────────────────────────────────────────────────────────────
@@ -186,7 +187,7 @@ class _CharacterQuizScreenState extends ConsumerState<CharacterQuizScreen> {
     if (_loadingQuestions) {
       return const Scaffold(
         backgroundColor: AppColors.backgroundDeep,
-        body: Center(child: CircularProgressIndicator()),
+        body: SkeletonScreen(),
       );
     }
 

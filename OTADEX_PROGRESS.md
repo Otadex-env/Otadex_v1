@@ -685,5 +685,36 @@ URLs Play Console :
 
 ---
 
+## Task 34 — Fix source mock + Shimmer global (24 mai 2026)
+
+### ✅ FIX 1 — Requête Firestore compound orderBy supprimée (CRITIQUE)
+- `firestore_character_service.dart` `getAllCharacters()` : suppression `.orderBy('animeId')` (index composite absent → silent fail → fallback mock)
+- Conservé uniquement `.orderBy('popularityRank')` — aucun index composite requis
+- `catch(e)` améliore le log : `debugPrint('⚠️ Firestore getAllCharacters error: $e')`
+
+### ✅ FIX 2 — animeId CLK corrigé
+- `_cardColorForAnime` / `_accentColorForAnime` : `'classroom-of-the-elite'` → `'classroom-of-elite'` (id Firestore réel)
+- `_categoryForAnime` : ajout `'classroom-of-elite' => 'Seinen'`
+
+### ✅ FIX 3 — Debug log Firestore vide
+- `otadex_providers.dart` `allCharactersProvider` : `debugPrint('⚠️ Firestore vide — vérifier import_jjk.js')` avant fallback mock
+
+### ✅ FIX 4 — Search screen débranchée du mock
+- `search_screen.dart` : suppression `OtadexDataService? _service` + import `otadex_data_service.dart`
+- Remplacement par `_localChars`, `_localAnimes`, `_localCreators` chargés depuis `allCharactersProvider`, `allAnimesProvider`, `allCreatorsProvider` (Firestore first)
+- Suggestions + filtres utilisent désormais les données Firestore
+
+### ✅ Shimmer global — tous les CircularProgressIndicator remplacés
+- Créé `lib/core/widgets/skeleton_loader.dart` : `shimmerBox()`, `SkeletonGrid`, `SkeletonRow`, `SkeletonBanner`, `SkeletonScreen`, `SkeletonList`
+- Couleurs : `AppColors.backgroundCard` (base) + `AppColors.borderSubtle` (highlight) — respect RÈGLE AppColors
+- Home screen : `character_grid_section.dart` → `SkeletonGrid(3×2)` | `trending_section.dart` → `SkeletonRow` | `hero_featured_slider.dart` → `SkeletonBanner`
+- Autres : `anime_detail_screen`, `creator_screen`, `studio_screen`, `voice_actor_screen`, `character_quiz_screen` → `SkeletonScreen()`
+- Sections : `character_detail_screen.dart` (4 CPIs) → `shimmerBox(height:80)` | `collection_screen.dart` (2 CPIs) → `SkeletonList()`
+- Boutons : `otadex_button.dart`, `edit_profile_sheet.dart`, `change_password_sheet.dart`, `interests_screen.dart`, `plans_screen.dart` → `shimmerBox(circle)`
+
+### dart analyze → No issues found!
+
+---
+
 _À mettre à jour par Claude Code à la fin de chaque session._
-_Dernière mise à jour : Task 31 — Audit + Corrections données Firestore, 23 mai 2026_
+_Dernière mise à jour : Task 34 — Fix source mock + Shimmer global, 24 mai 2026_

@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../../core/models/featured_slide.dart';
 import '../../../../../core/providers/anilist_providers.dart';
 import '../../../../../core/theme/otadex_theme.dart';
+import '../../../../../core/widgets/skeleton_loader.dart';
 
 class HeroFeaturedSlider extends ConsumerStatefulWidget {
   const HeroFeaturedSlider({super.key});
@@ -97,10 +98,7 @@ class _HeroFeaturedSliderState extends ConsumerState<HeroFeaturedSlider> {
           ),
         );
       },
-      loading: () => const SizedBox(
-        height: 212,
-        child: Center(child: CircularProgressIndicator(strokeWidth: 2)),
-      ),
+      loading: () => const SkeletonBanner(height: 200),
       error: (_, __) => const SizedBox.shrink(),
     );
   }

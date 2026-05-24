@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/router/app_router.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../core/widgets/skeleton_loader.dart';
 
 class _Category {
   final String name;
@@ -213,15 +214,7 @@ class _InterestsScreenState extends State<InterestsScreen> {
                     ),
                   ),
                   child: _isLoading
-                      ? const SizedBox(
-                          width: 22,
-                          height: 22,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                                AppColors.backgroundDeep),
-                          ),
-                        )
+                      ? shimmerBox(width: 22, height: 22, radius: 11)
                       : Text(
                           "C'est parti ! →",
                           style: GoogleFonts.nunitoSans(

@@ -10,6 +10,7 @@ import '../../../../core/providers/user_profile_provider.dart';
 import '../../../../core/services/firebase_auth_service.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/otadex_theme.dart';
+import '../../../../core/widgets/skeleton_loader.dart';
 
 class EditProfileSheet extends ConsumerStatefulWidget {
   const EditProfileSheet({super.key});
@@ -244,15 +245,7 @@ class _EditProfileSheetState extends ConsumerState<EditProfileSheet> {
                   padding: const EdgeInsets.symmetric(vertical: 14),
                 ),
                 child: _isLoading
-                    ? const SizedBox(
-                        height: 18,
-                        width: 18,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(Colors.white),
-                        ),
-                      )
+                    ? shimmerBox(width: 18, height: 18, radius: 9)
                     : Text(s.saveChanges,
                         style: GoogleFonts.nunitoSans(
                             fontWeight: FontWeight.w700)),

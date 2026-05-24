@@ -15,6 +15,7 @@ import '../../../core/utils/price_formatter.dart';
 import '../../../core/constants/app_assets.dart';
 import '../../../core/widgets/auth_gate_modal.dart';
 import '../../../core/widgets/otadex_image.dart';
+import '../../../core/widgets/skeleton_loader.dart';
 import '../../../core/widgets/subscription_modal.dart';
 import 'widgets/char_circle_button.dart';
 import 'widgets/char_pill.dart';
@@ -929,12 +930,9 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
     final anilistId = _anilistId!;
     final dataAsync = ref.watch(_charFullDataProvider(anilistId));
     return dataAsync.when(
-      loading: () => const Center(
-        child: Padding(
-          padding: EdgeInsets.all(16),
-          child: CircularProgressIndicator(
-              color: AppColors.accent, strokeWidth: 2),
-        ),
+      loading: () => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: shimmerBox(height: 80, radius: 12),
       ),
       error: (_, __) => Text(
         'Aucun doubleur disponible',
@@ -1435,12 +1433,9 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
             child: _sectionLabel(theme, 'RELATIONS'),
           ),
           dataAsync.when(
-            loading: () => const Center(
-              child: Padding(
-                padding: EdgeInsets.all(24),
-                child: CircularProgressIndicator(
-                    color: AppColors.accent, strokeWidth: 2),
-              ),
+            loading: () => Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: shimmerBox(height: 80, radius: 12),
             ),
             error: (_, __) => Padding(
               padding: const EdgeInsets.all(16),
@@ -1753,9 +1748,9 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
     final creatorsAsync = ref.watch(allCreatorsProvider);
 
     return animesAsync.when(
-      loading: () => const Padding(
-        padding: EdgeInsets.all(32),
-        child: Center(child: CircularProgressIndicator(strokeWidth: 2, color: AppColors.accent)),
+      loading: () => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: shimmerBox(height: 80, radius: 12),
       ),
       error: (_, __) => const SizedBox.shrink(),
       data: (animes) {
@@ -1980,12 +1975,9 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 20, 16, 8),
       child: dataAsync.when(
-        loading: () => const Center(
-          child: Padding(
-            padding: EdgeInsets.all(24),
-            child: CircularProgressIndicator(
-                color: AppColors.accent, strokeWidth: 2),
-          ),
+        loading: () => Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: shimmerBox(height: 80, radius: 12),
         ),
         error: (_, __) => Text(
           'Médias non disponibles',

@@ -8,6 +8,7 @@ import '../../../core/providers/otadex_providers.dart';
 import '../../../core/providers/user_profile_provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/widgets/otadex_image.dart';
+import '../../../core/widgets/skeleton_loader.dart';
 
 class CollectionScreen extends ConsumerWidget {
   const CollectionScreen({super.key});
@@ -20,7 +21,7 @@ class CollectionScreen extends ConsumerWidget {
     final isGenin = profile.rank == 'genin';
 
     return collectionAsync.when(
-      loading: () => const Center(child: CircularProgressIndicator()),
+      loading: () => const SkeletonList(count: 4),
       error: (_, __) => const Center(
         child: Text(
           'Erreur de chargement',
@@ -39,7 +40,7 @@ class CollectionScreen extends ConsumerWidget {
           );
         }
         return allCharsAsync.when(
-          loading: () => const Center(child: CircularProgressIndicator()),
+          loading: () => const SkeletonList(count: 4),
           error: (_, __) => const Center(
             child: Text(
               'Erreur de chargement',

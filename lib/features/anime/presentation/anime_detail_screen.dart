@@ -8,6 +8,7 @@ import '../../../core/models/anime_entry.dart';
 import '../../../core/models/character.dart';
 import '../../../core/models/creator_entry.dart';
 import '../../../core/providers/otadex_providers.dart';
+import '../../../core/widgets/skeleton_loader.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/widgets/otadex_image.dart';
 import '../../../core/theme/otadex_theme.dart';
@@ -38,9 +39,7 @@ class _AnimeDetailScreenState extends ConsumerState<AnimeDetailScreen> {
       backgroundColor: theme.backgroundPrimary,
       extendBodyBehindAppBar: true,
       body: animesAsync.when(
-        loading: () => Center(
-          child: CircularProgressIndicator(color: theme.accentColor),
-        ),
+        loading: () => const SkeletonScreen(),
         error: (_, __) => _buildErrorState(theme),
         data: (animes) {
           final matching = animes.where((a) => a.id == widget.animeId).toList();

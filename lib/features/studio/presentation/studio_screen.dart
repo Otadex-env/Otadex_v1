@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/services/anilist_service.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../core/widgets/skeleton_loader.dart';
 import '../../../core/widgets/otadex_image.dart';
 
 final _studioDataProvider =
@@ -28,11 +29,7 @@ class StudioScreen extends ConsumerWidget {
           child: Column(
             children: [
               _backButton(context),
-              const Expanded(
-                child: Center(
-                  child: CircularProgressIndicator(color: AppColors.accent),
-                ),
-              ),
+              const Expanded(child: SkeletonScreen()),
             ],
           ),
         ),
