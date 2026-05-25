@@ -750,5 +750,22 @@ URLs Play Console :
 
 ---
 
+---
+
+## Task 36 — Fix BUG 1 & BUG 2 (25 mai 2026)
+
+### ✅ BUG 1 — Bouton "Explorer" collection vide
+- **Cause** : `context.go('/search')` remplaçait toute la pile de navigation → crash "No Material widget found" car SearchScreen se retrouvait sans ancêtre Scaffold/Material
+- **Fix** : `lib/features/collection/presentation/collection_screen.dart:150` → `context.go` → `context.push`
+
+### ✅ BUG 2 — Popup téléchargement ne se ferme pas
+- **Cause** : SnackBar avec `backgroundColor` custom + style `Colors.white` (violation RÈGLE AppColors) + durée 5s rendait le widget visuel persistant
+- **Fix** : `lib/features/character/presentation/gallery_screen.dart` → SnackBar simplifié sans backgroundColor ni textStyle custom, durée 4s, action label "Voir Kage", `context.push('/subscription')` conservé
+- Texte : `'📥 Téléchargé avec filigrane'` (sans le sous-texte "Passe Kage...")
+
+### dart analyze → No issues found!
+
+---
+
 _À mettre à jour par Claude Code à la fin de chaque session._
-_Dernière mise à jour : Task 35 — Fix crash navigation + UX corrections, 24 mai 2026_
+_Dernière mise à jour : Task 36 — Fix BUG 1 & BUG 2, 25 mai 2026_

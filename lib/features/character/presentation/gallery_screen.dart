@@ -79,20 +79,12 @@ class _GalleryScreenState extends ConsumerState<GalleryScreen> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          backgroundColor: AppColors.backgroundCard,
-          duration: const Duration(seconds: 5),
-          content: Text(
-            '📥 Téléchargé avec filigrane · Passe Kage pour copie propre',
-            style: GoogleFonts.nunitoSans(
-              color: Colors.white,
-              fontSize: 13,
-            ),
-          ),
+          content: const Text('📥 Téléchargé avec filigrane'),
           action: SnackBarAction(
-            label: 'Voir Kage →',
-            textColor: AppColors.accent,
+            label: 'Voir Kage',
             onPressed: () => context.push('/subscription'),
           ),
+          duration: const Duration(seconds: 4),
         ),
       );
     }

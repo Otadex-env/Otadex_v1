@@ -147,7 +147,7 @@ class _EmptyState extends StatelessWidget {
             SizedBox(
               height: 48,
               child: ElevatedButton(
-                onPressed: () => context.go('/search'),
+                onPressed: () => context.push('/search'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.accent,
                   shape: RoundedRectangleBorder(
