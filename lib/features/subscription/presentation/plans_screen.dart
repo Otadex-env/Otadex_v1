@@ -98,17 +98,13 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
   }
 
   bool _isValidLicense(String code) {
-    const knownChariowLicenses = <String>{
-      // Ajoute ici tes clés de licence Chariow valides pour une validation locale.
-      // 'EXEMPLE-JONIN-MENSUEL-XXXX-XXXX',
-      // 'EXEMPLE-KAGE-ANNUEL-XXXX-XXXX',
-    };
-    if (knownChariowLicenses.isNotEmpty) {
-      return knownChariowLicenses.contains(code);
-    }
-    final normalized = code.toUpperCase();
-    final hasTier = normalized.contains('JONIN') || normalized.contains('KAGE');
-    return code.length >= 16 && hasTier;
+    final normalized = code.toUpperCase().trim();
+    final segments = normalized.split('-');
+    // Format attendu : XX...XX-XX...XX-...-JONIN|KAGE-... (min 4 segments, min 24 chars)
+    if (segments.length < 4) return false;
+    if (normalized.length < 24) return false;
+    if (segments.any((s) => s.length < 4)) return false;
+    return normalized.contains('JONIN') || normalized.contains('KAGE');
   }
 
   String _planFromLicense(String code) {

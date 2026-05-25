@@ -99,4 +99,70 @@ class AppColors {
   static const Color animeClkAccent = Color(0xFF00897B);
   static const Color animeDefaultCard = Color(0xFF0A1020);
   static const Color animeDefaultAccent = Color(0xFF6A1B9A);
+
+  // === ANIME CARD & ACCENT — EXTENDED ===
+  static const Color animeSlCard = Color(0xFF1A0D2E);
+  static const Color animeDsAccent = Color(0xFFE53935);
+  static const Color animeJjkGreenCard = Color(0xFF0A1A0A);
+  static const Color animeJjkGreenAccent = Color(0xFF00C853);
+  static const Color animeVsCard = Color(0xFF0D1520);
+  static const Color animeAotLeviCard = Color(0xFF0D1A0A);
+  static const Color animeSxfCard = Color(0xFF1A1020);
+  static const Color animeDarkRedCard = Color(0xFF200A0A);
+  static const Color animeDitfCard = Color(0xFF200A10);
+  static const Color animeOpZoroCard = Color(0xFF0A200A);
+  static const Color animeOpmCard = Color(0xFF1A1000);
+  static const Color animeNsItachiCard = Color(0xFF1A0A1A);
+  static const Color animeJjkYujiCard = Color(0xFF1A0808);
+  static const Color animeOpLuffyCard = Color(0xFF1A0800);
+  static const Color animeVsThorfinnCard = Color(0xFF101520);
+  static const Color animeFrierenCard = Color(0xFF0A0A1A);
+
+  // === ACCENTS ÉTENDUS ===
+  static const Color accentCyan = Color(0xFF00BCD4);
+  static const Color accentDeepOrange = Color(0xFFFF5722);
+  static const Color accentHotPink = Color(0xFFE91E63);
+  static const Color accentForestGreen = Color(0xFF2E7D32);
+  static const Color accentGreen = Color(0xFF388E3C);
+  static const Color accentBlueGrey = Color(0xFF607D8B);
+  static const Color accentIndigo = Color(0xFF5C6BC0);
+  static const Color accentSilverBlue = Color(0xFF78909C);
+  static const Color accentSteelBlue = Color(0xFF455A64);
+  static const Color accentPinkLight = Color(0xFFF06292);
+  static const Color accentRoyalBlue = Color(0xFF1976D2);
+  static const Color accentDeepPurple = Color(0xFF7B1FA2);
+  static const Color accentDarkRed = Color(0xFFB71C1C);
+  static const Color accentViolet = Color(0xFF7C3AED);
+  static const Color statPurpleDark = Color(0xFF6D28D9);
+
+  // === CATÉGORIES SEARCH ===
+  static const Color catShonenC1 = Color(0xFFE67E22);
+  static const Color catShonenC2 = Color(0xFF5D1A00);
+  static const Color catShojoC1 = Color(0xFFE91E8C);
+  static const Color catShojoC2 = Color(0xFF7B0052);
+  static const Color catSeinenC1 = Color(0xFF546E7A);
+  static const Color catSeinenC2 = Color(0xFF1A2327);
+  static const Color catManhwaC1 = Color(0xFF26C6DA);
+  static const Color catManhwaC2 = Color(0xFF004D56);
+  static const Color catDonghuaC1 = Color(0xFFEF5350);
+  static const Color catDonghuaC2 = Color(0xFF5D0000);
+  static const Color catWebtoonC1 = Color(0xFF66BB6A);
+  static const Color catWebtoonC2 = Color(0xFF1B3A1C);
+
+  // === TRENDING SEARCH BACKGROUNDS ===
+  static const Color trendSLBg = Color(0xFF1A237E);
+  static const Color trendJJKBg = Color(0xFF4A148C);
+  static const Color trendDSBg = Color(0xFF880E4F);
+  static const Color trendOPBg = Color(0xFFBF360C);
+  static const Color trendAOTBg = Color(0xFF212121);
+  static const Color trendFrierenBg = Color(0xFF283593);
+
+  // === AVATAR GRADIENTS ===
+  static const Color avatarMelC1 = Color(0xFFD4621A);
+  static const Color avatarMelC2 = Color(0xFF8B3510);
+  static const Color avatarKiroC2 = Color(0xFF9B1465);
+  static const Color avatarYumiC2 = Color(0xFF006064);
+  static const Color avatarDravenC1 = Color(0xFF4CAF50);
+  static const Color avatarDravenC2 = Color(0xFF1B5E20);
+  static const Color avatarNoxC2 = Color(0xFF8B1A00);
 }

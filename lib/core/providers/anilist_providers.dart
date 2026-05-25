@@ -25,14 +25,14 @@ final jjkCharactersProvider = FutureProvider<List<Character>>((ref) {
 final clkCharactersProvider = FutureProvider<List<Character>>((ref) {
   return ref
       .watch(firestoreCharacterServiceProvider)
-      .getCharactersByAnime('Classroom-of-the-elite');
+      .getCharactersByAnime('classroom-of-elite');
 });
 
 // ── At characters from Firestore ────────────────────────────────────────────
 final atCharactersProvider = FutureProvider<List<Character>>((ref) {
   return ref
       .watch(firestoreCharacterServiceProvider)
-      .getCharactersByAnime('Attack-on-Titan');
+      .getCharactersByAnime('attack-on-titan');
 });
 
 // ── Quiz Firestore pour un personnage ────────────────────────────────────────

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../theme/app_colors.dart';
 
 // ── Relation mock ─────────────────────────────────────────────────────────────
 class CharacterRelation {
@@ -217,10 +218,10 @@ class Character {
       };
 
   Color get tierColor => switch (tier) {
-        CharacterTier.ss => const Color(0xFFFF6500),
-        CharacterTier.s => const Color(0xFF9B59B6),
-        CharacterTier.a => const Color(0xFF7EABC9),
-        CharacterTier.b => const Color(0xFF22C55E),
+        CharacterTier.ss => AppColors.accent,
+        CharacterTier.s => AppColors.rankJonin,
+        CharacterTier.a => AppColors.rankGenin,
+        CharacterTier.b => AppColors.success,
       };
 
   // Initials for fallback avatar (e.g. "Gojo Satoru" → "GS")

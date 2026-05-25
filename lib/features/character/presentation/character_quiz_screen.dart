@@ -46,12 +46,10 @@ class _CharacterQuizScreenState extends ConsumerState<CharacterQuizScreen> {
     final provided = widget.quizQuestions;
     if (provided != null && provided.isNotEmpty) {
       _questions = provided;
-    } else if (widget.charId.startsWith('jjk-')) {
+    } else {
       _questions = [];
       _loadingQuestions = true;
       Future.microtask(_loadFirestoreQuestions);
-    } else {
-      _questions = _buildGenericQuestions();
     }
   }
 
@@ -265,7 +263,7 @@ class _CharacterQuizScreenState extends ConsumerState<CharacterQuizScreen> {
 
   Widget _buildQuizScreen(BuildContext context) {
     final question = _questions[_currentQuestion];
-    final progress = (_currentQuestion + 1) / 5;
+    final progress = (_currentQuestion + 1) / _questions.length;
 
     return Scaffold(
       backgroundColor: AppColors.backgroundDeep,
@@ -319,7 +317,7 @@ class _CharacterQuizScreenState extends ConsumerState<CharacterQuizScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
-                  'Question ${_currentQuestion + 1}/5',
+                  'Question ${_currentQuestion + 1}/${_questions.length}',
                   style: GoogleFonts.nunitoSans(
                     fontSize: 13,
                     color: AppColors.textSecondary,
@@ -341,7 +339,7 @@ class _CharacterQuizScreenState extends ConsumerState<CharacterQuizScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        'Question ${_currentQuestion + 1}/5',
+                        'Question ${_currentQuestion + 1}/${_questions.length}',
                         style: GoogleFonts.nunitoSans(
                           fontSize: 13,
                           color: AppColors.textSecondary,
@@ -484,13 +482,14 @@ class _CharacterQuizScreenState extends ConsumerState<CharacterQuizScreen> {
   // ── Result screen ──────────────────────────────────────────────────
 
   Widget _buildResultScreen(BuildContext context) {
+    final int total = _questions.length;
     final Color scoreColor;
     final String badge;
 
-    if (_score == 5) {
+    if (_score == total) {
       scoreColor = AppColors.accent;
       badge = 'Quiz Master 🧠';
-    } else if (_score >= 3) {
+    } else if (_score >= (total * 0.6).ceil()) {
       scoreColor = AppColors.statGreen;
       badge = 'Bon fan ⭐';
     } else {
@@ -509,7 +508,7 @@ class _CharacterQuizScreenState extends ConsumerState<CharacterQuizScreen> {
               children: [
                 // Score
                 Text(
-                  '$_score/5',
+                  '$_score/$total',
                   style: GoogleFonts.rajdhani(
                     fontSize: 48,
                     fontWeight: FontWeight.w800,
@@ -531,7 +530,7 @@ class _CharacterQuizScreenState extends ConsumerState<CharacterQuizScreen> {
 
                 // Subtitle
                 Text(
-                  '$_score bonne${_score > 1 ? 's' : ''} réponse${_score > 1 ? 's' : ''} sur 5',
+                  '$_score bonne${_score > 1 ? 's' : ''} réponse${_score > 1 ? 's' : ''} sur $total',
                   style: GoogleFonts.nunitoSans(
                     fontSize: 14,
                     color: AppColors.textSecondary,

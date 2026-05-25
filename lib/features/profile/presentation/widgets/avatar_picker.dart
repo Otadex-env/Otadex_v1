@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/otadex_theme.dart';
 
 class AvatarPicker extends StatelessWidget {
   static const _options = [
-    ('Mel Shard', Color(0xFFD4621A), Color(0xFF8B3510)),
-    ('Kiro Blaze', Color(0xFFE91E8C), Color(0xFF9B1465)),
-    ('Yumi Frost', Color(0xFF00BCD4), Color(0xFF006064)),
-    ('Draven', Color(0xFF4CAF50), Color(0xFF1B5E20)),
-    ('Nox Ember', Color(0xFFFF5722), Color(0xFF8B1A00)),
+    ('Mel Shard', AppColors.avatarMelC1, AppColors.avatarMelC2),
+    ('Kiro Blaze', AppColors.catShojoC1, AppColors.avatarKiroC2),
+    ('Yumi Frost', AppColors.accentCyan, AppColors.avatarYumiC2),
+    ('Draven', AppColors.avatarDravenC1, AppColors.avatarDravenC2),
+    ('Nox Ember', AppColors.accentDeepOrange, AppColors.avatarNoxC2),
   ];
 
   const AvatarPicker({super.key});

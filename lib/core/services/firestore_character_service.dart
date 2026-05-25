@@ -40,7 +40,7 @@ class FirestoreCharacterService {
     if (query.trim().length < 2) return [];
     final q = query.toLowerCase().trim();
     try {
-      final snap = await _db.collection('characters').get();
+      final snap = await _db.collection('characters').limit(100).get();
       return snap.docs
           .map((d) => _characterFromFirestore(d.id, d.data()))
           .where((c) =>

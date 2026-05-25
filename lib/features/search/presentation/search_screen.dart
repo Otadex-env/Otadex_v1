@@ -52,27 +52,27 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
 
   static const _categories = [
     _Category('SHŌNEN', 'Shōnen', 'Action · Aventure', '⚡',
-        Color(0xFFE67E22), Color(0xFF5D1A00)),
+        AppColors.catShonenC1, AppColors.catShonenC2),
     _Category('SHŌJO', 'Shōjo', 'Romance · Émotions', '🌸',
-        Color(0xFFE91E8C), Color(0xFF7B0052)),
+        AppColors.catShojoC1, AppColors.catShojoC2),
     _Category('SEINEN', 'Seinen', 'Adulte · Psychologique', '✒️',
-        Color(0xFF546E7A), Color(0xFF1A2327)),
+        AppColors.catSeinenC1, AppColors.catSeinenC2),
     _Category('MANHWA', 'Manhwa', 'Webtoon · Coréen', '📱',
-        Color(0xFF26C6DA), Color(0xFF004D56)),
+        AppColors.catManhwaC1, AppColors.catManhwaC2),
     _Category('DONGHUA', 'Donghua', 'Animation · Chinoise', '🐉',
-        Color(0xFFEF5350), Color(0xFF5D0000)),
+        AppColors.catDonghuaC1, AppColors.catDonghuaC2),
     _Category('WEBTOON', 'Webtoon', 'Numérique · Vertical', '📖',
-        Color(0xFF66BB6A), Color(0xFF1B3A1C)),
+        AppColors.catWebtoonC1, AppColors.catWebtoonC2),
   ];
 
   static const _trending = [
-    _TrendItem('#1', 'Sung Jinwoo', 'Solo Leveling', Color(0xFF1A237E)),
-    _TrendItem('#2', 'Gojo Satoru', 'Jujutsu Kaisen', Color(0xFF4A148C)),
-    _TrendItem('#3', 'Tanjiro', 'Demon Slayer', Color(0xFF880E4F)),
-    _TrendItem('#4', 'Luffy', 'One Piece', Color(0xFFBF360C)),
-    _TrendItem('#5', 'Levi', 'Attack on Titan', Color(0xFF212121)),
+    _TrendItem('#1', 'Sung Jinwoo', 'Solo Leveling', AppColors.trendSLBg),
+    _TrendItem('#2', 'Gojo Satoru', 'Jujutsu Kaisen', AppColors.trendJJKBg),
+    _TrendItem('#3', 'Tanjiro', 'Demon Slayer', AppColors.trendDSBg),
+    _TrendItem('#4', 'Luffy', 'One Piece', AppColors.trendOPBg),
+    _TrendItem('#5', 'Levi', 'Attack on Titan', AppColors.trendAOTBg),
     _TrendItem('#6', 'Frieren', "Frieren: Beyond Journey's End",
-        Color(0xFF283593)),
+        AppColors.trendFrierenBg),
   ];
 
 

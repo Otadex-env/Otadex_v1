@@ -2705,7 +2705,7 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
                     height: 48,
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
-                        colors: [AppColors.statPurple, Color(0xFF6D28D9)],
+                        colors: [AppColors.statPurple, AppColors.statPurpleDark],
                       ),
                       borderRadius: BorderRadius.circular(12),
                     ),

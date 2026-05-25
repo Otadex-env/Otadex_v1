@@ -204,7 +204,7 @@ class _CharacterChatScreenState extends ConsumerState<CharacterChatScreen>
                             gradient: const LinearGradient(
                               colors: [
                                 AppColors.statPurple,
-                                Color(0xFF6D28D9),
+                                AppColors.statPurpleDark,
                               ],
                             ),
                             borderRadius: BorderRadius.circular(14),
