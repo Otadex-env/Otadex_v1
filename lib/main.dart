@@ -21,7 +21,7 @@ void main() async {
   await NotificationService.initialize();
 
   final prefs = await SharedPreferences.getInstance();
-  final isLoggedIn = prefs.getBool(AppConstants.keyIsLoggedIn) ??
+   final isLoggedIn = prefs.getBool(AppConstants.keyIsLoggedIn) ??
       prefs.getBool('isLoggedIn') ??
       false;
   final rankStr =
