@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/constants/app_constants.dart';
+import 'core/services/notification_service.dart';
 import 'core/models/user_rank.dart';
 import 'core/providers/auth_provider.dart';
 import 'core/providers/currency_provider.dart';
@@ -17,6 +18,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await NotificationService.initialize();
 
   final prefs = await SharedPreferences.getInstance();
   final isLoggedIn = prefs.getBool(AppConstants.keyIsLoggedIn) ??

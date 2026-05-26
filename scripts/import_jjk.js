@@ -1694,6 +1694,28 @@ async function importJJK() {
   await quizBatch.commit();
   console.log(`✅ ${quizzes.length} quiz importés`);
 
+  // 6. Notifier tous les users via FCM
+  const usersSnapshot = await db.collection("users").get();
+  const tokens = usersSnapshot.docs
+    .map((doc) => doc.data().fcmToken)
+    .filter((token) => token && token.length > 0);
+
+  if (tokens.length > 0) {
+    const messaging = admin.messaging();
+    await messaging.sendEachForMulticast({
+      tokens,
+      notification: {
+        title: "🎉 Nouveaux personnages disponibles !",
+        body: "Jujutsu Kaisen vient d'être mis à jour sur OTADEX",
+      },
+      data: {
+        route: "/anime/jujutsu-kaisen",
+        type: "new_characters",
+      },
+    });
+    console.log(`✅ Notification FCM envoyée à ${tokens.length} users`);
+  }
+
   console.log("\n🎉 Import JJK terminé avec succès !");
   console.log("📊 Résumé :");
   console.log("   1 animé | 1 créateur | 1 studio");

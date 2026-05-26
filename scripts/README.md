@@ -65,6 +65,116 @@ env NODE_OPTIONS='--require ./scripts/google_time_offset.js' /home/tilstack/.cac
 
 ---
 
+## Import One Piece
+
+Lance l'import de tous les personnages One Piece dans Firestore.
+
+### Prérequis
+
+- `serviceAccountkey.json` à la racine du projet (ne jamais committer)
+- Node.js installé
+- Dépendances installées :
+
+```bash
+npm install mammoth firebase-admin
+```
+
+### Lancement
+
+```bash
+node scripts/import_one_piece.js
+```
+
+Si `node` pointe vers Snap/AppArmor, utiliser le binaire alternatif :
+
+```bash
+env NODE_OPTIONS='--require ./scripts/google_time_offset.js' /home/tilstack/.cache/ms-playwright-go/1.50.1/node scripts/import_one_piece.js
+```
+
+### Collections créées / mises à jour
+
+| Collection | Document ID | Contenu |
+|---|---|---|
+| `animes` | `one-piece` | Titre, synopsis, genres, épisodes, studio, auteur |
+| `creators` | `eiichiro-oda` | Bio, bibliographie, récompenses, influences |
+| `studios` | `toei-animation` | Fondation, productions, description |
+| `characters` | `op-{slug}` | 15 personnages One Piece complets |
+| `quizzes` | `op-{slug}` | Quiz 5 questions pour 7 personnages principaux |
+
+### Personnages importés
+
+1. `op-monkey-d-luffy` — Pirate (Capitaine / Yonko)
+2. `op-roronoa-zoro` — Pirate (Combattant)
+3. `op-nami` — Navigatrice
+4. `op-usopp` — Tireur d'élite
+5. `op-sanji` — Cuisinier
+6. `op-tony-tony-chopper` — Médecin
+7. `op-nico-robin` — Archéologue
+8. `op-franky` — Charpentier
+9. `op-brook` — Musicien
+10. `op-jinbe` — Timonier
+11. `op-portgas-d-ace` — Pirate / Marine (décédé)
+12. `op-trafalgar-d-water-law` — Pirate (Capitaine / Warlord)
+13. `op-shanks` — Yonko
+14. `op-boa-hancock` — Pirate / Warlord / Impératrice
+15. `op-dracule-mihawk` — Warlord / Premier épéiste
+
+---
+
+## Import Kuroko no Basket
+
+Lance l'import de tous les personnages Kuroko no Basket dans Firestore.
+
+### Prérequis
+
+- `serviceAccountkey.json` à la racine du projet (ne jamais committer)
+- Node.js installé
+- Dépendances installées :
+
+```bash
+npm install mammoth firebase-admin
+```
+
+### Lancement
+
+```bash
+node scripts/import_kkb.js
+```
+
+Si `node` pointe vers Snap/AppArmor, utiliser le binaire alternatif :
+
+```bash
+env NODE_OPTIONS='--require ./scripts/google_time_offset.js' /home/tilstack/.cache/ms-playwright-go/1.50.1/node scripts/import_kkb.js
+```
+
+### Collections créées / mises à jour
+
+| Collection | Document ID | Contenu |
+|---|---|---|
+| `animes` | `kuroko-no-basket` | Titre, synopsis, genres, 75 épisodes, studio, auteur |
+| `creators` | `tadatoshi-fujimaki` | Bio, bibliographie, récompenses |
+| `studios` | `production-ig` | Fondation 1987, Ghost in the Shell, Haikyuu!! |
+| `characters` | `knb-{slug}` | 13 personnages KnB complets |
+| `quizzes` | `knb-{slug}` | Quiz 5 questions pour 7 personnages principaux |
+
+### Personnages importés
+
+1. `knb-akashi-seijuro` — Génération des Miracles — Meneur / Capitaine Rakuzan
+2. `knb-kuroko-tetsuya` — Sixième Joueur Fantôme — Seirin
+3. `knb-takao-kazunari` — Hawk Eye — Shūtoku
+4. `knb-kise-ryota` — Perfect Copy — Kaijō
+5. `knb-kagami-taiga` — Le Miracle qui n'en était pas un — Seirin
+6. `knb-midorima-shintaro` — Tir de précision absolue — Shūtoku
+7. `knb-aomine-daiki` — Formless Shot — Tōō
+8. `knb-murasakibara-atsushi` — Aegis Shield — Yōsen
+9. `knb-himuro-tatsuya` — Mirage Shot — Yōsen
+10. `knb-momoi-satsuki` — Analyste de génie — Tōō (Manager)
+11. `knb-hyuga-junpei` — Clutch Player / Capitaine Seirin
+12. `knb-kiyoshi-teppei` — Iron Heart — Roi sans Couronne
+13. `knb-aida-riko` — Coach Seirin
+
+---
+
 ## Template pour futurs animés
 
 Pour chaque nouvel animé, créer :

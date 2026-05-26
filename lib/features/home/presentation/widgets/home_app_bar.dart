@@ -13,6 +13,7 @@ class HomeAppBar extends StatelessWidget {
   final VoidCallback? onLoginTap;
   final VoidCallback? onNotificationTap;
   final VoidCallback? onProfileTap;
+  final int unreadCount;
 
   const HomeAppBar({
     super.key,
@@ -22,6 +23,7 @@ class HomeAppBar extends StatelessWidget {
     this.onLoginTap,
     this.onNotificationTap,
     this.onProfileTap,
+    this.unreadCount = 0,
   });
 
   @override
@@ -90,23 +92,51 @@ class HomeAppBar extends StatelessWidget {
                 const Spacer(),
                 if (isLoggedIn) ...[
                   // Notification button
-                  InkWell(
-                    onTap: onNotificationTap,
-                    borderRadius: BorderRadius.circular(12),
-                    child: Container(
-                      width: 40,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        color: theme.backgroundCard,
+                  Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      InkWell(
+                        onTap: onNotificationTap,
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: theme.borderSubtle),
+                        child: Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: theme.backgroundCard,
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(color: theme.borderSubtle),
+                          ),
+                          child: Icon(
+                            Icons.notifications_outlined,
+                            color: theme.textSecondary,
+                            size: 20,
+                          ),
+                        ),
                       ),
-                      child: Icon(
-                        Icons.notifications_outlined,
-                        color: theme.textSecondary,
-                        size: 20,
-                      ),
-                    ),
+                      if (unreadCount > 0)
+                        Positioned(
+                          right: -3,
+                          top: -3,
+                          child: Container(
+                            padding: const EdgeInsets.all(3),
+                            constraints: const BoxConstraints(
+                                minWidth: 16, minHeight: 16),
+                            decoration: const BoxDecoration(
+                              color: AppColors.accent,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Text(
+                              '$unreadCount',
+                              style: const TextStyle(
+                                color: AppColors.textPrimary,
+                                fontSize: 9,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                    ],
                   ),
                   const SizedBox(width: 8),
                   // Profile shortcut

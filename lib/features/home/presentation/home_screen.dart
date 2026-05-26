@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -30,11 +32,28 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   int _navIndex = 0;
   int _selectedCategory = 0;
+  late Stream<int> _unreadCountStream;
 
   @override
   void initState() {
     super.initState();
     _syncAuthState();
+    _initUnreadStream();
+  }
+
+  void _initUnreadStream() {
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) {
+      _unreadCountStream = Stream.value(0);
+      return;
+    }
+    _unreadCountStream = FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .collection('notifications')
+        .where('read', isEqualTo: false)
+        .snapshots()
+        .map((snap) => snap.docs.length);
   }
 
   Future<void> _syncAuthState() async {
@@ -86,19 +105,24 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               CustomScrollView(
                 slivers: [
                   SliverToBoxAdapter(
-                    child: HomeAppBar(
-                      rank: rank,
-                      isLoggedIn: isLoggedIn,
-                      pseudo: profile.pseudo,
-                      onLoginTap: () => showAuthGateModal(context),
-                      onNotificationTap: () {
-                        if (isLoggedIn) {
-                          context.push('/notifications');
-                        } else {
-                          showAuthGateModal(context);
-                        }
-                      },
-                      onProfileTap: () => setState(() => _navIndex = 3),
+                    child: StreamBuilder<int>(
+                      stream: _unreadCountStream,
+                      initialData: 0,
+                      builder: (_, snap) => HomeAppBar(
+                        rank: rank,
+                        isLoggedIn: isLoggedIn,
+                        pseudo: profile.pseudo,
+                        unreadCount: isLoggedIn ? (snap.data ?? 0) : 0,
+                        onLoginTap: () => showAuthGateModal(context),
+                        onNotificationTap: () {
+                          if (isLoggedIn) {
+                            context.push('/notifications');
+                          } else {
+                            showAuthGateModal(context);
+                          }
+                        },
+                        onProfileTap: () => setState(() => _navIndex = 3),
+                      ),
                     ),
                   ),
                   SliverPersistentHeader(

@@ -5,8 +5,8 @@
 - Flutter SDK : `>=3.0.0 <4.0.0` (Flutter 3.x)
 - App version : `1.0.0+1`
 - Firebase configuré : **OUI (Storage inclus)** — FlutterFire Android + Firebase Auth email/Google + Firestore profil utilisateur + Functions + Storage initialisés
-- Dernier écran complété : **PlansScreen + ProfileScreen** (licence Chariow, préférence monnaie, mai 2026)
-- Dernière mise à jour : **Task 30 — Migration complète Firestore-only + catégories dynamiques**, 23 mai 2026
+- Dernier écran complété : **NotificationsScreen** (stream Firestore live, badge HomeAppBar, mai 2026)
+- Dernière mise à jour : **Task 37 — Notifications push Phase 1**, 26 mai 2026
 
 ## Dépendances installées (`pubspec.yaml`)
 
@@ -30,8 +30,10 @@
 | firebase_storage       | ^11.6.0 | Images personnages Storage   |
 | gap                    | ^3.0.1  | Espacement                   |
 | image_picker           | ^1.1.0  | Avatar picker                |
+| firebase_messaging     | ^14.9.0 | Push notifications FCM       |
+| flutter_local_notifications | ^17.0.0 | Notifications locales Android |
 
-> ⚠️ Après ajout de `image_picker`, lancer `flutter pub get` si pas encore fait.
+> ✅ `flutter pub get` exécuté — 0 erreur.
 
 ---
 
@@ -767,5 +769,177 @@ URLs Play Console :
 
 ---
 
+## Task 37 — Notifications push Phase 1 (26 mai 2026)
+
+### ✅ Dépendances
+- `firebase_messaging: ^14.9.0` + `flutter_local_notifications: ^17.0.0` ajoutés dans `pubspec.yaml`
+
+### ✅ Android
+- `AndroidManifest.xml` : `POST_NOTIFICATIONS` + `RECEIVE_BOOT_COMPLETED` + meta-data `otadex_channel`
+
+### ✅ NotificationService (`lib/core/services/notification_service.dart`)
+- Demande permission FCM (alert, badge, sound)
+- Channel Android `otadex_channel` (Importance.high)
+- Token FCM sauvegardé dans `users/{uid}.fcmToken` au login
+- `onMessage` → notification locale en foreground
+- `onMessageOpenedApp` → navigation via `AppRouter.router.push(route)`
+- `showLocal()` utilitaire pour notifications manuelles
+
+### ✅ main.dart
+- `await NotificationService.initialize()` appelé après `Firebase.initializeApp()`
+
+### ✅ Cloche HomeScreen + badge non lus
+- `HomeAppBar` : nouveau paramètre `unreadCount` + badge orange `AppColors.accent` sur la cloche
+- `HomeScreen` : `StreamBuilder<int>` sur `users/{uid}/notifications` where `read == false` → passe le count à `HomeAppBar`
+
+### ✅ NotificationsScreen (`lib/features/home/presentation/notifications_screen.dart`)
+- Stream Firestore `users/{uid}/notifications` orderBy `created_at` desc
+- Chaque item : icône typée (🎉 new_characters, 🏆 monthly_vote, 💎 subscription), titre, body, timestamp relatif
+- Item non lu : fond teinté accent + point indicateur
+- Tap → `docRef.update({'read': true})` + `context.push(route)`
+- AppBar : bouton "Tout lire" → batch update Firestore
+- Route `/notifications` déjà enregistrée dans `app_router.dart`
+
+### ✅ scripts/import_jjk.js
+- Après l'import des quiz : récupération tokens FCM → `messaging.sendEachForMulticast()` avec titre "🎉 Nouveaux personnages disponibles !" et route `/anime/jujutsu-kaisen`
+
+### ✅ Cloud Function vote mensuel (`functions/src/index.ts`)
+- `notifyMonthlyVote` : schedule `0 9 1 * *` timezone `Africa/Douala`
+- Envoi FCM multicast + création doc `notifications` pour chaque user (type `monthly_vote`)
+- Déployer : `firebase deploy --only functions`
+
+### dart analyze → No issues found!
+
+---
+
+---
+
+## Task 38 — Import One Piece Firestore (26 mai 2026)
+
+### ✅ Script créé : `scripts/import_one_piece.js`
+- Extrait depuis `One_Piece_Personnages_OTADEX_2026.docx` (python3 zipfile + regex, Snap AppArmor contourné)
+- Structure identique à `import_jjk.js` en 6 étapes séquentielles
+
+### ✅ Collections importées
+
+| Collection | Document | Contenu |
+|---|---|---|
+| `animes` | `one-piece` | 1160+ épisodes, Toei Animation, 530M copies vendues, genres Aventure/Action/Comédie/Fantaisie |
+| `creators` | `eiichiro-oda` | Bio complète, biblio (Romance Dawn 1992 → OP 1997), prix Shōgakukan/Harvey Award |
+| `studios` | `toei-animation` | Fondé 1956, Dragon Ball Z / Sailor Moon / Digimon / One Piece |
+| `characters` | `op-*` (15 docs) | Préfixe `op-`, popularityRank 1–15, bio/pouvoirs/relations/citations/trivia |
+| `quizzes` | `op-*` (7 sets) | 5 questions chacun : Luffy, Zoro, Sanji, Nami, Law, Ace, Chopper |
+
+### ✅ Personnages One Piece (15)
+1. `op-monkey-d-luffy` — rank 1, Yonko / Capitaine
+2. `op-roronoa-zoro` — rank 2, Combattant
+3. `op-nami` — rank 3, Navigatrice
+4. `op-usopp` — rank 4, Tireur d'élite
+5. `op-sanji` — rank 5, Cuisinier
+6. `op-tony-tony-chopper` — rank 6, Médecin
+7. `op-nico-robin` — rank 7, Archéologue
+8. `op-franky` — rank 8, Charpentier
+9. `op-brook` — rank 9, Musicien
+10. `op-jinbe` — rank 10, Timonier
+11. `op-portgas-d-ace` — rank 11, Pirate / décédé
+12. `op-trafalgar-d-water-law` — rank 12, Warlord / Capitaine
+13. `op-shanks` — rank 13, Yonko
+14. `op-boa-hancock` — rank 14, Impératrice / Warlord
+15. `op-dracule-mihawk` — rank 15, Premier épéiste
+
+### ✅ Quiz créés (7 × 5 questions)
+- Monkey D. Luffy, Roronoa Zoro, Sanji, Nami, Trafalgar Law, Portgas D. Ace, Tony Tony Chopper
+
+### ✅ Notification FCM post-import
+- Titre : "🌊 One Piece débarque sur OTADEX !"
+- Body : "Les personnages du Chapeau de Paille sont disponibles. Explore ta première fiche !"
+- Route : `/anime/one-piece` | type : `new_characters`
+
+### ✅ scripts/README.md mis à jour
+- Section "## Import One Piece" ajoutée (prérequis, lancement, collections, 15 personnages)
+
+### Commande de lancement
+
+```bash
+node scripts/import_one_piece.js
+```
+
+> Si `node` Snap est bloqué par AppArmor :
+> ```bash
+> env NODE_OPTIONS='--require ./scripts/google_time_offset.js' /home/tilstack/.cache/ms-playwright-go/1.50.1/node scripts/import_one_piece.js
+> ```
+
+### Note
+- `imagePath` et `images[]` vides pour l'instant — à remplir après upload Firebase Storage des illustrations One Piece
+- Ajouter les entrées dans `app_assets.dart` + `pubspec.yaml` quand les assets locaux seront disponibles
+
+---
+
+---
+
+## Task 39 — Import Kuroko no Basket Firestore (26 mai 2026)
+
+### ✅ Script créé : `scripts/import_kkb.js`
+- Données extraites depuis `Kuroko_no_Basket_Personnages_OTADEX_2026.docx` (python3 zipfile + regex)
+- Structure identique à `import_jjk.js` en 6 étapes séquentielles
+
+### ✅ Collections importées
+
+| Collection | Document | Contenu |
+|---|---|---|
+| `animes` | `kuroko-no-basket` | 75 épisodes, Production I.G, 3 saisons + Last Game, genres Shōnen/Sport |
+| `creators` | `tadatoshi-fujimaki` | Bio complète, bibliographie (2006–2017), distinctions |
+| `studios` | `production-ig` | Fondé 1987, Ghost in the Shell / Haikyuu!! / Attack on Titan S2 |
+| `characters` | `knb-*` (13 docs) | Préfixe `knb-`, popularityRank 1–13, bio/pouvoirs/relations/citations/trivia |
+| `quizzes` | `knb-*` (7 sets) | 5 questions chacun : Akashi, Kuroko, Kagami, Kise, Aomine, Midorima, Murasakibara |
+
+### ✅ Personnages Kuroko no Basket (13)
+Classés par le 3e sondage de popularité officiel Weekly Shōnen Jump :
+1. `knb-akashi-seijuro` — rank 1, Génération des Miracles / Capitaine Rakuzan
+2. `knb-kuroko-tetsuya` — rank 2, Sixième Joueur Fantôme / Protagoniste
+3. `knb-takao-kazunari` — rank 3, Hawk Eye — 1er non-Miracle top 3
+4. `knb-kise-ryota` — rank 4, Perfect Copy — mannequin professionnel
+5. `knb-kagami-taiga` — rank 5, Le Miracle qui n'en était pas un
+6. `knb-midorima-shintaro` — rank 6, Tir de précision absolue depuis tout le terrain
+7. `knb-aomine-daiki` — rank 7, Formless Shot — nihilisme du talent pur
+8. `knb-murasakibara-atsushi` — rank 8, Aegis Shield — 208 cm
+9. `knb-himuro-tatsuya` — rank 9, Mirage Shot — frère de cœur de Kagami
+10. `knb-momoi-satsuki` — rank 10, Analyste de génie — seule féminine top 20
+11. `knb-hyuga-junpei` — rank 11, Roi du 4e quart-temps / Capitaine Seirin
+12. `knb-kiyoshi-teppei` — rank 12, Iron Heart — Roi sans Couronne
+13. `knb-aida-riko` — rank 13, Coach Seirin — analyse physique visuelle
+
+### ✅ Quiz créés (7 × 5 questions)
+- Seijūrō Akashi, Tetsuya Kuroko, Taiga Kagami, Ryōta Kise, Daiki Aomine, Shintarō Midorima, Atsushi Murasakibara
+
+### ✅ Notification FCM post-import
+- Titre : "🏀 Kuroko no Basket débarque sur OTADEX !"
+- Body : "La Génération des Miracles est disponible. Affronte le quiz !"
+- Route : `/anime/kuroko-no-basket` | type : `new_characters`
+
+### ✅ scripts/README.md mis à jour
+- Section "## Import Kuroko no Basket" ajoutée (prérequis, lancement, collections, 13 personnages)
+
+### Note sur les IDs
+- Préfixe personnages : `knb-` (Kuroko no Basket) — cohérent avec `jjk-`, `op-`, `ns-`, `clk-`
+- ID animé : `kuroko-no-basket` (hyphens, cohérent avec tous les autres IDs Firestore)
+
+### Commande de lancement
+
+```bash
+node scripts/import_kkb.js
+```
+
+> Si `node` Snap est bloqué par AppArmor :
+> ```bash
+> env NODE_OPTIONS='--require ./scripts/google_time_offset.js' /home/tilstack/.cache/ms-playwright-go/1.50.1/node scripts/import_kkb.js
+> ```
+
+### Note
+- `imagePath` et `images[]` vides — à remplir après upload Firebase Storage des illustrations KnB
+- Ajouter entrées dans `app_assets.dart` + `pubspec.yaml` quand les assets locaux seront disponibles
+
+---
+
 _À mettre à jour par Claude Code à la fin de chaque session._
-_Dernière mise à jour : Task 36 — Fix BUG 1 & BUG 2, 25 mai 2026_
+_Dernière mise à jour : Task 39 — Import Kuroko no Basket, 26 mai 2026_
