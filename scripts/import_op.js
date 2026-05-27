@@ -1302,27 +1302,14 @@ async function importOnePiece() {
   await quizBatch.commit();
   console.log(`✅ ${quizzes.length} quiz importés`);
 
-  // 6. Notifier tous les users via FCM
-  const usersSnapshot = await db.collection("users").get();
-  const tokens = usersSnapshot.docs
-    .map((doc) => doc.data().fcmToken)
-    .filter((token) => token && token.length > 0);
-
-  if (tokens.length > 0) {
-    const messaging = admin.messaging();
-    await messaging.sendEachForMulticast({
-      tokens,
-      notification: {
-        title: "🌊 One Piece débarque sur OTADEX !",
-        body: "15 personnages One Piece viennent d'être ajoutés — Luffy, Zoro, Sanji et plus !",
-      },
-      data: {
-        route: "/anime/one-piece",
-        type: "new_characters",
-      },
-    });
-    console.log(`✅ Notification FCM envoyée à ${tokens.length} users`);
-  }
+  // 6. Notifier tous les users via OneSignal
+  const sendNotification = require("./send_notification");
+  await sendNotification({
+    title: "🌊 One Piece débarque sur OTADEX !",
+    body: "15 personnages One Piece viennent d'être ajoutés — Luffy, Zoro, Sanji et plus !",
+    route: "/anime/one-piece",
+    type: "new_characters",
+  });
 
   console.log("\n🏴‍☠️ Import One Piece terminé avec succès !");
   console.log("📊 Résumé :");

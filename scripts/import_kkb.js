@@ -1182,29 +1182,14 @@ async function importKKB() {
   await quizBatch.commit();
   console.log(`✅ ${quizzes.length} quiz importés`);
 
-  // 6. Notifier tous les users via FCM
-  const usersSnapshot = await db.collection("users").get();
-  const tokens = usersSnapshot.docs
-    .map((doc) => doc.data().fcmToken)
-    .filter((token) => token && token.length > 0);
-
-  if (tokens.length > 0) {
-    const messaging = admin.messaging();
-    await messaging.sendEachForMulticast({
-      tokens,
-      notification: {
-        title: "🏀 Kuroko no Basket débarque sur OTADEX !",
-        body: "La Génération des Miracles est disponible. Affronte le quiz !",
-      },
-      data: {
-        route: "/anime/kuroko-no-basket",
-        type: "new_characters",
-      },
-    });
-    console.log(`✅ Notification FCM envoyée à ${tokens.length} users`);
-  } else {
-    console.log("ℹ️  Aucun token FCM trouvé — notification ignorée");
-  }
+  // 6. Notifier tous les users via OneSignal
+  const sendNotification = require("./send_notification");
+  await sendNotification({
+    title: "🏀 Kuroko no Basket débarque sur OTADEX !",
+    body: "La Génération des Miracles est disponible. Affronte le quiz !",
+    route: "/anime/kuroko-no-basket",
+    type: "new_characters",
+  });
 
   console.log("\n🎉 Import Kuroko no Basket terminé avec succès !");
   console.log("📊 Résumé :");

@@ -54,3 +54,5 @@ otadex-key
 key.properties
 
 node_modules/
+
+.env

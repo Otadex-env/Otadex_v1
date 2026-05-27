@@ -941,5 +941,72 @@ node scripts/import_kkb.js
 
 ---
 
+---
+
+## Task 40 — Migration OneSignal (27 mai 2026)
+
+### Objectif
+Remplacer Firebase Cloud Functions + FCM par OneSignal pour toutes les notifications push.
+
+### ✅ Dépendances
+- `firebase_messaging: ^14.9.0` retiré de `pubspec.yaml`
+- `flutter_local_notifications: ^17.0.0` retiré de `pubspec.yaml`
+- `onesignal_flutter: ^5.2.6` ajouté
+
+### ✅ NotificationService réécrit (`lib/core/services/notification_service.dart`)
+- `OneSignal.initialize(appId)` — App ID : `cfc58648-689b-432f-9afa-c4f49e69199f`
+- `OneSignal.Notifications.requestPermission(true)` — permission utilisateur
+- Sauvegarde de `oneSignalId` dans `users/{uid}.oneSignalId` (remplace `fcmToken`)
+- Foreground : `addForegroundWillDisplayListener` → `event.notification.display()`
+- Tap : `addClickListener` → navigation via `AppRouter.router.push(route)`
+
+### ✅ AndroidManifest.xml
+- Meta-data FCM `default_notification_channel_id` retirée (inutile avec OneSignal)
+- Permissions `POST_NOTIFICATIONS` + `RECEIVE_BOOT_COMPLETED` conservées
+
+### ✅ android/app/build.gradle.kts
+- `isCoreLibraryDesugaringEnabled = true` déjà en place (Task 37)
+- `coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")` déjà en place
+
+### ✅ Cloche HomeScreen + NotificationsScreen
+- Déjà fonctionnels depuis Task 37 — aucun changement requis
+- Badge non lus : stream Firestore `users/{uid}/notifications where read == false`
+- NotificationsScreen : liste Firestore, tap → `read: true`, bouton "Tout lire"
+
+### ✅ scripts/send_notification.js (NOUVEAU)
+- Utilise l'API REST OneSignal v1 : `POST /api/v1/notifications`
+- Segment : `"All"` (tous les abonnés)
+- Paramètres : `title`, `body`, `route`, `type`
+- Export : `module.exports = sendNotification` → utilisable depuis tous les scripts d'import
+- Usage CLI : `node scripts/send_notification.js --title "..." --body "..." --route /home`
+
+### ✅ scripts/notify_monthly_vote.js (NOUVEAU)
+- Envoie la notification "🏆 Vote Fan du Mois ouvert !" via OneSignal REST API
+- Type : `monthly_vote` | Route : `/home`
+- Lancement manuel : `node scripts/notify_monthly_vote.js`
+- Crontab : `0 9 1 * * /path/node .../notify_monthly_vote.js`
+
+### ✅ Scripts d'import mis à jour
+| Script | Avant | Après |
+|---|---|---|
+| `import_jjk.js` | FCM multicast `fcmToken` | `sendNotification()` OneSignal |
+| `import_op.js` | FCM multicast `fcmToken` | `sendNotification()` OneSignal |
+| `import_kkb.js` | FCM multicast `fcmToken` | `sendNotification()` OneSignal |
+| `import_ns.js` | Aucune notification | `sendNotification()` ajouté |
+| `import_clk.js` | Aucune notification | `sendNotification()` ajouté |
+
+### Clés OneSignal (dans `.env` — ne jamais committer)
+```
+APPIDONESIGNAL   = cfc58648-689b-432f-9afa-c4f49e69199f
+APIKEYONESIGNAL  = os_v2_app_z7cymsditnbs7gx2yt2j42izt4neg33xnicezbuj4rjtexvwjh5rusmzdjw2t5ssrtszevfw6lif6b5qiypy4oaywwthibctmoosqjq
+```
+
+### Champ Firestore modifié
+- `users/{uid}.fcmToken` → `users/{uid}.oneSignalId` (mis à jour automatiquement à chaque session)
+
+### dart analyze → No issues found!
+
+---
+
 _À mettre à jour par Claude Code à la fin de chaque session._
-_Dernière mise à jour : Task 39 — Import Kuroko no Basket, 26 mai 2026_
+_Dernière mise à jour : Task 40 — Migration OneSignal, 27 mai 2026_

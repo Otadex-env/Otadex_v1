@@ -1138,6 +1138,15 @@ async function importData() {
     await batch.commit();
     console.log("✅ Tous les personnages importés avec succès !");
     
+    // 5. Notifier tous les users via OneSignal
+    const sendNotification = require("./send_notification");
+    await sendNotification({
+      title: "🍃 Naruto Shippuden débarque sur OTADEX !",
+      body: "Les ninjas de Konoha sont disponibles. Découvre tes personnages préférés !",
+      route: "/anime/naruto-shippuden",
+      type: "new_characters",
+    });
+
     console.log("🎉 Importation terminée avec succès !");
     process.exit(0);
   } catch (error) {

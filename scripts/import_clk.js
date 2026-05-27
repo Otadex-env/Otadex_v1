@@ -1380,6 +1380,15 @@ async function importCLK() {
   await quizBatch.commit();
   console.log(`✅ ${quizzes.length} quiz importés`);
 
+  // 6. Notifier tous les users via OneSignal
+  const sendNotification = require("./send_notification");
+  await sendNotification({
+    title: "📚 Classroom of the Elite débarque sur OTADEX !",
+    body: "Ayanokoji et les élites de la Classe D sont disponibles. Explore leurs fiches !",
+    route: "/anime/classroom-of-elite",
+    type: "new_characters",
+  });
+
   console.log("\n🎉 Import CLK terminé avec succès !");
   console.log("📊 Résumé :");
   console.log("   1 animé | 1 créateur | 1 studio");
