@@ -1027,38 +1027,53 @@ class AppAssets {
       case 'op-sanji-vinsmoke':
         return sanjiVinsmoke;
       case 'op-shanks-le-roux':
+      case 'op-shanks':
         return shanksLeRoux;
       case 'op-tony-tony-chopper':
         return tonyTonyChopper;
       case 'op-trafalgar-d-water-law':
+      case 'op-trafalgar-law':
         return trafalgarDWaterLaw;
       case 'op-usopp':
         return usopp;
       case 'knb-atsushi-murasakibara':
+      case 'knb-murasakibara-atsushi':
         return atsushiMurasakibara;
       case 'knb-daiki-aomine':
+      case 'knb-aomine-daiki':
         return daikiAomine;
       case 'knb-junpei-hyuga':
+      case 'knb-hyuga-junpei':
         return junpeiHyuga;
       case 'knb-kazunari-takao':
+      case 'knb-takao-kazunari':
         return kazunariTakao;
       case 'knb-riko-aida':
+      case 'knb-aida-riko':
         return rikoAida;
       case 'knb-ryota-kise':
+      case 'knb-kise-ryota':
         return ryotaKise;
       case 'knb-satsuki-momoi':
+      case 'knb-momoi-satsuki':
         return satsukiMomoi;
       case 'knb-seijuro-akashi':
+      case 'knb-akashi-seijuro':
         return seijuroAkashi;
       case 'knb-shintaro-midorima':
+      case 'knb-midorima-shintaro':
         return shintaroMidorima;
       case 'knb-taiga-kagami':
+      case 'knb-kagami-taiga':
         return taigaKagami;
       case 'knb-tatsuya-himuro':
+      case 'knb-himuro-tatsuya':
         return tatsuyaHimuro;
       case 'knb-teppei-kiyoshi':
+      case 'knb-kiyoshi-teppei':
         return teppeiKiyoshi;
       case 'knb-tetsuya-kuroko':
+      case 'knb-kuroko-tetsuya':
         return tetsuyaKuroko;
       default:
         return const [];
