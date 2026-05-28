@@ -551,6 +551,268 @@ class AppAssets {
   static const List<String> mioIbuki = [];
 
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // OP — One Piece
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  static const String _op = 'assets/images/Animé pictures/One piece';
+
+  static const List<String> boaHancock = [
+    '$_op/Boa Hancock/op_hanco1.jpeg',
+    '$_op/Boa Hancock/op_hanco10.jpeg',
+    '$_op/Boa Hancock/op_hanco2.jpeg',
+    '$_op/Boa Hancock/op_hanco3.jpeg',
+    '$_op/Boa Hancock/op_hanco4.jpeg',
+    '$_op/Boa Hancock/op_hanco5.jpeg',
+    '$_op/Boa Hancock/op_hanco6.jpeg',
+    '$_op/Boa Hancock/op_hanco7.jpeg',
+    '$_op/Boa Hancock/op_hanco8.jpeg',
+    '$_op/Boa Hancock/op_hanco9.jpeg',
+  ];
+
+  static const List<String> brook = [
+    '$_op/Brook/op_brook1.jpeg',
+    '$_op/Brook/op_brook2.jpeg',
+    '$_op/Brook/op_brook3.jpeg',
+    '$_op/Brook/op_brook4.jpeg',
+    '$_op/Brook/op_brook5.jpeg',
+    '$_op/Brook/op_brook6.jpeg',
+    '$_op/Brook/op_brook7.jpeg',
+    '$_op/Brook/op_brook8.jpeg',
+  ];
+
+  static const List<String> franky = [
+    '$_op/Franky/op_franky1.jpeg',
+    '$_op/Franky/op_franky2.jpeg',
+    '$_op/Franky/op_franky3.jpeg',
+    '$_op/Franky/op_franky4.jpeg',
+    '$_op/Franky/op_franky5.jpeg',
+    '$_op/Franky/op_franky6.jpeg',
+    '$_op/Franky/op_franky7.jpeg',
+    '$_op/Franky/op_franky8.jpeg',
+    '$_op/Franky/op_franky9.jpeg',
+  ];
+
+  static const List<String> jinbe = [
+    '$_op/Jinbe/op_jinbe1.jpeg',
+    '$_op/Jinbe/op_jinbe2.jpeg',
+    '$_op/Jinbe/op_jinbe3.jpeg',
+    '$_op/Jinbe/op_jinbe4.jpeg',
+    '$_op/Jinbe/op_jinbe5.jpeg',
+    '$_op/Jinbe/op_jinbe6.jpeg',
+    '$_op/Jinbe/op_jinbe7.jpeg',
+    '$_op/Jinbe/op_jinbe8.jpeg',
+  ];
+
+  static const List<String> monkeyDLuffy = [
+    '$_op/Monkey D. Luffy/op_luffy1.jpeg',
+    '$_op/Monkey D. Luffy/op_luffy10.jpeg',
+    '$_op/Monkey D. Luffy/op_luffy11.jpeg',
+    '$_op/Monkey D. Luffy/op_luffy2.jpeg',
+    '$_op/Monkey D. Luffy/op_luffy3.jpeg',
+    '$_op/Monkey D. Luffy/op_luffy4.jpeg',
+    '$_op/Monkey D. Luffy/op_luffy5.jpeg',
+    '$_op/Monkey D. Luffy/op_luffy6.jpeg',
+    '$_op/Monkey D. Luffy/op_luffy7.jpeg',
+    '$_op/Monkey D. Luffy/op_luffy8.jpeg',
+    '$_op/Monkey D. Luffy/op_luffy9.jpeg',
+  ];
+
+  static const List<String> nami = [
+    '$_op/Nami/op_nami1.jpeg',
+    '$_op/Nami/op_nami2.jpeg',
+    '$_op/Nami/op_nami3.jpeg',
+    '$_op/Nami/op_nami4.jpeg',
+    '$_op/Nami/op_nami5.jpeg',
+    '$_op/Nami/op_nami6.jpeg',
+    '$_op/Nami/op_nami7.jpeg',
+    '$_op/Nami/op_nami8.jpeg',
+    '$_op/Nami/op_nami9.jpeg',
+  ];
+
+  static const List<String> nicoRobin = [
+    '$_op/Nico Robin/op_robin1.jpeg',
+    '$_op/Nico Robin/op_robin10.jpeg',
+    '$_op/Nico Robin/op_robin11.jpeg',
+    '$_op/Nico Robin/op_robin2.jpeg',
+    '$_op/Nico Robin/op_robin3.jpeg',
+    '$_op/Nico Robin/op_robin4.jpeg',
+    '$_op/Nico Robin/op_robin5.jpeg',
+    '$_op/Nico Robin/op_robin6.jpeg',
+    '$_op/Nico Robin/op_robin7.jpeg',
+    '$_op/Nico Robin/op_robin8.jpeg',
+    '$_op/Nico Robin/op_robin9.jpeg',
+  ];
+
+  static const List<String> portgasDAce = [
+    '$_op/Portgas D. Ace/op_ace1.jpeg',
+    '$_op/Portgas D. Ace/op_ace2.jpeg',
+    '$_op/Portgas D. Ace/op_ace3.jpeg',
+    '$_op/Portgas D. Ace/op_ace4.jpeg',
+    '$_op/Portgas D. Ace/op_ace5.jpeg',
+    '$_op/Portgas D. Ace/op_ace6.jpeg',
+    '$_op/Portgas D. Ace/op_ace7.jpeg',
+    '$_op/Portgas D. Ace/op_ace8.jpeg',
+    '$_op/Portgas D. Ace/op_ace9.jpeg',
+  ];
+
+  static const List<String> roronoaZoro = [
+    '$_op/Roronoa Zoro/op_zoro1.jpeg',
+    '$_op/Roronoa Zoro/op_zoro10.jpeg',
+    '$_op/Roronoa Zoro/op_zoro2.jpeg',
+    '$_op/Roronoa Zoro/op_zoro3.jpeg',
+    '$_op/Roronoa Zoro/op_zoro4.jpeg',
+    '$_op/Roronoa Zoro/op_zoro5.jpeg',
+    '$_op/Roronoa Zoro/op_zoro6.jpeg',
+    '$_op/Roronoa Zoro/op_zoro7.jpeg',
+    '$_op/Roronoa Zoro/op_zoro8.jpeg',
+    '$_op/Roronoa Zoro/op_zoro9.jpeg',
+  ];
+
+  static const List<String> sabo = [
+    '$_op/Sabo/op_sabo1.jpeg',
+    '$_op/Sabo/op_sabo2.jpeg',
+    '$_op/Sabo/op_sabo3.jpeg',
+    '$_op/Sabo/op_sabo4.jpeg',
+    '$_op/Sabo/op_sabo5.jpeg',
+    '$_op/Sabo/op_sabo6.jpeg',
+    '$_op/Sabo/op_sabo7.jpeg',
+    '$_op/Sabo/op_sabo8.jpeg',
+    '$_op/Sabo/op_sabo9.jpeg',
+  ];
+
+  static const List<String> sanjiVinsmoke = [
+    '$_op/Sanji Vinsmoke/op_sanji1.jpeg',
+    '$_op/Sanji Vinsmoke/op_sanji2.jpeg',
+    '$_op/Sanji Vinsmoke/op_sanji3.jpeg',
+    '$_op/Sanji Vinsmoke/op_sanji4.jpeg',
+    '$_op/Sanji Vinsmoke/op_sanji5.jpeg',
+    '$_op/Sanji Vinsmoke/op_sanji6.jpeg',
+    '$_op/Sanji Vinsmoke/op_sanji7.jpeg',
+    '$_op/Sanji Vinsmoke/op_sanji8.jpeg',
+    '$_op/Sanji Vinsmoke/op_sanji9.jpeg',
+  ];
+
+  static const List<String> shanksLeRoux = [
+    '$_op/Shanks le Roux/op_shanks1.jpeg',
+    '$_op/Shanks le Roux/op_shanks10.jpeg',
+    '$_op/Shanks le Roux/op_shanks2.jpeg',
+    '$_op/Shanks le Roux/op_shanks3.jpeg',
+    '$_op/Shanks le Roux/op_shanks4.jpeg',
+    '$_op/Shanks le Roux/op_shanks5.jpeg',
+    '$_op/Shanks le Roux/op_shanks6.jpeg',
+    '$_op/Shanks le Roux/op_shanks7.jpeg',
+    '$_op/Shanks le Roux/op_shanks8.jpeg',
+    '$_op/Shanks le Roux/op_shanks9.jpeg',
+  ];
+
+  static const List<String> tonyTonyChopper = [
+    '$_op/Tony Tony Chopper/op_chopp1.jpeg',
+    '$_op/Tony Tony Chopper/op_chopp2.jpeg',
+    '$_op/Tony Tony Chopper/op_chopp3.jpeg',
+    '$_op/Tony Tony Chopper/op_chopp4.jpeg',
+    '$_op/Tony Tony Chopper/op_chopp5.jpeg',
+    '$_op/Tony Tony Chopper/op_chopp6.jpeg',
+    '$_op/Tony Tony Chopper/op_chopp7.jpeg',
+    '$_op/Tony Tony Chopper/op_chopp8.jpeg',
+  ];
+
+  static const List<String> trafalgarDWaterLaw = [
+    '$_op/Trafalgar D. Water Law/op_law1.jpeg',
+    '$_op/Trafalgar D. Water Law/op_law2.jpeg',
+    '$_op/Trafalgar D. Water Law/op_law3.jpeg',
+    '$_op/Trafalgar D. Water Law/op_law4.jpeg',
+    '$_op/Trafalgar D. Water Law/op_law5.jpeg',
+    '$_op/Trafalgar D. Water Law/op_law6.jpeg',
+    '$_op/Trafalgar D. Water Law/op_law7.jpeg',
+    '$_op/Trafalgar D. Water Law/op_law8.jpeg',
+  ];
+
+  static const List<String> usopp = [
+    '$_op/Usopp/op_usopp1.jpeg',
+    '$_op/Usopp/op_usopp2.jpeg',
+    '$_op/Usopp/op_usopp3.jpeg',
+    '$_op/Usopp/op_usopp4.jpeg',
+    '$_op/Usopp/op_usopp5.jpeg',
+    '$_op/Usopp/op_usopp6.jpeg',
+    '$_op/Usopp/op_usopp7.jpeg',
+    '$_op/Usopp/op_usopp8.jpeg',
+    '$_op/Usopp/op_usopp9.jpeg',
+  ];
+
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // KNB — Kuroko no Basket
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  static const String _knb = 'assets/images/Animé pictures/Kuroko no basket';
+
+  static const List<String> atsushiMurasakibara = [
+    '$_knb/Atsushi Murasakibara/knb_muras1.jpeg',
+    '$_knb/Atsushi Murasakibara/knb_muras10.jpeg',
+    '$_knb/Atsushi Murasakibara/knb_muras2.jpeg',
+    '$_knb/Atsushi Murasakibara/knb_muras3.jpeg',
+    '$_knb/Atsushi Murasakibara/knb_muras4.jpeg',
+    '$_knb/Atsushi Murasakibara/knb_muras5.jpeg',
+    '$_knb/Atsushi Murasakibara/knb_muras6.jpeg',
+    '$_knb/Atsushi Murasakibara/knb_muras7.jpeg',
+    '$_knb/Atsushi Murasakibara/knb_muras8.jpeg',
+    '$_knb/Atsushi Murasakibara/knb_muras9.jpeg',
+  ];
+
+  static const List<String> daikiAomine = [
+    '$_knb/Daiki Aomine/knb_aomin1.jpeg',
+    '$_knb/Daiki Aomine/knb_aomin10.jpeg',
+    '$_knb/Daiki Aomine/knb_aomin11.jpeg',
+    '$_knb/Daiki Aomine/knb_aomin12.jpeg',
+    '$_knb/Daiki Aomine/knb_aomin13.jpeg',
+    '$_knb/Daiki Aomine/knb_aomin2.jpeg',
+    '$_knb/Daiki Aomine/knb_aomin3.jpeg',
+    '$_knb/Daiki Aomine/knb_aomin4.jpeg',
+    '$_knb/Daiki Aomine/knb_aomin5.jpeg',
+    '$_knb/Daiki Aomine/knb_aomin6.jpeg',
+    '$_knb/Daiki Aomine/knb_aomin7.jpeg',
+    '$_knb/Daiki Aomine/knb_aomin8.jpeg',
+    '$_knb/Daiki Aomine/knb_aomin9.jpeg',
+  ];
+
+  static const List<String> junpeiHyuga = [
+    '$_knb/Junpei Hyūga/knb_hyuga1.jpeg',
+    '$_knb/Junpei Hyūga/knb_hyuga2.jpeg',
+    '$_knb/Junpei Hyūga/knb_hyuga3.jpeg',
+    '$_knb/Junpei Hyūga/knb_hyuga4.jpeg',
+    '$_knb/Junpei Hyūga/knb_hyuga5.jpeg',
+    '$_knb/Junpei Hyūga/knb_hyuga6.jpeg',
+    '$_knb/Junpei Hyūga/knb_hyuga7.jpeg',
+    '$_knb/Junpei Hyūga/knb_hyuga8.jpeg',
+  ];
+
+  static const List<String> kazunariTakao = [
+    '$_knb/Kazunari Takao/knb_takao1.jpeg',
+    '$_knb/Kazunari Takao/knb_takao2.jpeg',
+    '$_knb/Kazunari Takao/knb_takao3.jpeg',
+    '$_knb/Kazunari Takao/knb_takao4.jpeg',
+    '$_knb/Kazunari Takao/knb_takao5.jpeg',
+    '$_knb/Kazunari Takao/knb_takao6.jpeg',
+  ];
+
+  static const List<String> rikoAida = [
+    '$_knb/Riko Aida/knb_aida1.jpeg',
+    '$_knb/Riko Aida/knb_aida2.jpeg',
+    '$_knb/Riko Aida/knb_aida3.jpeg',
+    '$_knb/Riko Aida/knb_aida4.jpeg',
+    '$_knb/Riko Aida/knb_aida5.jpeg',
+    '$_knb/Riko Aida/knb_aida6.jpeg',
+    '$_knb/Riko Aida/knb_aida7.jpeg',
+    '$_knb/Riko Aida/knb_aida8.jpeg',
+  ];
+
+  static const List<String> ryotaKise = [];
+  static const List<String> satsukiMomoi = [];
+  static const List<String> seijuroAkashi = [];
+  static const List<String> shintaroMidorima = [];
+  static const List<String> taigaKagami = [];
+  static const List<String> tatsuyaHimuro = [];
+  static const List<String> teppeiKiyoshi = [];
+  static const List<String> tetsuyaKuroko = [];
+
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // Résolution par charId
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   static List<String> getByCharacterId(String charId) {
@@ -668,6 +930,62 @@ class AppAssets {
         return koheiKatsuragi;
       case 'clk-mio-ibuki':
         return mioIbuki;
+      case 'op-boa-hancock':
+        return boaHancock;
+      case 'op-brook':
+        return brook;
+      case 'op-franky':
+        return franky;
+      case 'op-jinbe':
+        return jinbe;
+      case 'op-monkey-d-luffy':
+        return monkeyDLuffy;
+      case 'op-nami':
+        return nami;
+      case 'op-nico-robin':
+        return nicoRobin;
+      case 'op-portgas-d-ace':
+        return portgasDAce;
+      case 'op-roronoa-zoro':
+        return roronoaZoro;
+      case 'op-sabo':
+        return sabo;
+      case 'op-sanji-vinsmoke':
+        return sanjiVinsmoke;
+      case 'op-shanks-le-roux':
+        return shanksLeRoux;
+      case 'op-tony-tony-chopper':
+        return tonyTonyChopper;
+      case 'op-trafalgar-d-water-law':
+        return trafalgarDWaterLaw;
+      case 'op-usopp':
+        return usopp;
+      case 'knb-atsushi-murasakibara':
+        return atsushiMurasakibara;
+      case 'knb-daiki-aomine':
+        return daikiAomine;
+      case 'knb-junpei-hyuga':
+        return junpeiHyuga;
+      case 'knb-kazunari-takao':
+        return kazunariTakao;
+      case 'knb-riko-aida':
+        return rikoAida;
+      case 'knb-ryota-kise':
+        return ryotaKise;
+      case 'knb-satsuki-momoi':
+        return satsukiMomoi;
+      case 'knb-seijuro-akashi':
+        return seijuroAkashi;
+      case 'knb-shintaro-midorima':
+        return shintaroMidorima;
+      case 'knb-taiga-kagami':
+        return taigaKagami;
+      case 'knb-tatsuya-himuro':
+        return tatsuyaHimuro;
+      case 'knb-teppei-kiyoshi':
+        return teppeiKiyoshi;
+      case 'knb-tetsuya-kuroko':
+        return tetsuyaKuroko;
       default:
         return const [];
     }
