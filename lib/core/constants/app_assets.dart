@@ -803,14 +803,88 @@ class AppAssets {
     '$_knb/Riko Aida/knb_aida8.jpeg',
   ];
 
-  static const List<String> ryotaKise = [];
-  static const List<String> satsukiMomoi = [];
-  static const List<String> seijuroAkashi = [];
-  static const List<String> shintaroMidorima = [];
-  static const List<String> taigaKagami = [];
-  static const List<String> tatsuyaHimuro = [];
-  static const List<String> teppeiKiyoshi = [];
-  static const List<String> tetsuyaKuroko = [];
+  static const List<String> ryotaKise = [
+    '$_knb/Ryōta Kise/knb_kise1.jpeg',
+    '$_knb/Ryōta Kise/knb_kise2.jpeg',
+    '$_knb/Ryōta Kise/knb_kise3.jpeg',
+    '$_knb/Ryōta Kise/knb_kise4.jpeg',
+    '$_knb/Ryōta Kise/knb_kise5.jpeg',
+  ];
+
+  static const List<String> satsukiMomoi = [
+    '$_knb/Satsuki Momoi/knb_momoi1.jpeg',
+    '$_knb/Satsuki Momoi/knb_momoi2.jpeg',
+    '$_knb/Satsuki Momoi/knb_momoi3.jpeg',
+    '$_knb/Satsuki Momoi/knb_momoi4.jpeg',
+    '$_knb/Satsuki Momoi/knb_momoi5.jpeg',
+  ];
+
+  static const List<String> seijuroAkashi = [
+    '$_knb/Seijūrō Akashi/knb_akashi1.jpeg',
+    '$_knb/Seijūrō Akashi/knb_akashi10.jpeg',
+    '$_knb/Seijūrō Akashi/knb_akashi11.jpeg',
+    '$_knb/Seijūrō Akashi/knb_akashi12.jpeg',
+    '$_knb/Seijūrō Akashi/knb_akashi13.jpeg',
+    '$_knb/Seijūrō Akashi/knb_akashi2.jpeg',
+    '$_knb/Seijūrō Akashi/knb_akashi3.jpeg',
+    '$_knb/Seijūrō Akashi/knb_akashi4.jpeg',
+    '$_knb/Seijūrō Akashi/knb_akashi5.jpeg',
+    '$_knb/Seijūrō Akashi/knb_akashi6.jpeg',
+    '$_knb/Seijūrō Akashi/knb_akashi7.jpeg',
+    '$_knb/Seijūrō Akashi/knb_akashi8.jpeg',
+    '$_knb/Seijūrō Akashi/knb_akashi9.jpeg',
+  ];
+
+  static const List<String> shintaroMidorima = [
+    '$_knb/Shintarō Midorima/knb_midori1.jpeg',
+    '$_knb/Shintarō Midorima/knb_midori2.jpeg',
+    '$_knb/Shintarō Midorima/knb_midori3.jpeg',
+    '$_knb/Shintarō Midorima/knb_midori4.jpeg',
+    '$_knb/Shintarō Midorima/knb_midori5.jpeg',
+  ];
+
+  static const List<String> taigaKagami = [
+    '$_knb/Taiga Kagami/knb_kagam1.jpeg',
+    '$_knb/Taiga Kagami/knb_kagam10.jpeg',
+    '$_knb/Taiga Kagami/knb_kagam2.jpeg',
+    '$_knb/Taiga Kagami/knb_kagam3.jpeg',
+    '$_knb/Taiga Kagami/knb_kagam4.jpeg',
+    '$_knb/Taiga Kagami/knb_kagam5.jpeg',
+    '$_knb/Taiga Kagami/knb_kagam6.jpeg',
+    '$_knb/Taiga Kagami/knb_kagam7.jpeg',
+    '$_knb/Taiga Kagami/knb_kagam8.jpeg',
+    '$_knb/Taiga Kagami/knb_kagam9.jpeg',
+  ];
+
+  static const List<String> tatsuyaHimuro = [
+    '$_knb/Tatsuya Himuro/knb_himuro1.jpeg',
+    '$_knb/Tatsuya Himuro/knb_himuro2.jpeg',
+    '$_knb/Tatsuya Himuro/knb_himuro3.jpeg',
+    '$_knb/Tatsuya Himuro/knb_himuro4.jpeg',
+    '$_knb/Tatsuya Himuro/knb_himuro5.jpeg',
+    '$_knb/Tatsuya Himuro/knb_himuro6.jpeg',
+    '$_knb/Tatsuya Himuro/knb_himuro7.jpeg',
+  ];
+
+  static const List<String> teppeiKiyoshi = [
+    '$_knb/Teppei Kiyoshi/knb_kiyos1.jpeg',
+    '$_knb/Teppei Kiyoshi/knb_kiyos2.jpeg',
+    '$_knb/Teppei Kiyoshi/knb_kiyos3.jpeg',
+    '$_knb/Teppei Kiyoshi/knb_kiyos4.jpeg',
+    '$_knb/Teppei Kiyoshi/knb_kiyos5.jpeg',
+    '$_knb/Teppei Kiyoshi/knb_kiyos6.jpeg',
+    '$_knb/Teppei Kiyoshi/knb_kiyos7.jpeg',
+  ];
+
+  static const List<String> tetsuyaKuroko = [
+    '$_knb/Tetsuya Kuroko/knb_kurok1.jpeg',
+    '$_knb/Tetsuya Kuroko/knb_kurok2.jpeg',
+    '$_knb/Tetsuya Kuroko/knb_kurok3.jpeg',
+    '$_knb/Tetsuya Kuroko/knb_kurok4.jpeg',
+    '$_knb/Tetsuya Kuroko/knb_kurok5.jpeg',
+    '$_knb/Tetsuya Kuroko/knb_kurok6.jpeg',
+    '$_knb/Tetsuya Kuroko/knb_kurok7.jpeg',
+  ];
 
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // Résolution par charId
