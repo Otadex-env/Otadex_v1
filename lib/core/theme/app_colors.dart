@@ -99,6 +99,10 @@ class AppColors {
   static const Color animeClkAccent = Color(0xFF00897B);
   static const Color animeDefaultCard = Color(0xFF0A1020);
   static const Color animeDefaultAccent = Color(0xFF6A1B9A);
+  static const Color animeFmaCard = Color(0xFF1A0800);
+  static const Color animeFmaAccent = Color(0xFFB71C1C);
+  static const Color animeHxhCard = Color(0xFF061A06);
+  static const Color animeHxhAccent = Color(0xFF2E7D32);
 
   // === ANIME CARD & ACCENT — EXTENDED ===
   static const Color animeSlCard = Color(0xFF1A0D2E);

@@ -11,10 +11,11 @@
  */
 
 const https = require("https");
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 
-const ONESIGNAL_APP_ID = "cfc58648-689b-432f-9afa-c4f49e69199f";
-const ONESIGNAL_REST_API_KEY =
-  "os_v2_app_z7cymsditnbs7gx2yt2j42izt4neg33xnicezbuj4rjtexvwjh5rusmzdjw2t5ssrtszevfw6lif6b5qiypy4oaywwthibctmoosqjq";
+const ONESIGNAL_APP_ID = process.env.APPIDONESIGNAL?.trim();
+const ONESIGNAL_REST_API_KEY = process.env.APIKEYONESIGNAL?.trim();
 
 /**
  * @param {object} opts
@@ -40,7 +41,7 @@ async function sendNotification({ title, body, route = "", type = "new_character
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=utf-8",
-        Authorization: `Basic ${ONESIGNAL_REST_API_KEY}`,
+        Authorization: `Key ${ONESIGNAL_REST_API_KEY}`,
         "Content-Length": Buffer.byteLength(payload),
       },
     };
@@ -76,7 +77,7 @@ module.exports = sendNotification;
 // ─── Appel direct CLI ──────────────────────────────────────────────────────
 if (require.main === module) {
   const args = process.argv.slice(2);
-  const get = (flag) => {
+  const get = (/** @type {string} */ flag) => {
     const i = args.indexOf(flag);
     return i !== -1 ? args[i + 1] : undefined;
   };

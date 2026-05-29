@@ -328,6 +328,8 @@ class FirestoreCharacterService {
         'attack-on-titan' => AppColors.animeAotCard,
         'one-piece' => AppColors.animeOpCard,
         'classroom-of-elite' => AppColors.animeClkCard,
+        'fullmetal-alchemist' => AppColors.animeFmaCard,
+        'hunter-x-hunter' => AppColors.animeHxhCard,
         _ => AppColors.animeDefaultCard,
       };
 
@@ -337,6 +339,8 @@ class FirestoreCharacterService {
         'attack-on-titan' => AppColors.animeAotAccent,
         'one-piece' => AppColors.animeOpAccent,
         'classroom-of-elite' => AppColors.animeClkAccent,
+        'fullmetal-alchemist' => AppColors.animeFmaAccent,
+        'hunter-x-hunter' => AppColors.animeHxhAccent,
         _ => AppColors.animeDefaultAccent,
       };
 
@@ -346,6 +350,8 @@ class FirestoreCharacterService {
         'attack-on-titan' => 'Seinen',
         'one-piece' => 'Shōnen',
         'classroom-of-elite' => 'Seinen',
+        'fullmetal-alchemist' => 'Shōnen',
+        'hunter-x-hunter' => 'Shōnen',
         _ => 'Shōnen',
       };
 }

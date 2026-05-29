@@ -1008,5 +1008,99 @@ APIKEYONESIGNAL  = os_v2_app_z7cymsditnbs7gx2yt2j42izt4neg33xnicezbuj4rjtexvwjh5
 
 ---
 
+---
+
+## Task 41 — Intégration Fullmetal Alchemist Brotherhood (29 mai 2026)
+
+### Objectif
+Ajouter Fullmetal Alchemist Brotherhood comme 6e anime sur OTADEX.
+
+### ✅ Script d'import
+- **`scripts/import_fma.js`** créé (modèle : `import_kkb.js`)
+- Anime ID : `fullmetal-alchemist` | Préfixe personnages : `fma-`
+- Studio : `bones` (Bones) | Créateur : `hiromu-arakawa` (Hiromu Arakawa)
+- 13 personnages avec bio complète, pouvoirs, relations, citations, trivia
+- 7 sets de quiz × 5 questions (Edward, Roy, Alphonse, Riza, Bradley, Hughes, Izumi)
+- Notification OneSignal : `"⚗️ Fullmetal Alchemist Brotherhood débarque sur OTADEX !"`
+- Route : `/anime/fullmetal-alchemist`
+
+### ✅ Personnages (13)
+| ID | Nom | Rang | isTrending |
+|---|---|---|---|
+| `fma-edward-elric` | Edward Elric | 1 | true |
+| `fma-roy-mustang` | Roy Mustang | 2 | true |
+| `fma-alphonse-elric` | Alphonse Elric | 3 | true |
+| `fma-riza-hawkeye` | Riza Hawkeye | 4 | false |
+| `fma-winry-rockbell` | Winry Rockbell | 5 | false |
+| `fma-van-hohenheim` | Van Hohenheim | 6 | false |
+| `fma-father` | Father | 7 | false |
+| `fma-king-bradley` | King Bradley | 8 | false |
+| `fma-scar` | Scar | 9 | false |
+| `fma-maes-hughes` | Maes Hughes | 10 | false |
+| `fma-pride-selim-bradley` | Pride (Selim Bradley) | 11 | false |
+| `fma-greed-ling-yao` | Greed / Ling Yao | 12 | false |
+| `fma-izumi-curtis` | Izumi Curtis | 13 | false |
+
+### ✅ Flutter — fichiers modifiés
+- **`lib/core/theme/app_colors.dart`** : `animeFmaCard = Color(0xFF1A0800)`, `animeFmaAccent = Color(0xFFB71C1C)`
+- **`lib/core/services/firestore_character_service.dart`** : cases `fullmetal-alchemist` dans `_cardColorForAnime`, `_accentColorForAnime`, `_categoryForAnime` (Shōnen)
+- **`lib/core/constants/app_assets.dart`** : 13 listes vides + 13 cases dans `getByCharacterId`
+- **`pubspec.yaml`** : 13 déclarations de dossiers d'assets
+
+### ✅ Dossiers assets créés
+`assets/images/Animé pictures/Fullmetal Alchemist/{Edward Elric, Roy Mustang, Alphonse Elric, Riza Hawkeye, Winry Rockbell, Van Hohenheim, Father, King Bradley, Scar, Maes Hughes, Pride Selim Bradley, Greed Ling Yao, Izumi Curtis}/`
+
+### Note
+- `imagePath` et `images[]` vides — à remplir après upload Firebase Storage
+- `dart analyze lib/ → No issues found!`
+
+---
+
+## Task 42 — Intégration Hunter x Hunter (29 mai 2026)
+
+### Objectif
+Ajouter Hunter x Hunter (2011, Madhouse) comme 7e anime sur OTADEX.
+
+### ✅ Script d'import
+- **`scripts/import_hxh.js`** créé (modèle : `import_kkb.js`)
+- Anime ID : `hunter-x-hunter` | Préfixe personnages : `hxh-`
+- Studio : `madhouse` (Madhouse) | Créateur : `yoshihiro-togashi`
+- 13 personnages avec bio complète, pouvoirs Nen, relations, citations, trivia
+- 7 sets de quiz × 5 questions (Killua, Gon, Hisoka, Kurapika, Meruem, Netero, Chrollo)
+- Notification OneSignal : `"🔍 Hunter x Hunter débarque sur OTADEX !"`
+- Route : `/anime/hunter-x-hunter`
+
+### ✅ Personnages (13)
+| ID | Nom | Rang | isTrending |
+|---|---|---|---|
+| `hxh-killua-zoldyck` | Killua Zoldyck | 1 | true |
+| `hxh-gon-freecss` | Gon Freecss | 2 | true |
+| `hxh-hisoka-morow` | Hisoka Morow | 3 | true |
+| `hxh-kurapika` | Kurapika | 4 | false |
+| `hxh-chrollo-lucilfer` | Chrollo Lucilfer | 5 | false |
+| `hxh-leorio-paradinight` | Leorio Paradinight | 6 | false |
+| `hxh-biscuit-krueger` | Biscuit Krueger | 7 | false |
+| `hxh-meruem` | Meruem | 8 | false |
+| `hxh-isaac-netero` | Isaac Netero | 9 | false |
+| `hxh-illumi-zoldyck` | Illumi Zoldyck | 10 | false |
+| `hxh-ging-freecss` | Ging Freecss | 11 | false |
+| `hxh-feitan-portor` | Feitan Portor | 12 | false |
+| `hxh-neferpitou` | Neferpitou | 13 | false |
+
+### ✅ Flutter — fichiers modifiés
+- **`lib/core/theme/app_colors.dart`** : `animeHxhCard = Color(0xFF061A06)`, `animeHxhAccent = Color(0xFF2E7D32)`
+- **`lib/core/services/firestore_character_service.dart`** : cases `hunter-x-hunter` dans `_cardColorForAnime`, `_accentColorForAnime`, `_categoryForAnime` (Shōnen)
+- **`lib/core/constants/app_assets.dart`** : 13 listes vides + 13 cases dans `getByCharacterId`
+- **`pubspec.yaml`** : 13 déclarations de dossiers d'assets
+
+### ✅ Dossiers assets créés
+`assets/images/Animé pictures/Hunter x Hunter/{Killua Zoldyck, Gon Freecss, Hisoka Morow, Kurapika, Chrollo Lucilfer, Leorio Paradinight, Biscuit Krueger, Meruem, Isaac Netero, Illumi Zoldyck, Ging Freecss, Feitan Portor, Neferpitou}/`
+
+### Note
+- `imagePath` et `images[]` vides — à remplir après upload Firebase Storage
+- `dart analyze lib/ → No issues found!`
+
+---
+
 _À mettre à jour par Claude Code à la fin de chaque session._
-_Dernière mise à jour : Task 40 — Migration OneSignal, 27 mai 2026_
+_Dernière mise à jour : Tasks 41 & 42 — FMA + HxH intégrés, 29 mai 2026_

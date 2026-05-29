@@ -887,6 +887,46 @@ class AppAssets {
   ];
 
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // FMA — Fullmetal Alchemist Brotherhood   prefix: fma_
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // ignore: unused_field
+  static const String _fma = 'assets/images/Animé pictures/Fullmetal Alchemist';
+
+  static const List<String> edwardElric = [];
+  static const List<String> royMustang = [];
+  static const List<String> alphonseElric = [];
+  static const List<String> rizaHawkeye = [];
+  static const List<String> winryRockbell = [];
+  static const List<String> vanHohenheim = [];
+  static const List<String> father = [];
+  static const List<String> kingBradley = [];
+  static const List<String> scar = [];
+  static const List<String> maesHughes = [];
+  static const List<String> prideSelimBradley = [];
+  static const List<String> greedLingYao = [];
+  static const List<String> izumiCurtis = [];
+
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // HXH — Hunter x Hunter   prefix: hxh_
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // ignore: unused_field
+  static const String _hxh = 'assets/images/Animé pictures/Hunter x Hunter';
+
+  static const List<String> killuaZoldyck = [];
+  static const List<String> gonFreecss = [];
+  static const List<String> hisokaMoreow = [];
+  static const List<String> kurapika = [];
+  static const List<String> chrolloLucilfer = [];
+  static const List<String> leorioParadinight = [];
+  static const List<String> biscuitKrueger = [];
+  static const List<String> meruem = [];
+  static const List<String> isaacNetero = [];
+  static const List<String> illumiZoldyck = [];
+  static const List<String> gingFreecss = [];
+  static const List<String> feitanPortor = [];
+  static const List<String> neferpitou = [];
+
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // Résolution par charId
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   static List<String> getByCharacterId(String charId) {
@@ -1075,6 +1115,60 @@ class AppAssets {
       case 'knb-tetsuya-kuroko':
       case 'knb-kuroko-tetsuya':
         return tetsuyaKuroko;
+      // FMA
+      case 'fma-edward-elric':
+        return edwardElric;
+      case 'fma-roy-mustang':
+        return royMustang;
+      case 'fma-alphonse-elric':
+        return alphonseElric;
+      case 'fma-riza-hawkeye':
+        return rizaHawkeye;
+      case 'fma-winry-rockbell':
+        return winryRockbell;
+      case 'fma-van-hohenheim':
+        return vanHohenheim;
+      case 'fma-father':
+        return father;
+      case 'fma-king-bradley':
+        return kingBradley;
+      case 'fma-scar':
+        return scar;
+      case 'fma-maes-hughes':
+        return maesHughes;
+      case 'fma-pride-selim-bradley':
+        return prideSelimBradley;
+      case 'fma-greed-ling-yao':
+        return greedLingYao;
+      case 'fma-izumi-curtis':
+        return izumiCurtis;
+      // HXH
+      case 'hxh-killua-zoldyck':
+        return killuaZoldyck;
+      case 'hxh-gon-freecss':
+        return gonFreecss;
+      case 'hxh-hisoka-morow':
+        return hisokaMoreow;
+      case 'hxh-kurapika':
+        return kurapika;
+      case 'hxh-chrollo-lucilfer':
+        return chrolloLucilfer;
+      case 'hxh-leorio-paradinight':
+        return leorioParadinight;
+      case 'hxh-biscuit-krueger':
+        return biscuitKrueger;
+      case 'hxh-meruem':
+        return meruem;
+      case 'hxh-isaac-netero':
+        return isaacNetero;
+      case 'hxh-illumi-zoldyck':
+        return illumiZoldyck;
+      case 'hxh-ging-freecss':
+        return gingFreecss;
+      case 'hxh-feitan-portor':
+        return feitanPortor;
+      case 'hxh-neferpitou':
+        return neferpitou;
       default:
         return const [];
     }
