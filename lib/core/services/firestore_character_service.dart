@@ -4,6 +4,7 @@ import '../models/character.dart';
 import '../models/anime_entry.dart';
 import '../models/creator_entry.dart';
 import '../theme/app_colors.dart';
+import '../constants/app_assets.dart';
 
 class FirestoreCharacterService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
@@ -210,7 +211,11 @@ class FirestoreCharacterService {
       imagePath: (d['imagePath'] as String?)?.isNotEmpty == true
           ? d['imagePath'] as String
           : null,
-      images: (d['images'] as List<dynamic>?)?.cast<String>() ?? [],
+      images: () {
+        final fsImages = (d['images'] as List<dynamic>?)?.cast<String>() ?? [];
+        if (fsImages.isNotEmpty) return fsImages;
+        return AppAssets.getByCharacterId(id);
+      }(),
       category: _categoryForAnime(animeId),
       isTrending: popularityRank <= 3,
       isNew: false,

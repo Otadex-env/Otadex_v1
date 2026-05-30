@@ -54,15 +54,13 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
   Character get c => _character!;
 
   List<String> get _effectiveImages {
-    // 1. Images locales assets (priorité)
+    // 1. Images Firestore (GitHub raw URLs)
+    final firestoreImages = c.images.where((url) => url.isNotEmpty).toList();
+    if (firestoreImages.isNotEmpty) return firestoreImages;
+
+    // 2. AppAssets fallback
     final localImages = AppAssets.getByCharacterId(c.id);
     if (localImages.isNotEmpty) return localImages;
-
-    // 2. Images dans character.images (URLs Firestore)
-    final firestoreImages = c.images
-      .where((url) => url.isNotEmpty)
-      .toList();
-    if (firestoreImages.isNotEmpty) return firestoreImages;
 
     // 3. imagePath seul
     if (c.imagePath?.isNotEmpty == true) {

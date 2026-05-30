@@ -1102,5 +1102,78 @@ Ajouter Hunter x Hunter (2011, Madhouse) comme 7e anime sur OTADEX.
 
 ---
 
+## Task 43 — Migration URLs GitHub raw (scripts d'import) (30 mai 2026)
+
+### Objectif
+Remplacer tous les chemins `assets/images/...` locaux par des URLs GitHub raw dans les scripts d'import, et vérifier que Firestore passe bien les URLs au modèle `Character`.
+
+### ✅ Scripts d'import mis à jour
+
+| Script | Personnages | URLs ajoutées | Statut |
+|---|---|---|---|
+| `scripts/import_jjk.js` | 14 | 112 | ✅ (session précédente) |
+| `scripts/import_op.js` | 14 | 142 | ✅ — Trafalgar Law: 8 images ajoutées |
+| `scripts/import_ns.js` | 20 | 153 | ✅ — 11 préfixes corrigés (ns_itac→ns_itachi, etc.) |
+| `scripts/import_kkb.js` | 13 | 117 | ✅ — tous les champs étaient vides |
+| `scripts/import_clk.js` | 9 | variable | ✅ — CLK_BASE + dossiers encodés |
+| `scripts/import_fma.js` | — | 0 | ⏭ ignoré — 0 images dans le repo |
+| `scripts/import_hxh.js` | — | 0 | ⏭ ignoré — 0 images dans le repo |
+
+**Format URL :** `https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/[Animé%20encodé]/[Personnage%20encodé]/[fichier]`
+
+**Corrections NS** (préfixes mal nommés dans l'ancienne version) :
+
+| Personnage | Ancien préfixe | Correct |
+|---|---|---|
+| Itachi Uchiha | ns_itac | ns_itachi |
+| Naruto Uzumaki | ns_naru | ns_naruto |
+| Kakashi Hatake | ns_kaka | ns_kakashi |
+| Gaara | ns_gaar | ns_gaara |
+| Hinata Hyuga | ns_hina | ns_hinata |
+| Madara Uchiha | ns_mada | ns_madara |
+| Might Guy | ns_migh | ns_guy |
+| Rock Lee | ns_rock | ns_lee |
+| Hashirama Senju | ns_hash | ns_hashi |
+| Konan | ns_kona | ns_konan |
+| Sasuke Uchiha | ns_sasu | ns_sasuke |
+
+Personnages NS sans images (Obito Uchiha, Shikamaru Nara, Tsunade) : `images: [], imagePath: ""`
+
+### ✅ Dart — Firestore → Character (images)
+
+**`lib/core/services/firestore_character_service.dart`** :
+- Import ajouté : `import '../constants/app_assets.dart';`
+- `_characterFromFirestore()` ligne 213 : fallback AppAssets si Firestore `images[]` absent ou vide
+
+```dart
+images: () {
+  final fsImages = (d['images'] as List<dynamic>?)?.cast<String>() ?? [];
+  if (fsImages.isNotEmpty) return fsImages;
+  return AppAssets.getByCharacterId(id);
+}(),
+```
+
+**`lib/features/character/presentation/character_detail_screen.dart`** :
+- `_effectiveImages` : priorité inversée — Firestore URLs en premier, AppAssets en fallback
+
+```dart
+// 1. Images Firestore (GitHub raw URLs)
+final firestoreImages = c.images.where((url) => url.isNotEmpty).toList();
+if (firestoreImages.isNotEmpty) return firestoreImages;
+// 2. AppAssets fallback
+final localImages = AppAssets.getByCharacterId(c.id);
+if (localImages.isNotEmpty) return localImages;
+// 3. imagePath seul
+```
+
+### ✅ dart analyze lib/ → No issues found!
+
+### Actions manuelles requises
+1. Lancer chaque script : `node scripts/import_op.js`, `import_ns.js`, `import_kkb.js`, `import_clk.js`
+2. Hot restart Flutter
+3. Vérifier que les images se chargent depuis GitHub sur les fiches personnage
+
+---
+
 _À mettre à jour par Claude Code à la fin de chaque session._
-_Dernière mise à jour : Tasks 41 & 42 — FMA + HxH intégrés, 29 mai 2026_
+_Dernière mise à jour : Task 43 — Migration URLs GitHub raw + fix Firestore images, 30 mai 2026_
