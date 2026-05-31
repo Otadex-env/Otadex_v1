@@ -3,6 +3,12 @@
  * Lit Hunter_x_Hunter_Personnages_OTADEX_2026.docx et insère les données dans Firebase Firestore.
  * Usage : node scripts/import_hxh.js
  * Prérequis : npm install mammoth firebase-admin (à la racine du projet)
+ *
+ * Images GitHub raw base URL (quand les images seront poussées dans otadex-assets) :
+ * https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/
+ * Dossiers disponibles : Killua Zoldyck, Gon Freecss, Hisoka Morow, Kurapika, Chrollo Lucilfer,
+ *   Leorio Paradinight, Biscuit Krueger, Meruem, Isaac Netero, Illumi Zoldyck,
+ *   Ging Freecss, Feitan Portor, Neferpitou
  */
 
 const mammoth = require("mammoth");

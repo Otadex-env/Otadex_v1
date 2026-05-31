@@ -3,6 +3,11 @@
  * Lit Fullmetal_Alchemist_Personnages_OTADEX_2026.docx et insère les données dans Firebase Firestore.
  * Usage : node scripts/import_fma.js
  * Prérequis : npm install mammoth firebase-admin (à la racine du projet)
+ *
+ * Images GitHub raw base URL (quand les images seront poussées dans otadex-assets) :
+ * https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Fullmetal%20Alchemist/
+ * Dossiers disponibles : Edward Elric, Alphonse Elric, Roy Mustang, Riza Hawkeye, Winry Rockbell,
+ *   Van Hohenheim, Father, King Bradley, Scar, Maes Hughes, Pride Selim Bradley, Greed Ling Yao, Izumi Curtis
  */
 
 const mammoth = require("mammoth");
