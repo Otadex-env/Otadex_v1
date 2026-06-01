@@ -15,6 +15,8 @@ class AppConstants {
   static const String keyUserRank = 'user_rank';
   static const String keyUserCurrency = 'user_currency';
   static const String keySubscriptionPlan = 'subscription_plan';
+  static const String keyLicenseExpires = 'license_expires';
+  static const String keyLicenseKey = 'license_key';
 
   // SharedPreferences keys — onboarding data
   static const String keyBirthDate = 'user_birth_date';

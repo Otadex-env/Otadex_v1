@@ -18,6 +18,7 @@ import '../../features/legal/presentation/privacy_policy_screen.dart';
 import '../../features/legal/presentation/terms_screen.dart';
 import '../../features/search/presentation/search_screen.dart';
 import '../../features/subscription/presentation/plans_screen.dart';
+import '../../features/subscription/presentation/license_activation_screen.dart';
 import '../../features/studio/presentation/studio_screen.dart';
 import '../../features/voice_actor/presentation/voice_actor_screen.dart';
 import '../../features/character/presentation/character_chat_screen.dart';
@@ -150,6 +151,11 @@ class AppRouter {
         path: '/subscription',
         name: 'subscription',
         builder: (context, state) => const PlansScreen(),
+      ),
+      GoRoute(
+        path: '/activate-license',
+        name: 'activate-license',
+        builder: (context, state) => const LicenseActivationScreen(),
       ),
       GoRoute(
         path: '/studio/:id',

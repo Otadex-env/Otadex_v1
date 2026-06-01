@@ -5,8 +5,8 @@
 - Flutter SDK : `>=3.0.0 <4.0.0` (Flutter 3.x)
 - App version : `1.0.0+1`
 - Firebase configuré : **OUI (Storage inclus)** — FlutterFire Android + Firebase Auth email/Google + Firestore profil utilisateur + Functions + Storage initialisés
-- Dernier écran complété : **NotificationsScreen** (stream Firestore live, badge HomeAppBar, mai 2026)
-- Dernière mise à jour : **Task 37 — Notifications push Phase 1**, 26 mai 2026
+- Dernier écran complété : **PlansScreen** (URLs Chariow `/checkout` + SnackBar post-achat, juin 2026)
+- Dernière mise à jour : **Task 45 — Paiement Chariow URLs + SnackBar**, 01 juin 2026
 
 ## Dépendances installées (`pubspec.yaml`)
 
@@ -1175,5 +1175,108 @@ if (localImages.isNotEmpty) return localImages;
 
 ---
 
+---
+
+## Task 44 — Système de licences Chariow (1er juin 2026)
+
+### Objectif
+Intégrer l'API Chariow pour activer et vérifier les licences Jonin/Kage en temps réel.
+
+### ✅ flutter_dotenv ajouté
+- `flutter_dotenv: ^5.1.0` dans `pubspec.yaml`
+- `.env` déclaré dans `pubspec.yaml` assets
+- `.env` déjà présent à la racine avec `CHARIOW_API_KEY=sk_dt4ihlbu_...` (ne jamais committer)
+
+### ✅ ChariowService (`lib/core/services/chariow_service.dart`) — NOUVEAU
+- `LicenseResult` : `isActive`, `isExpired`, `expiresAt`, `productName`, `errorMessage`
+- `activateLicense(licenseKey, uid)` : POST `/v1/licenses/{key}/activate` avec `device_identifier = uid`
+  - Erreurs 400 traduits en français : révoquée / expirée / limite atteinte
+  - Erreur 404 : "Licence introuvable. Vérifie la clé."
+  - Réseau : "Erreur réseau. Réessaie plus tard."
+- `checkLicense(licenseKey)` : GET `/v1/licenses/{key}`
+- `detectPlan(productName)` : "jonin" → `UserRank.jonin`, "kage" → `UserRank.kage`, autre → `UserRank.genin`
+- Clé lue via `dotenv.env['CHARIOW_API_KEY']`
+
+### ✅ LicenseActivationScreen (`lib/features/subscription/presentation/license_activation_screen.dart`) — NOUVEAU
+- Validation UUID : `RegExp(r'^[0-9a-fA-F-]{36}$')`
+- Appel `ChariowService().activateLicense(key, uid)`
+- Sur succès :
+  - `detectPlan(productName)` → `UserRank`
+  - Firestore `users/{uid}`: `abonnement`, `licenseKey`, `licenseExpiresAt`, `licenseActivatedAt`
+  - `userProfileProvider.notifier.updateIdentity(rank: rank.name)`
+  - SharedPreferences : `user_rank`, `subscription_plan`, `license_key`, `license_expires` (ms)
+  - SnackBar "🎉 Bienvenue chez les {Jonin/Kage} !"
+  - `context.go('/home')`
+- Sur échec : message d'erreur sous le TextField
+
+### ✅ Route `/activate-license` ajoutée dans `app_router.dart`
+
+### ✅ PlansScreen (`lib/features/subscription/presentation/plans_screen.dart`) corrigé
+- "Tchopé Plus" → "OTADEX Premium" / "Débloque OTADEX Premium"
+- Formulaire d'activation **retiré** (déplacé vers `LicenseActivationScreen`)
+- Bouton "Activer ma licence" (OutlinedButton) → `/activate-license`
+- Cards Jonin/Kage avec "Acheter" → URLs Chariow store conservées
+
+### ✅ SubscriptionCard (`lib/features/profile/presentation/widgets/subscription_card.dart`) — Section dynamique
+- `ConsumerStatefulWidget` — lit `userProfileProvider` (rank) + SharedPreferences (`license_expires`)
+- **Genin** : card standard + bouton "Passer au premium" → `/subscription`
+- **Jonin/Kage actif** : plan + date expiration (DD/MM/YYYY) + jours restants
+  - Si < 7 jours → `AppColors.error`
+  - Bouton "Renouveler" → `/activate-license`
+  - Bouton "Changer de plan" → `/subscription`
+- **Expiré** : card rouge "Abonnement expiré" + bouton "Réactiver" → `/activate-license`
+
+### ✅ main.dart — dotenv + vérification expiration au démarrage
+- `await dotenv.load(fileName: '.env')` avant `Firebase.initializeApp()`
+- Si `license_expires` dépassé et utilisateur connecté :
+  - Vérification via `ChariowService().checkLicense(licenseKey)`
+  - Si expiré/inactif → `user_rank = genin`, suppression `license_expires`, Firestore update
+  - Si encore actif → mise à jour `license_expires` depuis Chariow
+  - Si erreur réseau → rang conservé (pas de pénalité offline)
+
+### ✅ AppConstants — nouvelles clés
+- `keyLicenseExpires = 'license_expires'`
+- `keyLicenseKey = 'license_key'`
+
+### `dart analyze lib/ → No issues found!`
+
+---
+
 _À mettre à jour par Claude Code à la fin de chaque session._
-_Dernière mise à jour : Task 43 — Migration URLs GitHub raw + fix Firestore images, 30 mai 2026_
+---
+
+## Task 45 — Paiement Chariow : URLs checkout + SnackBar (1er juin 2026)
+
+### Objectif
+Brancher les 4 URLs de paiement Chariow avec `/checkout`, remplacer `UrlLauncherService` par `url_launcher` direct avec `canLaunchUrl`, et afficher un SnackBar post-achat.
+
+### Fichier modifié
+
+**`lib/features/subscription/presentation/plans_screen.dart`**
+
+#### URLs mises à jour (ajout `/checkout`)
+| Plan | Mode | URL |
+|------|------|-----|
+| Jonin | Mensuel | `https://store.tilstack.me/prd_1epnxl/checkout` |
+| Jonin | Annuel | `https://store.tilstack.me/prd_xqbqdx/checkout` |
+| Kage | Mensuel | `https://store.tilstack.me/prd_hdj1oy/checkout` |
+| Kage | Annuel | `https://store.tilstack.me/prd_0jx2mh/checkout` |
+
+#### Méthode `_buyPlan(String url)`
+- `canLaunchUrl` + `launchUrl(mode: LaunchMode.externalApplication)`
+- SnackBar flottant après lancement :
+  - Message : "Après ton achat, reviens ici pour activer ta licence 🔑"
+  - Action "Activer" → `context.push('/activate-license')`
+  - Couleurs : `AppColors.backgroundCard` + `AppColors.rankJonin`
+- Import `UrlLauncherService` retiré, import `url_launcher` ajouté directement
+
+### Checklist
+- ✅ URLs Jonin Mensuel/Annuel + Kage Mensuel/Annuel avec `/checkout`
+- ✅ `canLaunchUrl` + `launchUrl(externalApplication)` branché
+- ✅ SnackBar post-achat avec action "Activer" → `/activate-license`
+- ✅ AppColors uniquement (aucune `Color()` hardcodée)
+- ✅ `dart analyze lib/` → No issues found!
+
+---
+
+_Dernière mise à jour : Task 45 — Paiement Chariow URLs + SnackBar, 1er juin 2026_
