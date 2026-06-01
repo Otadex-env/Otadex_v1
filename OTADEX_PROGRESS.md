@@ -1279,4 +1279,42 @@ Brancher les 4 URLs de paiement Chariow avec `/checkout`, remplacer `UrlLauncher
 
 ---
 
-_Dernière mise à jour : Task 45 — Paiement Chariow URLs + SnackBar, 1er juin 2026_
+---
+
+## Task 46 — GitHub Actions : Vote Fan du Mois automatisé (1er juin 2026)
+
+### Objectif
+Automatiser l'envoi de la notification "Vote Fan du Mois" le 1er de chaque mois via GitHub Actions + OneSignal REST API.
+
+### Fichiers créés / modifiés
+
+**`.github/workflows/monthly_vote.yml`** (nouveau)
+- Déclenchement : `cron: '0 8 1 * *'` (1er du mois à 8h UTC = 9h Douala UTC+1)
+- `workflow_dispatch` : déclenchement manuel depuis GitHub UI
+- Jobs : `checkout@v4` → `setup-node@v4 (18)` → `npm install` → `node scripts/notify_monthly_vote.js`
+- Secrets injectés : `ONESIGNAL_API_KEY` + `ONESIGNAL_APP_ID`
+
+**`scripts/notify_monthly_vote.js`** (réécrit)
+- Script autonome (n'utilise plus `send_notification.js`)
+- Lit `process.env.ONESIGNAL_API_KEY` + `process.env.ONESIGNAL_APP_ID`
+- Garde `dotenv.config()` pour usage local (`.env`)
+- Validation au démarrage : si variables absentes → `console.error` + `process.exit(1)`
+- Notification : titre "🏆 Vote Fan du Mois ouvert !", body "Soutenez votre personnage préféré et devenez Fan #1 ce mois-ci !", url deep link `otadex://home`, segment `All`
+- Appel HTTP natif via `https` (pas de dépendance externe supplémentaire)
+
+**`.github/SECRETS.md`** (nouveau)
+- Documentation des 2 secrets GitHub requis : `ONESIGNAL_API_KEY` + `ONESIGNAL_APP_ID`
+- Lien direct vers la page de configuration des secrets du repo
+
+### Checklist
+- ✅ GitHub Actions → vote mensuel automatisé (1er du mois à 9h heure Douala)
+- ✅ `notify_monthly_vote.js` → variables d'env (plus de valeurs hardcodées)
+- ✅ `workflow_dispatch` → déclenchement manuel possible
+- ✅ `.github/SECRETS.md` → documentation secrets GitHub
+
+> ⚠️ **Note** : Configurer les secrets GitHub avant activation
+> (`ONESIGNAL_API_KEY` + `ONESIGNAL_APP_ID` dans Settings → Secrets → Actions)
+
+---
+
+_Dernière mise à jour : Task 46 — GitHub Actions Vote Fan du Mois, 1er juin 2026_

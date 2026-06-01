@@ -1,0 +1,31 @@
+name: Vote Fan du Mois — Notification mensuelle
+
+on:
+  schedule:
+    # 1er de chaque mois à 9h00 (heure Douala UTC+1)
+    - cron: '0 8 1 * *'
+
+  # Permettre de déclencher manuellement depuis GitHub
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout du repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Installer les dépendances
+        run: npm install
+
+      - name: Envoyer la notification vote mensuel
+        env:
+          ONESIGNAL_API_KEY: ${{ secrets.ONESIGNAL_API_KEY }}
+          ONESIGNAL_APP_ID: ${{ secrets.ONESIGNAL_APP_ID }}
+        run: node scripts/notify_monthly_vote.js
