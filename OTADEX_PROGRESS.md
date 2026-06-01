@@ -1317,4 +1317,24 @@ Automatiser l'envoi de la notification "Vote Fan du Mois" le 1er de chaque mois 
 
 ---
 
-_Dernière mise à jour : Task 46 — GitHub Actions Vote Fan du Mois, 1er juin 2026_
+---
+
+## Task 47 — Migration dart.yml → Flutter CI (1er juin 2026)
+
+### Workflows audités
+| Fichier | Contient Dart | Action |
+|---------|--------------|--------|
+| `monthly_vote.yml` | Non (Node.js) | Ignoré |
+| `dart.yml` | Oui (`dart-lang/setup-dart`, `dart pub get`) | **Option A** — migré Flutter |
+
+### Changements appliqués à `.github/workflows/dart.yml`
+- Nom : `Dart` → `Flutter CI`
+- `dart-lang/setup-dart@9a04e6d...` → `subosito/flutter-action@v2` (flutter `3.x` stable)
+- `dart pub get` → `flutter pub get`
+- `dart analyze` → `flutter analyze`
+- `dart test` → `flutter test`
+- Commentaires de template Dart supprimés
+
+---
+
+_Dernière mise à jour : Task 47 — Flutter CI workflow, 1er juin 2026_
