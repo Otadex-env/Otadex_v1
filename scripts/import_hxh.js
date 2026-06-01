@@ -174,8 +174,15 @@ const characters = [
     isNew: false,
     isTrending: true,
     likesCount: 52300,
-    images: [],
-    imagePath: "",
+    images: [
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Killua%20Zoldyck/hxh_killu1.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Killua%20Zoldyck/hxh_killu2.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Killua%20Zoldyck/hxh_killu3.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Killua%20Zoldyck/hxh_killu4.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Killua%20Zoldyck/hxh_killu5.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Killua%20Zoldyck/hxh_killu6.jpeg"
+      ],
+    imagePath: "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Killua%20Zoldyck/hxh_killu1.jpeg",
     created_at: FieldValue.serverTimestamp(),
   },
 
@@ -231,8 +238,16 @@ const characters = [
     isNew: false,
     isTrending: true,
     likesCount: 38700,
-    images: [],
-    imagePath: "",
+    images: [
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Gon%20Freecss/hxh_gon1.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Gon%20Freecss/hxh_gon2.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Gon%20Freecss/hxh_gon3.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Gon%20Freecss/hxh_gon4.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Gon%20Freecss/hxh_gon5.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Gon%20Freecss/hxh_gon6.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Gon%20Freecss/hxh_gon7.jpeg"
+      ],
+    imagePath: "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Gon%20Freecss/hxh_gon1.jpeg",
     created_at: FieldValue.serverTimestamp(),
   },
 
@@ -287,8 +302,16 @@ const characters = [
     isNew: false,
     isTrending: true,
     likesCount: 31500,
-    images: [],
-    imagePath: "",
+    images: [
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Hisoka%20Morow/hxh_hisok1.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Hisoka%20Morow/hxh_hisok2.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Hisoka%20Morow/hxh_hisok3.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Hisoka%20Morow/hxh_hisok4.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Hisoka%20Morow/hxh_hisok5.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Hisoka%20Morow/hxh_hisok6.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Hisoka%20Morow/hxh_hisok7.jpeg"
+      ],
+    imagePath: "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Hisoka%20Morow/hxh_hisok1.jpeg",
     created_at: FieldValue.serverTimestamp(),
   },
 
@@ -345,8 +368,16 @@ const characters = [
     isNew: false,
     isTrending: false,
     likesCount: 24100,
-    images: [],
-    imagePath: "",
+    images: [
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Kurapika/hxh_kurap1.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Kurapika/hxh_kurap2.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Kurapika/hxh_kurap3.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Kurapika/hxh_kurap4.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Kurapika/hxh_kurap5.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Kurapika/hxh_kurap6.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Kurapika/hxh_kurap7.jpeg"
+      ],
+    imagePath: "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Kurapika/hxh_kurap1.jpeg",
     created_at: FieldValue.serverTimestamp(),
   },
 
@@ -400,8 +431,17 @@ const characters = [
     isNew: false,
     isTrending: false,
     likesCount: 19600,
-    images: [],
-    imagePath: "",
+    images: [
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Chrollo%20Lucilfer/hxh_chrol1.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Chrollo%20Lucilfer/hxh_chrol2.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Chrollo%20Lucilfer/hxh_chrol3.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Chrollo%20Lucilfer/hxh_chrol4.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Chrollo%20Lucilfer/hxh_chrol5.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Chrollo%20Lucilfer/hxh_chrol6.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Chrollo%20Lucilfer/hxh_chrol7.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Chrollo%20Lucilfer/hxh_chrol8.jpeg"
+      ],
+    imagePath: "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Chrollo%20Lucilfer/hxh_chrol1.jpeg",
     created_at: FieldValue.serverTimestamp(),
   },
 
@@ -455,8 +495,16 @@ const characters = [
     isNew: false,
     isTrending: false,
     likesCount: 14300,
-    images: [],
-    imagePath: "",
+    images: [
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Leorio%20Paradinight/hxh_leori1.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Leorio%20Paradinight/hxh_leori2.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Leorio%20Paradinight/hxh_leori3.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Leorio%20Paradinight/hxh_leori4.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Leorio%20Paradinight/hxh_leori5.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Leorio%20Paradinight/hxh_leori6.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Leorio%20Paradinight/hxh_leori7.jpeg"
+      ],
+    imagePath: "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Leorio%20Paradinight/hxh_leori1.jpeg",
     created_at: FieldValue.serverTimestamp(),
   },
 
@@ -510,8 +558,16 @@ const characters = [
     isNew: false,
     isTrending: false,
     likesCount: 10900,
-    images: [],
-    imagePath: "",
+    images: [
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Biscuit%20Krueger/hxh_biscu1.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Biscuit%20Krueger/hxh_biscu2.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Biscuit%20Krueger/hxh_biscu3.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Biscuit%20Krueger/hxh_biscu4.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Biscuit%20Krueger/hxh_biscu5.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Biscuit%20Krueger/hxh_biscu6.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Biscuit%20Krueger/hxh_biscu7.jpeg"
+      ],
+    imagePath: "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Biscuit%20Krueger/hxh_biscu1.jpeg",
     created_at: FieldValue.serverTimestamp(),
   },
 
@@ -566,8 +622,17 @@ const characters = [
     isNew: false,
     isTrending: false,
     likesCount: 16200,
-    images: [],
-    imagePath: "",
+    images: [
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Meruem/hxh_merue1.png",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Meruem/hxh_merue2.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Meruem/hxh_merue3.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Meruem/hxh_merue4.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Meruem/hxh_merue5.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Meruem/hxh_merue6.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Meruem/hxh_merue7.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Meruem/hxh_merue8.jpeg"
+      ],
+    imagePath: "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Meruem/hxh_merue1.png",
     created_at: FieldValue.serverTimestamp(),
   },
 
@@ -621,8 +686,16 @@ const characters = [
     isNew: false,
     isTrending: false,
     likesCount: 13800,
-    images: [],
-    imagePath: "",
+    images: [
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Isaac%20Netero/hxh_isaac1.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Isaac%20Netero/hxh_isaac2.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Isaac%20Netero/hxh_isaac3.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Isaac%20Netero/hxh_isaac4.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Isaac%20Netero/hxh_isaac5.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Isaac%20Netero/hxh_isaac6.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Isaac%20Netero/hxh_isaac7.jpeg"
+      ],
+    imagePath: "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Isaac%20Netero/hxh_isaac1.jpeg",
     created_at: FieldValue.serverTimestamp(),
   },
 
@@ -676,8 +749,17 @@ const characters = [
     isNew: false,
     isTrending: false,
     likesCount: 11200,
-    images: [],
-    imagePath: "",
+    images: [
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Illumi%20Zoldyck/hxh_illum1.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Illumi%20Zoldyck/hxh_illum2.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Illumi%20Zoldyck/hxh_illum3.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Illumi%20Zoldyck/hxh_illum4.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Illumi%20Zoldyck/hxh_illum5.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Illumi%20Zoldyck/hxh_illum6.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Illumi%20Zoldyck/hxh_illum7.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Illumi%20Zoldyck/hxh_illum8.jpeg"
+      ],
+    imagePath: "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Illumi%20Zoldyck/hxh_illum1.jpeg",
     created_at: FieldValue.serverTimestamp(),
   },
 
@@ -730,8 +812,15 @@ const characters = [
     isNew: false,
     isTrending: false,
     likesCount: 9400,
-    images: [],
-    imagePath: "",
+    images: [
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Ging%20Freecss/hxh_ging1.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Ging%20Freecss/hxh_ging2.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Ging%20Freecss/hxh_ging3.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Ging%20Freecss/hxh_ging4.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Ging%20Freecss/hxh_ging5.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Ging%20Freecss/hxh_ging6.jpeg"
+      ],
+    imagePath: "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Ging%20Freecss/hxh_ging1.jpeg",
     created_at: FieldValue.serverTimestamp(),
   },
 
@@ -784,8 +873,15 @@ const characters = [
     isNew: false,
     isTrending: false,
     likesCount: 7800,
-    images: [],
-    imagePath: "",
+    images: [
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Feitan%20Portor/hxh_feita1.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Feitan%20Portor/hxh_feita2.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Feitan%20Portor/hxh_feita3.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Feitan%20Portor/hxh_feita4.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Feitan%20Portor/hxh_feita5.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Feitan%20Portor/hxh_feita6.jpeg"
+      ],
+    imagePath: "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Feitan%20Portor/hxh_feita1.jpeg",
     created_at: FieldValue.serverTimestamp(),
   },
 
@@ -838,8 +934,16 @@ const characters = [
     isNew: false,
     isTrending: false,
     likesCount: 8500,
-    images: [],
-    imagePath: "",
+    images: [
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Neferpitou/hxh_nefer1.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Neferpitou/hxh_nefer2.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Neferpitou/hxh_nefer3.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Neferpitou/hxh_nefer4.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Neferpitou/hxh_nefer5.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Neferpitou/hxh_nefer6.jpeg",
+        "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Neferpitou/hxh_nefer7.jpeg"
+      ],
+    imagePath: "https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/Hunter%20x%20Hunter/Neferpitou/hxh_nefer1.jpeg",
     created_at: FieldValue.serverTimestamp(),
   },
 ];
