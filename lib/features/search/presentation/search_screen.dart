@@ -361,8 +361,10 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
           }
         }
       },
-      localeId: 'fr_FR',
-      pauseFor: const Duration(seconds: 3),
+      listenOptions: SpeechListenOptions(
+        localeId: 'fr_FR',
+        pauseFor: const Duration(seconds: 3),
+      ),
     );
   }
 
