@@ -3,34 +3,35 @@
 ## État actuel du projet
 
 - Flutter SDK : `>=3.0.0 <4.0.0` (Flutter 3.x)
-- App version : `1.0.0+1`
+- App version : `1.5.0+1`
 - Firebase configuré : **OUI (Storage inclus)** — FlutterFire Android + Firebase Auth email/Google + Firestore profil utilisateur + Functions + Storage initialisés
 - Dernier écran complété : **PlansScreen** (URLs Chariow `/checkout` + SnackBar post-achat, juin 2026)
-- Dernière mise à jour : **Task 45 — Paiement Chariow URLs + SnackBar**, 01 juin 2026
+- Dernière mise à jour : **Task 45 — Paiement Chariow URLs + SnackBar**, 02 juin 2026
+- Correction : `lib/features/search/presentation/search_screen.dart` mis à jour (`axisAlignment` → `alignment`), `lib/core/theme/app_theme.dart` confirmé avec `ZoomPageTransitionsBuilder`, `.env` retiré de `pubspec.yaml`, `dart analyze lib/` à vérifier.
 
 ## Dépendances installées (`pubspec.yaml`)
 
-| Package                | Version | Usage                        |
-| ---------------------- | ------- | ---------------------------- |
-| go_router              | ^13.0.0 | Navigation                   |
-| google_fonts           | ^6.1.0  | Typographie                  |
-| flutter_riverpod       | ^2.4.0  | State management             |
-| riverpod_annotation    | ^2.3.0  | Codegen Riverpod             |
-| shared_preferences     | ^2.2.0  | Persistance locale           |
-| flutter_secure_storage | ^9.0.0  | Token sécurisé               |
-| smooth_page_indicator  | ^1.1.0  | Onboarding dots              |
-| flutter_animate        | ^4.3.0  | Animations                   |
-| shimmer                | ^3.0.0  | Skeleton loaders             |
-| cached_network_image   | ^3.3.0  | Images réseau                |
-| flutter_svg            | ^2.0.0  | Icônes SVG                   |
-| google_sign_in         | ^6.2.0  | OAuth Google                 |
-| firebase_core          | ^2.27.0 | Initialisation Firebase      |
-| firebase_auth          | ^4.17.0 | Auth email/password + Google |
-| cloud_firestore        | ^4.15.0 | Profil utilisateur Firestore |
-| firebase_storage       | ^11.6.0 | Images personnages Storage   |
-| gap                    | ^3.0.1  | Espacement                   |
-| image_picker           | ^1.1.0  | Avatar picker                |
-| firebase_messaging     | ^14.9.0 | Push notifications FCM       |
+| Package                     | Version | Usage                         |
+| --------------------------- | ------- | ----------------------------- |
+| go_router                   | ^13.0.0 | Navigation                    |
+| google_fonts                | ^6.1.0  | Typographie                   |
+| flutter_riverpod            | ^2.4.0  | State management              |
+| riverpod_annotation         | ^2.3.0  | Codegen Riverpod              |
+| shared_preferences          | ^2.2.0  | Persistance locale            |
+| flutter_secure_storage      | ^9.0.0  | Token sécurisé                |
+| smooth_page_indicator       | ^1.1.0  | Onboarding dots               |
+| flutter_animate             | ^4.3.0  | Animations                    |
+| shimmer                     | ^3.0.0  | Skeleton loaders              |
+| cached_network_image        | ^3.3.0  | Images réseau                 |
+| flutter_svg                 | ^2.0.0  | Icônes SVG                    |
+| google_sign_in              | ^6.2.0  | OAuth Google                  |
+| firebase_core               | ^2.27.0 | Initialisation Firebase       |
+| firebase_auth               | ^4.17.0 | Auth email/password + Google  |
+| cloud_firestore             | ^4.15.0 | Profil utilisateur Firestore  |
+| firebase_storage            | ^11.6.0 | Images personnages Storage    |
+| gap                         | ^3.0.1  | Espacement                    |
+| image_picker                | ^1.1.0  | Avatar picker                 |
+| firebase_messaging          | ^14.9.0 | Push notifications FCM        |
 | flutter_local_notifications | ^17.0.0 | Notifications locales Android |
 
 > ✅ `flutter pub get` exécuté — 0 erreur.
@@ -245,41 +246,51 @@
 ## Task 28 — Assets locaux JJK + Audit sources données (22 mai 2026)
 
 ### ✅ FIX A — Sources de données
+
 - `allCharactersProvider` : Firestore (200) OU JSON mock fallback — déjà correct (task 27)
 - `trendingCharactersProvider` : Firestore-based via `isTrending` — déjà correct (task 27)
 
 ### ✅ FIX B — Images locales déclarées dans pubspec.yaml
+
 - 15 dossiers JJK ajoutés sous `assets/images/Animé pictures/Jujutsu kaizen/`
 - `app_assets.dart` étendu : 14 personnages JJK avec listes complètes de fichiers + `getByCharacterId()`
 
 ### ✅ FIX C — OtadexImage
+
 - Ajout guard `if (imagePath.isEmpty) return _errorWidget()` avant tout traitement
 
 ### ✅ FIX D — `_effectiveImages` dans CharacterDetailScreen
+
 - Priorité 1 : `AppAssets.getByCharacterId(c.id)` (assets locaux)
 - Priorité 2 : `c.images` (Firestore)
 - Priorité 3 : `c.imagePath`
 - Priorité 4 : Firebase Storage
 
 ### ✅ FIX E — Cards (grid + trending)
+
 - `character_grid_card.dart` + `trending_character_card.dart` : image résolue via `AppAssets.getByCharacterId()` en priorité
 
 ### ✅ FIX F — CollectionScreen
+
 - Déjà correct (task 27) : `collectionStreamProvider` + `allCharactersProvider`
 
 ### ✅ FIX G — scripts/import_jjk.js
+
 - 14 personnages mis à jour : `images[]` + `imagePath` → chemins assets locaux
 
 ---
 
-
 ---
 
 ## Task 29 — Import Naruto Shippuden (Automatisé)
+
 ### ✅ Scripts d'import générés
+
 - `scripts/import_ns.js` créé à partir du fichier `.docx`
 - 20 personnages ajoutés (Minato, Itachi, Sakura, etc.) avec bio, statistiques et rangs de popularité.
+
 ### ✅ Assets et Pubspec
+
 - `app_assets.dart` mis à jour dynamiquement pour le switch `getByCharacterId()` et les tableaux de 8 images par personnage (`ns_XXXX1.jpeg` à `ns_XXXX8.jpeg`).
 - Déclaration des dossiers cibles dans `pubspec.yaml` pour chaque nouveau personnage.
 - Prêt pour exécution avec `node scripts/import_ns.js`
@@ -289,30 +300,36 @@
 ## Task 30 — Migration Firestore-only + Dynamisme (23 mai 2026)
 
 ### Audit réalisé
+
 - Contrôle complet des 8 couches de données : providers, services, écrans, widgets
 - Identification de 6 problèmes bloquants (RÈGLE ABSOLUE + AniList résiduel + données figées)
 
 ### ✅ FIX 1 — RÈGLE ABSOLUE rétablie : `AppColors` tokens anime
+
 - `lib/core/theme/app_colors.dart` : 12 nouveaux tokens `animeJjkCard/Accent`, `animeNsCard/Accent`, `animeAotCard/Accent`, `animeOpCard/Accent`, `animeClkCard/Accent`, `animeDefaultCard/Accent`
 - `lib/core/services/firestore_character_service.dart` : `_cardColorForAnime` + `_accentColorForAnime` utilisent désormais `AppColors.*` — plus aucun `Color(0xFF...)` hardcodé hors de `app_colors.dart`
 
 ### ✅ FIX 2 — Hero Slider branché sur Firestore
+
 - `featuredSlidesProvider` reécrit : dérive les slides depuis `allAnimesProvider` (Firestore)
 - Fallback `_kFallbackSlides` si Firestore vide (premier lancement)
 - Quand un nouvel animé est importé → il apparaît automatiquement dans le hero carousel
 
 ### ✅ FIX 3 — `characterDetailProvider` Firestore-first universel
+
 - Plus de liste de préfixes hardcodés (`jjk-`, `ns-`, `clk-`)
 - Logique : Firestore → si null → fallback mock
 - Tout nouveau préfixe d'animé importé dans Firestore sera automatiquement résolu
 
 ### ✅ FIX 4 — Catégories de filtre dynamiques
+
 - `categoriesProvider` ajouté dans `otadex_providers.dart` : dérive les genres uniques depuis `allAnimesProvider` (Firestore), priorité aux genres standards, fallback liste statique
 - `category_chips.dart` converti en `ConsumerWidget` : watch `categoriesProvider`
 - `character_grid_section.dart` : watch `categoriesProvider`, suppression import `MockData`
 - Quand un nouvel animé avec un genre inédit est importé → le chip filtre apparaît automatiquement
 
 ### ✅ FIX 5 — `AnimeDetailScreen` branché sur Firestore
+
 - Remplace `otadexServiceProvider` (JSON mock) par `allAnimesProvider` + `allCharactersProvider` + `allCreatorsProvider`
 - Personnages filtrés par `animeName == anime.name || animeId == anime.id`
 - Créateur résolu depuis `allCreatorsProvider`
@@ -321,11 +338,13 @@
 - Label "Note AniList" → "Note"
 
 ### ✅ FIX 6 — Messages UI nettoyés
+
 - `character_detail_screen.dart` : "Relations à venir via AniList" → "Aucune relation disponible pour ce personnage"
 - `character_detail_screen.dart` : "Médias à venir via AniList" → "Médias non disponibles pour ce personnage"
 - `otadex_image.dart` : `.withOpacity()` déprecié → `.withValues(alpha:)`
 
 ### Règle d'extensibilité
+
 > Importer un nouvel animé via `node scripts/import_[anime].js` suffit.
 > Aucune modification Flutter requise : hero slider, catégories, personnages, fiche détail se mettent à jour automatiquement.
 
@@ -333,13 +352,13 @@
 
 ## Données mockées — Stratégie images
 
-| Source                                   | Usage                                                                         |
-| ---------------------------------------- | ----------------------------------------------------------------------------- |
-| Assets locaux JJK                        | Priorité absolue pour les 14 personnages JJK — via `AppAssets.getByCharacterId` |
-| Firestore `images[]`                     | Priorité 2 — URLs stockées dans Firestore                                     |
-| AniList CDN (réseau)                     | Fallback pour personnages non-JJK — via `OtadexImage(imagePath: url)`        |
-| `assets/images/characters/satoru_gojo/` | Placeholder local générique (5 fichiers, ~500 KB)                             |
-| Logo / splash / onboarding               | Assets locaux permanents — référencés via `AppAssets.*`                       |
+| Source                                  | Usage                                                                           |
+| --------------------------------------- | ------------------------------------------------------------------------------- |
+| Assets locaux JJK                       | Priorité absolue pour les 14 personnages JJK — via `AppAssets.getByCharacterId` |
+| Firestore `images[]`                    | Priorité 2 — URLs stockées dans Firestore                                       |
+| AniList CDN (réseau)                    | Fallback pour personnages non-JJK — via `OtadexImage(imagePath: url)`           |
+| `assets/images/characters/satoru_gojo/` | Placeholder local générique (5 fichiers, ~500 KB)                               |
+| Logo / splash / onboarding              | Assets locaux permanents — référencés via `AppAssets.*`                         |
 
 ## Bugs connus
 
@@ -632,50 +651,56 @@ URLs Play Console :
 | 10 mai 2026 | Vérification accès invité/connecté — Home et Search restent accessibles publiquement, Collection et Notifications sont protégées en accès direct par AuthRequiredScreen, la réhydratation du profil local ne se fait que si l'utilisateur est connecté.                                                                                                                                                                                                                                                                   |
 | 14 mai 2026 | Firebase Storage images — upload_images.js créé (Node.js, upload 131 images vers Storage bucket tilqui.appspot.com), firebase_storage ^11.6.0 ajouté, StorageService créé (getCharacterImages + getCharacterCover), storageServiceProvider + characterImagesProvider ajoutés dans anilist_providers.dart, \_effectiveImages dans CharacterDetailScreen priorise Storage → images AniList → imagePath → fallback. dart analyze → 0 issue.                                                                                  |
 | 15 mai 2026 | Task 15 — Collection persistante Firestore — CollectionService créé (getCollection, collectionStream, addToCollection/removeFromCollection avec gate Genin 10 persos), collectionServiceProvider + collectionStreamProvider + isCollectedProvider ajoutés dans anilist_providers.dart, CharacterDetailScreen FAB branché sur Firestore (FieldValue.arrayUnion/Remove) + gate LIMIT_REACHED → modal upgrade Jonin, CollectionScreen migré vers collectionStreamProvider (when loading/error/data). dart analyze → 0 issue. |
-| 15 mai 2026 | Task 16 — PlansScreen complet — plans_screen.dart réécrit (ConsumerStatefulWidget), toggle BillingToggle réutilisé, flow premium ensuite migré vers Chariow/licence locale. dart analyze → 0 issue.                                                          |
+| 15 mai 2026 | Task 16 — PlansScreen complet — plans_screen.dart réécrit (ConsumerStatefulWidget), toggle BillingToggle réutilisé, flow premium ensuite migré vers Chariow/licence locale. dart analyze → 0 issue.                                                                                                                                                                                                                                                                                                                       |
 
 | 16 mai 2026 | Task 18 — CharacterDetailScreen enrichi (5 onglets rank-aware : Infos / Galerie / Relations / Médias / Exclusif 👑), StudioScreen + VoiceActorScreen + CharacterChatScreen + CharacterQuizScreen créés, Character model enrichi (bloodType/dateOfBirth/quotes/trivia/aiPersonality/voiceActorIds), AniListService enrichi (getFullCharacterData/getStudioById/getVoiceActorById), app_router 4 nouvelles routes. dart analyze → 0 erreur, 0 warning. |
-| 16 mai 2026 | Task 19 correctif — Stratégie freemium corrigée : contenu encyclopédique 100% libre pour Genin (bio complète, tous pouvoirs, citations, doubleurs, relations), Trivia Kage uniquement, onglet Exclusif refait en 3 niveaux (Genin locked / Jonin quiz + upsell banners / Kage all), _buildUpsellBanner contextuel, bannière ads simulée Genin en galerie. dart analyze → 0 erreur. |
+| 16 mai 2026 | Task 19 correctif — Stratégie freemium corrigée : contenu encyclopédique 100% libre pour Genin (bio complète, tous pouvoirs, citations, doubleurs, relations), Trivia Kage uniquement, onglet Exclusif refait en 3 niveaux (Genin locked / Jonin quiz + upsell banners / Kage all), \_buildUpsellBanner contextuel, bannière ads simulée Genin en galerie. dart analyze → 0 erreur. |
 | 17 mai 2026 | Task 20 — Mock data enrichie : quotes, trivia, aiPersonality, relations, voiceActors, mediaAppearances, quizQuestions pour 8 personnages existants + ajout Luffy (One Piece) et Frieren (FBJ). Modèles CharacterRelation/VoiceActorMock/MediaAppearanceMock/QuizQuestion créés dans character.dart. mockStudios (5) et `mockMangakas` (6) ajoutés dans MockData. Onglets Relations/Médias/Doubleurs branchés sur mock data (priorité mock → AniList → fallback). Quiz screen accepte List<QuizQuestion> spécifique au personnage (fallback générique si absent). app_router passe quizQuestions via extra. dart analyze → 0 erreur. |
 | 17 mai 2026 | Task 21 — Correctifs release + premium local : label Android `Otadex`, signing release sans secrets hardcodés, `.gitignore` renforcé, `upload_images.js` nettoyé, préférence monnaie profil ajoutée, prix plans multi-devises centralisés, Kage fixé à 5 000 FCFA/mois, activation licence Chariow locale Jonin/Kage, assistant local OTADEX, génération locale d'image citation Kage, quiz sans limite fixe à 5 questions. flutter analyze → 0 issue. |
 | 18 mai 2026 | Task 22 — Import JJK Firestore : `scripts/import_jjk.js` créé (20 personnages JJK, 1 animé, 1 créateur, 1 studio, 7 quiz). Données extraites depuis `JJK_Personnages_OTADEX_v2.docx` via mammoth/python XML. `firestore.indexes.json` mis à jour (3 index composites). `scripts/README.md` créé avec template réutilisable. |
-| 19 mai 2026 | Task 23 — Firestore Flutter integration : `FirestoreCharacterService` créé (mapping Firestore→Character/AnimeEntry/CreatorEntry/QuizQuestion). `jjkCharactersProvider` + `firestoreQuizProvider` ajoutés. `characterDetailProvider` mis à jour (jjk-*→Firestore). `allCharactersProvider` fusionné (JJK Firestore + mock autres séries). `allAnimesProvider` / `allCreatorsProvider` priorité Firestore + fallback mock. dart analyze → 0 erreur. |
+| 19 mai 2026 | Task 23 — Firestore Flutter integration : `FirestoreCharacterService` créé (mapping Firestore→Character/AnimeEntry/CreatorEntry/QuizQuestion). `jjkCharactersProvider` + `firestoreQuizProvider` ajoutés. `characterDetailProvider` mis à jour (jjk-\*→Firestore). `allCharactersProvider` fusionné (JJK Firestore + mock autres séries). `allAnimesProvider` / `allCreatorsProvider` priorité Firestore + fallback mock. dart analyze → 0 erreur. |
 | 19 mai 2026 | Task 24 — Architecture multi-animés : `Character.animeId` ajouté. `searchCharacters`/`searchAnimes`/`getSameAnimeCharacters` ajoutés au service Firestore. `getCharactersByAnimeId` ajouté à AniList service. `searchCharactersProvider` + `searchAnimesProvider` (fusion Firestore+AniList) + `sameAnimeCharactersProvider` créés. `allCharactersProvider` migré vers `getAllCharacters(limit:100)`. Section "Autres personnages de [animé]" dans onglet Médias. dart analyze → 0 erreur. |
 | 19 mai 2026 | Task 24b — Design handoff Claude Design : identity grid refactorisée (cellules individuelles, sentence-case), section À propos sans card wrapper (texte direct), section "👥 Découvrir d'autres personnages" ajoutée bas de l'onglet Infos (scroll horizontal portrait cards 124px, allCharactersProvider, gradient+image+accent strip+voir tout tile). dart analyze → 0 erreur. |
 | 19 mai 2026 | Task 25 — Play Store préparation : `android:label` corrigé "OTADEX", Fix Quiz Firestore confirmé (déjà branché), `PLAY_STORE_SIGNING.md` créé (keytool + Kotlin DSL signing déjà configuré), `PLAY_STORE_TODO.md` créé (checklist complète device test → build → assets → soumission). dart analyze → 0 erreur. |
 
 | 20 mai 2026 | Task 26 — Fix images JJK + AniList : `import_jjk.js` → URLs AniList CDN ajoutées pour les 20 personnages JJK (images[] + imagePath). `anilist_service.dart` → `imagePath: largeImg ?? ''`, filtrage `isNotEmpty` sur images[]. `otadex_image.dart` → `httpHeaders: {'User-Agent': 'OTADEX/1.0'}` ajouté à CachedNetworkImage. `_effectiveImages` dans `character_detail_screen.dart` → priorité images[] custom → imagePath → Firebase Storage → [] vide (plus de fallback local Gojo). `character_grid_card.dart` + `trending_character_card.dart` → logique image : `images.first` si disponible, sinon `imagePath`, sinon gradient. dart analyze → 0 issue. Note : Lancer `node scripts/import_jjk.js` pour pousser les nouvelles URLs vers Firestore. |
 
-| 22 mai 2026 | Task 27 — Architecture données clarifiée + correctifs UX : `otadex_providers.dart` → `allCharactersProvider` simplifié (Firestore 200 persos OU JSON fallback, plus de merge). `trendingCharactersProvider` ajouté (filtre isTrending sur allCharactersProvider, tri likes desc, limit 20) — remplace AniList live dans `trending_section.dart`. `anilistTrendingCharactersProvider` renommé dans `anilist_providers.dart` (suppression conflit). `CollectionScreen` → remplace `MockData.allCharacters` par double-watch `collectionStreamProvider` + `allCharactersProvider` (IDs Firestore désormais résolus). `EmptyState` → bouton "Explorer" route `/search`, icône `bookmark_border_rounded`. `profile_screen.dart` → remplace `MockData` par `allCharactersProvider.valueOrNull`. `UserProfile` → 3 getters calculés dynamiquement : `fanLevel` (seuils 100/500/2000/5000), `fanLevelName` (Spectateur→Kage Suprême), `nextLevelScore`. `ProfileTabContent/_ProgressCard` → affiche `fanLevelName — Niveau fanLevel 🔥` (plus de "4" hardcodé). `search_screen.dart` → historique `_recentSearches` branché sur SharedPreferences : `_loadHistory` (initState), `_saveQuery` (submit/suggestion/trending tap), `_clearHistory`, `_removeRecentQuery` — liste vide au démarrage, persistée sur 5 entrées max. dart analyze → 0 issue. 
+| 22 mai 2026 | Task 27 — Architecture données clarifiée + correctifs UX : `otadex_providers.dart` → `allCharactersProvider` simplifié (Firestore 200 persos OU JSON fallback, plus de merge). `trendingCharactersProvider` ajouté (filtre isTrending sur allCharactersProvider, tri likes desc, limit 20) — remplace AniList live dans `trending_section.dart`. `anilistTrendingCharactersProvider` renommé dans `anilist_providers.dart` (suppression conflit). `CollectionScreen` → remplace `MockData.allCharacters` par double-watch `collectionStreamProvider` + `allCharactersProvider` (IDs Firestore désormais résolus). `EmptyState` → bouton "Explorer" route `/search`, icône `bookmark_border_rounded`. `profile_screen.dart` → remplace `MockData` par `allCharactersProvider.valueOrNull`. `UserProfile` → 3 getters calculés dynamiquement : `fanLevel` (seuils 100/500/2000/5000), `fanLevelName` (Spectateur→Kage Suprême), `nextLevelScore`. `ProfileTabContent/_ProgressCard` → affiche `fanLevelName — Niveau fanLevel 🔥` (plus de "4" hardcodé). `search_screen.dart` → historique `_recentSearches` branché sur SharedPreferences : `_loadHistory` (initState), `_saveQuery` (submit/suggestion/trending tap), `_clearHistory`, `_removeRecentQuery` — liste vide au démarrage, persistée sur 5 entrées max. dart analyze → 0 issue.
 | 22 May 2026 | Task 29 — Import Naruto Shippuden : Création du script `import_ns.js` à partir du docx, 20 personnages préparés, mise en place des constantes `AppAssets` et mise à jour de `pubspec.yaml`. |
 | 22 mai 2026 | Task 32 - Migration AniList vers Locale & refactor Images : [x] Importer images locals (JJK, NS, COE...), `OtadexImage` refactorisé pour prioriser locals assets, nettoyage des dépendances AniList dans les providers et scripts d'import. |
 | 23 mai 2026 | Task 30 — Migration complète Firestore-only : tokens anime `AppColors`, `featuredSlidesProvider` depuis Firestore, `characterDetailProvider` Firestore-first universel, `categoriesProvider` dynamique (genres Firestore), `AnimeDetailScreen` branché Firestore, messages "via AniList" supprimés. `dart analyze → No issues found!` |
 | 23 mai 2026 | Task 33 — Import Classroom of the Elite : `scripts/import_clk.js` créé (20 personnages, 1 animé Studio Lerche, 1 créateur Shōgo Kinugasa, 4 quiz — Ayanokoji/Horikita/Sakayanagi/Ryuen). Vérification images : tous les comptes assets↔app_assets.dart sont cohérents (JJK ✅ NS ✅ CLK ✅). 11 dossiers images créés pour personnages sans images : Kikyo Kushida, Sae Chabashira, Rokusuke Koenji, Airi Sakura, Miyabi Nagumo, Hiyori Shiina, Tsubasa Nanase, Ichika Amasawa, Takuya Yagami, Kohei Katsuragi, Mio Ibuki. `app_assets.dart` — 11 nouvelles listes vides + cases switch. `pubspec.yaml` — 11 nouveaux dossiers CLK déclarés. `flutter analyze → No issues found!` |
+
 ---
 
 ## Task 31 — Audit Firestore + Corrections source données (23 mai 2026)
 
 ### Audit réalisé
+
 - A. `allCharactersProvider` : Firestore prioritaire ✅, fallback JSON mock si vide ✅
 - B. `mock_data.dart` : Sung Jin-Woo, Gojo mock (c1-c6) — apparaissent seulement si Firestore vide (avant import)
 - C. Route `/search` : ❌ MANQUANTE — `/search-standalone` existait, `/search` non → crash `_buildVoirToutTile`
 - D. Assets : `hiromi higumura` (9 fichiers) présent dans `assets/` mais absent de `app_assets.dart`
 
 ### ✅ FIX 1 — Route `/search` ajoutée
+
 - `lib/core/router/app_router.dart` : ajout route `/search` → `RechercheScreen()`
 - Plus de crash quand "Voir tout" est tapé depuis la fiche personnage
 
 ### ✅ FIX 2 — Hiromi Higumura mappé dans app_assets.dart
+
 - `lib/core/constants/app_assets.dart` : liste `hiromiHigumura` (jj_hiro1–9.jpeg) ajoutée
 - Case `jjk-hiromi-higumura` ajouté dans `getByCharacterId()`
 - pubspec.yaml : dossier `hiromi higumura/` déjà déclaré ✅
 
 ### ✅ FIX 3 — Images AppAssets prioritaires dans les cards
+
 - `character_detail_screen.dart` `_buildPortraitCard` : `AppAssets.getByCharacterId` en priorité 1
 - `character_detail_screen.dart` `_buildSameAnimeSection` : idem
 - `character_detail_screen.dart` `_buildMockRelations` : relations utilisent `AppAssets.getByCharacterId(rel.id)` en priorité, fallback `rel.imageUrl`
 
 ### ✅ FIX 4 — Onglet Médias branché sur Firestore
+
 - `character_detail_screen.dart` : `_buildFirestoreAnimeContent()` créé
   - Watch `allAnimesProvider` → résout l'animé du personnage (`c.animeId` ou `c.animeName`)
   - Watch `allCreatorsProvider` → résout le créateur via `anime.creatorId`
@@ -690,23 +715,28 @@ URLs Play Console :
 ## Task 34 — Fix source mock + Shimmer global (24 mai 2026)
 
 ### ✅ FIX 1 — Requête Firestore compound orderBy supprimée (CRITIQUE)
+
 - `firestore_character_service.dart` `getAllCharacters()` : suppression `.orderBy('animeId')` (index composite absent → silent fail → fallback mock)
 - Conservé uniquement `.orderBy('popularityRank')` — aucun index composite requis
 - `catch(e)` améliore le log : `debugPrint('⚠️ Firestore getAllCharacters error: $e')`
 
 ### ✅ FIX 2 — animeId CLK corrigé
+
 - `_cardColorForAnime` / `_accentColorForAnime` : `'classroom-of-the-elite'` → `'classroom-of-elite'` (id Firestore réel)
 - `_categoryForAnime` : ajout `'classroom-of-elite' => 'Seinen'`
 
 ### ✅ FIX 3 — Debug log Firestore vide
+
 - `otadex_providers.dart` `allCharactersProvider` : `debugPrint('⚠️ Firestore vide — vérifier import_jjk.js')` avant fallback mock
 
 ### ✅ FIX 4 — Search screen débranchée du mock
+
 - `search_screen.dart` : suppression `OtadexDataService? _service` + import `otadex_data_service.dart`
 - Remplacement par `_localChars`, `_localAnimes`, `_localCreators` chargés depuis `allCharactersProvider`, `allAnimesProvider`, `allCreatorsProvider` (Firestore first)
 - Suggestions + filtres utilisent désormais les données Firestore
 
 ### ✅ Shimmer global — tous les CircularProgressIndicator remplacés
+
 - Créé `lib/core/widgets/skeleton_loader.dart` : `shimmerBox()`, `SkeletonGrid`, `SkeletonRow`, `SkeletonBanner`, `SkeletonScreen`, `SkeletonList`
 - Couleurs : `AppColors.backgroundCard` (base) + `AppColors.borderSubtle` (highlight) — respect RÈGLE AppColors
 - Home screen : `character_grid_section.dart` → `SkeletonGrid(3×2)` | `trending_section.dart` → `SkeletonRow` | `hero_featured_slider.dart` → `SkeletonBanner`
@@ -723,6 +753,7 @@ URLs Play Console :
 ## Task 35 — Fix crash navigation + UX corrections (24 mai 2026)
 
 ### ✅ FIX 1 — Crash navigation /character/:id résolu (CRITIQUE)
+
 - **Cause** : `state.extra as Character` → crash quand `extra` est null (navigation depuis URL directe, deep link, ou appel sans extra)
 - `lib/core/router/app_router.dart` : route `/character/:id` utilise désormais `state.pathParameters['id']!` — plus aucune dépendance à `state.extra`
 - `lib/features/character/presentation/character_detail_screen.dart` :
@@ -735,12 +766,14 @@ URLs Play Console :
 - Tous les `context.push('/character/${id}')` existants restent valides (extra ignoré si présent)
 
 ### ✅ FIX 2 — Personnages animé non cliquables
+
 - `lib/features/anime/presentation/anime_detail_screen.dart`
 - `_CharactersList` : suppression du paramètre `onTap`
 - `_CharacterRow` : suppression `GestureDetector` + `VoidCallback onTap` + chevron `Icons.chevron_right_rounded`
 - Les rows restent visuellement identiques (avatar, nom, pill rang, animeName) mais ne réagissent plus au tap
 
 ### ✅ FIX 3 — "Tu pourrais aussi aimer" avec images réelles
+
 - `lib/features/search/presentation/search_screen.dart`
 - Suppression de `_recommendations` (liste statique de `Color()` hardcodés)
 - `_buildRecommendations()` réécrit : utilise `_localChars.take(3)` (données Firestore)
@@ -757,10 +790,12 @@ URLs Play Console :
 ## Task 36 — Fix BUG 1 & BUG 2 (25 mai 2026)
 
 ### ✅ BUG 1 — Bouton "Explorer" collection vide
+
 - **Cause** : `context.go('/search')` remplaçait toute la pile de navigation → crash "No Material widget found" car SearchScreen se retrouvait sans ancêtre Scaffold/Material
 - **Fix** : `lib/features/collection/presentation/collection_screen.dart:150` → `context.go` → `context.push`
 
 ### ✅ BUG 2 — Popup téléchargement ne se ferme pas
+
 - **Cause** : SnackBar avec `backgroundColor` custom + style `Colors.white` (violation RÈGLE AppColors) + durée 5s rendait le widget visuel persistant
 - **Fix** : `lib/features/character/presentation/gallery_screen.dart` → SnackBar simplifié sans backgroundColor ni textStyle custom, durée 4s, action label "Voir Kage", `context.push('/subscription')` conservé
 - Texte : `'📥 Téléchargé avec filigrane'` (sans le sous-texte "Passe Kage...")
@@ -772,12 +807,15 @@ URLs Play Console :
 ## Task 37 — Notifications push Phase 1 (26 mai 2026)
 
 ### ✅ Dépendances
+
 - `firebase_messaging: ^14.9.0` + `flutter_local_notifications: ^17.0.0` ajoutés dans `pubspec.yaml`
 
 ### ✅ Android
+
 - `AndroidManifest.xml` : `POST_NOTIFICATIONS` + `RECEIVE_BOOT_COMPLETED` + meta-data `otadex_channel`
 
 ### ✅ NotificationService (`lib/core/services/notification_service.dart`)
+
 - Demande permission FCM (alert, badge, sound)
 - Channel Android `otadex_channel` (Importance.high)
 - Token FCM sauvegardé dans `users/{uid}.fcmToken` au login
@@ -786,13 +824,16 @@ URLs Play Console :
 - `showLocal()` utilitaire pour notifications manuelles
 
 ### ✅ main.dart
+
 - `await NotificationService.initialize()` appelé après `Firebase.initializeApp()`
 
 ### ✅ Cloche HomeScreen + badge non lus
+
 - `HomeAppBar` : nouveau paramètre `unreadCount` + badge orange `AppColors.accent` sur la cloche
 - `HomeScreen` : `StreamBuilder<int>` sur `users/{uid}/notifications` where `read == false` → passe le count à `HomeAppBar`
 
 ### ✅ NotificationsScreen (`lib/features/home/presentation/notifications_screen.dart`)
+
 - Stream Firestore `users/{uid}/notifications` orderBy `created_at` desc
 - Chaque item : icône typée (🎉 new_characters, 🏆 monthly_vote, 💎 subscription), titre, body, timestamp relatif
 - Item non lu : fond teinté accent + point indicateur
@@ -801,9 +842,11 @@ URLs Play Console :
 - Route `/notifications` déjà enregistrée dans `app_router.dart`
 
 ### ✅ scripts/import_jjk.js
+
 - Après l'import des quiz : récupération tokens FCM → `messaging.sendEachForMulticast()` avec titre "🎉 Nouveaux personnages disponibles !" et route `/anime/jujutsu-kaisen`
 
 ### ✅ Cloud Function vote mensuel (`functions/src/index.ts`)
+
 - `notifyMonthlyVote` : schedule `0 9 1 * *` timezone `Africa/Douala`
 - Envoi FCM multicast + création doc `notifications` pour chaque user (type `monthly_vote`)
 - Déployer : `firebase deploy --only functions`
@@ -817,20 +860,22 @@ URLs Play Console :
 ## Task 38 — Import One Piece Firestore (26 mai 2026)
 
 ### ✅ Script créé : `scripts/import_one_piece.js`
+
 - Extrait depuis `One_Piece_Personnages_OTADEX_2026.docx` (python3 zipfile + regex, Snap AppArmor contourné)
 - Structure identique à `import_jjk.js` en 6 étapes séquentielles
 
 ### ✅ Collections importées
 
-| Collection | Document | Contenu |
-|---|---|---|
-| `animes` | `one-piece` | 1160+ épisodes, Toei Animation, 530M copies vendues, genres Aventure/Action/Comédie/Fantaisie |
-| `creators` | `eiichiro-oda` | Bio complète, biblio (Romance Dawn 1992 → OP 1997), prix Shōgakukan/Harvey Award |
-| `studios` | `toei-animation` | Fondé 1956, Dragon Ball Z / Sailor Moon / Digimon / One Piece |
-| `characters` | `op-*` (15 docs) | Préfixe `op-`, popularityRank 1–15, bio/pouvoirs/relations/citations/trivia |
-| `quizzes` | `op-*` (7 sets) | 5 questions chacun : Luffy, Zoro, Sanji, Nami, Law, Ace, Chopper |
+| Collection   | Document         | Contenu                                                                                       |
+| ------------ | ---------------- | --------------------------------------------------------------------------------------------- |
+| `animes`     | `one-piece`      | 1160+ épisodes, Toei Animation, 530M copies vendues, genres Aventure/Action/Comédie/Fantaisie |
+| `creators`   | `eiichiro-oda`   | Bio complète, biblio (Romance Dawn 1992 → OP 1997), prix Shōgakukan/Harvey Award              |
+| `studios`    | `toei-animation` | Fondé 1956, Dragon Ball Z / Sailor Moon / Digimon / One Piece                                 |
+| `characters` | `op-*` (15 docs) | Préfixe `op-`, popularityRank 1–15, bio/pouvoirs/relations/citations/trivia                   |
+| `quizzes`    | `op-*` (7 sets)  | 5 questions chacun : Luffy, Zoro, Sanji, Nami, Law, Ace, Chopper                              |
 
 ### ✅ Personnages One Piece (15)
+
 1. `op-monkey-d-luffy` — rank 1, Yonko / Capitaine
 2. `op-roronoa-zoro` — rank 2, Combattant
 3. `op-nami` — rank 3, Navigatrice
@@ -848,14 +893,17 @@ URLs Play Console :
 15. `op-dracule-mihawk` — rank 15, Premier épéiste
 
 ### ✅ Quiz créés (7 × 5 questions)
+
 - Monkey D. Luffy, Roronoa Zoro, Sanji, Nami, Trafalgar Law, Portgas D. Ace, Tony Tony Chopper
 
 ### ✅ Notification FCM post-import
+
 - Titre : "🌊 One Piece débarque sur OTADEX !"
 - Body : "Les personnages du Chapeau de Paille sont disponibles. Explore ta première fiche !"
 - Route : `/anime/one-piece` | type : `new_characters`
 
 ### ✅ scripts/README.md mis à jour
+
 - Section "## Import One Piece" ajoutée (prérequis, lancement, collections, 15 personnages)
 
 ### Commande de lancement
@@ -865,11 +913,13 @@ node scripts/import_one_piece.js
 ```
 
 > Si `node` Snap est bloqué par AppArmor :
+>
 > ```bash
 > env NODE_OPTIONS='--require ./scripts/google_time_offset.js' /home/tilstack/.cache/ms-playwright-go/1.50.1/node scripts/import_one_piece.js
 > ```
 
 ### Note
+
 - `imagePath` et `images[]` vides pour l'instant — à remplir après upload Firebase Storage des illustrations One Piece
 - Ajouter les entrées dans `app_assets.dart` + `pubspec.yaml` quand les assets locaux seront disponibles
 
@@ -880,21 +930,24 @@ node scripts/import_one_piece.js
 ## Task 39 — Import Kuroko no Basket Firestore (26 mai 2026)
 
 ### ✅ Script créé : `scripts/import_kkb.js`
+
 - Données extraites depuis `Kuroko_no_Basket_Personnages_OTADEX_2026.docx` (python3 zipfile + regex)
 - Structure identique à `import_jjk.js` en 6 étapes séquentielles
 
 ### ✅ Collections importées
 
-| Collection | Document | Contenu |
-|---|---|---|
-| `animes` | `kuroko-no-basket` | 75 épisodes, Production I.G, 3 saisons + Last Game, genres Shōnen/Sport |
-| `creators` | `tadatoshi-fujimaki` | Bio complète, bibliographie (2006–2017), distinctions |
-| `studios` | `production-ig` | Fondé 1987, Ghost in the Shell / Haikyuu!! / Attack on Titan S2 |
-| `characters` | `knb-*` (13 docs) | Préfixe `knb-`, popularityRank 1–13, bio/pouvoirs/relations/citations/trivia |
-| `quizzes` | `knb-*` (7 sets) | 5 questions chacun : Akashi, Kuroko, Kagami, Kise, Aomine, Midorima, Murasakibara |
+| Collection   | Document             | Contenu                                                                           |
+| ------------ | -------------------- | --------------------------------------------------------------------------------- |
+| `animes`     | `kuroko-no-basket`   | 75 épisodes, Production I.G, 3 saisons + Last Game, genres Shōnen/Sport           |
+| `creators`   | `tadatoshi-fujimaki` | Bio complète, bibliographie (2006–2017), distinctions                             |
+| `studios`    | `production-ig`      | Fondé 1987, Ghost in the Shell / Haikyuu!! / Attack on Titan S2                   |
+| `characters` | `knb-*` (13 docs)    | Préfixe `knb-`, popularityRank 1–13, bio/pouvoirs/relations/citations/trivia      |
+| `quizzes`    | `knb-*` (7 sets)     | 5 questions chacun : Akashi, Kuroko, Kagami, Kise, Aomine, Midorima, Murasakibara |
 
 ### ✅ Personnages Kuroko no Basket (13)
+
 Classés par le 3e sondage de popularité officiel Weekly Shōnen Jump :
+
 1. `knb-akashi-seijuro` — rank 1, Génération des Miracles / Capitaine Rakuzan
 2. `knb-kuroko-tetsuya` — rank 2, Sixième Joueur Fantôme / Protagoniste
 3. `knb-takao-kazunari` — rank 3, Hawk Eye — 1er non-Miracle top 3
@@ -910,17 +963,21 @@ Classés par le 3e sondage de popularité officiel Weekly Shōnen Jump :
 13. `knb-aida-riko` — rank 13, Coach Seirin — analyse physique visuelle
 
 ### ✅ Quiz créés (7 × 5 questions)
+
 - Seijūrō Akashi, Tetsuya Kuroko, Taiga Kagami, Ryōta Kise, Daiki Aomine, Shintarō Midorima, Atsushi Murasakibara
 
 ### ✅ Notification FCM post-import
+
 - Titre : "🏀 Kuroko no Basket débarque sur OTADEX !"
 - Body : "La Génération des Miracles est disponible. Affronte le quiz !"
 - Route : `/anime/kuroko-no-basket` | type : `new_characters`
 
 ### ✅ scripts/README.md mis à jour
+
 - Section "## Import Kuroko no Basket" ajoutée (prérequis, lancement, collections, 13 personnages)
 
 ### Note sur les IDs
+
 - Préfixe personnages : `knb-` (Kuroko no Basket) — cohérent avec `jjk-`, `op-`, `ns-`, `clk-`
 - ID animé : `kuroko-no-basket` (hyphens, cohérent avec tous les autres IDs Firestore)
 
@@ -931,11 +988,13 @@ node scripts/import_kkb.js
 ```
 
 > Si `node` Snap est bloqué par AppArmor :
+>
 > ```bash
 > env NODE_OPTIONS='--require ./scripts/google_time_offset.js' /home/tilstack/.cache/ms-playwright-go/1.50.1/node scripts/import_kkb.js
 > ```
 
 ### Note
+
 - `imagePath` et `images[]` vides — à remplir après upload Firebase Storage des illustrations KnB
 - Ajouter entrées dans `app_assets.dart` + `pubspec.yaml` quand les assets locaux seront disponibles
 
@@ -946,14 +1005,17 @@ node scripts/import_kkb.js
 ## Task 40 — Migration OneSignal (27 mai 2026)
 
 ### Objectif
+
 Remplacer Firebase Cloud Functions + FCM par OneSignal pour toutes les notifications push.
 
 ### ✅ Dépendances
+
 - `firebase_messaging: ^14.9.0` retiré de `pubspec.yaml`
 - `flutter_local_notifications: ^17.0.0` retiré de `pubspec.yaml`
 - `onesignal_flutter: ^5.2.6` ajouté
 
 ### ✅ NotificationService réécrit (`lib/core/services/notification_service.dart`)
+
 - `OneSignal.initialize(appId)` — App ID : `cfc58648-689b-432f-9afa-c4f49e69199f`
 - `OneSignal.Notifications.requestPermission(true)` — permission utilisateur
 - Sauvegarde de `oneSignalId` dans `users/{uid}.oneSignalId` (remplace `fcmToken`)
@@ -961,19 +1023,23 @@ Remplacer Firebase Cloud Functions + FCM par OneSignal pour toutes les notificat
 - Tap : `addClickListener` → navigation via `AppRouter.router.push(route)`
 
 ### ✅ AndroidManifest.xml
+
 - Meta-data FCM `default_notification_channel_id` retirée (inutile avec OneSignal)
 - Permissions `POST_NOTIFICATIONS` + `RECEIVE_BOOT_COMPLETED` conservées
 
 ### ✅ android/app/build.gradle.kts
+
 - `isCoreLibraryDesugaringEnabled = true` déjà en place (Task 37)
 - `coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")` déjà en place
 
 ### ✅ Cloche HomeScreen + NotificationsScreen
+
 - Déjà fonctionnels depuis Task 37 — aucun changement requis
 - Badge non lus : stream Firestore `users/{uid}/notifications where read == false`
 - NotificationsScreen : liste Firestore, tap → `read: true`, bouton "Tout lire"
 
 ### ✅ scripts/send_notification.js (NOUVEAU)
+
 - Utilise l'API REST OneSignal v1 : `POST /api/v1/notifications`
 - Segment : `"All"` (tous les abonnés)
 - Paramètres : `title`, `body`, `route`, `type`
@@ -981,27 +1047,31 @@ Remplacer Firebase Cloud Functions + FCM par OneSignal pour toutes les notificat
 - Usage CLI : `node scripts/send_notification.js --title "..." --body "..." --route /home`
 
 ### ✅ scripts/notify_monthly_vote.js (NOUVEAU)
+
 - Envoie la notification "🏆 Vote Fan du Mois ouvert !" via OneSignal REST API
 - Type : `monthly_vote` | Route : `/home`
 - Lancement manuel : `node scripts/notify_monthly_vote.js`
 - Crontab : `0 9 1 * * /path/node .../notify_monthly_vote.js`
 
 ### ✅ Scripts d'import mis à jour
-| Script | Avant | Après |
-|---|---|---|
+
+| Script          | Avant                    | Après                          |
+| --------------- | ------------------------ | ------------------------------ |
 | `import_jjk.js` | FCM multicast `fcmToken` | `sendNotification()` OneSignal |
-| `import_op.js` | FCM multicast `fcmToken` | `sendNotification()` OneSignal |
+| `import_op.js`  | FCM multicast `fcmToken` | `sendNotification()` OneSignal |
 | `import_kkb.js` | FCM multicast `fcmToken` | `sendNotification()` OneSignal |
-| `import_ns.js` | Aucune notification | `sendNotification()` ajouté |
-| `import_clk.js` | Aucune notification | `sendNotification()` ajouté |
+| `import_ns.js`  | Aucune notification      | `sendNotification()` ajouté    |
+| `import_clk.js` | Aucune notification      | `sendNotification()` ajouté    |
 
 ### Clés OneSignal (dans `.env` — ne jamais committer)
+
 ```
 APPIDONESIGNAL   = cfc58648-689b-432f-9afa-c4f49e69199f
 APIKEYONESIGNAL  = os_v2_app_z7cymsditnbs7gx2yt2j42izt4neg33xnicezbuj4rjtexvwjh5rusmzdjw2t5ssrtszevfw6lif6b5qiypy4oaywwthibctmoosqjq
 ```
 
 ### Champ Firestore modifié
+
 - `users/{uid}.fcmToken` → `users/{uid}.oneSignalId` (mis à jour automatiquement à chaque session)
 
 ### dart analyze → No issues found!
@@ -1013,9 +1083,11 @@ APIKEYONESIGNAL  = os_v2_app_z7cymsditnbs7gx2yt2j42izt4neg33xnicezbuj4rjtexvwjh5
 ## Task 41 — Intégration Fullmetal Alchemist Brotherhood (29 mai 2026)
 
 ### Objectif
+
 Ajouter Fullmetal Alchemist Brotherhood comme 6e anime sur OTADEX.
 
 ### ✅ Script d'import
+
 - **`scripts/import_fma.js`** créé (modèle : `import_kkb.js`)
 - Anime ID : `fullmetal-alchemist` | Préfixe personnages : `fma-`
 - Studio : `bones` (Bones) | Créateur : `hiromu-arakawa` (Hiromu Arakawa)
@@ -1025,32 +1097,36 @@ Ajouter Fullmetal Alchemist Brotherhood comme 6e anime sur OTADEX.
 - Route : `/anime/fullmetal-alchemist`
 
 ### ✅ Personnages (13)
-| ID | Nom | Rang | isTrending |
-|---|---|---|---|
-| `fma-edward-elric` | Edward Elric | 1 | true |
-| `fma-roy-mustang` | Roy Mustang | 2 | true |
-| `fma-alphonse-elric` | Alphonse Elric | 3 | true |
-| `fma-riza-hawkeye` | Riza Hawkeye | 4 | false |
-| `fma-winry-rockbell` | Winry Rockbell | 5 | false |
-| `fma-van-hohenheim` | Van Hohenheim | 6 | false |
-| `fma-father` | Father | 7 | false |
-| `fma-king-bradley` | King Bradley | 8 | false |
-| `fma-scar` | Scar | 9 | false |
-| `fma-maes-hughes` | Maes Hughes | 10 | false |
-| `fma-pride-selim-bradley` | Pride (Selim Bradley) | 11 | false |
-| `fma-greed-ling-yao` | Greed / Ling Yao | 12 | false |
-| `fma-izumi-curtis` | Izumi Curtis | 13 | false |
+
+| ID                        | Nom                   | Rang | isTrending |
+| ------------------------- | --------------------- | ---- | ---------- |
+| `fma-edward-elric`        | Edward Elric          | 1    | true       |
+| `fma-roy-mustang`         | Roy Mustang           | 2    | true       |
+| `fma-alphonse-elric`      | Alphonse Elric        | 3    | true       |
+| `fma-riza-hawkeye`        | Riza Hawkeye          | 4    | false      |
+| `fma-winry-rockbell`      | Winry Rockbell        | 5    | false      |
+| `fma-van-hohenheim`       | Van Hohenheim         | 6    | false      |
+| `fma-father`              | Father                | 7    | false      |
+| `fma-king-bradley`        | King Bradley          | 8    | false      |
+| `fma-scar`                | Scar                  | 9    | false      |
+| `fma-maes-hughes`         | Maes Hughes           | 10   | false      |
+| `fma-pride-selim-bradley` | Pride (Selim Bradley) | 11   | false      |
+| `fma-greed-ling-yao`      | Greed / Ling Yao      | 12   | false      |
+| `fma-izumi-curtis`        | Izumi Curtis          | 13   | false      |
 
 ### ✅ Flutter — fichiers modifiés
+
 - **`lib/core/theme/app_colors.dart`** : `animeFmaCard = Color(0xFF1A0800)`, `animeFmaAccent = Color(0xFFB71C1C)`
 - **`lib/core/services/firestore_character_service.dart`** : cases `fullmetal-alchemist` dans `_cardColorForAnime`, `_accentColorForAnime`, `_categoryForAnime` (Shōnen)
 - **`lib/core/constants/app_assets.dart`** : 13 listes vides + 13 cases dans `getByCharacterId`
 - **`pubspec.yaml`** : 13 déclarations de dossiers d'assets
 
 ### ✅ Dossiers assets créés
+
 `assets/images/Animé pictures/Fullmetal Alchemist/{Edward Elric, Roy Mustang, Alphonse Elric, Riza Hawkeye, Winry Rockbell, Van Hohenheim, Father, King Bradley, Scar, Maes Hughes, Pride Selim Bradley, Greed Ling Yao, Izumi Curtis}/`
 
 ### Note
+
 - `imagePath` et `images[]` vides — à remplir après upload Firebase Storage
 - `dart analyze lib/ → No issues found!`
 
@@ -1059,9 +1135,11 @@ Ajouter Fullmetal Alchemist Brotherhood comme 6e anime sur OTADEX.
 ## Task 42 — Intégration Hunter x Hunter (29 mai 2026)
 
 ### Objectif
+
 Ajouter Hunter x Hunter (2011, Madhouse) comme 7e anime sur OTADEX.
 
 ### ✅ Script d'import
+
 - **`scripts/import_hxh.js`** créé (modèle : `import_kkb.js`)
 - Anime ID : `hunter-x-hunter` | Préfixe personnages : `hxh-`
 - Studio : `madhouse` (Madhouse) | Créateur : `yoshihiro-togashi`
@@ -1071,32 +1149,36 @@ Ajouter Hunter x Hunter (2011, Madhouse) comme 7e anime sur OTADEX.
 - Route : `/anime/hunter-x-hunter`
 
 ### ✅ Personnages (13)
-| ID | Nom | Rang | isTrending |
-|---|---|---|---|
-| `hxh-killua-zoldyck` | Killua Zoldyck | 1 | true |
-| `hxh-gon-freecss` | Gon Freecss | 2 | true |
-| `hxh-hisoka-morow` | Hisoka Morow | 3 | true |
-| `hxh-kurapika` | Kurapika | 4 | false |
-| `hxh-chrollo-lucilfer` | Chrollo Lucilfer | 5 | false |
-| `hxh-leorio-paradinight` | Leorio Paradinight | 6 | false |
-| `hxh-biscuit-krueger` | Biscuit Krueger | 7 | false |
-| `hxh-meruem` | Meruem | 8 | false |
-| `hxh-isaac-netero` | Isaac Netero | 9 | false |
-| `hxh-illumi-zoldyck` | Illumi Zoldyck | 10 | false |
-| `hxh-ging-freecss` | Ging Freecss | 11 | false |
-| `hxh-feitan-portor` | Feitan Portor | 12 | false |
-| `hxh-neferpitou` | Neferpitou | 13 | false |
+
+| ID                       | Nom                | Rang | isTrending |
+| ------------------------ | ------------------ | ---- | ---------- |
+| `hxh-killua-zoldyck`     | Killua Zoldyck     | 1    | true       |
+| `hxh-gon-freecss`        | Gon Freecss        | 2    | true       |
+| `hxh-hisoka-morow`       | Hisoka Morow       | 3    | true       |
+| `hxh-kurapika`           | Kurapika           | 4    | false      |
+| `hxh-chrollo-lucilfer`   | Chrollo Lucilfer   | 5    | false      |
+| `hxh-leorio-paradinight` | Leorio Paradinight | 6    | false      |
+| `hxh-biscuit-krueger`    | Biscuit Krueger    | 7    | false      |
+| `hxh-meruem`             | Meruem             | 8    | false      |
+| `hxh-isaac-netero`       | Isaac Netero       | 9    | false      |
+| `hxh-illumi-zoldyck`     | Illumi Zoldyck     | 10   | false      |
+| `hxh-ging-freecss`       | Ging Freecss       | 11   | false      |
+| `hxh-feitan-portor`      | Feitan Portor      | 12   | false      |
+| `hxh-neferpitou`         | Neferpitou         | 13   | false      |
 
 ### ✅ Flutter — fichiers modifiés
+
 - **`lib/core/theme/app_colors.dart`** : `animeHxhCard = Color(0xFF061A06)`, `animeHxhAccent = Color(0xFF2E7D32)`
 - **`lib/core/services/firestore_character_service.dart`** : cases `hunter-x-hunter` dans `_cardColorForAnime`, `_accentColorForAnime`, `_categoryForAnime` (Shōnen)
 - **`lib/core/constants/app_assets.dart`** : 13 listes vides + 13 cases dans `getByCharacterId`
 - **`pubspec.yaml`** : 13 déclarations de dossiers d'assets
 
 ### ✅ Dossiers assets créés
+
 `assets/images/Animé pictures/Hunter x Hunter/{Killua Zoldyck, Gon Freecss, Hisoka Morow, Kurapika, Chrollo Lucilfer, Leorio Paradinight, Biscuit Krueger, Meruem, Isaac Netero, Illumi Zoldyck, Ging Freecss, Feitan Portor, Neferpitou}/`
 
 ### Note
+
 - `imagePath` et `images[]` vides — à remplir après upload Firebase Storage
 - `dart analyze lib/ → No issues found!`
 
@@ -1105,43 +1187,45 @@ Ajouter Hunter x Hunter (2011, Madhouse) comme 7e anime sur OTADEX.
 ## Task 43 — Migration URLs GitHub raw (scripts d'import) (30 mai 2026)
 
 ### Objectif
+
 Remplacer tous les chemins `assets/images/...` locaux par des URLs GitHub raw dans les scripts d'import, et vérifier que Firestore passe bien les URLs au modèle `Character`.
 
 ### ✅ Scripts d'import mis à jour
 
-| Script | Personnages | URLs ajoutées | Statut |
-|---|---|---|---|
-| `scripts/import_jjk.js` | 14 | 112 | ✅ (session précédente) |
-| `scripts/import_op.js` | 14 | 142 | ✅ — Trafalgar Law: 8 images ajoutées |
-| `scripts/import_ns.js` | 20 | 153 | ✅ — 11 préfixes corrigés (ns_itac→ns_itachi, etc.) |
-| `scripts/import_kkb.js` | 13 | 117 | ✅ — tous les champs étaient vides |
-| `scripts/import_clk.js` | 9 | variable | ✅ — CLK_BASE + dossiers encodés |
-| `scripts/import_fma.js` | — | 0 | ⏭ ignoré — 0 images dans le repo |
-| `scripts/import_hxh.js` | — | 0 | ⏭ ignoré — 0 images dans le repo |
+| Script                  | Personnages | URLs ajoutées | Statut                                              |
+| ----------------------- | ----------- | ------------- | --------------------------------------------------- |
+| `scripts/import_jjk.js` | 14          | 112           | ✅ (session précédente)                             |
+| `scripts/import_op.js`  | 14          | 142           | ✅ — Trafalgar Law: 8 images ajoutées               |
+| `scripts/import_ns.js`  | 20          | 153           | ✅ — 11 préfixes corrigés (ns_itac→ns_itachi, etc.) |
+| `scripts/import_kkb.js` | 13          | 117           | ✅ — tous les champs étaient vides                  |
+| `scripts/import_clk.js` | 9           | variable      | ✅ — CLK_BASE + dossiers encodés                    |
+| `scripts/import_fma.js` | —           | 0             | ⏭ ignoré — 0 images dans le repo                   |
+| `scripts/import_hxh.js` | —           | 0             | ⏭ ignoré — 0 images dans le repo                   |
 
 **Format URL :** `https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé%20pictures/[Animé%20encodé]/[Personnage%20encodé]/[fichier]`
 
 **Corrections NS** (préfixes mal nommés dans l'ancienne version) :
 
-| Personnage | Ancien préfixe | Correct |
-|---|---|---|
-| Itachi Uchiha | ns_itac | ns_itachi |
-| Naruto Uzumaki | ns_naru | ns_naruto |
-| Kakashi Hatake | ns_kaka | ns_kakashi |
-| Gaara | ns_gaar | ns_gaara |
-| Hinata Hyuga | ns_hina | ns_hinata |
-| Madara Uchiha | ns_mada | ns_madara |
-| Might Guy | ns_migh | ns_guy |
-| Rock Lee | ns_rock | ns_lee |
-| Hashirama Senju | ns_hash | ns_hashi |
-| Konan | ns_kona | ns_konan |
-| Sasuke Uchiha | ns_sasu | ns_sasuke |
+| Personnage      | Ancien préfixe | Correct    |
+| --------------- | -------------- | ---------- |
+| Itachi Uchiha   | ns_itac        | ns_itachi  |
+| Naruto Uzumaki  | ns_naru        | ns_naruto  |
+| Kakashi Hatake  | ns_kaka        | ns_kakashi |
+| Gaara           | ns_gaar        | ns_gaara   |
+| Hinata Hyuga    | ns_hina        | ns_hinata  |
+| Madara Uchiha   | ns_mada        | ns_madara  |
+| Might Guy       | ns_migh        | ns_guy     |
+| Rock Lee        | ns_rock        | ns_lee     |
+| Hashirama Senju | ns_hash        | ns_hashi   |
+| Konan           | ns_kona        | ns_konan   |
+| Sasuke Uchiha   | ns_sasu        | ns_sasuke  |
 
 Personnages NS sans images (Obito Uchiha, Shikamaru Nara, Tsunade) : `images: [], imagePath: ""`
 
 ### ✅ Dart — Firestore → Character (images)
 
 **`lib/core/services/firestore_character_service.dart`** :
+
 - Import ajouté : `import '../constants/app_assets.dart';`
 - `_characterFromFirestore()` ligne 213 : fallback AppAssets si Firestore `images[]` absent ou vide
 
@@ -1154,6 +1238,7 @@ images: () {
 ```
 
 **`lib/features/character/presentation/character_detail_screen.dart`** :
+
 - `_effectiveImages` : priorité inversée — Firestore URLs en premier, AppAssets en fallback
 
 ```dart
@@ -1169,6 +1254,7 @@ if (localImages.isNotEmpty) return localImages;
 ### ✅ dart analyze lib/ → No issues found!
 
 ### Actions manuelles requises
+
 1. Lancer chaque script : `node scripts/import_op.js`, `import_ns.js`, `import_kkb.js`, `import_clk.js`
 2. Hot restart Flutter
 3. Vérifier que les images se chargent depuis GitHub sur les fiches personnage
@@ -1180,14 +1266,17 @@ if (localImages.isNotEmpty) return localImages;
 ## Task 44 — Système de licences Chariow (1er juin 2026)
 
 ### Objectif
+
 Intégrer l'API Chariow pour activer et vérifier les licences Jonin/Kage en temps réel.
 
 ### ✅ flutter_dotenv ajouté
+
 - `flutter_dotenv: ^5.1.0` dans `pubspec.yaml`
 - `.env` déclaré dans `pubspec.yaml` assets
 - `.env` déjà présent à la racine avec `CHARIOW_API_KEY=sk_dt4ihlbu_...` (ne jamais committer)
 
 ### ✅ ChariowService (`lib/core/services/chariow_service.dart`) — NOUVEAU
+
 - `LicenseResult` : `isActive`, `isExpired`, `expiresAt`, `productName`, `errorMessage`
 - `activateLicense(licenseKey, uid)` : POST `/v1/licenses/{key}/activate` avec `device_identifier = uid`
   - Erreurs 400 traduits en français : révoquée / expirée / limite atteinte
@@ -1198,6 +1287,7 @@ Intégrer l'API Chariow pour activer et vérifier les licences Jonin/Kage en tem
 - Clé lue via `dotenv.env['CHARIOW_API_KEY']`
 
 ### ✅ LicenseActivationScreen (`lib/features/subscription/presentation/license_activation_screen.dart`) — NOUVEAU
+
 - Validation UUID : `RegExp(r'^[0-9a-fA-F-]{36}$')`
 - Appel `ChariowService().activateLicense(key, uid)`
 - Sur succès :
@@ -1212,12 +1302,14 @@ Intégrer l'API Chariow pour activer et vérifier les licences Jonin/Kage en tem
 ### ✅ Route `/activate-license` ajoutée dans `app_router.dart`
 
 ### ✅ PlansScreen (`lib/features/subscription/presentation/plans_screen.dart`) corrigé
+
 - "Tchopé Plus" → "OTADEX Premium" / "Débloque OTADEX Premium"
 - Formulaire d'activation **retiré** (déplacé vers `LicenseActivationScreen`)
 - Bouton "Activer ma licence" (OutlinedButton) → `/activate-license`
 - Cards Jonin/Kage avec "Acheter" → URLs Chariow store conservées
 
 ### ✅ SubscriptionCard (`lib/features/profile/presentation/widgets/subscription_card.dart`) — Section dynamique
+
 - `ConsumerStatefulWidget` — lit `userProfileProvider` (rank) + SharedPreferences (`license_expires`)
 - **Genin** : card standard + bouton "Passer au premium" → `/subscription`
 - **Jonin/Kage actif** : plan + date expiration (DD/MM/YYYY) + jours restants
@@ -1227,6 +1319,7 @@ Intégrer l'API Chariow pour activer et vérifier les licences Jonin/Kage en tem
 - **Expiré** : card rouge "Abonnement expiré" + bouton "Réactiver" → `/activate-license`
 
 ### ✅ main.dart — dotenv + vérification expiration au démarrage
+
 - `await dotenv.load(fileName: '.env')` avant `Firebase.initializeApp()`
 - Si `license_expires` dépassé et utilisateur connecté :
   - Vérification via `ChariowService().checkLicense(licenseKey)`
@@ -1235,6 +1328,7 @@ Intégrer l'API Chariow pour activer et vérifier les licences Jonin/Kage en tem
   - Si erreur réseau → rang conservé (pas de pénalité offline)
 
 ### ✅ AppConstants — nouvelles clés
+
 - `keyLicenseExpires = 'license_expires'`
 - `keyLicenseKey = 'license_key'`
 
@@ -1242,12 +1336,12 @@ Intégrer l'API Chariow pour activer et vérifier les licences Jonin/Kage en tem
 
 ---
 
-_À mettre à jour par Claude Code à la fin de chaque session._
----
+## _À mettre à jour par Claude Code à la fin de chaque session._
 
 ## Task 45 — Paiement Chariow : URLs checkout + SnackBar (1er juin 2026)
 
 ### Objectif
+
 Brancher les 4 URLs de paiement Chariow avec `/checkout`, remplacer `UrlLauncherService` par `url_launcher` direct avec `canLaunchUrl`, et afficher un SnackBar post-achat.
 
 ### Fichier modifié
@@ -1255,14 +1349,16 @@ Brancher les 4 URLs de paiement Chariow avec `/checkout`, remplacer `UrlLauncher
 **`lib/features/subscription/presentation/plans_screen.dart`**
 
 #### URLs mises à jour (ajout `/checkout`)
-| Plan | Mode | URL |
-|------|------|-----|
+
+| Plan  | Mode    | URL                                             |
+| ----- | ------- | ----------------------------------------------- |
 | Jonin | Mensuel | `https://store.tilstack.me/prd_1epnxl/checkout` |
-| Jonin | Annuel | `https://store.tilstack.me/prd_xqbqdx/checkout` |
-| Kage | Mensuel | `https://store.tilstack.me/prd_hdj1oy/checkout` |
-| Kage | Annuel | `https://store.tilstack.me/prd_0jx2mh/checkout` |
+| Jonin | Annuel  | `https://store.tilstack.me/prd_xqbqdx/checkout` |
+| Kage  | Mensuel | `https://store.tilstack.me/prd_hdj1oy/checkout` |
+| Kage  | Annuel  | `https://store.tilstack.me/prd_0jx2mh/checkout` |
 
 #### Méthode `_buyPlan(String url)`
+
 - `canLaunchUrl` + `launchUrl(mode: LaunchMode.externalApplication)`
 - SnackBar flottant après lancement :
   - Message : "Après ton achat, reviens ici pour activer ta licence 🔑"
@@ -1271,6 +1367,7 @@ Brancher les 4 URLs de paiement Chariow avec `/checkout`, remplacer `UrlLauncher
 - Import `UrlLauncherService` retiré, import `url_launcher` ajouté directement
 
 ### Checklist
+
 - ✅ URLs Jonin Mensuel/Annuel + Kage Mensuel/Annuel avec `/checkout`
 - ✅ `canLaunchUrl` + `launchUrl(externalApplication)` branché
 - ✅ SnackBar post-achat avec action "Activer" → `/activate-license`
@@ -1284,17 +1381,20 @@ Brancher les 4 URLs de paiement Chariow avec `/checkout`, remplacer `UrlLauncher
 ## Task 46 — GitHub Actions : Vote Fan du Mois automatisé (1er juin 2026)
 
 ### Objectif
+
 Automatiser l'envoi de la notification "Vote Fan du Mois" le 1er de chaque mois via GitHub Actions + OneSignal REST API.
 
 ### Fichiers créés / modifiés
 
 **`.github/workflows/monthly_vote.yml`** (nouveau)
+
 - Déclenchement : `cron: '0 8 1 * *'` (1er du mois à 8h UTC = 9h Douala UTC+1)
 - `workflow_dispatch` : déclenchement manuel depuis GitHub UI
 - Jobs : `checkout@v4` → `setup-node@v4 (18)` → `npm install` → `node scripts/notify_monthly_vote.js`
 - Secrets injectés : `ONESIGNAL_API_KEY` + `ONESIGNAL_APP_ID`
 
 **`scripts/notify_monthly_vote.js`** (réécrit)
+
 - Script autonome (n'utilise plus `send_notification.js`)
 - Lit `process.env.ONESIGNAL_API_KEY` + `process.env.ONESIGNAL_APP_ID`
 - Garde `dotenv.config()` pour usage local (`.env`)
@@ -1303,10 +1403,12 @@ Automatiser l'envoi de la notification "Vote Fan du Mois" le 1er de chaque mois 
 - Appel HTTP natif via `https` (pas de dépendance externe supplémentaire)
 
 **`.github/SECRETS.md`** (nouveau)
+
 - Documentation des 2 secrets GitHub requis : `ONESIGNAL_API_KEY` + `ONESIGNAL_APP_ID`
 - Lien direct vers la page de configuration des secrets du repo
 
 ### Checklist
+
 - ✅ GitHub Actions → vote mensuel automatisé (1er du mois à 9h heure Douala)
 - ✅ `notify_monthly_vote.js` → variables d'env (plus de valeurs hardcodées)
 - ✅ `workflow_dispatch` → déclenchement manuel possible
@@ -1322,12 +1424,14 @@ Automatiser l'envoi de la notification "Vote Fan du Mois" le 1er de chaque mois 
 ## Task 47 — Migration dart.yml → Flutter CI (1er juin 2026)
 
 ### Workflows audités
-| Fichier | Contient Dart | Action |
-|---------|--------------|--------|
-| `monthly_vote.yml` | Non (Node.js) | Ignoré |
-| `dart.yml` | Oui (`dart-lang/setup-dart`, `dart pub get`) | **Option A** — migré Flutter |
+
+| Fichier            | Contient Dart                                | Action                       |
+| ------------------ | -------------------------------------------- | ---------------------------- |
+| `monthly_vote.yml` | Non (Node.js)                                | Ignoré                       |
+| `dart.yml`         | Oui (`dart-lang/setup-dart`, `dart pub get`) | **Option A** — migré Flutter |
 
 ### Changements appliqués à `.github/workflows/dart.yml`
+
 - Nom : `Dart` → `Flutter CI`
 - `dart-lang/setup-dart@9a04e6d...` → `subosito/flutter-action@v2` (flutter `3.x` stable)
 - `dart pub get` → `flutter pub get`
@@ -1344,6 +1448,7 @@ Automatiser l'envoi de la notification "Vote Fan du Mois" le 1er de chaque mois 
 ### Changements logique & UI design
 
 #### ✅ UpsellBanner — Bouton de fermeture (UI design)
+
 - `lib/features/home/presentation/widgets/upsell_banner.dart` : converti en `StatefulWidget`
 - Bouton `Icons.close_rounded` en haut à droite de la bannière Kage
 - État dismissed persisté via `SharedPreferences` (`upsell_kage_dismissed`)
@@ -1351,6 +1456,7 @@ Automatiser l'envoi de la notification "Vote Fan du Mois" le 1er de chaque mois 
 - Layout restructuré : titre + × sur la même ligne, texte + bouton Débloquer en dessous
 
 #### ✅ Catégories Home — Alignement avec les animés disponibles (logique)
+
 - `lib/features/home/presentation/widgets/category_chips.dart` :
   - Fallback `_kDefaultCategories` corrigé : `['Tous', 'Shōnen', 'Seinen', 'Sport']`
   - Suppression des catégories inexistantes dans l'app : Isekai, Shōjo, Manhwa, Mecha
@@ -1362,14 +1468,17 @@ Automatiser l'envoi de la notification "Vote Fan du Mois" le 1er de chaque mois 
   - Couleurs trend HxH/FMA/KNB/NS : `trendHxHBg`, `trendFMABg`, `trendKNBBg`, `trendNSBg`
 
 #### ✅ Chemin pour nouvelles catégories (logique)
+
 Pour ajouter une catégorie future :
+
 1. `AppColors.catXxxC1/C2` dans `app_colors.dart`
 2. `_subFilters` + `_categories` dans `search_screen.dart`
 3. `_categoryForAnime()` dans `firestore_character_service.dart`
 4. `prioritized` dans `otadex_providers.dart`
-Les catégories Firestore apparaissent automatiquement dans les chips Home via `categoriesProvider`.
+   Les catégories Firestore apparaissent automatiquement dans les chips Home via `categoriesProvider`.
 
 #### ✅ Recherche — Voice search fonctionnel (logique + UI design)
+
 - `pubspec.yaml` : `speech_to_text: ^6.6.0` ajouté
 - `AndroidManifest.xml` : permission `RECORD_AUDIO` ajoutée
 - `search_screen.dart` :
@@ -1381,15 +1490,18 @@ Les catégories Firestore apparaissent automatiquement dans les chips Home via `
     - Actif : `mic_rounded` rouge (`AppColors.error`) avec animation
 
 #### ✅ Recherche — Catégories et tendances mises à jour (UI design)
+
 - `_subFilters` : `['Shōnen', 'Seinen', 'Sport']` (suppression Shōjo/Manhwa non dispo)
 - `_categories` : 3 cards (Shōnen, Seinen, Sport) — suppression Shōjo/Manhwa/Donghua/Webtoon
 - `_trending` : personnages réels de l'app (Gojo, Luffy, Killua, Itachi, Edward Elric, Akashi)
 
 #### ✅ Nettoyage repo — Scripts one-shot supprimés (2 juin 2026)
+
 - `git rm` : 7 `.docx`, `ns_data.html`, `upload_images.js`, 7 `import_*.js`,
   `send_notification.js`, 3 `rename_assets*.py`, `google_time_offset.js`, `tools/generate_assets.py`
 
 ### Prochaine étape notée
+
 - **Tutoriel in-app** (à faire) : écran de tutoriel à l'entrée de l'application
 
 ### dart analyze → No issues found!

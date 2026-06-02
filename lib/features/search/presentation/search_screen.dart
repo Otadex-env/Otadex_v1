@@ -73,10 +73,11 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
     _TrendItem('#2', 'Monkey D. Luffy', 'One Piece', AppColors.trendOPBg),
     _TrendItem('#3', 'Killua Zoldyck', 'Hunter x Hunter', AppColors.trendHxHBg),
     _TrendItem('#4', 'Itachi Uchiha', 'Naruto Shippuden', AppColors.trendNSBg),
-    _TrendItem('#5', 'Edward Elric', 'Fullmetal Alchemist', AppColors.trendFMABg),
-    _TrendItem('#6', 'Akashi Seijuro', 'Kuroko no Basket', AppColors.trendKNBBg),
+    _TrendItem(
+        '#5', 'Edward Elric', 'Fullmetal Alchemist', AppColors.trendFMABg),
+    _TrendItem(
+        '#6', 'Akashi Seijuro', 'Kuroko no Basket', AppColors.trendKNBBg),
   ];
-
 
   // ── Computed ──────────────────────────────────────────────────────────
   bool get _showSuggestions => _isFocused && _query.isNotEmpty;
@@ -444,7 +445,8 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
               child: Row(
                 children: [
-                  Icon(Icons.search_rounded, color: theme.accentColor, size: 20),
+                  Icon(Icons.search_rounded,
+                      color: theme.accentColor, size: 20),
                   const SizedBox(width: 8),
                   Expanded(
                     child: TextField(
@@ -507,7 +509,7 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
           SizeTransition(
             sizeFactor: _cancelFade,
             axis: Axis.horizontal,
-            axisAlignment: -1,
+            axisAlignment: -1.0,
             child: SlideTransition(
               position: _cancelSlide,
               child: FadeTransition(
@@ -554,7 +556,8 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
                 onTap: () => setState(() => _selectedFilter = i),
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 200),
-                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
                   decoration: BoxDecoration(
                     color: active ? theme.accentColor : Colors.transparent,
                     borderRadius: BorderRadius.circular(20),
@@ -750,8 +753,7 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
       if (idx + q.length < text.length)
         TextSpan(
           text: text.substring(idx + q.length),
-          style:
-              GoogleFonts.nunitoSans(color: theme.textPrimary, fontSize: 15),
+          style: GoogleFonts.nunitoSans(color: theme.textPrimary, fontSize: 15),
         ),
     ]));
   }
@@ -832,8 +834,8 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
           const SizedBox(width: 6),
           Text(
             "'$label'",
-            style: GoogleFonts.nunitoSans(
-                color: theme.textPrimary, fontSize: 13),
+            style:
+                GoogleFonts.nunitoSans(color: theme.textPrimary, fontSize: 13),
           ),
           const SizedBox(width: 6),
           GestureDetector(
@@ -1110,20 +1112,20 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
             tween: Tween(begin: 0.0, end: 1.0),
             duration: const Duration(milliseconds: 300),
             curve: Curves.easeOut,
-            builder: (_, v, child) =>
-                Opacity(opacity: v, child: Transform.translate(offset: Offset(0, 16 * (1 - v)), child: child)),
+            builder: (_, v, child) => Opacity(
+                opacity: v,
+                child: Transform.translate(
+                    offset: Offset(0, 16 * (1 - v)), child: child)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildSectionLabel(
                     theme, '${s.characters.toUpperCase()} (${chars.length})'),
                 const SizedBox(height: 8),
-                ...chars
-                    .take(5)
-                    .map((c) => Padding(
-                          padding: const EdgeInsets.only(bottom: 8),
-                          child: _buildCharacterResultCard(theme, c),
-                        )),
+                ...chars.take(5).map((c) => Padding(
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: _buildCharacterResultCard(theme, c),
+                    )),
                 if (chars.length > 5)
                   _buildSeeMoreRow(
                       theme, '${chars.length - 5} autres personnages'),
@@ -1137,20 +1139,20 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
             tween: Tween(begin: 0.0, end: 1.0),
             duration: const Duration(milliseconds: 400),
             curve: Curves.easeOut,
-            builder: (_, v, child) =>
-                Opacity(opacity: v, child: Transform.translate(offset: Offset(0, 16 * (1 - v)), child: child)),
+            builder: (_, v, child) => Opacity(
+                opacity: v,
+                child: Transform.translate(
+                    offset: Offset(0, 16 * (1 - v)), child: child)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildSectionLabel(
                     theme, '${s.animes.toUpperCase()} (${animes.length})'),
                 const SizedBox(height: 8),
-                ...animes
-                    .take(4)
-                    .map((a) => Padding(
-                          padding: const EdgeInsets.only(bottom: 8),
-                          child: _buildAnimeResultCard(theme, a),
-                        )),
+                ...animes.take(4).map((a) => Padding(
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: _buildAnimeResultCard(theme, a),
+                    )),
                 if (animes.length > 4)
                   _buildSeeMoreRow(theme, '${animes.length - 4} autres animés'),
                 const SizedBox(height: 16),
@@ -1163,20 +1165,20 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
             tween: Tween(begin: 0.0, end: 1.0),
             duration: const Duration(milliseconds: 500),
             curve: Curves.easeOut,
-            builder: (_, v, child) =>
-                Opacity(opacity: v, child: Transform.translate(offset: Offset(0, 16 * (1 - v)), child: child)),
+            builder: (_, v, child) => Opacity(
+                opacity: v,
+                child: Transform.translate(
+                    offset: Offset(0, 16 * (1 - v)), child: child)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildSectionLabel(
                     theme, '${s.creators.toUpperCase()} (${creators.length})'),
                 const SizedBox(height: 8),
-                ...creators
-                    .take(3)
-                    .map((c) => Padding(
-                          padding: const EdgeInsets.only(bottom: 8),
-                          child: _buildCreatorResultCard(theme, c),
-                        )),
+                ...creators.take(3).map((c) => Padding(
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: _buildCreatorResultCard(theme, c),
+                    )),
                 const SizedBox(height: 16),
               ],
             ),
@@ -1198,8 +1200,7 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.search_off_rounded,
-              color: theme.textSecondary, size: 48),
+          Icon(Icons.search_off_rounded, color: theme.textSecondary, size: 48),
           const SizedBox(height: 12),
           Text(
             'Aucun résultat trouvé',
@@ -1247,96 +1248,96 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
     return GestureDetector(
       onTap: () => context.push('/character/${c.id}'),
       child: Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: theme.backgroundCard,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: theme.borderSubtle),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 52,
-            height: 68,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [c.cardColor, c.accentColor.withValues(alpha: 0.6)],
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: theme.backgroundCard,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: theme.borderSubtle),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 52,
+              height: 68,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [c.cardColor, c.accentColor.withValues(alpha: 0.6)],
+                ),
+                borderRadius: BorderRadius.circular(8),
               ),
-              borderRadius: BorderRadius.circular(8),
+              child: c.imagePath != null
+                  ? OtadexImage(
+                      imagePath: c.imagePath!,
+                      fit: BoxFit.cover,
+                      borderRadius: BorderRadius.circular(8),
+                    )
+                  : null,
             ),
-            child: c.imagePath != null
-                ? OtadexImage(
-                    imagePath: c.imagePath!,
-                    fit: BoxFit.cover,
-                    borderRadius: BorderRadius.circular(8),
-                  )
-                : null,
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Flexible(
-                      child: Text(
-                        c.name,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.rajdhani(
-                          color: theme.textPrimary,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(Icons.favorite_rounded,
-                            color: Colors.redAccent, size: 14),
-                        const SizedBox(width: 4),
-                        Text(
-                          '${c.likes}k',
-                          style: GoogleFonts.nunitoSans(
-                            color: theme.textSecondary,
-                            fontSize: 12,
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          c.name,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: GoogleFonts.rajdhani(
+                            color: theme.textPrimary,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
-                      ],
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 4),
-                Wrap(
-                  spacing: 6,
-                  runSpacing: 4,
-                  children: [
-                    _buildTag(c.tierLabel, c.tierColor.withValues(alpha: 0.9),
-                        c.cardColor),
-                    _buildTag(c.category, theme.textSecondary,
-                        theme.backgroundElevated),
-                  ],
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  c.animeName,
-                  style: GoogleFonts.nunitoSans(
-                    color: theme.textSecondary,
-                    fontSize: 11,
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(Icons.favorite_rounded,
+                              color: Colors.redAccent, size: 14),
+                          const SizedBox(width: 4),
+                          Text(
+                            '${c.likes}k',
+                            style: GoogleFonts.nunitoSans(
+                              color: theme.textSecondary,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                ),
-              ],
+                  const SizedBox(height: 4),
+                  Wrap(
+                    spacing: 6,
+                    runSpacing: 4,
+                    children: [
+                      _buildTag(c.tierLabel, c.tierColor.withValues(alpha: 0.9),
+                          c.cardColor),
+                      _buildTag(c.category, theme.textSecondary,
+                          theme.backgroundElevated),
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    c.animeName,
+                    style: GoogleFonts.nunitoSans(
+                      color: theme.textSecondary,
+                      fontSize: 11,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          Icon(Icons.chevron_right_rounded, color: theme.textSecondary),
-        ],
+            Icon(Icons.chevron_right_rounded, color: theme.textSecondary),
+          ],
+        ),
       ),
-    ),
     );
   }
 
@@ -1344,71 +1345,71 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
     return GestureDetector(
       onTap: () => context.push('/anime/${a.id}'),
       child: Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: theme.backgroundCard,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: theme.borderSubtle),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 52,
-            height: 52,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [a.cardColor, a.accentColor],
-              ),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Center(
-              child: Text(
-                a.name.substring(0, 1),
-                style: GoogleFonts.rajdhani(
-                  color: Colors.white,
-                  fontSize: 22,
-                  fontWeight: FontWeight.w800,
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: theme.backgroundCard,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: theme.borderSubtle),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 52,
+              height: 52,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [a.cardColor, a.accentColor],
                 ),
+                borderRadius: BorderRadius.circular(8),
               ),
-            ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  a.name,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+              child: Center(
+                child: Text(
+                  a.name.substring(0, 1),
                   style: GoogleFonts.rajdhani(
-                    color: theme.textPrimary,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w800,
                   ),
                 ),
-                const SizedBox(height: 3),
-                Text(
-                  '${a.category} · ${a.year} · ${a.episodes} épisodes',
-                  style: GoogleFonts.nunitoSans(
-                    color: theme.textSecondary,
-                    fontSize: 11,
-                  ),
-                ),
-                Text(
-                  a.studio,
-                  style: GoogleFonts.nunitoSans(
-                    color: theme.textSecondary,
-                    fontSize: 11,
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
-          Icon(Icons.chevron_right_rounded, color: theme.textSecondary),
-        ],
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    a.name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.rajdhani(
+                      color: theme.textPrimary,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  const SizedBox(height: 3),
+                  Text(
+                    '${a.category} · ${a.year} · ${a.episodes} épisodes',
+                    style: GoogleFonts.nunitoSans(
+                      color: theme.textSecondary,
+                      fontSize: 11,
+                    ),
+                  ),
+                  Text(
+                    a.studio,
+                    style: GoogleFonts.nunitoSans(
+                      color: theme.textSecondary,
+                      fontSize: 11,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Icon(Icons.chevron_right_rounded, color: theme.textSecondary),
+          ],
+        ),
       ),
-    ),
     );
   }
 
@@ -1468,8 +1469,8 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
                     spacing: 4,
                     children: c.tags
                         .take(3)
-                        .map((t) => _buildTag(t, theme.textSecondary,
-                            theme.backgroundElevated))
+                        .map((t) => _buildTag(
+                            t, theme.textSecondary, theme.backgroundElevated))
                         .toList(),
                   ),
                 ],
@@ -1508,8 +1509,7 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
       tween: Tween(begin: 0.0, end: 1.0),
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeOut,
-      builder: (context, value, child) =>
-          Opacity(opacity: value, child: child),
+      builder: (context, value, child) => Opacity(opacity: value, child: child),
       child: SizedBox(
         height: 180,
         child: ListView.separated(
@@ -1560,7 +1560,8 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
                               end: Alignment.bottomCenter,
                               colors: [
                                 AppColors.backgroundDeep.withValues(alpha: 0.0),
-                                AppColors.backgroundDeep.withValues(alpha: 0.92),
+                                AppColors.backgroundDeep
+                                    .withValues(alpha: 0.92),
                               ],
                             ),
                           ),
@@ -1629,7 +1630,6 @@ class _TrendItem {
   final Color color;
   const _TrendItem(this.rank, this.name, this.anime, this.color);
 }
-
 
 class _Suggestion {
   final String text;
