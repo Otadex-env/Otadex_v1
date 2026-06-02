@@ -152,6 +152,8 @@ class AppColors {
   static const Color catDonghuaC2 = Color(0xFF5D0000);
   static const Color catWebtoonC1 = Color(0xFF66BB6A);
   static const Color catWebtoonC2 = Color(0xFF1B3A1C);
+  static const Color catSportC1 = Color(0xFF1565C0);
+  static const Color catSportC2 = Color(0xFF0A1628);
 
   // === TRENDING SEARCH BACKGROUNDS ===
   static const Color trendSLBg = Color(0xFF1A237E);
@@ -160,6 +162,10 @@ class AppColors {
   static const Color trendOPBg = Color(0xFFBF360C);
   static const Color trendAOTBg = Color(0xFF212121);
   static const Color trendFrierenBg = Color(0xFF283593);
+  static const Color trendNSBg = Color(0xFFE65100);
+  static const Color trendHxHBg = Color(0xFF1B5E20);
+  static const Color trendFMABg = Color(0xFF7B0000);
+  static const Color trendKNBBg = Color(0xFF0D47A1);
 
   // === AVATAR GRADIENTS ===
   static const Color avatarMelC1 = Color(0xFFD4621A);

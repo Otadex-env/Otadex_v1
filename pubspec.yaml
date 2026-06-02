@@ -54,6 +54,9 @@ dependencies:
   # Notifications
   onesignal_flutter: ^5.2.6
 
+  # Voice search
+  speech_to_text: ^6.6.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

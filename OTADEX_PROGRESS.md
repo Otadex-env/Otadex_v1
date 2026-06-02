@@ -1337,4 +1337,69 @@ Automatiser l'envoi de la notification "Vote Fan du Mois" le 1er de chaque mois 
 
 ---
 
-_Dernière mise à jour : Task 47 — Flutter CI workflow, 1er juin 2026_
+---
+
+## Task 49 — UX/UI : Kage banner, catégories, recherche vocale (2 juin 2026)
+
+### Changements logique & UI design
+
+#### ✅ UpsellBanner — Bouton de fermeture (UI design)
+- `lib/features/home/presentation/widgets/upsell_banner.dart` : converti en `StatefulWidget`
+- Bouton `Icons.close_rounded` en haut à droite de la bannière Kage
+- État dismissed persisté via `SharedPreferences` (`upsell_kage_dismissed`)
+- La bannière ne réapparaît pas entre les sessions une fois fermée
+- Layout restructuré : titre + × sur la même ligne, texte + bouton Débloquer en dessous
+
+#### ✅ Catégories Home — Alignement avec les animés disponibles (logique)
+- `lib/features/home/presentation/widgets/category_chips.dart` :
+  - Fallback `_kDefaultCategories` corrigé : `['Tous', 'Shōnen', 'Seinen', 'Sport']`
+  - Suppression des catégories inexistantes dans l'app : Isekai, Shōjo, Manhwa, Mecha
+- `lib/core/providers/otadex_providers.dart` :
+  - `'Sport'` ajouté dans la liste `prioritized` de `categoriesProvider`
+  - Commentaire sur l'extensibilité : "étendre ici quand un nouveau genre arrive"
+- `lib/core/theme/app_colors.dart` :
+  - `catSportC1 = Color(0xFF1565C0)` + `catSportC2 = Color(0xFF0A1628)` ajoutés
+  - Couleurs trend HxH/FMA/KNB/NS : `trendHxHBg`, `trendFMABg`, `trendKNBBg`, `trendNSBg`
+
+#### ✅ Chemin pour nouvelles catégories (logique)
+Pour ajouter une catégorie future :
+1. `AppColors.catXxxC1/C2` dans `app_colors.dart`
+2. `_subFilters` + `_categories` dans `search_screen.dart`
+3. `_categoryForAnime()` dans `firestore_character_service.dart`
+4. `prioritized` dans `otadex_providers.dart`
+Les catégories Firestore apparaissent automatiquement dans les chips Home via `categoriesProvider`.
+
+#### ✅ Recherche — Voice search fonctionnel (logique + UI design)
+- `pubspec.yaml` : `speech_to_text: ^6.6.0` ajouté
+- `AndroidManifest.xml` : permission `RECORD_AUDIO` ajoutée
+- `search_screen.dart` :
+  - `SpeechToText _speech` + `_speechAvailable` + `_isListening` ajoutés
+  - `_initSpeech()` : initialisation au démarrage, gestion erreurs/statuts
+  - `_toggleListening()` : écoute FR, pause 3s, remplissage automatique du champ, submit en fin de phrase
+  - Bouton mic : `GestureDetector` → `AnimatedSwitcher`
+    - Inactif : `mic_none_rounded` accent (grisé si speech indisponible)
+    - Actif : `mic_rounded` rouge (`AppColors.error`) avec animation
+
+#### ✅ Recherche — Catégories et tendances mises à jour (UI design)
+- `_subFilters` : `['Shōnen', 'Seinen', 'Sport']` (suppression Shōjo/Manhwa non dispo)
+- `_categories` : 3 cards (Shōnen, Seinen, Sport) — suppression Shōjo/Manhwa/Donghua/Webtoon
+- `_trending` : personnages réels de l'app (Gojo, Luffy, Killua, Itachi, Edward Elric, Akashi)
+
+#### ✅ Nettoyage repo — Scripts one-shot supprimés (2 juin 2026)
+- `git rm` : 7 `.docx`, `ns_data.html`, `upload_images.js`, 7 `import_*.js`,
+  `send_notification.js`, 3 `rename_assets*.py`, `google_time_offset.js`, `tools/generate_assets.py`
+
+### Prochaine étape notée
+- **Tutoriel in-app** (à faire) : écran de tutoriel à l'entrée de l'application
+
+### dart analyze → No issues found!
+
+---
+
+## Task 50 — Prochaine tâche : Tutoriel in-app (à planifier)
+
+_À implémenter dans une prochaine session._
+
+---
+
+_Dernière mise à jour : Task 49 — UX/UI Kage banner + catégories + recherche vocale, 2 juin 2026_

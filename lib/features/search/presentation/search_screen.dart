@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 import '../../../core/constants/app_assets.dart';
 import '../../../core/l10n/app_strings.dart';
 import '../../../core/models/anime_entry.dart';
@@ -33,6 +34,11 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   final _focusNode = FocusNode();
   Timer? _debounce;
 
+  // ── Speech ────────────────────────────────────────────────────────────
+  final SpeechToText _speech = SpeechToText();
+  bool _speechAvailable = false;
+  bool _isListening = false;
+
   // ── State ─────────────────────────────────────────────────────────────
   String _query = '';
   bool _isFocused = false;
@@ -48,31 +54,27 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   late Animation<double> _cancelFade;
 
   // ── Static data ───────────────────────────────────────────────────────
-  static const _subFilters = ['Shōnen', 'Shōjo', 'Seinen', 'Manhwa'];
+  // Pour ajouter une catégorie : 1) AppColors.catXxxC1/C2 dans app_colors.dart
+  //   2) Ajouter ici dans _subFilters et _categories
+  //   3) Ajouter dans _categoryForAnime() dans firestore_character_service.dart
+  static const _subFilters = ['Shōnen', 'Seinen', 'Sport'];
 
   static const _categories = [
     _Category('SHŌNEN', 'Shōnen', 'Action · Aventure', '⚡',
         AppColors.catShonenC1, AppColors.catShonenC2),
-    _Category('SHŌJO', 'Shōjo', 'Romance · Émotions', '🌸',
-        AppColors.catShojoC1, AppColors.catShojoC2),
     _Category('SEINEN', 'Seinen', 'Adulte · Psychologique', '✒️',
         AppColors.catSeinenC1, AppColors.catSeinenC2),
-    _Category('MANHWA', 'Manhwa', 'Webtoon · Coréen', '📱',
-        AppColors.catManhwaC1, AppColors.catManhwaC2),
-    _Category('DONGHUA', 'Donghua', 'Animation · Chinoise', '🐉',
-        AppColors.catDonghuaC1, AppColors.catDonghuaC2),
-    _Category('WEBTOON', 'Webtoon', 'Numérique · Vertical', '📖',
-        AppColors.catWebtoonC1, AppColors.catWebtoonC2),
+    _Category('SPORT', 'Sport', 'Compétition · Dépassement', '🏀',
+        AppColors.catSportC1, AppColors.catSportC2),
   ];
 
   static const _trending = [
-    _TrendItem('#1', 'Sung Jinwoo', 'Solo Leveling', AppColors.trendSLBg),
-    _TrendItem('#2', 'Gojo Satoru', 'Jujutsu Kaisen', AppColors.trendJJKBg),
-    _TrendItem('#3', 'Tanjiro', 'Demon Slayer', AppColors.trendDSBg),
-    _TrendItem('#4', 'Luffy', 'One Piece', AppColors.trendOPBg),
-    _TrendItem('#5', 'Levi', 'Attack on Titan', AppColors.trendAOTBg),
-    _TrendItem('#6', 'Frieren', "Frieren: Beyond Journey's End",
-        AppColors.trendFrierenBg),
+    _TrendItem('#1', 'Gojo Satoru', 'Jujutsu Kaisen', AppColors.trendJJKBg),
+    _TrendItem('#2', 'Monkey D. Luffy', 'One Piece', AppColors.trendOPBg),
+    _TrendItem('#3', 'Killua Zoldyck', 'Hunter x Hunter', AppColors.trendHxHBg),
+    _TrendItem('#4', 'Itachi Uchiha', 'Naruto Shippuden', AppColors.trendNSBg),
+    _TrendItem('#5', 'Edward Elric', 'Fullmetal Alchemist', AppColors.trendFMABg),
+    _TrendItem('#6', 'Akashi Seijuro', 'Kuroko no Basket', AppColors.trendKNBBg),
   ];
 
 
@@ -200,6 +202,7 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   @override
   void initState() {
     super.initState();
+    _initSpeech();
     _loadHistory();
     // Charger depuis Firestore (priorité) → fallback JSON si vide
     ref.read(allCharactersProvider.future).then((chars) {
@@ -325,6 +328,44 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   void _removeRecent(String s) => _removeRecentQuery(s);
   void _clearAll() => _clearHistory();
 
+  // ── Speech ────────────────────────────────────────────────────────────
+  Future<void> _initSpeech() async {
+    _speechAvailable = await _speech.initialize(
+      onError: (_) => setState(() => _isListening = false),
+      onStatus: (status) {
+        if (status == 'done' || status == 'notListening') {
+          if (mounted) setState(() => _isListening = false);
+        }
+      },
+    );
+  }
+
+  Future<void> _toggleListening() async {
+    if (!_speechAvailable) return;
+    if (_isListening) {
+      await _speech.stop();
+      setState(() => _isListening = false);
+      return;
+    }
+    setState(() => _isListening = true);
+    await _speech.listen(
+      onResult: (result) {
+        final recognized = result.recognizedWords;
+        if (recognized.isNotEmpty) {
+          _controller.text = recognized;
+          setState(() => _query = recognized);
+          if (result.finalResult) {
+            _speech.stop();
+            setState(() => _isListening = false);
+            _submitSearch();
+          }
+        }
+      },
+      localeId: 'fr_FR',
+      pauseFor: const Duration(seconds: 3),
+    );
+  }
+
   // ── Build ─────────────────────────────────────────────────────────────
   @override
   Widget build(BuildContext context) {
@@ -435,7 +476,27 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
                       ),
                     )
                   else
-                    Icon(Icons.mic_rounded, color: theme.accentColor, size: 18),
+                    GestureDetector(
+                      onTap: _toggleListening,
+                      child: AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 200),
+                        child: _isListening
+                            ? const Icon(
+                                Icons.mic_rounded,
+                                key: ValueKey('mic_on'),
+                                color: AppColors.error,
+                                size: 18,
+                              )
+                            : Icon(
+                                Icons.mic_none_rounded,
+                                key: const ValueKey('mic_off'),
+                                color: _speechAvailable
+                                    ? theme.accentColor
+                                    : theme.textSecondary,
+                                size: 18,
+                              ),
+                      ),
+                    ),
                 ],
               ),
             ),

@@ -90,7 +90,8 @@ final categoriesProvider = FutureProvider<List<String>>((ref) async {
   final animes = await ref.watch(allAnimesProvider.future);
   final seen = <String>{};
   final result = <String>['Tous'];
-  const prioritized = ['Shōnen', 'Seinen', 'Isekai', 'Shōjo', 'Manhwa', 'Mecha'];
+  // Ordre d'affichage prioritaire — étendre ici quand un nouveau genre arrive
+  const prioritized = ['Shōnen', 'Seinen', 'Sport', 'Isekai', 'Shōjo', 'Manhwa', 'Mecha'];
   for (final priority in prioritized) {
     if (animes.any((a) => a.genres.contains(priority)) && seen.add(priority)) {
       result.add(priority);

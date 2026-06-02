@@ -5,7 +5,7 @@ import '../../../../../core/providers/otadex_providers.dart';
 import '../../../../../core/theme/otadex_theme.dart';
 
 const _kDefaultCategories = [
-  'Tous', 'Shōnen', 'Seinen', 'Isekai', 'Shōjo', 'Manhwa', 'Mecha',
+  'Tous', 'Shōnen', 'Seinen', 'Sport',
 ];
 
 class CategoryChips extends ConsumerWidget {
