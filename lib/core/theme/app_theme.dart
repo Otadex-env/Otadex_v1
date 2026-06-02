@@ -75,7 +75,7 @@ class AppTheme {
           elevation: 0,
         ),
       ),
-      pageTransitionsTheme: PageTransitionsTheme(
+      pageTransitionsTheme: const PageTransitionsTheme(
         builders: {
           TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
           TargetPlatform.iOS: ZoomPageTransitionsBuilder(),
@@ -177,7 +177,7 @@ class AppTheme {
           elevation: 0,
         ),
       ),
-      pageTransitionsTheme: PageTransitionsTheme(
+      pageTransitionsTheme: const PageTransitionsTheme(
         builders: {
           TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
           TargetPlatform.iOS: ZoomPageTransitionsBuilder(),

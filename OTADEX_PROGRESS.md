@@ -7,7 +7,7 @@
 - Firebase configuré : **OUI (Storage inclus)** — FlutterFire Android + Firebase Auth email/Google + Firestore profil utilisateur + Functions + Storage initialisés
 - Dernier écran complété : **PlansScreen** (URLs Chariow `/checkout` + SnackBar post-achat, juin 2026)
 - Dernière mise à jour : **Task 45 — Paiement Chariow URLs + SnackBar**, 02 juin 2026
-- Correction : `lib/features/search/presentation/search_screen.dart` mis à jour (`axisAlignment` → `alignment`), `lib/core/theme/app_theme.dart` confirmé avec `ZoomPageTransitionsBuilder`, `.env` retiré de `pubspec.yaml`, `dart analyze lib/` à vérifier.
+- Correction : `lib/features/search/presentation/search_screen.dart` mis à jour (`axisAlignment` rétabli), `lib/core/theme/app_theme.dart` confirmé avec `ZoomPageTransitionsBuilder`, `.env` retiré de `pubspec.yaml`, `dart analyze lib/` : 0 erreurs (8 infos de style `prefer_const_constructors`).
 
 ## Dépendances installées (`pubspec.yaml`)
 
