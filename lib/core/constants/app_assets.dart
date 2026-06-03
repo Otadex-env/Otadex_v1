@@ -22,12 +22,12 @@ class AppAssets {
 
   // ━━━ Characters UI ━━━
   static const String defaultAvatar =
-      'assets/images/Animé pictures/Jujutsu kaizen/Gojo satoru/jj_gojo.jpeg';
+      'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Jujutsu kaizen/Gojo satoru/jj_gojo.jpeg';
 
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // JJK — Jujutsu Kaisen   prefix: jj_
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  static const String _jjk = 'assets/images/Animé pictures/Jujutsu kaizen';
+  static const String _jjk = 'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Jujutsu kaizen';
 
   // ── Gojo Satoru ──────────────────────────────────────────────────────────
   static const List<String> gojoSatoru = [
@@ -222,7 +222,7 @@ class AppAssets {
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // NS — Naruto Shippuden   prefix: ns_
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  static const String _ns = 'assets/images/Animé pictures/Naruto Shippuden';
+  static const String _ns = 'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Naruto Shippuden';
 
   // ── Gaara ─────────────────────────────────────────────────────────────────
   static const List<String> gaara = [
@@ -436,7 +436,7 @@ class AppAssets {
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // CLK — Classroom of the Elite   prefix: clk_
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  static const String _clk = 'assets/images/Animé pictures/Classroom of Elite';
+  static const String _clk = 'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite';
 
   // ── Arisu Sakayanagi ─────────────────────────────────────────────────────
   static const List<String> arisuSakayanagi = [
@@ -553,7 +553,7 @@ class AppAssets {
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // OP — One Piece
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  static const String _op = 'assets/images/Animé pictures/One piece';
+  static const String _op = 'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/One piece';
 
   static const List<String> boaHancock = [
     '$_op/Boa Hancock/op_hanco1.jpeg',
@@ -741,7 +741,7 @@ class AppAssets {
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // KNB — Kuroko no Basket
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  static const String _knb = 'assets/images/Animé pictures/Kuroko no basket';
+  static const String _knb = 'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Kuroko no basket';
 
   static const List<String> atsushiMurasakibara = [
     '$_knb/Atsushi Murasakibara/knb_muras1.jpeg',
@@ -890,7 +890,7 @@ class AppAssets {
   // FMA — Fullmetal Alchemist Brotherhood   prefix: fma_
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // ignore: unused_field
-  static const String _fma = 'assets/images/Animé pictures/Fullmetal Alchemist';
+  static const String _fma = 'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fullmetal Alchemist';
 
   static const List<String> edwardElric = [];
   static const List<String> royMustang = [];
@@ -910,7 +910,7 @@ class AppAssets {
   // HXH — Hunter x Hunter   prefix: hxh_
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // ignore: unused_field
-  static const String _hxh = 'assets/images/Animé pictures/Hunter x Hunter';
+  static const String _hxh = 'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Hunter x Hunter';
 
   static const List<String> killuaZoldyck = [];
   static const List<String> gonFreecss = [];

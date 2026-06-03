@@ -46,7 +46,7 @@ class OtadexImage extends StatelessWidget {
       return ClipRRect(
         borderRadius: borderRadius ?? BorderRadius.zero,
         child: CachedNetworkImage(
-          imageUrl: imagePath,
+          imageUrl: Uri.encodeFull(imagePath),
           width: width,
           height: height,
           fit: fit,

@@ -284,7 +284,7 @@ class MockData {
       rating: 9.9,
       likes: 89,
       imagePath:
-          'assets/images/Animé pictures/Jujutsu kaizen/Gojo satoru/jj_gojo.jpeg',
+          'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Jujutsu kaizen/Gojo satoru/jj_gojo.jpeg',
       category: 'Shōnen',
       isTrending: true,
       bio:
@@ -537,7 +537,7 @@ class MockData {
       rating: 9.4,
       likes: 51,
       imagePath:
-          'assets/images/Animé pictures/Jujutsu kaizen/Toge Inumaki/jj_toge1.jpeg',
+          'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Jujutsu kaizen/Toge Inumaki/jj_toge1.jpeg',
       category: 'Isekai',
       isTrending: true,
     ),
@@ -552,7 +552,7 @@ class MockData {
       rating: 9.2,
       likes: 39,
       imagePath:
-          'assets/images/Animé pictures/Jujutsu kaizen/Mahito/jj_mahi1.jpeg',
+          'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Jujutsu kaizen/Mahito/jj_mahi1.jpeg',
       category: 'Seinen',
       isNew: true,
     ),
@@ -566,7 +566,7 @@ class MockData {
       rating: 9.1,
       likes: 62,
       imagePath:
-          'assets/images/Animé pictures/Jujutsu kaizen/Maki Zenin/jj_maki1.jpeg',
+          'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Jujutsu kaizen/Maki Zenin/jj_maki1.jpeg',
       category: 'Shōnen',
       isNew: true,
     ),
@@ -580,7 +580,7 @@ class MockData {
       rating: 9.6,
       likes: 34,
       imagePath:
-          'assets/images/Animé pictures/Jujutsu kaizen/Toji fushiguro/jj_toji1.jpeg',
+          'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Jujutsu kaizen/Toji fushiguro/jj_toji1.jpeg',
       category: 'Seinen',
       isNew: true,
     ),
@@ -594,7 +594,7 @@ class MockData {
       rating: 8.9,
       likes: 47,
       imagePath:
-          'assets/images/Animé pictures/Jujutsu kaizen/Maki Zenin/jj_maki2.jpeg',
+          'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Jujutsu kaizen/Maki Zenin/jj_maki2.jpeg',
       category: 'Shōnen',
       isNew: true,
     ),
@@ -608,7 +608,7 @@ class MockData {
       rating: 9.3,
       likes: 43,
       imagePath:
-          'assets/images/Animé pictures/Jujutsu kaizen/Yuta Okkotsu/jj_yuta2.jpeg',
+          'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Jujutsu kaizen/Yuta Okkotsu/jj_yuta2.jpeg',
       category: 'Shōjo',
       isNew: true,
     ),
@@ -622,7 +622,7 @@ class MockData {
       rating: 9.4,
       likes: 37,
       imagePath:
-          'assets/images/Animé pictures/Jujutsu kaizen/Nanami Kento/jj_nana1.jpeg',
+          'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Jujutsu kaizen/Nanami Kento/jj_nana1.jpeg',
       category: 'Seinen',
       isNew: true,
     ),
@@ -636,7 +636,7 @@ class MockData {
       rating: 9.0,
       likes: 75,
       imagePath:
-          'assets/images/Animé pictures/Jujutsu kaizen/Suguru Geto/jj_sugu1.jpeg',
+          'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Jujutsu kaizen/Suguru Geto/jj_sugu1.jpeg',
       category: 'Mecha',
       isNew: true,
     ),
@@ -651,7 +651,7 @@ class MockData {
       rating: 9.8,
       likes: 85,
       imagePath:
-          'assets/images/Animé pictures/Jujutsu kaizen/Kenjaku/jj_kenj1.jpeg',
+          'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Jujutsu kaizen/Kenjaku/jj_kenj1.jpeg',
       category: 'Shōnen',
       isRecommended: true,
     ),
@@ -665,7 +665,7 @@ class MockData {
       rating: 9.3,
       likes: 79,
       imagePath:
-          'assets/images/Animé pictures/Jujutsu kaizen/Aoi Todo/jj_aoi1.jpeg',
+          'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Jujutsu kaizen/Aoi Todo/jj_aoi1.jpeg',
       category: 'Isekai',
       isRecommended: true,
     ),
@@ -679,7 +679,7 @@ class MockData {
       rating: 9.6,
       likes: 71,
       imagePath:
-          'assets/images/Animé pictures/Jujutsu kaizen/Mahito/jj_mahi2.jpeg',
+          'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Jujutsu kaizen/Mahito/jj_mahi2.jpeg',
       category: 'Seinen',
       isRecommended: true,
     ),
@@ -693,7 +693,7 @@ class MockData {
       rating: 9.7,
       likes: 77,
       imagePath:
-          'assets/images/Animé pictures/Jujutsu kaizen/Yuta Okkotsu/jj_yuta1.jpeg',
+          'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Jujutsu kaizen/Yuta Okkotsu/jj_yuta1.jpeg',
       category: 'Shōnen',
       isRecommended: true,
     ),
@@ -707,7 +707,7 @@ class MockData {
       rating: 9.5,
       likes: 64,
       imagePath:
-          'assets/images/Animé pictures/Jujutsu kaizen/Megumi Fushiguro/jj_megu2.jpeg',
+          'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Jujutsu kaizen/Megumi Fushiguro/jj_megu2.jpeg',
       category: 'Seinen',
       isRecommended: true,
     ),
@@ -721,7 +721,7 @@ class MockData {
       rating: 9.8,
       likes: 87,
       imagePath:
-          'assets/images/Animé pictures/Jujutsu kaizen/Kenjaku/jj_kenj2.jpeg',
+          'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Jujutsu kaizen/Kenjaku/jj_kenj2.jpeg',
       category: 'Shōnen',
       isRecommended: true,
     ),
@@ -736,7 +736,7 @@ class MockData {
       rating: 9.6,
       likes: 72,
       imagePath:
-          'assets/images/Animé pictures/Jujutsu kaizen/Yuji Itadori/jj_yuji1.jpeg',
+          'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Jujutsu kaizen/Yuji Itadori/jj_yuji1.jpeg',
       category: 'Shōnen',
       isTrending: true,
       bio:
@@ -849,7 +849,7 @@ class MockData {
       rating: 9.9,
       likes: 81,
       imagePath:
-          'assets/images/Animé pictures/Jujutsu kaizen/Sukuna/jj_suku.jpeg',
+          'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Jujutsu kaizen/Sukuna/jj_suku.jpeg',
       category: 'Shōnen',
       isTrending: true,
       bio:
@@ -879,7 +879,7 @@ class MockData {
       rating: 9.4,
       likes: 63,
       imagePath:
-          'assets/images/Animé pictures/Jujutsu kaizen/Megumi Fushiguro/jj_megu1.jpeg',
+          'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Jujutsu kaizen/Megumi Fushiguro/jj_megu1.jpeg',
       category: 'Shōnen',
       isRecommended: true,
       bio:
@@ -913,7 +913,7 @@ class MockData {
       rating: 9.3,
       likes: 58,
       imagePath:
-          'assets/images/Animé pictures/Jujutsu kaizen/Maki Zenin/jj_maki1.jpeg',
+          'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Jujutsu kaizen/Maki Zenin/jj_maki1.jpeg',
       category: 'Shōnen',
       isRecommended: true,
       bio:

@@ -67,6 +67,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - .env
     - assets/images/logo/
     - assets/images/onboarding/
     - assets/images/splash/
