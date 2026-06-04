@@ -2,8 +2,17 @@ class AppAssets {
   AppAssets._();
 
   // ━━━ Logo ━━━
-  static const String logoFull = 'assets/images/logo/otadex_logo.png';
+  static const String logoFull =
+      'assets/images/logo/otadex_logo_with_name_transparent.png';
+  static const String logoFullSolid =
+      'assets/images/logo/otadex_logo_with_name.png';
   static const String logoIcon = 'assets/images/logo/otadex_icon.png';
+  static const String logoIconTransparent =
+      'assets/images/logo/otadex_icon_small_transparent.png';
+  static const String logoIconWhite =
+      'assets/images/logo/otadex_icon_white.png';
+  static const String logoTransparent =
+      'assets/images/logo/otadex_logo_transparent.png';
 
   // ━━━ Splash ━━━
   static const String splashBackground =

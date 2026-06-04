@@ -1514,4 +1514,129 @@ _À implémenter dans une prochaine session._
 
 ---
 
-_Dernière mise à jour : Task 49 — UX/UI Kage banner + catégories + recherche vocale, 2 juin 2026_
+---
+
+## Task 51 — Logo, Icônes Android + Fix Émulateur (4 juin 2026)
+
+### ✅ Icône Android OTADEX
+
+- `assets/images/logo/` : 6 assets disponibles (icon 512px, icon transparent 310px, icon white, logo transparent 727px, logo with name 512px, logo with name transparent 512px)
+- Génération automatique via Python/Pillow depuis `otadex_icon.png` :
+  - `mipmap-mdpi` → 48×48
+  - `mipmap-hdpi` → 72×72
+  - `mipmap-xhdpi` → 96×96
+  - `mipmap-xxhdpi` → 144×144
+  - `mipmap-xxxhdpi` → 192×192
+- L'icône de lancement affiche désormais le logo OTADEX (fond `#0D0D0F` + icône)
+
+### ✅ app_assets.dart — Nouvelles constantes
+
+- `logoFull` → `otadex_logo_with_name_transparent.png` (corrigé, était `otadex_logo.png` inexistant)
+- `logoFullSolid` → `otadex_logo_with_name.png`
+- `logoIconTransparent` → `otadex_icon_small_transparent.png`
+- `logoIconWhite` → `otadex_icon_white.png`
+- `logoTransparent` → `otadex_logo_transparent.png`
+- Splash utilise `logoFull` (transparent sur fond sombre) ✅
+
+### ✅ Home — Logo dans l'AppBar
+
+- `home_app_bar.dart` : le texte seul "OTADEX" remplacé par `logoIconTransparent` (36×36) + texte "OTA**DEX**" réduit à 22px
+- Glow radius derrière le logo selon le rang (hasGlowEffect)
+
+### ✅ Profil — Logo dans le header
+
+- `profile_hero.dart` : ligne du haut transformée en header complet
+  - Logo icon (28×28) + "OTA**DEX**" 16px à gauche
+  - Bouton settings à droite (inchangé)
+
+### ✅ Fix émulateur — Installation release APK
+
+- **Cause du blocage** : APK debug = 234 MB (inclut Dart VM + symbols), partition `/data` à 90% → `INSTALL_FAILED_INSUFFICIENT_STORAGE`
+- **Solution** : `flutter build apk --release` → 65 MB (4× plus petit)
+- Installation via `adb install -r app-release.apk` → **Success**
+- App lancée via `adb shell am start -n com.otadex.otadex/.MainActivity`
+- **Pour le futur** : toujours utiliser le build release pour tester sur émulateur à faible espace
+
+### 📊 Rapport Firebase — Analyse + Recommandations
+
+#### Architecture Firestore actuelle
+
+| Collection | Rôle | Accès |
+|---|---|---|
+| `characters` | 60+ personnages (JJK, NS, CLK...) | Lecture publique |
+| `animes` | Métadonnées animés | Lecture publique |
+| `creators` | Créateurs/mangakas | Lecture publique |
+| `quizzes` | Quiz par personnage | Lecture publique |
+| `users/{uid}` | Profil utilisateur (pseudo, rang, score) | Owner only |
+| `comments` | Commentaires sur personnages | Lecture publique, write auth |
+| `votes` | Votes/likes | Lecture publique, write auth |
+| `subscriptions` | Abonnements | Read auth + owner |
+
+#### ✅ Points forts
+
+1. **Règles Firestore correctes** : `characters/animes/creators/quizzes` → read public, write false ✅
+2. **Owner-only** sur `users/{uid}` : création validée via `uid == request.auth.uid` ✅
+3. **Index composites** déployés : `animeId+popularityRank`, `animeId+statut`, `animeId+likesCount` ✅
+4. **Fallback mock** : si Firestore vide → données locales JSON → 0 crash au premier lancement ✅
+5. **Auth service complet** : email/password + Google, réauth, reset password, updateProfile ✅
+
+#### ⚠️ Problèmes identifiés + Recommandations
+
+**1. Recherche full-text coûteuse (PRIORITAIRE)**
+- `searchCharacters()` charge 100 docs puis filtre côté client — chaque recherche = 1 lecture complète
+- **Fix** : Utiliser un index Firestore sur `nom` OU intégrer Algolia/Meilisearch (Cloud Function trigger `onCreate`)
+
+**2. `getAllCharacters(limit:200)` au démarrage**
+- Chaque ouverture de l'app charge 200 documents Firestore → ~200 lectures/session
+- **Fix** : Pagination `startAfterDocument` + cache local (`Riverpod keepAlive: true` ou Hive)
+- Court terme : réduire `limit: 100` et ajouter `keepAlive: true` sur `allCharactersProvider`
+
+**3. `collectionStream()` — Listener permanent**
+- Stream Firestore actif tant que l'app est ouverte → OK fonctionnellement mais consomme des lectures en continu
+- **Fix** : Désabonner le stream quand l'utilisateur n'est pas sur Profile/Collection
+
+**4. Aucun rate limiting sur `votes/comments`**
+- Un utilisateur peut créer des votes à répétition — aucune limite côté rules
+- **Fix à ajouter dans `firestore.rules`** :
+  ```js
+  // Empêcher double-vote : 1 vote par user par character
+  match /votes/{voteId} {
+    allow create: if isSignedIn()
+      && request.resource.data.user_id == request.auth.uid
+      && !exists(/databases/$(database)/documents/votes/$(request.auth.uid + '_' + request.resource.data.character_id));
+  }
+  ```
+
+**5. `studios` collection non sécurisée**
+- La règle `/{document=**} { allow read, write: if false; }` bloque `studios` mais aucune règle explicite
+- **Fix** : Ajouter une règle `match /studios/{document=**} { allow read: if true; allow write: if false; }`
+
+**6. Champ `score_fan` non mis à jour**
+- Créé à 0 à l'inscription, jamais incrémenté dans les actions utilisateur (likes, collection, quiz)
+- **Fix** : Cloud Function `onVote`/`onCollect` → `increment(points)`
+
+**7. Pas de Firestore offline persistence**
+- Firestore Flutter active la persistence par défaut sur mobile, mais aucune config explicite dans `main.dart`
+- **Fix** : Confirmer avec `FirebaseFirestore.instance.settings = Settings(persistenceEnabled: true);` dans `main.dart` avant `runApp()`
+
+#### 💡 Optimisations APK size
+
+| Technique | Gain estimé | Effort |
+|---|---|---|
+| `--split-per-abi` (x86_64 pour émulateur, arm64 pour device) | 40–50% | Faible — option build |
+| ProGuard/R8 (déjà actif en release) | Inclus dans 65 MB | — |
+| Désactiver `speech_to_text` en Genin si non utilisé | ~5 MB | Moyen |
+| Retirer `firebase_storage` si Storage non utilisé activement | ~3 MB | Faible |
+| Compression assets PNG → WebP (logo, splash, onboarding) | ~30% taille assets | Moyen |
+| Deferred loading for quiz/chat features | ~10 MB | Élevé |
+
+**Commande recommandée pour Play Store :**
+```bash
+flutter build apk --release --split-per-abi
+# → app-arm64-v8a-release.apk (~35 MB) pour les vrais devices
+# → app-x86_64-release.apk (~35 MB) pour l'émulateur
+```
+
+---
+
+_Dernière mise à jour : Task 51 — Logo + Icônes + Fix émulateur + Rapport Firebase, 4 juin 2026_

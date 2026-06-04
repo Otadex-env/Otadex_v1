@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../../core/constants/app_assets.dart';
 import '../../../../../core/l10n/app_strings.dart';
 import '../../../../../core/models/user_rank.dart';
 import '../../../../../core/theme/app_colors.dart';
@@ -61,29 +62,54 @@ class HomeAppBar extends StatelessWidget {
             child: Row(
               children: [
                 // Logo
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: 'OTA',
-                        style: GoogleFonts.rajdhani(
-                          fontSize: 26,
-                          fontWeight: FontWeight.w700,
-                          color: theme.textPrimary,
-                          letterSpacing: -0.5,
-                        ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: theme.accentColor.withValues(
+                              alpha: theme.hasGlowEffect ? 0.30 : 0.10,
+                            ),
+                            blurRadius: 12,
+                            spreadRadius: 1,
+                          ),
+                        ],
                       ),
-                      TextSpan(
-                        text: 'DEX',
-                        style: GoogleFonts.rajdhani(
-                          fontSize: 26,
-                          fontWeight: FontWeight.w700,
-                          color: theme.accentColor,
-                          letterSpacing: -0.5,
-                        ),
+                      child: Image.asset(
+                        AppAssets.logoIconTransparent,
+                        width: 36,
+                        height: 36,
+                        fit: BoxFit.contain,
                       ),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(width: 8),
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: 'OTA',
+                            style: GoogleFonts.rajdhani(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w700,
+                              color: theme.textPrimary,
+                              letterSpacing: -0.5,
+                            ),
+                          ),
+                          TextSpan(
+                            text: 'DEX',
+                            style: GoogleFonts.rajdhani(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w700,
+                              color: theme.accentColor,
+                              letterSpacing: -0.5,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
                 if (isLoggedIn) ...[
                   const SizedBox(width: 8),

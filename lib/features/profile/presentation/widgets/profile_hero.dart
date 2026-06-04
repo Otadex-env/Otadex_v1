@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/constants/app_assets.dart';
 import '../../../../core/models/user_rank.dart';
 import '../../../../core/theme/otadex_theme.dart';
 
@@ -27,10 +28,42 @@ class ProfileHero extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
       child: Column(
         children: [
-          Align(
-            alignment: Alignment.centerRight,
-            child:
-                Icon(Icons.settings_rounded, color: theme.textSecondary, size: 22),
+          Row(
+            children: [
+              Image.asset(
+                AppAssets.logoIconTransparent,
+                width: 28,
+                height: 28,
+                fit: BoxFit.contain,
+              ),
+              const SizedBox(width: 6),
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'OTA',
+                      style: GoogleFonts.rajdhani(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: theme.textPrimary,
+                        letterSpacing: -0.3,
+                      ),
+                    ),
+                    TextSpan(
+                      text: 'DEX',
+                      style: GoogleFonts.rajdhani(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: theme.accentColor,
+                        letterSpacing: -0.3,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const Spacer(),
+              Icon(Icons.settings_rounded, color: theme.textSecondary, size: 22),
+            ],
           ),
           const SizedBox(height: 12),
           Container(
