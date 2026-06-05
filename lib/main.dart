@@ -17,6 +17,8 @@ import 'core/theme/app_colors.dart';
 import 'firebase_options.dart';
 import 'app.dart';
 
+late final ProviderContainer _providerContainer;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -25,74 +27,23 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await NotificationService.initialize();
 
   final prefs = await SharedPreferences.getInstance();
   final isLoggedIn = prefs.getBool(AppConstants.keyIsLoggedIn) ??
       prefs.getBool('isLoggedIn') ??
       false;
-  var rankStr =
+  final rankStr =
       prefs.getString(AppConstants.keyUserRank) ?? AppConstants.rankGenin;
   final userId = prefs.getString(AppConstants.keyUserId);
   final pseudo = prefs.getString(AppConstants.keyUserPseudo);
   final email = prefs.getString(AppConstants.keyUserEmail);
   final currency = prefs.getString(AppConstants.keyUserCurrency) ?? 'XAF';
 
-  // Vérification expiration licence au démarrage
-  if (isLoggedIn) {
-    final expiresMs = prefs.getInt(AppConstants.keyLicenseExpires) ?? 0;
-    if (expiresMs > 0) {
-      final expiresAt = DateTime.fromMillisecondsSinceEpoch(expiresMs);
-      if (expiresAt.isBefore(DateTime.now())) {
-        // Licence expirée localement — vérifier via Chariow
-        try {
-          final uid = FirebaseAuth.instance.currentUser?.uid;
-          if (uid != null) {
-            final doc = await FirebaseFirestore.instance
-                .collection('users')
-                .doc(uid)
-                .get();
-            final licenseKey =
-                doc.data()?['licenseKey'] as String?;
-            if (licenseKey != null && licenseKey.isNotEmpty) {
-              final result =
-                  await ChariowService().checkLicense(licenseKey);
-              if (!result.isActive || result.isExpired) {
-                // Rétrograder vers genin
-                rankStr = AppConstants.rankGenin;
-                await prefs.setString(
-                    AppConstants.keyUserRank, AppConstants.rankGenin);
-                await prefs.remove(AppConstants.keyLicenseExpires);
-                await FirebaseFirestore.instance
-                    .collection('users')
-                    .doc(uid)
-                    .update({'abonnement': AppConstants.rankGenin});
-              } else if (result.expiresAt != null) {
-                // Mettre à jour la date d'expiration depuis Chariow
-                await prefs.setInt(AppConstants.keyLicenseExpires,
-                    result.expiresAt!.millisecondsSinceEpoch);
-              }
-            } else {
-              // Aucune clé enregistrée — rétrograder
-              rankStr = AppConstants.rankGenin;
-              await prefs.setString(
-                  AppConstants.keyUserRank, AppConstants.rankGenin);
-              await prefs.remove(AppConstants.keyLicenseExpires);
-            }
-          }
-        } catch (_) {
-          // Erreur réseau — on garde le rang actuel pour ne pas pénaliser offline
-        }
-      }
-    }
-  }
-
   final userRank = UserRank.values.firstWhere(
     (r) => r.name == rankStr,
     orElse: () => UserRank.genin,
   );
 
-  // Force portrait mode
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -107,21 +58,68 @@ void main() async {
     ),
   );
 
-  runApp(
-    ProviderScope(
-      overrides: [
-        isLoggedInProvider.overrideWith((ref) => isLoggedIn),
-        currencyProvider.overrideWith((ref) => currency),
-        userProfileProvider.overrideWith(
-          (ref) => UserProfileNotifier(
-            initialRank: userRank,
-            id: userId,
-            pseudo: pseudo,
-            email: email,
-          ),
+  _providerContainer = ProviderContainer(
+    overrides: [
+      isLoggedInProvider.overrideWith((ref) => isLoggedIn),
+      currencyProvider.overrideWith((ref) => currency),
+      userProfileProvider.overrideWith(
+        (ref) => UserProfileNotifier(
+          initialRank: userRank,
+          id: userId,
+          pseudo: pseudo,
+          email: email,
         ),
-      ],
-      child: const OtadexApp(),
-    ),
+      ),
+    ],
   );
+
+  runApp(UncontrolledProviderScope(
+    container: _providerContainer,
+    child: const OtadexApp(),
+  ));
+
+  // Notifications + licence vérifiés après le premier frame (évite l'ANR)
+  WidgetsBinding.instance.addPostFrameCallback((_) async {
+    await NotificationService.initialize();
+    if (isLoggedIn) _checkLicenseExpiry(prefs);
+  });
+}
+
+Future<void> _checkLicenseExpiry(SharedPreferences prefs) async {
+  final expiresMs = prefs.getInt(AppConstants.keyLicenseExpires) ?? 0;
+  if (expiresMs <= 0) return;
+  final expiresAt = DateTime.fromMillisecondsSinceEpoch(expiresMs);
+  if (!expiresAt.isBefore(DateTime.now())) return;
+  try {
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) return;
+    final doc = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .get();
+    final licenseKey = doc.data()?['licenseKey'] as String?;
+    if (licenseKey != null && licenseKey.isNotEmpty) {
+      final result = await ChariowService().checkLicense(licenseKey);
+      if (!result.isActive || result.isExpired) {
+        await prefs.setString(AppConstants.keyUserRank, AppConstants.rankGenin);
+        await prefs.remove(AppConstants.keyLicenseExpires);
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(uid)
+            .update({'abonnement': AppConstants.rankGenin});
+        _providerContainer
+            .read(userProfileProvider.notifier)
+            .updateIdentity(rank: AppConstants.rankGenin);
+      } else if (result.expiresAt != null) {
+        await prefs.setInt(AppConstants.keyLicenseExpires,
+            result.expiresAt!.millisecondsSinceEpoch);
+      }
+    } else {
+      await prefs.setString(AppConstants.keyUserRank, AppConstants.rankGenin);
+      await prefs.remove(AppConstants.keyLicenseExpires);
+      _providerContainer
+          .read(userProfileProvider.notifier)
+          .updateIdentity(rank: AppConstants.rankGenin);
+    }
+  } catch (_) {}
 }

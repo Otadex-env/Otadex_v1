@@ -6,8 +6,8 @@
 - App version : `1.5.0+1`
 - Firebase configuré : **OUI (Storage inclus)** — FlutterFire Android + Firebase Auth email/Google + Firestore profil utilisateur + Functions + Storage initialisés
 - Dernier écran complété : **PlansScreen** (URLs Chariow `/checkout` + SnackBar post-achat, juin 2026)
-- Dernière mise à jour : **Task 45 — Paiement Chariow URLs + SnackBar**, 02 juin 2026
-- Correction : `lib/features/search/presentation/search_screen.dart` mis à jour (`axisAlignment` rétabli), `lib/core/theme/app_theme.dart` confirmé avec `ZoomPageTransitionsBuilder`, `.env` retiré de `pubspec.yaml`, `dart analyze lib/` : 0 erreurs (8 infos de style `prefer_const_constructors`).
+- Dernière mise à jour : **Task 54 — Logo login + Images FMA/HXH**, 05 juin 2026
+- Correction : `login_screen.dart` logo corrigé (`AppAssets.logoFull`), `app_assets.dart` listes FMA (13 perso) et HXH (13 perso) remplies avec URLs GitHub réelles. ANR démarrage corrigé (NotificationService + licence check déférés post-runApp). Label Android `"OTADEX"` → `"Otadex"`. `dart analyze lib/` : 0 erreurs.
 
 ## Dépendances installées (`pubspec.yaml`)
 

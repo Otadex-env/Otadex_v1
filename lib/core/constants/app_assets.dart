@@ -898,42 +898,280 @@ class AppAssets {
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // FMA — Fullmetal Alchemist Brotherhood   prefix: fma_
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  // ignore: unused_field
   static const String _fma = 'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fullmetal Alchemist';
 
-  static const List<String> edwardElric = [];
-  static const List<String> royMustang = [];
-  static const List<String> alphonseElric = [];
-  static const List<String> rizaHawkeye = [];
-  static const List<String> winryRockbell = [];
-  static const List<String> vanHohenheim = [];
-  static const List<String> father = [];
-  static const List<String> kingBradley = [];
-  static const List<String> scar = [];
-  static const List<String> maesHughes = [];
-  static const List<String> prideSelimBradley = [];
-  static const List<String> greedLingYao = [];
-  static const List<String> izumiCurtis = [];
+  static const List<String> edwardElric = [
+    '$_fma/Edward Elric/fma_edwar1.jpeg',
+    '$_fma/Edward Elric/fma_edwar2.jpeg',
+    '$_fma/Edward Elric/fma_edwar3.jpeg',
+    '$_fma/Edward Elric/fma_edwar4.jpeg',
+    '$_fma/Edward Elric/fma_edwar5.jpeg',
+    '$_fma/Edward Elric/fma_edwar6.jpeg',
+    '$_fma/Edward Elric/fma_edwar7.jpeg',
+    '$_fma/Edward Elric/fma_edwar8.jpeg',
+    '$_fma/Edward Elric/fma_edwar9.jpeg',
+    '$_fma/Edward Elric/fma_edwar10.jpeg',
+  ];
+
+  static const List<String> royMustang = [
+    '$_fma/Roy Mustang/fma_roy1.jpeg',
+    '$_fma/Roy Mustang/fma_roy2.jpeg',
+    '$_fma/Roy Mustang/fma_roy3.jpeg',
+    '$_fma/Roy Mustang/fma_roy4.jpeg',
+    '$_fma/Roy Mustang/fma_roy5.jpeg',
+    '$_fma/Roy Mustang/fma_roy6.jpeg',
+    '$_fma/Roy Mustang/fma_roy7.jpeg',
+    '$_fma/Roy Mustang/fma_roy8.jpeg',
+    '$_fma/Roy Mustang/fma_roy9.jpeg',
+    '$_fma/Roy Mustang/fma_roy10.jpeg',
+  ];
+
+  static const List<String> alphonseElric = [
+    '$_fma/Alphonse Elric/fma_alpho1.jpeg',
+    '$_fma/Alphonse Elric/fma_alpho2.jpeg',
+    '$_fma/Alphonse Elric/fma_alpho3.jpeg',
+    '$_fma/Alphonse Elric/fma_alpho4.jpeg',
+    '$_fma/Alphonse Elric/fma_alpho5.jpeg',
+    '$_fma/Alphonse Elric/fma_alpho6.jpeg',
+  ];
+
+  static const List<String> rizaHawkeye = [
+    '$_fma/Riza Hawkeye/fma_riza1.jpeg',
+    '$_fma/Riza Hawkeye/fma_riza2.jpeg',
+    '$_fma/Riza Hawkeye/fma_riza3.jpeg',
+    '$_fma/Riza Hawkeye/fma_riza4.jpeg',
+    '$_fma/Riza Hawkeye/fma_riza5.jpeg',
+    '$_fma/Riza Hawkeye/fma_riza6.jpeg',
+    '$_fma/Riza Hawkeye/fma_riza7.jpeg',
+    '$_fma/Riza Hawkeye/fma_riza8.jpeg',
+    '$_fma/Riza Hawkeye/fma_riza9.jpeg',
+  ];
+
+  static const List<String> winryRockbell = [
+    '$_fma/Winry Rockbell/fma_winry1.jpeg',
+    '$_fma/Winry Rockbell/fma_winry2.jpeg',
+    '$_fma/Winry Rockbell/fma_winry3.jpeg',
+    '$_fma/Winry Rockbell/fma_winry4.jpeg',
+    '$_fma/Winry Rockbell/fma_winry5.jpeg',
+    '$_fma/Winry Rockbell/fma_winry6.jpeg',
+    '$_fma/Winry Rockbell/fma_winry7.jpeg',
+    '$_fma/Winry Rockbell/fma_winry8.jpeg',
+    '$_fma/Winry Rockbell/fma_winry9.jpeg',
+  ];
+
+  static const List<String> vanHohenheim = [
+    '$_fma/Van Hohenheim/fma_van1.jpeg',
+    '$_fma/Van Hohenheim/fma_van2.jpeg',
+    '$_fma/Van Hohenheim/fma_van3.jpeg',
+    '$_fma/Van Hohenheim/fma_van4.jpeg',
+    '$_fma/Van Hohenheim/fma_van5.jpeg',
+    '$_fma/Van Hohenheim/fma_van6.jpeg',
+    '$_fma/Van Hohenheim/fma_van7.jpeg',
+  ];
+
+  static const List<String> father = [
+    '$_fma/Father/fma_fathe1.jpeg',
+    '$_fma/Father/fma_fathe2.jpeg',
+    '$_fma/Father/fma_fathe3.jpeg',
+    '$_fma/Father/fma_fathe4.jpeg',
+    '$_fma/Father/fma_fathe5.jpeg',
+    '$_fma/Father/fma_fathe6.jpeg',
+  ];
+
+  static const List<String> kingBradley = [
+    '$_fma/King Bradley/fma_king1.jpeg',
+    '$_fma/King Bradley/fma_king2.jpeg',
+    '$_fma/King Bradley/fma_king3.jpeg',
+    '$_fma/King Bradley/fma_king4.jpeg',
+    '$_fma/King Bradley/fma_king5.jpeg',
+    '$_fma/King Bradley/fma_king6.jpeg',
+    '$_fma/King Bradley/fma_king7.jpeg',
+    '$_fma/King Bradley/fma_king8.jpeg',
+    '$_fma/King Bradley/fma_king9.jpeg',
+  ];
+
+  static const List<String> scar = [
+    '$_fma/Scar/fma_scar1.jpeg',
+    '$_fma/Scar/fma_scar2.jpeg',
+    '$_fma/Scar/fma_scar3.jpeg',
+    '$_fma/Scar/fma_scar4.jpeg',
+    '$_fma/Scar/fma_scar5.jpeg',
+    '$_fma/Scar/fma_scar6.jpeg',
+    '$_fma/Scar/fma_scar7.jpeg',
+  ];
+
+  static const List<String> maesHughes = [
+    '$_fma/Maes Hughes/fma_maes1.jpeg',
+    '$_fma/Maes Hughes/fma_maes2.jpeg',
+    '$_fma/Maes Hughes/fma_maes3.jpeg',
+    '$_fma/Maes Hughes/fma_maes4.jpeg',
+    '$_fma/Maes Hughes/fma_maes5.jpeg',
+    '$_fma/Maes Hughes/fma_maes6.jpeg',
+  ];
+
+  static const List<String> prideSelimBradley = [
+    '$_fma/Pride Selim Bradley/fma_pride1.jpeg',
+    '$_fma/Pride Selim Bradley/fma_pride2.jpeg',
+    '$_fma/Pride Selim Bradley/fma_pride3.jpeg',
+    '$_fma/Pride Selim Bradley/fma_pride4.jpeg',
+    '$_fma/Pride Selim Bradley/fma_pride5.jpeg',
+    '$_fma/Pride Selim Bradley/fma_pride6.jpeg',
+  ];
+
+  static const List<String> greedLingYao = [
+    '$_fma/Greed Ling Yao/fma_greed1.jpeg',
+    '$_fma/Greed Ling Yao/fma_greed2.jpeg',
+    '$_fma/Greed Ling Yao/fma_greed3.jpeg',
+    '$_fma/Greed Ling Yao/fma_greed4.jpeg',
+    '$_fma/Greed Ling Yao/fma_greed5.jpeg',
+    '$_fma/Greed Ling Yao/fma_greed6.jpeg',
+    '$_fma/Greed Ling Yao/fma_greed7.jpeg',
+    '$_fma/Greed Ling Yao/fma_greed8.jpeg',
+  ];
+
+  static const List<String> izumiCurtis = [
+    '$_fma/Izumi Curtis/fma_izumi1.jpeg',
+    '$_fma/Izumi Curtis/fma_izumi2.jpeg',
+    '$_fma/Izumi Curtis/fma_izumi3.jpeg',
+    '$_fma/Izumi Curtis/fma_izumi4.jpeg',
+    '$_fma/Izumi Curtis/fma_izumi5.jpeg',
+    '$_fma/Izumi Curtis/fma_izumi6.jpeg',
+  ];
 
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // HXH — Hunter x Hunter   prefix: hxh_
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  // ignore: unused_field
   static const String _hxh = 'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Hunter x Hunter';
 
-  static const List<String> killuaZoldyck = [];
-  static const List<String> gonFreecss = [];
-  static const List<String> hisokaMoreow = [];
-  static const List<String> kurapika = [];
-  static const List<String> chrolloLucilfer = [];
-  static const List<String> leorioParadinight = [];
-  static const List<String> biscuitKrueger = [];
-  static const List<String> meruem = [];
-  static const List<String> isaacNetero = [];
-  static const List<String> illumiZoldyck = [];
-  static const List<String> gingFreecss = [];
-  static const List<String> feitanPortor = [];
-  static const List<String> neferpitou = [];
+  static const List<String> killuaZoldyck = [
+    '$_hxh/Killua Zoldyck/hxh_killu1.jpeg',
+    '$_hxh/Killua Zoldyck/hxh_killu2.jpeg',
+    '$_hxh/Killua Zoldyck/hxh_killu3.jpeg',
+    '$_hxh/Killua Zoldyck/hxh_killu4.jpeg',
+    '$_hxh/Killua Zoldyck/hxh_killu5.jpeg',
+    '$_hxh/Killua Zoldyck/hxh_killu6.jpeg',
+  ];
+
+  static const List<String> gonFreecss = [
+    '$_hxh/Gon Freecss/hxh_gon1.jpeg',
+    '$_hxh/Gon Freecss/hxh_gon2.jpeg',
+    '$_hxh/Gon Freecss/hxh_gon3.jpeg',
+    '$_hxh/Gon Freecss/hxh_gon4.jpeg',
+    '$_hxh/Gon Freecss/hxh_gon5.jpeg',
+    '$_hxh/Gon Freecss/hxh_gon6.jpeg',
+    '$_hxh/Gon Freecss/hxh_gon7.jpeg',
+  ];
+
+  static const List<String> hisokaMoreow = [
+    '$_hxh/Hisoka Morow/hxh_hisok1.jpeg',
+    '$_hxh/Hisoka Morow/hxh_hisok2.jpeg',
+    '$_hxh/Hisoka Morow/hxh_hisok3.jpeg',
+    '$_hxh/Hisoka Morow/hxh_hisok4.jpeg',
+    '$_hxh/Hisoka Morow/hxh_hisok5.jpeg',
+    '$_hxh/Hisoka Morow/hxh_hisok6.jpeg',
+    '$_hxh/Hisoka Morow/hxh_hisok7.jpeg',
+  ];
+
+  static const List<String> kurapika = [
+    '$_hxh/Kurapika/hxh_kurap1.jpeg',
+    '$_hxh/Kurapika/hxh_kurap2.jpeg',
+    '$_hxh/Kurapika/hxh_kurap3.jpeg',
+    '$_hxh/Kurapika/hxh_kurap4.jpeg',
+    '$_hxh/Kurapika/hxh_kurap5.jpeg',
+    '$_hxh/Kurapika/hxh_kurap6.jpeg',
+    '$_hxh/Kurapika/hxh_kurap7.jpeg',
+  ];
+
+  static const List<String> chrolloLucilfer = [
+    '$_hxh/Chrollo Lucilfer/hxh_chrol1.jpeg',
+    '$_hxh/Chrollo Lucilfer/hxh_chrol2.jpeg',
+    '$_hxh/Chrollo Lucilfer/hxh_chrol3.jpeg',
+    '$_hxh/Chrollo Lucilfer/hxh_chrol4.jpeg',
+    '$_hxh/Chrollo Lucilfer/hxh_chrol5.jpeg',
+    '$_hxh/Chrollo Lucilfer/hxh_chrol6.jpeg',
+    '$_hxh/Chrollo Lucilfer/hxh_chrol7.jpeg',
+    '$_hxh/Chrollo Lucilfer/hxh_chrol8.jpeg',
+  ];
+
+  static const List<String> leorioParadinight = [
+    '$_hxh/Leorio Paradinight/hxh_leori1.jpeg',
+    '$_hxh/Leorio Paradinight/hxh_leori2.jpeg',
+    '$_hxh/Leorio Paradinight/hxh_leori3.jpeg',
+    '$_hxh/Leorio Paradinight/hxh_leori4.jpeg',
+    '$_hxh/Leorio Paradinight/hxh_leori5.jpeg',
+    '$_hxh/Leorio Paradinight/hxh_leori6.jpeg',
+    '$_hxh/Leorio Paradinight/hxh_leori7.jpeg',
+  ];
+
+  static const List<String> biscuitKrueger = [
+    '$_hxh/Biscuit Krueger/hxh_biscu1.jpeg',
+    '$_hxh/Biscuit Krueger/hxh_biscu2.jpeg',
+    '$_hxh/Biscuit Krueger/hxh_biscu3.jpeg',
+    '$_hxh/Biscuit Krueger/hxh_biscu4.jpeg',
+    '$_hxh/Biscuit Krueger/hxh_biscu5.jpeg',
+    '$_hxh/Biscuit Krueger/hxh_biscu6.jpeg',
+    '$_hxh/Biscuit Krueger/hxh_biscu7.jpeg',
+  ];
+
+  static const List<String> meruem = [
+    '$_hxh/Meruem/hxh_merue1.png',
+    '$_hxh/Meruem/hxh_merue2.jpeg',
+    '$_hxh/Meruem/hxh_merue3.jpeg',
+    '$_hxh/Meruem/hxh_merue4.jpeg',
+    '$_hxh/Meruem/hxh_merue5.jpeg',
+    '$_hxh/Meruem/hxh_merue6.jpeg',
+    '$_hxh/Meruem/hxh_merue7.jpeg',
+    '$_hxh/Meruem/hxh_merue8.jpeg',
+  ];
+
+  static const List<String> isaacNetero = [
+    '$_hxh/Isaac Netero/hxh_isaac1.jpeg',
+    '$_hxh/Isaac Netero/hxh_isaac2.jpeg',
+    '$_hxh/Isaac Netero/hxh_isaac3.jpeg',
+    '$_hxh/Isaac Netero/hxh_isaac4.jpeg',
+    '$_hxh/Isaac Netero/hxh_isaac5.jpeg',
+    '$_hxh/Isaac Netero/hxh_isaac6.jpeg',
+    '$_hxh/Isaac Netero/hxh_isaac7.jpeg',
+  ];
+
+  static const List<String> illumiZoldyck = [
+    '$_hxh/Illumi Zoldyck/hxh_illum1.jpeg',
+    '$_hxh/Illumi Zoldyck/hxh_illum2.jpeg',
+    '$_hxh/Illumi Zoldyck/hxh_illum3.jpeg',
+    '$_hxh/Illumi Zoldyck/hxh_illum4.jpeg',
+    '$_hxh/Illumi Zoldyck/hxh_illum5.jpeg',
+    '$_hxh/Illumi Zoldyck/hxh_illum6.jpeg',
+    '$_hxh/Illumi Zoldyck/hxh_illum7.jpeg',
+    '$_hxh/Illumi Zoldyck/hxh_illum8.jpeg',
+  ];
+
+  static const List<String> gingFreecss = [
+    '$_hxh/Ging Freecss/hxh_ging1.jpeg',
+    '$_hxh/Ging Freecss/hxh_ging2.jpeg',
+    '$_hxh/Ging Freecss/hxh_ging3.jpeg',
+    '$_hxh/Ging Freecss/hxh_ging4.jpeg',
+    '$_hxh/Ging Freecss/hxh_ging5.jpeg',
+    '$_hxh/Ging Freecss/hxh_ging6.jpeg',
+  ];
+
+  static const List<String> feitanPortor = [
+    '$_hxh/Feitan Portor/hxh_feita1.jpeg',
+    '$_hxh/Feitan Portor/hxh_feita2.jpeg',
+    '$_hxh/Feitan Portor/hxh_feita3.jpeg',
+    '$_hxh/Feitan Portor/hxh_feita4.jpeg',
+    '$_hxh/Feitan Portor/hxh_feita5.jpeg',
+    '$_hxh/Feitan Portor/hxh_feita6.jpeg',
+  ];
+
+  static const List<String> neferpitou = [
+    '$_hxh/Neferpitou/hxh_nefer1.jpeg',
+    '$_hxh/Neferpitou/hxh_nefer2.jpeg',
+    '$_hxh/Neferpitou/hxh_nefer3.jpeg',
+    '$_hxh/Neferpitou/hxh_nefer4.jpeg',
+    '$_hxh/Neferpitou/hxh_nefer5.jpeg',
+    '$_hxh/Neferpitou/hxh_nefer6.jpeg',
+    '$_hxh/Neferpitou/hxh_nefer7.jpeg',
+  ];
 
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // Résolution par charId

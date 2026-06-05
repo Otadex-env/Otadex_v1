@@ -10,6 +10,7 @@ import '../../../core/providers/auth_provider.dart';
 import '../../../core/providers/user_profile_provider.dart';
 import '../../../core/router/app_router.dart';
 import '../../../core/services/firebase_auth_service.dart';
+import '../../../core/constants/app_assets.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/widgets/otadex_button.dart';
@@ -185,7 +186,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
                     // Logo
                     Image.asset(
-                      'assets/images/logo/otadex_logo.png',
+                      AppAssets.logoFull,
                       width: 160,
                       fit: BoxFit.contain,
                     )
