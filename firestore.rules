@@ -38,9 +38,14 @@ service cloud.firestore {
     match /votes/{voteId} {
       allow read: if true;
       allow create: if isSignedIn()
-        && request.resource.data.user_id == request.auth.uid;
-      allow update, delete: if isSignedIn()
-        && resource.data.user_id == request.auth.uid;
+        && request.resource.data.user_id == request.auth.uid
+        && !exists(/databases/$(database)/documents/votes/$(request.auth.uid + '_' + request.resource.data.character_id + '_' + request.resource.data.mois));
+      allow update, delete: if false;
+    }
+
+    match /studios/{studioId} {
+      allow read: if true;
+      allow write: if false;
     }
 
     match /comments/{commentId} {

@@ -21,9 +21,10 @@ final _firestoreServiceProvider = Provider<FirestoreCharacterService>(
 
 // ── PRIORITÉ 1 : Firestore — PRIORITÉ 2 : JSON mock ────────────────────────
 final allCharactersProvider = FutureProvider<List<Character>>((ref) async {
+  ref.keepAlive();
   final firestoreChars = await ref
       .watch(_firestoreServiceProvider)
-      .getAllCharacters(limit: 200);
+      .getAllCharacters(limit: 20);
 
   if (firestoreChars.isNotEmpty) return firestoreChars;
 

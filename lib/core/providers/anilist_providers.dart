@@ -133,12 +133,12 @@ final collectionServiceProvider = Provider<CollectionService>(
   (ref) => CollectionService(),
 );
 
-final collectionStreamProvider = StreamProvider<List<String>>((ref) {
+final collectionStreamProvider = StreamProvider.autoDispose<List<String>>((ref) {
   final service = ref.watch(collectionServiceProvider);
   return service.collectionStream();
 });
 
-final isCollectedProvider = Provider.family<bool, String>((ref, charId) {
+final isCollectedProvider = Provider.autoDispose.family<bool, String>((ref, charId) {
   final collection = ref.watch(collectionStreamProvider);
   return collection.maybeWhen(
     data: (list) => list.contains(charId),

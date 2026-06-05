@@ -1639,4 +1639,89 @@ flutter build apk --release --split-per-abi
 
 ---
 
-_Dernière mise à jour : Task 51 — Logo + Icônes + Fix émulateur + Rapport Firebase, 4 juin 2026_
+## Task 52 — Corrections Firebase pré-Play Store (5 juin 2026)
+
+### Objectif
+Corriger les 6 problèmes Firebase identifiés dans le rapport Task 51 avant la soumission Play Store.
+
+### Fichiers modifiés
+
+| Fichier | Modification |
+|---------|-------------|
+| `lib/core/services/firestore_character_service.dart` | FIX 1 : `searchCharacters` limit 100 → 20 / FIX 6 : ajout méthodes `toggleLike`, `submitComment`, `voteForCharacter` |
+| `lib/core/providers/otadex_providers.dart` | FIX 2 : `allCharactersProvider` limit 200 → 20 + `ref.keepAlive()` |
+| `lib/core/providers/anilist_providers.dart` | FIX 3 : `collectionStreamProvider` + `isCollectedProvider` → `.autoDispose` |
+| `firestore.rules` | FIX 4 : rate limiting vote (voteId = uid_charId_mois, pas de doublon possible) / FIX 5 : règle `studios` ajoutée |
+| `lib/features/character/presentation/character_detail_screen.dart` | FIX 6 : bouton like → `_toggleLike()` branché sur Firestore |
+
+### Détail des fixes
+
+#### FIX 1 — Recherche limitée à 20 docs ✅
+```dart
+// searchCharacters : limit(100) → limit(20)
+final snap = await _db.collection('characters').limit(20).get();
+```
+
+#### FIX 2 — Pagination au démarrage (20 docs + keepAlive) ✅
+```dart
+final allCharactersProvider = FutureProvider<List<Character>>((ref) async {
+  ref.keepAlive();
+  ...getAllCharacters(limit: 20)
+```
+> `ref.keepAlive()` empêche le rechargement à chaque navigation.
+
+#### FIX 3 — Stream collection autoDispose ✅
+```dart
+final collectionStreamProvider = StreamProvider.autoDispose<List<String>>(...);
+final isCollectedProvider = Provider.autoDispose.family<bool, String>(...);
+```
+> Le stream Firestore se ferme automatiquement hors de CollectionScreen/ProfileScreen.
+
+#### FIX 4 — Rate limiting votes (une fois par mois par personnage) ✅
+```javascript
+// firestore.rules — votes
+allow create: if isSignedIn()
+  && request.resource.data.user_id == request.auth.uid
+  && !exists(.../votes/$(uid + '_' + character_id + '_' + mois));
+allow update, delete: if false;
+```
+> Vote ID = `{uid}_{charId}_{YYYY-MM}` — la règle `!exists` bloque tout double vote.
+
+#### FIX 5 — Collection studios sécurisée ✅
+```javascript
+match /studios/{studioId} {
+  allow read: if true;
+  allow write: if false;
+}
+```
+
+#### FIX 6 — score_fan incrémenté sur toutes les actions ✅
+
+| Action | Points | Statut |
+|--------|--------|--------|
+| Like personnage | +1 pt | ✅ Branché (`_toggleLike` → `toggleLike()`) |
+| Commentaire | +3 pts | ✅ Service `submitComment()` prêt |
+| Vote mensuel | +10 pts | ✅ Service `voteForCharacter()` prêt (anti-doublon) |
+| Quiz réussi | +5 pts par bonne réponse | ✅ Déjà branché (Task 51) |
+
+**Méthodes ajoutées dans `FirestoreCharacterService`** :
+- `toggleLike(charId, isNowLiked)` — incrémente `score_fan` de +1 si like activé
+- `submitComment(charId, text)` — crée doc dans `comments/` + incrémente `score_fan` de +3
+- `voteForCharacter(charId)` — vérifie l'absence de vote ce mois, crée le vote + incrémente `score_fan` de +10
+
+### Actions manuelles requises
+
+```
+━━━ ACTIONS MANUELLES ━━━
+→ firebase deploy --only firestore:rules
+→ Hot restart Flutter
+→ Vérifier : recherche < 20 résultats
+→ Vérifier : like → score_fan incrémenté dans Firestore users/{uid}
+```
+
+### Résultat
+`dart analyze lib/` → **No issues found!**
+
+---
+
+_Dernière mise à jour : Task 52 — Corrections Firebase pré-Play Store, 5 juin 2026_

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../models/character.dart';
 import '../models/anime_entry.dart';
@@ -41,7 +42,7 @@ class FirestoreCharacterService {
     if (query.trim().length < 2) return [];
     final q = query.toLowerCase().trim();
     try {
-      final snap = await _db.collection('characters').limit(100).get();
+      final snap = await _db.collection('characters').limit(20).get();
       return snap.docs
           .map((d) => _characterFromFirestore(d.id, d.data()))
           .where((c) =>
@@ -304,6 +305,64 @@ class FirestoreCharacterService {
       bio: d['bio'] as String?,
       tags: (d['influences'] as List<dynamic>?)?.cast<String>() ?? [],
     );
+  }
+
+  // ── Score fan ────────────────────────────────────────────────────────────────
+  Future<void> toggleLike(String charId, {required bool isNowLiked}) async {
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) return;
+    try {
+      if (isNowLiked) {
+        await _db.collection('users').doc(uid).update({
+          'score_fan': FieldValue.increment(1),
+        });
+      }
+    } catch (_) {}
+  }
+
+  Future<void> submitComment(String charId, String text) async {
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null || text.trim().isEmpty) return;
+    try {
+      final batch = _db.batch();
+      final commentRef = _db.collection('comments').doc();
+      batch.set(commentRef, {
+        'user_id': uid,
+        'character_id': charId,
+        'texte': text.trim(),
+        'likes': 0,
+        'created_at': FieldValue.serverTimestamp(),
+      });
+      batch.update(_db.collection('users').doc(uid), {
+        'score_fan': FieldValue.increment(3),
+      });
+      await batch.commit();
+    } catch (_) {}
+  }
+
+  Future<bool> voteForCharacter(String charId) async {
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) return false;
+    final mois = '${DateTime.now().year}-${DateTime.now().month.toString().padLeft(2, '0')}';
+    final voteId = '${uid}_${charId}_$mois';
+    try {
+      final existing = await _db.collection('votes').doc(voteId).get();
+      if (existing.exists) return false;
+      final batch = _db.batch();
+      batch.set(_db.collection('votes').doc(voteId), {
+        'user_id': uid,
+        'character_id': charId,
+        'mois': mois,
+        'created_at': FieldValue.serverTimestamp(),
+      });
+      batch.update(_db.collection('users').doc(uid), {
+        'score_fan': FieldValue.increment(10),
+      });
+      await batch.commit();
+      return true;
+    } catch (_) {
+      return false;
+    }
   }
 
   // ── Helpers ──────────────────────────────────────────────────────────────────

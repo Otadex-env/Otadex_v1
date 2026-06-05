@@ -113,6 +113,14 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
     }
   }
 
+  Future<void> _toggleLike() async {
+    final newLiked = !_isLiked;
+    setState(() => _isLiked = newLiked);
+    await ref
+        .read(firestoreCharacterServiceProvider)
+        .toggleLike(c.id, isNowLiked: newLiked);
+  }
+
   void _guardJonin() {
     final isLoggedIn = ref.read(isLoggedInProvider);
     if (!isLoggedIn) {
@@ -480,8 +488,7 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen>
                           : _formatLikes(c.likes),
                       isActive: _isLiked,
                       activeColor: AppColors.error,
-                      onTap: () => _guardAuth(
-                          () => setState(() => _isLiked = !_isLiked)),
+                      onTap: () => _guardAuth(_toggleLike),
                     ),
                     const SizedBox(width: 8),
                     _actionChip(
