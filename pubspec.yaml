@@ -63,6 +63,7 @@ dev_dependencies:
   flutter_lints: ^3.0.0
   riverpod_generator: ^2.6.0
   build_runner: ^2.4.0
+  flutter_launcher_icons: ^0.14.3
 
 flutter:
   uses-material-design: true
@@ -72,3 +73,11 @@ flutter:
     - assets/images/onboarding/
     - assets/images/splash/
     - assets/data/
+
+flutter_launcher_icons:
+  android: "ic_launcher"
+  ios: false
+  image_path: "assets/images/logo/otadex_icon_small_transparent.png"
+  adaptive_icon_background: "#0D0D14"
+  adaptive_icon_foreground: "assets/images/logo/otadex_icon_small_transparent.png"
+  min_sdk_android: 21
