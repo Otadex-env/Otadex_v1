@@ -99,7 +99,6 @@ class AppRouter {
           final extra = state.extra as Map<String, dynamic>;
           return CharacterListScreen(
             title: extra['title'] as String,
-            characters: extra['characters'] as List<Character>,
           );
         },
       ),

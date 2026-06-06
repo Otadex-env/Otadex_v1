@@ -38,6 +38,33 @@ class FirestoreCharacterService {
     }
   }
 
+  Future<(List<Character>, DocumentSnapshot?)> getCharactersPaginated({
+    int limit = 20,
+    DocumentSnapshot? lastDocument,
+  }) async {
+    try {
+      Query<Map<String, dynamic>> query = _db
+          .collection('characters')
+          .orderBy('popularityRank')
+          .limit(limit + 1);
+
+      if (lastDocument != null) {
+        query = query.startAfterDocument(lastDocument);
+      }
+
+      final snap = await query.get();
+      final hasMore = snap.docs.length > limit;
+      final docs = hasMore ? snap.docs.sublist(0, limit) : snap.docs;
+      final characters =
+          docs.map((d) => _characterFromFirestore(d.id, d.data())).toList();
+
+      return (characters, hasMore && docs.isNotEmpty ? docs.last : null);
+    } catch (e) {
+      debugPrint('⚠️ Firestore getCharactersPaginated error: $e');
+      return (<Character>[], null);
+    }
+  }
+
   Future<List<Character>> searchCharacters(String query) async {
     if (query.trim().length < 2) return [];
     final q = query.toLowerCase().trim();

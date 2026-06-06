@@ -38,8 +38,7 @@ class CharacterGridSection extends ConsumerWidget {
           title: '✨ Nouveautés',
           actionLabel: 'Voir tout',
           onAction: () => context.push('/characters', extra: {
-            'title': '✨ Nouveautés',
-            'characters': newAsync.valueOrNull ?? [],
+            'title': 'Tous les personnages',
           }),
         ),
         newAsync.when(
@@ -53,8 +52,7 @@ class CharacterGridSection extends ConsumerWidget {
           title: '⭐ Recommandés pour toi',
           actionLabel: 'Voir tout',
           onAction: () => context.push('/characters', extra: {
-            'title': '⭐ Recommandés pour toi',
-            'characters': recommendedAsync.valueOrNull ?? [],
+            'title': 'Tous les personnages',
           }),
         ),
         recommendedAsync.when(

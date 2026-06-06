@@ -23,8 +23,7 @@ class TrendingSection extends ConsumerWidget {
             title: trendingTitle,
             actionLabel: 'Voir tout',
             onAction: () => context.push('/characters', extra: {
-              'title': trendingTitle,
-              'characters': characters,
+              'title': 'Tous les personnages',
             }),
           ),
           SizedBox(

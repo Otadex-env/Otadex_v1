@@ -1,28 +1,74 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../core/models/character.dart';
+import '../../../core/services/firestore_character_service.dart';
+import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/otadex_theme.dart';
+import '../../../core/widgets/skeleton_loader.dart';
 import '../../home/presentation/widgets/character_grid_card.dart';
 
-class CharacterListScreen extends StatelessWidget {
+class CharacterListScreen extends StatefulWidget {
   final String title;
-  final List<Character> characters;
 
-  const CharacterListScreen({
-    super.key,
-    required this.title,
-    required this.characters,
-  });
+  const CharacterListScreen({super.key, required this.title});
+
+  @override
+  State<CharacterListScreen> createState() => _CharacterListScreenState();
+}
+
+class _CharacterListScreenState extends State<CharacterListScreen> {
+  final _service = FirestoreCharacterService();
+  final _scrollController = ScrollController();
+
+  final _characters = <dynamic>[];
+  DocumentSnapshot? _lastDocument;
+  bool _isLoading = false;
+  bool _hasMore = true;
+  bool _initialLoaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadMore();
+    _scrollController.addListener(_onScroll);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _onScroll() {
+    if (_scrollController.position.pixels >=
+        _scrollController.position.maxScrollExtent - 300) {
+      _loadMore();
+    }
+  }
+
+  Future<void> _loadMore() async {
+    if (_isLoading || !_hasMore) return;
+    setState(() => _isLoading = true);
+
+    final (newChars, lastDoc) = await _service.getCharactersPaginated(
+      lastDocument: _lastDocument,
+    );
+
+    if (!mounted) return;
+    setState(() {
+      _characters.addAll(newChars);
+      _lastDocument = lastDoc;
+      _hasMore = lastDoc != null;
+      _isLoading = false;
+      _initialLoaded = true;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     final theme = OtadexTheme.of(context);
-    final screenWidth = MediaQuery.of(context).size.width;
-    final isTablet = screenWidth >= 600;
-    final crossAxisCount = isTablet ? 4 : 3;
-    final childAspectRatio = isTablet ? 0.75 : 0.72;
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -30,6 +76,7 @@ class CharacterListScreen extends StatelessWidget {
         decoration: BoxDecoration(gradient: theme.backgroundGradient),
         child: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(8, 8, 16, 0),
@@ -42,7 +89,7 @@ class CharacterListScreen extends StatelessWidget {
                     ),
                     Expanded(
                       child: Text(
-                        title,
+                        widget.title,
                         style: GoogleFonts.rajdhani(
                           fontSize: 22,
                           fontWeight: FontWeight.w700,
@@ -51,37 +98,91 @@ class CharacterListScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Text(
-                      '${characters.length} personnages',
-                      style: GoogleFonts.nunitoSans(
-                        fontSize: 13,
-                        color: theme.textSecondary,
+                    if (_initialLoaded)
+                      Text(
+                        '${_characters.length}${_hasMore ? '+' : ''} personnages',
+                        style: GoogleFonts.nunitoSans(
+                          fontSize: 13,
+                          color: theme.textSecondary,
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ),
               const SizedBox(height: 8),
               Expanded(
-                child: GridView.builder(
-                  padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: crossAxisCount,
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 10,
-                    childAspectRatio: childAspectRatio,
-                  ),
-                  itemCount: characters.length,
-                  itemBuilder: (context, i) => CharacterGridCard(
-                    character: characters[i],
-                    onTap: () => context.push(
-                      '/character/${characters[i].id}',
-                      extra: characters[i],
-                    ),
-                  )
-                      .animate(delay: (40 * i).ms)
-                      .fadeIn(duration: 250.ms)
-                      .slideY(begin: 0.08, end: 0, duration: 250.ms),
+                child: CustomScrollView(
+                  controller: _scrollController,
+                  slivers: [
+                    if (!_initialLoaded)
+                      const SliverPadding(
+                        padding: EdgeInsets.fromLTRB(16, 4, 16, 24),
+                        sliver: SliverToBoxAdapter(
+                          child: SkeletonGrid(columns: 3, rows: 4),
+                        ),
+                      )
+                    else ...[
+                      SliverPadding(
+                        padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),
+                        sliver: SliverGrid(
+                          delegate: SliverChildBuilderDelegate(
+                            (context, i) {
+                              final char = _characters[i];
+                              return CharacterGridCard(
+                                character: char,
+                                onTap: () => context.push(
+                                  '/character/${char.id}',
+                                  extra: char,
+                                ),
+                              )
+                                  .animate(delay: (30 * (i % 20)).ms)
+                                  .fadeIn(duration: 200.ms)
+                                  .slideY(
+                                      begin: 0.06,
+                                      end: 0,
+                                      duration: 200.ms);
+                            },
+                            childCount: _characters.length,
+                          ),
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            mainAxisSpacing: 10,
+                            crossAxisSpacing: 10,
+                            childAspectRatio: 0.72,
+                          ),
+                        ),
+                      ),
+                      SliverToBoxAdapter(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 20),
+                          child: _isLoading
+                              ? const Center(
+                                  child: SizedBox(
+                                    width: 24,
+                                    height: 24,
+                                    child: CircularProgressIndicator(
+                                      strokeWidth: 2.5,
+                                      valueColor: AlwaysStoppedAnimation(
+                                          AppColors.primary),
+                                    ),
+                                  ),
+                                )
+                              : !_hasMore
+                                  ? Center(
+                                      child: Text(
+                                        'Tous les personnages chargés',
+                                        style: GoogleFonts.nunitoSans(
+                                          fontSize: 12,
+                                          color: AppColors.textDisabled,
+                                        ),
+                                      ),
+                                    )
+                                  : const SizedBox.shrink(),
+                        ),
+                      ),
+                    ],
+                  ],
                 ),
               ),
             ],

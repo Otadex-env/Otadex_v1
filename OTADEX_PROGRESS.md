@@ -6,8 +6,10 @@
 - App version : `1.5.0+1`
 - Firebase configuré : **OUI (Storage inclus)** — FlutterFire Android + Firebase Auth email/Google + Firestore profil utilisateur + Functions + Storage initialisés
 - Dernier écran complété : **PlansScreen** (URLs Chariow `/checkout` + SnackBar post-achat, juin 2026)
-- Dernière mise à jour : **Task 54 — Logo login + Images FMA/HXH**, 05 juin 2026
-- Correction : `login_screen.dart` logo corrigé (`AppAssets.logoFull`), `app_assets.dart` listes FMA (13 perso) et HXH (13 perso) remplies avec URLs GitHub réelles. ANR démarrage corrigé (NotificationService + licence check déférés post-runApp). Label Android `"OTADEX"` → `"Otadex"`. `dart analyze lib/` : 0 erreurs.
+- Dernière mise à jour : **Task 55 — Pagination scroll infini CharacterListScreen**, 06 juin 2026
+- Correction Task 55 : `CharacterListScreen` réécrit en `StatefulWidget` avec scroll infini (`ScrollController` + `startAfterDocument`). `FirestoreCharacterService.getCharactersPaginated()` ajouté (retourne `(List<Character>, DocumentSnapshot?)`). `app_router.dart`, `character_grid_section.dart`, `trending_section.dart` mis à jour pour ne plus passer `characters` en extra. `dart analyze lib/` : 0 erreurs.
+- Correction Task 54 : `login_screen.dart` logo corrigé (`AppAssets.logoFull`), `app_assets.dart` listes FMA (13 perso) et HXH (13 perso) remplies avec URLs GitHub réelles. ANR démarrage corrigé (NotificationService + licence check déférés post-runApp). Label Android `"OTADEX"` → `"Otadex"`.
+- Correction Task 55b : Splash native Android — fond blanc → `#0D0D14`, logo centré (`drawable-nodpi/otadex_logo.png`). Launcher icon regénéré à toutes les densités (PNG + adaptive icons API 26+) avec fond `#0D0D14` et icône transparente centrée.
 
 ## Dépendances installées (`pubspec.yaml`)
 
