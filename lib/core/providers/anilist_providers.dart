@@ -113,6 +113,12 @@ final sameAnimeCharactersProvider = FutureProvider.autoDispose
   return [];
 });
 
+// ── Full AniList character data (tabs détail : doubleurs, relations, médias) ──
+final charFullDataProvider = FutureProvider.autoDispose
+    .family<Map<String, dynamic>?, int>((ref, id) async {
+  return ref.read(anilistServiceProvider).getFullCharacterData(id);
+});
+
 // ── Character detail : Firestore en priorité pour tout ID, fallback mock ─────
 final characterDetailProvider =
     FutureProvider.autoDispose.family<Character?, String>((ref, id) async {
