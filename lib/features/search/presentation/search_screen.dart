@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import '../../../core/constants/app_assets.dart';
+import '../../../core/utils/image_prefetcher.dart';
 import '../../../core/l10n/app_strings.dart';
 import '../../../core/models/anime_entry.dart';
 import '../../../core/models/character.dart';
@@ -1246,7 +1247,10 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
 
   Widget _buildCharacterResultCard(RankTheme theme, Character c) {
     return GestureDetector(
-      onTap: () => context.push('/character/${c.id}'),
+      onTap: () {
+        ImagePrefetcher.prefetchCharacterImages(context, c);
+        context.push('/character/${c.id}');
+      },
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
@@ -1526,7 +1530,10 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
                     : c.imagePath ?? '';
 
             return GestureDetector(
-              onTap: () => context.push('/character/${c.id}'),
+              onTap: () {
+                ImagePrefetcher.prefetchCharacterImages(context, c);
+                context.push('/character/${c.id}');
+              },
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(12),
                 child: SizedBox(

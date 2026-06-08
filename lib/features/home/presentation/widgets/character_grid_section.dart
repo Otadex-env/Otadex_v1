@@ -6,6 +6,7 @@ import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/models/character.dart';
 import '../../../../../core/providers/otadex_providers.dart';
 import '../../../../../core/widgets/skeleton_loader.dart';
+import '../../../../../core/utils/image_prefetcher.dart';
 import 'character_grid_card.dart';
 import 'section_header.dart';
 
@@ -97,10 +98,10 @@ class CharacterGridSection extends ConsumerWidget {
       itemCount: display.length,
       itemBuilder: (context, i) => CharacterGridCard(
         character: display[i],
-        onTap: () => context.push(
-          '/character/${display[i].id}',
-          extra: display[i],
-        ),
+        onTap: () {
+          ImagePrefetcher.prefetchCharacterImages(context, display[i]);
+          context.push('/character/${display[i].id}', extra: display[i]);
+        },
       )
           .animate(delay: (60 * i).ms)
           .fadeIn(duration: 300.ms)

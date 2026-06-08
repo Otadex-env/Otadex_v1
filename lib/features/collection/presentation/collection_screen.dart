@@ -7,6 +7,7 @@ import '../../../core/providers/anilist_providers.dart';
 import '../../../core/providers/otadex_providers.dart';
 import '../../../core/providers/user_profile_provider.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../core/utils/image_prefetcher.dart';
 import '../../../core/widgets/otadex_image.dart';
 import '../../../core/widgets/skeleton_loader.dart';
 
@@ -255,8 +256,10 @@ class _CharCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () =>
-          context.push('/character/${character.id}', extra: character),
+      onTap: () {
+        ImagePrefetcher.prefetchCharacterImages(context, character);
+        context.push('/character/${character.id}', extra: character);
+      },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(12),
         child: Stack(

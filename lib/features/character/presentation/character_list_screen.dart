@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/services/firestore_character_service.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../core/utils/image_prefetcher.dart';
 import '../../../core/theme/otadex_theme.dart';
 import '../../../core/widgets/skeleton_loader.dart';
 import '../../home/presentation/widgets/character_grid_card.dart';
@@ -130,10 +131,10 @@ class _CharacterListScreenState extends State<CharacterListScreen> {
                               final char = _characters[i];
                               return CharacterGridCard(
                                 character: char,
-                                onTap: () => context.push(
-                                  '/character/${char.id}',
-                                  extra: char,
-                                ),
+                                onTap: () {
+                                  ImagePrefetcher.prefetchCharacterImages(context, char);
+                                  context.push('/character/${char.id}', extra: char);
+                                },
                               )
                                   .animate(delay: (30 * (i % 20)).ms)
                                   .fadeIn(duration: 200.ms)

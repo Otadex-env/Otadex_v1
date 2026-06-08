@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/l10n/app_strings.dart';
 import '../../../../../core/providers/otadex_providers.dart';
 import '../../../../../core/widgets/skeleton_loader.dart';
+import '../../../../../core/utils/image_prefetcher.dart';
 import 'section_header.dart';
 import 'trending_character_card.dart';
 
@@ -35,10 +36,10 @@ class TrendingSection extends ConsumerWidget {
               itemBuilder: (context, i) => TrendingCharacterCard(
                 character: characters[i],
                 index: i,
-                onTap: () => context.push(
-                  '/character/${characters[i].id}',
-                  extra: characters[i],
-                ),
+                onTap: () {
+                  ImagePrefetcher.prefetchCharacterImages(context, characters[i]);
+                  context.push('/character/${characters[i].id}', extra: characters[i]);
+                },
               ),
             ),
           ),

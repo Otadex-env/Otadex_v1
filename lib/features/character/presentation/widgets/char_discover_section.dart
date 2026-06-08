@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/models/character.dart';
+import '../../../../core/utils/image_prefetcher.dart';
 import '../../../../core/providers/otadex_providers.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/widgets/otadex_image.dart';
@@ -86,7 +87,10 @@ class _PortraitCard extends StatelessWidget {
             : char.imagePath ?? '';
 
     return GestureDetector(
-      onTap: () => context.push('/character/${char.id}', extra: char),
+      onTap: () {
+        ImagePrefetcher.prefetchCharacterImages(context, char);
+        context.push('/character/${char.id}', extra: char);
+      },
       child: Container(
         width: 124,
         decoration: BoxDecoration(
