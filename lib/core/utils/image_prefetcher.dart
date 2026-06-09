@@ -11,9 +11,17 @@ class ImagePrefetcher {
     for (final url in images.take(4)) {
       if (!url.startsWith('http')) continue;
       precacheImage(
-        CachedNetworkImageProvider(Uri.encodeFull(url)),
+        CachedNetworkImageProvider(_normalizeUrl(url)),
         context,
       );
+    }
+  }
+
+  static String _normalizeUrl(String url) {
+    try {
+      return Uri.encodeFull(Uri.decodeFull(url));
+    } catch (_) {
+      return url;
     }
   }
 

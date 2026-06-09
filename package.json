@@ -1,7 +1,12 @@
 {
+  "scripts": {
+    "setup": "node scripts/setup_anime.js",
+    "push-images": "node scripts/push_images.js"
+  },
   "dependencies": {
     "dotenv": "^17.4.2",
     "firebase-admin": "^13.10.0",
-    "mammoth": "^1.12.0"
+    "mammoth": "^1.12.0",
+    "sharp": "^0.34.2"
   }
 }

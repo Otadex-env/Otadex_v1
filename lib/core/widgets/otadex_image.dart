@@ -25,6 +25,14 @@ class OtadexImage extends StatelessWidget {
   bool get _isNetwork =>
       imagePath.startsWith('http://') || imagePath.startsWith('https://');
 
+  static String _normalizeUrl(String url) {
+    try {
+      return Uri.encodeFull(Uri.decodeFull(url));
+    } catch (_) {
+      return url;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     if (imagePath.isEmpty) return _placeholder();
@@ -46,7 +54,7 @@ class OtadexImage extends StatelessWidget {
       return ClipRRect(
         borderRadius: borderRadius ?? BorderRadius.zero,
         child: CachedNetworkImage(
-          imageUrl: Uri.encodeFull(imagePath),
+          imageUrl: _normalizeUrl(imagePath),
           width: width,
           height: height,
           fit: fit,
