@@ -267,6 +267,7 @@ class FirestoreCharacterService {
       trivia: trivia,
       aiPersonality: null,
       voiceActorIds: [],
+      createdAt: (d['created_at'] as Timestamp?)?.toDate(),
       relations: relations,
       voiceActors: voiceActors,
       mediaAppearances: [],

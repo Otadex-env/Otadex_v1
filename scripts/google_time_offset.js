@@ -18,7 +18,7 @@
 
 'use strict';
 
-const OFFSET_MS = 0; // Ajuster si horloge décalée : ex. -60000
+const OFFSET_MS = -3600000; // Horloge locale en avance de ~60 min sur Google
 
 const _Date = Date;
 

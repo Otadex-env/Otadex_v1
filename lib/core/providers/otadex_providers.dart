@@ -43,14 +43,26 @@ final trendingCharactersProvider = FutureProvider<List<Character>>((ref) async {
   return sorted.take(20).toList();
 });
 
-// ── Nouveaux / récents ──────────────────────────────────────────────────────
-final newCharactersProvider =
+// ── Récents : triés par created_at desc ─────────────────────────────────────
+final recentCharactersProvider =
     FutureProvider.family<List<Character>, String?>((ref, category) async {
   final all = await ref.watch(allCharactersProvider.future);
-  var newChars = all.where((c) => c.isNew || c.isTrending).toList()
-    ..sort((a, b) => b.likes.compareTo(a.likes));
-  if (category == null || category == 'Tous') return newChars;
-  return newChars.where((c) => c.category == category).toList();
+  var sorted = [...all]..sort((a, b) {
+      final aTs = a.createdAt;
+      final bTs = b.createdAt;
+      if (aTs == null && bTs == null) return 0;
+      if (aTs == null) return 1;
+      if (bTs == null) return -1;
+      return bTs.compareTo(aTs);
+    });
+  if (category == null || category == 'Tous') return sorted;
+  return sorted.where((c) => c.category == category).toList();
+});
+
+// ── Nouveaux / récents (compat) ─────────────────────────────────────────────
+final newCharactersProvider =
+    FutureProvider.family<List<Character>, String?>((ref, category) async {
+  return ref.watch(recentCharactersProvider(category).future);
 });
 
 // ── Recommandés ─────────────────────────────────────────────────────────────

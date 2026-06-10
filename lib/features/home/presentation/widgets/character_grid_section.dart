@@ -28,27 +28,35 @@ class CharacterGridSection extends ConsumerWidget {
         ? null
         : categories[selectedCategoryIndex];
 
-    final newAsync = ref.watch(newCharactersProvider(selectedCategory));
+    final recentAsync = ref.watch(recentCharactersProvider(selectedCategory));
     final recommendedAsync = ref.watch(recommendedCharactersProvider);
+    final trendingAsync = ref.watch(trendingCharactersProvider);
+
+    // Pour "Recommandés" : on filtre aussi par catégorie si sélectionnée
+    final filteredRecommended = recommendedAsync.whenData((chars) {
+      if (selectedCategory == null) return chars;
+      final filtered = chars.where((c) => c.category == selectedCategory).toList();
+      return filtered.isEmpty ? chars : filtered;
+    });
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // ── Nouveautés ──────────────────────────────────────────────────────
+        // ── Récents ────────────────────────────────────────────────────────
         SectionHeader(
-          title: '✨ Nouveautés',
+          title: '🕐 Récents',
           actionLabel: 'Voir tout',
           onAction: () => context.push('/characters', extra: {
             'title': 'Tous les personnages',
           }),
         ),
-        newAsync.when(
+        recentAsync.when(
           data: (chars) => _buildGrid(chars, startOffset: 0, maxItems: 6),
           loading: () => const _GridLoader(),
           error: (_, __) => const SizedBox.shrink(),
         ),
 
-        // ── Recommandés ─────────────────────────────────────────────────────
+        // ── Recommandés pour toi ────────────────────────────────────────────
         SectionHeader(
           title: '⭐ Recommandés pour toi',
           actionLabel: 'Voir tout',
@@ -56,12 +64,36 @@ class CharacterGridSection extends ConsumerWidget {
             'title': 'Tous les personnages',
           }),
         ),
-        recommendedAsync.when(
+        filteredRecommended.when(
           data: (chars) => _buildGrid(
             chars,
-            startOffset: newAsync.valueOrNull?.length ?? 0,
+            startOffset: recentAsync.valueOrNull?.length ?? 0,
             maxItems: 6,
           ),
+          loading: () => const _GridLoader(),
+          error: (_, __) => const SizedBox.shrink(),
+        ),
+
+        // ── Tendances ───────────────────────────────────────────────────────
+        SectionHeader(
+          title: '🔥 Tendances',
+          actionLabel: 'Voir tout',
+          onAction: () => context.push('/characters', extra: {
+            'title': 'Tous les personnages',
+          }),
+        ),
+        trendingAsync.when(
+          data: (chars) {
+            final filtered = selectedCategory == null
+                ? chars
+                : chars.where((c) => c.category == selectedCategory).toList();
+            final display = filtered.isEmpty ? chars : filtered;
+            return _buildGrid(display,
+                startOffset:
+                    (recentAsync.valueOrNull?.length ?? 0) +
+                        (filteredRecommended.valueOrNull?.length ?? 0),
+                maxItems: 6);
+          },
           loading: () => const _GridLoader(),
           error: (_, __) => const SizedBox.shrink(),
         ),
@@ -71,7 +103,8 @@ class CharacterGridSection extends ConsumerWidget {
     );
   }
 
-  Widget _buildGrid(List<Character> chars, {required int startOffset, int? maxItems}) {
+  Widget _buildGrid(List<Character> chars,
+      {required int startOffset, int? maxItems}) {
     final display = maxItems != null ? chars.take(maxItems).toList() : chars;
     if (display.isEmpty) {
       return const Padding(

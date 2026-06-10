@@ -115,6 +115,7 @@ class Character {
   final List<String> trivia;
   final String? aiPersonality;
   final List<String> voiceActorIds;
+  final DateTime? createdAt;
   // ── Mock data Task 20 ────────────────────────────────────────────────────────
   final List<CharacterRelation> relations;
   final List<VoiceActorMock> voiceActors;
@@ -157,6 +158,7 @@ class Character {
     this.trivia = const [],
     this.aiPersonality,
     this.voiceActorIds = const [],
+    this.createdAt,
     this.relations = const [],
     this.voiceActors = const [],
     this.mediaAppearances = const [],
