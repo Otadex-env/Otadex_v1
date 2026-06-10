@@ -1174,6 +1174,33 @@ class AppAssets {
   ];
 
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // MT — Mushoku Tensei   prefix: mt_
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // ignore: unused_field
+  static const String _mt = 'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei';
+
+  static const List<String> rudeusGreyrat = [];
+  static const List<String> roxyMigurdia = [];
+  static const List<String> sylphietteGreyrat = [];
+  static const List<String> erisBoreasGreyrat = [];
+  static const List<String> ruijerdSuperdia = [];
+  static const List<String> paulGreyrat = [];
+  static const List<String> orsted = [];
+  static const List<String> hitogami = [];
+  static const List<String> ghislaineDedoldia = [];
+  static const List<String> perugiusDola = [];
+  static const List<String> zenithGreyrat = [];
+  static const List<String> nornGreyrat = [];
+  static const List<String> aishaGreyrat = [];
+  static const List<String> elinaliseDragonroad = [];
+  static const List<String> cliffGrimoire = [];
+  static const List<String> zanobaShirone = [];
+  static const List<String> nanahoshiShizuka = [];
+  static const List<String> arielAnemoiAsura = [];
+  static const List<String> liliaGreyrat = [];
+  static const List<String> badigadi = [];
+
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // Résolution par charId
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   static List<String> getByCharacterId(String charId) {
@@ -1416,6 +1443,47 @@ class AppAssets {
         return feitanPortor;
       case 'hxh-neferpitou':
         return neferpitou;
+      // MT
+      case 'mt-rudeus-greyrat':
+        return rudeusGreyrat;
+      case 'mt-roxy-migurdia':
+        return roxyMigurdia;
+      case 'mt-sylphiette-greyrat':
+        return sylphietteGreyrat;
+      case 'mt-eris-boreas-greyrat':
+        return erisBoreasGreyrat;
+      case 'mt-ruijerd-superdia':
+        return ruijerdSuperdia;
+      case 'mt-paul-greyrat':
+        return paulGreyrat;
+      case 'mt-orsted':
+        return orsted;
+      case 'mt-hitogami':
+        return hitogami;
+      case 'mt-ghislaine-dedoldia':
+        return ghislaineDedoldia;
+      case 'mt-perugius-dola':
+        return perugiusDola;
+      case 'mt-zenith-greyrat':
+        return zenithGreyrat;
+      case 'mt-norn-greyrat':
+        return nornGreyrat;
+      case 'mt-aisha-greyrat':
+        return aishaGreyrat;
+      case 'mt-elinalise-dragonroad':
+        return elinaliseDragonroad;
+      case 'mt-cliff-grimoire':
+        return cliffGrimoire;
+      case 'mt-zanoba-shirone':
+        return zanobaShirone;
+      case 'mt-nanahoshi-shizuka':
+        return nanahoshiShizuka;
+      case 'mt-ariel-anemoi-asura':
+        return arielAnemoiAsura;
+      case 'mt-lilia-greyrat':
+        return liliaGreyrat;
+      case 'mt-badigadi':
+        return badigadi;
       default:
         return const [];
     }

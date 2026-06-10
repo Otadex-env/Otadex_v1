@@ -421,6 +421,7 @@ class FirestoreCharacterService {
         'classroom-of-elite' => AppColors.animeClkCard,
         'fullmetal-alchemist' => AppColors.animeFmaCard,
         'hunter-x-hunter' => AppColors.animeHxhCard,
+        'mushoku-tensei' => AppColors.animeMtCard,
         _ => AppColors.animeDefaultCard,
       };
 
@@ -432,6 +433,7 @@ class FirestoreCharacterService {
         'classroom-of-elite' => AppColors.animeClkAccent,
         'fullmetal-alchemist' => AppColors.animeFmaAccent,
         'hunter-x-hunter' => AppColors.animeHxhAccent,
+        'mushoku-tensei' => AppColors.animeMtAccent,
         _ => AppColors.animeDefaultAccent,
       };
 
@@ -443,6 +445,7 @@ class FirestoreCharacterService {
         'classroom-of-elite' => 'Seinen',
         'fullmetal-alchemist' => 'Shōnen',
         'hunter-x-hunter' => 'Shōnen',
+        'mushoku-tensei' => 'Isekai',
         _ => 'Shōnen',
       };
 }

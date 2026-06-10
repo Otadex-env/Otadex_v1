@@ -175,6 +175,61 @@ env NODE_OPTIONS='--require ./scripts/google_time_offset.js' /home/tilstack/.cac
 
 ---
 
+## Import Mushoku Tensei
+
+Lance l'import de tous les personnages Mushoku Tensei dans Firestore.
+
+### Prérequis
+
+- `serviceAccountkey.json` à la racine du projet (ne jamais committer)
+- Node.js installé
+- Dépendances installées :
+
+```bash
+npm install mammoth firebase-admin
+```
+
+### Lancement
+
+```bash
+env NODE_OPTIONS='--require ./scripts/google_time_offset.js' /home/tilstack/.cache/ms-playwright-go/1.50.1/node scripts/import_mt.js
+```
+
+### Collections créées / mises à jour
+
+| Collection | Document ID | Contenu |
+|---|---|---|
+| `animes` | `mushoku-tensei` | Titre, synopsis, genres, épisodes, studio, auteur |
+| `creators` | `rifujin-na-magonote` | Bio, bibliographie, récompenses |
+| `studios` | `studio-bind` | Fondation, productions, description |
+| `characters` | `mt-{slug}` | 20 personnages MT complets |
+| `quizzes` | `mt-{slug}` | Quiz 5-6 questions pour 7 personnages principaux |
+
+### Personnages importés
+
+1. `mt-rudeus-greyrat` — Mage Niveau Dieu (Protagoniste)
+2. `mt-roxy-migurdia` — Eau Roi
+3. `mt-sylphiette-greyrat` — Eau Roi
+4. `mt-eris-boreas-greyrat` — Mad Sword King
+5. `mt-ruijerd-superdia` — Guerrier Légendaire
+6. `mt-paul-greyrat` — Aventurier S-rank
+7. `mt-orsted` — Dieu Dragon
+8. `mt-hitogami` — Dieu Humain (Antagoniste)
+9. `mt-ghislaine-dedoldia` — Épée Roi
+10. `mt-perugius-dola` — Sept Grandes Puissances
+11. `mt-zenith-greyrat` — Mère de Rudeus
+12. `mt-norn-greyrat` — Sœur de Rudeus
+13. `mt-aisha-greyrat` — Demi-sœur de Rudeus
+14. `mt-elinalise-dragonroad` — Grand-mère de Sylphie
+15. `mt-cliff-grimoire` — Prêtre de Millis
+16. `mt-zanoba-shirone` — Ancien Prince / Disciple
+17. `mt-nanahoshi-shizuka` — Invoquée accidentellement
+18. `mt-ariel-anemoi-asura` — Princesse d'Asura
+19. `mt-lilia-greyrat` — Ancienne servante
+20. `mt-badigadi` — Roi Démon Immortel
+
+---
+
 ## Template pour futurs animés
 
 Pour chaque nouvel animé, créer :
