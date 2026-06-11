@@ -345,3 +345,62 @@ static const Color animeMhaAccent  = Color(0xFF3B82F6);  // bleu primaire
 | Firebase Console → `animes/`                         | 1 document par animé                                 |
 | Firebase Console → `characters/`                     | N documents, un par personnage                       |
 | Firebase Console → `creators/`                       | 1 document par auteur (si nouveau)                   |
+
+---
+
+## Automatisation (scripts)
+
+Les étapes 3-7 sont automatisées par deux scripts Node.js.
+
+### `scripts/setup_anime.js` — Initialisation
+
+Lit un fichier `.docx` structuré et :
+- Crée les tokens couleurs dans `app_colors.dart`
+- Génère les listes vides dans `app_assets.dart`
+- Ajoute les 3 switch dans `firestore_character_service.dart`
+- Génère `scripts/import_[prefix].js`
+- Crée les dossiers `temp_images/[Animé]/[Personnage]/` avec README de nommage
+- Lance l'import Firestore (nécessite `serviceAccountKey.json`)
+
+```bash
+node scripts/setup_anime.js Mon\ Anime.docx
+```
+
+### `scripts/push_images.js` — Publication des images
+
+À lancer après avoir déposé les images dans `temp_images/[Animé]/[Personnage]/` :
+- Renomme + convertit les images en JPEG (`prefix_slug1.jpeg`)
+- Copie vers le repo `otadex-assets`
+- Met à jour les listes dans `app_assets.dart` avec les vraies URLs GitHub raw
+- Git push vers GitHub
+- Relance `import_[prefix].js` pour mettre à jour `images[]` dans Firestore
+
+```bash
+node scripts/push_images.js "Mon Anime"
+```
+
+#### Option `--dry-run`
+
+Valide la détection des noms et IDs **sans aucune modification réelle**.
+Effectue uniquement le renommage/conversion (étape B), puis affiche :
+- Les copies qui seraient faites vers `otadex-assets`
+- Les URLs GitHub raw qui seraient générées
+- L'état de chaque variable `app_assets.dart` (vide → à remplir / déjà remplie / introuvable)
+- Les commandes git push et import qui seraient lancées
+
+```bash
+node scripts/push_images.js "Mon Anime" --dry-run
+```
+
+À utiliser systématiquement avant le premier vrai push pour détecter les incohérences de nommage.
+
+### Module partagé `scripts/anime_workflow/naming.js`
+
+Contient la fonction `toVarName(name)` — source unique de vérité pour la conversion
+`"Nom Prénom"` → `"nomPrénom"` (camelCase Dart).
+
+Importé par `setup_anime.js` **et** `push_images.js` pour garantir que la variable générée
+lors de l'initialisation (liste vide `[]`) correspond exactement à la variable recherchée
+lors du remplissage des URLs.
+
+**Ne jamais dupliquer cette logique dans un autre script.**

@@ -16,6 +16,7 @@ const fs      = require('fs');
 const path    = require('path');
 const { execSync, spawnSync } = require('child_process');
 const readline = require('readline');
+const { toVarName } = require('./anime_workflow/naming');
 
 // ── Dépendances ───────────────────────────────────────────────────────────────
 let sharp;
@@ -164,21 +165,23 @@ function updateAppAssets(animeName, prefix, charUrls) {
   let updated = false;
 
   for (const [charName, urls] of Object.entries(charUrls)) {
-    const varName  = charName.charAt(0).toLowerCase() + charName.slice(1).replace(/\s+(.)/g, (_, l) => l.toUpperCase());
-    const slug     = toSlug(charName).slice(0, 4);
-    const charId   = `${prefix}-${toSlug(charName)}`;
+    const varName = toVarName(charName);
+    const charId  = `${prefix}-${toSlug(charName)}`;
 
-    // Cherche "static const List<String> varName = [];" et remplace
-    const emptyRe  = new RegExp(`(static const List<String> ${escapeRegex(varName)} = )\\[\\]`, 'g');
+    const emptyRe = new RegExp(`(static const List<String> ${escapeRegex(varName)} = )\\[\\]`, 'g');
     if (emptyRe.test(content)) {
-      const urlList = urls.map(u => `    '\${_${prefix}}/${charName}/${path.basename(u)}'`).join(',\n');
-      // Reconstruit en utilisant les URLs complètes (plus sûr)
       const urlListFull = urls.map(u => `    '${u}'`).join(',\n');
       content = content.replace(
         new RegExp(`(static const List<String> ${escapeRegex(varName)} = )\\[\\](;)`, 'g'),
         `$1[\n${urlListFull},\n  ]$2`
       );
       updated = true;
+    } else {
+      // Distingue "déjà remplie" (OK) de "variable absente" (problème silencieux)
+      const existsRe = new RegExp(`static const List<String> ${escapeRegex(varName)}\\s*=`, 'g');
+      if (!existsRe.test(content)) {
+        console.warn(`  ⚠️  ${charName} : variable "${varName}" introuvable dans app_assets.dart — vérifier setup_anime.js`);
+      }
     }
   }
 
@@ -246,14 +249,30 @@ function rerunImport(prefix, charUrls) {
   }
 }
 
+// ── Prévisualisation URLs sans copie (dry-run) ────────────────────────────────
+function computePreviewUrls(animeName, renamedImages) {
+  const urls = {};
+  for (const { charName, files } of renamedImages) {
+    urls[charName] = files.map(f => {
+      const destName = path.basename(f);
+      return `${GITHUB_BASE}/${animeName}/${charName}/${destName}`;
+    });
+  }
+  return urls;
+}
+
 // ── Point d'entrée ────────────────────────────────────────────────────────────
 async function main() {
-  const animeName = process.argv.slice(2).join(' ');
+  const args     = process.argv.slice(2);
+  const dryRun   = args.includes('--dry-run');
+  const animeName = args.filter(a => a !== '--dry-run').join(' ');
 
   if (!animeName) {
-    console.error('Usage : node scripts/push_images.js "My Hero Academia"');
+    console.error('Usage : node scripts/push_images.js "My Hero Academia" [--dry-run]');
     process.exit(1);
   }
+
+  if (dryRun) console.log('⚠️  Mode dry-run activé — aucune modification réelle ne sera effectuée\n');
 
   const animeDir = path.join(TEMP_IMAGES, animeName);
   if (!fs.existsSync(animeDir)) {
@@ -279,6 +298,47 @@ async function main() {
   console.log('🔄  Étape B — Renommage + conversion JPEG...');
   const renamed = await renameImages(animeName, prefix, charImages);
   console.log(`  ✅  ${renamed.reduce((s, c) => s + c.files.length, 0)} images converties\n`);
+
+  // ── DRY-RUN : afficher la simulation et sortir ────────────────────────────
+  if (dryRun) {
+    const previewUrls = computePreviewUrls(animeName, renamed);
+
+    console.log('━━━ [DRY-RUN] — Simulation (aucune modification réelle) ━━━\n');
+
+    console.log('📋  Copies qui SERAIENT effectuées vers otadex-assets :');
+    for (const { charName, files } of renamed) {
+      console.log(`  ${charName} (${files.length} image(s))`);
+      for (const f of files) console.log(`    → ${path.basename(f)}`);
+    }
+
+    console.log('\n🔗  URLs GitHub raw qui SERAIENT générées :');
+    for (const [charName, urls] of Object.entries(previewUrls)) {
+      console.log(`  ${charName} :`);
+      for (const url of urls) console.log(`    ${url}`);
+    }
+
+    console.log('\n📝  Variables app_assets.dart qui SERAIENT mises à jour :');
+    let appAssetsContent = '';
+    try { appAssetsContent = fs.readFileSync(APP_ASSETS, 'utf8'); } catch { /* ignore */ }
+    for (const [charName, urls] of Object.entries(previewUrls)) {
+      const varName = toVarName(charName);
+      const emptyRe  = new RegExp(`static const List<String> ${escapeRegex(varName)} = \\[\\]`);
+      const existsRe = new RegExp(`static const List<String> ${escapeRegex(varName)}\\s*=`);
+      if (emptyRe.test(appAssetsContent)) {
+        console.log(`  ✅  ${varName} → ${urls.length} URL(s) seraient injectées`);
+      } else if (existsRe.test(appAssetsContent)) {
+        console.log(`  ℹ️   ${varName} → déjà remplie, ignorée`);
+      } else {
+        console.log(`  ⚠️  ${varName} → introuvable dans app_assets.dart`);
+      }
+    }
+
+    console.log(`\n📤  git push origin main → otadex-assets (IGNORÉ en dry-run)`);
+    console.log(`🔥  node scripts/import_${prefix}.js → Firestore (IGNORÉ en dry-run)`);
+    console.log('\n✅  Dry-run terminé — aucune modification réelle effectuée.');
+    return;
+  }
+  // ── FIN DRY-RUN ───────────────────────────────────────────────────────────
 
   console.log('🔍  Étape C — Localisation du repo otadex-assets...');
   const assetsRoot = await findOtadexAssets();

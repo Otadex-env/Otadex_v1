@@ -57,6 +57,8 @@ try {
   process.exit(1);
 }
 
+const { toVarName } = require('./anime_workflow/naming');
+
 // ── Paths ─────────────────────────────────────────────────────────────────────
 const ROOT          = path.resolve(__dirname, '..');
 const APP_ASSETS    = path.join(ROOT, 'lib/core/constants/app_assets.dart');
@@ -211,12 +213,12 @@ function updateAppAssets(anime, characters) {
 
   const capPrefix = anime.prefix.charAt(0).toUpperCase() + anime.prefix.slice(1);
   const listVarLines = characters.map(c => {
-    const lowerName = c.nom.charAt(0).toLowerCase() + c.nom.slice(1).replace(/\s+(.)/g, (_, l) => l.toUpperCase());
+    const lowerName = toVarName(c.nom);
     return `  static const List<String> ${lowerName} = [];\n`;
   }).join('');
 
   const switchCases = characters.map(c => {
-    const lowerName = c.nom.charAt(0).toLowerCase() + c.nom.slice(1).replace(/\s+(.)/g, (_, l) => l.toUpperCase());
+    const lowerName = toVarName(c.nom);
     return `      case '${c.id}':\n        return ${lowerName};`;
   }).join('\n');
 
