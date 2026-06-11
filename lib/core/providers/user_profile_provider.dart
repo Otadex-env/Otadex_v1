@@ -2,6 +2,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/user_profile.dart';
 import '../models/user_rank.dart';
 
+// ── UIDs du créateur — toujours rang Kage, bypass Chariow ──────────────────
+const List<String> kDeveloperUids = [
+  'tYTfcUyV76MTQCEWuwq1yxTuuAH3', // TilStack
+];
+
+// ── Override rang affichage en dev (en mémoire uniquement, jamais Firestore) ─
+final devOverrideRankProvider = StateProvider.autoDispose<UserRank?>((ref) => null);
+
 class UserProfileNotifier extends StateNotifier<UserProfile> {
   UserProfileNotifier({
     UserRank initialRank = UserRank.genin,

@@ -81,11 +81,22 @@ void main() async {
   // Notifications + licence vérifiés après le premier frame (évite l'ANR)
   WidgetsBinding.instance.addPostFrameCallback((_) async {
     await NotificationService.initialize();
+    // Bypass développeur — force Kage en mémoire sans écrire dans Firestore
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid != null && kDeveloperUids.contains(uid)) {
+      _providerContainer
+          .read(userProfileProvider.notifier)
+          .updateIdentity(rank: UserRank.kage.name);
+    }
     if (isLoggedIn) _checkLicenseExpiry(prefs);
   });
 }
 
 Future<void> _checkLicenseExpiry(SharedPreferences prefs) async {
+  // Ne jamais rétrograder un développeur vers Genin
+  final uid = FirebaseAuth.instance.currentUser?.uid;
+  if (uid != null && kDeveloperUids.contains(uid)) return;
+
   final expiresMs = prefs.getInt(AppConstants.keyLicenseExpires) ?? 0;
   if (expiresMs <= 0) return;
   final expiresAt = DateTime.fromMillisecondsSinceEpoch(expiresMs);
