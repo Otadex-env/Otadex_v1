@@ -76,7 +76,7 @@ async function sendNotification({
         method: 'POST',
         headers: {
           'Content-Type': 'application/json; charset=utf-8',
-          Authorization: `Key ${apiKey}`,
+          Authorization: `Basic ${apiKey}`,
           'Content-Length': Buffer.byteLength(payload),
         },
       },

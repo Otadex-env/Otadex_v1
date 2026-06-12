@@ -26,7 +26,7 @@ async function sendOneSignalNotification() {
     method: "POST",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
-      "Authorization": `Key ${oneSignalApiKey.value()}`,
+      "Authorization": `Basic ${oneSignalApiKey.value()}`,
     },
     body: JSON.stringify({
       app_id: oneSignalAppId.value(),
@@ -36,8 +36,8 @@ async function sendOneSignalNotification() {
         fr: "🏆 Vote Fan du Mois ouvert !",
       },
       contents: {
-        en: "Soutenez votre personnage préféré et devenez Fan #1 ce mois-ci !",
-        fr: "Soutenez votre personnage préféré et devenez Fan #1 ce mois-ci !",
+        en: "Le vote mensuel est lancé. Choisis ton personnage préféré !",
+        fr: "Le vote mensuel est lancé. Choisis ton personnage préféré !",
       },
       url: "otadex://home",
       data: {
