@@ -1733,4 +1733,66 @@ match /studios/{studioId} {
 
 ---
 
-_Dernière mise à jour : Task 52 — Corrections Firebase pré-Play Store, 5 juin 2026_
+---
+
+## Task 53 — Réglages OneSignal + notifications import animé (12 juin 2026)
+
+### Objectif
+
+Remettre OneSignal dans un état exploitable pour la suite du travail et vérifier que l'ajout/import d'un nouvel animé déclenche bien une notification comme avant.
+
+### Vérification historique
+
+- Ancien fichier retrouvé dans Git : `scripts/send_notification.js` présent au commit `1fbeb55`.
+- Les anciens scripts d'import FMA/HxH/JJK appelaient `require("./send_notification")` après l'import Firestore.
+- Constat avant correction : le script actuel `scripts/import_mt.js` et le template de `scripts/setup_anime.js` n'envoyaient plus de notification après import.
+
+### Modifications OneSignal
+
+- `scripts/send_notification.js` restauré et consolidé.
+- Lecture des identifiants compatible avec les deux conventions :
+  - local `.env` : `APPIDONESIGNAL` + `APIKEYONESIGNAL`
+  - CI/secrets : `ONESIGNAL_APP_ID` + `ONESIGNAL_API_KEY`
+- Gestion d'erreur OneSignal renforcée : réponse JSON invalide, status HTTP non-2xx, `json.errors`.
+- `scripts/notify_monthly_vote.js` réutilise maintenant `send_notification.js`.
+- `functions/src/index.ts` ne dépend plus de `fcmToken` / `admin.messaging()` : notification mensuelle envoyée via OneSignal REST API avec secrets Firebase `ONESIGNAL_APP_ID` et `ONESIGNAL_API_KEY`.
+
+### Notifications nouvel animé
+
+- `scripts/import_mt.js` envoie désormais une notification OneSignal après l'import Firestore :
+  - titre : `✨ Mushoku Tensei débarque sur OTADEX !`
+  - route : `/anime/mushoku-tensei`
+  - type : `new_characters`
+- `scripts/setup_anime.js` génère maintenant les futurs `scripts/import_<prefix>.js` avec :
+  - `const sendNotification = require('./send_notification');`
+  - appel `sendNotification()` après import des personnages
+  - route automatique `/anime/<slug>`
+  - type `new_characters`
+
+### Vérifications
+
+- Recherche active : plus de `fcmToken`, `FirebaseMessaging`, `firebase_messaging`, `flutter_local_notifications` ou `admin.messaging` dans `scripts`, `functions/src`, `lib`, `pubspec.yaml`.
+- `flutter analyze` → **No issues found!**
+- Syntaxe Node vérifiée avec `/home/tilstack/.cache/ms-playwright-go/1.50.1/node --check` :
+  - `scripts/send_notification.js` ✅
+  - `scripts/notify_monthly_vote.js` ✅
+  - `scripts/import_mt.js` ✅
+  - `scripts/setup_anime.js` ✅
+- `npm run build` des Cloud Functions non exécutable avec `/snap/bin/node` local : blocage système Snap/AppArmor avant compilation.
+
+### Actions manuelles requises
+
+```
+━━━ ACTIONS MANUELLES ━━━
+→ Pour GitHub Actions : vérifier les secrets ONESIGNAL_APP_ID + ONESIGNAL_API_KEY
+→ Pour Firebase Functions : définir les secrets ONESIGNAL_APP_ID + ONESIGNAL_API_KEY avant deploy
+→ Pour test local OneSignal : utiliser le binaire Node non-Snap si /snap/bin/node reste bloqué
+```
+
+### Résultat
+
+Le flux attendu est rétabli : chaque script d'import généré pour un nouvel animé déclenchera une notification OneSignal après l'écriture Firestore, et `import_mt.js` le fait déjà explicitement.
+
+---
+
+_Dernière mise à jour : Task 53 — Réglages OneSignal + notifications import animé, 12 juin 2026_

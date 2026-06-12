@@ -10,6 +10,7 @@
 import {setGlobalOptions} from "firebase-functions";
 import {onSchedule} from "firebase-functions/v2/scheduler";
 import * as admin from "firebase-admin";
+import {defineSecret} from "firebase-functions/params";
 
 setGlobalOptions({maxInstances: 10});
 
@@ -17,31 +18,57 @@ if (!admin.apps.length) {
   admin.initializeApp();
 }
 
+const oneSignalAppId = defineSecret("ONESIGNAL_APP_ID");
+const oneSignalApiKey = defineSecret("ONESIGNAL_API_KEY");
+
+async function sendOneSignalNotification() {
+  const response = await fetch("https://onesignal.com/api/v1/notifications", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      "Authorization": `Key ${oneSignalApiKey.value()}`,
+    },
+    body: JSON.stringify({
+      app_id: oneSignalAppId.value(),
+      included_segments: ["All"],
+      headings: {
+        en: "🏆 Vote Fan du Mois ouvert !",
+        fr: "🏆 Vote Fan du Mois ouvert !",
+      },
+      contents: {
+        en: "Soutenez votre personnage préféré et devenez Fan #1 ce mois-ci !",
+        fr: "Soutenez votre personnage préféré et devenez Fan #1 ce mois-ci !",
+      },
+      url: "otadex://home",
+      data: {
+        route: "/home",
+        type: "monthly_vote",
+      },
+    }),
+  });
+
+  const json = await response.json() as {
+    recipients?: number;
+    errors?: unknown;
+  };
+  if (!response.ok || json.errors) {
+    throw new Error(`OneSignal error: ${JSON.stringify(json.errors ?? json)}`);
+  }
+  return json.recipients ?? 0;
+}
+
 // Déclenché le 1er de chaque mois à 9h00 (heure de Douala)
 export const notifyMonthlyVote = onSchedule(
-  {schedule: "0 9 1 * *", timeZone: "Africa/Douala"},
+  {
+    schedule: "0 9 1 * *",
+    timeZone: "Africa/Douala",
+    secrets: [oneSignalAppId, oneSignalApiKey],
+  },
   async () => {
     const db = admin.firestore();
-    const messaging = admin.messaging();
 
     const usersSnapshot = await db.collection("users").get();
-    const tokens = usersSnapshot.docs
-      .map((doc) => doc.data().fcmToken as string | undefined)
-      .filter((token): token is string => !!token && token.length > 0);
-
-    if (tokens.length > 0) {
-      await messaging.sendEachForMulticast({
-        tokens,
-        notification: {
-          title: "🏆 Vote Fan du Mois ouvert !",
-          body: "Soutenez votre personnage préféré ce mois-ci !",
-        },
-        data: {
-          route: "/home",
-          type: "monthly_vote",
-        },
-      });
-    }
+    const recipients = await sendOneSignalNotification();
 
     const batch = db.batch();
     usersSnapshot.docs.forEach((doc) => {
@@ -61,6 +88,8 @@ export const notifyMonthlyVote = onSchedule(
     });
     await batch.commit();
 
-    console.log(`✅ Vote notification envoyée à ${tokens.length} users`);
+    console.log(
+      `✅ Vote notification envoyée via OneSignal à ${recipients} abonnés`,
+    );
   }
 );

@@ -20,6 +20,7 @@
 const admin = require('firebase-admin');
 const path  = require('path');
 const fs    = require('fs');
+const sendNotification = require('./send_notification');
 
 const KEY = path.resolve(__dirname, '..', 'serviceAccountKey.json');
 if (!fs.existsSync(KEY)) {
@@ -1188,6 +1189,14 @@ async function main() {
   }
   await quizBatch.commit();
   console.log(`✅  ${quizzes.length} quiz importés`);
+
+  // 6. Notification OneSignal
+  await sendNotification({
+    title: '✨ Mushoku Tensei débarque sur OTADEX !',
+    body: 'Rudeus, Eris, Roxy et Sylphiette sont disponibles. Explore leurs fiches !',
+    route: '/anime/mushoku-tensei',
+    type: 'new_characters',
+  });
 
   console.log('\n🎉  Import Mushoku Tensei terminé !');
   console.log('\nLance manuellement si node snap est bloqué :');

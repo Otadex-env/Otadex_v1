@@ -330,6 +330,10 @@ function generateImportScript(anime, characters) {
   const titreJp    = anime.titreJaponais || '';
   const episodes   = JSON.stringify(anime.episodes || {});
   const genres     = JSON.stringify(anime.genres);
+  const notifNames  = characters.slice(0, 3).map(c => c.nom).join(', ');
+  const notifBody   = notifNames
+    ? `${notifNames} sont disponibles. Explore leurs fiches !`
+    : `De nouveaux personnages de ${anime.nom} sont disponibles.`;
 
   const charsCode = characters.map((c, i) => {
     const imgPath = buildImagePath(anime, c);
@@ -378,6 +382,7 @@ function generateImportScript(anime, characters) {
 
 const path  = require('path');
 const admin = require('firebase-admin');
+const sendNotification = require('./send_notification');
 
 const KEY_PATH = path.resolve(__dirname, '../serviceAccountKey.json');
 if (!require('fs').existsSync(KEY_PATH)) {
@@ -453,6 +458,14 @@ async function importAll() {
   }
 
   console.log(\`\\n✅  Import terminé — \${count} personnages importés dans Firestore.\`);
+
+  await sendNotification({
+    title: ${JSON.stringify(`✨ ${anime.nom} débarque sur OTADEX !`)},
+    body: ${JSON.stringify(notifBody)},
+    route: '/anime/${anime.slug}',
+    type: 'new_characters',
+  });
+
   process.exit(0);
 }
 
