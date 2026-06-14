@@ -81,8 +81,10 @@ void main() async {
   // Notifications + licence vérifiés après le premier frame (évite l'ANR)
   WidgetsBinding.instance.addPostFrameCallback((_) async {
     await NotificationService.initialize();
+    // Attendre que Firebase Auth restaure la session (asynchrone au démarrage)
+    final user = await FirebaseAuth.instance.authStateChanges().first;
+    final uid = user?.uid;
     // Bypass développeur — force Kage en mémoire sans écrire dans Firestore
-    final uid = FirebaseAuth.instance.currentUser?.uid;
     if (uid != null && kDeveloperUids.contains(uid)) {
       _providerContainer
           .read(userProfileProvider.notifier)
@@ -94,7 +96,7 @@ void main() async {
 
 Future<void> _checkLicenseExpiry(SharedPreferences prefs) async {
   // Ne jamais rétrograder un développeur vers Genin
-  final uid = FirebaseAuth.instance.currentUser?.uid;
+  final uid = FirebaseAuth.instance.currentUser?.uid ?? (await FirebaseAuth.instance.authStateChanges().first)?.uid;
   if (uid != null && kDeveloperUids.contains(uid)) return;
 
   final expiresMs = prefs.getInt(AppConstants.keyLicenseExpires) ?? 0;
@@ -104,10 +106,8 @@ Future<void> _checkLicenseExpiry(SharedPreferences prefs) async {
   try {
     final uid = FirebaseAuth.instance.currentUser?.uid;
     if (uid == null) return;
-    final doc = await FirebaseFirestore.instance
-        .collection('users')
-        .doc(uid)
-        .get();
+    final doc =
+        await FirebaseFirestore.instance.collection('users').doc(uid).get();
     final licenseKey = doc.data()?['licenseKey'] as String?;
     if (licenseKey != null && licenseKey.isNotEmpty) {
       final result = await ChariowService().checkLicense(licenseKey);
