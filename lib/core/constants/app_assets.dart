@@ -1179,26 +1179,153 @@ class AppAssets {
   // ignore: unused_field
   static const String _mt = 'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei';
 
-  static const List<String> rudeusGreyrat = [];
-  static const List<String> roxyMigurdia = [];
-  static const List<String> sylphietteGreyrat = [];
-  static const List<String> erisBoreasGreyrat = [];
-  static const List<String> ruijerdSuperdia = [];
-  static const List<String> paulGreyrat = [];
-  static const List<String> orsted = [];
-  static const List<String> hitogami = [];
-  static const List<String> ghislaineDedoldia = [];
+  static const List<String> rudeusGreyrat = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Rudeus Greyrat/mt_rude1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Rudeus Greyrat/mt_rude2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Rudeus Greyrat/mt_rude3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Rudeus Greyrat/mt_rude4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Rudeus Greyrat/mt_rude5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Rudeus Greyrat/mt_rude6.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Rudeus Greyrat/mt_rude7.jpeg',
+  ];
+  static const List<String> roxyMigurdia = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Roxy Migurdia/mt_roxy1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Roxy Migurdia/mt_roxy2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Roxy Migurdia/mt_roxy3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Roxy Migurdia/mt_roxy4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Roxy Migurdia/mt_roxy5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Roxy Migurdia/mt_roxy6.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Roxy Migurdia/mt_roxy7.jpeg',
+  ];
+  static const List<String> sylphietteGreyrat = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Sylphiette Greyrat/mt_sylp1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Sylphiette Greyrat/mt_sylp2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Sylphiette Greyrat/mt_sylp3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Sylphiette Greyrat/mt_sylp4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Sylphiette Greyrat/mt_sylp5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Sylphiette Greyrat/mt_sylp6.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Sylphiette Greyrat/mt_sylp7.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Sylphiette Greyrat/mt_sylp8.jpeg',
+  ];
+  static const List<String> erisBoreasGreyrat = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Eris Boreas Greyrat/mt_eris1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Eris Boreas Greyrat/mt_eris2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Eris Boreas Greyrat/mt_eris3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Eris Boreas Greyrat/mt_eris4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Eris Boreas Greyrat/mt_eris5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Eris Boreas Greyrat/mt_eris6.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Eris Boreas Greyrat/mt_eris7.jpeg',
+  ];
+  static const List<String> ruijerdSuperdia = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Ruijerd Superdia/mt_ruij1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Ruijerd Superdia/mt_ruij2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Ruijerd Superdia/mt_ruij3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Ruijerd Superdia/mt_ruij4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Ruijerd Superdia/mt_ruij5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Ruijerd Superdia/mt_ruij6.jpeg',
+  ];
+  static const List<String> paulGreyrat = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Paul Greyrat/mt_paul1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Paul Greyrat/mt_paul2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Paul Greyrat/mt_paul3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Paul Greyrat/mt_paul4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Paul Greyrat/mt_paul5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Paul Greyrat/mt_paul6.jpeg',
+  ];
+  static const List<String> orsted = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Orsted/mt_orst1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Orsted/mt_orst2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Orsted/mt_orst3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Orsted/mt_orst4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Orsted/mt_orst5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Orsted/mt_orst6.jpeg',
+  ];
+  static const List<String> hitogami = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Hitogami/mt_hito1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Hitogami/mt_hito2.jpeg',
+  ];
+  static const List<String> ghislaineDedoldia = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Ghislaine Dedoldia/mt_ghis1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Ghislaine Dedoldia/mt_ghis2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Ghislaine Dedoldia/mt_ghis3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Ghislaine Dedoldia/mt_ghis4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Ghislaine Dedoldia/mt_ghis5.jpeg',
+  ];
   static const List<String> perugiusDola = [];
-  static const List<String> zenithGreyrat = [];
-  static const List<String> nornGreyrat = [];
-  static const List<String> aishaGreyrat = [];
-  static const List<String> elinaliseDragonroad = [];
-  static const List<String> cliffGrimoire = [];
-  static const List<String> zanobaShirone = [];
-  static const List<String> nanahoshiShizuka = [];
-  static const List<String> arielAnemoiAsura = [];
-  static const List<String> liliaGreyrat = [];
-  static const List<String> badigadi = [];
+  static const List<String> zenithGreyrat = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Zenith Greyrat/mt_zeni1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Zenith Greyrat/mt_zeni2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Zenith Greyrat/mt_zeni3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Zenith Greyrat/mt_zeni4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Zenith Greyrat/mt_zeni5.jpeg',
+  ];
+  static const List<String> nornGreyrat = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Norn Greyrat/mt_norn1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Norn Greyrat/mt_norn2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Norn Greyrat/mt_norn3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Norn Greyrat/mt_norn4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Norn Greyrat/mt_norn5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Norn Greyrat/mt_norn6.jpeg',
+  ];
+  static const List<String> aishaGreyrat = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Aisha Greyrat/mt_aish1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Aisha Greyrat/mt_aish2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Aisha Greyrat/mt_aish3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Aisha Greyrat/mt_aish4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Aisha Greyrat/mt_aish5.jpeg',
+  ];
+  static const List<String> elinaliseDragonroad = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Elinalise Dragonroad/mt_elin1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Elinalise Dragonroad/mt_elin2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Elinalise Dragonroad/mt_elin3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Elinalise Dragonroad/mt_elin4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Elinalise Dragonroad/mt_elin5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Elinalise Dragonroad/mt_elin6.jpeg',
+  ];
+  static const List<String> cliffGrimoire = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Cliff Grimoire/mt_clif1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Cliff Grimoire/mt_clif2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Cliff Grimoire/mt_clif3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Cliff Grimoire/mt_clif4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Cliff Grimoire/mt_clif5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Cliff Grimoire/mt_clif6.jpeg',
+  ];
+  static const List<String> zanobaShirone = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Zanoba Shirone/mt_zano1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Zanoba Shirone/mt_zano2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Zanoba Shirone/mt_zano3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Zanoba Shirone/mt_zano4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Zanoba Shirone/mt_zano5.jpeg',
+  ];
+  static const List<String> nanahoshiShizuka = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Nanahoshi Shizuka/mt_nana1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Nanahoshi Shizuka/mt_nana2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Nanahoshi Shizuka/mt_nana3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Nanahoshi Shizuka/mt_nana4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Nanahoshi Shizuka/mt_nana5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Nanahoshi Shizuka/mt_nana6.jpeg',
+  ];
+  static const List<String> arielAnemoiAsura = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Ariel Anemoi Asura/mt_arie1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Ariel Anemoi Asura/mt_arie2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Ariel Anemoi Asura/mt_arie3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Ariel Anemoi Asura/mt_arie4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Ariel Anemoi Asura/mt_arie5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Ariel Anemoi Asura/mt_arie6.jpeg',
+  ];
+  static const List<String> liliaGreyrat = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Lilia Greyrat/mt_lili1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Lilia Greyrat/mt_lili2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Lilia Greyrat/mt_lili3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Lilia Greyrat/mt_lili4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Lilia Greyrat/mt_lili5.jpeg',
+  ];
+  static const List<String> badigadi = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Badigadi/mt_badi1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Badigadi/mt_badi2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Badigadi/mt_badi3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Mushoku Tensei/Badigadi/mt_badi4.jpeg',
+  ];
 
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // Résolution par charId

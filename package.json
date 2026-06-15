@@ -7,6 +7,6 @@
     "dotenv": "^17.4.2",
     "firebase-admin": "^13.10.0",
     "mammoth": "^1.12.0",
-    "sharp": "^0.34.2"
+    "sharp": "^0.34.5"
   }
 }
