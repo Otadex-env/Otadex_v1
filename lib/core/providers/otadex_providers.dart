@@ -33,14 +33,30 @@ final allCharactersProvider = FutureProvider<List<Character>>((ref) async {
   return jsonService.characters;
 });
 
-// ── Trending : personnages Firestore les plus populaires ───────────────────
+// ── Trending : top 5 par animé, interleaved pour diversité visuelle ────────
 final trendingCharactersProvider = FutureProvider<List<Character>>((ref) async {
   final all = await ref.watch(allCharactersProvider.future);
   if (all.isEmpty) return [];
-  final trending = all.where((c) => c.isTrending).toList();
-  if (trending.isNotEmpty) return trending.take(20).toList();
-  final sorted = [...all]..sort((a, b) => b.likes.compareTo(a.likes));
-  return sorted.take(20).toList();
+
+  // Group by anime, sort each group by popularityRank asc (1 = meilleur)
+  final groups = <String, List<Character>>{};
+  for (final c in all) {
+    groups.putIfAbsent(c.animeName, () => []).add(c);
+  }
+  for (final g in groups.values) {
+    g.sort((a, b) => a.popularityRank.compareTo(b.popularityRank));
+  }
+
+  // Top 5 par animé → interleaving round-robin
+  final tops = groups.values.map((g) => g.take(5).toList()).toList();
+  final result = <Character>[];
+  final maxLen = tops.fold(0, (m, g) => g.length > m ? g.length : m);
+  for (int i = 0; i < maxLen; i++) {
+    for (final group in tops) {
+      if (i < group.length) result.add(group[i]);
+    }
+  }
+  return result;
 });
 
 // ── Récents : triés par created_at desc ─────────────────────────────────────

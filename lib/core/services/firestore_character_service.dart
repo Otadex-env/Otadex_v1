@@ -245,6 +245,7 @@ class FirestoreCharacterService {
         return AppAssets.getByCharacterId(id);
       }(),
       category: _categoryForAnime(animeId),
+      popularityRank: popularityRank,
       isTrending: popularityRank <= 3,
       isNew: false,
       isRecommended: popularityRank <= 10,

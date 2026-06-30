@@ -92,6 +92,7 @@ class Character {
   final bool isTrending;
   final bool isNew;
   final bool isRecommended;
+  final int popularityRank;
   // Extended fields from JSON
   final bool isFeatured;
   final String? bio;
@@ -137,6 +138,7 @@ class Character {
     this.isTrending = false,
     this.isNew = false,
     this.isRecommended = false,
+    this.popularityRank = 99,
     this.isFeatured = false,
     this.bio,
     this.quote,
