@@ -461,17 +461,22 @@ class _CharacterRow extends StatelessWidget {
                     ),
                     if (character.role != null) ...[
                       const SizedBox(width: 6),
-                      CharPill(
-                        character.role!,
-                        bg: theme.accentColor.withValues(alpha: 0.15),
-                        color: theme.accentColor,
-                        fontSize: 9,
+                      Flexible(
+                        fit: FlexFit.loose,
+                        child: CharPill(
+                          character.role!,
+                          bg: theme.accentColor.withValues(alpha: 0.15),
+                          color: theme.accentColor,
+                          fontSize: 9,
+                        ),
                       ),
                     ],
                   ],
                 ),
                 Text(
                   character.animeName,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.nunitoSans(
                     fontSize: 12,
                     color: theme.textSecondary,
@@ -629,6 +634,8 @@ class _CreatorCard extends StatelessWidget {
                 children: [
                   Text(
                     creator.name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.rajdhani(
                       fontSize: 15,
                       fontWeight: FontWeight.w600,
@@ -640,6 +647,8 @@ class _CreatorCard extends StatelessWidget {
                       creator.role.isNotEmpty ? creator.role : 'Mangaka',
                       if (creator.nationality != null) creator.nationality!,
                     ].join(' · '),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.nunitoSans(
                       fontSize: 12,
                       color: theme.textSecondary,

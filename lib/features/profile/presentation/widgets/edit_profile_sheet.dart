@@ -43,11 +43,6 @@ class _EditProfileSheetState extends ConsumerState<EditProfileSheet> {
     super.dispose();
   }
 
-  bool get _isJonin {
-    final plan = ref.read(userProfileProvider).subscriptionPlan;
-    return plan == AppConstants.planJonin || plan == AppConstants.planKage;
-  }
-
   Future<void> _pickAvatar() async {
     final picker = ImagePicker();
     final picked = await picker.pickImage(
@@ -84,7 +79,7 @@ class _EditProfileSheetState extends ConsumerState<EditProfileSheet> {
             pseudo: pseudo,
             bio: _bioCtrl.text.trim(),
           );
-      if (_isJonin && _pendingAvatarPath != null) {
+      if (_pendingAvatarPath != null) {
         ref.read(userProfileProvider.notifier).updateAvatar(_pendingAvatarPath);
       }
       final prefs = await SharedPreferences.getInstance();
@@ -111,7 +106,7 @@ class _EditProfileSheetState extends ConsumerState<EditProfileSheet> {
   Widget build(BuildContext context) {
     final theme = OtadexTheme.of(context);
     final s = AppStrings.of(context);
-    final profile = ref.watch(userProfileProvider);
+    ref.watch(userProfileProvider);
 
     InputDecoration inputDeco({String? errorText}) => InputDecoration(
           filled: true,
@@ -175,9 +170,7 @@ class _EditProfileSheetState extends ConsumerState<EditProfileSheet> {
           Center(
               child: _AvatarSection(
             avatarPath: _pendingAvatarPath,
-            isJonin: _isJonin,
-            subscriptionPlan: profile.subscriptionPlan,
-            onTap: _isJonin ? _pickAvatar : _showJoninGate,
+            onTap: _pickAvatar,
             theme: theme,
           )),
           const SizedBox(height: 20),
@@ -257,84 +250,15 @@ class _EditProfileSheetState extends ConsumerState<EditProfileSheet> {
     );
   }
 
-  void _showJoninGate() {
-    final theme = OtadexTheme.of(context);
-    showModalBottomSheet(
-      context: context,
-      backgroundColor: Colors.transparent,
-      builder: (_) => Container(
-        padding: const EdgeInsets.fromLTRB(24, 20, 24, 40),
-        decoration: BoxDecoration(
-          color: theme.backgroundCard,
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              width: 40,
-              height: 4,
-              decoration: BoxDecoration(
-                color: theme.borderDefault,
-                borderRadius: BorderRadius.circular(2),
-              ),
-            ),
-            const SizedBox(height: 24),
-            const Text('🦊', style: TextStyle(fontSize: 44)),
-            const SizedBox(height: 16),
-            Text(
-              'Fonctionnalité Jonin',
-              style: GoogleFonts.rajdhani(
-                fontSize: 20,
-                fontWeight: FontWeight.w700,
-                color: theme.textPrimary,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Les avatars personnalisés sont réservés aux membres Jonin et Kage. Passez au rang supérieur pour débloquer cette fonctionnalité.',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.nunitoSans(
-                fontSize: 13,
-                color: theme.textSecondary,
-                height: 1.5,
-              ),
-            ),
-            const SizedBox(height: 24),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () => Navigator.pop(context),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: theme.accentColor,
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
-                  elevation: 0,
-                ),
-                child: Text('Voir les plans',
-                    style: GoogleFonts.rajdhani(fontWeight: FontWeight.w700)),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }
 
 class _AvatarSection extends StatelessWidget {
   final String? avatarPath;
-  final bool isJonin;
-  final String subscriptionPlan;
   final VoidCallback onTap;
   final dynamic theme;
 
   const _AvatarSection({
     required this.avatarPath,
-    required this.isJonin,
-    required this.subscriptionPlan,
     required this.onTap,
     required this.theme,
   });
@@ -375,20 +299,15 @@ class _AvatarSection extends StatelessWidget {
                     color: Colors.white.withValues(alpha: 0.6), size: 36)
                 : null,
           ),
-          // Badge edit / lock
           Container(
             width: 28,
             height: 28,
             decoration: BoxDecoration(
-              color: isJonin ? t.accentColor : t.backgroundElevated,
+              color: t.accentColor,
               shape: BoxShape.circle,
               border: Border.all(color: t.backgroundCard, width: 2),
             ),
-            child: Icon(
-              isJonin ? Icons.edit_rounded : Icons.lock_rounded,
-              color: isJonin ? Colors.white : t.textSecondary,
-              size: 14,
-            ),
+            child: const Icon(Icons.edit_rounded, color: Colors.white, size: 14),
           ),
         ],
       ),

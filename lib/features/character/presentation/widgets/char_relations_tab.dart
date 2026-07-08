@@ -49,13 +49,13 @@ class CharDetailRelationsTab extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 10),
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
             child: _sectionLabel(theme, 'RELATIONS'),
           ),
           dataAsync.when(
             loading: () => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: shimmerBox(height: 80, radius: 12),
+              child: shimmerBox(height: 160, radius: 12),
             ),
             error: (_, __) => Padding(
               padding: const EdgeInsets.all(16),
@@ -83,7 +83,7 @@ class CharDetailRelationsTab extends ConsumerWidget {
                 );
               }
               return SizedBox(
-                height: 170,
+                height: 175,
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -131,11 +131,11 @@ class CharDetailRelationsTab extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 10),
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
             child: _sectionLabel(theme, 'RELATIONS'),
           ),
           SizedBox(
-            height: 170,
+            height: 175,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -194,52 +194,115 @@ class _RelationCard extends StatelessWidget {
     required this.badgeColor,
   });
 
+  String get _initials {
+    final parts = name.trim().split(' ').where((p) => p.isNotEmpty).toList();
+    if (parts.length >= 2) return '${parts.first[0]}${parts.last[0]}'.toUpperCase();
+    return name.isEmpty ? '?' : name.substring(0, name.length.clamp(0, 2)).toUpperCase();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final hasImage = imageUrl.isNotEmpty;
+
     return SizedBox(
-      width: 90,
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppColors.backgroundElevated,
-          borderRadius: BorderRadius.circular(14),
-        ),
-        padding: const EdgeInsets.all(8),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+      width: 110,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(12),
+        child: Stack(
+          fit: StackFit.expand,
           children: [
-            ClipOval(
-              child: SizedBox(
-                width: 60,
-                height: 60,
-                child: OtadexImage(imagePath: imageUrl, fit: BoxFit.cover),
-              ),
-            ),
-            const SizedBox(height: 6),
-            Text(
-              name,
-              textAlign: TextAlign.center,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: GoogleFonts.nunitoSans(
-                  fontSize: 11, color: AppColors.textPrimary),
-            ),
-            const SizedBox(height: 4),
-            Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-              decoration: BoxDecoration(
-                color: badgeColor.withValues(alpha: 0.15),
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                    color: badgeColor.withValues(alpha: 0.4), width: 0.8),
-              ),
-              child: Text(
-                badgeLabel,
-                style: GoogleFonts.nunitoSans(
-                  fontSize: 9,
-                  color: badgeColor,
-                  fontWeight: FontWeight.w600,
+            // Image pleine ou fond gradient avec initiales
+            if (hasImage)
+              OtadexImage(imagePath: imageUrl, fit: BoxFit.cover)
+            else
+              Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      badgeColor.withValues(alpha: 0.45),
+                      badgeColor.withValues(alpha: 0.15),
+                    ],
+                  ),
                 ),
+                child: Center(
+                  child: Text(
+                    _initials,
+                    style: GoogleFonts.rajdhani(
+                      fontSize: 32,
+                      fontWeight: FontWeight.w800,
+                      color: badgeColor.withValues(alpha: 0.85),
+                    ),
+                  ),
+                ),
+              ),
+
+            // Gradient scrim bas pour lisibilité du texte
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: Container(
+                height: 80,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.transparent,
+                      AppColors.backgroundDeep,
+                    ],
+                    stops: [0.0, 0.85],
+                  ),
+                ),
+              ),
+            ),
+
+            // Nom + badge en bas
+            Positioned(
+              left: 8,
+              right: 8,
+              bottom: 8,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    name,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.rajdhani(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                      height: 1.15,
+                      shadows: const [
+                        Shadow(color: Colors.black54, blurRadius: 4),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                    decoration: BoxDecoration(
+                      color: badgeColor.withValues(alpha: 0.20),
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(
+                          color: badgeColor.withValues(alpha: 0.55), width: 0.8),
+                    ),
+                    child: Text(
+                      badgeLabel,
+                      style: GoogleFonts.nunitoSans(
+                        fontSize: 9,
+                        color: badgeColor,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 0.3,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
