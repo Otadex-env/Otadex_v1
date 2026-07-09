@@ -67,8 +67,10 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
 
   void _onHeroTap() {
     if (!kDebugMode) return;
-    final uid = ref.read(userProfileProvider).id;
-    if (!kDeveloperUids.contains(uid)) return;
+    final profile = ref.read(userProfileProvider);
+    final uid = profile.id;
+    final email = profile.email;
+    if (!kDeveloperUids.contains(uid) && !kDeveloperEmails.contains(email)) return;
     _devTapCount++;
     if (_devTapCount >= 7) {
       _devTapCount = 0;

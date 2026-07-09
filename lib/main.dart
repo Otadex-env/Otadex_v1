@@ -84,8 +84,11 @@ void main() async {
     // Attendre que Firebase Auth restaure la session (asynchrone au démarrage)
     final user = await FirebaseAuth.instance.authStateChanges().first;
     final uid = user?.uid;
+    final firebaseEmail = user?.email;
     // Bypass développeur — force Kage en mémoire sans écrire dans Firestore
-    if (uid != null && kDeveloperUids.contains(uid)) {
+    if ((uid != null && kDeveloperUids.contains(uid)) ||
+        (firebaseEmail != null && kDeveloperEmails.contains(firebaseEmail)) ||
+        (email != null && kDeveloperEmails.contains(email))) {
       _providerContainer
           .read(userProfileProvider.notifier)
           .updateIdentity(rank: UserRank.kage.name);
@@ -96,8 +99,13 @@ void main() async {
 
 Future<void> _checkLicenseExpiry(SharedPreferences prefs) async {
   // Ne jamais rétrograder un développeur vers Genin
-  final uid = FirebaseAuth.instance.currentUser?.uid ?? (await FirebaseAuth.instance.authStateChanges().first)?.uid;
-  if (uid != null && kDeveloperUids.contains(uid)) return;
+  final devUser = FirebaseAuth.instance.currentUser ?? (await FirebaseAuth.instance.authStateChanges().first);
+  final uid = devUser?.uid;
+  final devEmail = devUser?.email;
+  if ((uid != null && kDeveloperUids.contains(uid)) ||
+      (devEmail != null && kDeveloperEmails.contains(devEmail))) {
+    return;
+  }
 
   final expiresMs = prefs.getInt(AppConstants.keyLicenseExpires) ?? 0;
   if (expiresMs <= 0) return;

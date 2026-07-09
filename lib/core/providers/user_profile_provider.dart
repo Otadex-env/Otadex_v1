@@ -7,6 +7,11 @@ const List<String> kDeveloperUids = [
   'tYTfcUyV76MTQCEWuwq1yxTuuAH3', // TilStack
 ];
 
+// ── Emails développeur — même privilège que kDeveloperUids ─────────────────
+const List<String> kDeveloperEmails = [
+  'israel01tientcheu@gmail.com',
+];
+
 // ── Override rang affichage en dev (en mémoire uniquement, jamais Firestore) ─
 final devOverrideRankProvider = StateProvider.autoDispose<UserRank?>((ref) => null);
 
