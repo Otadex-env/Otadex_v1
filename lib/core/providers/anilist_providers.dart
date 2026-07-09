@@ -35,6 +35,14 @@ final atCharactersProvider = FutureProvider<List<Character>>((ref) {
       .getCharactersByAnime('attack-on-titan');
 });
 
+// ── Commentaires temps réel pour un personnage ───────────────────────────────
+final commentsForCharacterProvider = StreamProvider.autoDispose
+    .family<List<Map<String, dynamic>>, String>((ref, charId) {
+  return ref
+      .watch(firestoreCharacterServiceProvider)
+      .streamComments(charId);
+});
+
 // ── Quiz Firestore pour un personnage ────────────────────────────────────────
 final firestoreQuizProvider =
     FutureProvider.autoDispose.family<List<QuizQuestion>, String>((ref, id) {

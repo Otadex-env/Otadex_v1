@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/l10n/locale_provider.dart';
@@ -38,6 +39,29 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   bool _showKageBanner = true;
   String _billingCycle = 'mensuel';
   int _devTapCount = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadNotificationPref();
+  }
+
+  Future<void> _loadNotificationPref() async {
+    final prefs = await SharedPreferences.getInstance();
+    final saved = prefs.getBool(AppConstants.keyNotificationsEnabled);
+    if (saved != null && mounted) setState(() => _notificationsEnabled = saved);
+  }
+
+  Future<void> _onNotificationsChanged(bool enabled) async {
+    setState(() => _notificationsEnabled = enabled);
+    if (enabled) {
+      await OneSignal.User.pushSubscription.optIn();
+    } else {
+      await OneSignal.User.pushSubscription.optOut();
+    }
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(AppConstants.keyNotificationsEnabled, enabled);
+  }
 
   void _showEditProfile() {
     showModalBottomSheet(
@@ -279,8 +303,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
           const SizedBox(height: 28),
           SettingsSection(
             notificationsEnabled: _notificationsEnabled,
-            onNotificationsChanged: (v) =>
-                setState(() => _notificationsEnabled = v),
+            onNotificationsChanged: _onNotificationsChanged,
             currentLanguage: locale,
             onLanguageSelect: (lang) =>
                 ref.read(localeProvider.notifier).state = lang,

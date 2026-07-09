@@ -3,12 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/models/character.dart';
+import '../../../../core/providers/anilist_providers.dart';
 import '../../../../core/providers/currency_provider.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/utils/price_formatter.dart';
 import '../../../../core/widgets/subscription_modal.dart';
 
-class CharDetailExclusifTab extends ConsumerWidget {
+class CharDetailExclusifTab extends ConsumerStatefulWidget {
   final Character character;
   final String rank;
   final VoidCallback onShowQuoteImage;
@@ -20,10 +21,108 @@ class CharDetailExclusifTab extends ConsumerWidget {
     required this.onShowQuoteImage,
   });
 
-  Character get c => character;
+  @override
+  ConsumerState<CharDetailExclusifTab> createState() =>
+      _CharDetailExclusifTabState();
+}
+
+class _CharDetailExclusifTabState extends ConsumerState<CharDetailExclusifTab> {
+  bool _hasVoted = false;
+  bool _isVoting = false;
+
+  Character get c => widget.character;
+  String get rank => widget.rank;
+
+  Widget _buildVoteCard() {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 12),
+      decoration: BoxDecoration(
+        color: AppColors.backgroundAIBlue,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+            color: AppColors.warning.withValues(alpha: 0.4)),
+      ),
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '🏆 Fan du Mois',
+            style: GoogleFonts.dmSans(
+                fontSize: 17,
+                fontWeight: FontWeight.w700,
+                color: AppColors.textPrimary),
+          ),
+          const SizedBox(height: 6),
+          Text(
+            _hasVoted
+                ? 'Vote enregistré pour ${c.name} ce mois ✓'
+                : 'Vote pour ${c.name} et gagne +10 score fan',
+            style: GoogleFonts.nunitoSans(
+                fontSize: 13, color: AppColors.textSecondary),
+          ),
+          const SizedBox(height: 16),
+          GestureDetector(
+            onTap: _hasVoted ? null : _castVote,
+            child: Container(
+              height: 48,
+              decoration: BoxDecoration(
+                color: _hasVoted
+                    ? AppColors.backgroundElevated
+                    : AppColors.warning,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Center(
+                child: _isVoting
+                    ? const SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(
+                            strokeWidth: 2, color: Colors.white),
+                      )
+                    : Text(
+                        _hasVoted
+                            ? 'Voté ce mois ✓'
+                            : 'Voter pour ${c.name} 🏆',
+                        style: GoogleFonts.nunitoSans(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            color: _hasVoted
+                                ? AppColors.textSecondary
+                                : Colors.white),
+                      ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future<void> _castVote() async {
+    if (_isVoting || _hasVoted) return;
+    setState(() => _isVoting = true);
+    final success = await ref
+        .read(firestoreCharacterServiceProvider)
+        .voteForCharacter(c.id);
+    if (!mounted) return;
+    setState(() {
+      _isVoting = false;
+      _hasVoted = true;
+    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          success
+              ? 'Vote enregistré pour ${c.name} ! +10 score fan 🏆'
+              : 'Tu as déjà voté ce mois — reviens le mois prochain !',
+        ),
+      ),
+    );
+  }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final isKage = rank == 'kage';
     final isJonin = rank == 'jonin';
     final currency = ref.watch(currencyProvider);
@@ -104,12 +203,13 @@ class CharDetailExclusifTab extends ConsumerWidget {
       );
     }
 
-    // ── Jonin : quiz accessible, reste verrouillé ────────────────────
+    // ── Jonin : quiz + vote accessible, reste verrouillé ────────────
     if (isJonin) {
       return Padding(
         padding: const EdgeInsets.fromLTRB(16, 20, 16, 8),
         child: Column(
           children: [
+            _buildVoteCard(),
             _QuizCard(character: c),
             const SizedBox(height: 4),
             _UpsellBanner(
@@ -254,7 +354,7 @@ class CharDetailExclusifTab extends ConsumerWidget {
                 ),
                 const SizedBox(height: 16),
                 GestureDetector(
-                  onTap: onShowQuoteImage,
+                  onTap: widget.onShowQuoteImage,
                   child: Container(
                     height: 48,
                     decoration: BoxDecoration(
@@ -276,6 +376,8 @@ class CharDetailExclusifTab extends ConsumerWidget {
             ),
           ),
 
+          // Vote Fan du Mois
+          _buildVoteCard(),
           // Quiz
           _QuizCard(character: c),
         ],

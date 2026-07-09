@@ -510,7 +510,7 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
           SizeTransition(
             sizeFactor: _cancelFade,
             axis: Axis.horizontal,
-            axisAlignment: -1.0,
+            alignment: Alignment.centerLeft,
             child: SlideTransition(
               position: _cancelSlide,
               child: FadeTransition(

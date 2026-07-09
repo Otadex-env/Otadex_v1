@@ -350,23 +350,35 @@ class FirestoreCharacterService {
   }
 
   Future<void> submitComment(String charId, String text) async {
-    final uid = FirebaseAuth.instance.currentUser?.uid;
-    if (uid == null || text.trim().isEmpty) return;
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null || text.trim().isEmpty) return;
     try {
+      final pseudo = user.displayName ?? 'Fan OTADEX';
       final batch = _db.batch();
       final commentRef = _db.collection('comments').doc();
       batch.set(commentRef, {
-        'user_id': uid,
+        'user_id': user.uid,
+        'pseudo': pseudo,
         'character_id': charId,
         'texte': text.trim(),
         'likes': 0,
         'created_at': FieldValue.serverTimestamp(),
       });
-      batch.update(_db.collection('users').doc(uid), {
+      batch.update(_db.collection('users').doc(user.uid), {
         'score_fan': FieldValue.increment(3),
       });
       await batch.commit();
     } catch (_) {}
+  }
+
+  Stream<List<Map<String, dynamic>>> streamComments(String charId) {
+    return _db
+        .collection('comments')
+        .where('character_id', isEqualTo: charId)
+        .orderBy('created_at', descending: true)
+        .limit(10)
+        .snapshots()
+        .map((snap) => snap.docs.map((d) => d.data()).toList());
   }
 
   Future<bool> voteForCharacter(String charId) async {

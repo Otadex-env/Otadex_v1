@@ -18,6 +18,9 @@ class AppConstants {
   static const String keyLicenseExpires = 'license_expires';
   static const String keyLicenseKey = 'license_key';
 
+  // SharedPreferences keys — notifications
+  static const String keyNotificationsEnabled = 'notifications_enabled';
+
   // SharedPreferences keys — onboarding data
   static const String keyBirthDate = 'user_birth_date';
   static const String keyUserAge = 'user_age';

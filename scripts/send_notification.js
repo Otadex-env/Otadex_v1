@@ -14,6 +14,37 @@ const https = require('https');
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
+const admin = require('firebase-admin');
+
+function getFirebaseApp() {
+  if (admin.apps.length) return admin.app();
+  const keyPath = path.resolve(__dirname, '../serviceAccountKey.json');
+  return admin.initializeApp({
+    credential: admin.credential.cert(require(keyPath)),
+  });
+}
+
+async function writeNotificationToFirestore({ title, body, type, route }) {
+  getFirebaseApp();
+  const db = admin.firestore();
+  const usersSnap = await db.collection('users').get();
+  const now = admin.firestore.FieldValue.serverTimestamp();
+  const batch = db.batch();
+  for (const doc of usersSnap.docs) {
+    const notifRef = doc.ref.collection('notifications').doc();
+    batch.set(notifRef, {
+      title,
+      body,
+      type: type ?? 'general',
+      route: route ?? '/home',
+      read: false,
+      created_at: now,
+    });
+  }
+  await batch.commit();
+  console.log(`📥 Notification écrite dans Firestore pour ${usersSnap.size} utilisateurs`);
+}
+
 function getOneSignalConfig() {
   const appId = (
     process.env.ONESIGNAL_APP_ID ??
@@ -109,6 +140,9 @@ async function sendNotification({
 
           console.log(
             `✅ Notification OneSignal envoyée — recipients: ${json.recipients ?? '?'}`,
+          );
+          writeNotificationToFirestore({ title, body, type, route }).catch(
+            (err) => console.warn('⚠️  Firestore write skipped:', err.message),
           );
           resolve(json);
         });

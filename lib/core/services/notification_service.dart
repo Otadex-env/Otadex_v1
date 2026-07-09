@@ -42,6 +42,12 @@ class NotificationService {
         .update({'oneSignalId': id});
   }
 
+  // Appelé après un login tardif (après le démarrage de l'app)
+  static Future<void> saveCurrentSubscriptionId() async {
+    final id = OneSignal.User.pushSubscription.id;
+    if (id != null) await _saveSubscriptionId(id);
+  }
+
   static void _handleRoute(String? route) {
     if (route == null || route.isEmpty) return;
     AppRouter.router.push(route);

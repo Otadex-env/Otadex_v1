@@ -4,6 +4,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constants/app_constants.dart';
+import 'notification_service.dart';
 
 class FirebaseAuthService {
   final FirebaseAuth _auth;
@@ -67,6 +68,7 @@ class FirebaseAuthService {
         email: user.email ?? email,
         rank: rank,
       );
+      NotificationService.saveCurrentSubscriptionId();
     } on FirebaseAuthException catch (e) {
       throw _mapError(e.code);
     }
@@ -101,6 +103,7 @@ class FirebaseAuthService {
         email: firebaseUser.email ?? user.email,
         rank: (profile?['abonnement'] as String?) ?? AppConstants.rankGenin,
       );
+      NotificationService.saveCurrentSubscriptionId();
     } on FirebaseAuthException catch (e) {
       throw _mapError(e.code);
     } catch (e) {
