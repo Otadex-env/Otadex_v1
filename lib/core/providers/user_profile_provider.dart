@@ -37,12 +37,15 @@ class UserProfileNotifier extends StateNotifier<UserProfile> {
     String? email,
     String? rank,
   }) {
+    final isDev = (email != null && kDeveloperEmails.contains(email)) ||
+        (id != null && kDeveloperUids.contains(id));
+    final effectiveRank = isDev ? UserRank.kage.name : rank ?? state.rank;
     state = state.copyWith(
       id: id ?? state.id,
       pseudo: pseudo ?? state.pseudo,
       displayName: pseudo ?? state.displayName,
       email: email ?? state.email,
-      rank: rank ?? state.rank,
+      rank: effectiveRank,
       updatedAt: DateTime.now(),
     );
   }
