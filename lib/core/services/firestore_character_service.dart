@@ -206,13 +206,18 @@ class FirestoreCharacterService {
     final trivia = (d['trivia'] as List<dynamic>?)?.cast<String>() ?? [];
     final popularityRank = (d['popularityRank'] as num?)?.toInt() ?? 99;
 
+    final animePrefix = _assetPrefixForAnime(animeId);
     final relations = (d['relations'] as List<dynamic>? ?? []).map((r) {
       final rm = r as Map<String, dynamic>;
       final type = rm['type'] as String? ?? '';
+      final nom = rm['nomPersonnage'] as String? ?? '';
+      final derivedId = animePrefix.isNotEmpty && nom.isNotEmpty
+          ? '$animePrefix-${nom.toLowerCase().replaceAll(' ', '-')}'
+          : '';
       return CharacterRelation(
-        id: '',
-        nom: rm['nomPersonnage'] as String? ?? '',
-        imageUrl: '',
+        id: rm['characterId'] as String? ?? derivedId,
+        nom: nom,
+        imageUrl: rm['imageUrl'] as String? ?? '',
         relationType: type,
         relationColor: _relationColor(type),
       );
@@ -426,6 +431,18 @@ class FirestoreCharacterService {
     if (t.contains('famille') || t.contains('frère') || t.contains('père')) return 'amber';
     return 'blue';
   }
+
+  String _assetPrefixForAnime(String animeId) => switch (animeId) {
+        'jujutsu-kaisen' => 'jjk',
+        'naruto-shippuden' => 'ns',
+        'attack-on-titan' => 'aot',
+        'one-piece' => 'op',
+        'classroom-of-elite' => 'clk',
+        'fullmetal-alchemist' => 'fma',
+        'hunter-x-hunter' => 'hxh',
+        'mushoku-tensei' => 'mt',
+        _ => '',
+      };
 
   Color _cardColorForAnime(String animeId) => switch (animeId) {
         'jujutsu-kaisen' => AppColors.animeJjkCard,

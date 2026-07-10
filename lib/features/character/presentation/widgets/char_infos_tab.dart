@@ -355,19 +355,22 @@ class _CharDetailInfosTabState extends ConsumerState<CharDetailInfosTab> {
                 ),
               ),
               const SizedBox(width: 12),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(va.nom,
-                      style: GoogleFonts.nunitoSans(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.textPrimary)),
-                  Text(va.langue,
-                      style: GoogleFonts.nunitoSans(
-                          fontSize: 12, color: AppColors.textSecondary)),
-                ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(va.nom,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.nunitoSans(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.textPrimary)),
+                    Text(va.langue,
+                        style: GoogleFonts.nunitoSans(
+                            fontSize: 12, color: AppColors.textSecondary)),
+                  ],
+                ),
               ),
             ],
           ),
@@ -433,20 +436,23 @@ class _CharDetailInfosTabState extends ConsumerState<CharDetailInfosTab> {
                       ),
                     ),
                     const SizedBox(width: 12),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(name,
-                            style: GoogleFonts.nunitoSans(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.textPrimary)),
-                        Text(lang,
-                            style: GoogleFonts.nunitoSans(
-                                fontSize: 12,
-                                color: AppColors.textSecondary)),
-                      ],
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(name,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.nunitoSans(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.textPrimary)),
+                          Text(lang,
+                              style: GoogleFonts.nunitoSans(
+                                  fontSize: 12,
+                                  color: AppColors.textSecondary)),
+                        ],
+                      ),
                     ),
                   ],
                 ),
