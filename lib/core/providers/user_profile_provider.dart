@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/user_profile.dart';
 import '../models/user_rank.dart';
@@ -37,8 +38,12 @@ class UserProfileNotifier extends StateNotifier<UserProfile> {
     String? email,
     String? rank,
   }) {
-    final isDev = (email != null && kDeveloperEmails.contains(email)) ||
-        (id != null && kDeveloperUids.contains(id));
+    final firebaseUser = FirebaseAuth.instance.currentUser;
+    final isDev = (firebaseUser != null &&
+            (kDeveloperEmails.contains(firebaseUser.email) ||
+                kDeveloperUids.contains(firebaseUser.uid))) ||
+        kDeveloperEmails.contains(state.email) ||
+        kDeveloperUids.contains(state.id);
     final effectiveRank = isDev ? UserRank.kage.name : rank ?? state.rank;
     state = state.copyWith(
       id: id ?? state.id,

@@ -217,7 +217,7 @@ class FirestoreCharacterService {
       return CharacterRelation(
         id: rm['characterId'] as String? ?? derivedId,
         nom: nom,
-        imageUrl: rm['imageUrl'] as String? ?? '',
+        imageUrl: _safeImageUrl(rm['imageUrl'] as String? ?? ''),
         relationType: type,
         relationColor: _relationColor(type),
       );
@@ -432,51 +432,74 @@ class FirestoreCharacterService {
     return 'blue';
   }
 
-  String _assetPrefixForAnime(String animeId) => switch (animeId) {
-        'jujutsu-kaisen' => 'jjk',
-        'naruto-shippuden' => 'ns',
-        'attack-on-titan' => 'aot',
-        'one-piece' => 'op',
-        'classroom-of-elite' => 'clk',
-        'fullmetal-alchemist' => 'fma',
-        'hunter-x-hunter' => 'hxh',
-        'mushoku-tensei' => 'mt',
-        _ => '',
-      };
+  String _safeImageUrl(String url) =>
+      url.startsWith('https://') ? url : '';
 
-  Color _cardColorForAnime(String animeId) => switch (animeId) {
-        'jujutsu-kaisen' => AppColors.animeJjkCard,
-        'naruto-shippuden' => AppColors.animeNsCard,
-        'attack-on-titan' => AppColors.animeAotCard,
-        'one-piece' => AppColors.animeOpCard,
-        'classroom-of-elite' => AppColors.animeClkCard,
-        'fullmetal-alchemist' => AppColors.animeFmaCard,
-        'hunter-x-hunter' => AppColors.animeHxhCard,
-        'mushoku-tensei' => AppColors.animeMtCard,
-        _ => AppColors.animeDefaultCard,
-      };
+  // ── Config par anime (ajouter un 9e anime = 1 seul endroit à éditer) ─────────
+  ({String prefix, Color cardColor, Color accentColor, String category})
+      _configForAnime(String animeId) => switch (animeId) {
+            'jujutsu-kaisen' => (
+                prefix: 'jjk',
+                cardColor: AppColors.animeJjkCard,
+                accentColor: AppColors.animeJjkAccent,
+                category: 'Shōnen'
+              ),
+            'naruto-shippuden' => (
+                prefix: 'ns',
+                cardColor: AppColors.animeNsCard,
+                accentColor: AppColors.animeNsAccent,
+                category: 'Shōnen'
+              ),
+            'attack-on-titan' => (
+                prefix: 'aot',
+                cardColor: AppColors.animeAotCard,
+                accentColor: AppColors.animeAotAccent,
+                category: 'Seinen'
+              ),
+            'one-piece' => (
+                prefix: 'op',
+                cardColor: AppColors.animeOpCard,
+                accentColor: AppColors.animeOpAccent,
+                category: 'Shōnen'
+              ),
+            'classroom-of-elite' => (
+                prefix: 'clk',
+                cardColor: AppColors.animeClkCard,
+                accentColor: AppColors.animeClkAccent,
+                category: 'Seinen'
+              ),
+            'fullmetal-alchemist' => (
+                prefix: 'fma',
+                cardColor: AppColors.animeFmaCard,
+                accentColor: AppColors.animeFmaAccent,
+                category: 'Shōnen'
+              ),
+            'hunter-x-hunter' => (
+                prefix: 'hxh',
+                cardColor: AppColors.animeHxhCard,
+                accentColor: AppColors.animeHxhAccent,
+                category: 'Shōnen'
+              ),
+            'mushoku-tensei' => (
+                prefix: 'mt',
+                cardColor: AppColors.animeMtCard,
+                accentColor: AppColors.animeMtAccent,
+                category: 'Isekai'
+              ),
+            _ => (
+                prefix: '',
+                cardColor: AppColors.animeDefaultCard,
+                accentColor: AppColors.animeDefaultAccent,
+                category: 'Shōnen'
+              ),
+          };
 
-  Color _accentColorForAnime(String animeId) => switch (animeId) {
-        'jujutsu-kaisen' => AppColors.animeJjkAccent,
-        'naruto-shippuden' => AppColors.animeNsAccent,
-        'attack-on-titan' => AppColors.animeAotAccent,
-        'one-piece' => AppColors.animeOpAccent,
-        'classroom-of-elite' => AppColors.animeClkAccent,
-        'fullmetal-alchemist' => AppColors.animeFmaAccent,
-        'hunter-x-hunter' => AppColors.animeHxhAccent,
-        'mushoku-tensei' => AppColors.animeMtAccent,
-        _ => AppColors.animeDefaultAccent,
-      };
-
-  String _categoryForAnime(String animeId) => switch (animeId) {
-        'jujutsu-kaisen' => 'Shōnen',
-        'naruto-shippuden' => 'Shōnen',
-        'attack-on-titan' => 'Seinen',
-        'one-piece' => 'Shōnen',
-        'classroom-of-elite' => 'Seinen',
-        'fullmetal-alchemist' => 'Shōnen',
-        'hunter-x-hunter' => 'Shōnen',
-        'mushoku-tensei' => 'Isekai',
-        _ => 'Shōnen',
-      };
+  String _assetPrefixForAnime(String animeId) =>
+      _configForAnime(animeId).prefix;
+  Color _cardColorForAnime(String animeId) =>
+      _configForAnime(animeId).cardColor;
+  Color _accentColorForAnime(String animeId) =>
+      _configForAnime(animeId).accentColor;
+  String _categoryForAnime(String animeId) =>
+      _configForAnime(animeId).category;
 }

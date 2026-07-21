@@ -85,13 +85,11 @@ void main() async {
     final user = await FirebaseAuth.instance.authStateChanges().first;
     final uid = user?.uid;
     final firebaseEmail = user?.email;
-    // Bypass développeur — force Kage en mémoire sans écrire dans Firestore
-    if ((uid != null && kDeveloperUids.contains(uid)) ||
-        (firebaseEmail != null && kDeveloperEmails.contains(firebaseEmail)) ||
-        (email != null && kDeveloperEmails.contains(email))) {
+    // Sync identité Firebase → notifier (le notifier force Kage pour les devs)
+    if (uid != null || firebaseEmail != null) {
       _providerContainer
           .read(userProfileProvider.notifier)
-          .updateIdentity(rank: UserRank.kage.name);
+          .updateIdentity(id: uid, email: firebaseEmail ?? email);
     }
     if (isLoggedIn) _checkLicenseExpiry(prefs);
   });

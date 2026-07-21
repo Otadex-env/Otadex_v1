@@ -331,48 +331,24 @@ class _CharDetailInfosTabState extends ConsumerState<CharDetailInfosTab> {
             borderRadius: BorderRadius.circular(12),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: Row(
-            children: [
-              ClipOval(
-                child: SizedBox(
-                  width: 48,
-                  height: 48,
-                  child: va.imageUrl.isNotEmpty
-                      ? OtadexImage(imagePath: va.imageUrl, fit: BoxFit.cover)
-                      : Container(
-                          color: AppColors.backgroundCard,
-                          child: Center(
-                            child: Text(
-                              va.nom.isNotEmpty ? va.nom[0].toUpperCase() : '?',
-                              style: GoogleFonts.rajdhani(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w700,
-                                color: AppColors.textSecondary,
-                              ),
-                            ),
-                          ),
+          child: _buildVoiceActorRow(
+            name: va.nom,
+            lang: va.langue,
+            imageChild: va.imageUrl.isNotEmpty
+                ? OtadexImage(imagePath: va.imageUrl, fit: BoxFit.cover)
+                : Container(
+                    color: AppColors.backgroundCard,
+                    child: Center(
+                      child: Text(
+                        va.nom.isNotEmpty ? va.nom[0].toUpperCase() : '?',
+                        style: GoogleFonts.rajdhani(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.textSecondary,
                         ),
-                ),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(va.nom,
-                        overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.nunitoSans(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.textPrimary)),
-                    Text(va.langue,
-                        style: GoogleFonts.nunitoSans(
-                            fontSize: 12, color: AppColors.textSecondary)),
-                  ],
-                ),
-              ),
-            ],
+                      ),
+                    ),
+                  ),
           ),
         );
       }).toList(),
@@ -426,41 +402,46 @@ class _CharDetailInfosTabState extends ConsumerState<CharDetailInfosTab> {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: Row(
-                  children: [
-                    ClipOval(
-                      child: SizedBox(
-                        width: 48,
-                        height: 48,
-                        child: OtadexImage(imagePath: img, fit: BoxFit.cover),
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(name,
-                              overflow: TextOverflow.ellipsis,
-                              style: GoogleFonts.nunitoSans(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.textPrimary)),
-                          Text(lang,
-                              style: GoogleFonts.nunitoSans(
-                                  fontSize: 12,
-                                  color: AppColors.textSecondary)),
-                        ],
-                      ),
-                    ),
-                  ],
+                child: _buildVoiceActorRow(
+                  name: name,
+                  lang: lang,
+                  imageChild: OtadexImage(imagePath: img, fit: BoxFit.cover),
                 ),
               ),
             );
           }).toList(),
         );
       },
+    );
+  }
+
+  Widget _buildVoiceActorRow({
+    required String name,
+    required String lang,
+    required Widget imageChild,
+  }) {
+    return Row(
+      children: [
+        ClipOval(child: SizedBox(width: 48, height: 48, child: imageChild)),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(name,
+                  overflow: TextOverflow.ellipsis,
+                  style: GoogleFonts.nunitoSans(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.textPrimary)),
+              Text(lang,
+                  style: GoogleFonts.nunitoSans(
+                      fontSize: 12, color: AppColors.textSecondary)),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
