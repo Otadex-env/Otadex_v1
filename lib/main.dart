@@ -39,7 +39,7 @@ void main() async {
   final email = prefs.getString(AppConstants.keyUserEmail);
   final currency = prefs.getString(AppConstants.keyUserCurrency) ?? 'XAF';
 
-  final userRank = UserRank.values.firstWhere(
+  final userRank = UserRank.values.firstWhere(+
     (r) => r.name == rankStr,
     orElse: () => UserRank.genin,
   );
