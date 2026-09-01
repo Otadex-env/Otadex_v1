@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/constants/app_constants.dart';
-import '../../../core/models/user_rank.dart';
+import '../../../core/subscription/rank_providers.dart';
 import '../../../core/providers/auth_provider.dart';
 import '../../../core/providers/user_profile_provider.dart';
 import '../../../core/theme/otadex_theme.dart';
@@ -68,6 +68,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               email: prefs.getString(AppConstants.keyUserEmail),
               rank: prefs.getString(AppConstants.keyUserRank),
             );
+        ref.read(storedRankProvider.notifier).state =
+            UserRankX.fromString(prefs.getString(AppConstants.keyUserRank));
       }
     }
   }

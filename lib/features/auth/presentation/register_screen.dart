@@ -10,6 +10,7 @@ import '../../../core/l10n/app_strings.dart';
 import '../../../core/providers/auth_provider.dart';
 import '../../../core/providers/user_profile_provider.dart';
 import '../../../core/router/app_router.dart';
+import '../../../core/subscription/rank_providers.dart';
 import '../../../core/services/firebase_auth_service.dart';
 import '../../../core/services/url_launcher_service.dart';
 import '../../../core/theme/app_colors.dart';
@@ -67,6 +68,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
             email: prefs.getString(AppConstants.keyUserEmail),
             rank: prefs.getString(AppConstants.keyUserRank),
           );
+      ref.read(storedRankProvider.notifier).state =
+          UserRankX.fromString(prefs.getString(AppConstants.keyUserRank));
       ref.read(isLoggedInProvider.notifier).state = true;
       setState(() => _isLoading = false);
       if (!mounted) return;
@@ -134,6 +137,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
               email: prefs.getString(AppConstants.keyUserEmail),
               rank: prefs.getString(AppConstants.keyUserRank),
             );
+        ref.read(storedRankProvider.notifier).state =
+            UserRankX.fromString(prefs.getString(AppConstants.keyUserRank));
         ref.read(isLoggedInProvider.notifier).state = true;
 
         if (!mounted) return;

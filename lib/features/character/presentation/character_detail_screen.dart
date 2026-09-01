@@ -6,7 +6,6 @@ import '../../../core/constants/app_assets.dart';
 import '../../../core/models/character.dart';
 import '../../../core/providers/anilist_providers.dart';
 import '../../../core/providers/auth_provider.dart';
-import '../../../core/providers/user_profile_provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/otadex_theme.dart';
 import '../../../core/widgets/auth_gate_modal.dart';
@@ -236,7 +235,6 @@ class _CharacterDetailScreenState
   Widget _buildScaffold(BuildContext context) {
     final theme = OtadexTheme.of(context);
     final mq = MediaQuery.of(context);
-    final rank = ref.watch(userProfileProvider).rank;
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -271,7 +269,7 @@ class _CharacterDetailScreenState
                   child: Padding(
                     padding:
                         EdgeInsets.only(bottom: mq.padding.bottom + 80),
-                    child: _buildTabContent(theme, mq, rank),
+                    child: _buildTabContent(theme, mq),
                   ),
                 ),
               ],
@@ -279,7 +277,6 @@ class _CharacterDetailScreenState
             CharDetailFab(
               character: c,
               theme: theme,
-              rank: rank,
             ),
           ],
         ),
@@ -287,17 +284,15 @@ class _CharacterDetailScreenState
     );
   }
 
-  Widget _buildTabContent(dynamic theme, MediaQueryData mq, String rank) {
+  Widget _buildTabContent(dynamic theme, MediaQueryData mq) {
     return switch (_activeTab) {
       CharDetailTab.infos => CharDetailInfosTab(
           character: c,
           anilistId: _anilistId,
-          rank: rank,
         ),
       CharDetailTab.galerie => CharDetailGalerieTab(
           character: c,
           images: _effectiveImages,
-          rank: rank,
         ),
       CharDetailTab.relations => CharDetailRelationsTab(
           character: c,
@@ -309,7 +304,6 @@ class _CharacterDetailScreenState
         ),
       CharDetailTab.exclusif => CharDetailExclusifTab(
           character: c,
-          rank: rank,
           onShowQuoteImage: _showLocalQuoteImage,
         ),
     };

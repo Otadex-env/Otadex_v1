@@ -5,6 +5,7 @@ import 'package:shimmer/shimmer.dart';
 import '../../../../../core/models/character.dart';
 import '../../../../../core/providers/auth_provider.dart';
 import '../../../../../core/providers/user_profile_provider.dart';
+import '../../../../../core/subscription/rank_providers.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/otadex_theme.dart';
 import '../../../../../core/constants/app_assets.dart';
@@ -240,7 +241,11 @@ class _CharacterGridCardState extends ConsumerState<CharacterGridCard> {
                         if (isCollected) {
                           notifier.removeFromCollection(character.id);
                         } else {
-                          notifier.addToCollection(character.id);
+                          notifier.addToCollection(
+                            character.id,
+                            collectionLimit:
+                                ref.read(effectiveRankProvider).collectionLimit,
+                          );
                         }
                       } catch (_) {
                         showSubscriptionModal(context, SubscriptionPlan.jonin);

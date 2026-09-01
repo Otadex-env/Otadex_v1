@@ -61,7 +61,7 @@ class FirebaseAuthService {
       final pseudo = profile?['pseudo'] as String? ??
           user.displayName ??
           email.split('@').first;
-      final rank = profile?['abonnement'] as String? ?? AppConstants.rankGenin;
+      final rank = profile?[kFieldAbonnement] as String? ?? AppConstants.rankGenin;
       await _persistUserSession(
         uid: user.uid,
         pseudo: pseudo,
@@ -101,7 +101,7 @@ class FirebaseAuthService {
             user.displayName ??
             'Otaku',
         email: firebaseUser.email ?? user.email,
-        rank: (profile?['abonnement'] as String?) ?? AppConstants.rankGenin,
+        rank: (profile?[kFieldAbonnement] as String?) ?? AppConstants.rankGenin,
       );
       NotificationService.saveCurrentSubscriptionId();
     } on FirebaseAuthException catch (e) {
@@ -209,7 +209,7 @@ class FirebaseAuthService {
         'uid': uid,
         'pseudo': pseudo,
         'email': email,
-        'abonnement': AppConstants.rankGenin,
+        kFieldAbonnement: AppConstants.rankGenin,
         'score_fan': 0,
         'badges': [],
         'created_at': FieldValue.serverTimestamp(),

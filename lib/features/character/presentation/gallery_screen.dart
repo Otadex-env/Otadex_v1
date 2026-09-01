@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../core/providers/user_profile_provider.dart';
+import '../../../core/subscription/rank_providers.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/widgets/otadex_image.dart';
 
@@ -62,8 +62,7 @@ class _GalleryScreenState extends ConsumerState<GalleryScreen> {
   }
 
   void _onDownload(BuildContext context) {
-    final rank = ref.read(userProfileProvider).rank;
-    if (rank == 'kage') {
+    if (ref.read(effectiveRankProvider).canDownloadClean) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           backgroundColor: AppColors.backgroundCard,
@@ -94,7 +93,7 @@ class _GalleryScreenState extends ConsumerState<GalleryScreen> {
   Widget build(BuildContext context) {
     final images = widget.images;
     final total = images.length;
-    final isKage = ref.watch(userProfileProvider).rank == 'kage';
+    final canDownloadClean = ref.watch(effectiveRankProvider).canDownloadClean;
 
     if (total == 0) {
       return Scaffold(
@@ -132,7 +131,7 @@ class _GalleryScreenState extends ConsumerState<GalleryScreen> {
               onPageChanged: _onPageChanged,
               itemBuilder: (_, i) => _ImagePage(
                 imagePath: images[i],
-                showWatermark: !isKage,
+                showWatermark: !canDownloadClean,
                 hasThumbnails: total > 1,
               ),
             ),

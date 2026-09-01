@@ -1,56 +1,55 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../models/user_rank.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
 
-enum OtadexRank { genin, jonin, kage }
-
 class RankBadge extends StatelessWidget {
-  final OtadexRank rank;
+  final UserRank rank;
   final bool showLabel;
 
   const RankBadge({super.key, required this.rank, this.showLabel = true});
 
   Color get _color {
     switch (rank) {
-      case OtadexRank.genin:
+      case UserRank.genin:
         return AppColors.rankGenin;
-      case OtadexRank.jonin:
+      case UserRank.jonin:
         return AppColors.rankJonin;
-      case OtadexRank.kage:
+      case UserRank.kage:
         return AppColors.rankKage;
     }
   }
 
   Color get _bgColor {
     switch (rank) {
-      case OtadexRank.genin:
+      case UserRank.genin:
         return AppColors.rankGeninBg;
-      case OtadexRank.jonin:
+      case UserRank.jonin:
         return AppColors.rankJoninBg;
-      case OtadexRank.kage:
+      case UserRank.kage:
         return AppColors.rankKageBg;
     }
   }
 
   IconData get _icon {
     switch (rank) {
-      case OtadexRank.genin:
+      case UserRank.genin:
         return Icons.navigation;
-      case OtadexRank.jonin:
+      case UserRank.jonin:
         return Icons.star_outline;
-      case OtadexRank.kage:
+      case UserRank.kage:
         return Icons.workspace_premium;
     }
   }
 
   String get _label {
     switch (rank) {
-      case OtadexRank.genin:
+      case UserRank.genin:
         return 'Genin';
-      case OtadexRank.jonin:
+      case UserRank.jonin:
         return 'Jonin';
-      case OtadexRank.kage:
+      case UserRank.kage:
         return 'Kage';
     }
   }
@@ -71,7 +70,7 @@ class RankBadge extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Transform.rotate(
-            angle: rank == OtadexRank.genin ? 0.785 : 0,
+            angle: rank == UserRank.genin ? 0.785 : 0,
             child: Icon(_icon, color: _color, size: 14),
           ),
           if (showLabel) ...[

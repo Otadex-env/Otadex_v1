@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../core/constants/app_constants.dart';
-import '../../../../core/providers/user_profile_provider.dart';
+import '../../../../core/subscription/rank_providers.dart';
 import '../../../../core/theme/app_colors.dart';
 
 class SubscriptionCard extends ConsumerStatefulWidget {
@@ -43,11 +43,10 @@ class _SubscriptionCardState extends ConsumerState<SubscriptionCard> {
   Widget build(BuildContext context) {
     if (!_loaded) return const SizedBox.shrink();
 
-    final profile = ref.watch(userProfileProvider);
-    final rank = profile.rank;
+    final rank = ref.watch(effectiveRankProvider);
     final now = DateTime.now();
     final isExpired = _expiresAt != null && _expiresAt!.isBefore(now);
-    final isPremium = rank == AppConstants.rankJonin || rank == AppConstants.rankKage;
+    final isPremium = rank != UserRank.genin;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -141,11 +140,10 @@ class _SubscriptionCardState extends ConsumerState<SubscriptionCard> {
     );
   }
 
-  Widget _buildActiveCard(BuildContext context, String rank, DateTime now) {
-    final color =
-        rank == AppConstants.rankKage ? AppColors.rankKage : AppColors.rankJonin;
-    final planLabel =
-        rank == AppConstants.rankKage ? 'Plan Kage' : 'Plan Jonin';
+  Widget _buildActiveCard(BuildContext context, UserRank rank, DateTime now) {
+    final isKage = rank == UserRank.kage;
+    final color = isKage ? AppColors.rankKage : AppColors.rankJonin;
+    final planLabel = isKage ? 'Plan Kage' : 'Plan Jonin';
 
     int? daysLeft;
     bool warnExpiry = false;

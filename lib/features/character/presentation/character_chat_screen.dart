@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../core/providers/user_profile_provider.dart';
+import '../../../core/subscription/rank_providers.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/widgets/otadex_image.dart';
 
@@ -563,9 +563,8 @@ class _CharacterChatScreenState extends ConsumerState<CharacterChatScreen>
 
   @override
   Widget build(BuildContext context) {
-    final profile = ref.watch(userProfileProvider);
-
-    if (profile.rank != 'kage') {
+    // Chatbot IA = palier Kage
+    if (ref.watch(effectiveRankProvider) != UserRank.kage) {
       return _buildKageGate();
     }
 

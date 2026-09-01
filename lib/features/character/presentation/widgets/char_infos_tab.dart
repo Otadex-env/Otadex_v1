@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/models/character.dart';
 import '../../../../core/providers/anilist_providers.dart';
 import '../../../../core/providers/auth_provider.dart';
+import '../../../../core/subscription/rank_providers.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/widgets/auth_gate_modal.dart';
 import '../../../../core/widgets/otadex_image.dart';
@@ -15,13 +16,11 @@ import 'char_discover_section.dart';
 class CharDetailInfosTab extends ConsumerStatefulWidget {
   final Character character;
   final int? anilistId;
-  final String rank;
 
   const CharDetailInfosTab({
     super.key,
     required this.character,
     required this.anilistId,
-    required this.rank,
   });
 
   @override
@@ -32,7 +31,7 @@ class _CharDetailInfosTabState extends ConsumerState<CharDetailInfosTab> {
   bool _aboutExpanded = false;
 
   Character get c => widget.character;
-  bool get _isKage => widget.rank == 'kage';
+  bool get _isKage => ref.watch(effectiveRankProvider) == UserRank.kage;
 
   @override
   Widget build(BuildContext context) {

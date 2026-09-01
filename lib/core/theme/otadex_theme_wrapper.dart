@@ -1,77 +1,32 @@
 import 'package:flutter/material.dart';
-import '../models/user_rank.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../subscription/rank_providers.dart';
 import 'otadex_theme.dart';
 import 'rank_theme.dart';
 
-class OtadexThemeWrapper extends StatefulWidget {
-  final UserRank initialRank;
+/// Injecte le [RankTheme] du rang effectif de l'utilisateur dans l'arbre,
+/// via l'InheritedWidget [OtadexTheme].
+///
+/// Source de vérité unique : [effectiveRankProvider]. Aucun état local, aucune
+/// API impérative — le thème suit automatiquement le rang réel comme l'override
+/// du menu développeur.
+class OtadexThemeWrapper extends ConsumerWidget {
   final bool isDark;
   final Widget child;
 
   const OtadexThemeWrapper({
     super.key,
-    required this.initialRank,
     this.isDark = true,
     required this.child,
   });
 
-  static OtadexThemeWrapperState? of(BuildContext context) =>
-      context.findAncestorStateOfType<OtadexThemeWrapperState>();
-
   @override
-  State<OtadexThemeWrapper> createState() => OtadexThemeWrapperState();
-}
-
-class OtadexThemeWrapperState extends State<OtadexThemeWrapper>
-    with TickerProviderStateMixin {
-  late UserRank _currentRank;
-  late RankTheme _currentRankTheme;
-  late AnimationController _transitionController;
-
-  @override
-  void initState() {
-    super.initState();
-    _currentRank = widget.initialRank;
-    _currentRankTheme = RankTheme.forRank(_currentRank, isDark: widget.isDark);
-    _transitionController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 800),
-    );
-  }
-
-  @override
-  void didUpdateWidget(OtadexThemeWrapper oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.isDark != widget.isDark) {
-      setState(() {
-        _currentRankTheme = RankTheme.forRank(_currentRank, isDark: widget.isDark);
-      });
-    }
-  }
-
-  void updateRank(UserRank newRank) {
-    if (newRank == _currentRank) return;
-    setState(() {
-      _currentRank = newRank;
-      _currentRankTheme = RankTheme.forRank(newRank, isDark: widget.isDark);
-    });
-    _transitionController.forward(from: 0);
-  }
-
-  UserRank get currentRank => _currentRank;
-
-  @override
-  void dispose() {
-    _transitionController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final rank = ref.watch(effectiveRankProvider);
     return OtadexTheme(
-      rankTheme: _currentRankTheme,
-      currentRank: _currentRank,
-      child: widget.child,
+      rankTheme: RankTheme.forRank(rank, isDark: isDark),
+      currentRank: rank,
+      child: child,
     );
   }
 }

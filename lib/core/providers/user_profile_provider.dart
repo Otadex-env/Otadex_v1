@@ -1,20 +1,17 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/user_profile.dart';
 import '../models/user_rank.dart';
 
-// ── UIDs du créateur — toujours rang Kage, bypass Chariow ──────────────────
+// ── UIDs / emails développeur — bypass Chariow, menu debug ─────────────────
+// (Le rang Kage n'est plus forcé ici : voir devRankOverrideProvider dans
+//  core/subscription/rank_providers.dart.)
 const List<String> kDeveloperUids = [
   'tYTfcUyV76MTQCEWuwq1yxTuuAH3', // TilStack
 ];
 
-// ── Emails développeur — même privilège que kDeveloperUids ─────────────────
 const List<String> kDeveloperEmails = [
   'israel01tientcheu@gmail.com',
 ];
-
-// ── Override rang affichage en dev (en mémoire uniquement, jamais Firestore) ─
-final devOverrideRankProvider = StateProvider.autoDispose<UserRank?>((ref) => null);
 
 class UserProfileNotifier extends StateNotifier<UserProfile> {
   UserProfileNotifier({
@@ -38,19 +35,12 @@ class UserProfileNotifier extends StateNotifier<UserProfile> {
     String? email,
     String? rank,
   }) {
-    final firebaseUser = FirebaseAuth.instance.currentUser;
-    final isDev = (firebaseUser != null &&
-            (kDeveloperEmails.contains(firebaseUser.email) ||
-                kDeveloperUids.contains(firebaseUser.uid))) ||
-        kDeveloperEmails.contains(state.email) ||
-        kDeveloperUids.contains(state.id);
-    final effectiveRank = isDev ? UserRank.kage.name : rank ?? state.rank;
     state = state.copyWith(
       id: id ?? state.id,
       pseudo: pseudo ?? state.pseudo,
       displayName: pseudo ?? state.displayName,
       email: email ?? state.email,
-      rank: effectiveRank,
+      rank: rank ?? state.rank,
       updatedAt: DateTime.now(),
     );
   }
@@ -71,8 +61,10 @@ class UserProfileNotifier extends StateNotifier<UserProfile> {
     );
   }
 
-  void addToCollection(String characterId) {
-    if (state.rank == 'genin' && state.collectedCharacterIds.length >= 10) {
+  /// [collectionLimit] : `null` = illimité (voir `UserRank.collectionLimit`).
+  void addToCollection(String characterId, {required int? collectionLimit}) {
+    if (collectionLimit != null &&
+        state.collectedCharacterIds.length >= collectionLimit) {
       throw Exception('LIMIT_REACHED');
     }
     if (state.collectedCharacterIds.contains(characterId)) return;

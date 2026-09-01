@@ -113,7 +113,7 @@ class HomeAppBar extends StatelessWidget {
                 ),
                 if (isLoggedIn) ...[
                   const SizedBox(width: 8),
-                  RankBadge(rank: rank.toOtadexRank),
+                  RankBadge(rank: rank),
                 ],
                 const Spacer(),
                 if (isLoggedIn) ...[

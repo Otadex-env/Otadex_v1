@@ -24,12 +24,8 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
   static const _kageMonthlyUrl = 'https://store.tilstack.me/prd_hdj1oy/checkout';
   static const _kageAnnualUrl = 'https://store.tilstack.me/prd_0jx2mh/checkout';
 
-  String _planUrl(String plan) {
-    if (plan == 'jonin') {
-      return _isAnnual ? _joninAnnualUrl : _joninMonthlyUrl;
-    }
-    return _isAnnual ? _kageAnnualUrl : _kageMonthlyUrl;
-  }
+  String _joninUrl() => _isAnnual ? _joninAnnualUrl : _joninMonthlyUrl;
+  String _kageUrl() => _isAnnual ? _kageAnnualUrl : _kageMonthlyUrl;
 
   Future<void> _buyPlan(String url) async {
     final uri = Uri.parse(url);
@@ -122,7 +118,7 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
                 buttonEnabled: true,
                 borderColor: AppColors.statBlue,
                 isCta: true,
-                onUpgrade: () => _buyPlan(_planUrl('jonin')),
+                onUpgrade: () => _buyPlan(_joninUrl()),
               ),
               const SizedBox(height: 12),
               PlanCard(
@@ -142,7 +138,7 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
                 buttonEnabled: true,
                 borderColor: AppColors.statPurple,
                 isCta: true,
-                onUpgrade: () => _buyPlan(_planUrl('kage')),
+                onUpgrade: () => _buyPlan(_kageUrl()),
               ),
               const SizedBox(height: 28),
               Container(

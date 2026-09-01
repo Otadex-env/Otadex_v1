@@ -14,6 +14,8 @@ class AppConstants {
   static const String keyUserAvatarUrl = 'user_avatar_url';
   static const String keyUserRank = 'user_rank';
   static const String keyUserCurrency = 'user_currency';
+  // Override rang du menu développeur — n'influence JAMAIS le rang réel.
+  static const String keyDevRankOverride = 'dev_rank_override';
   static const String keySubscriptionPlan = 'subscription_plan';
   static const String keyLicenseExpires = 'license_expires';
   static const String keyLicenseKey = 'license_key';
@@ -44,3 +46,8 @@ class AppConstants {
   static const String appVersion = '1.5.0';
   static const String appTagline = 'The Ultimate Anime Character Encyclopedia';
 }
+
+// ── Firestore ────────────────────────────────────────────────────────────────
+/// Champ `users/{uid}` portant le rang réel de l'utilisateur.
+/// Écrit UNIQUEMENT côté serveur / activation licence — jamais par un widget.
+const String kFieldAbonnement = 'abonnement';

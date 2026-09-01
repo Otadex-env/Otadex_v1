@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/models/character.dart';
 import '../../../core/providers/anilist_providers.dart';
-import '../../../core/providers/user_profile_provider.dart';
+import '../../../core/subscription/rank_providers.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/widgets/skeleton_loader.dart';
 import '../../../core/widgets/subscription_modal.dart';
@@ -175,10 +175,8 @@ class _CharacterQuizScreenState extends ConsumerState<CharacterQuizScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final profile = ref.watch(userProfileProvider);
-
-    // Gate: Genin cannot access this screen
-    if (profile.rank == 'genin') {
+    // Gate : quiz IA réservé aux paliers Jonin+ (Genin exclu)
+    if (!ref.watch(effectiveRankProvider).canUseAi) {
       return _buildGeninGate(context);
     }
 

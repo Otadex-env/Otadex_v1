@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/l10n/app_strings.dart';
 import '../../../../core/providers/currency_provider.dart';
+import '../../../../core/subscription/rank_providers.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/otadex_theme.dart';
 import '../../../../core/utils/price_formatter.dart';
@@ -26,6 +27,7 @@ class PlanSection extends ConsumerWidget {
     final s = AppStrings.of(context);
     final isAnnual = billingCycle == 'annuel';
     final currency = ref.watch(currencyProvider);
+    final rank = ref.watch(effectiveRankProvider);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
@@ -42,10 +44,10 @@ class PlanSection extends ConsumerWidget {
           const SizedBox(height: 12),
           BillingToggle(cycle: billingCycle, onChanged: onBillingChanged),
           const SizedBox(height: 16),
-          // Genin — current plan
+          // Genin
           PlanCard(
             name: 'Genin',
-            tag: s.currentPlanTag,
+            tag: rank == UserRank.genin ? s.currentPlanTag : null,
             tagColor: AppColors.success,
             price: PlanPrices.free(currency),
             priceColor: theme.textPrimary,
@@ -61,10 +63,10 @@ class PlanSection extends ConsumerWidget {
             isCta: false,
           ),
           const SizedBox(height: 12),
-          // Jonin — upgrade
+          // Jonin
           PlanCard(
             name: 'Jonin',
-            tag: null,
+            tag: rank == UserRank.jonin ? s.currentPlanTag : null,
             tagColor: AppColors.rankJonin,
             price: PlanPrices.jonin(isAnnual, currency),
             priceColor: AppColors.rankJonin,
@@ -74,18 +76,20 @@ class PlanSection extends ConsumerWidget {
               (true, s.aiChatbot),
               (true, s.joninBadge),
             ],
-            buttonLabel: s.upgradeToJoninButton,
-            buttonEnabled: true,
+            buttonLabel: rank == UserRank.jonin
+                ? s.planActualButton
+                : s.upgradeToJoninButton,
+            buttonEnabled: rank != UserRank.jonin,
             borderColor: AppColors.rankJonin,
             isCta: false,
             onUpgrade: () =>
                 showSubscriptionModal(context, SubscriptionPlan.jonin),
           ),
           const SizedBox(height: 12),
-          // Kage — top tier CTA
+          // Kage
           PlanCard(
             name: '⭐ Kage Pass',
-            tag: null,
+            tag: rank == UserRank.kage ? s.currentPlanTag : null,
             tagColor: AppColors.rankJonin,
             price: PlanPrices.kage(isAnnual, currency),
             priceColor: AppColors.rankJonin,
@@ -95,8 +99,10 @@ class PlanSection extends ConsumerWidget {
               (true, s.noWatermark),
               (true, s.exclusiveThemes),
             ],
-            buttonLabel: s.upgradeToKageButton,
-            buttonEnabled: true,
+            buttonLabel: rank == UserRank.kage
+                ? s.planActualButton
+                : s.upgradeToKageButton,
+            buttonEnabled: rank != UserRank.kage,
             borderColor: AppColors.rankJonin,
             isCta: true,
             onUpgrade: () =>

@@ -5,19 +5,18 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/models/character.dart';
 import '../../../../core/providers/anilist_providers.dart';
 import '../../../../core/providers/currency_provider.dart';
+import '../../../../core/subscription/rank_providers.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/utils/price_formatter.dart';
 import '../../../../core/widgets/subscription_modal.dart';
 
 class CharDetailExclusifTab extends ConsumerStatefulWidget {
   final Character character;
-  final String rank;
   final VoidCallback onShowQuoteImage;
 
   const CharDetailExclusifTab({
     super.key,
     required this.character,
-    required this.rank,
     required this.onShowQuoteImage,
   });
 
@@ -31,7 +30,6 @@ class _CharDetailExclusifTabState extends ConsumerState<CharDetailExclusifTab> {
   bool _isVoting = false;
 
   Character get c => widget.character;
-  String get rank => widget.rank;
 
   Widget _buildVoteCard() {
     return Container(
@@ -123,8 +121,9 @@ class _CharDetailExclusifTabState extends ConsumerState<CharDetailExclusifTab> {
 
   @override
   Widget build(BuildContext context) {
-    final isKage = rank == 'kage';
-    final isJonin = rank == 'jonin';
+    final rank = ref.watch(effectiveRankProvider);
+    final isKage = rank.canGenerateImages;
+    final isJonin = rank.canUseAi && !rank.canGenerateImages;
     final currency = ref.watch(currencyProvider);
     final joninMonthly = PlanPrices.jonin(false, currency);
     final kageMonthly = PlanPrices.kage(false, currency);

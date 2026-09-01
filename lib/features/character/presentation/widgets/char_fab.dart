@@ -6,6 +6,7 @@ import '../../../../core/models/character.dart';
 import '../../../../core/providers/anilist_providers.dart';
 import '../../../../core/providers/auth_provider.dart';
 import '../../../../core/providers/currency_provider.dart';
+import '../../../../core/subscription/rank_providers.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/rank_theme.dart';
 import '../../../../core/utils/price_formatter.dart';
@@ -14,13 +15,11 @@ import '../../../../core/widgets/auth_gate_modal.dart';
 class CharDetailFab extends ConsumerWidget {
   final Character character;
   final RankTheme theme;
-  final String rank;
 
   const CharDetailFab({
     super.key,
     required this.character,
     required this.theme,
-    required this.rank,
   });
 
   @override
@@ -91,7 +90,7 @@ class CharDetailFab extends ConsumerWidget {
     }
 
     final currentCount = collectionAsync.valueOrNull?.length ?? 0;
-    final isGenin = rank == 'genin';
+    final isGenin = ref.read(effectiveRankProvider) == UserRank.genin;
 
     try {
       await service.addToCollection(

@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/l10n/app_locale.dart';
 import 'core/l10n/app_strings.dart';
 import 'core/l10n/locale_provider.dart';
-import 'core/models/user_rank.dart';
 import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'core/theme/otadex_theme.dart';
@@ -21,7 +20,6 @@ class OtadexApp extends ConsumerWidget {
     return AppLocale(
       strings: AppStrings.forLocale(locale),
       child: OtadexThemeWrapper(
-        initialRank: UserRank.genin,
         isDark: isDark,
         child: Builder(
           builder: (context) {

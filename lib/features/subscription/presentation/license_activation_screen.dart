@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/constants/app_constants.dart';
-import '../../../core/models/user_rank.dart';
+import '../../../core/subscription/rank_providers.dart';
 import '../../../core/providers/user_profile_provider.dart';
 import '../../../core/services/chariow_service.dart';
 import '../../../core/theme/app_colors.dart';
@@ -67,14 +67,15 @@ class _LicenseActivationScreenState
           .collection('users')
           .doc(uid)
           .set({
-        'abonnement': rank.name,
+        kFieldAbonnement: rank.name,
         'licenseKey': licenseKey,
         'licenseExpiresAt':
             expiresAt?.toIso8601String() ?? '',
         'licenseActivatedAt': DateTime.now().toIso8601String(),
       }, SetOptions(merge: true));
 
-      // Providers
+      // Providers — resync du rang réel (source de vérité unique)
+      ref.read(storedRankProvider.notifier).state = rank;
       ref
           .read(userProfileProvider.notifier)
           .updateIdentity(rank: rank.name);

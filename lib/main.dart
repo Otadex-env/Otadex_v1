@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'core/constants/app_constants.dart';
 import 'core/services/chariow_service.dart';
 import 'core/services/notification_service.dart';
-import 'core/models/user_rank.dart';
+import 'core/subscription/rank_providers.dart';
 import 'core/providers/auth_provider.dart';
 import 'core/providers/currency_provider.dart';
 import 'core/providers/user_profile_provider.dart';
@@ -39,10 +39,16 @@ void main() async {
   final email = prefs.getString(AppConstants.keyUserEmail);
   final currency = prefs.getString(AppConstants.keyUserCurrency) ?? 'XAF';
 
-  final userRank = UserRank.values.firstWhere(
-    (r) => r.name == rankStr,
-    orElse: () => UserRank.genin,
-  );
+  final userRank = UserRankX.fromString(rankStr);
+
+  // Override rang du menu développeur : rechargé UNIQUEMENT si l'utilisateur
+  // courant est un développeur. Ne touche jamais au rang réel.
+  final isDeveloper = kDeveloperUids.contains(userId) ||
+      kDeveloperEmails.contains(email);
+  final devOverrideStr = prefs.getString(AppConstants.keyDevRankOverride);
+  final initialDevRankOverride = (isDeveloper && devOverrideStr != null)
+      ? UserRankX.fromString(devOverrideStr)
+      : null;
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -62,6 +68,10 @@ void main() async {
     overrides: [
       isLoggedInProvider.overrideWith((ref) => isLoggedIn),
       currencyProvider.overrideWith((ref) => currency),
+      storedRankProvider.overrideWith((ref) => userRank),
+      devRankOverrideProvider.overrideWith(
+        (ref) => DevRankOverrideNotifier(initialDevRankOverride),
+      ),
       userProfileProvider.overrideWith(
         (ref) => UserProfileNotifier(
           initialRank: userRank,
@@ -77,6 +87,10 @@ void main() async {
     container: _providerContainer,
     child: const OtadexApp(),
   ));
+
+  // Revérifie la licence à chaque retour au premier plan, pas seulement au
+  // cold start (une licence peut expirer pendant que l'app est en arrière-plan).
+  WidgetsBinding.instance.addObserver(_LicenseLifecycleObserver());
 
   // Notifications + licence vérifiés après le premier frame (évite l'ANR)
   WidgetsBinding.instance.addPostFrameCallback((_) async {
@@ -94,6 +108,22 @@ void main() async {
     if (isLoggedIn) _checkLicenseExpiry(prefs);
   });
 }
+
+/// Relance [_checkLicenseExpiry] sur `AppLifecycleState.resumed`.
+class _LicenseLifecycleObserver extends WidgetsBindingObserver {
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state != AppLifecycleState.resumed) return;
+    SharedPreferences.getInstance().then((prefs) {
+      if (prefs.getBool(AppConstants.keyIsLoggedIn) ?? false) {
+        _checkLicenseExpiry(prefs);
+      }
+    });
+  }
+}
+
+void _setStoredRank(UserRank rank) =>
+    _providerContainer.read(storedRankProvider.notifier).state = rank;
 
 Future<void> _checkLicenseExpiry(SharedPreferences prefs) async {
   // Ne jamais rétrograder un développeur vers Genin
@@ -124,7 +154,8 @@ Future<void> _checkLicenseExpiry(SharedPreferences prefs) async {
         await FirebaseFirestore.instance
             .collection('users')
             .doc(uid)
-            .update({'abonnement': AppConstants.rankGenin});
+            .update({kFieldAbonnement: AppConstants.rankGenin});
+        _setStoredRank(UserRank.genin);
         _providerContainer
             .read(userProfileProvider.notifier)
             .updateIdentity(rank: AppConstants.rankGenin);
@@ -135,6 +166,7 @@ Future<void> _checkLicenseExpiry(SharedPreferences prefs) async {
     } else {
       await prefs.setString(AppConstants.keyUserRank, AppConstants.rankGenin);
       await prefs.remove(AppConstants.keyLicenseExpires);
+      _setStoredRank(UserRank.genin);
       _providerContainer
           .read(userProfileProvider.notifier)
           .updateIdentity(rank: AppConstants.rankGenin);

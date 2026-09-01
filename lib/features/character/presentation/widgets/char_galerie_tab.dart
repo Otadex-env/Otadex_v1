@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/models/character.dart';
+import '../../../../core/subscription/rank_providers.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/otadex_theme.dart';
 import '../../../../core/widgets/otadex_image.dart';
 
-class CharDetailGalerieTab extends StatelessWidget {
+class CharDetailGalerieTab extends ConsumerWidget {
   final Character character;
   final List<String> images;
-  final String rank;
 
   const CharDetailGalerieTab({
     super.key,
     required this.character,
     required this.images,
-    required this.rank,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = OtadexTheme.of(context);
     final isTablet = MediaQuery.sizeOf(context).width >= 600;
-    final isGenin = rank == 'genin';
+    final rank = ref.watch(effectiveRankProvider);
+    final isGenin = rank.showsAds;
     final crossAxis = isTablet ? 4 : 3;
 
     return Padding(

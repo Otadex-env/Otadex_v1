@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../core/models/character.dart';
 import '../../../core/providers/anilist_providers.dart';
 import '../../../core/providers/otadex_providers.dart';
-import '../../../core/providers/user_profile_provider.dart';
+import '../../../core/subscription/rank_providers.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/image_prefetcher.dart';
 import '../../../core/widgets/otadex_image.dart';
@@ -16,10 +16,9 @@ class CollectionScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final profile = ref.watch(userProfileProvider);
     final collectionAsync = ref.watch(collectionStreamProvider);
     final allCharsAsync = ref.watch(allCharactersProvider);
-    final isGenin = profile.rank == 'genin';
+    final collectionLimit = ref.watch(effectiveRankProvider).collectionLimit;
 
     return collectionAsync.when(
       loading: () => const SkeletonList(count: 4),
@@ -51,7 +50,8 @@ class CollectionScreen extends ConsumerWidget {
           data: (allChars) {
             final characters =
                 allChars.where((c) => collectedIds.contains(c.id)).toList();
-            final showLimitBanner = isGenin && collectedIds.length >= 8;
+            final showLimitBanner = collectionLimit != null &&
+                collectedIds.length >= collectionLimit - 2;
 
             if (characters.isEmpty) {
               return const CustomScrollView(
@@ -81,7 +81,10 @@ class CollectionScreen extends ConsumerWidget {
                 ),
                 if (showLimitBanner)
                   SliverToBoxAdapter(
-                    child: _LimitBanner(collected: collectedIds.length),
+                    child: _LimitBanner(
+                      collected: collectedIds.length,
+                      limit: collectionLimit,
+                    ),
                   ),
                 SliverToBoxAdapter(
                     child: _CollectionHeader(count: characters.length)),
@@ -175,7 +178,8 @@ class _EmptyState extends StatelessWidget {
 
 class _LimitBanner extends StatelessWidget {
   final int collected;
-  const _LimitBanner({required this.collected});
+  final int limit;
+  const _LimitBanner({required this.collected, required this.limit});
 
   @override
   Widget build(BuildContext context) {
@@ -191,7 +195,7 @@ class _LimitBanner extends StatelessWidget {
         children: [
           Expanded(
             child: Text(
-              '⚠️ Tu approches de la limite ($collected/10) · Jonin pour une collection illimitée',
+              '⚠️ Tu approches de la limite ($collected/$limit) · Jonin pour une collection illimitée',
               style: GoogleFonts.nunitoSans(
                 fontSize: 13,
                 color: AppColors.textSecondary,

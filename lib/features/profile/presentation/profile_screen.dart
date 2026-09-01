@@ -8,10 +8,9 @@ import '../../../core/constants/app_constants.dart';
 import '../../../core/l10n/locale_provider.dart';
 import '../../../core/providers/currency_provider.dart';
 import '../../../core/providers/otadex_providers.dart';
-import '../../../core/models/user_rank.dart';
+import '../../../core/subscription/rank_providers.dart';
 import '../../../core/providers/user_profile_provider.dart';
 import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/otadex_theme_wrapper.dart';
 import '../../../core/theme/theme_mode_provider.dart';
 import 'widgets/avatar_picker.dart';
 import 'widgets/change_password_sheet.dart';
@@ -169,15 +168,12 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                   width: double.infinity,
                   child: OutlinedButton(
                     onPressed: () {
-                      ref.read(devOverrideRankProvider.notifier).state = null;
-                      ref
-                          .read(userProfileProvider.notifier)
-                          .updateIdentity(rank: UserRank.kage.name);
-                      OtadexThemeWrapper.of(context)?.updateRank(UserRank.kage);
+                      ref.read(devRankOverrideProvider.notifier).set(null);
                       Navigator.of(sheetCtx).pop();
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                            content: Text('Mode dev : Kage réel restauré')),
+                            content: Text('Mode dev : simulation désactivée '
+                                '(rang réel rétabli)')),
                       );
                     },
                     style: OutlinedButton.styleFrom(
@@ -185,7 +181,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                       foregroundColor: AppColors.textSecondary,
                     ),
                     child: Text(
-                      'Réinitialiser (Kage réel)',
+                      'Réinitialiser (rang réel)',
                       style: GoogleFonts.nunitoSans(fontSize: 14),
                     ),
                   ),
@@ -209,15 +205,11 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     return Expanded(
       child: GestureDetector(
         onTap: () {
-          ref.read(devOverrideRankProvider.notifier).state = rank;
-          ref
-              .read(userProfileProvider.notifier)
-              .updateIdentity(rank: rank.name);
-          OtadexThemeWrapper.of(context)?.updateRank(rank);
+          ref.read(devRankOverrideProvider.notifier).set(rank);
           Navigator.of(sheetCtx).pop();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-                content: Text('Mode dev : affichage en ${rank.label}')),
+                content: Text('Mode dev : affichage simulé en ${rank.label}')),
           );
         },
         child: Container(
