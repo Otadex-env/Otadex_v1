@@ -39,7 +39,7 @@ void main() async {
   final email = prefs.getString(AppConstants.keyUserEmail);
   final currency = prefs.getString(AppConstants.keyUserCurrency) ?? 'XAF';
 
-  final userRank = UserRank.values.firstWhere(+
+  final userRank = UserRank.values.firstWhere(
     (r) => r.name == rankStr,
     orElse: () => UserRank.genin,
   );
@@ -97,7 +97,8 @@ void main() async {
 
 Future<void> _checkLicenseExpiry(SharedPreferences prefs) async {
   // Ne jamais rétrograder un développeur vers Genin
-  final devUser = FirebaseAuth.instance.currentUser ?? (await FirebaseAuth.instance.authStateChanges().first);
+  final devUser = FirebaseAuth.instance.currentUser ??
+      (await FirebaseAuth.instance.authStateChanges().first);
   final uid = devUser?.uid;
   final devEmail = devUser?.email;
   if ((uid != null && kDeveloperUids.contains(uid)) ||
