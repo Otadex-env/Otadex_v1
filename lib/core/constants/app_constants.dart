@@ -13,7 +13,6 @@ class AppConstants {
   static const String keyUserDisplayName = 'user_display_name';
   static const String keyUserAvatarUrl = 'user_avatar_url';
   static const String keyUserRank = 'user_rank';
-  static const String keyUserCurrency = 'user_currency';
   // Override rang du menu développeur — n'influence JAMAIS le rang réel.
   static const String keyDevRankOverride = 'dev_rank_override';
   static const String keySubscriptionPlan = 'subscription_plan';
@@ -51,3 +50,17 @@ class AppConstants {
 /// Champ `users/{uid}` portant le rang réel de l'utilisateur.
 /// Écrit UNIQUEMENT côté serveur / activation licence — jamais par un widget.
 const String kFieldAbonnement = 'abonnement';
+
+// ── Plans payants ────────────────────────────────────────────────────────────
+/// Active les parcours de paiement hors Google Play Billing (liens store
+/// Chariow, modal d'abonnement, écran d'activation de licence).
+///
+/// `false` par défaut : la soumission Play Store interdit de rediriger vers un
+/// paiement externe pour du contenu numérique. Passer à `true` réactive TOUS
+/// les CTA d'achat, le `showSubscriptionModal`, les URLs `store.tilstack.me`
+/// et les points d'entrée vers `/activate-license` — sans autre modification.
+///
+/// N'affecte NI le menu développeur NI l'override de rang (`devRankOverrideProvider`).
+/// Les cartes de plan restent visibles et informatives (features + prix FCFA)
+/// quelle que soit la valeur du flag.
+const bool kEnablePaidPlans = false;

@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../constants/app_constants.dart';
 import '../l10n/app_strings.dart';
 import '../services/url_launcher_service.dart';
 import '../theme/app_colors.dart';
 import '../theme/otadex_theme.dart';
+import '../utils/price_formatter.dart';
 import 'subscription_billing_card.dart';
 import 'subscription_feature_item.dart';
 
 enum SubscriptionPlan { jonin, kage }
 
 void showSubscriptionModal(BuildContext context, SubscriptionPlan plan) {
+  // Garde-fou : aucun parcours de paiement externe tant que kEnablePaidPlans
+  // est false (conformité Play Billing). Les points d'entrée sont déjà masqués ;
+  // ceci couvre tout appel résiduel.
+  if (!kEnablePaidPlans) return;
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -59,8 +65,8 @@ _PlanData _buildJoninPlan(AppStrings s) => _PlanData(
       emoji: '🦊',
       name: 'Jonin',
       color: AppColors.rankJonin,
-      monthlyPrice: s.joninMonthlyPrice,
-      annualPrice: s.joninAnnualPrice,
+      monthlyPrice: PlanPrices.joninAmount(),
+      annualPrice: PlanPrices.joninAmount(annual: true),
       features: [
         _FeatureData(
           title: s.joninFeature1Title,
@@ -89,8 +95,8 @@ _PlanData _buildKagePlan(AppStrings s) => _PlanData(
       emoji: '👑',
       name: 'Kage',
       color: AppColors.rankKage,
-      monthlyPrice: s.kageMonthlyPrice,
-      annualPrice: s.kageAnnualPrice,
+      monthlyPrice: PlanPrices.kageAmount(),
+      annualPrice: PlanPrices.kageAmount(annual: true),
       features: [
         _FeatureData(
           title: s.kageFeature1Title,

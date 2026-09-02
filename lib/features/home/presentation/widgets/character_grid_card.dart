@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
+import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/models/character.dart';
 import '../../../../../core/providers/auth_provider.dart';
 import '../../../../../core/providers/user_profile_provider.dart';
@@ -248,7 +249,17 @@ class _CharacterGridCardState extends ConsumerState<CharacterGridCard> {
                           );
                         }
                       } catch (_) {
-                        showSubscriptionModal(context, SubscriptionPlan.jonin);
+                        if (kEnablePaidPlans) {
+                          showSubscriptionModal(
+                              context, SubscriptionPlan.jonin);
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                  'Limite de 10 personnages atteinte sur le plan Genin.'),
+                            ),
+                          );
+                        }
                       }
                     },
                     child: Container(

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_assets.dart';
+import '../../../core/constants/app_constants.dart';
 import '../../../core/models/character.dart';
 import '../../../core/providers/anilist_providers.dart';
 import '../../../core/providers/auth_provider.dart';
@@ -72,8 +73,10 @@ class _CharacterDetailScreenState
       showAuthGateModal(context,
           message:
               'Connecte-toi pour accéder aux fonctionnalités premium Jonin+.');
-    } else {
+    } else if (kEnablePaidPlans) {
       showSubscriptionModal(context, SubscriptionPlan.jonin);
+    } else {
+      context.push('/subscription');
     }
   }
 

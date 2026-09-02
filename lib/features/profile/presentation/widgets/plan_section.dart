@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/l10n/app_strings.dart';
-import '../../../../core/providers/currency_provider.dart';
 import '../../../../core/subscription/rank_providers.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/otadex_theme.dart';
@@ -26,7 +26,6 @@ class PlanSection extends ConsumerWidget {
     final theme = OtadexTheme.of(context);
     final s = AppStrings.of(context);
     final isAnnual = billingCycle == 'annuel';
-    final currency = ref.watch(currencyProvider);
     final rank = ref.watch(effectiveRankProvider);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -49,7 +48,7 @@ class PlanSection extends ConsumerWidget {
             name: 'Genin',
             tag: rank == UserRank.genin ? s.currentPlanTag : null,
             tagColor: AppColors.success,
-            price: PlanPrices.free(currency),
+            price: PlanPrices.free,
             priceColor: theme.textPrimary,
             features: [
               (true, s.sheetsNavigation),
@@ -68,7 +67,7 @@ class PlanSection extends ConsumerWidget {
             name: 'Jonin',
             tag: rank == UserRank.jonin ? s.currentPlanTag : null,
             tagColor: AppColors.rankJonin,
-            price: PlanPrices.jonin(isAnnual, currency),
+            price: PlanPrices.jonin(annual: isAnnual),
             priceColor: AppColors.rankJonin,
             features: [
               (true, s.unlimitedCollection),
@@ -82,8 +81,12 @@ class PlanSection extends ConsumerWidget {
             buttonEnabled: rank != UserRank.jonin,
             borderColor: AppColors.rankJonin,
             isCta: false,
-            onUpgrade: () =>
-                showSubscriptionModal(context, SubscriptionPlan.jonin),
+            // CTA d'achat masqué hors Play Billing ; le badge "PLAN ACTUEL"
+            // reste affiché pour le plan courant.
+            hideButton: !kEnablePaidPlans && rank != UserRank.jonin,
+            onUpgrade: kEnablePaidPlans
+                ? () => showSubscriptionModal(context, SubscriptionPlan.jonin)
+                : null,
           ),
           const SizedBox(height: 12),
           // Kage
@@ -91,7 +94,7 @@ class PlanSection extends ConsumerWidget {
             name: '⭐ Kage Pass',
             tag: rank == UserRank.kage ? s.currentPlanTag : null,
             tagColor: AppColors.rankJonin,
-            price: PlanPrices.kage(isAnnual, currency),
+            price: PlanPrices.kage(annual: isAnnual),
             priceColor: AppColors.rankJonin,
             features: [
               (true, s.joninIncluded),
@@ -105,8 +108,10 @@ class PlanSection extends ConsumerWidget {
             buttonEnabled: rank != UserRank.kage,
             borderColor: AppColors.rankJonin,
             isCta: true,
-            onUpgrade: () =>
-                showSubscriptionModal(context, SubscriptionPlan.kage),
+            hideButton: !kEnablePaidPlans && rank != UserRank.kage,
+            onUpgrade: kEnablePaidPlans
+                ? () => showSubscriptionModal(context, SubscriptionPlan.kage)
+                : null,
           ),
         ],
       ),

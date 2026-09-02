@@ -11,8 +11,6 @@ class SettingsSection extends StatelessWidget {
   final ValueChanged<bool> onNotificationsChanged;
   final String currentLanguage;
   final ValueChanged<String> onLanguageSelect;
-  final String currentCurrency;
-  final ValueChanged<String> onCurrencySelect;
   final bool isDarkMode;
   final VoidCallback onThemeToggle;
   final VoidCallback onEditProfile;
@@ -25,8 +23,6 @@ class SettingsSection extends StatelessWidget {
     required this.onNotificationsChanged,
     required this.currentLanguage,
     required this.onLanguageSelect,
-    required this.currentCurrency,
-    required this.onCurrencySelect,
     required this.isDarkMode,
     required this.onThemeToggle,
     required this.onEditProfile,
@@ -40,17 +36,6 @@ class SettingsSection extends StatelessWidget {
       'ja' => '日本語',
       'zh' => '中文',
       _ => 'Français',
-    };
-  }
-
-  String _currencyLabel(String currency) {
-    return switch (currency) {
-      'USD' => 'USD · Dollar',
-      'EUR' => 'EUR · Euro',
-      'GBP' => 'GBP · Livre',
-      'CAD' => 'CAD · Dollar canadien',
-      'NGN' => 'NGN · Naira',
-      _ => 'FCFA · XAF',
     };
   }
 
@@ -180,24 +165,28 @@ class SettingsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const _SectionLabel(label: 'Support'),
-          const SizedBox(height: 8),
-          _SettingsCard(children: [
-            _SettingsRow(
-              icon: '⭐',
-              label: 'Noter l\'application',
-              hasArrow: true,
-              onTap: () => _openRateApp(context, s),
-            ),
-            const _SettingsDivider(),
-            _SettingsRow(
-              icon: '💛',
-              label: 'Me soutenir',
-              hasArrow: true,
-              onTap: _openSupportPage,
-            ),
-          ]),
-          const SizedBox(height: 24),
+          // Section "Support" : liens vers la boutique store.tilstack.me
+          // (parcours de paiement externe) — masquée hors Play Billing.
+          if (kEnablePaidPlans) ...[
+            const _SectionLabel(label: 'Support'),
+            const SizedBox(height: 8),
+            _SettingsCard(children: [
+              _SettingsRow(
+                icon: '⭐',
+                label: 'Noter l\'application',
+                hasArrow: true,
+                onTap: () => _openRateApp(context, s),
+              ),
+              const _SettingsDivider(),
+              _SettingsRow(
+                icon: '💛',
+                label: 'Me soutenir',
+                hasArrow: true,
+                onTap: _openSupportPage,
+              ),
+            ]),
+            const SizedBox(height: 24),
+          ],
           _SectionLabel(label: s.accountSection),
           const SizedBox(height: 8),
           _SettingsCard(children: [
@@ -245,14 +234,6 @@ class SettingsSection extends StatelessWidget {
               value: _languageLabel(currentLanguage),
               hasArrow: true,
               onTap: () => _showLanguageSheet(context, s),
-            ),
-            const _SettingsDivider(),
-            _SettingsRow(
-              icon: '💱',
-              label: 'Monnaie',
-              value: _currencyLabel(currentCurrency),
-              hasArrow: true,
-              onTap: () => _showCurrencySheet(context),
             ),
             const _SettingsDivider(),
             _SettingsRow(
@@ -338,17 +319,6 @@ class SettingsSection extends StatelessWidget {
     );
   }
 
-  void _showCurrencySheet(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (_) => _CurrencySheet(
-        currentCurrency: currentCurrency,
-        onCurrencySelect: onCurrencySelect,
-      ),
-    );
-  }
 }
 
 class _LanguageSheet extends StatefulWidget {
@@ -494,197 +464,6 @@ class _LanguageSheetState extends State<_LanguageSheet> {
                   child: Text(s.apply,
                       style:
                           GoogleFonts.nunitoSans(fontWeight: FontWeight.w700)),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _CurrencySheet extends StatefulWidget {
-  final String currentCurrency;
-  final ValueChanged<String> onCurrencySelect;
-
-  const _CurrencySheet({
-    required this.currentCurrency,
-    required this.onCurrencySelect,
-  });
-
-  @override
-  State<_CurrencySheet> createState() => _CurrencySheetState();
-}
-
-class _CurrencySheetState extends State<_CurrencySheet> {
-  late String _pending;
-
-  static const _currencies = [
-    ('XAF', 'FCFA', 'Afrique centrale'),
-    ('USD', 'Dollar américain', 'International'),
-    ('EUR', 'Euro', 'Europe'),
-    ('GBP', 'Livre sterling', 'Royaume-Uni'),
-    ('CAD', 'Dollar canadien', 'Canada'),
-    ('NGN', 'Naira', 'Nigeria'),
-  ];
-
-  @override
-  void initState() {
-    super.initState();
-    _pending = widget.currentCurrency;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = OtadexTheme.of(context);
-    final s = AppStrings.of(context);
-    return Container(
-      decoration: BoxDecoration(
-        color: theme.backgroundCard,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
-        border: Border(top: BorderSide(color: theme.borderSubtle)),
-      ),
-      padding: const EdgeInsets.fromLTRB(24, 16, 24, 32),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 40,
-            height: 4,
-            decoration: BoxDecoration(
-              color: theme.borderDefault,
-              borderRadius: BorderRadius.circular(2),
-            ),
-          ),
-          const SizedBox(height: 20),
-          Text(
-            'Choisir la monnaie',
-            style: GoogleFonts.rajdhani(
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
-              color: theme.textPrimary,
-              letterSpacing: 0.5,
-            ),
-          ),
-          const SizedBox(height: 16),
-          ..._currencies.map((currency) {
-            final (code, name, region) = currency;
-            final isSelected = _pending == code;
-            return GestureDetector(
-              onTap: () => setState(() => _pending = code),
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
-                margin: const EdgeInsets.only(bottom: 8),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                decoration: BoxDecoration(
-                  color: isSelected
-                      ? theme.accentColor.withValues(alpha: 0.12)
-                      : theme.backgroundElevated,
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(
-                    color: isSelected ? theme.accentColor : theme.borderSubtle,
-                    width: isSelected ? 1.5 : 1,
-                  ),
-                ),
-                child: Row(
-                  children: [
-                    SizedBox(
-                      width: 44,
-                      child: Text(
-                        code,
-                        style: GoogleFonts.rajdhani(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w800,
-                          color: isSelected
-                              ? theme.accentColor
-                              : theme.textPrimary,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            name,
-                            style: GoogleFonts.nunitoSans(
-                              fontSize: 15,
-                              fontWeight: isSelected
-                                  ? FontWeight.w700
-                                  : FontWeight.w500,
-                              color: isSelected
-                                  ? theme.accentColor
-                                  : theme.textPrimary,
-                            ),
-                          ),
-                          Text(
-                            region,
-                            style: GoogleFonts.nunitoSans(
-                              fontSize: 12,
-                              color: theme.textSecondary,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    if (isSelected)
-                      Icon(
-                        Icons.check_circle_rounded,
-                        color: theme.accentColor,
-                        size: 20,
-                      ),
-                  ],
-                ),
-              ),
-            );
-          }),
-          const SizedBox(height: 8),
-          Row(
-            children: [
-              Expanded(
-                child: OutlinedButton(
-                  onPressed: () => Navigator.pop(context),
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: theme.textSecondary,
-                    side: BorderSide(color: theme.borderDefault),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                  ),
-                  child: Text(
-                    s.cancel,
-                    style: GoogleFonts.nunitoSans(
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: ElevatedButton(
-                  onPressed: () {
-                    widget.onCurrencySelect(_pending);
-                    Navigator.pop(context);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: theme.accentColor,
-                    foregroundColor: Colors.white,
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                  ),
-                  child: Text(
-                    s.apply,
-                    style: GoogleFonts.nunitoSans(
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
                 ),
               ),
             ],

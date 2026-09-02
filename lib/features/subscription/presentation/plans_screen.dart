@@ -3,9 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../../core/providers/currency_provider.dart';
+import '../../../core/constants/app_constants.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/price_formatter.dart';
+import '../../../core/widgets/dev_rank_override_banner.dart';
 import '../../profile/presentation/widgets/billing_toggle.dart';
 import '../../profile/presentation/widgets/plan_card.dart';
 
@@ -52,8 +53,6 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final currency = ref.watch(currencyProvider);
-
     return Scaffold(
       backgroundColor: AppColors.backgroundDeep,
       appBar: AppBar(
@@ -75,6 +74,9 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              const DevRankOverrideBanner(
+                margin: EdgeInsets.only(bottom: 20),
+              ),
               Text(
                 'Débloque OTADEX Premium',
                 style: GoogleFonts.rajdhani(
@@ -85,7 +87,9 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
               ),
               const SizedBox(height: 8),
               Text(
-                'Choisis ton plan, achète ta licence sur le store, puis active-la dans l\'app pour débloquer toutes les fonctionnalités.',
+                kEnablePaidPlans
+                    ? 'Choisis ton plan, achète ta licence sur le store, puis active-la dans l\'app pour débloquer toutes les fonctionnalités.'
+                    : 'Découvre ce que débloque chaque plan OTADEX. Les fonctionnalités premium s\'activent via ton compte.',
                 style: GoogleFonts.nunitoSans(
                   fontSize: 14,
                   color: AppColors.textSecondary,
@@ -104,7 +108,7 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
                 name: 'Jonin',
                 tag: 'POPULAIRE',
                 tagColor: AppColors.statBlue,
-                price: PlanPrices.jonin(_isAnnual, currency),
+                price: PlanPrices.jonin(annual: _isAnnual),
                 priceColor: AppColors.statBlue,
                 features: const [
                   (true, 'Collection illimitée'),
@@ -118,6 +122,7 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
                 buttonEnabled: true,
                 borderColor: AppColors.statBlue,
                 isCta: true,
+                hideButton: !kEnablePaidPlans,
                 onUpgrade: () => _buyPlan(_joninUrl()),
               ),
               const SizedBox(height: 12),
@@ -125,7 +130,7 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
                 name: 'Kage',
                 tag: null,
                 tagColor: AppColors.statPurple,
-                price: PlanPrices.kage(_isAnnual, currency),
+                price: PlanPrices.kage(annual: _isAnnual),
                 priceColor: AppColors.statPurple,
                 features: const [
                   (true, 'Tout Jonin inclus'),
@@ -138,8 +143,10 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
                 buttonEnabled: true,
                 borderColor: AppColors.statPurple,
                 isCta: true,
+                hideButton: !kEnablePaidPlans,
                 onUpgrade: () => _buyPlan(_kageUrl()),
               ),
+              if (kEnablePaidPlans) ...[
               const SizedBox(height: 28),
               Container(
                 padding: const EdgeInsets.all(16),
@@ -205,6 +212,7 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
                   ),
                 ),
               ),
+              ],
             ],
           ),
         ),

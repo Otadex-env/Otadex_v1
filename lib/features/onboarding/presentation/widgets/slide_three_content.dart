@@ -6,6 +6,7 @@ import '../../../../core/constants/app_assets.dart';
 import '../../../../core/l10n/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/utils/price_formatter.dart';
 import '../../../../core/widgets/otadex_button.dart';
 import 'onboarding_rank_card.dart';
 
@@ -183,7 +184,7 @@ class _SlideThreeContentState extends State<SlideThreeContent>
                 color: AppColors.rankJonin,
                 bgColor: AppColors.rankJoninBg,
                 icon: Icons.auto_awesome_outlined,
-                priceLabel: s.joninMonthlyPrice,
+                priceLabel: PlanPrices.jonin(),
                 isPriceBadge: false,
                 description: s.rankJoninDesc,
                 delay: 500,
@@ -194,7 +195,7 @@ class _SlideThreeContentState extends State<SlideThreeContent>
                 color: AppColors.rankKage,
                 bgColor: AppColors.rankKageBg,
                 icon: Icons.workspace_premium_outlined,
-                priceLabel: s.kageMonthlyPrice,
+                priceLabel: PlanPrices.kage(),
                 isPriceBadge: false,
                 premiumBadge: true,
                 description: s.rankKageDesc,

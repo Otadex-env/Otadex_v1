@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/models/character.dart';
 import '../../../../core/providers/anilist_providers.dart';
 import '../../../../core/providers/auth_provider.dart';
-import '../../../../core/providers/currency_provider.dart';
 import '../../../../core/subscription/rank_providers.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/rank_theme.dart';
@@ -108,14 +107,13 @@ class CharDetailFab extends ConsumerWidget {
       }
     } catch (e) {
       if (e == 'LIMIT_REACHED' && context.mounted) {
-        _showLimitModal(context, ref);
+        _showLimitModal(context);
       }
     }
   }
 
-  void _showLimitModal(BuildContext context, WidgetRef ref) {
-    final currency = ref.read(currencyProvider);
-    final joninMonthly = PlanPrices.jonin(false, currency);
+  void _showLimitModal(BuildContext context) {
+    final joninMonthly = PlanPrices.jonin();
     showModalBottomSheet(
       context: context,
       backgroundColor: AppColors.backgroundCard,

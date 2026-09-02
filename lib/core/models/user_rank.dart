@@ -41,10 +41,13 @@ extension RankGatesX on UserRank {
   /// Publicités affichées (Genin uniquement).
   bool get showsAds => this == UserRank.genin;
 
-  /// Fonctionnalités IA de base — quiz personnage (Jonin et Kage).
+  /// Fonctionnalités IA (quiz + chatbot). Jonin et Kage. (PRD §6.3)
   bool get canUseAi => this != UserRank.genin;
 
-  /// Génération d'images IA + chatbot personnage (Kage uniquement).
+  /// Chatbot IA personnage. Jonin et Kage. (PRD §6.3)
+  bool get canUseChatbot => this != UserRank.genin;
+
+  /// Génération d'images citation IA (Kage uniquement).
   bool get canGenerateImages => this == UserRank.kage;
 
   /// Téléchargement d'images sans filigrane (Kage uniquement).

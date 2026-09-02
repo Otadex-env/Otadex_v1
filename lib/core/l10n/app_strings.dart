@@ -118,10 +118,6 @@ class AppStrings {
     required this.planActualButton,
     required this.upgradeToJoninButton,
     required this.upgradeToKageButton,
-    required this.joninMonthlyPrice,
-    required this.joninAnnualPrice,
-    required this.kageMonthlyPrice,
-    required this.kageAnnualPrice,
     // ── Plan features (comparison cards) ──────────────────────────────────
     required this.sheetsNavigation,
     required this.likesComments,
@@ -300,10 +296,6 @@ class AppStrings {
   final String planActualButton;
   final String upgradeToJoninButton;
   final String upgradeToKageButton;
-  final String joninMonthlyPrice;
-  final String joninAnnualPrice;
-  final String kageMonthlyPrice;
-  final String kageAnnualPrice;
   // ── Plan features (comparison cards) ──────────────────────────────────────
   final String sheetsNavigation;
   final String likesComments;
@@ -504,10 +496,6 @@ class AppStrings {
       planActualButton: 'Plan actuel',
       upgradeToJoninButton: 'Passer Jonin 🦊',
       upgradeToKageButton: 'Passer Kage 👑',
-      joninMonthlyPrice: '2 000 FCFA/mois',
-      joninAnnualPrice: '21 600 FCFA/an',
-      kageMonthlyPrice: '5 000 FCFA/mois',
-      kageAnnualPrice: '54 000 FCFA/an',
       sheetsNavigation: 'Fiches & navigation',
       likesComments: 'Likes & commentaires',
       adsShown: 'Publicités affichées',
@@ -687,10 +675,6 @@ class AppStrings {
     planActualButton: 'Current plan',
     upgradeToJoninButton: 'Get Jonin 🦊',
     upgradeToKageButton: 'Get Kage 👑',
-    joninMonthlyPrice: '2,000 FCFA/mo',
-    joninAnnualPrice: '21,600 FCFA/yr',
-    kageMonthlyPrice: '5,000 FCFA/mo',
-    kageAnnualPrice: '54,000 FCFA/yr',
     sheetsNavigation: 'Profiles & navigation',
     likesComments: 'Likes & comments',
     adsShown: 'Ads displayed',
@@ -862,10 +846,6 @@ class AppStrings {
     planActualButton: '現在のプラン',
     upgradeToJoninButton: 'ジョニンへ 🦊',
     upgradeToKageButton: 'カゲへ 👑',
-    joninMonthlyPrice: '2,000 FCFA/月',
-    joninAnnualPrice: '21,600 FCFA/年',
-    kageMonthlyPrice: '5,000 FCFA/月',
-    kageAnnualPrice: '54,000 FCFA/年',
     sheetsNavigation: 'プロフィール & ナビ',
     likesComments: 'いいね & コメント',
     adsShown: '広告あり',
@@ -1037,10 +1017,6 @@ class AppStrings {
     planActualButton: '当前计划',
     upgradeToJoninButton: '升至上忍 🦊',
     upgradeToKageButton: '升至影 👑',
-    joninMonthlyPrice: '2,000 FCFA/月',
-    joninAnnualPrice: '21,600 FCFA/年',
-    kageMonthlyPrice: '5,000 FCFA/月',
-    kageAnnualPrice: '54,000 FCFA/年',
     sheetsNavigation: '档案 & 导航',
     likesComments: '点赞 & 评论',
     adsShown: '显示广告',

@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/subscription/rank_providers.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/widgets/dev_rank_override_banner.dart';
 
 class SubscriptionCard extends ConsumerStatefulWidget {
   const SubscriptionCard({super.key});
@@ -53,6 +54,7 @@ class _SubscriptionCardState extends ConsumerState<SubscriptionCard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const DevRankOverrideBanner(margin: EdgeInsets.only(bottom: 12)),
           Text(
             'Abonnement',
             style: GoogleFonts.rajdhani(
@@ -215,27 +217,31 @@ class _SubscriptionCardState extends ConsumerState<SubscriptionCard> {
           const SizedBox(height: 14),
           Row(
             children: [
-              Expanded(
-                child: OutlinedButton(
-                  onPressed: () => context.push('/activate-license'),
-                  style: OutlinedButton.styleFrom(
-                    side: BorderSide(color: color),
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+              // "Renouveler" ouvre l'activation de licence Chariow : masqué
+              // hors Play Billing (kEnablePaidPlans).
+              if (kEnablePaidPlans) ...[
+                Expanded(
+                  child: OutlinedButton(
+                    onPressed: () => context.push('/activate-license'),
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(color: color),
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
-                  ),
-                  child: Text(
-                    'Renouveler',
-                    style: GoogleFonts.nunitoSans(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                      color: color,
+                    child: Text(
+                      'Renouveler',
+                      style: GoogleFonts.nunitoSans(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                        color: color,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(width: 10),
+                const SizedBox(width: 10),
+              ],
               Expanded(
                 child: OutlinedButton(
                   onPressed: () => context.push('/subscription'),
@@ -302,7 +308,8 @@ class _SubscriptionCardState extends ConsumerState<SubscriptionCard> {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () => context.push('/activate-license'),
+              onPressed: () => context.push(
+                  kEnablePaidPlans ? '/activate-license' : '/subscription'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.error,
                 shape: RoundedRectangleBorder(
@@ -311,7 +318,7 @@ class _SubscriptionCardState extends ConsumerState<SubscriptionCard> {
                 padding: const EdgeInsets.symmetric(vertical: 12),
               ),
               child: Text(
-                'Réactiver',
+                kEnablePaidPlans ? 'Réactiver' : 'Voir les plans',
                 style: GoogleFonts.nunitoSans(
                   fontSize: 13,
                   fontWeight: FontWeight.w700,

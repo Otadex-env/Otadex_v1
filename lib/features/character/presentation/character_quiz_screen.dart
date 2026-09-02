@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../core/constants/app_constants.dart';
 import '../../../core/models/character.dart';
 import '../../../core/providers/anilist_providers.dart';
 import '../../../core/subscription/rank_providers.dart';
@@ -242,10 +243,12 @@ class _CharacterQuizScreenState extends ConsumerState<CharacterQuizScreen> {
                     ),
                     const SizedBox(height: 24),
                     _JoninButton(
-                      onPressed: () => showSubscriptionModal(
-                        context,
-                        SubscriptionPlan.jonin,
-                      ),
+                      onPressed: kEnablePaidPlans
+                          ? () => showSubscriptionModal(
+                                context,
+                                SubscriptionPlan.jonin,
+                              )
+                          : () => context.push('/subscription'),
                     ),
                   ],
                 ),

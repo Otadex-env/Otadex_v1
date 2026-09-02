@@ -6,7 +6,6 @@ import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/l10n/locale_provider.dart';
-import '../../../core/providers/currency_provider.dart';
 import '../../../core/providers/otadex_providers.dart';
 import '../../../core/subscription/rank_providers.dart';
 import '../../../core/providers/user_profile_provider.dart';
@@ -78,12 +77,6 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
       backgroundColor: Colors.transparent,
       builder: (_) => const ChangePasswordSheet(),
     );
-  }
-
-  Future<void> _selectCurrency(String currency) async {
-    ref.read(currencyProvider.notifier).state = currency;
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(AppConstants.keyUserCurrency, currency);
   }
 
   // ── Menu développeur (kDebugMode + UID créateur uniquement) ───────────────
@@ -236,7 +229,6 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final locale = ref.watch(localeProvider);
-    final currency = ref.watch(currencyProvider);
     final profile = ref.watch(userProfileProvider);
     final collectedIds = profile.collectedCharacterIds;
     final allCharsAsync = ref.watch(allCharactersProvider);
@@ -299,8 +291,6 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
             currentLanguage: locale,
             onLanguageSelect: (lang) =>
                 ref.read(localeProvider.notifier).state = lang,
-            currentCurrency: currency,
-            onCurrencySelect: _selectCurrency,
             isDarkMode: ref.watch(themeModeProvider) == ThemeMode.dark,
             onThemeToggle: () {
               final current = ref.read(themeModeProvider);

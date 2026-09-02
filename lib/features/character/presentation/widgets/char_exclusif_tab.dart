@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/models/character.dart';
 import '../../../../core/providers/anilist_providers.dart';
-import '../../../../core/providers/currency_provider.dart';
 import '../../../../core/subscription/rank_providers.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/utils/price_formatter.dart';
@@ -119,14 +119,97 @@ class _CharDetailExclusifTabState extends ConsumerState<CharDetailExclusifTab> {
     );
   }
 
+  /// Carte d'accès au chatbot IA — palier Jonin+ (PRD §6.3).
+  Widget _buildChatbotCard() {
+    return GestureDetector(
+      onTap: () => context.push(
+        '/chat/${c.id}',
+        extra: {
+          'charName': c.name,
+          'charImageUrl': c.imagePath ?? '',
+          'charBio': c.bio ?? '',
+        },
+      ),
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 12),
+        decoration: BoxDecoration(
+          color: AppColors.backgroundAIPurple,
+          borderRadius: BorderRadius.circular(16),
+          border:
+              Border.all(color: AppColors.statPurple.withValues(alpha: 0.4)),
+        ),
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                ClipOval(
+                  child: SizedBox(
+                    width: 64,
+                    height: 64,
+                    child: c.imagePath != null
+                        ? Image.network(c.imagePath!, fit: BoxFit.cover,
+                            errorBuilder: (_, __, ___) =>
+                                _CharInitial(name: c.name))
+                        : _CharInitial(name: c.name),
+                  ),
+                ),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Parle à ${c.name}',
+                        style: GoogleFonts.dmSans(
+                            fontSize: 17,
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.textPrimary),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        'Assistant local · Sans Cloud Function',
+                        style: GoogleFonts.nunitoSans(
+                            fontSize: 13, color: AppColors.textSecondary),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            Container(
+              height: 48,
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [AppColors.statPurple, AppColors.statPurpleDark],
+                ),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Center(
+                child: Text(
+                  'Démarrer la conversation 💬',
+                  style: GoogleFonts.nunitoSans(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final rank = ref.watch(effectiveRankProvider);
     final isKage = rank.canGenerateImages;
     final isJonin = rank.canUseAi && !rank.canGenerateImages;
-    final currency = ref.watch(currencyProvider);
-    final joninMonthly = PlanPrices.jonin(false, currency);
-    final kageMonthly = PlanPrices.kage(false, currency);
+    final joninMonthly = PlanPrices.jonin();
+    final kageMonthly = PlanPrices.kage();
 
     // ── Genin : tout verrouillé ──────────────────────────────────────
     if (!isKage && !isJonin) {
@@ -154,7 +237,7 @@ class _CharDetailExclusifTabState extends ConsumerState<CharDetailExclusifTab> {
             const _FeatureRow(
                 icon: Icons.smart_toy_rounded,
                 label: 'Chatbot IA personnage',
-                tier: 'Kage'),
+                tier: 'Jonin+'),
             const SizedBox(height: 8),
             const _FeatureRow(
                 icon: Icons.auto_awesome_rounded,
@@ -185,41 +268,38 @@ class _CharDetailExclusifTabState extends ConsumerState<CharDetailExclusifTab> {
                 ),
               ),
             ),
-            const SizedBox(height: 12),
-            TextButton(
-              onPressed: () =>
-                  showSubscriptionModal(context, SubscriptionPlan.jonin),
-              child: Text(
-                'Commencer par Jonin — $joninMonthly',
-                style: GoogleFonts.nunitoSans(
-                    color: AppColors.statBlue,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600),
+            if (kEnablePaidPlans) ...[
+              const SizedBox(height: 12),
+              TextButton(
+                onPressed: () =>
+                    showSubscriptionModal(context, SubscriptionPlan.jonin),
+                child: Text(
+                  'Commencer par Jonin — $joninMonthly',
+                  style: GoogleFonts.nunitoSans(
+                      color: AppColors.statBlue,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600),
+                ),
               ),
-            ),
+            ],
           ],
         ),
       );
     }
 
-    // ── Jonin : quiz + vote accessible, reste verrouillé ────────────
+    // ── Jonin : chatbot + quiz + vote accessibles, image/anecdotes en Kage ──
     if (isJonin) {
       return Padding(
         padding: const EdgeInsets.fromLTRB(16, 20, 16, 8),
         child: Column(
           children: [
+            _buildChatbotCard(),
             _buildVoteCard(),
             _QuizCard(character: c),
             const SizedBox(height: 4),
             _UpsellBanner(
-              feature: 'Discuter avec ${c.name} via IA',
-              tierLabel: 'Kage Pass ($kageMonthly)',
-              tierColor: AppColors.statPurple,
-              onTap: () => context.push('/subscription'),
-            ),
-            _UpsellBanner(
               feature: "Créer une image citation stylisée",
-              tierLabel: 'Kage Pass',
+              tierLabel: 'Kage Pass ($kageMonthly)',
               tierColor: AppColors.statPurple,
               onTap: () => context.push('/subscription'),
             ),
@@ -239,91 +319,7 @@ class _CharDetailExclusifTabState extends ConsumerState<CharDetailExclusifTab> {
       padding: const EdgeInsets.fromLTRB(16, 20, 16, 8),
       child: Column(
         children: [
-          // Chatbot
-          GestureDetector(
-            onTap: () => context.push(
-              '/chat/${c.id}',
-              extra: {
-                'charName': c.name,
-                'charImageUrl': c.imagePath ?? '',
-                'charBio': c.bio ?? '',
-              },
-            ),
-            child: Container(
-              margin: const EdgeInsets.only(bottom: 12),
-              decoration: BoxDecoration(
-                color: AppColors.backgroundAIPurple,
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(
-                    color: AppColors.statPurple.withValues(alpha: 0.4)),
-              ),
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      ClipOval(
-                        child: SizedBox(
-                          width: 64,
-                          height: 64,
-                          child: c.imagePath != null
-                              ? Image.network(c.imagePath!, fit: BoxFit.cover,
-                                  errorBuilder: (_, __, ___) =>
-                                      _CharInitial(name: c.name))
-                              : _CharInitial(name: c.name),
-                        ),
-                      ),
-                      const SizedBox(width: 14),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Parle à ${c.name}',
-                              style: GoogleFonts.dmSans(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w700,
-                                  color: AppColors.textPrimary),
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
-                              'Assistant local · Sans Cloud Function',
-                              style: GoogleFonts.nunitoSans(
-                                  fontSize: 13,
-                                  color: AppColors.textSecondary),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  Container(
-                    height: 48,
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        colors: [
-                          AppColors.statPurple,
-                          AppColors.statPurpleDark
-                        ],
-                      ),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Démarrer la conversation 💬',
-                        style: GoogleFonts.nunitoSans(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          _buildChatbotCard(),
 
           // Image citation
           Container(

@@ -1,71 +1,44 @@
+/// Tarifs des plans OTADEX — source UNIQUE.
+///
+/// Toujours affichés en FCFA (XAF), jamais convertis dans une autre devise :
+/// contrainte de soumission Play Store (pas de tarif tiers ambigu) + lisibilité
+/// pour le marché cible.
 class PlanPrices {
   PlanPrices._();
 
   static const int joninMonthlyXaf = 2000;
-  static const int joninAnnualXaf = 20000;
+  static const int joninAnnualXaf = 21600; // 2 000 × 12 × 0,9 (−10 %)
   static const int kageMonthlyXaf = 5000;
-  static const int kageAnnualXaf = 54000;
+  static const int kageAnnualXaf = 54000; // 5 000 × 12 × 0,9 (−10 %)
 
-  static String jonin(bool annual, String currency) {
-    return format(
-      annual ? joninAnnualXaf : joninMonthlyXaf,
-      currency,
-      annual: annual,
-    );
-  }
+  /// Plan gratuit.
+  static const String free = '0 FCFA';
 
-  static String kage(bool annual, String currency) {
-    return format(
-      annual ? kageAnnualXaf : kageMonthlyXaf,
-      currency,
-      annual: annual,
-    );
-  }
+  static String jonin({bool annual = false}) =>
+      _line(annual ? joninAnnualXaf : joninMonthlyXaf, annual: annual);
 
-  static String free(String currency) => format(0, currency);
+  static String kage({bool annual = false}) =>
+      _line(annual ? kageAnnualXaf : kageMonthlyXaf, annual: annual);
 
-  static String format(int xafAmount, String currency, {bool annual = false}) {
-    final normalized = _normalize(currency);
-    final suffix = annual ? ' / an' : (xafAmount == 0 ? '' : ' / mois');
-    if (normalized == 'XAF') {
-      return '${_whole(xafAmount)} FCFA$suffix';
-    }
+  /// Montant seul (« 2 000 FCFA »), sans période — pour les UI qui affichent
+  /// la période dans un libellé séparé (ex. `SubscriptionBillingCard`).
+  static String joninAmount({bool annual = false}) =>
+      '${_grouped(annual ? joninAnnualXaf : joninMonthlyXaf)} FCFA';
 
-    final rate = _rates[normalized] ?? _rates['USD']!;
-    final amount = xafAmount * rate;
-    final value = xafAmount == 0 ? '0' : amount.toStringAsFixed(2);
-    return '${_symbols[normalized] ?? normalized} $value$suffix';
-  }
+  static String kageAmount({bool annual = false}) =>
+      '${_grouped(annual ? kageAnnualXaf : kageMonthlyXaf)} FCFA';
 
-  static String _normalize(String currency) => currency.toUpperCase().trim();
+  static String _line(int xaf, {required bool annual}) =>
+      '${_grouped(xaf)} FCFA${annual ? ' / an' : ' / mois'}';
 
-  static String _whole(int amount) {
+  /// Séparateur de milliers (espace) : `21600` → `"21 600"`.
+  static String _grouped(int amount) {
     final raw = amount.toString();
     final buffer = StringBuffer();
     for (var i = 0; i < raw.length; i++) {
-      final remaining = raw.length - i;
+      if (i > 0 && (raw.length - i) % 3 == 0) buffer.write(' ');
       buffer.write(raw[i]);
-      if (remaining > 1 && remaining % 3 == 1) {
-        buffer.write(' ');
-      }
     }
     return buffer.toString();
   }
-
-  static const Map<String, double> _rates = {
-    'XAF': 1,
-    'USD': 1 / 600,
-    'EUR': 1 / 655,
-    'GBP': 1 / 765,
-    'CAD': 1 / 440,
-    'NGN': 2.55,
-  };
-
-  static const Map<String, String> _symbols = {
-    'USD': r'$',
-    'EUR': 'EUR',
-    'GBP': 'GBP',
-    'CAD': r'CA$',
-    'NGN': 'NGN',
-  };
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/otadex_theme.dart';
 import '../../../../../core/widgets/subscription_modal.dart';
@@ -35,6 +36,9 @@ class _UpsellBannerState extends State<UpsellBanner> {
 
   @override
   Widget build(BuildContext context) {
+    // Bandeau promotionnel Kage : masqué tant que les plans payants sont
+    // désactivés (kEnablePaidPlans) — il ne mène qu'au modal d'abonnement.
+    if (!kEnablePaidPlans) return const SizedBox.shrink();
     if (_dismissed) return const SizedBox.shrink();
 
     final theme = OtadexTheme.of(context);

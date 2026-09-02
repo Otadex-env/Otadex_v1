@@ -145,7 +145,7 @@ class _CharacterChatScreenState extends ConsumerState<CharacterChatScreen>
 
   // ── Gate ─────────────────────────────────────────────────────────────────
 
-  Widget _buildKageGate() {
+  Widget _buildGate() {
     return Scaffold(
       backgroundColor: AppColors.backgroundDeep,
       body: SafeArea(
@@ -172,12 +172,12 @@ class _CharacterChatScreenState extends ConsumerState<CharacterChatScreen>
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       const Text(
-                        '👑',
+                        '🥷',
                         style: TextStyle(fontSize: 64),
                       ),
                       const SizedBox(height: 20),
                       Text(
-                        'Contenu Kage uniquement',
+                        'Réservé aux membres Jonin+',
                         style: GoogleFonts.dmSans(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -187,7 +187,8 @@ class _CharacterChatScreenState extends ConsumerState<CharacterChatScreen>
                       ),
                       const SizedBox(height: 12),
                       Text(
-                        'Cette fonctionnalité est réservée aux membres Kage.',
+                        'Le chatbot IA personnage est inclus dans les plans '
+                        'Jonin et Kage Pass.',
                         style: GoogleFonts.dmSans(
                           fontSize: 14,
                           color: AppColors.textSecondary,
@@ -210,7 +211,7 @@ class _CharacterChatScreenState extends ConsumerState<CharacterChatScreen>
                             borderRadius: BorderRadius.circular(14),
                           ),
                           child: Text(
-                            'Obtenir Kage Pass 👑',
+                            'Voir les plans',
                             style: GoogleFonts.dmSans(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
@@ -563,9 +564,9 @@ class _CharacterChatScreenState extends ConsumerState<CharacterChatScreen>
 
   @override
   Widget build(BuildContext context) {
-    // Chatbot IA = palier Kage
-    if (ref.watch(effectiveRankProvider) != UserRank.kage) {
-      return _buildKageGate();
+    // Chatbot IA : Jonin et Kage (PRD §6.3)
+    if (!ref.watch(effectiveRankProvider).canUseChatbot) {
+      return _buildGate();
     }
 
     return Scaffold(

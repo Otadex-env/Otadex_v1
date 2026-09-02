@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/models/character.dart';
 import '../../../../core/providers/anilist_providers.dart';
 import '../../../../core/providers/auth_provider.dart';
@@ -671,8 +672,11 @@ class _CharDetailInfosTabState extends ConsumerState<CharDetailInfosTab> {
           const SizedBox(height: 10),
           if (!_isKage)
             GestureDetector(
-              onTap: () =>
-                  showSubscriptionModal(context, SubscriptionPlan.kage),
+              // Carte informative « Exclusif Kage ». Le renvoi vers le modal
+              // d'achat n'est actif que si kEnablePaidPlans est true.
+              onTap: kEnablePaidPlans
+                  ? () => showSubscriptionModal(context, SubscriptionPlan.kage)
+                  : null,
               child: Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(

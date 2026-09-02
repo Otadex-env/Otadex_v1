@@ -7,11 +7,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/constants/app_constants.dart';
-import 'core/services/chariow_service.dart';
 import 'core/services/notification_service.dart';
 import 'core/subscription/rank_providers.dart';
 import 'core/providers/auth_provider.dart';
-import 'core/providers/currency_provider.dart';
 import 'core/providers/user_profile_provider.dart';
 import 'core/theme/app_colors.dart';
 import 'firebase_options.dart';
@@ -37,7 +35,6 @@ void main() async {
   final userId = prefs.getString(AppConstants.keyUserId);
   final pseudo = prefs.getString(AppConstants.keyUserPseudo);
   final email = prefs.getString(AppConstants.keyUserEmail);
-  final currency = prefs.getString(AppConstants.keyUserCurrency) ?? 'XAF';
 
   final userRank = UserRankX.fromString(rankStr);
 
@@ -67,7 +64,6 @@ void main() async {
   _providerContainer = ProviderContainer(
     overrides: [
       isLoggedInProvider.overrideWith((ref) => isLoggedIn),
-      currencyProvider.overrideWith((ref) => currency),
       storedRankProvider.overrideWith((ref) => userRank),
       devRankOverrideProvider.overrideWith(
         (ref) => DevRankOverrideNotifier(initialDevRankOverride),
@@ -125,13 +121,21 @@ class _LicenseLifecycleObserver extends WidgetsBindingObserver {
 void _setStoredRank(UserRank rank) =>
     _providerContainer.read(storedRankProvider.notifier).state = rank;
 
+/// Rétrogradation d'abonnement à l'expiration — **100 % hors-ligne**.
+///
+/// Aucun appel réseau tiers (la clé API Chariow a été retirée du client, cf.
+/// `ChariowService`). La seule source de vérité côté client est le timestamp
+/// local `keyLicenseExpires`, écrit lors de l'activation / du refresh. S'il est
+/// dépassé, l'utilisateur repasse Genin ; la persistance Firestore du champ
+/// `abonnement` est un *write* de synchronisation (best-effort), pas une
+/// lecture de contrôle.
 Future<void> _checkLicenseExpiry(SharedPreferences prefs) async {
   // Ne jamais rétrograder un développeur vers Genin
   final devUser = FirebaseAuth.instance.currentUser ??
       (await FirebaseAuth.instance.authStateChanges().first);
-  final uid = devUser?.uid;
+  final devUid = devUser?.uid;
   final devEmail = devUser?.email;
-  if ((uid != null && kDeveloperUids.contains(uid)) ||
+  if ((devUid != null && kDeveloperUids.contains(devUid)) ||
       (devEmail != null && kDeveloperEmails.contains(devEmail))) {
     return;
   }
@@ -140,36 +144,22 @@ Future<void> _checkLicenseExpiry(SharedPreferences prefs) async {
   if (expiresMs <= 0) return;
   final expiresAt = DateTime.fromMillisecondsSinceEpoch(expiresMs);
   if (!expiresAt.isBefore(DateTime.now())) return;
+
+  // Licence expirée localement → rétrogradation immédiate.
+  await prefs.setString(AppConstants.keyUserRank, AppConstants.rankGenin);
+  await prefs.remove(AppConstants.keyLicenseExpires);
+  _setStoredRank(UserRank.genin);
+  _providerContainer
+      .read(userProfileProvider.notifier)
+      .updateIdentity(rank: AppConstants.rankGenin);
+
+  // Synchronisation Firestore best-effort (write seul, non bloquant).
+  final uid = FirebaseAuth.instance.currentUser?.uid;
+  if (uid == null) return;
   try {
-    final uid = FirebaseAuth.instance.currentUser?.uid;
-    if (uid == null) return;
-    final doc =
-        await FirebaseFirestore.instance.collection('users').doc(uid).get();
-    final licenseKey = doc.data()?['licenseKey'] as String?;
-    if (licenseKey != null && licenseKey.isNotEmpty) {
-      final result = await ChariowService().checkLicense(licenseKey);
-      if (!result.isActive || result.isExpired) {
-        await prefs.setString(AppConstants.keyUserRank, AppConstants.rankGenin);
-        await prefs.remove(AppConstants.keyLicenseExpires);
-        await FirebaseFirestore.instance
-            .collection('users')
-            .doc(uid)
-            .update({kFieldAbonnement: AppConstants.rankGenin});
-        _setStoredRank(UserRank.genin);
-        _providerContainer
-            .read(userProfileProvider.notifier)
-            .updateIdentity(rank: AppConstants.rankGenin);
-      } else if (result.expiresAt != null) {
-        await prefs.setInt(AppConstants.keyLicenseExpires,
-            result.expiresAt!.millisecondsSinceEpoch);
-      }
-    } else {
-      await prefs.setString(AppConstants.keyUserRank, AppConstants.rankGenin);
-      await prefs.remove(AppConstants.keyLicenseExpires);
-      _setStoredRank(UserRank.genin);
-      _providerContainer
-          .read(userProfileProvider.notifier)
-          .updateIdentity(rank: AppConstants.rankGenin);
-    }
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .update({kFieldAbonnement: AppConstants.rankGenin});
   } catch (_) {}
 }

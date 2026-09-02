@@ -16,6 +16,10 @@ class PlanCard extends StatelessWidget {
   final bool isCta;
   final VoidCallback? onUpgrade;
 
+  /// Masque entièrement le bouton d'action (CTA d'achat désactivé par
+  /// `kEnablePaidPlans`). La carte reste informative : features + prix.
+  final bool hideButton;
+
   const PlanCard({
     super.key,
     required this.name,
@@ -29,6 +33,7 @@ class PlanCard extends StatelessWidget {
     required this.borderColor,
     required this.isCta,
     this.onUpgrade,
+    this.hideButton = false,
   });
 
   @override
@@ -109,6 +114,7 @@ class PlanCard extends StatelessWidget {
               ),
             ),
           ),
+          if (!hideButton) ...[
           const SizedBox(height: 10),
           SizedBox(
             width: double.infinity,
@@ -158,6 +164,7 @@ class PlanCard extends StatelessWidget {
                     ),
                   ),
           ),
+          ],
         ],
       ),
     );
