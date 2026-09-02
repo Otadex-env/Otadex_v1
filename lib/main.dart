@@ -20,7 +20,12 @@ late final ProviderContainer _providerContainer;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await dotenv.load(fileName: '.env');
+  // `.env` est un asset livré en clair dans l'AAB : il ne doit contenir que des
+  // valeurs publiques (App ID, UIDs dev). `isOptional` + catch : l'app démarre
+  // même si le fichier est absent ou partiel.
+  try {
+    await dotenv.load(fileName: '.env', isOptional: true);
+  } catch (_) {}
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
