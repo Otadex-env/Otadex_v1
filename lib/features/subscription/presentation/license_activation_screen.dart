@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/subscription/rank_providers.dart';
 import '../../../core/providers/user_profile_provider.dart';
-import '../../../core/services/chariow_service.dart';
+import '../../../core/services/license_service.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/widgets/skeleton_loader.dart';
 
@@ -54,33 +53,20 @@ class _LicenseActivationScreenState
       _errorText = null;
     });
 
-    final result = await ChariowService().activateLicense(licenseKey, uid);
+    final result = await const LicenseService().activateLicense(licenseKey);
 
     if (!mounted) return;
 
-    if (result.isActive) {
-      final rank = ChariowService().detectPlan(result.productName);
+    if (result.isValid) {
+      final rank = result.rank;
       final expiresAt = result.expiresAt;
 
-      // Firestore
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(uid)
-          .set({
-        kFieldAbonnement: rank.name,
-        'licenseKey': licenseKey,
-        'licenseExpiresAt':
-            expiresAt?.toIso8601String() ?? '',
-        'licenseActivatedAt': DateTime.now().toIso8601String(),
-      }, SetOptions(merge: true));
-
-      // Providers — resync du rang réel (source de vérité unique)
+      // Le Worker a déjà écrit `abonnement` / `licenseExpires` / `licenseKey`
+      // dans Firestore (le client n'y a pas droit). Ici on ne resynchronise que
+      // l'état local : providers + SharedPreferences.
       ref.read(storedRankProvider.notifier).state = rank;
-      ref
-          .read(userProfileProvider.notifier)
-          .updateIdentity(rank: rank.name);
+      ref.read(userProfileProvider.notifier).updateIdentity(rank: rank.name);
 
-      // SharedPreferences
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString(AppConstants.keyUserRank, rank.name);
       await prefs.setString(AppConstants.keySubscriptionPlan, rank.name);
@@ -88,7 +74,11 @@ class _LicenseActivationScreenState
       if (expiresAt != null) {
         await prefs.setInt(AppConstants.keyLicenseExpires,
             expiresAt.millisecondsSinceEpoch);
+      } else {
+        await prefs.remove(AppConstants.keyLicenseExpires);
       }
+      await prefs.setInt(AppConstants.keyLastLicenseRefresh,
+          DateTime.now().millisecondsSinceEpoch);
 
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
@@ -100,8 +90,35 @@ class _LicenseActivationScreenState
     } else {
       setState(() {
         _isLoading = false;
-        _errorText = result.errorMessage ?? 'Activation échouée.';
+        _errorText = _messageForReason(result.reason);
       });
+    }
+  }
+
+  String _messageForReason(String? reason) {
+    switch (reason) {
+      case 'license_not_found':
+        return 'Clé de licence inconnue. Vérifie ta saisie.';
+      case 'revoked':
+        return 'Cette licence a été révoquée.';
+      case 'expired':
+        return 'Cette licence a expiré.';
+      case 'activation_limit_reached':
+        return 'Nombre maximal d\'appareils atteint pour cette licence.';
+      case 'activation_failed':
+      case 'inactive':
+        return 'Impossible d\'activer cette licence pour le moment.';
+      case 'rate_limited':
+        return 'Trop de tentatives. Réessaie dans une minute.';
+      case 'unauthorized':
+        return 'Session expirée. Reconnecte-toi puis réessaie.';
+      case 'network':
+      case 'validation_failed':
+      case 'internal_error':
+      case 'not_persisted':
+        return 'Serveur injoignable. Réessaie dans un instant.';
+      default:
+        return 'Activation échouée.';
     }
   }
 

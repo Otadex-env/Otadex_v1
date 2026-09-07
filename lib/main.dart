@@ -1,8 +1,4 @@
-import 'dart:io'; // === DEBUG IDTOKEN — À RETIRER ===
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart'; // === DEBUG IDTOKEN — À RETIRER ===
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -10,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/constants/app_constants.dart';
+import 'core/services/license_service.dart';
 import 'core/services/notification_service.dart';
 import 'core/subscription/rank_providers.dart';
 import 'core/providers/auth_provider.dart';
@@ -109,25 +106,7 @@ void main() async {
           .read(userProfileProvider.notifier)
           .updateIdentity(id: uid, email: firebaseEmail ?? email);
     }
-    if (isLoggedIn) _checkLicenseExpiry(prefs);
-
-    // === DEBUG IDTOKEN — À RETIRER ===
-    // Android : /tmp n'est pas accessible à l'app. On écrit dans le dossier
-    // privé du package, récupérable via `adb ... run-as com.otadex.otadex`.
-    if (kDebugMode) {
-      final u = FirebaseAuth.instance.currentUser;
-      if (u != null) {
-        final t = await u.getIdToken(true); // forceRefresh : token frais à chaque lancement
-        if (t != null) {
-          final path = Platform.isAndroid
-              ? '/data/data/com.otadex.otadex/idtoken.txt'
-              : '/tmp/idtoken.txt';
-          await File(path).writeAsString(t);
-          debugPrint('IDTOKEN écrit dans $path');
-        }
-      }
-    }
-    // === FIN DEBUG ===
+    if (isLoggedIn) _checkLicenseExpiry(prefs, force: true);
   });
 }
 
@@ -147,16 +126,24 @@ class _LicenseLifecycleObserver extends WidgetsBindingObserver {
 void _setStoredRank(UserRank rank) =>
     _providerContainer.read(storedRankProvider.notifier).state = rank;
 
-/// Rétrogradation d'abonnement à l'expiration — **100 % hors-ligne**.
+/// Revalidation d'abonnement — chemin hors-ligne rapide + contrôle serveur.
 ///
-/// Aucun appel réseau tiers (la clé API Chariow a été retirée du client, cf.
-/// `ChariowService`). La seule source de vérité côté client est le timestamp
-/// local `keyLicenseExpires`, écrit lors de l'activation / du refresh. S'il est
-/// dépassé, l'utilisateur repasse Genin ; la persistance Firestore du champ
-/// `abonnement` est un *write* de synchronisation (best-effort), pas une
-/// lecture de contrôle.
-Future<void> _checkLicenseExpiry(SharedPreferences prefs) async {
-  // Ne jamais rétrograder un développeur vers Genin
+/// 1. **Hors-ligne** : si le timestamp local `keyLicenseExpires` est dépassé,
+///    rétrogradation immédiate à Genin, sans attendre le réseau.
+/// 2. **Serveur (best-effort)** : `POST /refresh` au Worker de licences (la clé
+///    Chariow vit côté Worker, cf. [LicenseService]). Le Worker fait autorité :
+///    il peut rétrograder (révocation / expiration côté Chariow) ou re-accorder
+///    un rang premium (renouvellement), et écrit lui-même `abonnement` /
+///    `licenseExpires` / `licenseKey` dans Firestore.
+///
+/// Sur `resume`, l'appel serveur est limité à une fois toutes les 4 h ;
+/// `force: true` (cold start) le déclenche toujours. Toute erreur réseau /
+/// transitoire est ignorée : l'état courant est conservé.
+Future<void> _checkLicenseExpiry(
+  SharedPreferences prefs, {
+  bool force = false,
+}) async {
+  // Ne jamais rétrograder un développeur vers Genin.
   final devUser = FirebaseAuth.instance.currentUser ??
       (await FirebaseAuth.instance.authStateChanges().first);
   final devUid = devUser?.uid;
@@ -166,26 +153,56 @@ Future<void> _checkLicenseExpiry(SharedPreferences prefs) async {
     return;
   }
 
+  // 1. Chemin hors-ligne : expiration locale dépassée → Genin immédiatement.
   final expiresMs = prefs.getInt(AppConstants.keyLicenseExpires) ?? 0;
-  if (expiresMs <= 0) return;
-  final expiresAt = DateTime.fromMillisecondsSinceEpoch(expiresMs);
-  if (!expiresAt.isBefore(DateTime.now())) return;
+  if (expiresMs > 0 &&
+      DateTime.fromMillisecondsSinceEpoch(expiresMs)
+          .isBefore(DateTime.now())) {
+    await _applyRank(prefs, UserRank.genin, null);
+  }
 
-  // Licence expirée localement → rétrogradation immédiate.
-  await prefs.setString(AppConstants.keyUserRank, AppConstants.rankGenin);
-  await prefs.remove(AppConstants.keyLicenseExpires);
-  _setStoredRank(UserRank.genin);
+  // 2. Contrôle serveur (best-effort), throttlé hors cold start.
+  final lastRefreshMs = prefs.getInt(AppConstants.keyLastLicenseRefresh) ?? 0;
+  final sinceLastRefresh =
+      DateTime.now().millisecondsSinceEpoch - lastRefreshMs;
+  if (!force && sinceLastRefresh < const Duration(hours: 4).inMilliseconds) {
+    return;
+  }
+
+  final result = await const LicenseService().refresh();
+
+  // Session absente / réseau coupé / incident transitoire → on ne touche à rien.
+  if (result.reason != null && !result.isDefinitiveDowngrade) return;
+
+  await prefs.setInt(AppConstants.keyLastLicenseRefresh,
+      DateTime.now().millisecondsSinceEpoch);
+
+  if (result.isDefinitiveDowngrade || result.rank == UserRank.genin) {
+    await _applyRank(prefs, UserRank.genin, null);
+  } else {
+    // Remontée autorisée : le Worker fait autorité sur le rang.
+    await _applyRank(prefs, result.rank, result.expiresAt);
+  }
+}
+
+/// Applique un rang localement : SharedPreferences + providers (rang réel).
+/// Ne touche pas à Firestore — c'est le Worker qui possède `abonnement` /
+/// `licenseExpires` / `licenseKey`.
+Future<void> _applyRank(
+  SharedPreferences prefs,
+  UserRank rank,
+  DateTime? expiresAt,
+) async {
+  await prefs.setString(AppConstants.keyUserRank, rank.name);
+  await prefs.setString(AppConstants.keySubscriptionPlan, rank.name);
+  if (expiresAt != null) {
+    await prefs.setInt(
+        AppConstants.keyLicenseExpires, expiresAt.millisecondsSinceEpoch);
+  } else if (rank == UserRank.genin) {
+    await prefs.remove(AppConstants.keyLicenseExpires);
+  }
+  _setStoredRank(rank);
   _providerContainer
       .read(userProfileProvider.notifier)
-      .updateIdentity(rank: AppConstants.rankGenin);
-
-  // Synchronisation Firestore best-effort (write seul, non bloquant).
-  final uid = FirebaseAuth.instance.currentUser?.uid;
-  if (uid == null) return;
-  try {
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc(uid)
-        .update({kFieldAbonnement: AppConstants.rankGenin});
-  } catch (_) {}
+      .updateIdentity(rank: rank.name);
 }

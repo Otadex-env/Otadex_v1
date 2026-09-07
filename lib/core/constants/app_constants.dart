@@ -18,6 +18,9 @@ class AppConstants {
   static const String keySubscriptionPlan = 'subscription_plan';
   static const String keyLicenseExpires = 'license_expires';
   static const String keyLicenseKey = 'license_key';
+  /// Dernière revalidation licence auprès du Worker (epoch ms). Sert à limiter
+  /// les appels `/refresh` sur les `resume` rapprochés.
+  static const String keyLastLicenseRefresh = 'last_license_refresh';
 
   // SharedPreferences keys — notifications
   static const String keyNotificationsEnabled = 'notifications_enabled';
