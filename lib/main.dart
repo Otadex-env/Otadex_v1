@@ -1,5 +1,8 @@
+import 'dart:io'; // === DEBUG IDTOKEN — À RETIRER ===
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart'; // === DEBUG IDTOKEN — À RETIRER ===
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -107,6 +110,24 @@ void main() async {
           .updateIdentity(id: uid, email: firebaseEmail ?? email);
     }
     if (isLoggedIn) _checkLicenseExpiry(prefs);
+
+    // === DEBUG IDTOKEN — À RETIRER ===
+    // Android : /tmp n'est pas accessible à l'app. On écrit dans le dossier
+    // privé du package, récupérable via `adb ... run-as com.otadex.otadex`.
+    if (kDebugMode) {
+      final u = FirebaseAuth.instance.currentUser;
+      if (u != null) {
+        final t = await u.getIdToken(true); // forceRefresh : token frais à chaque lancement
+        if (t != null) {
+          final path = Platform.isAndroid
+              ? '/data/data/com.otadex.otadex/idtoken.txt'
+              : '/tmp/idtoken.txt';
+          await File(path).writeAsString(t);
+          debugPrint('IDTOKEN écrit dans $path');
+        }
+      }
+    }
+    // === FIN DEBUG ===
   });
 }
 
