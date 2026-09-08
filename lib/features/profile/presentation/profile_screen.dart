@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -79,14 +78,15 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     );
   }
 
-  // ── Menu développeur (kDebugMode + UID créateur uniquement) ───────────────
+  // ── Menu développeur ─────────────────────────────────────────────────────
+  // Réservé aux développeurs déclarés (`.env`). Garde-fou release : en build
+  // release, seuls ces comptes y ont accès ; ailleurs, n'importe quel build
+  // debug/profile de ces comptes le débloque.
 
   void _onHeroTap() {
-    if (!kDebugMode) return;
     final profile = ref.read(userProfileProvider);
-    final uid = profile.id;
-    final email = profile.email;
-    if (!kDeveloperUids.contains(uid) && !kDeveloperEmails.contains(email)) return;
+    if (!devToolsAllowed(uid: profile.id, email: profile.email)) return;
+    if (!isDeveloperIdentity(uid: profile.id, email: profile.email)) return;
     _devTapCount++;
     if (_devTapCount >= 7) {
       _devTapCount = 0;

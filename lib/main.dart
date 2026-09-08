@@ -43,14 +43,14 @@ void main() async {
 
   final userRank = UserRankX.fromString(rankStr);
 
-  // Override rang du menu développeur : rechargé UNIQUEMENT si l'utilisateur
-  // courant est un développeur. Ne touche jamais au rang réel.
-  final isDeveloper = kDeveloperUids.contains(userId) ||
-      kDeveloperEmails.contains(email);
+  // Override rang du menu développeur : rechargé UNIQUEMENT si les outils dev
+  // sont autorisés pour cette identité (garde-fou release). Ne touche jamais
+  // au rang réel.
   final devOverrideStr = prefs.getString(AppConstants.keyDevRankOverride);
-  final initialDevRankOverride = (isDeveloper && devOverrideStr != null)
-      ? UserRankX.fromString(devOverrideStr)
-      : null;
+  final initialDevRankOverride =
+      (devToolsAllowed(uid: userId, email: email) && devOverrideStr != null)
+          ? UserRankX.fromString(devOverrideStr)
+          : null;
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -146,12 +146,7 @@ Future<void> _checkLicenseExpiry(
   // Ne jamais rétrograder un développeur vers Genin.
   final devUser = FirebaseAuth.instance.currentUser ??
       (await FirebaseAuth.instance.authStateChanges().first);
-  final devUid = devUser?.uid;
-  final devEmail = devUser?.email;
-  if ((devUid != null && kDeveloperUids.contains(devUid)) ||
-      (devEmail != null && kDeveloperEmails.contains(devEmail))) {
-    return;
-  }
+  if (isDeveloperIdentity(uid: devUser?.uid, email: devUser?.email)) return;
 
   // 1. Chemin hors-ligne : expiration locale dépassée → Genin immédiatement.
   final expiresMs = prefs.getInt(AppConstants.keyLicenseExpires) ?? 0;

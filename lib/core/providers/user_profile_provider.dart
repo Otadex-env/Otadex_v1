@@ -2,16 +2,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/user_profile.dart';
 import '../models/user_rank.dart';
 
-// ── UIDs / emails développeur — bypass Chariow, menu debug ─────────────────
-// (Le rang Kage n'est plus forcé ici : voir devRankOverrideProvider dans
-//  core/subscription/rank_providers.dart.)
-const List<String> kDeveloperUids = [
-  'tYTfcUyV76MTQCEWuwq1yxTuuAH3', // TilStack
-];
-
-const List<String> kDeveloperEmails = [
-  'israel01tientcheu@gmail.com',
-];
+// Les développeurs déclarés (UIDs / emails) sont définis dans
+// `core/subscription/rank_providers.dart`, chargés depuis `.env`.
 
 class UserProfileNotifier extends StateNotifier<UserProfile> {
   UserProfileNotifier({
