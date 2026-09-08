@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_assets.dart';
-import '../../../core/constants/app_constants.dart';
 import '../../../core/models/character.dart';
 import '../../../core/providers/anilist_providers.dart';
 import '../../../core/providers/auth_provider.dart';
@@ -12,7 +11,6 @@ import '../../../core/theme/otadex_theme.dart';
 import '../../../core/widgets/auth_gate_modal.dart';
 import '../../../core/widgets/otadex_image.dart';
 import '../../../core/widgets/skeleton_loader.dart';
-import '../../../core/widgets/subscription_modal.dart';
 import 'widgets/char_detail_tab_bar.dart';
 import 'widgets/char_exclusif_tab.dart';
 import 'widgets/char_fab.dart';
@@ -65,18 +63,6 @@ class _CharacterDetailScreenState
       action();
     } else {
       showAuthGateModal(context);
-    }
-  }
-
-  void _guardJonin() {
-    if (!ref.read(isLoggedInProvider)) {
-      showAuthGateModal(context,
-          message:
-              'Connecte-toi pour accéder aux fonctionnalités premium Jonin+.');
-    } else if (kEnablePaidPlans) {
-      showSubscriptionModal(context, SubscriptionPlan.jonin);
-    } else {
-      context.push('/subscription');
     }
   }
 
@@ -256,7 +242,6 @@ class _CharacterDetailScreenState
                         ? _formatLikes(c.likes + 1)
                         : _formatLikes(c.likes),
                     onBack: () => context.pop(),
-                    onShare: _guardJonin,
                     onToggleLike: () => _guardAuth(_toggleLike),
                   ),
                 ),

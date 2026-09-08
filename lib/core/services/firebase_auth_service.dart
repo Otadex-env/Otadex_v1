@@ -87,13 +87,18 @@ class FirebaseAuthService {
       final firebaseUser = userCredential.user;
       if (firebaseUser == null) return;
 
-      await _createUserDocument(
-        uid: firebaseUser.uid,
-        pseudo: firebaseUser.displayName ?? user.displayName ?? 'Otaku',
-        email: firebaseUser.email ?? user.email,
-        merge: true,
-      );
-      final profile = await _getUserProfile(firebaseUser.uid);
+      // Doc créé UNIQUEMENT à la première connexion Google. Sur une
+      // reconnexion, on ne réécrit rien (sinon on remettrait score_fan /
+      // badges / created_at à leur valeur par défaut).
+      var profile = await _getUserProfile(firebaseUser.uid);
+      if (profile == null) {
+        await _createUserDocument(
+          uid: firebaseUser.uid,
+          pseudo: firebaseUser.displayName ?? user.displayName ?? 'Otaku',
+          email: firebaseUser.email ?? user.email,
+        );
+        profile = await _getUserProfile(firebaseUser.uid);
+      }
       await _persistUserSession(
         uid: firebaseUser.uid,
         pseudo: (profile?['pseudo'] as String?) ??
@@ -202,20 +207,21 @@ class FirebaseAuthService {
     required String uid,
     required String pseudo,
     required String email,
-    bool merge = false,
   }) async {
-    await _firestore.collection('users').doc(uid).set(
-      {
-        'uid': uid,
-        'pseudo': pseudo,
-        'email': email,
-        kFieldAbonnement: AppConstants.rankGenin,
-        'score_fan': 0,
-        'badges': [],
-        'created_at': FieldValue.serverTimestamp(),
-      },
-      merge ? SetOptions(merge: true) : null,
-    );
+    // `abonnement` / `licenseExpires` / `licenseKey` sont écrits UNIQUEMENT
+    // côté serveur (Worker de licences via compte de service). Les règles
+    // Firestore rejettent toute écriture de ces champs par le client. Le rang
+    // est semé par le premier POST /refresh ; tant que le champ est absent il
+    // vaut `genin` (UserRankX.fromString(null) → genin, storedRankProvider
+    // par défaut → genin).
+    await _firestore.collection('users').doc(uid).set({
+      'uid': uid,
+      'pseudo': pseudo,
+      'email': email,
+      'score_fan': 0,
+      'badges': [],
+      'created_at': FieldValue.serverTimestamp(),
+    });
   }
 
   Future<Map<String, dynamic>?> _getUserProfile(String uid) async {

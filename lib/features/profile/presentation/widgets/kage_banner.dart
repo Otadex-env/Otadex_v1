@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/l10n/app_strings.dart';
+import '../../../../core/subscription/rank_providers.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/otadex_theme.dart';
 
-class KageBanner extends StatelessWidget {
+class KageBanner extends ConsumerWidget {
   final VoidCallback onDismiss;
 
   const KageBanner({super.key, required this.onDismiss});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Rien à proposer à un Kage : on masque le bandeau.
+    if (ref.watch(effectiveRankProvider) == UserRank.kage) {
+      return const SizedBox.shrink();
+    }
+
     final theme = OtadexTheme.of(context);
     final s = AppStrings.of(context);
     return Container(
@@ -33,7 +41,7 @@ class KageBanner extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () => context.push('/subscription'),
             child: Text(
               s.seeOffer,
               style: GoogleFonts.nunitoSans(

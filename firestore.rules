@@ -1,69 +1,69 @@
 rules_version = '2';
-
 service cloud.firestore {
   match /databases/{database}/documents {
+
     function isSignedIn() {
       return request.auth != null;
     }
-
     function isOwner(userId) {
       return isSignedIn() && request.auth.uid == userId;
+    }
+    // Champs que seul le serveur (Worker / compte de service) peut écrire.
+    //
+    // score_fan et badges sont volontairement écrivables par le client.
+    // À REPASSER SERVEUR-ONLY avant toute activation du Fan du Mois avec
+    // récompense financière : un client peut falsifier son score.
+    function touchesProtected() {
+      return request.resource.data.diff(resource.data).affectedKeys()
+        .hasAny(['abonnement', 'licenseExpires', 'licenseKey', 'uid', 'email']);
     }
 
     match /users/{userId} {
       allow create: if isOwner(userId) && request.resource.data.uid == userId;
-      allow read, update, delete: if isOwner(userId);
+      allow read:   if isOwner(userId);
+      allow update: if isOwner(userId) && !touchesProtected();
+      allow delete: if isOwner(userId);
+
+      match /notifications/{notifId} {
+        allow read, write: if isOwner(userId);
+      }
     }
 
-    match /characters/{document=**} {
-      allow read: if true;
-      allow write: if false;
-    }
-
-    match /animes/{document=**} {
-      allow read: if true;
-      allow write: if false;
-    }
-
-    match /creators/{document=**} {
-      allow read: if true;
-      allow write: if false;
-    }
-
-    match /badges/{document=**} {
-      allow read: if true;
-      allow write: if false;
-    }
+    match /characters/{document=**} { allow read: if true; allow write: if false; }
+    match /animes/{document=**}     { allow read: if true; allow write: if false; }
+    match /creators/{document=**}   { allow read: if true; allow write: if false; }
+    match /badges/{document=**}     { allow read: if true; allow write: if false; }
+    match /studios/{studioId}       { allow read: if true; allow write: if false; }
+    match /quizzes/{quizId}         { allow read: if true; allow write: if false; }
 
     match /votes/{voteId} {
       allow read: if true;
       allow create: if isSignedIn()
         && request.resource.data.user_id == request.auth.uid
-        && !exists(/databases/$(database)/documents/votes/$(request.auth.uid + '_' + request.resource.data.character_id + '_' + request.resource.data.mois));
+        && voteId == request.auth.uid + '_'
+                   + request.resource.data.character_id + '_'
+                   + request.resource.data.mois;
       allow update, delete: if false;
-    }
-
-    match /studios/{studioId} {
-      allow read: if true;
-      allow write: if false;
     }
 
     match /comments/{commentId} {
       allow read: if true;
       allow create: if isSignedIn()
-        && request.resource.data.user_id == request.auth.uid;
-      allow update, delete: if isSignedIn()
-        && resource.data.user_id == request.auth.uid;
+        && request.resource.data.user_id == request.auth.uid
+        && request.resource.data.texte is string
+        && request.resource.data.texte.size() <= 1000;
+      allow update: if isSignedIn()
+        && resource.data.user_id == request.auth.uid
+        && request.resource.data.diff(resource.data).affectedKeys()
+             .hasOnly(['texte', 'updated_at']);
+      allow delete: if isSignedIn() && resource.data.user_id == request.auth.uid;
     }
 
     match /subscriptions/{subscriptionId} {
-      allow read: if isSignedIn()
-        && resource.data.user_id == request.auth.uid;
+      allow read: if isSignedIn() && resource.data.user_id == request.auth.uid;
       allow create, update, delete: if false;
     }
 
-    match /{document=**} {
-      allow read, write: if false;
-    }
+    match /{document=**} { allow read, write: if false; }
   }
 }

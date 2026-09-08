@@ -30,11 +30,13 @@ class CollectionService {
 
   Future<void> addToCollection(
     String characterId, {
-    required bool isGenin,
+    required int? collectionLimit,
     required int currentCount,
   }) async {
     if (_uid == null) throw 'Non connecté';
-    if (isGenin && currentCount >= 10) throw 'LIMIT_REACHED';
+    if (collectionLimit != null && currentCount >= collectionLimit) {
+      throw 'LIMIT_REACHED';
+    }
     await _userDoc.update({
       'collection': FieldValue.arrayUnion([characterId]),
     });

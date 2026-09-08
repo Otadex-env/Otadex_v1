@@ -89,12 +89,12 @@ class CharDetailFab extends ConsumerWidget {
     }
 
     final currentCount = collectionAsync.valueOrNull?.length ?? 0;
-    final isGenin = ref.read(effectiveRankProvider) == UserRank.genin;
+    final collectionLimit = ref.read(effectiveRankProvider).collectionLimit;
 
     try {
       await service.addToCollection(
         character.id,
-        isGenin: isGenin,
+        collectionLimit: collectionLimit,
         currentCount: currentCount,
       );
       if (context.mounted) {

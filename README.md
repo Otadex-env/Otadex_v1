@@ -228,6 +228,24 @@ Changer la langue : Profil → Paramètres → Langue → bottom sheet de sélec
 
 ---
 
+## Backend
+
+- **Firestore** — projet `tilqui`. Règles de sécurité : **`firestore.rules` à la
+  racine de ce repo** (c'est la source unique — pas de copie ailleurs).
+  Déploiement : `firebase deploy --only firestore:rules`. Le bloc `/users/{uid}`
+  interdit au client d'écrire `abonnement` / `licenseExpires` / `licenseKey` /
+  `uid` / `email` — ces champs sont réservés au serveur (Worker de licences).
+  `score_fan` et `badges` restent **écrivables par le client** (likes,
+  commentaires, votes, progression quiz du MVP en dépendent). **À repasser
+  serveur-only avant toute activation du Fan du Mois avec récompense
+  financière** : un client peut falsifier son score.
+- **Worker de licences** — repo séparé `Otadex-licenses` (Cloudflare Worker,
+  `https://otadex-licenses.israel01tientcheu.workers.dev`). Proxy sécurisé vers
+  l'API Chariow ; il détient la clé `sk_live_` et écrit le rang dans Firestore
+  via un compte de service (hors règles). Client : `lib/core/services/license_service.dart`.
+
+---
+
 ## Commandes utiles
 
 ```bash

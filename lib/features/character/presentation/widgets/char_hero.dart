@@ -12,7 +12,6 @@ class CharDetailHero extends StatefulWidget {
   final List<String> images;
   final String formattedLikes;
   final VoidCallback onBack;
-  final VoidCallback onShare;
   final VoidCallback onToggleLike;
 
   const CharDetailHero({
@@ -22,7 +21,6 @@ class CharDetailHero extends StatefulWidget {
     required this.images,
     required this.formattedLikes,
     required this.onBack,
-    required this.onShare,
     required this.onToggleLike,
   });
 
@@ -150,12 +148,10 @@ class _CharDetailHeroState extends State<CharDetailHero>
                     child: const Icon(Icons.arrow_back_ios_new_rounded,
                         color: Colors.white, size: 20),
                   ),
+                  // Bouton de partage retiré : le partage n'est pas encore
+                  // implémenté (share_plus non câblé). À rebrancher ici quand
+                  // ce sera le cas — voir char_hero git history / rapport audit.
                   const Spacer(),
-                  CharCircleButton(
-                    onTap: widget.onShare,
-                    child: const Icon(Icons.ios_share_rounded,
-                        color: Colors.white, size: 20),
-                  ),
                 ],
               ),
             ),

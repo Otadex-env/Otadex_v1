@@ -361,33 +361,54 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
 
                     const SizedBox(height: AppSpacing.xl),
 
-                    // Rank section title
-                    Text(
-                      s.chooseStartingRank,
-                      style: GoogleFonts.rajdhani(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.primary,
-                      ),
-                    ).animate().fadeIn(duration: 400.ms, delay: 550.ms),
-
-                    const SizedBox(height: 4),
-
-                    Text(
-                      s.canChangeLater,
-                      style: GoogleFonts.nunitoSans(
-                        fontSize: 12,
-                        color: AppColors.textSecondary,
-                      ),
-                    ).animate().fadeIn(duration: 400.ms, delay: 600.ms),
-
-                    const SizedBox(height: AppSpacing.md),
-
-                    RankSelector(
-                      initialRank: _selectedRank,
-                      onRankChanged: (r) => setState(() => _selectedRank = r),
-                    ).animate().fadeIn(duration: 500.ms, delay: 650.ms).slideY(
-                        begin: 0.1, end: 0, duration: 500.ms, delay: 650.ms),
+                    // Choix du rang de départ : réservé au moment où les plans
+                    // payants seront actifs (kEnablePaidPlans). D'ici là, tout
+                    // nouveau compte démarre en Genin — on l'annonce au lieu de
+                    // proposer un choix sans effet.
+                    if (kEnablePaidPlans) ...[
+                      Text(
+                        s.chooseStartingRank,
+                        style: GoogleFonts.rajdhani(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.primary,
+                        ),
+                      ).animate().fadeIn(duration: 400.ms, delay: 550.ms),
+                      const SizedBox(height: 4),
+                      Text(
+                        s.canChangeLater,
+                        style: GoogleFonts.nunitoSans(
+                          fontSize: 12,
+                          color: AppColors.textSecondary,
+                        ),
+                      ).animate().fadeIn(duration: 400.ms, delay: 600.ms),
+                      const SizedBox(height: AppSpacing.md),
+                      RankSelector(
+                        initialRank: _selectedRank,
+                        onRankChanged: (r) =>
+                            setState(() => _selectedRank = r),
+                      ).animate().fadeIn(duration: 500.ms, delay: 650.ms).slideY(
+                          begin: 0.1, end: 0, duration: 500.ms, delay: 650.ms),
+                    ] else ...[
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(14),
+                        decoration: BoxDecoration(
+                          color: AppColors.backgroundCard,
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: AppColors.borderSubtle),
+                        ),
+                        child: Text(
+                          'Tu démarres en Genin. Les plans Jonin et Kage '
+                          'seront disponibles prochainement.',
+                          style: GoogleFonts.nunitoSans(
+                            fontSize: 13,
+                            color: AppColors.textSecondary,
+                            height: 1.5,
+                          ),
+                        ),
+                      ).animate().fadeIn(duration: 400.ms, delay: 550.ms),
+                    ],
 
                     const SizedBox(height: AppSpacing.lg),
 
