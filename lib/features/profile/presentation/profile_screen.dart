@@ -84,9 +84,12 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   // debug/profile de ces comptes le débloque.
 
   void _onHeroTap() {
-    final profile = ref.read(userProfileProvider);
-    if (!devToolsAllowed(uid: profile.id, email: profile.email)) return;
-    if (!isDeveloperIdentity(uid: profile.id, email: profile.email)) return;
+    // Garde-fou release : le menu est inerte si kReleaseMode ET UID non
+    // développeur (devToolsEnabledProvider). On exige de toute façon une
+    // identité développeur déclarée (isDeveloperProvider) — en debug comme
+    // en release.
+    if (!ref.read(devToolsEnabledProvider)) return;
+    if (!ref.read(isDeveloperProvider)) return;
     _devTapCount++;
     if (_devTapCount >= 7) {
       _devTapCount = 0;
