@@ -54,8 +54,15 @@ Future<void> toggleCollection(
       ),
     );
   } catch (e) {
-    if (e == 'LIMIT_REACHED' && context.mounted) {
-      showCollectionLimitModal(context);
+    if (e == 'LIMIT_REACHED') {
+      if (context.mounted) showCollectionLimitModal(context);
+    } else {
+      // Jamais d'échec silencieux : réseau coupé, règles Firestore, etc.
+      messenger.showSnackBar(
+        const SnackBar(
+          content: Text('Impossible d\'ajouter ce personnage. Réessaie.'),
+        ),
+      );
     }
   }
 }

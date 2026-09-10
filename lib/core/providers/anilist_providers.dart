@@ -35,6 +35,16 @@ final atCharactersProvider = FutureProvider<List<Character>>((ref) {
       .getCharactersByAnime('attack-on-titan');
 });
 
+// ── Personnages d'un animé (par animeId, jamais en filtrant un catalogue
+//    plafonné) — cf. `getCharactersByIds` pour la collection ─────────────────
+final charactersByAnimeProvider = FutureProvider.autoDispose
+    .family<List<Character>, String>((ref, animeId) {
+  if (animeId.isEmpty) return Future.value(const <Character>[]);
+  return ref
+      .watch(firestoreCharacterServiceProvider)
+      .getCharactersByAnime(animeId);
+});
+
 // ── Commentaires temps réel pour un personnage ───────────────────────────────
 final commentsForCharacterProvider = StreamProvider.autoDispose
     .family<List<Map<String, dynamic>>, String>((ref, charId) {

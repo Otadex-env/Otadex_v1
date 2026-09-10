@@ -7,6 +7,7 @@ import '../../../core/constants/app_assets.dart';
 import '../../../core/models/anime_entry.dart';
 import '../../../core/models/character.dart';
 import '../../../core/models/creator_entry.dart';
+import '../../../core/providers/anilist_providers.dart';
 import '../../../core/providers/otadex_providers.dart';
 import '../../../core/widgets/skeleton_loader.dart';
 import '../../../core/theme/app_colors.dart';
@@ -32,7 +33,7 @@ class _AnimeDetailScreenState extends ConsumerState<AnimeDetailScreen> {
   Widget build(BuildContext context) {
     final theme = OtadexTheme.of(context);
     final animesAsync = ref.watch(allAnimesProvider);
-    final allCharsAsync = ref.watch(allCharactersProvider);
+    final charsAsync = ref.watch(charactersByAnimeProvider(widget.animeId));
     final allCreatorsAsync = ref.watch(allCreatorsProvider);
 
     return Scaffold(
@@ -46,12 +47,10 @@ class _AnimeDetailScreenState extends ConsumerState<AnimeDetailScreen> {
           if (matching.isEmpty) return _buildErrorState(theme);
           final anime = matching.first;
 
-          final allChars = allCharsAsync.valueOrNull ?? [];
-          final characters = allChars
-              .where((c) =>
-                  c.animeName == anime.name || c.animeId == anime.id)
-              .take(6)
-              .toList();
+          // Personnages requêtés PAR animeId dans Firestore — pas de filtre sur
+          // un catalogue plafonné (le top-20 masquait les persos peu classés).
+          final characters =
+              (charsAsync.valueOrNull ?? const <Character>[]).take(6).toList();
 
           final allCreators = allCreatorsAsync.valueOrNull ?? [];
           final creatorMatches = anime.creatorId != null
