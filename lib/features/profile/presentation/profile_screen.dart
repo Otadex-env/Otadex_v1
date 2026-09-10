@@ -5,7 +5,7 @@ import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/l10n/locale_provider.dart';
-import '../../../core/providers/otadex_providers.dart';
+import '../../../core/providers/anilist_providers.dart';
 import '../../../core/subscription/rank_providers.dart';
 import '../../../core/providers/user_profile_provider.dart';
 import '../../../core/theme/app_colors.dart';
@@ -233,13 +233,14 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   Widget build(BuildContext context) {
     final locale = ref.watch(localeProvider);
     final profile = ref.watch(userProfileProvider);
-    final collectedIds = profile.collectedCharacterIds;
-    final allCharsAsync = ref.watch(allCharactersProvider);
-    final collectionItems = allCharsAsync.valueOrNull
-            ?.where((c) => collectedIds.contains(c.id))
-            .map((c) => (c.name, c.cardColor, c.accentColor, true))
+    // Compteur & personnages : MÊME source unique que l'écran Collection.
+    final collectCount = ref.watch(collectionCountProvider);
+    final collectionItems = ref
+            .watch(collectedCharactersProvider)
+            .valueOrNull
+            ?.map((c) => (c.name, c.cardColor, c.accentColor, true))
             .toList() ??
-        [];
+        const <(String, Color, Color, bool)>[];
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -254,7 +255,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
           ),
           const SizedBox(height: 20),
           ProfileStatRow(
-            collectCount: collectedIds.length,
+            collectCount: collectCount,
             fanScore: profile.fanScore,
             rankCount: profile.rankCount,
           ),
@@ -268,7 +269,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
             progressPct: profile.progressPct,
             currentPts: profile.currentPts,
             maxPts: profile.maxPts,
-            collectCount: collectedIds.length,
+            collectCount: collectCount,
             collectionItems: collectionItems,
             fanLevel: profile.fanLevel,
             fanLevelName: profile.fanLevelName,

@@ -152,6 +152,29 @@ final collectionStreamProvider = StreamProvider.autoDispose<List<String>>((ref) 
   return service.collectionStream();
 });
 
+/// SOURCE UNIQUE du nombre d'éléments en collection — même principe
+/// qu'`effectiveRankProvider` pour le rang. Dérive du tableau Firestore
+/// `users/{uid}.collection`. TOUT affichage de compteur de collection (titre,
+/// bandeau, stat profil, FAB…) DOIT lire ceci — jamais `.where()` sur un
+/// catalogue plafonné, jamais un compteur local.
+final collectionCountProvider = Provider.autoDispose<int>((ref) {
+  return ref.watch(collectionStreamProvider).maybeWhen(
+        data: (ids) => ids.length,
+        orElse: () => 0,
+      );
+});
+
+/// Personnages en collection, résolus PAR ID via `whereIn` (jamais en filtrant
+/// un catalogue plafonné). Par construction `length == collectionCountProvider`
+/// dès que les données sont chargées.
+final collectedCharactersProvider =
+    FutureProvider.autoDispose<List<Character>>((ref) async {
+  final ids = ref.watch(collectionStreamProvider).valueOrNull ?? const [];
+  if (ids.isEmpty) return const [];
+  final service = ref.watch(firestoreCharacterServiceProvider);
+  return service.getCharactersByIds(ids);
+});
+
 final isCollectedProvider = Provider.autoDispose.family<bool, String>((ref, charId) {
   final collection = ref.watch(collectionStreamProvider);
   return collection.maybeWhen(

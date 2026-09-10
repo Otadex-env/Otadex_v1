@@ -167,36 +167,13 @@ class _CollectionHeader extends StatelessWidget {
     final s = AppStrings.of(context);
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 20, 16, 12),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            '${s.myCollection} ($collectCount)',
-            style: GoogleFonts.rajdhani(
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-              color: theme.textPrimary,
-            ),
-          ),
-          GestureDetector(
-            onTap: () {},
-            child: Row(
-              children: [
-                Icon(Icons.add_circle_outline_rounded,
-                    color: theme.accentColor, size: 14),
-                const SizedBox(width: 4),
-                Text(
-                  s.manage,
-                  style: GoogleFonts.nunitoSans(
-                    fontSize: 12,
-                    color: theme.accentColor,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+      child: Text(
+        '${s.myCollection} ($collectCount)',
+        style: GoogleFonts.rajdhani(
+          fontSize: 16,
+          fontWeight: FontWeight.w700,
+          color: theme.textPrimary,
+        ),
       ),
     );
   }

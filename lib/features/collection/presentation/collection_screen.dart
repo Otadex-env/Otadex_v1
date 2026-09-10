@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/models/character.dart';
 import '../../../core/providers/anilist_providers.dart';
-import '../../../core/providers/otadex_providers.dart';
 import '../../../core/subscription/rank_providers.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/image_prefetcher.dart';
@@ -17,7 +16,8 @@ class CollectionScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final collectionAsync = ref.watch(collectionStreamProvider);
-    final allCharsAsync = ref.watch(allCharactersProvider);
+    // SOURCE UNIQUE du compteur (titre, bandeau, tout).
+    final count = ref.watch(collectionCountProvider);
     final collectionLimit = ref.watch(effectiveRankProvider).collectionLimit;
 
     return collectionAsync.when(
@@ -39,74 +39,66 @@ class CollectionScreen extends ConsumerWidget {
             ],
           );
         }
-        return allCharsAsync.when(
-          loading: () => const SkeletonList(count: 4),
-          error: (_, __) => const Center(
-            child: Text(
-              'Erreur de chargement',
-              style: TextStyle(color: AppColors.textSecondary),
+
+        // Personnages résolus PAR ID — `charsAsync.length == count`.
+        final charsAsync = ref.watch(collectedCharactersProvider);
+        final showLimitBanner =
+            collectionLimit != null && count >= collectionLimit - 2;
+
+        return CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+                child: Text(
+                  'Ma Collection',
+                  style: GoogleFonts.dmSans(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w800,
+                    color: AppColors.textPrimary,
+                  ),
+                ),
+              ),
             ),
-          ),
-          data: (allChars) {
-            final characters =
-                allChars.where((c) => collectedIds.contains(c.id)).toList();
-            final showLimitBanner = collectionLimit != null &&
-                collectedIds.length >= collectionLimit - 2;
-
-            if (characters.isEmpty) {
-              return const CustomScrollView(
-                slivers: [
-                  SliverFillRemaining(
-                    hasScrollBody: false,
-                    child: _EmptyState(),
-                  ),
-                ],
-              );
-            }
-
-            return CustomScrollView(
-              slivers: [
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-                    child: Text(
-                      'Ma Collection',
-                      style: GoogleFonts.dmSans(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w800,
-                        color: AppColors.textPrimary,
-                      ),
-                    ),
+            if (showLimitBanner)
+              SliverToBoxAdapter(
+                child: _LimitBanner(count: count, limit: collectionLimit),
+              ),
+            SliverToBoxAdapter(child: _CollectionHeader(count: count)),
+            charsAsync.when(
+              loading: () => const SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 40),
+                  child: SkeletonList(count: 3),
+                ),
+              ),
+              error: (_, __) => const SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 40),
+                  child: Center(
+                    child: Text('Erreur de chargement',
+                        style: TextStyle(color: AppColors.textSecondary)),
                   ),
                 ),
-                if (showLimitBanner)
-                  SliverToBoxAdapter(
-                    child: _LimitBanner(
-                      collected: collectedIds.length,
-                      limit: collectionLimit,
-                    ),
+              ),
+              data: (characters) => SliverPadding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 100),
+                sliver: SliverGrid(
+                  delegate: SliverChildBuilderDelegate(
+                    (ctx, i) => _CharCard(character: characters[i]),
+                    childCount: characters.length,
                   ),
-                SliverToBoxAdapter(
-                    child: _CollectionHeader(count: characters.length)),
-                SliverPadding(
-                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 100),
-                  sliver: SliverGrid(
-                    delegate: SliverChildBuilderDelegate(
-                      (ctx, i) => _CharCard(character: characters[i]),
-                      childCount: characters.length,
-                    ),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 8,
-                      mainAxisSpacing: 8,
-                      childAspectRatio: 112 / 170,
-                    ),
+                  gridDelegate:
+                      const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 8,
+                    mainAxisSpacing: 8,
+                    childAspectRatio: 112 / 170,
                   ),
                 ),
-              ],
-            );
-          },
+              ),
+            ),
+          ],
         );
       },
     );
@@ -176,42 +168,64 @@ class _EmptyState extends StatelessWidget {
   }
 }
 
+/// Bandeau de limite — trois états distincts pilotés par le compteur unique :
+///   • `count < limit - 2`   → non affiché (le parent ne le construit pas)
+///   • `limit - 2 ≤ count < limit` → « Plus que X place(s) »
+///   • `count >= limit`      → « Collection pleine (N/limit) » + comment débloquer
 class _LimitBanner extends StatelessWidget {
-  final int collected;
+  final int count;
   final int limit;
-  const _LimitBanner({required this.collected, required this.limit});
+  const _LimitBanner({required this.count, required this.limit});
 
   @override
   Widget build(BuildContext context) {
+    final full = count >= limit;
+    final remaining = limit - count;
+    final message = full
+        ? '🔒 Collection pleine ($count/$limit) · passe Jonin pour une collection illimitée'
+        : '⚠️ Plus que $remaining place${remaining > 1 ? 's' : ''} dans ta collection';
+    final accent = full ? AppColors.error : AppColors.warning;
+
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 0, 16, 8),
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+      padding: const EdgeInsets.fromLTRB(12, 4, 4, 4),
       decoration: BoxDecoration(
         color: AppColors.backgroundCard,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.warning.withValues(alpha: 0.4)),
+        border: Border.all(color: accent.withValues(alpha: 0.4)),
       ),
       child: Row(
         children: [
           Expanded(
             child: Text(
-              '⚠️ Tu approches de la limite ($collected/$limit) · Jonin pour une collection illimitée',
+              message,
               style: GoogleFonts.nunitoSans(
                 fontSize: 13,
                 color: AppColors.textSecondary,
               ),
             ),
           ),
-          const SizedBox(width: 8),
-          GestureDetector(
-            onTap: () => context.push('/subscription'),
-            child: Text(
-              'Voir →',
-              style: GoogleFonts.nunitoSans(
-                fontSize: 13,
-                fontWeight: FontWeight.w600,
-                color: AppColors.accent,
-              ),
+          const SizedBox(width: 4),
+          TextButton(
+            onPressed: () => context.push('/subscription'),
+            style: TextButton.styleFrom(
+              minimumSize: const Size(44, 44),
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              foregroundColor: AppColors.accent,
+              tapTargetSize: MaterialTapTargetSize.padded,
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Voir',
+                  style: GoogleFonts.nunitoSans(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                const Icon(Icons.chevron_right_rounded, size: 18),
+              ],
             ),
           ),
         ],
@@ -228,26 +242,13 @@ class _CollectionHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            'Ma Collection ($count)',
-            style: GoogleFonts.nunitoSans(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: AppColors.textPrimary,
-            ),
-          ),
-          Text(
-            'Gérer',
-            style: GoogleFonts.nunitoSans(
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
-              color: AppColors.accent,
-            ),
-          ),
-        ],
+      child: Text(
+        'Ma Collection ($count)',
+        style: GoogleFonts.nunitoSans(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+          color: AppColors.textPrimary,
+        ),
       ),
     );
   }

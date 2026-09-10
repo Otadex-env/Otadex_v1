@@ -134,6 +134,36 @@ class FirestoreCharacterService {
     }
   }
 
+  /// Résout une liste d'IDs personnage en objets [Character], PAR ID
+  /// (`whereIn` par lots de 10) — jamais en filtrant un catalogue plafonné.
+  /// L'ordre de sortie suit celui de [ids] ; les IDs introuvables sont ignorés.
+  Future<List<Character>> getCharactersByIds(List<String> ids) async {
+    if (ids.isEmpty) return const [];
+    try {
+      final chunks = <List<String>>[];
+      for (var i = 0; i < ids.length; i += 10) {
+        chunks.add(ids.sublist(i, i + 10 > ids.length ? ids.length : i + 10));
+      }
+      final snaps = await Future.wait(chunks.map((chunk) => _db
+          .collection('characters')
+          .where(FieldPath.documentId, whereIn: chunk)
+          .get()));
+      final byId = <String, Character>{};
+      for (final snap in snaps) {
+        for (final d in snap.docs) {
+          byId[d.id] = _characterFromFirestore(d.id, d.data());
+        }
+      }
+      return [
+        for (final id in ids)
+          if (byId[id] != null) byId[id]!,
+      ];
+    } catch (e) {
+      debugPrint('⚠️ Firestore getCharactersByIds error: $e');
+      return const [];
+    }
+  }
+
   // ── Quizzes ──────────────────────────────────────────────────────────────────
   Future<List<QuizQuestion>> getQuizForCharacter(String characterId) async {
     try {

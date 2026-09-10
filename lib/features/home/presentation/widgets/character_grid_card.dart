@@ -2,17 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
-import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/models/character.dart';
-import '../../../../../core/providers/auth_provider.dart';
-import '../../../../../core/providers/user_profile_provider.dart';
-import '../../../../../core/subscription/rank_providers.dart';
+import '../../../../../core/providers/anilist_providers.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/otadex_theme.dart';
 import '../../../../../core/constants/app_assets.dart';
-import '../../../../../core/widgets/auth_gate_modal.dart';
+import '../../../../../core/widgets/collection_toggle.dart';
 import '../../../../../core/widgets/otadex_image.dart';
-import '../../../../../core/widgets/subscription_modal.dart';
 
 class CharacterGridCard extends ConsumerStatefulWidget {
   final Character character;
@@ -226,68 +222,42 @@ class _CharacterGridCardState extends ConsumerState<CharacterGridCard> {
                 Positioned(
                   top: 10,
                   right: 10,
-                  child: GestureDetector(
-                    onTap: () {
-                      final isLoggedIn = ref.read(isLoggedInProvider);
-                      if (!isLoggedIn) {
-                        showAuthGateModal(context);
-                        return;
-                      }
-                      final notifier = ref.read(userProfileProvider.notifier);
-                      final isCollected = ref
-                          .read(userProfileProvider)
-                          .collectedCharacterIds
-                          .contains(character.id);
-                      try {
-                        if (isCollected) {
-                          notifier.removeFromCollection(character.id);
-                        } else {
-                          notifier.addToCollection(
-                            character.id,
-                            collectionLimit:
-                                ref.read(effectiveRankProvider).collectionLimit,
-                          );
-                        }
-                      } catch (_) {
-                        if (kEnablePaidPlans) {
-                          showSubscriptionModal(
-                              context, SubscriptionPlan.jonin);
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text(
-                                  'Limite de 10 personnages atteinte sur le plan Genin.'),
+                  child: Builder(builder: (context) {
+                    // Même source & même chemin d'écriture que le FAB de fiche
+                    // (collection Firestore). Zone tactile 44×44.
+                    final isCollected =
+                        ref.watch(isCollectedProvider(character.id));
+                    return GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onTap: () => toggleCollection(context, ref, character),
+                      child: SizedBox(
+                        width: 44,
+                        height: 44,
+                        child: Center(
+                          child: Container(
+                            width: 34,
+                            height: 34,
+                            decoration: BoxDecoration(
+                              color: theme.backgroundPrimary
+                                  .withValues(alpha: 0.75),
+                              shape: BoxShape.circle,
                             ),
-                          );
-                        }
-                      }
-                    },
-                    child: Container(
-                      width: 34,
-                      height: 34,
-                      decoration: BoxDecoration(
-                        color: theme.backgroundPrimary.withValues(alpha: 0.75),
-                        shape: BoxShape.circle,
-                      ),
-                      child: Center(
-                        child: Icon(
-                          ref
-                                  .watch(userProfileProvider)
-                                  .collectedCharacterIds
-                                  .contains(character.id)
-                              ? Icons.bookmark_rounded
-                              : Icons.bookmark_border_rounded,
-                          color: ref
-                                  .watch(userProfileProvider)
-                                  .collectedCharacterIds
-                                  .contains(character.id)
-                              ? AppColors.rankJonin
-                              : theme.textSecondary,
-                          size: 18,
+                            child: Center(
+                              child: Icon(
+                                isCollected
+                                    ? Icons.bookmark_rounded
+                                    : Icons.bookmark_border_rounded,
+                                color: isCollected
+                                    ? AppColors.rankJonin
+                                    : theme.textSecondary,
+                                size: 18,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
+                    );
+                  }),
                 ),
               ],
             ),

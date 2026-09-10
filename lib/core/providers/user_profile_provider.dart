@@ -53,30 +53,10 @@ class UserProfileNotifier extends StateNotifier<UserProfile> {
     );
   }
 
-  /// [collectionLimit] : `null` = illimité (voir `UserRank.collectionLimit`).
-  void addToCollection(String characterId, {required int? collectionLimit}) {
-    if (collectionLimit != null &&
-        state.collectedCharacterIds.length >= collectionLimit) {
-      throw Exception('LIMIT_REACHED');
-    }
-    if (state.collectedCharacterIds.contains(characterId)) return;
-    final newIds = [...state.collectedCharacterIds, characterId];
-    state = state.copyWith(
-      collectedCharacterIds: newIds,
-      collectCount: newIds.length,
-      updatedAt: DateTime.now(),
-    );
-  }
-
-  void removeFromCollection(String characterId) {
-    final newIds =
-        state.collectedCharacterIds.where((id) => id != characterId).toList();
-    state = state.copyWith(
-      collectedCharacterIds: newIds,
-      collectCount: newIds.length,
-      updatedAt: DateTime.now(),
-    );
-  }
+  // La collection vit UNIQUEMENT dans Firestore (`users/{uid}.collection`),
+  // exposée par `collectionStreamProvider` / `collectionCountProvider` /
+  // `collectedCharactersProvider`. Écriture via `CollectionService` (cf.
+  // `toggleCollection`). Aucun miroir local ici — une seule source.
 }
 
 final userProfileProvider =

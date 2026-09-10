@@ -59,8 +59,6 @@ class _CharDetailHeroState extends State<CharDetailHero>
     super.dispose();
   }
 
-  int get _collectionCount => (c.likes * 0.20).round();
-
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context);
@@ -220,12 +218,6 @@ class _CharDetailHeroState extends State<CharDetailHero>
                     _actionChip(
                       icon: Icons.star_rounded,
                       label: c.rating.toStringAsFixed(1),
-                    ),
-                    const Spacer(),
-                    Text(
-                      '🎴 $_collectionCount collections',
-                      style: GoogleFonts.nunitoSans(
-                          fontSize: 11, color: Colors.white54),
                     ),
                   ],
                 ),
