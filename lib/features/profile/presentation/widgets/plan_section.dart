@@ -4,8 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/l10n/app_strings.dart';
 import '../../../../core/subscription/rank_providers.dart';
-import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/otadex_theme.dart';
+import '../../../../core/theme/rank_theme.dart';
 import '../../../../core/utils/price_formatter.dart';
 import '../../../../core/widgets/subscription_modal.dart';
 import 'billing_toggle.dart';
@@ -27,6 +27,13 @@ class PlanSection extends ConsumerWidget {
     final s = AppStrings.of(context);
     final isAnnual = billingCycle == 'annuel';
     final rank = ref.watch(effectiveRankProvider);
+    final brightness = Theme.of(context).brightness;
+    final geninColor =
+        RankTheme.planColorOf(UserRank.genin, brightness: brightness);
+    final joninColor =
+        RankTheme.planColorOf(UserRank.jonin, brightness: brightness);
+    final kageColor =
+        RankTheme.planColorOf(UserRank.kage, brightness: brightness);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
@@ -47,7 +54,7 @@ class PlanSection extends ConsumerWidget {
           PlanCard(
             name: 'Genin',
             tag: rank == UserRank.genin ? s.currentPlanTag : null,
-            tagColor: AppColors.success,
+            tagColor: geninColor,
             price: PlanPrices.free,
             priceColor: theme.textPrimary,
             features: [
@@ -58,7 +65,7 @@ class PlanSection extends ConsumerWidget {
             ],
             buttonLabel: s.planActualButton,
             buttonEnabled: false,
-            borderColor: AppColors.success.withValues(alpha: 0.4),
+            borderColor: geninColor.withValues(alpha: 0.4),
             isCta: false,
           ),
           const SizedBox(height: 12),
@@ -66,9 +73,9 @@ class PlanSection extends ConsumerWidget {
           PlanCard(
             name: 'Jonin',
             tag: rank == UserRank.jonin ? s.currentPlanTag : null,
-            tagColor: AppColors.rankJonin,
+            tagColor: joninColor,
             price: PlanPrices.jonin(annual: isAnnual),
-            priceColor: AppColors.rankJonin,
+            priceColor: joninColor,
             features: [
               (true, s.unlimitedCollection),
               (true, s.noAds),
@@ -79,11 +86,13 @@ class PlanSection extends ConsumerWidget {
                 ? s.planActualButton
                 : s.upgradeToJoninButton,
             buttonEnabled: rank != UserRank.jonin,
-            borderColor: AppColors.rankJonin,
+            borderColor: joninColor,
             isCta: false,
             // CTA d'achat masqué hors Play Billing ; le badge "PLAN ACTUEL"
-            // reste affiché pour le plan courant.
+            // reste affiché pour le plan courant, sinon un bouton désactivé
+            // "Bientôt disponible" (aucune zone tapable inerte).
             hideButton: !kEnablePaidPlans && rank != UserRank.jonin,
+            unavailableLabel: s.comingSoon,
             onUpgrade: kEnablePaidPlans
                 ? () => showSubscriptionModal(context, SubscriptionPlan.jonin)
                 : null,
@@ -93,9 +102,9 @@ class PlanSection extends ConsumerWidget {
           PlanCard(
             name: '⭐ Kage Pass',
             tag: rank == UserRank.kage ? s.currentPlanTag : null,
-            tagColor: AppColors.rankJonin,
+            tagColor: kageColor,
             price: PlanPrices.kage(annual: isAnnual),
-            priceColor: AppColors.rankJonin,
+            priceColor: kageColor,
             features: [
               (true, s.joninIncluded),
               (true, s.aiImageGen),
@@ -106,9 +115,10 @@ class PlanSection extends ConsumerWidget {
                 ? s.planActualButton
                 : s.upgradeToKageButton,
             buttonEnabled: rank != UserRank.kage,
-            borderColor: AppColors.rankJonin,
+            borderColor: kageColor,
             isCta: true,
             hideButton: !kEnablePaidPlans && rank != UserRank.kage,
+            unavailableLabel: s.comingSoon,
             onUpgrade: kEnablePaidPlans
                 ? () => showSubscriptionModal(context, SubscriptionPlan.kage)
                 : null,

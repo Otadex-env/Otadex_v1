@@ -152,8 +152,10 @@ class CharDetailFab extends ConsumerWidget {
                       borderRadius: BorderRadius.circular(12)),
                 ),
                 onPressed: () {
+                  // Routeur capturé avant le pop de la modale.
+                  final router = GoRouter.of(context);
                   Navigator.pop(context);
-                  context.push('/subscription');
+                  router.push('/subscription');
                 },
                 child: Text(
                   'Devenir Jonin — $joninMonthly',

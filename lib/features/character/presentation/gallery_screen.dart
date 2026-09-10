@@ -76,12 +76,16 @@ class _GalleryScreenState extends ConsumerState<GalleryScreen> {
         ),
       );
     } else {
+      // Le routeur est capturé maintenant : le SnackBar (porté par le
+      // ScaffoldMessenger racine) survit à cet écran, mais `context` non —
+      // `GoRouter.of(context)` planterait après un pop.
+      final router = GoRouter.of(context);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: const Text('📥 Téléchargé avec filigrane'),
           action: SnackBarAction(
             label: 'Voir Kage',
-            onPressed: () => context.push('/subscription'),
+            onPressed: () => router.push('/subscription'),
           ),
           duration: const Duration(seconds: 4),
         ),

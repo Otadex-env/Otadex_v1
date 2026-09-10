@@ -55,15 +55,31 @@ class AppConstants {
 const String kFieldAbonnement = 'abonnement';
 
 // ── Plans payants ────────────────────────────────────────────────────────────
-/// Active les parcours de paiement hors Google Play Billing (liens store
-/// Chariow, modal d'abonnement, écran d'activation de licence).
+/// Active les parcours d'ACHAT hors Google Play Billing : liens store Chariow,
+/// prix affichés dans un contexte d'achat, boutons « Passer Jonin/Kage » et
+/// « Passer au premium », `showSubscriptionModal`, bandeau « Passe Kage » du
+/// profil, section Support de la page Profil.
 ///
 /// `false` par défaut : la soumission Play Store interdit de rediriger vers un
-/// paiement externe pour du contenu numérique. Passer à `true` réactive TOUS
-/// les CTA d'achat, le `showSubscriptionModal`, les URLs `store.tilstack.me`
-/// et les points d'entrée vers `/activate-license` — sans autre modification.
+/// paiement externe pour du contenu numérique.
 ///
+/// Ne contrôle PAS l'activation de licence par clé — voir [kEnableLicenseEntry].
 /// N'affecte NI le menu développeur NI l'override de rang (`devRankOverrideProvider`).
 /// Les cartes de plan restent visibles et informatives (features + prix FCFA)
 /// quelle que soit la valeur du flag.
 const bool kEnablePaidPlans = false;
+
+/// Active le point d'entrée d'activation de licence par clé (champ de saisie
+/// + bouton « Activer »).
+///
+/// Indépendant de [kEnablePaidPlans] : un champ de saisie de clé, SANS prix,
+/// lien store ni CTA d'achat, est conforme Play Store (modèle des apps de
+/// streaming dont l'abonnement se souscrit ailleurs). La redirection vers un
+/// paiement externe — le seul point bloquant — reste gouvernée par
+/// [kEnablePaidPlans].
+///
+/// `true` débloque : la route `/activate-license`, le bouton discret
+/// « J'ai une clé de licence » en bas de l'écran Plans, l'entrée
+/// Profil > Compte, le bouton de la carte Abonnement (Genin), et l'écran
+/// d'activation lui-même (champ + bouton Activer, aucun texte d'achat).
+const bool kEnableLicenseEntry = true;

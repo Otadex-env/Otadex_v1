@@ -115,28 +115,58 @@ class _SubscriptionCardState extends ConsumerState<SubscriptionCard> {
               color: AppColors.textSecondary,
             ),
           ),
-          const SizedBox(height: 14),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () => context.push('/subscription'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.rankJonin,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+          // « Passer au premium » (achat) n'apparaît qu'avec kEnablePaidPlans.
+          // Sinon, si l'activation par clé est ouverte, un bouton honnête vers
+          // l'écran d'activation. Aucun des deux → pas de bouton.
+          if (kEnablePaidPlans) ...[
+            const SizedBox(height: 14),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () => context.push('/subscription'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.rankJonin,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 12),
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 12),
-              ),
-              child: Text(
-                'Passer au premium',
-                style: GoogleFonts.nunitoSans(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white,
+                child: Text(
+                  'Passer au premium',
+                  style: GoogleFonts.nunitoSans(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
-          ),
+          ] else if (kEnableLicenseEntry) ...[
+            const SizedBox(height: 14),
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton.icon(
+                onPressed: () => context.push('/activate-license'),
+                style: OutlinedButton.styleFrom(
+                  side: const BorderSide(color: AppColors.rankJonin),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                ),
+                icon: const Icon(Icons.vpn_key_rounded,
+                    size: 16, color: AppColors.rankJonin),
+                label: Text(
+                  "J'ai une clé de licence",
+                  style: GoogleFonts.nunitoSans(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.rankJonin,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ],
       ),
     );

@@ -155,7 +155,7 @@ class _LicenseActivationScreenState
               ),
               const SizedBox(height: 8),
               Text(
-                'Achète une licence Jonin ou Kage sur le store OTADEX, puis colle ta clé ici pour débloquer les fonctionnalités premium.',
+                'Colle la clé qui t\'a été communiquée pour débloquer les fonctionnalités Jonin ou Kage sur ton compte.',
                 style: GoogleFonts.nunitoSans(
                   fontSize: 14,
                   color: AppColors.textSecondary,
@@ -251,9 +251,9 @@ class _LicenseActivationScreenState
               const SizedBox(height: 12),
               _buildInfoCard(
                 icon: Icons.help_outline_rounded,
-                title: 'Tu n\'as pas encore de licence ?',
+                title: 'Tu n\'as pas encore de clé ?',
                 body:
-                    'Rends-toi sur la page Plans pour choisir Jonin ou Kage et obtenir ta clé depuis le store OTADEX.',
+                    'Les offres Jonin et Kage arrivent prochainement dans l\'app. Cette page sert à activer une clé déjà en ta possession.',
               ),
             ],
           ),

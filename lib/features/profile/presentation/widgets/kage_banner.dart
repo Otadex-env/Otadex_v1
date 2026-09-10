@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/l10n/app_strings.dart';
 import '../../../../core/subscription/rank_providers.dart';
 import '../../../../core/theme/app_colors.dart';
@@ -14,6 +15,9 @@ class KageBanner extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // Bandeau promotionnel d'achat : masqué hors parcours de paiement
+    // (kEnablePaidPlans). L'activation par clé a ses propres points d'entrée.
+    if (!kEnablePaidPlans) return const SizedBox.shrink();
     // Rien à proposer à un Kage : on masque le bandeau.
     if (ref.watch(effectiveRankProvider) == UserRank.kage) {
       return const SizedBox.shrink();

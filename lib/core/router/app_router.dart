@@ -154,13 +154,14 @@ class AppRouter {
       GoRoute(
         path: '/activate-license',
         name: 'activate-license',
-        // Parcours d'activation de licence payante (Chariow). Tant que
-        // kEnablePaidPlans est false, la route est inerte : tout accès
-        // (deep link, navigation manuelle) est redirigé vers l'écran
-        // informatif des plans. Aucun code supprimé — passe le flag à true
-        // pour la réactiver.
+        // Activation de licence par clé. Atteignable dès que l'un des deux
+        // flags l'autorise :
+        //   • kEnableLicenseEntry : champ de saisie seul (conforme Play Store)
+        //   • kEnablePaidPlans    : parcours d'achat complet (Chariow)
+        // Si les deux sont false, tout accès (deep link, navigation manuelle)
+        // est redirigé vers l'écran informatif des plans.
         redirect: (context, state) =>
-            kEnablePaidPlans ? null : '/subscription',
+            (kEnablePaidPlans || kEnableLicenseEntry) ? null : '/subscription',
         builder: (context, state) => const LicenseActivationScreen(),
       ),
       GoRoute(

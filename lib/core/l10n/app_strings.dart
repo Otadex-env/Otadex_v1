@@ -118,6 +118,8 @@ class AppStrings {
     required this.planActualButton,
     required this.upgradeToJoninButton,
     required this.upgradeToKageButton,
+    required this.comingSoon,
+    required this.haveLicenseKey,
     // ── Plan features (comparison cards) ──────────────────────────────────
     required this.sheetsNavigation,
     required this.likesComments,
@@ -296,6 +298,8 @@ class AppStrings {
   final String planActualButton;
   final String upgradeToJoninButton;
   final String upgradeToKageButton;
+  final String comingSoon;
+  final String haveLicenseKey;
   // ── Plan features (comparison cards) ──────────────────────────────────────
   final String sheetsNavigation;
   final String likesComments;
@@ -496,6 +500,8 @@ class AppStrings {
       planActualButton: 'Plan actuel',
       upgradeToJoninButton: 'Passer Jonin 🦊',
       upgradeToKageButton: 'Passer Kage 👑',
+      comingSoon: 'Bientôt disponible',
+      haveLicenseKey: "J'ai une clé de licence",
       sheetsNavigation: 'Fiches & navigation',
       likesComments: 'Likes & commentaires',
       adsShown: 'Publicités affichées',
@@ -675,6 +681,8 @@ class AppStrings {
     planActualButton: 'Current plan',
     upgradeToJoninButton: 'Get Jonin 🦊',
     upgradeToKageButton: 'Get Kage 👑',
+    comingSoon: 'Coming soon',
+    haveLicenseKey: 'I have a license key',
     sheetsNavigation: 'Profiles & navigation',
     likesComments: 'Likes & comments',
     adsShown: 'Ads displayed',
@@ -846,6 +854,8 @@ class AppStrings {
     planActualButton: '現在のプラン',
     upgradeToJoninButton: 'ジョニンへ 🦊',
     upgradeToKageButton: 'カゲへ 👑',
+    comingSoon: '近日公開',
+    haveLicenseKey: 'ライセンスキーを持っています',
     sheetsNavigation: 'プロフィール & ナビ',
     likesComments: 'いいね & コメント',
     adsShown: '広告あり',
@@ -1017,6 +1027,8 @@ class AppStrings {
     planActualButton: '当前计划',
     upgradeToJoninButton: '升至上忍 🦊',
     upgradeToKageButton: '升至影 👑',
+    comingSoon: '即将推出',
+    haveLicenseKey: '我有许可密钥',
     sheetsNavigation: '档案 & 导航',
     likesComments: '点赞 & 评论',
     adsShown: '显示广告',

@@ -4,7 +4,10 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../core/constants/app_constants.dart';
+import '../../../core/l10n/app_strings.dart';
+import '../../../core/models/user_rank.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/rank_theme.dart';
 import '../../../core/utils/price_formatter.dart';
 import '../../../core/widgets/dev_rank_override_banner.dart';
 import '../../profile/presentation/widgets/billing_toggle.dart';
@@ -29,12 +32,14 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
   String _kageUrl() => _isAnnual ? _kageAnnualUrl : _kageMonthlyUrl;
 
   Future<void> _buyPlan(String url) async {
+    // Capturé avant l'await : le routeur survit au widget, `context` non.
+    final router = GoRouter.of(context);
+    final messenger = ScaffoldMessenger.of(context);
     final uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
     }
-    if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
+    messenger.showSnackBar(
       SnackBar(
         content: Text(
           "Après ton achat, reviens ici pour activer ta licence 🔑",
@@ -45,7 +50,7 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
         action: SnackBarAction(
           label: 'Activer',
           textColor: AppColors.rankJonin,
-          onPressed: () => context.push('/activate-license'),
+          onPressed: () => router.push('/activate-license'),
         ),
       ),
     );
@@ -53,6 +58,9 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final s = AppStrings.of(context);
+    final joninColor = RankTheme.planColorOf(UserRank.jonin);
+    final kageColor = RankTheme.planColorOf(UserRank.kage);
     return Scaffold(
       backgroundColor: AppColors.backgroundDeep,
       appBar: AppBar(
@@ -107,9 +115,9 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
               PlanCard(
                 name: 'Jonin',
                 tag: 'POPULAIRE',
-                tagColor: AppColors.statBlue,
+                tagColor: joninColor,
                 price: PlanPrices.jonin(annual: _isAnnual),
-                priceColor: AppColors.statBlue,
+                priceColor: joninColor,
                 features: const [
                   (true, 'Collection illimitée'),
                   (true, 'Sans publicités'),
@@ -120,18 +128,19 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
                     ? 'Acheter Jonin Annuel'
                     : 'Acheter Jonin Mensuel',
                 buttonEnabled: true,
-                borderColor: AppColors.statBlue,
+                borderColor: joninColor,
                 isCta: true,
                 hideButton: !kEnablePaidPlans,
+                unavailableLabel: kEnablePaidPlans ? null : s.comingSoon,
                 onUpgrade: () => _buyPlan(_joninUrl()),
               ),
               const SizedBox(height: 12),
               PlanCard(
                 name: 'Kage',
                 tag: null,
-                tagColor: AppColors.statPurple,
+                tagColor: kageColor,
                 price: PlanPrices.kage(annual: _isAnnual),
-                priceColor: AppColors.statPurple,
+                priceColor: kageColor,
                 features: const [
                   (true, 'Tout Jonin inclus'),
                   (true, 'Génération images IA'),
@@ -141,11 +150,30 @@ class _PlansScreenState extends ConsumerState<PlansScreen> {
                 buttonLabel:
                     _isAnnual ? 'Acheter Kage Annuel' : 'Acheter Kage Mensuel',
                 buttonEnabled: true,
-                borderColor: AppColors.statPurple,
+                borderColor: kageColor,
                 isCta: true,
                 hideButton: !kEnablePaidPlans,
+                unavailableLabel: kEnablePaidPlans ? null : s.comingSoon,
                 onUpgrade: () => _buyPlan(_kageUrl()),
               ),
+              if (kEnableLicenseEntry && !kEnablePaidPlans) ...[
+                const SizedBox(height: 24),
+                Center(
+                  child: TextButton.icon(
+                    onPressed: () => context.push('/activate-license'),
+                    icon: const Icon(Icons.vpn_key_rounded,
+                        size: 16, color: AppColors.textSecondary),
+                    label: Text(
+                      s.haveLicenseKey,
+                      style: GoogleFonts.nunitoSans(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.textSecondary,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
               if (kEnablePaidPlans) ...[
               const SizedBox(height: 28),
               Container(

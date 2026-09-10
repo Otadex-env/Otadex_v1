@@ -8,6 +8,12 @@ class RankTheme extends ThemeExtension<RankTheme> {
   final Color accentGlow;
   final Color accentShimmer;
 
+  /// Couleur d'identité visuelle du rang sur les cartes de plan (bordure, prix,
+  /// tag). Source UNIQUE partagée par `PlansScreen` et `PlanSection` — voir
+  /// aussi [planColorOf]. Distincte de [accentColor] (qui pilote la peau du
+  /// thème : Genin et Kage partagent volontairement le même orange).
+  final Color planColor;
+
   final Color backgroundPrimary;
   final Color backgroundCard;
   final Color backgroundElevated;
@@ -34,6 +40,7 @@ class RankTheme extends ThemeExtension<RankTheme> {
     required this.accentLight,
     required this.accentGlow,
     required this.accentShimmer,
+    required this.planColor,
     required this.backgroundPrimary,
     required this.backgroundCard,
     required this.backgroundElevated,
@@ -58,6 +65,7 @@ class RankTheme extends ThemeExtension<RankTheme> {
     accentLight: Color(0xFFFF8533),
     accentGlow: Color(0x33FF6500),
     accentShimmer: Color(0x40FF6500),
+    planColor: Color(0xFF22C55E),
     backgroundPrimary: Color(0xFF0D0D14),
     backgroundCard: Color(0xFF1A1A2E),
     backgroundElevated: Color(0xFF12172A),
@@ -86,6 +94,7 @@ class RankTheme extends ThemeExtension<RankTheme> {
     accentLight: Color(0xFFB07CC6),
     accentGlow: Color(0x339B59B6),
     accentShimmer: Color(0x509B59B6),
+    planColor: Color(0xFF3B82F6),
     backgroundPrimary: Color(0xFF0A0815),
     backgroundCard: Color(0xFF1E1535),
     backgroundElevated: Color(0xFF160E2A),
@@ -115,6 +124,7 @@ class RankTheme extends ThemeExtension<RankTheme> {
     accentLight: Color(0xFFFF8C00),
     accentGlow: Color(0x50FF6500),
     accentShimmer: Color(0x60FF6500),
+    planColor: Color(0xFF8B5CF6),
     backgroundPrimary: Color(0xFF080810),
     backgroundCard: Color(0xFF18140A),
     backgroundElevated: Color(0xFF1A1000),
@@ -144,6 +154,7 @@ class RankTheme extends ThemeExtension<RankTheme> {
     accentLight: Color(0xFFFF7722),
     accentGlow: Color(0x22DD5500),
     accentShimmer: Color(0x30DD5500),
+    planColor: Color(0xFF16A34A),
     backgroundPrimary: Color(0xFFECECF6),
     backgroundCard: Color(0xFFF4F4FC),
     backgroundElevated: Color(0xFFE2E2EE),
@@ -172,6 +183,7 @@ class RankTheme extends ThemeExtension<RankTheme> {
     accentLight: Color(0xFF9B5CB6),
     accentGlow: Color(0x227B3B96),
     accentShimmer: Color(0x307B3B96),
+    planColor: Color(0xFF2563EB),
     backgroundPrimary: Color(0xFFEEE8F8),
     backgroundCard: Color(0xFFF5F0FF),
     backgroundElevated: Color(0xFFE4D8F4),
@@ -201,6 +213,7 @@ class RankTheme extends ThemeExtension<RankTheme> {
     accentLight: Color(0xFFEE7000),
     accentGlow: Color(0x22CC5000),
     accentShimmer: Color(0x30CC5000),
+    planColor: Color(0xFF7C3AED),
     backgroundPrimary: Color(0xFFF0E8DC),
     backgroundCard: Color(0xFFF8F0E4),
     backgroundElevated: Color(0xFFE8DCC8),
@@ -239,12 +252,22 @@ class RankTheme extends ThemeExtension<RankTheme> {
     };
   }
 
+  /// Couleur d'identité de plan d'un rang donné — indépendante du rang courant.
+  /// À utiliser quand une surface affiche plusieurs rangs à la fois (écran
+  /// Plans, section « Changer de plan »). [brightness] ajuste le contraste.
+  static Color planColorOf(
+    UserRank rank, {
+    Brightness brightness = Brightness.dark,
+  }) =>
+      forRank(rank, isDark: brightness == Brightness.dark).planColor;
+
   @override
   RankTheme copyWith({
     Color? accentColor,
     Color? accentLight,
     Color? accentGlow,
     Color? accentShimmer,
+    Color? planColor,
     Color? backgroundPrimary,
     Color? backgroundCard,
     Color? backgroundElevated,
@@ -267,6 +290,7 @@ class RankTheme extends ThemeExtension<RankTheme> {
       accentLight: accentLight ?? this.accentLight,
       accentGlow: accentGlow ?? this.accentGlow,
       accentShimmer: accentShimmer ?? this.accentShimmer,
+      planColor: planColor ?? this.planColor,
       backgroundPrimary: backgroundPrimary ?? this.backgroundPrimary,
       backgroundCard: backgroundCard ?? this.backgroundCard,
       backgroundElevated: backgroundElevated ?? this.backgroundElevated,
@@ -294,6 +318,7 @@ class RankTheme extends ThemeExtension<RankTheme> {
       accentLight: Color.lerp(accentLight, other.accentLight, t)!,
       accentGlow: Color.lerp(accentGlow, other.accentGlow, t)!,
       accentShimmer: Color.lerp(accentShimmer, other.accentShimmer, t)!,
+      planColor: Color.lerp(planColor, other.planColor, t)!,
       backgroundPrimary:
           Color.lerp(backgroundPrimary, other.backgroundPrimary, t)!,
       backgroundCard: Color.lerp(backgroundCard, other.backgroundCard, t)!,

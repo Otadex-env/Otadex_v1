@@ -16,9 +16,15 @@ class PlanCard extends StatelessWidget {
   final bool isCta;
   final VoidCallback? onUpgrade;
 
-  /// Masque entièrement le bouton d'action (CTA d'achat désactivé par
-  /// `kEnablePaidPlans`). La carte reste informative : features + prix.
+  /// Masque le CTA d'achat (désactivé par `kEnablePaidPlans`). Si
+  /// [unavailableLabel] est fourni, un bouton **désactivé** portant ce libellé
+  /// est affiché à la place — jamais de zone tapable inerte. Sinon, aucun
+  /// bouton. La carte reste informative : features + prix.
   final bool hideButton;
+
+  /// Libellé du bouton désactivé affiché quand [hideButton] est vrai
+  /// (ex. « Bientôt disponible »). `null` → pas de bouton du tout.
+  final String? unavailableLabel;
 
   const PlanCard({
     super.key,
@@ -34,6 +40,7 @@ class PlanCard extends StatelessWidget {
     required this.isCta,
     this.onUpgrade,
     this.hideButton = false,
+    this.unavailableLabel,
   });
 
   @override
@@ -114,6 +121,31 @@ class PlanCard extends StatelessWidget {
               ),
             ),
           ),
+          if (hideButton && unavailableLabel != null) ...[
+            const SizedBox(height: 10),
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton(
+                onPressed: null,
+                style: OutlinedButton.styleFrom(
+                  disabledForegroundColor: theme.textSecondary,
+                  side: BorderSide(color: theme.borderSubtle),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                ),
+                child: Text(
+                  unavailableLabel!,
+                  style: GoogleFonts.rajdhani(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: theme.textSecondary,
+                  ),
+                ),
+              ),
+            ),
+          ],
           if (!hideButton) ...[
           const SizedBox(height: 10),
           SizedBox(

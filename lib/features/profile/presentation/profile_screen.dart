@@ -275,7 +275,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
           ),
           const SizedBox(height: 28),
           const AvatarPicker(),
-          if (_showKageBanner) ...[
+          if (_showKageBanner && kEnablePaidPlans) ...[
             const SizedBox(height: 20),
             KageBanner(
                 onDismiss: () => setState(() => _showKageBanner = false)),
