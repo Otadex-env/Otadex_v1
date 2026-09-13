@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/constants/app_assets.dart';
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/l10n/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_spacing.dart';
@@ -159,7 +160,10 @@ class _SlideThreeContentState extends State<SlideThreeContent>
                   ),
               const SizedBox(height: AppSpacing.xs),
               Text(
-                s.slide3Subtitle,
+                // Tant que kEnablePaidPlans est false, Jonin/Kage ne sont pas
+                // choisissables ici : le sous-titre l'annonce au lieu de
+                // suggérer un choix actif entre les 3 rangs.
+                kEnablePaidPlans ? s.slide3Subtitle : s.onboardingStartsAsGenin,
                 style: GoogleFonts.nunitoSans(
                   fontSize: 15,
                   color: AppColors.textSecondary,
@@ -184,8 +188,11 @@ class _SlideThreeContentState extends State<SlideThreeContent>
                 color: AppColors.rankJonin,
                 bgColor: AppColors.rankJoninBg,
                 icon: Icons.auto_awesome_outlined,
-                priceLabel: PlanPrices.jonin(),
+                // Prix masqué tant que kEnablePaidPlans est false — remplacé
+                // par le même badge "Bientôt disponible" que Plans/Profil.
+                priceLabel: kEnablePaidPlans ? PlanPrices.jonin() : s.comingSoon,
                 isPriceBadge: false,
+                priceColor: kEnablePaidPlans ? null : AppColors.textSecondary,
                 description: s.rankJoninDesc,
                 delay: 500,
               ),
@@ -195,9 +202,11 @@ class _SlideThreeContentState extends State<SlideThreeContent>
                 color: AppColors.rankKage,
                 bgColor: AppColors.rankKageBg,
                 icon: Icons.workspace_premium_outlined,
-                priceLabel: PlanPrices.kage(),
+                priceLabel: kEnablePaidPlans ? PlanPrices.kage() : s.comingSoon,
                 isPriceBadge: false,
-                premiumBadge: true,
+                priceColor: kEnablePaidPlans ? null : AppColors.textSecondary,
+                // "PREMIUM" impliquerait un statut achetable dès maintenant.
+                premiumBadge: kEnablePaidPlans,
                 description: s.rankKageDesc,
                 delay: 620,
               ),
@@ -213,7 +222,11 @@ class _SlideThreeContentState extends State<SlideThreeContent>
                   ),
               const SizedBox(height: AppSpacing.md),
               Text(
-                s.canChangeRankLater,
+                // "Tu pourras changer de rang plus tard" sous-entend que
+                // Jonin/Kage sont déjà activables — faux avant kEnablePaidPlans.
+                kEnablePaidPlans
+                    ? s.canChangeRankLater
+                    : s.onboardingRanksComingSoon,
                 style: GoogleFonts.nunitoSans(
                   fontSize: 13,
                   color: AppColors.textDisabled,

@@ -120,6 +120,8 @@ class AppStrings {
     required this.upgradeToKageButton,
     required this.comingSoon,
     required this.haveLicenseKey,
+    required this.onboardingStartsAsGenin,
+    required this.onboardingRanksComingSoon,
     // ── Plan features (comparison cards) ──────────────────────────────────
     required this.sheetsNavigation,
     required this.likesComments,
@@ -300,6 +302,8 @@ class AppStrings {
   final String upgradeToKageButton;
   final String comingSoon;
   final String haveLicenseKey;
+  final String onboardingStartsAsGenin;
+  final String onboardingRanksComingSoon;
   // ── Plan features (comparison cards) ──────────────────────────────────────
   final String sheetsNavigation;
   final String likesComments;
@@ -502,6 +506,8 @@ class AppStrings {
       upgradeToKageButton: 'Passer Kage 👑',
       comingSoon: 'Bientôt disponible',
       haveLicenseKey: "J'ai une clé de licence",
+      onboardingStartsAsGenin: 'Tu commences ton aventure en Genin',
+      onboardingRanksComingSoon: 'Jonin et Kage arriveront bientôt dans l\'app.',
       sheetsNavigation: 'Fiches & navigation',
       likesComments: 'Likes & commentaires',
       adsShown: 'Publicités affichées',
@@ -683,6 +689,8 @@ class AppStrings {
     upgradeToKageButton: 'Get Kage 👑',
     comingSoon: 'Coming soon',
     haveLicenseKey: 'I have a license key',
+    onboardingStartsAsGenin: 'You\'re starting your adventure as Genin',
+    onboardingRanksComingSoon: 'Jonin and Kage are coming soon to the app.',
     sheetsNavigation: 'Profiles & navigation',
     likesComments: 'Likes & comments',
     adsShown: 'Ads displayed',
@@ -856,6 +864,8 @@ class AppStrings {
     upgradeToKageButton: 'カゲへ 👑',
     comingSoon: '近日公開',
     haveLicenseKey: 'ライセンスキーを持っています',
+    onboardingStartsAsGenin: 'Geninとして冒険を始めます',
+    onboardingRanksComingSoon: 'JoninとKageは近日アプリに登場予定です。',
     sheetsNavigation: 'プロフィール & ナビ',
     likesComments: 'いいね & コメント',
     adsShown: '広告あり',
@@ -1029,6 +1039,8 @@ class AppStrings {
     upgradeToKageButton: '升至影 👑',
     comingSoon: '即将推出',
     haveLicenseKey: '我有许可密钥',
+    onboardingStartsAsGenin: '你将以忍者(Genin)身份开始冒险',
+    onboardingRanksComingSoon: '忍者(Jonin)和影(Kage)即将上线。',
     sheetsNavigation: '档案 & 导航',
     likesComments: '点赞 & 评论',
     adsShown: '显示广告',

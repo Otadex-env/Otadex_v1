@@ -15,6 +15,7 @@ class OnboardingRankCard extends StatelessWidget {
   final bool premiumBadge;
   final String description;
   final int delay;
+  final Color? priceColor;
 
   const OnboardingRankCard({
     super.key,
@@ -28,6 +29,7 @@ class OnboardingRankCard extends StatelessWidget {
     this.isPriceBadge = false,
     this.badgeIsGreen = false,
     this.premiumBadge = false,
+    this.priceColor,
   });
 
   @override
@@ -109,7 +111,7 @@ class OnboardingRankCard extends StatelessWidget {
                   style: GoogleFonts.rajdhani(
                     fontSize: 13,
                     fontWeight: FontWeight.w700,
-                    color: AppColors.accent,
+                    color: priceColor ?? AppColors.accent,
                   ),
                   textAlign: TextAlign.end,
                 ),
