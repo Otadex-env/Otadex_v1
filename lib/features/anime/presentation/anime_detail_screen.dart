@@ -54,17 +54,14 @@ class _AnimeDetailScreenState extends ConsumerState<AnimeDetailScreen> {
 
           final allCreators = allCreatorsAsync.valueOrNull ?? [];
           final creatorMatches = anime.creatorId != null
-              ? allCreators
-                  .where((cr) => cr.id == anime.creatorId)
-                  .toList()
+              ? allCreators.where((cr) => cr.id == anime.creatorId).toList()
               : <CreatorEntry>[];
           final creator =
               creatorMatches.isNotEmpty ? creatorMatches.first : null;
 
           final similar = animes
               .where((a) =>
-                  a.id != anime.id &&
-                  a.genres.any(anime.genres.contains))
+                  a.id != anime.id && a.genres.any(anime.genres.contains))
               .take(4)
               .toList();
 
@@ -118,7 +115,8 @@ class _AnimeDetailScreenState extends ConsumerState<AnimeDetailScreen> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.movie_filter_rounded, color: theme.textSecondary, size: 56),
+          Icon(Icons.movie_filter_rounded,
+              color: theme.textSecondary, size: 56),
           const SizedBox(height: 16),
           Text(
             'Animé introuvable',
@@ -321,9 +319,8 @@ class _StatCell extends StatelessWidget {
     required this.label,
     required this.value,
     required this.theme,
-    this.valueColor,
     this.small = false,
-  });
+  }) : valueColor = null;
 
   @override
   Widget build(BuildContext context) {
@@ -419,8 +416,7 @@ class _CharacterRow extends StatelessWidget {
               width: 52,
               height: 52,
               child: Builder(builder: (_) {
-                final localImgs =
-                    AppAssets.getByCharacterId(character.id);
+                final localImgs = AppAssets.getByCharacterId(character.id);
                 final imgPath = localImgs.isNotEmpty
                     ? localImgs.first
                     : character.imagePath ?? '';
@@ -604,7 +600,8 @@ class _CreatorCard extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: theme.backgroundCard,
-                border: Border.all(color: theme.accentColor.withValues(alpha: 0.5), width: 2),
+                border: Border.all(
+                    color: theme.accentColor.withValues(alpha: 0.5), width: 2),
               ),
               child: Center(
                 child: Text(
@@ -649,7 +646,8 @@ class _CreatorCard extends StatelessWidget {
                 ],
               ),
             ),
-            Icon(Icons.chevron_right_rounded, color: theme.textSecondary, size: 20),
+            Icon(Icons.chevron_right_rounded,
+                color: theme.textSecondary, size: 20),
             const SizedBox(width: 8),
           ],
         ),
