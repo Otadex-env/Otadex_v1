@@ -6,6 +6,7 @@ import '../theme/app_colors.dart';
 import '../services/anilist_service.dart';
 import '../services/collection_service.dart';
 import '../services/firestore_character_service.dart';
+import '../services/like_service.dart';
 import '../services/storage_service.dart';
 import 'otadex_providers.dart';
 
@@ -191,6 +192,25 @@ final isCollectedProvider = Provider.autoDispose.family<bool, String>((ref, char
     data: (list) => list.contains(charId),
     orElse: () => false,
   );
+});
+
+// ── Likes Firestore (collection `likes`, agrégation — cf. like_service.dart) ──
+final likeServiceProvider = Provider<LikeService>((ref) => LikeService());
+
+/// SOURCE UNIQUE du nombre de likes d'un personnage — agrégation
+/// `likes.where(character_id == id).count()`. `characters/{id}.likesCount`
+/// n'est PAS la source : ce champ est figé à 0 depuis l'import (écriture
+/// bloquée par les règles Firestore sur `characters`), ne jamais l'afficher.
+final likeCountProvider =
+    FutureProvider.autoDispose.family<int, String>((ref, characterId) {
+  return ref.watch(likeServiceProvider).getLikeCount(characterId);
+});
+
+/// État "j'ai liké ce personnage", lu depuis l'existence de
+/// `likes/{uid}_{characterId}`. Jamais de state local parallèle.
+final isLikedProvider =
+    FutureProvider.autoDispose.family<bool, String>((ref, characterId) {
+  return ref.watch(likeServiceProvider).isLiked(characterId);
 });
 
 final characterImagesProvider = FutureProvider.autoDispose

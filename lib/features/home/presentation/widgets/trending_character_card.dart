@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../../../../core/models/character.dart';
 import '../../../../../core/constants/app_assets.dart';
+import '../../../../../core/providers/anilist_providers.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/otadex_theme.dart';
+import '../../../../../core/utils/format_likes.dart';
 import '../../../../../core/widgets/otadex_image.dart';
 
 class TrendingCharacterCard extends StatefulWidget {
@@ -29,12 +32,6 @@ class _TrendingCharacterCardState extends State<TrendingCharacterCard> {
   void _onTapDown(TapDownDetails _) => setState(() => _scale = 0.94);
   void _onTapUp(TapUpDetails _) => setState(() => _scale = 1.0);
   void _onTapCancel() => setState(() => _scale = 1.0);
-
-  String _formatLikes(int likes) {
-    if (likes >= 1000000) return '${(likes / 1000000).toStringAsFixed(1)}M';
-    if (likes >= 1000) return '${(likes / 1000).toStringAsFixed(1)}k';
-    return likes.toString();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -166,38 +163,32 @@ class _TrendingCharacterCardState extends State<TrendingCharacterCard> {
                           ),
                         ),
                         const SizedBox(height: 5),
-                        Row(
-                          children: [
-                            const Icon(
-                              Icons.star_rounded,
-                              color: AppColors.starYellow,
-                              size: 12,
-                            ),
-                            const SizedBox(width: 2),
-                            Text(
-                              character.rating.toStringAsFixed(1),
-                              style: GoogleFonts.nunitoSans(
-                                fontSize: 11,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.starYellow,
-                              ),
-                            ),
-                            const Spacer(),
-                            const Icon(
-                              Icons.favorite_rounded,
-                              color: AppColors.heartPink,
-                              size: 10,
-                            ),
-                            const SizedBox(width: 2),
-                            Text(
-                              _formatLikes(character.likes),
-                              style: GoogleFonts.nunitoSans(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white.withValues(alpha: 0.75),
-                              ),
-                            ),
-                          ],
+                        Consumer(
+                          builder: (context, ref, _) {
+                            final likeCount = ref
+                                .watch(likeCountProvider(character.id))
+                                .valueOrNull;
+                            return Row(
+                              children: [
+                                const Icon(
+                                  Icons.favorite_rounded,
+                                  color: AppColors.heartPink,
+                                  size: 10,
+                                ),
+                                const SizedBox(width: 2),
+                                Text(
+                                  likeCount != null
+                                      ? formatLikes(likeCount)
+                                      : '—',
+                                  style: GoogleFonts.nunitoSans(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white.withValues(alpha: 0.75),
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
                         ),
                       ],
                     ),

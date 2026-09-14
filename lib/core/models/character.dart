@@ -84,7 +84,7 @@ class Character {
   final Color cardColor;
   final Color accentColor;
   final CharacterTier tier;
-  final double rating;
+  final double? rating;
   final int likes;
   final String? imagePath;
   final List<String> images;
@@ -130,7 +130,7 @@ class Character {
     required this.cardColor,
     required this.accentColor,
     required this.tier,
-    required this.rating,
+    this.rating,
     required this.likes,
     this.imagePath,
     this.images = const [],
@@ -175,7 +175,7 @@ class Character {
       cardColor: _hexToColor(json['cardColor'] as String),
       accentColor: _hexToColor(json['accentColor'] as String),
       tier: _parseTier(json['tier'] as String),
-      rating: (json['rating'] as num).toDouble(),
+      rating: (json['rating'] as num?)?.toDouble(),
       likes: (json['likes'] as num).toInt(),
       imagePath: json['imagePath'] as String?,
       images: (json['images'] as List<dynamic>?)?.cast<String>() ?? const [],

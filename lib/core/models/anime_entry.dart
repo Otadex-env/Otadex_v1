@@ -12,7 +12,7 @@ class AnimeEntry {
   final String status;
   final String studio;
   final String? creatorId;
-  final double rating;
+  final double? rating;
   final String synopsis;
   final Color cardColor;
   final Color accentColor;
@@ -32,7 +32,7 @@ class AnimeEntry {
     required this.status,
     required this.studio,
     this.creatorId,
-    required this.rating,
+    this.rating,
     required this.synopsis,
     required this.cardColor,
     required this.accentColor,
@@ -54,7 +54,7 @@ class AnimeEntry {
       status: json['status'] as String? ?? '',
       studio: json['studio'] as String? ?? '',
       creatorId: json['creator_id'] as String?,
-      rating: (json['rating'] as num?)?.toDouble() ?? 0.0,
+      rating: (json['rating'] as num?)?.toDouble(),
       synopsis: json['synopsis'] as String? ?? '',
       cardColor: _hexToColor(json['cardColor'] as String? ?? '#0A1020'),
       accentColor: _hexToColor(json['accentColor'] as String? ?? '#6A1B9A'),

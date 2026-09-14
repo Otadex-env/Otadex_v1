@@ -16,6 +16,7 @@ import '../../../core/providers/otadex_providers.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/otadex_theme.dart';
 import '../../../core/theme/rank_theme.dart';
+import '../../../core/utils/format_likes.dart';
 import '../../../core/widgets/otadex_image.dart';
 
 class RechercheScreen extends ConsumerStatefulWidget {
@@ -1306,7 +1307,9 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
                               color: Colors.redAccent, size: 14),
                           const SizedBox(width: 4),
                           Text(
-                            '${c.likes}k',
+                            formatLikes(
+                                ref.watch(likeCountProvider(c.id)).valueOrNull ??
+                                    0),
                             style: GoogleFonts.nunitoSans(
                               color: theme.textSecondary,
                               fontSize: 12,

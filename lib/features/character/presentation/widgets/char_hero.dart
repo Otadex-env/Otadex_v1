@@ -214,11 +214,6 @@ class _CharDetailHeroState extends State<CharDetailHero>
                       activeColor: AppColors.error,
                       onTap: widget.onToggleLike,
                     ),
-                    const SizedBox(width: 8),
-                    _actionChip(
-                      icon: Icons.star_rounded,
-                      label: c.rating.toStringAsFixed(1),
-                    ),
                   ],
                 ),
               ],

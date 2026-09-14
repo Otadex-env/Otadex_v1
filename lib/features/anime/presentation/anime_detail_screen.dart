@@ -299,13 +299,6 @@ class _StatsBand extends StatelessWidget {
           ),
           _Divider(theme: theme),
           _StatCell(
-            label: 'Note',
-            value: anime.rating > 0 ? anime.rating.toStringAsFixed(1) : '—',
-            theme: theme,
-            valueColor: AppColors.starYellow,
-          ),
-          _Divider(theme: theme),
-          _StatCell(
             label: 'Studio',
             value: anime.studio.isNotEmpty ? anime.studio : '—',
             theme: theme,

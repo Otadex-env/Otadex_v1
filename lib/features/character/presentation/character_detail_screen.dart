@@ -8,6 +8,7 @@ import '../../../core/providers/anilist_providers.dart';
 import '../../../core/providers/auth_provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/otadex_theme.dart';
+import '../../../core/utils/format_likes.dart';
 import '../../../core/widgets/auth_gate_modal.dart';
 import '../../../core/widgets/otadex_image.dart';
 import '../../../core/widgets/skeleton_loader.dart';
@@ -32,8 +33,13 @@ class CharacterDetailScreen extends ConsumerStatefulWidget {
 class _CharacterDetailScreenState
     extends ConsumerState<CharacterDetailScreen> {
   CharDetailTab _activeTab = CharDetailTab.infos;
-  bool _isLiked = false;
   Character? _character;
+
+  // Overrides optimistes pour le like — actifs uniquement pendant l'écriture
+  // Firestore, effacés dès qu'elle réussit pour laisser la main aux
+  // providers (isLikedProvider / likeCountProvider), source de vérité.
+  bool? _isLikedOverride;
+  int? _likeCountOverride;
 
   Character get c => _character!;
 
@@ -53,11 +59,6 @@ class _CharacterDetailScreenState
     return null;
   }
 
-  String _formatLikes(int n) {
-    if (n >= 1000) return '${(n / 1000).toStringAsFixed(1)}k';
-    return n.toString();
-  }
-
   void _guardAuth(VoidCallback action) {
     if (ref.read(isLoggedInProvider)) {
       action();
@@ -67,11 +68,46 @@ class _CharacterDetailScreenState
   }
 
   Future<void> _toggleLike() async {
-    final newLiked = !_isLiked;
-    setState(() => _isLiked = newLiked);
-    await ref
-        .read(firestoreCharacterServiceProvider)
-        .toggleLike(c.id, isNowLiked: newLiked);
+    final charId = widget.characterId;
+    final wasLiked =
+        _isLikedOverride ?? ref.read(isLikedProvider(charId)).valueOrNull ?? false;
+    final priorCount =
+        _likeCountOverride ?? ref.read(likeCountProvider(charId)).valueOrNull ?? 0;
+    final nextLiked = !wasLiked;
+
+    setState(() {
+      _isLikedOverride = nextLiked;
+      _likeCountOverride =
+          nextLiked ? priorCount + 1 : (priorCount - 1).clamp(0, 1 << 31);
+    });
+
+    try {
+      final service = ref.read(likeServiceProvider);
+      if (nextLiked) {
+        await service.like(charId);
+      } else {
+        await service.unlike(charId);
+      }
+      ref.invalidate(isLikedProvider(charId));
+      ref.invalidate(likeCountProvider(charId));
+      if (mounted) {
+        setState(() {
+          _isLikedOverride = null;
+          _likeCountOverride = null;
+        });
+      }
+    } catch (_) {
+      if (!mounted) return;
+      setState(() {
+        _isLikedOverride = wasLiked;
+        _likeCountOverride = priorCount;
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Impossible de liker ce personnage. Réessaie.'),
+        ),
+      );
+    }
   }
 
   void _showLocalQuoteImage() {
@@ -225,6 +261,13 @@ class _CharacterDetailScreenState
     final theme = OtadexTheme.of(context);
     final mq = MediaQuery.of(context);
 
+    final isLiked = _isLikedOverride ??
+        ref.watch(isLikedProvider(widget.characterId)).valueOrNull ??
+        false;
+    final likeCount = _likeCountOverride ??
+        ref.watch(likeCountProvider(widget.characterId)).valueOrNull ??
+        0;
+
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Container(
@@ -236,11 +279,9 @@ class _CharacterDetailScreenState
                 SliverToBoxAdapter(
                   child: CharDetailHero(
                     character: c,
-                    isLiked: _isLiked,
+                    isLiked: isLiked,
                     images: _effectiveImages,
-                    formattedLikes: _isLiked
-                        ? _formatLikes(c.likes + 1)
-                        : _formatLikes(c.likes),
+                    formattedLikes: formatLikes(likeCount),
                     onBack: () => context.pop(),
                     onToggleLike: () => _guardAuth(_toggleLike),
                   ),

@@ -269,7 +269,6 @@ class FirestoreCharacterService {
       cardColor: _cardColorForAnime(animeId),
       accentColor: _accentColorForAnime(animeId),
       tier: _rankToTier(rang),
-      rating: 9.0,
       likes: (d['likesCount'] as num?)?.toInt() ?? 0,
       imagePath: (d['imagePath'] as String?)?.isNotEmpty == true
           ? d['imagePath'] as String
@@ -338,7 +337,6 @@ class FirestoreCharacterService {
       status: d['statut'] as String? ?? '',
       studio: d['studio'] as String? ?? '',
       creatorId: d['auteurId'] as String?,
-      rating: 9.0,
       synopsis: d['synopsis'] as String? ?? '',
       cardColor: _cardColorForAnime(id),
       accentColor: _accentColorForAnime(id),
@@ -369,19 +367,6 @@ class FirestoreCharacterService {
       bio: d['bio'] as String?,
       tags: (d['influences'] as List<dynamic>?)?.cast<String>() ?? [],
     );
-  }
-
-  // ── Score fan ────────────────────────────────────────────────────────────────
-  Future<void> toggleLike(String charId, {required bool isNowLiked}) async {
-    final uid = FirebaseAuth.instance.currentUser?.uid;
-    if (uid == null) return;
-    try {
-      if (isNowLiked) {
-        await _db.collection('users').doc(uid).update({
-          'score_fan': FieldValue.increment(1),
-        });
-      }
-    } catch (_) {}
   }
 
   Future<void> submitComment(String charId, String text) async {
