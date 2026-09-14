@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -93,9 +95,15 @@ void main() async {
   // cold start (une licence peut expirer pendant que l'app est en arrière-plan).
   WidgetsBinding.instance.addObserver(_LicenseLifecycleObserver());
 
-  // Notifications + licence vérifiés après le premier frame (évite l'ANR)
+  // OneSignal tourne en tâche de fond indépendante, après le premier frame.
+  // `unawaited` : un hang réseau côté SDK (DNS, ANR) ne doit jamais retenir
+  // l'auth ni la licence ci-dessous — elles ne dépendent pas de son résultat.
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    unawaited(NotificationService.initialize());
+  });
+
+  // Auth + licence : chemin indépendant, jamais bloqué par l'init OneSignal.
   WidgetsBinding.instance.addPostFrameCallback((_) async {
-    await NotificationService.initialize();
     // Attendre que Firebase Auth restaure la session (asynchrone au démarrage)
     final user = await FirebaseAuth.instance.authStateChanges().first;
     final uid = user?.uid;
