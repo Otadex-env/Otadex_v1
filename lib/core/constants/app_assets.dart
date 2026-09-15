@@ -12,7 +12,7 @@ class AppAssets {
   static const String logoIconWhite =
       'assets/images/logo/otadex_icon_white.png';
   static const String logoTransparent =
-      'assets/images/logo/otadex_logo_transparent.png';
+      'assets/images/logo/otadex_logo_transparent.webp';
 
   // ━━━ Splash ━━━
   static const String splashBackground =
@@ -21,11 +21,11 @@ class AppAssets {
 
   // ━━━ Onboarding ━━━
   static const String onboarding1 =
-      'assets/images/onboarding/onboarding_1.png';
+      'assets/images/onboarding/onboarding_1.webp';
   static const String onboarding2 =
-      'assets/images/onboarding/onboarding_2.png';
+      'assets/images/onboarding/onboarding_2.webp';
   static const String onboarding2Alt =
-      'assets/images/onboarding/onboarding_2_1.png';
+      'assets/images/onboarding/onboarding_2_1.webp';
   static const String onboarding3 =
       'assets/images/onboarding/onboarding_3.png';
 

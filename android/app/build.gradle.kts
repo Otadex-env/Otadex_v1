@@ -64,6 +64,12 @@ android {
             }
             isMinifyEnabled = true
             isShrinkResources = true
+            // x86_64 est une ABI d'émulateur/Chromebook — aucun testeur sur
+            // téléphone réel n'en a besoin. Scopé au release pour ne pas
+            // gêner un émulateur x86_64 en debug/profile.
+            ndk {
+                abiFilters += setOf("armeabi-v7a", "arm64-v8a")
+            }
         }
     }
 }
