@@ -169,13 +169,10 @@ class CharDetailMediasTab extends ConsumerWidget {
                 return studios.map((studio) {
                   final studioMap = studio as Map<String, dynamic>;
                   final name = (studioMap['name'] as String?) ?? '—';
-                  final studioId = (studioMap['id'] as int?);
-                  return GestureDetector(
-                    onTap: studioId != null
-                        ? () => context.push('/studio/$studioId')
-                        : null,
-                    child: _StudioRow(name: name),
-                  );
+                  // Pas de navigation vers /studio/:id — écran non alimenté
+                  // tant qu'AniList reste désactivé (route gardée pour plus
+                  // tard, cf. char_medias_tab.dart).
+                  return _StudioRow(name: name);
                 });
               }),
               _buildSameAnimeSection(context, ref),
@@ -587,10 +584,9 @@ class CharDetailMediasTab extends ConsumerWidget {
                   fontWeight: FontWeight.w600,
                   color: AppColors.textPrimary)),
           const SizedBox(height: 10),
-          ...c.mediaAppearances.map((m) => GestureDetector(
-                onTap: () => context.push('/studio/${m.studioId}'),
-                child: _StudioRow(name: m.studioNom),
-              )),
+          // Pas de navigation vers /studio/:id — écran non alimenté tant
+          // qu'AniList reste désactivé (route gardée pour plus tard).
+          ...c.mediaAppearances.map((m) => _StudioRow(name: m.studioNom)),
         ],
       ),
     );
