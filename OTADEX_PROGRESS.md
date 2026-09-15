@@ -1570,16 +1570,16 @@ _À implémenter dans une prochaine session._
 
 #### Architecture Firestore actuelle
 
-| Collection | Rôle | Accès |
-|---|---|---|
-| `characters` | 60+ personnages (JJK, NS, CLK...) | Lecture publique |
-| `animes` | Métadonnées animés | Lecture publique |
-| `creators` | Créateurs/mangakas | Lecture publique |
-| `quizzes` | Quiz par personnage | Lecture publique |
-| `users/{uid}` | Profil utilisateur (pseudo, rang, score) | Owner only |
-| `comments` | Commentaires sur personnages | Lecture publique, write auth |
-| `votes` | Votes/likes | Lecture publique, write auth |
-| `subscriptions` | Abonnements | Read auth + owner |
+| Collection      | Rôle                                     | Accès                        |
+| --------------- | ---------------------------------------- | ---------------------------- |
+| `characters`    | 60+ personnages (JJK, NS, CLK...)        | Lecture publique             |
+| `animes`        | Métadonnées animés                       | Lecture publique             |
+| `creators`      | Créateurs/mangakas                       | Lecture publique             |
+| `quizzes`       | Quiz par personnage                      | Lecture publique             |
+| `users/{uid}`   | Profil utilisateur (pseudo, rang, score) | Owner only                   |
+| `comments`      | Commentaires sur personnages             | Lecture publique, write auth |
+| `votes`         | Votes/likes                              | Lecture publique, write auth |
+| `subscriptions` | Abonnements                              | Read auth + owner            |
 
 #### ✅ Points forts
 
@@ -1592,19 +1592,23 @@ _À implémenter dans une prochaine session._
 #### ⚠️ Problèmes identifiés + Recommandations
 
 **1. Recherche full-text coûteuse (PRIORITAIRE)**
+
 - `searchCharacters()` charge 100 docs puis filtre côté client — chaque recherche = 1 lecture complète
 - **Fix** : Utiliser un index Firestore sur `nom` OU intégrer Algolia/Meilisearch (Cloud Function trigger `onCreate`)
 
 **2. `getAllCharacters(limit:200)` au démarrage**
+
 - Chaque ouverture de l'app charge 200 documents Firestore → ~200 lectures/session
 - **Fix** : Pagination `startAfterDocument` + cache local (`Riverpod keepAlive: true` ou Hive)
 - Court terme : réduire `limit: 100` et ajouter `keepAlive: true` sur `allCharactersProvider`
 
 **3. `collectionStream()` — Listener permanent**
+
 - Stream Firestore actif tant que l'app est ouverte → OK fonctionnellement mais consomme des lectures en continu
 - **Fix** : Désabonner le stream quand l'utilisateur n'est pas sur Profile/Collection
 
 **4. Aucun rate limiting sur `votes/comments`**
+
 - Un utilisateur peut créer des votes à répétition — aucune limite côté rules
 - **Fix à ajouter dans `firestore.rules`** :
   ```js
@@ -1617,29 +1621,33 @@ _À implémenter dans une prochaine session._
   ```
 
 **5. `studios` collection non sécurisée**
+
 - La règle `/{document=**} { allow read, write: if false; }` bloque `studios` mais aucune règle explicite
 - **Fix** : Ajouter une règle `match /studios/{document=**} { allow read: if true; allow write: if false; }`
 
 **6. Champ `score_fan` non mis à jour**
+
 - Créé à 0 à l'inscription, jamais incrémenté dans les actions utilisateur (likes, collection, quiz)
 - **Fix** : Cloud Function `onVote`/`onCollect` → `increment(points)`
 
 **7. Pas de Firestore offline persistence**
+
 - Firestore Flutter active la persistence par défaut sur mobile, mais aucune config explicite dans `main.dart`
 - **Fix** : Confirmer avec `FirebaseFirestore.instance.settings = Settings(persistenceEnabled: true);` dans `main.dart` avant `runApp()`
 
 #### 💡 Optimisations APK size
 
-| Technique | Gain estimé | Effort |
-|---|---|---|
-| `--split-per-abi` (x86_64 pour émulateur, arm64 pour device) | 40–50% | Faible — option build |
-| ProGuard/R8 (déjà actif en release) | Inclus dans 65 MB | — |
-| Désactiver `speech_to_text` en Genin si non utilisé | ~5 MB | Moyen |
-| Retirer `firebase_storage` si Storage non utilisé activement | ~3 MB | Faible |
-| Compression assets PNG → WebP (logo, splash, onboarding) | ~30% taille assets | Moyen |
-| Deferred loading for quiz/chat features | ~10 MB | Élevé |
+| Technique                                                    | Gain estimé        | Effort                |
+| ------------------------------------------------------------ | ------------------ | --------------------- |
+| `--split-per-abi` (x86_64 pour émulateur, arm64 pour device) | 40–50%             | Faible — option build |
+| ProGuard/R8 (déjà actif en release)                          | Inclus dans 65 MB  | —                     |
+| Désactiver `speech_to_text` en Genin si non utilisé          | ~5 MB              | Moyen                 |
+| Retirer `firebase_storage` si Storage non utilisé activement | ~3 MB              | Faible                |
+| Compression assets PNG → WebP (logo, splash, onboarding)     | ~30% taille assets | Moyen                 |
+| Deferred loading for quiz/chat features                      | ~10 MB             | Élevé                 |
 
 **Commande recommandée pour Play Store :**
+
 ```bash
 flutter build apk --release --split-per-abi
 # → app-arm64-v8a-release.apk (~35 MB) pour les vrais devices
@@ -1651,42 +1659,49 @@ flutter build apk --release --split-per-abi
 ## Task 52 — Corrections Firebase pré-Play Store (5 juin 2026)
 
 ### Objectif
+
 Corriger les 6 problèmes Firebase identifiés dans le rapport Task 51 avant la soumission Play Store.
 
 ### Fichiers modifiés
 
-| Fichier | Modification |
-|---------|-------------|
-| `lib/core/services/firestore_character_service.dart` | FIX 1 : `searchCharacters` limit 100 → 20 / FIX 6 : ajout méthodes `toggleLike`, `submitComment`, `voteForCharacter` |
-| `lib/core/providers/otadex_providers.dart` | FIX 2 : `allCharactersProvider` limit 200 → 20 + `ref.keepAlive()` |
-| `lib/core/providers/anilist_providers.dart` | FIX 3 : `collectionStreamProvider` + `isCollectedProvider` → `.autoDispose` |
-| `firestore.rules` | FIX 4 : rate limiting vote (voteId = uid_charId_mois, pas de doublon possible) / FIX 5 : règle `studios` ajoutée |
-| `lib/features/character/presentation/character_detail_screen.dart` | FIX 6 : bouton like → `_toggleLike()` branché sur Firestore |
+| Fichier                                                            | Modification                                                                                                         |
+| ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| `lib/core/services/firestore_character_service.dart`               | FIX 1 : `searchCharacters` limit 100 → 20 / FIX 6 : ajout méthodes `toggleLike`, `submitComment`, `voteForCharacter` |
+| `lib/core/providers/otadex_providers.dart`                         | FIX 2 : `allCharactersProvider` limit 200 → 20 + `ref.keepAlive()`                                                   |
+| `lib/core/providers/anilist_providers.dart`                        | FIX 3 : `collectionStreamProvider` + `isCollectedProvider` → `.autoDispose`                                          |
+| `firestore.rules`                                                  | FIX 4 : rate limiting vote (voteId = uid_charId_mois, pas de doublon possible) / FIX 5 : règle `studios` ajoutée     |
+| `lib/features/character/presentation/character_detail_screen.dart` | FIX 6 : bouton like → `_toggleLike()` branché sur Firestore                                                          |
 
 ### Détail des fixes
 
 #### FIX 1 — Recherche limitée à 20 docs ✅
+
 ```dart
 // searchCharacters : limit(100) → limit(20)
 final snap = await _db.collection('characters').limit(20).get();
 ```
 
 #### FIX 2 — Pagination au démarrage (20 docs + keepAlive) ✅
+
 ```dart
 final allCharactersProvider = FutureProvider<List<Character>>((ref) async {
   ref.keepAlive();
   ...getAllCharacters(limit: 20)
 ```
+
 > `ref.keepAlive()` empêche le rechargement à chaque navigation.
 
 #### FIX 3 — Stream collection autoDispose ✅
+
 ```dart
 final collectionStreamProvider = StreamProvider.autoDispose<List<String>>(...);
 final isCollectedProvider = Provider.autoDispose.family<bool, String>(...);
 ```
+
 > Le stream Firestore se ferme automatiquement hors de CollectionScreen/ProfileScreen.
 
 #### FIX 4 — Rate limiting votes (une fois par mois par personnage) ✅
+
 ```javascript
 // firestore.rules — votes
 allow create: if isSignedIn()
@@ -1694,9 +1709,11 @@ allow create: if isSignedIn()
   && !exists(.../votes/$(uid + '_' + character_id + '_' + mois));
 allow update, delete: if false;
 ```
+
 > Vote ID = `{uid}_{charId}_{YYYY-MM}` — la règle `!exists` bloque tout double vote.
 
 #### FIX 5 — Collection studios sécurisée ✅
+
 ```javascript
 match /studios/{studioId} {
   allow read: if true;
@@ -1706,14 +1723,15 @@ match /studios/{studioId} {
 
 #### FIX 6 — score_fan incrémenté sur toutes les actions ✅
 
-| Action | Points | Statut |
-|--------|--------|--------|
-| Like personnage | +1 pt | ✅ Branché (`_toggleLike` → `toggleLike()`) |
-| Commentaire | +3 pts | ✅ Service `submitComment()` prêt |
-| Vote mensuel | +10 pts | ✅ Service `voteForCharacter()` prêt (anti-doublon) |
-| Quiz réussi | +5 pts par bonne réponse | ✅ Déjà branché (Task 51) |
+| Action          | Points                   | Statut                                              |
+| --------------- | ------------------------ | --------------------------------------------------- |
+| Like personnage | +1 pt                    | ✅ Branché (`_toggleLike` → `toggleLike()`)         |
+| Commentaire     | +3 pts                   | ✅ Service `submitComment()` prêt                   |
+| Vote mensuel    | +10 pts                  | ✅ Service `voteForCharacter()` prêt (anti-doublon) |
+| Quiz réussi     | +5 pts par bonne réponse | ✅ Déjà branché (Task 51)                           |
 
 **Méthodes ajoutées dans `FirestoreCharacterService`** :
+
 - `toggleLike(charId, isNowLiked)` — incrémente `score_fan` de +1 si like activé
 - `submitComment(charId, text)` — crée doc dans `comments/` + incrémente `score_fan` de +3
 - `voteForCharacter(charId)` — vérifie l'absence de vote ce mois, crée le vote + incrémente `score_fan` de +10
@@ -1729,6 +1747,7 @@ match /studios/{studioId} {
 ```
 
 ### Résultat
+
 `dart analyze lib/` → **No issues found!**
 
 ---
@@ -1796,3 +1815,55 @@ Le flux attendu est rétabli : chaque script d'import généré pour un nouvel a
 ---
 
 _Dernière mise à jour : Task 53 — Réglages OneSignal + notifications import animé, 12 juin 2026_
+
+---
+
+## Mises à jour récentes — septembre 2026
+
+### 10 septembre 2026 — Requête des personnages par animé
+
+- Ajout de `charactersByAnimeProvider(animeId)` pour interroger directement Firestore avec `animeId`.
+- `AnimeDetailScreen` n'utilise plus le catalogue global plafonné aux 20 personnages les plus populaires : les personnages principaux d'un animé sont désormais tous résolus correctement.
+- `CollectionToggle` affiche maintenant un `SnackBar` pour les erreurs Firestore autres que la limite de collection.
+- Commit : `27dd09f`.
+
+### 13 septembre 2026 — Onboarding cohérent avec les fonctionnalités payantes
+
+- L'écran de choix du rang dans l'onboarding est conditionné par `kEnablePaidPlans`.
+- Quand les offres payantes sont désactivées, l'utilisateur commence explicitement en Genin et Jonin/Kage affichent « Bientôt disponible ».
+- Ajout des traductions `onboardingStartsAsGenin` et `onboardingRanksComingSoon` en français, anglais, japonais et chinois.
+- Commit : `77b89d8`.
+
+### 14 septembre 2026 — Likes Firestore
+
+- Ajout de `LikeService` pour gérer les likes de personnages et d'animés dans Firestore.
+- Ajout des providers de likes, des compteurs dans les modèles et du formatage des nombres de likes.
+- Mise à jour des fiches personnages, cartes de grille, section tendances et recherche pour afficher et modifier les likes.
+- Règles Firestore complétées pour sécuriser les opérations de likes.
+- Commit : `72bdc6f`.
+
+### 14 septembre 2026 — Démarrage et notifications plus robustes
+
+- Initialisation OneSignal déplacée dans un `postFrameCallback` avec `unawaited`, afin qu'un blocage réseau ne retarde pas le démarrage de l'application.
+- Initialisation des notifications rendue best-effort : ses erreurs ne bloquent plus l'application.
+- Ajout de l'index composite Firestore `comments(character_id, created_at)` utilisé par le flux des commentaires.
+- Commit : `b7535d2`.
+
+### 14 septembre 2026 — Nettoyage de la fiche animé
+
+- Ajustements de la fiche animé dans le commit sans message `99ffba7`.
+- Commit associé à la série de corrections de navigation et d'affichage de la fiche animé.
+
+### 15 septembre 2026 — Retrait d'une navigation Studio cassée
+
+- Suppression de la navigation vers `/studio` depuis la fiche personnage.
+- Les données Studio restent conservées pour un futur rebranchement sur Firestore, mais l'interface ne propose plus un écran qui aboutissait systématiquement à « Studio introuvable ».
+- Commit : `e08cb53`.
+
+### 15 septembre 2026 — Réduction de la taille des assets et du build Android
+
+- Conversion en WebP du logo transparent et des trois grandes images d'onboarding, avec conservation de leurs dimensions.
+- `splash_illustration.png` conservée en PNG car sa conversion augmentait sa taille.
+- Gain indiqué par le commit : environ 5,76 Mo sur les assets embarqués, et APK arm64 réduit d'environ 29,5 Mo à 23,78 Mo.
+- Build release Android limité aux ABI `armeabi-v7a` et `arm64-v8a`; `x86_64` reste disponible en debug/profile pour les émulateurs.
+- Commit : `bd223ce`.
