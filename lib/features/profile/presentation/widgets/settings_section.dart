@@ -300,6 +300,12 @@ class SettingsSection extends StatelessWidget {
                 label: s.privacyPolicy,
                 hasArrow: true,
                 onTap: _openPrivacyPolicy),
+            const _SettingsDivider(),
+            const _SettingsRow(
+                icon: '🗑️',
+                label: 'Supprimer mon compte',
+                hasArrow: true,
+                onTap: UrlLauncherService.openAccountDeletion),
           ]),
           const SizedBox(height: 16),
           Center(
@@ -327,7 +333,6 @@ class SettingsSection extends StatelessWidget {
       ),
     );
   }
-
 }
 
 class _LanguageSheet extends StatefulWidget {

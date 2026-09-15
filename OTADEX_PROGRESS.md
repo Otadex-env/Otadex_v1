@@ -1627,8 +1627,7 @@ _À implémenter dans une prochaine session._
 
 **6. Champ `score_fan` non mis à jour**
 
-- Créé à 0 à l'inscription, jamais incrémenté dans les actions utilisateur (likes, collection, quiz)
-- **Fix** : Cloud Function `onVote`/`onCollect` → `increment(points)`
+**Fix** : Cloud Function `onVote`/`onCollect` → `increment(points)`
 
 **7. Pas de Firestore offline persistence**
 
@@ -1867,3 +1866,10 @@ _Dernière mise à jour : Task 53 — Réglages OneSignal + notifications import
 - Gain indiqué par le commit : environ 5,76 Mo sur les assets embarqués, et APK arm64 réduit d'environ 29,5 Mo à 23,78 Mo.
 - Build release Android limité aux ABI `armeabi-v7a` et `arm64-v8a`; `x86_64` reste disponible en debug/profile pour les émulateurs.
 - Commit : `bd223ce`.
+
+### 15 septembre 2026 — Page publique de suppression de compte
+
+- La page `docs/account-deletion.html` est le point d'entrée officiel pour demander la suppression d'un compte OTADEX.
+- Le parcours public fournit une demande par e-mail à `contact@otadex.app`, en français et en anglais, avec le détail des données supprimées et du délai de traitement.
+- Ajout du lien « Supprimer mon compte » dans les réglages du profil, qui ouvre la page publique : `https://otadex.tilstack.me/account-deletion.html`.
+- URL à renseigner dans la console de déploiement / Google Play : `https://otadex.tilstack.me/account-deletion.html`.

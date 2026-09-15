@@ -1,356 +1,617 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr" data-theme="dark">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OTADEX — Suppression de compte / Account Deletion</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OTADEX — Suppression de compte / Account Deletion</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-    :root, [data-theme="dark"] {
-      --bg: #0D0D14; --card: #1A1A28; --raised: #22223A;
-      --accent: #FF6500; --primary: #5C2BE2;
-      --text: #E8E8F0; --muted: #9090A0; --border: #2A2A3A;
-      --nav-bg: rgba(13,13,20,.92);
-      --danger: #E53935;
-    }
-    [data-theme="light"] {
-      --bg: #F4F4FA; --card: #FFFFFF; --raised: #EBEBF8;
-      --text: #111122; --muted: #606080; --border: #D8D8EC;
-      --nav-bg: rgba(244,244,250,.95);
-      --danger: #C62828;
-    }
+      :root,
+      [data-theme="dark"] {
+        --bg: #0d0d14;
+        --card: #1a1a28;
+        --raised: #22223a;
+        --accent: #ff6500;
+        --primary: #5c2be2;
+        --text: #e8e8f0;
+        --muted: #9090a0;
+        --border: #2a2a3a;
+        --nav-bg: rgba(13, 13, 20, 0.92);
+        --danger: #e53935;
+      }
+      [data-theme="light"] {
+        --bg: #f4f4fa;
+        --card: #ffffff;
+        --raised: #ebebf8;
+        --text: #111122;
+        --muted: #606080;
+        --border: #d8d8ec;
+        --nav-bg: rgba(244, 244, 250, 0.95);
+        --danger: #c62828;
+      }
 
-    html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, sans-serif; transition: background .3s, color .3s; }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        transition:
+          background 0.3s,
+          color 0.3s;
+      }
 
-    /* ── NAV ── */
-    header {
-      position: sticky; top: 0; z-index: 100;
-      background: var(--nav-bg); backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      box-shadow: 0 2px 16px rgba(0,0,0,.15);
-    }
-    nav {
-      max-width: 1100px; margin: 0 auto; padding: 12px 20px;
-      display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    }
-    .nav-logo { font-size: 1.3rem; font-weight: 900; letter-spacing: 3px; color: var(--accent); text-decoration: none; }
+      /* ── NAV ── */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--nav-bg);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
+      }
+      nav {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .nav-logo {
+        font-size: 1.3rem;
+        font-weight: 900;
+        letter-spacing: 3px;
+        color: var(--accent);
+        text-decoration: none;
+      }
 
-    .nav-links { display: flex; list-style: none; gap: 1.4rem; align-items: center; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: .88rem; font-weight: 500; transition: color .2s; }
-    .nav-links a:hover { color: var(--accent); }
-    .nav-portfolio { color: var(--accent) !important; font-weight: 700 !important; }
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 1.4rem;
+        align-items: center;
+      }
+      .nav-links a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+      .nav-portfolio {
+        color: var(--accent) !important;
+        font-weight: 700 !important;
+      }
 
-    .nav-right { display: flex; align-items: center; gap: 8px; }
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
 
-    .lang-toggle { display: flex; background: var(--raised); border: 1px solid var(--border); border-radius: 50px; padding: 3px; gap: 2px; }
-    .lang-btn { border: none; background: transparent; color: var(--muted); font-size: .73rem; font-weight: 700; padding: 4px 10px; border-radius: 50px; cursor: pointer; letter-spacing: .5px; transition: background .15s, color .15s; }
-    .lang-btn.active { background: var(--accent); color: #fff; }
+      .lang-toggle {
+        display: flex;
+        background: var(--raised);
+        border: 1px solid var(--border);
+        border-radius: 50px;
+        padding: 3px;
+        gap: 2px;
+      }
+      .lang-btn {
+        border: none;
+        background: transparent;
+        color: var(--muted);
+        font-size: 0.73rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 50px;
+        cursor: pointer;
+        letter-spacing: 0.5px;
+        transition:
+          background 0.15s,
+          color 0.15s;
+      }
+      .lang-btn.active {
+        background: var(--accent);
+        color: #fff;
+      }
 
-    .theme-btn { width: 34px; height: 34px; border-radius: 50%; background: var(--raised); border: 1px solid var(--border); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: .95rem; transition: border-color .2s, transform .2s; }
-    .theme-btn:hover { border-color: var(--accent); transform: rotate(20deg); }
+      .theme-btn {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: var(--raised);
+        border: 1px solid var(--border);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.95rem;
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
+      }
+      .theme-btn:hover {
+        border-color: var(--accent);
+        transform: rotate(20deg);
+      }
 
-    /* ── CONTENT ── */
-    main { max-width: 760px; margin: 0 auto; padding: 44px 24px 80px; }
+      /* ── CONTENT ── */
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 44px 24px 80px;
+      }
 
-    .back-btn {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: .85rem; color: var(--muted); text-decoration: none;
-      margin-bottom: 32px; padding: 8px 16px;
-      background: var(--card); border: 1px solid var(--border); border-radius: 50px;
-      transition: color .2s, border-color .2s;
-    }
-    .back-btn:hover { color: var(--accent); border-color: var(--accent); }
+      .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.85rem;
+        color: var(--muted);
+        text-decoration: none;
+        margin-bottom: 32px;
+        padding: 8px 16px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 50px;
+        transition:
+          color 0.2s,
+          border-color 0.2s;
+      }
+      .back-btn:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
 
-    h1 { font-size: 1.6rem; font-weight: 900; letter-spacing: .5px; margin-bottom: 6px; }
-    .meta { font-size: .78rem; color: var(--muted); font-style: italic; margin-bottom: 40px; }
-    h2 {
-      font-size: .9rem; font-weight: 700; color: var(--accent);
-      letter-spacing: .3px; margin: 36px 0 10px;
-      padding-bottom: 6px; border-bottom: 1px solid var(--border);
-    }
-    p { font-size: .93rem; line-height: 1.8; color: var(--text); }
-    ul { margin: 10px 0 0 20px; }
-    li { font-size: .93rem; line-height: 1.8; margin-bottom: 4px; }
-    a { color: var(--accent); }
+      h1 {
+        font-size: 1.6rem;
+        font-weight: 900;
+        letter-spacing: 0.5px;
+        margin-bottom: 6px;
+      }
+      .meta {
+        font-size: 0.78rem;
+        color: var(--muted);
+        font-style: italic;
+        margin-bottom: 40px;
+      }
+      h2 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--accent);
+        letter-spacing: 0.3px;
+        margin: 36px 0 10px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid var(--border);
+      }
+      p {
+        font-size: 0.93rem;
+        line-height: 1.8;
+        color: var(--text);
+      }
+      ul {
+        margin: 10px 0 0 20px;
+      }
+      li {
+        font-size: 0.93rem;
+        line-height: 1.8;
+        margin-bottom: 4px;
+      }
+      a {
+        color: var(--accent);
+      }
 
-    .section-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 16px; padding: 28px 28px 20px; margin-top: 28px;
-    }
-    .section-card h2 { margin-top: 0; }
+      .section-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 28px 28px 20px;
+        margin-top: 28px;
+      }
+      .section-card h2 {
+        margin-top: 0;
+      }
 
-    /* Steps */
-    .steps { counter-reset: step; margin-top: 16px; display: flex; flex-direction: column; gap: 14px; }
-    .step {
-      display: flex; gap: 16px; align-items: flex-start;
-      background: var(--raised); border: 1px solid var(--border);
-      border-radius: 12px; padding: 16px 20px;
-    }
-    .step-num {
-      counter-increment: step; min-width: 32px; height: 32px; border-radius: 50%;
-      background: var(--accent); color: #fff; font-size: .85rem; font-weight: 900;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
-    .step-num::before { content: counter(step); }
-    .step-text { font-size: .9rem; line-height: 1.65; color: var(--text); padding-top: 4px; }
-    .step-label { font-weight: 700; margin-bottom: 4px; }
+      /* Steps */
+      .steps {
+        counter-reset: step;
+        margin-top: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .step {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        background: var(--raised);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 16px 20px;
+      }
+      .step-num {
+        counter-increment: step;
+        min-width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: #fff;
+        font-size: 0.85rem;
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .step-num::before {
+        content: counter(step);
+      }
+      .step-text {
+        font-size: 0.9rem;
+        line-height: 1.65;
+        color: var(--text);
+        padding-top: 4px;
+      }
+      .step-label {
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
 
-    /* Warning box */
-    [data-theme="dark"] .warn-box {
-      background: #1E1010; border: 1px solid #5C2020; border-radius: 12px; padding: 18px 22px; margin-top: 20px;
-    }
-    [data-theme="light"] .warn-box {
-      background: #FFF5F5; border: 1px solid #F9B8B8; border-radius: 12px; padding: 18px 22px; margin-top: 20px;
-    }
-    [data-theme="dark"] .warn-box p { color: #F08080; }
-    [data-theme="light"] .warn-box p { color: #7A2020; }
-    .warn-title { font-weight: 700; margin-bottom: 6px; color: var(--danger) !important; }
+      /* Warning box */
+      [data-theme="dark"] .warn-box {
+        background: #1e1010;
+        border: 1px solid #5c2020;
+        border-radius: 12px;
+        padding: 18px 22px;
+        margin-top: 20px;
+      }
+      [data-theme="light"] .warn-box {
+        background: #fff5f5;
+        border: 1px solid #f9b8b8;
+        border-radius: 12px;
+        padding: 18px 22px;
+        margin-top: 20px;
+      }
+      [data-theme="dark"] .warn-box p {
+        color: #f08080;
+      }
+      [data-theme="light"] .warn-box p {
+        color: #7a2020;
+      }
+      .warn-title {
+        font-weight: 700;
+        margin-bottom: 6px;
+        color: var(--danger) !important;
+      }
 
-    /* Email CTA */
-    .email-cta {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: var(--accent); color: #fff; font-weight: 700; font-size: .9rem;
-      padding: 13px 22px; border-radius: 50px; text-decoration: none;
-      margin-top: 16px; transition: opacity .15s, transform .2s;
-    }
-    .email-cta:hover { opacity: .88; transform: translateY(-2px); color: #fff; }
+      /* Email CTA */
+      .email-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--accent);
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.9rem;
+        padding: 13px 22px;
+        border-radius: 50px;
+        text-decoration: none;
+        margin-top: 16px;
+        transition:
+          opacity 0.15s,
+          transform 0.2s;
+      }
+      .email-cta:hover {
+        opacity: 0.88;
+        transform: translateY(-2px);
+        color: #fff;
+      }
 
-    footer { border-top: 1px solid var(--border); margin-top: 60px; padding-top: 20px; font-size: .8rem; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
-    footer a { color: var(--accent); }
+      footer {
+        border-top: 1px solid var(--border);
+        margin-top: 60px;
+        padding-top: 20px;
+        font-size: 0.8rem;
+        color: var(--muted);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      footer a {
+        color: var(--accent);
+      }
 
-    [lang-content] { display: none; }
-    [lang-content].visible { display: block; }
+      [lang-content] {
+        display: none;
+      }
+      [lang-content].visible {
+        display: block;
+      }
 
-    @media (max-width: 600px) {
-      .nav-links { display: none; }
-      main { padding: 32px 16px 60px; }
-      .section-card { padding: 20px 16px; }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <nav>
-      <a class="nav-logo" href="index.html">OTADEX</a>
-      <ul class="nav-links">
-        <li><a href="index.html">← Accueil</a></li>
-        <li><a href="privacy-policy.html">Confidentialité</a></li>
-        <li><a href="terms.html">CGU</a></li>
-        <li><a href="https://tilstack.github.io/myportofoliov2" target="_blank" rel="noopener" class="nav-portfolio">Portfolio ↗</a></li>
-      </ul>
-      <div class="nav-right">
-        <div class="lang-toggle">
-          <button class="lang-btn active" onclick="setLang('fr')">FR</button>
-          <button class="lang-btn" onclick="setLang('en')">EN</button>
+      @media (max-width: 600px) {
+        .nav-links {
+          display: none;
+        }
+        main {
+          padding: 32px 16px 60px;
+        }
+        .section-card {
+          padding: 20px 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a class="nav-logo" href="index.html">OTADEX</a>
+        <ul class="nav-links">
+          <li><a href="index.html">← Accueil</a></li>
+          <li><a href="privacy-policy.html">Confidentialité</a></li>
+          <li><a href="terms.html">CGU</a></li>
+          <li>
+            <a
+              href="https://tilstack.github.io/myportofoliov2"
+              target="_blank"
+              rel="noopener"
+              class="nav-portfolio"
+              >Portfolio ↗</a
+            >
+          </li>
+        </ul>
+        <div class="nav-right">
+          <div class="lang-toggle">
+            <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+            <button class="lang-btn" onclick="setLang('en')">EN</button>
+          </div>
+          <button class="theme-btn" id="theme-btn" title="Toggle theme">
+            🌙
+          </button>
         </div>
-        <button class="theme-btn" id="theme-btn" title="Toggle theme">🌙</button>
-      </div>
-    </nav>
-  </header>
+      </nav>
+    </header>
 
-  <main>
-    <a class="back-btn" href="index.html">← Accueil / Home</a>
+    <main>
+      <a class="back-btn" href="index.html">← Accueil / Home</a>
 
-    <!-- ── FRANÇAIS ── -->
-    <div lang-content="fr" class="visible">
-      <h1>Suppression de compte</h1>
-      <p class="meta">Conformément aux exigences de Google Play et aux réglementations sur la protection des données</p>
+      <!-- ── FRANÇAIS ── -->
+      <div lang-content="fr" class="visible">
+        <h1>Suppression de compte</h1>
+        <p class="meta">
+          Conformément aux exigences de Google Play et aux réglementations sur
+          la protection des données
+        </p>
 
-      <div class="section-card">
-        <h2>Comment supprimer votre compte</h2>
-        <p>Vous pouvez supprimer votre compte OTADEX directement depuis l'application ou en contactant notre équipe par e-mail.</p>
-      </div>
+        <div class="section-card">
+          <h2>Comment supprimer votre compte</h2>
+          <p>
+            Cette page est le point d'entrée officiel pour demander la
+            suppression de votre compte OTADEX. Vous pouvez envoyer votre
+            demande par e-mail depuis l'adresse associée à votre compte.
+          </p>
+        </div>
 
-      <div class="section-card">
-        <h2>Option 1 — Depuis l'application</h2>
-        <div class="steps">
-          <div class="step">
-            <div class="step-num"></div>
-            <div class="step-text">
-              <div class="step-label">Ouvrez l'application OTADEX</div>
-              Lancez l'application et connectez-vous à votre compte si ce n'est pas déjà fait.
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num"></div>
-            <div class="step-text">
-              <div class="step-label">Accédez à votre profil</div>
-              Appuyez sur l'onglet <strong>Profil</strong> dans la barre de navigation en bas de l'écran.
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num"></div>
-            <div class="step-text">
-              <div class="step-label">Ouvrez les paramètres</div>
-              Faites défiler jusqu'à la section <strong>Paramètres</strong> et appuyez sur <strong>Supprimer mon compte</strong>.
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num"></div>
-            <div class="step-text">
-              <div class="step-label">Confirmez la suppression</div>
-              Lisez attentivement les informations affichées, puis confirmez la suppression définitive de votre compte.
-            </div>
+        <div class="section-card">
+          <h2>Demande par e-mail</h2>
+          <p>
+            Si vous ne pouvez pas accéder à l'application, envoyez-nous un
+            e-mail depuis l'adresse associée à votre compte OTADEX en indiquant
+            votre pseudo et votre demande de suppression.
+          </p>
+          <a
+            class="email-cta"
+            href="mailto:contact@otadex.app?subject=Suppression%20de%20compte%20OTADEX&body=Bonjour%2C%0A%0AJe%20souhaite%20supprimer%20mon%20compte%20OTADEX.%0A%0APseudo%20%3A%20[votre%20pseudo]%0AE-mail%20du%20compte%20%3A%20[votre%20e-mail]%0A%0AMerci."
+          >
+            ✉ Envoyer une demande de suppression
+          </a>
+        </div>
+
+        <div class="section-card">
+          <h2>Données supprimées définitivement</h2>
+          <div class="warn-box">
+            <p class="warn-title">⚠ Suppression irréversible</p>
+            <p>
+              La suppression de votre compte est <strong>irréversible</strong>.
+              Les données suivantes seront effacées :
+            </p>
+            <ul style="margin-top: 10px">
+              <li>Votre profil et vos informations personnelles</li>
+              <li>Votre collection de personnages</li>
+              <li>Votre historique de progression (rang, points, fan score)</li>
+              <li>Vos commentaires et interactions communautaires</li>
+              <li>Votre avatar et vos préférences</li>
+            </ul>
+            <p style="margin-top: 12px">
+              Le traitement de votre demande prend jusqu'à
+              <strong>30 jours</strong>. Certaines données peuvent être
+              conservées plus longtemps si la loi l'exige.
+            </p>
           </div>
         </div>
-      </div>
 
-      <div class="section-card">
-        <h2>Option 2 — Par e-mail</h2>
-        <p>Si vous ne pouvez pas accéder à l'application, envoyez-nous un e-mail depuis l'adresse associée à votre compte OTADEX en indiquant votre pseudo et votre demande de suppression.</p>
-        <a class="email-cta" href="mailto:contact@otadex.app?subject=Suppression%20de%20compte%20OTADEX&body=Bonjour%2C%0A%0AJe%20souhaite%20supprimer%20mon%20compte%20OTADEX.%0A%0APseudo%20%3A%20[votre%20pseudo]%0AE-mail%20du%20compte%20%3A%20[votre%20e-mail]%0A%0AMerci.">
-          ✉ Envoyer une demande de suppression
-        </a>
-      </div>
-
-      <div class="section-card">
-        <h2>Données supprimées définitivement</h2>
-        <div class="warn-box">
-          <p class="warn-title">⚠ Suppression irréversible</p>
-          <p>La suppression de votre compte est <strong>irréversible</strong>. Les données suivantes seront effacées :</p>
-          <ul style="margin-top:10px">
-            <li>Votre profil et vos informations personnelles</li>
-            <li>Votre collection de personnages</li>
-            <li>Votre historique de progression (rang, points, fan score)</li>
-            <li>Vos commentaires et interactions communautaires</li>
-            <li>Votre avatar et vos préférences</li>
-          </ul>
-          <p style="margin-top:12px">Le traitement de votre demande prend jusqu'à <strong>30 jours</strong>. Certaines données peuvent être conservées plus longtemps si la loi l'exige.</p>
+        <div class="section-card">
+          <h2>Abonnement actif</h2>
+          <p>
+            Si vous avez un abonnement Jonin ou Kage actif, pensez à le résilier
+            depuis les paramètres de l'application <strong>avant</strong> de
+            supprimer votre compte afin d'éviter tout prélèvement futur. La
+            suppression du compte n'entraîne pas automatiquement la résiliation
+            de l'abonnement.
+          </p>
         </div>
+
+        <div class="section-card">
+          <h2>Contact</h2>
+          <p>
+            Pour toute question concernant la suppression de vos données :<br /><a
+              href="mailto:contact@otadex.app"
+              >contact@otadex.app</a
+            >
+          </p>
+        </div>
+
+        <footer>
+          <span>© 2026 TilStack — OTADEX</span>
+          <span
+            ><a href="index.html">Accueil</a> ·
+            <a href="privacy-policy.html">Confidentialité</a> ·
+            <a href="terms.html">CGU</a> ·
+            <a
+              href="https://tilstack.github.io/myportofoliov2"
+              target="_blank"
+              rel="noopener"
+              >Portfolio ↗</a
+            ></span
+          >
+        </footer>
       </div>
 
-      <div class="section-card">
-        <h2>Abonnement actif</h2>
-        <p>Si vous avez un abonnement Jonin ou Kage actif, pensez à le résilier depuis les paramètres de l'application <strong>avant</strong> de supprimer votre compte afin d'éviter tout prélèvement futur. La suppression du compte n'entraîne pas automatiquement la résiliation de l'abonnement.</p>
-      </div>
+      <!-- ── ENGLISH ── -->
+      <div lang-content="en">
+        <h1>Account Deletion</h1>
+        <p class="meta">
+          In compliance with Google Play requirements and data protection
+          regulations
+        </p>
 
-      <div class="section-card">
-        <h2>Contact</h2>
-        <p>Pour toute question concernant la suppression de vos données :<br><a href="mailto:contact@otadex.app">contact@otadex.app</a></p>
-      </div>
+        <div class="section-card">
+          <h2>How to delete your account</h2>
+          <p>
+            This page is the official entry point for requesting deletion of
+            your OTADEX account. You can send your request by email from the
+            address linked to your account.
+          </p>
+        </div>
 
-      <footer>
-        <span>© 2026 TilStack — OTADEX</span>
-        <span><a href="index.html">Accueil</a> · <a href="privacy-policy.html">Confidentialité</a> · <a href="terms.html">CGU</a> · <a href="https://tilstack.github.io/myportofoliov2" target="_blank" rel="noopener">Portfolio ↗</a></span>
-      </footer>
-    </div>
+        <div class="section-card">
+          <h2>Deletion request by email</h2>
+          <p>
+            If you cannot access the app, send us an email from the address
+            linked to your OTADEX account, including your username and your
+            deletion request.
+          </p>
+          <a
+            class="email-cta"
+            href="mailto:contact@otadex.app?subject=OTADEX%20Account%20Deletion%20Request&body=Hello%2C%0A%0AI%20would%20like%20to%20delete%20my%20OTADEX%20account.%0A%0AUsername%3A%20[your%20username]%0AAccount%20email%3A%20[your%20email]%0A%0AThank%20you."
+          >
+            ✉ Send a deletion request
+          </a>
+        </div>
 
-    <!-- ── ENGLISH ── -->
-    <div lang-content="en">
-      <h1>Account Deletion</h1>
-      <p class="meta">In compliance with Google Play requirements and data protection regulations</p>
-
-      <div class="section-card">
-        <h2>How to delete your account</h2>
-        <p>You can delete your OTADEX account directly from the app or by contacting our team by email.</p>
-      </div>
-
-      <div class="section-card">
-        <h2>Option 1 — From the app</h2>
-        <div class="steps">
-          <div class="step">
-            <div class="step-num"></div>
-            <div class="step-text">
-              <div class="step-label">Open the OTADEX app</div>
-              Launch the app and log in to your account if you haven't already.
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num"></div>
-            <div class="step-text">
-              <div class="step-label">Go to your profile</div>
-              Tap the <strong>Profile</strong> tab in the bottom navigation bar.
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num"></div>
-            <div class="step-text">
-              <div class="step-label">Open settings</div>
-              Scroll to the <strong>Settings</strong> section and tap <strong>Delete my account</strong>.
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num"></div>
-            <div class="step-text">
-              <div class="step-label">Confirm deletion</div>
-              Read the information carefully, then confirm the permanent deletion of your account.
-            </div>
+        <div class="section-card">
+          <h2>Data permanently deleted</h2>
+          <div class="warn-box">
+            <p class="warn-title">⚠ Irreversible deletion</p>
+            <p>
+              Account deletion is <strong>irreversible</strong>. The following
+              data will be erased:
+            </p>
+            <ul style="margin-top: 10px">
+              <li>Your profile and personal information</li>
+              <li>Your character collection</li>
+              <li>Your progression history (rank, points, fan score)</li>
+              <li>Your comments and community interactions</li>
+              <li>Your avatar and preferences</li>
+            </ul>
+            <p style="margin-top: 12px">
+              Your request will be processed within <strong>30 days</strong>.
+              Some data may be retained longer if required by law.
+            </p>
           </div>
         </div>
-      </div>
 
-      <div class="section-card">
-        <h2>Option 2 — By email</h2>
-        <p>If you cannot access the app, send us an email from the address linked to your OTADEX account, including your username and your deletion request.</p>
-        <a class="email-cta" href="mailto:contact@otadex.app?subject=OTADEX%20Account%20Deletion%20Request&body=Hello%2C%0A%0AI%20would%20like%20to%20delete%20my%20OTADEX%20account.%0A%0AUsername%3A%20[your%20username]%0AAccount%20email%3A%20[your%20email]%0A%0AThank%20you.">
-          ✉ Send a deletion request
-        </a>
-      </div>
-
-      <div class="section-card">
-        <h2>Data permanently deleted</h2>
-        <div class="warn-box">
-          <p class="warn-title">⚠ Irreversible deletion</p>
-          <p>Account deletion is <strong>irreversible</strong>. The following data will be erased:</p>
-          <ul style="margin-top:10px">
-            <li>Your profile and personal information</li>
-            <li>Your character collection</li>
-            <li>Your progression history (rank, points, fan score)</li>
-            <li>Your comments and community interactions</li>
-            <li>Your avatar and preferences</li>
-          </ul>
-          <p style="margin-top:12px">Your request will be processed within <strong>30 days</strong>. Some data may be retained longer if required by law.</p>
+        <div class="section-card">
+          <h2>Active subscription</h2>
+          <p>
+            If you have an active Jonin or Kage subscription, remember to cancel
+            it from the app settings <strong>before</strong> deleting your
+            account to avoid future charges. Deleting your account does not
+            automatically cancel your subscription.
+          </p>
         </div>
+
+        <div class="section-card">
+          <h2>Contact</h2>
+          <p>
+            For any questions about data deletion:<br /><a
+              href="mailto:contact@otadex.app"
+              >contact@otadex.app</a
+            >
+          </p>
+        </div>
+
+        <footer>
+          <span>© 2026 TilStack — OTADEX</span>
+          <span
+            ><a href="index.html">Home</a> ·
+            <a href="privacy-policy.html">Privacy</a> ·
+            <a href="terms.html">Terms</a> ·
+            <a
+              href="https://tilstack.github.io/myportofoliov2"
+              target="_blank"
+              rel="noopener"
+              >Portfolio ↗</a
+            ></span
+          >
+        </footer>
       </div>
+    </main>
 
-      <div class="section-card">
-        <h2>Active subscription</h2>
-        <p>If you have an active Jonin or Kage subscription, remember to cancel it from the app settings <strong>before</strong> deleting your account to avoid future charges. Deleting your account does not automatically cancel your subscription.</p>
-      </div>
+    <script>
+      /* ── THEME ── */
+      const saved = localStorage.getItem("otadex_theme") || "dark";
+      document.documentElement.setAttribute("data-theme", saved);
+      document.getElementById("theme-btn").textContent =
+        saved === "dark" ? "🌙" : "☀️";
 
-      <div class="section-card">
-        <h2>Contact</h2>
-        <p>For any questions about data deletion:<br><a href="mailto:contact@otadex.app">contact@otadex.app</a></p>
-      </div>
-
-      <footer>
-        <span>© 2026 TilStack — OTADEX</span>
-        <span><a href="index.html">Home</a> · <a href="privacy-policy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="https://tilstack.github.io/myportofoliov2" target="_blank" rel="noopener">Portfolio ↗</a></span>
-      </footer>
-    </div>
-  </main>
-
-  <script>
-    /* ── THEME ── */
-    const saved = localStorage.getItem('otadex_theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', saved);
-    document.getElementById('theme-btn').textContent = saved === 'dark' ? '🌙' : '☀️';
-
-    document.getElementById('theme-btn').addEventListener('click', () => {
-      const cur = document.documentElement.getAttribute('data-theme');
-      const next = cur === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      document.getElementById('theme-btn').textContent = next === 'dark' ? '🌙' : '☀️';
-      localStorage.setItem('otadex_theme', next);
-    });
-
-    /* ── LANG ── */
-    function setLang(lang) {
-      document.querySelectorAll('[lang-content]').forEach(el => {
-        el.classList.toggle('visible', el.getAttribute('lang-content') === lang);
+      document.getElementById("theme-btn").addEventListener("click", () => {
+        const cur = document.documentElement.getAttribute("data-theme");
+        const next = cur === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        document.getElementById("theme-btn").textContent =
+          next === "dark" ? "🌙" : "☀️";
+        localStorage.setItem("otadex_theme", next);
       });
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
-      });
-      document.documentElement.lang = lang;
-      localStorage.setItem('otadex_lang', lang);
-    }
 
-    const initLang = localStorage.getItem('otadex_lang') || 'fr';
-    setLang(initLang);
-  </script>
-</body>
+      /* ── LANG ── */
+      function setLang(lang) {
+        document.querySelectorAll("[lang-content]").forEach((el) => {
+          el.classList.toggle(
+            "visible",
+            el.getAttribute("lang-content") === lang,
+          );
+        });
+        document.querySelectorAll(".lang-btn").forEach((btn) => {
+          btn.classList.toggle(
+            "active",
+            btn.textContent.trim().toLowerCase() === lang,
+          );
+        });
+        document.documentElement.lang = lang;
+        localStorage.setItem("otadex_lang", lang);
+      }
+
+      const initLang = localStorage.getItem("otadex_lang") || "fr";
+      setLang(initLang);
+    </script>
+  </body>
 </html>
