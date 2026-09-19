@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../core/services/image_export_service.dart';
 import '../../../core/constants/app_assets.dart';
 import '../../../core/models/anime_entry.dart';
 import '../../../core/models/character.dart';
@@ -213,7 +214,9 @@ class _HeroBanner extends StatelessWidget {
                     ),
                     _CircleIconButton(
                       icon: Icons.share_rounded,
-                      onTap: () {},
+                      onTap: () => ImageExportService.shareText(
+                        '${anime.name} (${anime.year}) — à découvrir sur OTADEX',
+                      ),
                     ),
                   ],
                 ),

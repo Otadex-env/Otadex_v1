@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../core/services/image_export_service.dart';
 import '../../../core/subscription/rank_providers.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/widgets/otadex_image.dart';
@@ -24,6 +25,10 @@ class _GalleryScreenState extends ConsumerState<GalleryScreen> {
   late final PageController _pageCtrl;
   late final ValueNotifier<int> _indexNotifier;
   bool _showHint = true;
+
+  /// Une action d'export (téléchargement ou partage) est en cours : les deux
+  /// boutons sont désactivés pour éviter les doubles écritures.
+  bool _exporting = false;
 
   @override
   void initState() {
@@ -61,36 +66,95 @@ class _GalleryScreenState extends ConsumerState<GalleryScreen> {
     );
   }
 
-  void _onDownload(BuildContext context) {
-    if (ref.read(effectiveRankProvider).canDownloadClean) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: AppColors.backgroundCard,
-          content: Text(
-            '✓ Image sauvegardée',
-            style: GoogleFonts.nunitoSans(
-              color: AppColors.statGreen,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
+  Future<void> _onDownload(BuildContext context) async {
+    if (_exporting) return;
+    // Capturés avant l'await : le SnackBar (porté par le ScaffoldMessenger
+    // racine) survit à cet écran, mais `context` non.
+    final messenger = ScaffoldMessenger.of(context);
+    final router = GoRouter.of(context);
+    final clean = ref.read(effectiveRankProvider).canDownloadClean;
+    final imagePath = widget.images[_indexNotifier.value];
+
+    setState(() => _exporting = true);
+    messenger.hideCurrentSnackBar();
+    try {
+      await ImageExportService.saveToGallery(imagePath, withWatermark: !clean);
+      // Succès annoncé UNIQUEMENT ici : le fichier est écrit dans la galerie.
+      messenger.showSnackBar(
+        clean
+            ? SnackBar(
+                backgroundColor: AppColors.backgroundCard,
+                content: Text(
+                  '✓ Image sauvegardée dans ta galerie',
+                  style: GoogleFonts.nunitoSans(
+                    color: AppColors.statGreen,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              )
+            : SnackBar(
+                content: const Text(
+                    '✓ Image sauvegardée avec filigrane OTADEX'),
+                action: SnackBarAction(
+                  label: 'Voir Kage',
+                  onPressed: () => router.push('/subscription'),
+                ),
+                duration: const Duration(seconds: 4),
+              ),
       );
-    } else {
-      // Le routeur est capturé maintenant : le SnackBar (porté par le
-      // ScaffoldMessenger racine) survit à cet écran, mais `context` non —
-      // `GoRouter.of(context)` planterait après un pop.
-      final router = GoRouter.of(context);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: const Text('📥 Téléchargé avec filigrane'),
-          action: SnackBarAction(
-            label: 'Voir Kage',
-            onPressed: () => router.push('/subscription'),
-          ),
-          duration: const Duration(seconds: 4),
-        ),
-      );
+    } on ImageExportException catch (e) {
+      _showExportError(messenger, e.message, () => _onDownload(context));
+    } catch (_) {
+      _showExportError(messenger, "L'enregistrement a échoué. Réessaie.",
+          () => _onDownload(context));
+    } finally {
+      if (mounted) setState(() => _exporting = false);
     }
+  }
+
+  Future<void> _onShare(BuildContext context) async {
+    if (_exporting) return;
+    final messenger = ScaffoldMessenger.of(context);
+    final clean = ref.read(effectiveRankProvider).canDownloadClean;
+    final imagePath = widget.images[_indexNotifier.value];
+
+    setState(() => _exporting = true);
+    messenger.hideCurrentSnackBar();
+    try {
+      await ImageExportService.share(imagePath, withWatermark: !clean);
+    } on ImageExportException catch (e) {
+      _showExportError(messenger, e.message, () => _onShare(context));
+    } catch (_) {
+      _showExportError(messenger, 'Le partage a échoué. Réessaie.',
+          () => _onShare(context));
+    } finally {
+      if (mounted) setState(() => _exporting = false);
+    }
+  }
+
+  void _showExportError(
+    ScaffoldMessengerState messenger,
+    String message,
+    VoidCallback onRetry,
+  ) {
+    messenger.showSnackBar(
+      SnackBar(
+        backgroundColor: AppColors.error,
+        content: Text(
+          message,
+          style: GoogleFonts.nunitoSans(
+            color: Colors.white,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        action: SnackBarAction(
+          label: 'Réessayer',
+          textColor: Colors.white,
+          onPressed: onRetry,
+        ),
+        duration: const Duration(seconds: 6),
+      ),
+    );
   }
 
   @override
@@ -201,14 +265,23 @@ class _GalleryScreenState extends ConsumerState<GalleryScreen> {
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: _exporting ? null : () => _onShare(context),
               icon: const Icon(Icons.ios_share_rounded,
                   color: Colors.white, size: 22),
             ),
             IconButton(
-              onPressed: () => _onDownload(context),
-              icon: const Icon(Icons.download_rounded,
-                  color: Colors.white, size: 22),
+              onPressed: _exporting ? null : () => _onDownload(context),
+              icon: _exporting
+                  ? const SizedBox(
+                      width: 22,
+                      height: 22,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: Colors.white,
+                      ),
+                    )
+                  : const Icon(Icons.download_rounded,
+                      color: Colors.white, size: 22),
             ),
           ],
         ),
