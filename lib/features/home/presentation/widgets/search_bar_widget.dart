@@ -32,6 +32,8 @@ class SearchBarWidget extends StatelessWidget {
               Expanded(
                 child: Text(
                   s.placeholdertext1,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.nunitoSans(
                     fontSize: 14,
                     color: theme.textSecondary,

@@ -11,8 +11,7 @@ class HeroFeaturedSlider extends ConsumerStatefulWidget {
   const HeroFeaturedSlider({super.key});
 
   @override
-  ConsumerState<HeroFeaturedSlider> createState() =>
-      _HeroFeaturedSliderState();
+  ConsumerState<HeroFeaturedSlider> createState() => _HeroFeaturedSliderState();
 }
 
 class _HeroFeaturedSliderState extends ConsumerState<HeroFeaturedSlider> {
@@ -51,6 +50,10 @@ class _HeroFeaturedSliderState extends ConsumerState<HeroFeaturedSlider> {
   Widget build(BuildContext context) {
     final theme = OtadexTheme.of(context);
     final slidesAsync = ref.watch(featuredSlidesProvider);
+    // La carte contient titre + sous-titre + 2 pastilles : sa hauteur doit
+    // suivre la police système (bornée à ×1,3 par l'app), sinon débordement.
+    final textScale = MediaQuery.textScalerOf(context).scale(1.0);
+    final sliderHeight = 200.0 * (1 + (textScale - 1) * 0.6);
 
     return slidesAsync.when(
       data: (slides) {
@@ -59,7 +62,7 @@ class _HeroFeaturedSliderState extends ConsumerState<HeroFeaturedSlider> {
         return Padding(
           padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
           child: SizedBox(
-            height: 200,
+            height: sliderHeight,
             child: Stack(
               children: [
                 PageView.builder(
@@ -98,7 +101,7 @@ class _HeroFeaturedSliderState extends ConsumerState<HeroFeaturedSlider> {
           ),
         );
       },
-      loading: () => const SkeletonBanner(height: 200),
+      loading: () => SkeletonBanner(height: sliderHeight),
       error: (_, __) => const SizedBox.shrink(),
     );
   }
@@ -197,6 +200,8 @@ class _SlideCard extends StatelessWidget {
                   children: [
                     Text(
                       slide.title,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.rajdhani(
                         fontSize: 26,
                         fontWeight: FontWeight.w700,
@@ -219,12 +224,16 @@ class _SlideCard extends StatelessWidget {
                     const SizedBox(height: 8),
                     Row(
                       children: [
-                        Text(
-                          slide.category,
-                          style: GoogleFonts.nunitoSans(
-                            fontSize: 11,
-                            color: slide.secondaryColor,
-                            fontWeight: FontWeight.w600,
+                        Flexible(
+                          child: Text(
+                            slide.category,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.nunitoSans(
+                              fontSize: 11,
+                              color: slide.secondaryColor,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                         const SizedBox(width: 8),

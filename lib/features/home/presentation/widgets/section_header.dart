@@ -22,16 +22,23 @@ class SectionHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            title,
-            style: GoogleFonts.rajdhani(
-              fontSize: 20,
-              fontWeight: FontWeight.w700,
-              color: theme.textPrimary,
-              letterSpacing: -0.3,
+          // Flexible + ellipsis : sur petit écran / police agrandie, le titre
+          // cède la place au lien d'action au lieu de déborder de la Row.
+          Flexible(
+            child: Text(
+              title,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: GoogleFonts.rajdhani(
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
+                color: theme.textPrimary,
+                letterSpacing: -0.3,
+              ),
             ),
           ),
-          if (actionLabel != null)
+          if (actionLabel != null) ...[
+            const SizedBox(width: 12),
             GestureDetector(
               onTap: onAction,
               child: Text(
@@ -43,6 +50,7 @@ class SectionHeader extends StatelessWidget {
                 ),
               ),
             ),
+          ],
         ],
       ),
     );

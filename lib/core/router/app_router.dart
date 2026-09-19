@@ -26,6 +26,7 @@ import '../../features/character/presentation/character_quiz_screen.dart';
 import '../../core/models/character.dart';
 import '../constants/app_constants.dart';
 import '../widgets/auth_required_screen.dart';
+import '../widgets/safe_root_screen.dart';
 
 class AppRouter {
   AppRouter._();
@@ -123,18 +124,20 @@ class AppRouter {
         name: 'collection',
         builder: (context, state) => const AuthRequiredScreen(
           message: 'Connecte-toi pour retrouver ta collection personnelle.',
-          child: CollectionScreen(),
+          child: SafeRootScreen(child: CollectionScreen()),
         ),
       ),
       GoRoute(
         path: '/search',
         name: 'search',
-        builder: (context, state) => const RechercheScreen(),
+        builder: (context, state) =>
+            const SafeRootScreen(child: RechercheScreen()),
       ),
       GoRoute(
         path: '/search-standalone',
         name: 'search-standalone',
-        builder: (context, state) => const RechercheScreen(),
+        builder: (context, state) =>
+            const SafeRootScreen(child: RechercheScreen()),
       ),
       GoRoute(
         path: '/gallery/:charId',
@@ -197,9 +200,8 @@ class AppRouter {
         builder: (context, state) {
           final extra = state.extra as Map<String, dynamic>? ?? {};
           final raw = extra['quizQuestions'];
-          final quizQuestions = raw is List
-              ? raw.whereType<QuizQuestion>().toList()
-              : null;
+          final quizQuestions =
+              raw is List ? raw.whereType<QuizQuestion>().toList() : null;
           return CharacterQuizScreen(
             charId: state.pathParameters['charId']!,
             charName: extra['charName'] as String? ?? '',

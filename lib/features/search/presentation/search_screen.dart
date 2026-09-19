@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -874,14 +875,17 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   }
 
   Widget _buildCategoryGrid(RankTheme theme) {
+    // Hauteur de carte = padding (20) + 3 lignes de texte qui grossissent avec
+    // la police système. Un mainAxisExtent fixe à 80 débordait dès ×1,3.
+    final textScale = MediaQuery.textScalerOf(context).scale(1.0);
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         mainAxisSpacing: 10,
         crossAxisSpacing: 10,
-        mainAxisExtent: 80,
+        mainAxisExtent: math.max(80.0, 24 + 56 * textScale),
       ),
       itemCount: _categories.length,
       itemBuilder: (context, i) => _buildCategoryCard(theme, _categories[i], i),
@@ -1307,9 +1311,10 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
                               color: Colors.redAccent, size: 14),
                           const SizedBox(width: 4),
                           Text(
-                            formatLikes(
-                                ref.watch(likeCountProvider(c.id)).valueOrNull ??
-                                    0),
+                            formatLikes(ref
+                                    .watch(likeCountProvider(c.id))
+                                    .valueOrNull ??
+                                0),
                             style: GoogleFonts.nunitoSans(
                               color: theme.textSecondary,
                               fontSize: 12,

@@ -150,8 +150,11 @@ class _HeroBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Bandeau haut : la hauteur suit la police système (titre sur 2-3 lignes +
+    // pastilles de genre + sous-titre japonais sont ancrés en bas).
+    final textScale = MediaQuery.textScalerOf(context).scale(1.0);
     return SizedBox(
-      height: 280,
+      height: 280 * (1 + (textScale - 1) * 0.6),
       child: Stack(
         fit: StackFit.expand,
         children: [
@@ -190,22 +193,30 @@ class _HeroBanner extends StatelessWidget {
             ),
           ),
 
-          // Back + share buttons
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  _CircleIconButton(
-                    icon: Icons.arrow_back_ios_new_rounded,
-                    onTap: () => context.pop(),
-                  ),
-                  _CircleIconButton(
-                    icon: Icons.share_rounded,
-                    onTap: () {},
-                  ),
-                ],
+          // Back + share buttons — Positioned : un SafeArea direct dans ce
+          // Stack(fit: expand) recevrait des contraintes serrées et le Row
+          // centrerait les boutons au milieu du bandeau (sur les pastilles).
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: SafeArea(
+              bottom: false,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _CircleIconButton(
+                      icon: Icons.arrow_back_ios_new_rounded,
+                      onTap: () => context.pop(),
+                    ),
+                    _CircleIconButton(
+                      icon: Icons.share_rounded,
+                      onTap: () {},
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -241,6 +252,8 @@ class _HeroBanner extends StatelessWidget {
                 // Main title
                 Text(
                   anime.name,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.rajdhani(
                     fontSize: 26,
                     fontWeight: FontWeight.w800,

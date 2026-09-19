@@ -1,3 +1,4 @@
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -63,15 +64,24 @@ class _CharDetailInfosTabState extends ConsumerState<CharDetailInfosTab> {
       ('Naissance', c.birthday ?? c.dateOfBirth ?? '—'),
     ];
 
+    // Ratio 2.6 pour la largeur, mais plancher absolu : libellé + valeur
+    // grossissent avec la police système et débordaient de la cellule.
+    final mq = MediaQuery.of(context);
+    final textScale = mq.textScaler.scale(1.0);
+    final cellWidth = (mq.size.width - 32 - 8) / 2;
+    final cellHeight = math.max(cellWidth / 2.6, 24 + 34 * textScale);
+
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 20, 16, 0),
-      child: GridView.count(
-        crossAxisCount: 2,
+      child: GridView(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
-        childAspectRatio: 2.6,
-        crossAxisSpacing: 8,
-        mainAxisSpacing: 8,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          mainAxisExtent: cellHeight,
+          crossAxisSpacing: 8,
+          mainAxisSpacing: 8,
+        ),
         children: cells.map((cell) {
           final (label, value) = cell;
           return Container(
@@ -96,6 +106,7 @@ class _CharDetailInfosTabState extends ConsumerState<CharDetailInfosTab> {
                 const SizedBox(height: 2),
                 Text(
                   value,
+                  maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.nunitoSans(
                     fontSize: 14,
@@ -455,16 +466,21 @@ class _CharDetailInfosTabState extends ConsumerState<CharDetailInfosTab> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                '💬 Commentaires',
-                style: GoogleFonts.nunitoSans(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.textPrimary,
+              Flexible(
+                child: Text(
+                  '💬 Commentaires',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: GoogleFonts.nunitoSans(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textPrimary,
+                  ),
                 ),
               ),
-              const Spacer(),
+              const SizedBox(width: 8),
               GestureDetector(
                 onTap: _showCommentSheet,
                 child: Container(
@@ -637,7 +653,9 @@ class _CharDetailInfosTabState extends ConsumerState<CharDetailInfosTab> {
                           borderRadius: BorderRadius.circular(12)),
                     ),
                     child: Text(
-                      isSubmitting ? 'Publication...' : 'Publier le commentaire',
+                      isSubmitting
+                          ? 'Publication...'
+                          : 'Publier le commentaire',
                       style:
                           GoogleFonts.nunitoSans(fontWeight: FontWeight.w600),
                     ),
@@ -727,8 +745,7 @@ class _CharDetailInfosTabState extends ConsumerState<CharDetailInfosTab> {
                       Expanded(
                         child: Text(fact,
                             style: GoogleFonts.nunitoSans(
-                                fontSize: 14,
-                                color: AppColors.textSecondary)),
+                                fontSize: 14, color: AppColors.textSecondary)),
                       ),
                     ],
                   ),

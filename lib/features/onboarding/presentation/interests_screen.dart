@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -167,20 +168,31 @@ class _InterestsScreenState extends State<InterestsScreen> {
   }
 
   Widget _buildGrid() {
-    return GridView.builder(
-      padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        mainAxisSpacing: 12,
-        crossAxisSpacing: 12,
-        childAspectRatio: 111 / 130,
-      ),
-      itemCount: _categories.length,
-      itemBuilder: (_, i) => _CategoryCard(
-        category: _categories[i],
-        isSelected: _selected.contains(i),
-        onTap: () => _toggle(i),
-      ),
+    final textScale = MediaQuery.textScalerOf(context).scale(1.0);
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        // Largeur d'une tuile : (largeur - 2×16 de marge - 2×12 d'espacement) / 3.
+        final tileWidth = (constraints.maxWidth - 32 - 24) / 3;
+        // Le ratio 111/130 vaut pour la largeur seule ; le contenu (emoji +
+        // nom sur 2 lignes + exemple) grandit avec la police système, d'où un
+        // plancher en hauteur absolue.
+        final tileHeight = math.max(tileWidth * 130 / 111, 32 + 73 * textScale);
+        return GridView.builder(
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            mainAxisSpacing: 12,
+            crossAxisSpacing: 12,
+            mainAxisExtent: tileHeight,
+          ),
+          itemCount: _categories.length,
+          itemBuilder: (_, i) => _CategoryCard(
+            category: _categories[i],
+            isSelected: _selected.contains(i),
+            onTap: () => _toggle(i),
+          ),
+        );
+      },
     );
   }
 
@@ -202,10 +214,10 @@ class _InterestsScreenState extends State<InterestsScreen> {
             ? SizedBox(
                 key: const ValueKey('active'),
                 width: double.infinity,
-                height: 56,
                 child: ElevatedButton(
                   onPressed: _isLoading ? null : _onConfirm,
                   style: ElevatedButton.styleFrom(
+                    minimumSize: const Size.fromHeight(56),
                     backgroundColor: AppColors.accent,
                     foregroundColor: AppColors.backgroundDeep,
                     elevation: 0,
@@ -228,10 +240,10 @@ class _InterestsScreenState extends State<InterestsScreen> {
             : SizedBox(
                 key: const ValueKey('disabled'),
                 width: double.infinity,
-                height: 56,
                 child: ElevatedButton(
                   onPressed: null,
                   style: ElevatedButton.styleFrom(
+                    minimumSize: const Size.fromHeight(56),
                     backgroundColor: AppColors.backgroundCard,
                     disabledBackgroundColor: AppColors.backgroundCard,
                     elevation: 0,
@@ -241,6 +253,7 @@ class _InterestsScreenState extends State<InterestsScreen> {
                   ),
                   child: Text(
                     'Sélectionne 3 catégories minimum',
+                    textAlign: TextAlign.center,
                     style: GoogleFonts.nunitoSans(
                       fontSize: 14,
                       color: AppColors.textDisabled,
@@ -303,7 +316,8 @@ class _CategoryCardState extends State<_CategoryCard>
       onTap: _onTap,
       child: AnimatedBuilder(
         animation: _scale,
-        builder: (_, child) => Transform.scale(scale: _scale.value, child: child),
+        builder: (_, child) =>
+            Transform.scale(scale: _scale.value, child: child),
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           curve: Curves.easeOut,
@@ -313,9 +327,8 @@ class _CategoryCardState extends State<_CategoryCard>
                 : AppColors.backgroundCard,
             borderRadius: BorderRadius.circular(14),
             border: Border.all(
-              color: widget.isSelected
-                  ? AppColors.accent
-                  : AppColors.borderSubtle,
+              color:
+                  widget.isSelected ? AppColors.accent : AppColors.borderSubtle,
               width: widget.isSelected ? 1.5 : 1.0,
             ),
           ),
@@ -323,8 +336,8 @@ class _CategoryCardState extends State<_CategoryCard>
             children: [
               Center(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 6, vertical: 12),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 6, vertical: 12),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

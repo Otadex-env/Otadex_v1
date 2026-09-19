@@ -30,8 +30,7 @@ class CharacterDetailScreen extends ConsumerStatefulWidget {
       _CharacterDetailScreenState();
 }
 
-class _CharacterDetailScreenState
-    extends ConsumerState<CharacterDetailScreen> {
+class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen> {
   CharDetailTab _activeTab = CharDetailTab.infos;
   Character? _character;
 
@@ -69,10 +68,12 @@ class _CharacterDetailScreenState
 
   Future<void> _toggleLike() async {
     final charId = widget.characterId;
-    final wasLiked =
-        _isLikedOverride ?? ref.read(isLikedProvider(charId)).valueOrNull ?? false;
-    final priorCount =
-        _likeCountOverride ?? ref.read(likeCountProvider(charId)).valueOrNull ?? 0;
+    final wasLiked = _isLikedOverride ??
+        ref.read(isLikedProvider(charId)).valueOrNull ??
+        false;
+    final priorCount = _likeCountOverride ??
+        ref.read(likeCountProvider(charId)).valueOrNull ??
+        0;
     final nextLiked = !wasLiked;
 
     setState(() {
@@ -124,8 +125,7 @@ class _CharacterDetailScreenState
           decoration: BoxDecoration(
             color: AppColors.backgroundCard,
             borderRadius: BorderRadius.circular(24),
-            border:
-                Border.all(color: AppColors.accent.withValues(alpha: 0.4)),
+            border: Border.all(color: AppColors.accent.withValues(alpha: 0.4)),
           ),
           padding: const EdgeInsets.all(20),
           child: Column(
@@ -140,8 +140,7 @@ class _CharacterDetailScreenState
                     fit: StackFit.expand,
                     children: [
                       if (c.imagePath != null)
-                        OtadexImage(
-                            imagePath: c.imagePath!, fit: BoxFit.cover)
+                        OtadexImage(imagePath: c.imagePath!, fit: BoxFit.cover)
                       else
                         Container(color: AppColors.backgroundElevated),
                       Container(
@@ -213,8 +212,7 @@ class _CharacterDetailScreenState
                       borderRadius: BorderRadius.circular(12)),
                 ),
                 child: Text('Terminer',
-                    style: GoogleFonts.nunitoSans(
-                        fontWeight: FontWeight.w700)),
+                    style: GoogleFonts.nunitoSans(fontWeight: FontWeight.w700)),
               ),
             ],
           ),
@@ -236,8 +234,7 @@ class _CharacterDetailScreenState
         backgroundColor: AppColors.backgroundDeep,
         body: Center(
           child: Text('Erreur de chargement',
-              style: GoogleFonts.nunitoSans(
-                  color: AppColors.textSecondary)),
+              style: GoogleFonts.nunitoSans(color: AppColors.textSecondary)),
         ),
       ),
       data: (character) {
@@ -246,8 +243,8 @@ class _CharacterDetailScreenState
             backgroundColor: AppColors.backgroundDeep,
             body: Center(
               child: Text('Personnage introuvable',
-                  style: GoogleFonts.nunitoSans(
-                      color: AppColors.textSecondary)),
+                  style:
+                      GoogleFonts.nunitoSans(color: AppColors.textSecondary)),
             ),
           );
         }
@@ -292,12 +289,12 @@ class _CharacterDetailScreenState
                     activeTab: _activeTab,
                     onTap: (t) => setState(() => _activeTab = t),
                     theme: theme,
+                    topInset: mq.padding.top,
                   ),
                 ),
                 SliverToBoxAdapter(
                   child: Padding(
-                    padding:
-                        EdgeInsets.only(bottom: mq.padding.bottom + 80),
+                    padding: EdgeInsets.only(bottom: mq.padding.bottom + 80),
                     child: _buildTabContent(theme, mq),
                   ),
                 ),

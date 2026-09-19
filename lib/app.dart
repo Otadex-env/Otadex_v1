@@ -29,6 +29,14 @@ class OtadexApp extends ConsumerWidget {
               debugShowCheckedModeBanner: false,
               locale: Locale(locale),
               routerConfig: AppRouter.router,
+              // Police système respectée, mais bornée : sans plafond, un
+              // réglage « très grand » fait déborder tout conteneur à hauteur
+              // fixe ; sans plancher, le texte devient illisible.
+              builder: (context, child) => MediaQuery.withClampedTextScaling(
+                minScaleFactor: 0.85,
+                maxScaleFactor: 1.3,
+                child: child!,
+              ),
               themeMode: themeMode,
               theme: AppTheme.buildLightTheme().copyWith(
                 scaffoldBackgroundColor: rankTheme.backgroundPrimary,

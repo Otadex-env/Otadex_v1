@@ -135,22 +135,30 @@ class _CharDetailHeroState extends State<CharDetailHero>
               ),
             ),
           ),
-          // Top bar
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-              child: Row(
-                children: [
-                  CharCircleButton(
-                    onTap: widget.onBack,
-                    child: const Icon(Icons.arrow_back_ios_new_rounded,
-                        color: Colors.white, size: 20),
-                  ),
-                  // Bouton de partage retiré : le partage n'est pas encore
-                  // implémenté (share_plus non câblé). À rebrancher ici quand
-                  // ce sera le cas — voir char_hero git history / rapport audit.
-                  const Spacer(),
-                ],
+          // Top bar — Positioned (contraintes lâches) : un SafeArea direct dans
+          // ce Stack(fit: expand) recevrait des contraintes serrées et le Row
+          // centrerait le bouton retour verticalement au milieu du hero.
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: SafeArea(
+              bottom: false,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+                child: Row(
+                  children: [
+                    CharCircleButton(
+                      onTap: widget.onBack,
+                      child: const Icon(Icons.arrow_back_ios_new_rounded,
+                          color: Colors.white, size: 20),
+                    ),
+                    // Bouton de partage retiré : le partage n'est pas encore
+                    // implémenté (share_plus non câblé). À rebrancher ici quand
+                    // ce sera le cas — voir char_hero git history / rapport audit.
+                    const Spacer(),
+                  ],
+                ),
               ),
             ),
           ),

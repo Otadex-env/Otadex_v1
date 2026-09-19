@@ -9,11 +9,19 @@ class CharDetailTabBar extends SliverPersistentHeaderDelegate {
   final ValueChanged<CharDetailTab> onTap;
   final RankTheme theme;
 
+  /// Hauteur de la barre d'état : la barre est épinglée en haut de l'écran
+  /// (`pinned: true`), donc sans cet inset elle passe sous l'horloge / l'encoche
+  /// dès que la page défile.
+  final double topInset;
+
   const CharDetailTabBar({
     required this.activeTab,
     required this.onTap,
     required this.theme,
+    this.topInset = 0,
   });
+
+  static const double _barHeight = 48;
 
   static const _tabs = [
     (CharDetailTab.infos, 'Infos'),
@@ -24,9 +32,11 @@ class CharDetailTabBar extends SliverPersistentHeaderDelegate {
   ];
 
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
       color: theme.backgroundPrimary,
+      padding: EdgeInsets.only(top: topInset),
       child: Column(
         children: [
           Expanded(
@@ -42,13 +52,23 @@ class CharDetailTabBar extends SliverPersistentHeaderDelegate {
                       alignment: Alignment.center,
                       children: [
                         Center(
-                          child: Text(
-                            label,
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.nunitoSans(
-                              fontSize: 11,
-                              fontWeight: active ? FontWeight.w700 : FontWeight.w500,
-                              color: active ? theme.accentColor : theme.textSecondary,
+                          // scaleDown : un libellé plus large que son cinquième
+                          // d'écran (petit écran + police agrandie) rétrécit au
+                          // lieu de passer sur 2 lignes et de déborder.
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              label,
+                              maxLines: 1,
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.nunitoSans(
+                                fontSize: 11,
+                                fontWeight:
+                                    active ? FontWeight.w700 : FontWeight.w500,
+                                color: active
+                                    ? theme.accentColor
+                                    : theme.textSecondary,
+                              ),
                             ),
                           ),
                         ),
@@ -79,12 +99,15 @@ class CharDetailTabBar extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => 48;
+  double get maxExtent => _barHeight + topInset;
 
   @override
-  double get minExtent => 48;
+  double get minExtent => _barHeight + topInset;
 
   @override
   bool shouldRebuild(CharDetailTabBar old) =>
-      old.activeTab != activeTab || old.onTap != onTap || old.theme != theme;
+      old.activeTab != activeTab ||
+      old.onTap != onTap ||
+      old.theme != theme ||
+      old.topInset != topInset;
 }
