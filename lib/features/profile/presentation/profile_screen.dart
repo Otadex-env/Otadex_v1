@@ -32,7 +32,9 @@ class ProfileScreen extends ConsumerStatefulWidget {
 
 class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   int _selectedTab = 0;
-  bool _notificationsEnabled = true;
+  // Désactivé tant que l'utilisateur n'a pas explicitement accepté (la
+  // permission Android n'est demandée qu'à l'activation de l'interrupteur).
+  bool _notificationsEnabled = false;
   bool _showKageBanner = true;
   String _billingCycle = 'mensuel';
   int _devTapCount = 0;
@@ -46,18 +48,50 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   Future<void> _loadNotificationPref() async {
     final prefs = await SharedPreferences.getInstance();
     final saved = prefs.getBool(AppConstants.keyNotificationsEnabled);
-    if (saved != null && mounted) setState(() => _notificationsEnabled = saved);
+    var granted = false;
+    try {
+      granted = OneSignal.Notifications.permission;
+    } catch (_) {
+      // SDK non prêt : on reste sur « désactivé ».
+    }
+    // L'interrupteur ne peut être ON que si la permission Android est accordée.
+    if (mounted) setState(() => _notificationsEnabled = (saved ?? false) && granted);
   }
 
   Future<void> _onNotificationsChanged(bool enabled) async {
-    setState(() => _notificationsEnabled = enabled);
-    if (enabled) {
-      await OneSignal.User.pushSubscription.optIn();
-    } else {
-      await OneSignal.User.pushSubscription.optOut();
-    }
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(AppConstants.keyNotificationsEnabled, enabled);
+    if (!enabled) {
+      setState(() => _notificationsEnabled = false);
+      try {
+        await OneSignal.User.pushSubscription.optOut();
+      } catch (_) {}
+      await prefs.setBool(AppConstants.keyNotificationsEnabled, false);
+      return;
+    }
+
+    // Tap explicite sur l'interrupteur : c'est ici, et seulement ici, que la
+    // permission POST_NOTIFICATIONS est demandée.
+    var granted = false;
+    try {
+      granted = await OneSignal.Notifications.requestPermission(true);
+      if (granted) await OneSignal.User.pushSubscription.optIn();
+    } catch (_) {
+      granted = false;
+    }
+    if (!mounted) return;
+    final messenger = ScaffoldMessenger.of(context);
+    setState(() => _notificationsEnabled = granted);
+    await prefs.setBool(AppConstants.keyNotificationsEnabled, granted);
+    if (!granted) {
+      messenger.showSnackBar(
+        const SnackBar(
+          content: Text(
+            "Notifications non autorisées. Active-les pour OTADEX dans les "
+            "réglages d'Android.",
+          ),
+        ),
+      );
+    }
   }
 
   void _showEditProfile() {

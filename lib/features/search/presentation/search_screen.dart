@@ -40,6 +40,10 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   // ── Speech ────────────────────────────────────────────────────────────
   final SpeechToText _speech = SpeechToText();
   bool _speechAvailable = false;
+  bool _speechInitializing = false;
+  // true après un échec d'initialisation (micro refusé / service absent) :
+  // l'icône passe en grisé, mais un nouveau tap retente (nouvelle demande).
+  bool _speechFailed = false;
   bool _isListening = false;
 
   // ── State ─────────────────────────────────────────────────────────────
@@ -206,7 +210,8 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   @override
   void initState() {
     super.initState();
-    _initSpeech();
+    // Pas d'init de la reconnaissance vocale ici : elle déclenche la demande de
+    // permission micro, qui ne doit survenir qu'au tap sur l'icône micro.
     _loadHistory();
     // Charger depuis Firestore (priorité) → fallback JSON si vide
     ref.read(allCharactersProvider.future).then((chars) {
@@ -333,9 +338,13 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   void _clearAll() => _clearHistory();
 
   // ── Speech ────────────────────────────────────────────────────────────
+  /// Initialise la reconnaissance vocale. C'est ICI que Android demande la
+  /// permission micro : à appeler uniquement suite à un tap sur l'icône micro.
   Future<void> _initSpeech() async {
     _speechAvailable = await _speech.initialize(
-      onError: (_) => setState(() => _isListening = false),
+      onError: (_) {
+        if (mounted) setState(() => _isListening = false);
+      },
       onStatus: (status) {
         if (status == 'done' || status == 'notListening') {
           if (mounted) setState(() => _isListening = false);
@@ -345,12 +354,37 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   }
 
   Future<void> _toggleListening() async {
-    if (!_speechAvailable) return;
+    if (_speechInitializing) return;
     if (_isListening) {
       await _speech.stop();
-      setState(() => _isListening = false);
+      if (mounted) setState(() => _isListening = false);
       return;
     }
+
+    if (!_speechAvailable) {
+      _speechInitializing = true;
+      try {
+        await _initSpeech();
+      } catch (_) {
+        _speechAvailable = false;
+      } finally {
+        _speechInitializing = false;
+      }
+      if (!mounted) return;
+      setState(() => _speechFailed = !_speechAvailable);
+      if (!_speechAvailable) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+              'Recherche vocale indisponible : autorise le micro pour '
+              "OTADEX dans les réglages d'Android.",
+            ),
+          ),
+        );
+        return;
+      }
+    }
+
     setState(() => _isListening = true);
     await _speech.listen(
       onResult: (result) {
@@ -497,9 +531,9 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
                             : Icon(
                                 Icons.mic_none_rounded,
                                 key: const ValueKey('mic_off'),
-                                color: _speechAvailable
-                                    ? theme.accentColor
-                                    : theme.textSecondary,
+                                color: _speechFailed
+                                    ? theme.textSecondary
+                                    : theme.accentColor,
                                 size: 18,
                               ),
                       ),

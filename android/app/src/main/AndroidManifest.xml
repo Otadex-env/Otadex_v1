@@ -40,10 +40,9 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <!-- image_picker permissions -->
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="32"/>
+    <!-- Aucune permission de lecture des médias : image_picker (avatar) passe par
+         le sélecteur de photos système (Android 13+) / le sélecteur de documents,
+         qui n'en demandent pas. -->
     <!-- Enregistrement des images dans la galerie (paquet gal) : MediaStore sans permission dès Android 10 ; l'écriture directe n'est requise que jusqu'à l'API 28. -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
     <queries>

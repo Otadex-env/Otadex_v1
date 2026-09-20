@@ -14,7 +14,8 @@ class NotificationService {
     try {
       OneSignal.initialize(_appId);
 
-      await OneSignal.Notifications.requestPermission(true);
+      // Aucune demande de permission ici : POST_NOTIFICATIONS n'est demandée
+      // que par l'interrupteur « Notifications » du profil (action explicite).
 
       // Sauvegarde de l'ID OneSignal dès qu'il est disponible
       final subId = OneSignal.User.pushSubscription.id;
