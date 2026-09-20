@@ -56,3 +56,5 @@ key.properties
 node_modules/
 
 .env
+# Sauvegardes des scripts de migration Firestore
+scripts/backups/

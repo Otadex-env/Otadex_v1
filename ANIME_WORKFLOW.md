@@ -211,6 +211,31 @@ static const Color animeMhaAccent  = Color(0xFF3B82F6);  // bleu primaire
 | `genres`        | Array  | Premier élément = catégorie principale   |
 | `auteurId`      | String | Référence doc dans `creators/`           |
 
+### Vocabulaire des genres (obligatoire)
+
+Les `genres` viennent d'une liste **fixe** : `scripts/anime_workflow/genres.js`
+(miroir Dart : `lib/core/constants/genre_catalog.dart`).
+
+- Démographie : Shōnen, Seinen, Shōjo, Josei, Isekai
+- Genres : Action, Aventure, Arts martiaux, Comédie, Drame, Fantasy, Horreur,
+  Philosophie, Psychologique, Romance, Sport, Stratégie, Surnaturel, Tranche de vie
+
+`setup_anime.js` et les `import_*.js` passent le champ `GENRES` par
+`normalizeGenresStrict()` : les alias sont résolus (Fantaisie → Fantasy,
+Drama → Drame, Shonen → Shōnen, Dark Fantasy → Fantasy, Drame scolaire → Drame…)
+et un genre **hors vocabulaire interrompt** l'import. Pour en introduire un :
+l'ajouter aux DEUX fichiers ci-dessus, puis relancer.
+
+Les puces de l'Accueil filtrent sur ces `genres[]` (les personnages n'ont pas de
+champ genre) et n'affichent que les genres ayant au moins un personnage.
+
+Vérifier / corriger la base existante :
+
+```bash
+env NODE_OPTIONS='--require ./scripts/google_time_offset.js' node scripts/normalize_genres.js --dry-run
+env NODE_OPTIONS='--require ./scripts/google_time_offset.js' node scripts/normalize_genres.js --apply
+```
+
 ---
 
 ## Étape 6 — Firebase Firestore : documents Personnage

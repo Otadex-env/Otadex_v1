@@ -31,7 +31,6 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   int _navIndex = 0;
-  int _selectedCategory = 0;
   late Stream<int> _unreadCountStream;
 
   @override
@@ -135,22 +134,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ),
                   const SliverToBoxAdapter(child: HeroFeaturedSlider()),
                   const SliverToBoxAdapter(child: TrendingSection()),
-                  SliverToBoxAdapter(
+                  const SliverToBoxAdapter(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 8),
-                      child: CategoryChips(
-                        selectedIndex: _selectedCategory,
-                        onChanged: (i) => setState(() => _selectedCategory = i),
-                      ),
+                      padding: EdgeInsets.only(top: 8),
+                      child: CategoryChips(),
                     ),
                   ),
                   if (rank == UserRank.genin)
                     const SliverToBoxAdapter(child: UpsellBanner()),
-                  SliverToBoxAdapter(
-                    child: CharacterGridSection(
-                      selectedCategoryIndex: _selectedCategory,
-                    ),
-                  ),
+                  const SliverToBoxAdapter(child: CharacterGridSection()),
                   const SliverToBoxAdapter(child: SizedBox(height: 100)),
                 ],
               ),

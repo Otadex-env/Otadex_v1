@@ -58,6 +58,7 @@ try {
 }
 
 const { toVarName } = require('./anime_workflow/naming');
+const { normalizeGenresStrict } = require('./anime_workflow/genres');
 
 // ── Paths ─────────────────────────────────────────────────────────────────────
 const ROOT          = path.resolve(__dirname, '..');
@@ -116,7 +117,10 @@ function parseText(text) {
       case 'ANNEE':       anime.annee = parseInt(value) || 2020; break;
       case 'STUDIO':      anime.studio = value; break;
       case 'STATUT':      anime.statut = value; break;
-      case 'GENRES':      anime.genres = value.split(',').map(g => g.trim()); break;
+      // Vocabulaire canonique (scripts/anime_workflow/genres.js) : alias
+      // (Fantaisie→Fantasy, Drama→Drame…) résolus ici ; un genre inconnu
+      // interrompt le setup au lieu d'écrire une variante en base.
+      case 'GENRES':      anime.genres = normalizeGenresStrict(value.split(','), 'champ GENRES du .docx'); break;
       case 'SYNOPSIS':    anime.synopsis = value; break;
       case 'AUTEUR':      anime.auteurNom = value; break;
       case 'AUTEUR_ID':   anime.auteurId = value; break;
@@ -383,6 +387,7 @@ function generateImportScript(anime, characters) {
 const path  = require('path');
 const admin = require('firebase-admin');
 const sendNotification = require('./send_notification');
+const { normalizeGenresStrict } = require('./anime_workflow/genres');
 
 const KEY_PATH = path.resolve(__dirname, '../serviceAccountKey.json');
 if (!require('fs').existsSync(KEY_PATH)) {
@@ -409,7 +414,8 @@ const ANIME = {
     statut: ${JSON.stringify(anime.statut || 'En cours')},
     studio: ${JSON.stringify(anime.studio || '')},
     auteurId: '${auteurId}',
-    genres: ${genres},
+    // Normalisé à l'exécution : jamais de variante de genre en base.
+    genres: normalizeGenresStrict(${genres}, '${anime.slug}'),
     episodes: ${episodes},
   },
 };

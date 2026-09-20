@@ -21,6 +21,7 @@ const admin = require('firebase-admin');
 const path  = require('path');
 const fs    = require('fs');
 const sendNotification = require('./send_notification');
+const { normalizeGenresStrict } = require('./anime_workflow/genres');
 
 const KEY = path.resolve(__dirname, '..', 'serviceAccountKey.json');
 if (!fs.existsSync(KEY)) {
@@ -75,7 +76,7 @@ const animeData = {
   titre:        'Mushoku Tensei : Jobless Reincarnation',
   titreJaponais:'無職転生 〜異世界行ったら本気だす〜',
   synopsis:     'Un NEET japonais de 34 ans meurt renversé par un camion en tentant de sauver de jeunes lycéens. Il se réincarne dans un monde de fantasy médiévale avec l\'intégralité de ses souvenirs, résolu à vivre sans regrets. Né Rudeus Greyrat, il découvre un talent magique exceptionnel et commence une nouvelle vie ambitieuse. Considérée comme l\'œuvre fondatrice du genre isekai moderne, la série suit Rudeus de sa naissance jusqu\'à sa mort paisible à 74 ans.',
-  genres:       ['Isekai', 'Fantasy', 'Tranche de vie', 'Aventure', 'Romance'],
+  genres:       normalizeGenresStrict(['Isekai', 'Fantasy', 'Tranche de vie', 'Aventure', 'Romance'], 'mushoku-tensei'),
   annee:        2021,
   episodes:     { saison1: 23, saison2: 25, saison3: 0 },
   studio:       'Studio Bind',

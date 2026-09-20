@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../constants/app_constants.dart';
+import '../constants/genre_catalog.dart';
 import '../models/character.dart';
 import '../models/anime_entry.dart';
 import '../models/creator_entry.dart';
@@ -22,9 +23,8 @@ final _firestoreServiceProvider = Provider<FirestoreCharacterService>(
 // ── PRIORITÉ 1 : Firestore — PRIORITÉ 2 : JSON mock ────────────────────────
 final allCharactersProvider = FutureProvider<List<Character>>((ref) async {
   ref.keepAlive();
-  final firestoreChars = await ref
-      .watch(_firestoreServiceProvider)
-      .getAllCharacters(limit: 20);
+  final firestoreChars =
+      await ref.watch(_firestoreServiceProvider).getAllCharacters(limit: 20);
 
   if (firestoreChars.isNotEmpty) return firestoreChars;
 
@@ -60,10 +60,11 @@ final trendingCharactersProvider = FutureProvider<List<Character>>((ref) async {
 });
 
 // ── Récents : triés par created_at desc ─────────────────────────────────────
+// `genre` : genre canonique (kDemographicGenres / kMainGenres) ou null = tous.
 final recentCharactersProvider =
-    FutureProvider.family<List<Character>, String?>((ref, category) async {
+    FutureProvider.family<List<Character>, String?>((ref, genre) async {
   final all = await ref.watch(allCharactersProvider.future);
-  var sorted = [...all]..sort((a, b) {
+  final sorted = [...all]..sort((a, b) {
       final aTs = a.createdAt;
       final bTs = b.createdAt;
       if (aTs == null && bTs == null) return 0;
@@ -71,8 +72,9 @@ final recentCharactersProvider =
       if (bTs == null) return -1;
       return bTs.compareTo(aTs);
     });
-  if (category == null || category == 'Tous') return sorted;
-  return sorted.where((c) => c.category == category).toList();
+  if (genre == null) return sorted;
+  final index = await ref.watch(genreIndexProvider.future);
+  return index.filter(sorted, genre);
 });
 
 // ── Nouveaux / récents (compat) ─────────────────────────────────────────────
@@ -92,7 +94,8 @@ final recommendedCharactersProvider =
   if (raw == null || raw.isEmpty) return recommended;
   final interests = List<String>.from(jsonDecode(raw) as List);
   if (interests.isEmpty) return recommended;
-  final filtered = recommended.where((c) => interests.contains(c.category)).toList();
+  final filtered =
+      recommended.where((c) => interests.contains(c.category)).toList();
   return filtered.isEmpty ? recommended : filtered;
 });
 
@@ -114,23 +117,57 @@ final allCreatorsProvider = FutureProvider<List<CreatorEntry>>((ref) async {
   return jsonService.creators;
 });
 
-// ── Catégories dynamiques dérivées des genres Firestore ─────────────────────
-final categoriesProvider = FutureProvider<List<String>>((ref) async {
+// ── Filtre par genre (puces de l'Accueil) ───────────────────────────────────
+// Les personnages n'ont PAS de champ genre : leurs genres sont ceux de leur
+// animé (`animes/{id}.genres[]`, normalisés par scripts/normalize_genres.js).
+
+/// Index animeId → genres, pour filtrer des personnages par genre.
+class GenreIndex {
+  final Map<String, Set<String>> _genresByAnime;
+  const GenreIndex(this._genresByAnime);
+
+  bool matches(Character c, String genre) =>
+      _genresByAnime[c.animeId]?.contains(genre) ?? false;
+
+  List<Character> filter(List<Character> chars, String genre) =>
+      chars.where((c) => matches(c, genre)).toList();
+}
+
+final genreIndexProvider = FutureProvider<GenreIndex>((ref) async {
   final animes = await ref.watch(allAnimesProvider.future);
-  final seen = <String>{};
-  final result = <String>['Tous'];
-  // Ordre d'affichage prioritaire — étendre ici quand un nouveau genre arrive
-  const prioritized = ['Shōnen', 'Seinen', 'Sport', 'Isekai', 'Shōjo', 'Manhwa', 'Mecha'];
-  for (final priority in prioritized) {
-    if (animes.any((a) => a.genres.contains(priority)) && seen.add(priority)) {
-      result.add(priority);
-    }
-  }
-  for (final a in animes) {
-    for (final g in a.genres) {
-      if (seen.add(g)) result.add(g);
-    }
-  }
-  return result.length > 1 ? result : ['Tous', ...prioritized];
+  return GenreIndex({for (final a in animes) a.id: a.genres.toSet()});
 });
 
+/// Puces à afficher : catalogue fixe, réduit aux genres qui ramènent au moins
+/// un personnage — une puce ne doit jamais mener à un écran vide.
+class GenreChips {
+  final List<String> demographics;
+  final List<String> genres;
+  const GenreChips({required this.demographics, required this.genres});
+
+  bool contains(String genre) =>
+      demographics.contains(genre) || genres.contains(genre);
+}
+
+final genreChipsProvider = FutureProvider<GenreChips>((ref) async {
+  final all = await ref.watch(allCharactersProvider.future);
+  final index = await ref.watch(genreIndexProvider.future);
+  bool hasResult(String g) => all.any((c) => index.matches(c, g));
+  return GenreChips(
+    demographics: kDemographicGenres.where(hasResult).toList(),
+    genres: kMainGenres.where(hasResult).toList(),
+  );
+});
+
+/// Genre sélectionné par l'utilisateur (`null` = « Tous »).
+final selectedGenreProvider = StateProvider<String?>((ref) => null);
+
+/// Genre réellement appliqué : la sélection n'est valable que si sa puce existe
+/// encore (données rechargées) ; sinon retour à « Tous ».
+final activeGenreProvider = Provider<String?>((ref) {
+  final selected = ref.watch(selectedGenreProvider);
+  if (selected == null) return null;
+  final chips = ref.watch(genreChipsProvider).valueOrNull;
+  if (chips == null) return selected; // chargement : on garde le choix
+  return chips.contains(selected) ? selected : null;
+});

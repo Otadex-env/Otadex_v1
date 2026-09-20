@@ -10,34 +10,26 @@ import '../../../../../core/utils/image_prefetcher.dart';
 import 'character_grid_card.dart';
 import 'section_header.dart';
 
-const _kDefaultCategories = [
-  'Tous', 'Shōnen', 'Seinen', 'Isekai', 'Shōjo', 'Manhwa', 'Mecha',
-];
-
 class CharacterGridSection extends ConsumerWidget {
-  final int selectedCategoryIndex;
-
-  const CharacterGridSection({super.key, required this.selectedCategoryIndex});
+  const CharacterGridSection({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final categories =
-        ref.watch(categoriesProvider).valueOrNull ?? _kDefaultCategories;
-    final selectedCategory = selectedCategoryIndex == 0 ||
-            selectedCategoryIndex >= categories.length
-        ? null
-        : categories[selectedCategoryIndex];
+    // Genre actif (null = Tous), filtré sur les genres[] de l'animé du personnage.
+    final genre = ref.watch(activeGenreProvider);
+    final index = ref.watch(genreIndexProvider).valueOrNull;
 
-    final recentAsync = ref.watch(recentCharactersProvider(selectedCategory));
+    final recentAsync = ref.watch(recentCharactersProvider(genre));
     final recommendedAsync = ref.watch(recommendedCharactersProvider);
     final trendingAsync = ref.watch(trendingCharactersProvider);
 
-    // Pour "Recommandés" : on filtre aussi par catégorie si sélectionnée
-    final filteredRecommended = recommendedAsync.whenData((chars) {
-      if (selectedCategory == null) return chars;
-      final filtered = chars.where((c) => c.category == selectedCategory).toList();
-      return filtered.isEmpty ? chars : filtered;
-    });
+    // Recommandés / Tendances : filtrés par le même genre. Pas de repli
+    // silencieux sur « tout » — une section vide sous un filtre est masquée.
+    List<Character> byGenre(List<Character> chars) =>
+        (genre == null || index == null) ? chars : index.filter(chars, genre);
+    final filteredRecommended = recommendedAsync.whenData(byGenre);
+    final filteredTrending = trendingAsync.whenData(byGenre);
+    final hideEmpty = genre != null;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,46 +49,47 @@ class CharacterGridSection extends ConsumerWidget {
         ),
 
         // ── Recommandés pour toi ────────────────────────────────────────────
-        SectionHeader(
-          title: '⭐ Recommandés pour toi',
-          actionLabel: 'Voir tout',
-          onAction: () => context.push('/characters', extra: {
-            'title': 'Tous les personnages',
-          }),
-        ),
-        filteredRecommended.when(
-          data: (chars) => _buildGrid(
-            chars,
-            startOffset: recentAsync.valueOrNull?.length ?? 0,
-            maxItems: 6,
+        if (!(hideEmpty &&
+            (filteredRecommended.valueOrNull?.isEmpty ?? false))) ...[
+          SectionHeader(
+            title: '⭐ Recommandés pour toi',
+            actionLabel: 'Voir tout',
+            onAction: () => context.push('/characters', extra: {
+              'title': 'Tous les personnages',
+            }),
           ),
-          loading: () => const _GridLoader(),
-          error: (_, __) => const SizedBox.shrink(),
-        ),
+          filteredRecommended.when(
+            data: (chars) => _buildGrid(
+              chars,
+              startOffset: recentAsync.valueOrNull?.length ?? 0,
+              maxItems: 6,
+            ),
+            loading: () => const _GridLoader(),
+            error: (_, __) => const SizedBox.shrink(),
+          ),
+        ],
 
         // ── Tendances ───────────────────────────────────────────────────────
-        SectionHeader(
-          title: '🔥 Tendances',
-          actionLabel: 'Voir tout',
-          onAction: () => context.push('/characters', extra: {
-            'title': 'Tous les personnages',
-          }),
-        ),
-        trendingAsync.when(
-          data: (chars) {
-            final filtered = selectedCategory == null
-                ? chars
-                : chars.where((c) => c.category == selectedCategory).toList();
-            final display = filtered.isEmpty ? chars : filtered;
-            return _buildGrid(display,
-                startOffset:
-                    (recentAsync.valueOrNull?.length ?? 0) +
-                        (filteredRecommended.valueOrNull?.length ?? 0),
-                maxItems: 6);
-          },
-          loading: () => const _GridLoader(),
-          error: (_, __) => const SizedBox.shrink(),
-        ),
+        if (!(hideEmpty &&
+            (filteredTrending.valueOrNull?.isEmpty ?? false))) ...[
+          SectionHeader(
+            title: '🔥 Tendances',
+            actionLabel: 'Voir tout',
+            onAction: () => context.push('/characters', extra: {
+              'title': 'Tous les personnages',
+            }),
+          ),
+          filteredTrending.when(
+            data: (chars) => _buildGrid(
+              chars,
+              startOffset: (recentAsync.valueOrNull?.length ?? 0) +
+                  (filteredRecommended.valueOrNull?.length ?? 0),
+              maxItems: 6,
+            ),
+            loading: () => const _GridLoader(),
+            error: (_, __) => const SizedBox.shrink(),
+          ),
+        ],
 
         const SizedBox(height: 16),
       ],
