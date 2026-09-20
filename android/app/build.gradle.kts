@@ -67,10 +67,24 @@ android {
             // x86_64 est une ABI d'émulateur/Chromebook — aucun testeur sur
             // téléphone réel n'en a besoin. Scopé au release pour ne pas
             // gêner un émulateur x86_64 en debug/profile.
+            // ATTENTION : le plugin Gradle de Flutter pose lui-même abiFilters
+            // (toutes les ABI par défaut) dans defaultConfig et ce filtre s'y
+            // AJOUTE. Le retrait de x86_64 n'est fiable qu'avec le drapeau CLI :
+            //   flutter build appbundle --release --target-platform android-arm,android-arm64
             ndk {
                 abiFilters += setOf("armeabi-v7a", "arm64-v8a")
             }
         }
+    }
+}
+
+// Exclusion x86/x86_64 du packaging RELEASE uniquement. abiFilters ne retire pas
+// les .so x86_64 des dépendances (libdartjni, libdatastore_shared_counter) : sans
+// libflutter/libapp x86_64, Play déclarerait l'app compatible x86_64 alors qu'elle
+// ne peut pas y démarrer. Debug/profile gardent x86_64 (émulateurs).
+androidComponents {
+    onVariants(selector().withBuildType("release")) { variant ->
+        variant.packaging.jniLibs.excludes.addAll("**/x86_64/**", "**/x86/**")
     }
 }
 
