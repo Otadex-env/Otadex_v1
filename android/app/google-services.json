@@ -14,6 +14,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "1009958721208-fhomqqt3c7thapf4ufpgvoska0klhvk2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.otadex.otadex",
+            "certificate_hash": "4b6e923df606576911674957b07d3e2492831973"
+          }
+        },
+        {
+          "client_id": "1009958721208-movbboqul5dn2fvmjuvj7f98n1lvm7be.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.otadex.otadex",
+            "certificate_hash": "b0e6b45309f17266d0ba31865fb2e19cbc52b8fe"
+          }
+        },
+        {
           "client_id": "1009958721208-fqd3u15ddibijkh9dlos984b5o030j97.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +45,13 @@
             {
               "client_id": "1009958721208-fqd3u15ddibijkh9dlos984b5o030j97.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1009958721208-2rfgrfh82r03s7oludfug8j4heu890ja.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.otadex.app"
+              }
             }
           ]
         }
