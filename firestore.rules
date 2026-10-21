@@ -19,7 +19,14 @@ service cloud.firestore {
     }
 
     match /users/{userId} {
-      allow create: if isOwner(userId) && request.resource.data.uid == userId;
+      // À la création, le client ne doit pas pouvoir s'attribuer un rang ni une
+      // licence : sinon « supprimer son profil puis le recréer avec
+      // abonnement = kage » contournerait touchesProtected() (réservé à
+      // l'update). Ces champs sont semés par le Worker de licences.
+      allow create: if isOwner(userId)
+        && request.resource.data.uid == userId
+        && !request.resource.data.keys()
+             .hasAny(['abonnement', 'licenseExpires', 'licenseKey']);
       allow read:   if isOwner(userId);
       allow update: if isOwner(userId) && !touchesProtected();
       allow delete: if isOwner(userId);

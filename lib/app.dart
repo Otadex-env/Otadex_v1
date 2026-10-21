@@ -9,6 +9,16 @@ import 'core/theme/otadex_theme.dart';
 import 'core/theme/otadex_theme_wrapper.dart';
 import 'core/theme/theme_mode_provider.dart';
 
+/// Widget racine : c'est lui que `main.dart` passe à `runApp`.
+///
+/// Il assemble les réglages globaux de l'app :
+/// - la langue (`localeProvider` → textes via `AppStrings`) ;
+/// - le thème clair/sombre (`themeModeProvider`) et les couleurs du rang
+///   (Genin / Jonin / Kage) via `OtadexTheme` ;
+/// - la navigation (`AppRouter.router`).
+///
+/// `ConsumerWidget` + `ref.watch(...)` : le widget se reconstruit tout seul dès
+/// qu'un de ces réglages change (Riverpod).
 class OtadexApp extends ConsumerWidget {
   const OtadexApp({super.key});
 

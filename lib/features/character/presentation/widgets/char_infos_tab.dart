@@ -633,9 +633,24 @@ class _CharDetailInfosTabState extends ConsumerState<CharDetailInfosTab> {
                         : () async {
                             if (controller.text.trim().isEmpty) return;
                             setSheetState(() => isSubmitting = true);
-                            await ref
+                            final ok = await ref
                                 .read(firestoreCharacterServiceProvider)
                                 .submitComment(c.id, controller.text);
+                            if (!ok) {
+                              // Échec : on garde la feuille ouverte (le texte
+                              // saisi est conservé) et on réactive le bouton.
+                              if (sheetCtx.mounted) {
+                                setSheetState(() => isSubmitting = false);
+                              }
+                              if (mounted) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text(
+                                          'Impossible de publier. Vérifie ta connexion et réessaie.')),
+                                );
+                              }
+                              return;
+                            }
                             if (sheetCtx.mounted) Navigator.pop(sheetCtx);
                             if (mounted) {
                               ScaffoldMessenger.of(context).showSnackBar(

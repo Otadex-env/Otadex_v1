@@ -28,6 +28,15 @@ import '../constants/app_constants.dart';
 import '../widgets/auth_required_screen.dart';
 import '../widgets/safe_root_screen.dart';
 
+/// Carte de navigation de l'application (package go_router).
+///
+/// Comment lire ce fichier :
+/// - chaque `GoRoute` associe une adresse (`path`) à un écran (`builder`) ;
+/// - `:id` dans un chemin est un paramètre, lu avec `state.pathParameters['id']` ;
+/// - `state.extra` transporte des données passées à la navigation, par exemple
+///   `context.push('/gallery/42', extra: {...})` ;
+/// - pour aller quelque part depuis un écran : `context.go('/home')` remplace la
+///   pile de pages, `context.push('/character/1')` empile une page par-dessus.
 class AppRouter {
   AppRouter._();
 
@@ -97,9 +106,12 @@ class AppRouter {
         path: '/characters',
         name: 'character-list',
         builder: (context, state) {
-          final extra = state.extra as Map<String, dynamic>;
+          // `extra` est nul si la page est rouverte sans passer par un
+          // `context.push(..., extra: ...)` : on met une valeur par défaut
+          // plutôt que de planter.
+          final extra = state.extra as Map<String, dynamic>? ?? {};
           return CharacterListScreen(
-            title: extra['title'] as String,
+            title: extra['title'] as String? ?? 'Personnages',
           );
         },
       ),
@@ -143,9 +155,11 @@ class AppRouter {
         path: '/gallery/:charId',
         name: 'gallery',
         builder: (context, state) {
-          final extra = state.extra as Map<String, dynamic>;
-          final images = (extra['images'] as List).cast<String>();
-          final initialIndex = extra['initialIndex'] as int;
+          // Même protection que pour /characters : pas de crash si `extra`
+          // est absent (galerie vide plutôt qu'écran rouge).
+          final extra = state.extra as Map<String, dynamic>? ?? {};
+          final images = (extra['images'] as List?)?.cast<String>() ?? [];
+          final initialIndex = extra['initialIndex'] as int? ?? 0;
           return GalleryScreen(images: images, initialIndex: initialIndex);
         },
       ),

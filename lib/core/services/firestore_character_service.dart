@@ -369,9 +369,14 @@ class FirestoreCharacterService {
     );
   }
 
-  Future<void> submitComment(String charId, String text) async {
+  /// Publie un commentaire et ajoute +3 au score fan de l'utilisateur.
+  ///
+  /// Retourne `true` si l'écriture a réussi, `false` sinon (non connecté,
+  /// texte vide, réseau coupé, règle Firestore refusée…). L'écran s'appuie
+  /// sur ce booléen pour afficher le bon message à l'utilisateur.
+  Future<bool> submitComment(String charId, String text) async {
     final user = FirebaseAuth.instance.currentUser;
-    if (user == null || text.trim().isEmpty) return;
+    if (user == null || text.trim().isEmpty) return false;
     try {
       final pseudo = user.displayName ?? 'Fan OTADEX';
       final batch = _db.batch();
@@ -388,7 +393,10 @@ class FirestoreCharacterService {
         'score_fan': FieldValue.increment(3),
       });
       await batch.commit();
-    } catch (_) {}
+      return true;
+    } catch (_) {
+      return false;
+    }
   }
 
   Stream<List<Map<String, dynamic>>> streamComments(String charId) {
