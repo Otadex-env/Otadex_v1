@@ -5,6 +5,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "cmake",
+      "request": "launch",
+      "name": "CMake: Script debugging",
+      "cmakeDebugType": "script",
+      "scriptPath": "${workspaceFolder}/<...>.cmake"
+    },
+    {
       "name": "Otadex_v1",
       "request": "launch",
       "type": "dart"
