@@ -19,6 +19,19 @@ val keystoreProperties = Properties().apply {
 }
 val hasReleaseKeystore = keystorePropertiesFile.exists()
 
+// Garde-fou : sans key.properties, le release est signé avec la clé de debug,
+// et le Play Store refuse un bundle signé ainsi. On bloque donc la commande
+// `flutter build appbundle` plutôt que de produire un AAB inutilisable.
+// (Un APK release de test, `flutter build apk --release`, reste possible.)
+gradle.taskGraph.whenReady {
+    if (!hasReleaseKeystore && allTasks.any { it.name == "bundleRelease" }) {
+        throw GradleException(
+            "android/key.properties introuvable : impossible de signer l'AAB " +
+                "release. Voir PLAY_STORE_SIGNING.md."
+        )
+    }
+}
+
 android {
     namespace = "com.otadex.otadex"
     compileSdk = flutter.compileSdkVersion
