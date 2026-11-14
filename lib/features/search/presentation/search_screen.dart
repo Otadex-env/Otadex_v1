@@ -75,17 +75,6 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
         AppColors.catSportC1, AppColors.catSportC2),
   ];
 
-  static const _trending = [
-    _TrendItem('#1', 'Gojo Satoru', 'Jujutsu Kaisen', AppColors.trendJJKBg),
-    _TrendItem('#2', 'Monkey D. Luffy', 'One Piece', AppColors.trendOPBg),
-    _TrendItem('#3', 'Killua Zoldyck', 'Hunter x Hunter', AppColors.trendHxHBg),
-    _TrendItem('#4', 'Itachi Uchiha', 'Naruto Shippuden', AppColors.trendNSBg),
-    _TrendItem(
-        '#5', 'Edward Elric', 'Fullmetal Alchemist', AppColors.trendFMABg),
-    _TrendItem(
-        '#6', 'Akashi Seijuro', 'Kuroko no Basket', AppColors.trendKNBBg),
-  ];
-
   // ── Computed ──────────────────────────────────────────────────────────
   bool get _showSuggestions => _isFocused && _query.isNotEmpty;
   bool get _showResults =>
@@ -495,7 +484,16 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
                       ),
                       decoration: InputDecoration(
                         isDense: true,
+                        // Le conteneur autour dessine déjà la bordure : on
+                        // supprime TOUTES les bordures du thème (activée,
+                        // focus, erreur…), sinon on voit une double bordure.
+                        filled: false,
                         border: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        disabledBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        focusedErrorBorder: InputBorder.none,
                         hintText: AppStrings.of(context).searchHint,
                         hintStyle: GoogleFonts.nunitoSans(
                           color: theme.textSecondary,
@@ -1015,14 +1013,24 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
     );
   }
 
+  /// Tendances : mêmes données que l'accueil (`trendingCharactersProvider`),
+  /// pour que les deux écrans ne se contredisent plus. Pendant le chargement
+  /// ou en cas d'erreur, on n'affiche rien plutôt que de fausses valeurs.
   Widget _buildTrendingList(RankTheme theme) {
+    final trending = ref.watch(trendingCharactersProvider).valueOrNull;
+    if (trending == null || trending.isEmpty) return const SizedBox(height: 64);
+    final items = [
+      for (var i = 0; i < trending.length && i < 6; i++)
+        _TrendItem('#${i + 1}', trending[i].name, trending[i].animeName,
+            trending[i].cardColor),
+    ];
     return SizedBox(
       height: 64,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemCount: _trending.length,
+        itemCount: items.length,
         separatorBuilder: (_, __) => const SizedBox(width: 10),
-        itemBuilder: (context, i) => _buildTrendCard(theme, _trending[i]),
+        itemBuilder: (context, i) => _buildTrendCard(theme, items[i]),
       ),
     );
   }
