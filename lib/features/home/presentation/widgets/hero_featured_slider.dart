@@ -1,10 +1,13 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../../core/models/featured_slide.dart';
 import '../../../../../core/providers/anilist_providers.dart';
 import '../../../../../core/theme/otadex_theme.dart';
+import '../../../../../core/widgets/otadex_image.dart';
 import '../../../../../core/widgets/skeleton_loader.dart';
 
 class HeroFeaturedSlider extends ConsumerStatefulWidget {
@@ -69,7 +72,23 @@ class _HeroFeaturedSliderState extends ConsumerState<HeroFeaturedSlider> {
                   controller: _pageCtrl,
                   itemCount: slides.length,
                   onPageChanged: (i) => setState(() => _currentPage = i),
-                  itemBuilder: (_, i) => _SlideCard(slide: slides[i]),
+                  // `parallax` vaut 0 quand la carte est centrée, ±1 quand elle
+                  // sort de l'écran : il sert à décaler l'image plus lentement
+                  // que la carte, ce qui donne un effet de profondeur.
+                  itemBuilder: (_, i) => AnimatedBuilder(
+                    animation: _pageCtrl,
+                    builder: (_, __) {
+                      var page = _currentPage.toDouble();
+                      if (_pageCtrl.hasClients &&
+                          _pageCtrl.position.haveDimensions) {
+                        page = _pageCtrl.page ?? page;
+                      }
+                      return _SlideCard(
+                        slide: slides[i],
+                        parallax: (page - i).clamp(-1.0, 1.0),
+                      );
+                    },
+                  ),
                 ),
                 Positioned(
                   right: 12,
@@ -109,14 +128,14 @@ class _HeroFeaturedSliderState extends ConsumerState<HeroFeaturedSlider> {
 
 class _SlideCard extends StatelessWidget {
   final FeaturedSlide slide;
+  final double parallax;
 
-  const _SlideCard({required this.slide});
+  const _SlideCard({required this.slide, this.parallax = 0});
 
   @override
   Widget build(BuildContext context) {
     final theme = OtadexTheme.of(context);
-    return Container(
-      margin: const EdgeInsets.only(right: 20),
+    final card = Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(18),
         gradient: LinearGradient(
@@ -139,6 +158,42 @@ class _SlideCard extends StatelessWidget {
       ),
       child: Stack(
         children: [
+          // Illustration de fond (si disponible), décalée selon le parallaxe,
+          // puis un voile sombre pour que le texte reste lisible.
+          if (slide.imageUrl != null)
+            Positioned.fill(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(18),
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Transform.translate(
+                      offset: Offset(parallax * -36, 0),
+                      child: Transform.scale(
+                        scale: 1.2,
+                        child: OtadexImage(
+                          imagePath: slide.imageUrl!,
+                          alignment: Alignment.topCenter,
+                        ),
+                      ),
+                    ),
+                    DecoratedBox(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            slide.primaryColor.withValues(alpha: 0.25),
+                            slide.primaryColor.withValues(alpha: 0.92),
+                          ],
+                          stops: const [0.2, 1.0],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           // Decorative circles
           Positioned(
             right: -20,
@@ -251,6 +306,17 @@ class _SlideCard extends StatelessWidget {
           ),
         ],
       ),
+    );
+
+    // Carte cliquable seulement si elle correspond à un vrai animé.
+    final animeId = slide.animeId;
+    if (animeId == null) return card;
+    return GestureDetector(
+      onTap: () {
+        HapticFeedback.selectionClick();
+        context.push('/anime/$animeId');
+      },
+      child: card,
     );
   }
 }

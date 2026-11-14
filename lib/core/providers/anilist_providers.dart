@@ -83,6 +83,20 @@ final featuredSlidesProvider =
   if (animes.isEmpty) return _kFallbackSlides;
   final featured = animes.where((a) => a.isFeatured).take(5).toList();
   if (featured.isEmpty) return _kFallbackSlides;
+
+  // Les animés n'ont pas d'image propre : on emprunte celle d'un de leurs
+  // personnages. Si le chargement échoue, les cartes gardent leur dégradé.
+  List<Character> characters = const [];
+  try {
+    characters = await ref.watch(allCharactersProvider.future);
+  } catch (_) {}
+  String? imageFor(AnimeEntry a) {
+    for (final c in characters) {
+      if (c.animeName == a.name && c.images.isNotEmpty) return c.images.first;
+    }
+    return null;
+  }
+
   return featured.map((a) {
     final subtitle = [
       if (a.year > 0) '${a.year}',
@@ -96,6 +110,8 @@ final featuredSlidesProvider =
       primaryColor: a.cardColor,
       secondaryColor: a.accentColor,
       category: a.category,
+      imageUrl: imageFor(a),
+      animeId: a.id,
     );
   }).toList();
 });

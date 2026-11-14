@@ -8,6 +8,10 @@ class OtadexImage extends StatelessWidget {
   final double? width;
   final double? height;
   final BoxFit fit;
+
+  /// Partie de l'image conservée quand elle est rognée par `BoxFit.cover`
+  /// (ex. `Alignment.topCenter` pour garder le visage d'un personnage).
+  final Alignment alignment;
   final BorderRadius? borderRadius;
 
   const OtadexImage({
@@ -16,6 +20,7 @@ class OtadexImage extends StatelessWidget {
     this.width,
     this.height,
     this.fit = BoxFit.cover,
+    this.alignment = Alignment.center,
     this.borderRadius,
   });
 
@@ -45,6 +50,7 @@ class OtadexImage extends StatelessWidget {
           width: width,
           height: height,
           fit: fit,
+          alignment: alignment,
           errorBuilder: (_, __, ___) => _placeholder(),
         ),
       );
@@ -58,6 +64,7 @@ class OtadexImage extends StatelessWidget {
           width: width,
           height: height,
           fit: fit,
+          alignment: alignment,
           placeholder: (_, __) => _shimmer(),
           errorWidget: (_, __, ___) => _placeholder(),
         ),

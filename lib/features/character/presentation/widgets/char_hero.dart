@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/models/character.dart';
 import '../../../../core/theme/app_colors.dart';
@@ -104,13 +105,30 @@ class _CharDetailHeroState extends State<CharDetailHero>
               ),
             ),
           ),
-          // Image animée
+          // Image animée : elle remplit toute la largeur du hero (plus de
+          // rectangle avec des bandes sombres sur les côtés). On garde le haut
+          // de l'image, là où se trouve le visage.
+          Positioned.fill(child: _buildAnimatedImage()),
+          // Voile en haut pour que le bouton retour reste lisible sur l'image.
           Positioned(
             left: 0,
             right: 0,
-            top: mq.padding.top + 48,
-            bottom: 90,
-            child: _buildAnimatedImage(),
+            top: 0,
+            child: IgnorePointer(
+              child: Container(
+                height: mq.padding.top + 90,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.black.withValues(alpha: 0.55),
+                      Colors.transparent,
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ),
           // Fondu bas
           Positioned(
@@ -246,7 +264,8 @@ class _CharDetailHeroState extends State<CharDetailHero>
       child: widget.images.isNotEmpty
           ? OtadexImage(
               imagePath: widget.images.first,
-              fit: BoxFit.contain,
+              fit: BoxFit.cover,
+              alignment: Alignment.topCenter,
             )
           : _buildSilhouette(),
     );
@@ -290,7 +309,13 @@ class _CharDetailHeroState extends State<CharDetailHero>
     VoidCallback? onTap,
   }) {
     return GestureDetector(
-      onTap: onTap,
+      // Petite vibration au toucher : confirme l'action sans regarder l'écran.
+      onTap: onTap == null
+          ? null
+          : () {
+              HapticFeedback.lightImpact();
+              onTap();
+            },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
@@ -308,7 +333,20 @@ class _CharDetailHeroState extends State<CharDetailHero>
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, size: 15, color: isActive ? activeColor : Colors.white),
+            // Le cœur « rebondit » quand on le coche (changement d'icône animé).
+            AnimatedSwitcher(
+              duration: const Duration(milliseconds: 280),
+              transitionBuilder: (child, anim) => ScaleTransition(
+                scale: CurvedAnimation(parent: anim, curve: Curves.elasticOut),
+                child: child,
+              ),
+              child: Icon(
+                icon,
+                key: ValueKey(isActive),
+                size: 15,
+                color: isActive ? activeColor : Colors.white,
+              ),
+            ),
             const SizedBox(width: 6),
             Text(
               label,
