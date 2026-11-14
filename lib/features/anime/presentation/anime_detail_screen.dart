@@ -70,7 +70,16 @@ class _AnimeDetailScreenState extends ConsumerState<AnimeDetailScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                _HeroBanner(anime: anime, theme: theme),
+                _HeroBanner(
+                  anime: anime,
+                  theme: theme,
+                  // Pas d'image propre pour un animé : on prend celle du
+                  // premier personnage qui en a une.
+                  imageUrl: characters
+                      .where((c) => c.images.isNotEmpty)
+                      .map((c) => c.images.first)
+                      .firstOrNull,
+                ),
                 _StatsBand(anime: anime, theme: theme),
                 if (characters.isNotEmpty) ...[
                   const SectionHeader(title: 'Personnages principaux'),
@@ -146,8 +155,13 @@ class _AnimeDetailScreenState extends ConsumerState<AnimeDetailScreen> {
 class _HeroBanner extends StatelessWidget {
   final AnimeEntry anime;
   final RankTheme theme;
+  final String? imageUrl;
 
-  const _HeroBanner({required this.anime, required this.theme});
+  const _HeroBanner({
+    required this.anime,
+    required this.theme,
+    this.imageUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -170,14 +184,32 @@ class _HeroBanner extends StatelessWidget {
             ),
           ),
 
-          // Decorative icon watermark
-          Center(
-            child: Icon(
-              Icons.play_circle_outline_rounded,
-              size: 96,
-              color: AppColors.textPrimary.withValues(alpha: 0.08),
+          // Illustration de fond : un léger zoom arrière à l'ouverture donne de
+          // la vie à la page. Sans image, on garde l'icône décorative.
+          if (imageUrl != null)
+            Positioned.fill(
+              child: TweenAnimationBuilder<double>(
+                tween: Tween(begin: 1.12, end: 1.0),
+                duration: const Duration(milliseconds: 1100),
+                curve: Curves.easeOutCubic,
+                builder: (_, scale, child) => Opacity(
+                  opacity: 0.55,
+                  child: Transform.scale(scale: scale, child: child),
+                ),
+                child: OtadexImage(
+                  imagePath: imageUrl!,
+                  alignment: Alignment.topCenter,
+                ),
+              ),
+            )
+          else
+            Center(
+              child: Icon(
+                Icons.play_circle_outline_rounded,
+                size: 96,
+                color: AppColors.textPrimary.withValues(alpha: 0.08),
+              ),
             ),
-          ),
 
           // Gradient scrim: transparent → backgroundPrimary
           Container(
