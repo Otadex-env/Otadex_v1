@@ -910,17 +910,32 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
     // Hauteur de carte = padding (20) + 3 lignes de texte qui grossissent avec
     // la police système. Un mainAxisExtent fixe à 80 débordait dès ×1,3.
     final textScale = MediaQuery.textScalerOf(context).scale(1.0);
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisSpacing: 10,
-        crossAxisSpacing: 10,
-        mainAxisExtent: math.max(80.0, 24 + 56 * textScale),
-      ),
-      itemCount: _categories.length,
-      itemBuilder: (context, i) => _buildCategoryCard(theme, _categories[i], i),
+    final cardHeight = math.max(80.0, 24 + 56 * textScale);
+
+    // Grille à 2 colonnes faite de simples lignes (Row) plutôt que d'un
+    // GridView : sur téléphone, le GridView en `shrinkWrap` réservait de la
+    // place pour une ligne fantôme sous les cartes (grand vide avant
+    // « Tendances »). Ici la hauteur est exactement celle des cartes.
+    Widget cell(int i) => i < _categories.length
+        ? SizedBox(
+            height: cardHeight,
+            child: _buildCategoryCard(theme, _categories[i], i),
+          )
+        : SizedBox(height: cardHeight);
+
+    return Column(
+      children: [
+        for (var i = 0; i < _categories.length; i += 2) ...[
+          if (i > 0) const SizedBox(height: 10),
+          Row(
+            children: [
+              Expanded(child: cell(i)),
+              const SizedBox(width: 10),
+              Expanded(child: cell(i + 1)),
+            ],
+          ),
+        ],
+      ],
     );
   }
 
