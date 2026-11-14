@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart' show PlatformException;
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -111,10 +112,38 @@ class FirebaseAuthService {
       NotificationService.saveCurrentSubscriptionId();
     } on FirebaseAuthException catch (e) {
       throw _mapError(e.code);
+    } on PlatformException catch (e) {
+      throw _mapGoogleError(e);
     } catch (e) {
       if (e is String) rethrow;
       throw 'Connexion Google échouée. Réessaie.';
     }
+  }
+
+  /// Traduit l'erreur native de Google Sign-In (Android) en message lisible.
+  ///
+  /// Le code d'erreur est conservé dans le message : sans lui, impossible de
+  /// savoir pourquoi la connexion échoue en production.
+  /// - `10`    : l'empreinte SHA-1 de l'app n'est pas enregistrée dans Firebase
+  ///             (cas typique d'une app installée depuis le Play Store, signée
+  ///             par la clé de signature de Google Play) ;
+  /// - `12500` : Google Play Services absent ou à mettre à jour ;
+  /// - `7`     : pas de connexion internet.
+  String _mapGoogleError(PlatformException e) {
+    final details = '${e.code} ${e.message ?? ''}';
+    if (details.contains('network_error') || details.contains(': 7')) {
+      return 'Pas de connexion internet. Réessaie.';
+    }
+    if (details.contains(': 10')) {
+      return 'Connexion Google indisponible pour cette version de l\'app '
+          '(erreur 10). Utilise ton email en attendant.';
+    }
+    if (details.contains(': 12500')) {
+      return 'Connexion Google impossible (erreur 12500). Mets à jour '
+          'Google Play Services puis réessaie.';
+    }
+    if (e.code == 'sign_in_canceled') return 'Connexion Google annulée.';
+    return 'Connexion Google échouée (${e.code}). Réessaie.';
   }
 
   Future<void> signOut() async {
@@ -130,8 +159,16 @@ class FirebaseAuthService {
     await prefs.remove(AppConstants.keyUserRank);
   }
 
+  /// Envoie l'email de réinitialisation (rédigé en français).
+  ///
+  /// L'email contient un lien qui ouvre une page Firebase où l'utilisateur
+  /// choisit son nouveau mot de passe : aucun code à recopier dans l'app.
+  /// Remarque : pour un compte créé uniquement avec Google, aucun email n'est
+  /// envoyé (il n'a pas de mot de passe) ; et Firebase ne dit pas si l'adresse
+  /// existe, par protection contre l'énumération des comptes.
   Future<void> sendPasswordReset(String email) async {
     try {
+      await _auth.setLanguageCode('fr');
       await _auth.sendPasswordResetEmail(email: email);
     } on FirebaseAuthException catch (e) {
       throw _mapError(e.code);
