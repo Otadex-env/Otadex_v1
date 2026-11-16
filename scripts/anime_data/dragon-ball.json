@@ -1,0 +1,1363 @@
+{
+  "anime": {
+    "titre": "Dragon Ball",
+    "titreJaponais": "ドラゴンボール",
+    "synopsis": "Son Goku, un garçon à queue de singe élevé seul dans la montagne, rencontre Bulma et part à la recherche des sept Dragon Balls, des sphères magiques exauçant un vœu si réunies. Il découvre peu à peu le monde, l'amitié et les arts martiaux, puis apprend qu'il est un Saiyan envoyé conquérir la Terre — mission oubliée après un choc d'enfance. La série suit ses combats contre des adversaires toujours plus puissants, de Freezer à Majin Buu, jusqu'aux dieux de la destruction de Dragon Ball Super.",
+    "genres": [
+      "Shōnen",
+      "Action",
+      "Arts martiaux",
+      "Aventure",
+      "Comédie"
+    ],
+    "annee": 1986,
+    "episodes": {},
+    "studio": "Toei Animation",
+    "studioId": "toei-animation",
+    "auteur": "Akira Toriyama",
+    "auteurId": "akira-toriyama",
+    "editeur": "Shueisha — Weekly Shōnen Jump, collection Jump Comics",
+    "statut": "En cours",
+    "type": "Shōnen"
+  },
+  "creator": {
+    "nom": "Akira Toriyama",
+    "nomJaponais": "鳥山 明",
+    "bio": "Akira Toriyama (鳥山 明, Toriyama Akira) est un mangaka japonais né le 5 avril 1955 à Kiyosu, dans la préfecture d'Aichi. Attiré par le dessin dès l'enfance, il est influencé par l'animation de Walt Disney, par les mangas d'Osamu Tezuka et par les films de Jackie Chan. Il travaille d'abord dans une agence de design, qu'il quitte parce qu'il supporte mal le cadre rigide de l'entreprise. Après avoir participé à un concours de mangas sans l'emporter, il entame une carrière professionnelle : un one-shot, Wonder Island, en 1975, puis la série Dr. Slump dans le Weekly Shōnen Jump à partir de 1980. En 1984, pressé d'écrire un nouveau succès, il lance Dragon Ball, d'abord inspiré du Voyage en Occident et des films d'arts martiaux, puis orienté vers les tournois et les combats épiques. À partir de 1986, il signe aussi les dessins de personnages de la série de jeux vidéo Dragon Quest. Il est décédé à l'âge de 68 ans ; sa mort, causée par un hématome sous-dural aigu, a été annoncée le 8 mars 2024 par Bird Studio et Capsule Corporation Tokyo.",
+    "dateNaissance": "5 avril 1955",
+    "nationalite": "Japonais",
+    "occupation": "Mangaka (auteur-dessinateur) et illustrateur / character designer",
+    "oeuvres": [
+      "1975 — Wonder Island (ワンダーアイランド) — one-shot",
+      "1980–1984 — Dr. Slump — Weekly Shōnen Jump (Shueisha) — 18 volumes",
+      "1984–1995 — Dragon Ball — Weekly Shōnen Jump (Shueisha) — 519 chapitres, 42 volumes (la partie dite « Dragon Ball Z » est incluse dans ces volumes)",
+      "1986 – années suivantes — Dragon Quest (série de jeux vidéo) — dessins de personnages et illustrations",
+      "1997–1998 — Cowa! — 1 volume",
+      "1998 — Kajika — 1 volume",
+      "1999–2005 — Neko Majin — 4 volumes",
+      "2000 — Sand Land — 1 volume",
+      "2015–en cours — Dragon Ball Super (manga) — illustré par Toyotarou sous la supervision de Toriyama — plus de 20 volumes"
+    ],
+    "recompenses": [
+      "2006 — Japan Media Arts Festival : Dragon Ball élu troisième plus grand manga de tous les temps lors d'un vote des fans japonais",
+      "2007 — Sondage Oricon : Goku élu « personnage de manga le plus fort de tous les temps »",
+      "2019 — Chevalier de l'Ordre des Arts et des Lettres (France)",
+      "2018 — Dragon Ball FighterZ : prix du meilleur jeu de combat aux Game Awards (franchise)",
+      "Prix littéraires personnels — Non listés dans la source principale consultée (nocloo.com)"
+    ],
+    "imageUrl": "",
+    "animeIds": [
+      "dragon-ball"
+    ]
+  },
+  "studio": {
+    "nom": "Toei Animation",
+    "fondation": "23 janvier 1948 sous le nom Japan Animated Films ; nom Toei Animation adopté en 1956 — fondateurs : Kenzō Masaoka et Zenjirō Yamamoto",
+    "fondateur": "Non divulgué publiquement",
+    "description": "",
+    "productions": [
+      "Sally the Witch (1966–1968)",
+      "GeGeGe no Kitarō (1968–1969)",
+      "Mazinger Z (1972–1974)",
+      "Galaxy Express 999 (1978–1981)",
+      "Dr. Slump (1981–1986)",
+      "Saint Seiya (1986–1989)",
+      "Sailor Moon (1992–1993)",
+      "Slam Dunk (1993–1996)",
+      "Digimon Adventure (1999–2000)",
+      "One Piece (1999–en cours)",
+      "PreCure (2004–en cours)"
+    ]
+  },
+  "characters": [
+    {
+      "id": "db-son-goku",
+      "nom": "Son Goku",
+      "nomJaponais": "孫 悟空 (Son Gokū)",
+      "animeId": "dragon-ball",
+      "animeName": "Dragon Ball",
+      "auteurId": "akira-toriyama",
+      "auteurNom": "Akira Toriyama",
+      "studioId": "toei-animation",
+      "studioNom": "Toei Animation",
+      "age": "Environ 43–45 ans dans Dragon Ball Super (né l'an 737 du calendrier de la série)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Protagoniste — Saiyan élevé sur Terre (nom de naissance : Kakarotto) — Défenseur de la Terre",
+      "description": "Son Goku est le héros de la série, un garçon à queue de singe élevé dans la montagne par son grand-père adoptif Gohan, loin de toute civilisation. Il rencontre Bulma, qui l'entraîne dans la quête des sept Dragon Balls, et découvre au fil des aventures le monde, l'amitié et les arts martiaux. Il apprend plus tard qu'il est un Saiyan envoyé sur Terre pour la conquérir, mais un choc à la tête dans l'enfance a effacé ses instincts destructeurs. Passionné de combat, il cherche sans cesse à dépasser ses limites, et ses affrontements avec des adversaires de plus en plus puissants rythment toute la série. Naïf, joyeux et toujours affamé, il est aussi d'un grand sens moral : il épargne volontiers ses ennemis quand ils s'avouent vaincus. Il fonde une famille avec Chi-Chi et devient le père de Gohan puis de Goten. Il est sélectionné comme « le personnage de manga le plus fort de tous les temps » dans un sondage Oricon de 2007 et reste une figure centrale de la culture populaire mondiale.",
+      "pouvoirs": [
+        "Kamehameha — onde d'énergie concentrée, technique signature apprise auprès de Maître Roshi",
+        "Transformations de Super Saiyan (et ses paliers suivants) — décuplent sa puissance",
+        "Instinct Ultra — état de combat avancé apparu dans Dragon Ball Super",
+        "Téléportation instantanée — apprise sur la planète Yardrat",
+        "Kaiō-ken — multiplie temporairement sa puissance au prix d'un effort corporel",
+        "Genki Dama (Spirit Bomb) — sphère d'énergie formée en empruntant celle de tous les êtres vivants",
+        "Combat au corps à corps — maîtrise exceptionnelle des arts martiaux"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il a une queue de singe à l'origine, vestige de sa nature Saiyan",
+        "Il est classé « personnage de manga le plus fort de tous les temps » dans un sondage Oricon de 2007",
+        "Le 9 mai est officiellement le « Goku Day » au Japon, déclaré en 2015",
+        "Masako Nozawa le double depuis les débuts de l'adaptation animée et a aussi prêté sa voix à Gohan et Goten"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Chi-Chi",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Gohan",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Goten",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Son Gohan",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Kamesennin",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Vegeta",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Krillin",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Bulma",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Freezer",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Cell",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Majin Buu",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Beerus",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Whis",
+          "type": "mentor"
+        }
+      ],
+      "voixJaponaise": "Masako Nozawa",
+      "voixAnglaise": "Sean Schemmel (Stephanie Nadolny pour la forme « mini-Goku » de Dragon Ball Daima)",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 1
+    },
+    {
+      "id": "db-vegeta",
+      "nom": "Vegeta",
+      "nomJaponais": "ベジータ (Bejīta)",
+      "animeId": "dragon-ball",
+      "animeName": "Dragon Ball",
+      "auteurId": "akira-toriyama",
+      "auteurNom": "Akira Toriyama",
+      "studioId": "toei-animation",
+      "studioNom": "Toei Animation",
+      "age": "Environ 48–50 ans dans Dragon Ball Super (né l'an 732 du calendrier de la série)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Prince des Saiyans — Père de Trunks et Bra — Rival et allié de Goku",
+      "description": "Vegeta est le prince de la race guerrière des Saiyans, dont la planète a été détruite et dont il est l'un des rares survivants. Il apparaît d'abord comme un adversaire redoutable de Goku, arrivé sur Terre pour s'emparer des Dragon Balls. Orgueilleux et obsédé par l'idée d'être le plus fort, il vit comme une humiliation de se savoir dépassé par un Saiyan de classe inférieure. Au fil des affrontements, il se rapproche progressivement de ses anciens ennemis et finit par protéger la Terre à ses côtés. Il fonde une famille avec Bulma et devient le père de Trunks et de Bra, ce qui adoucit son caractère sans entamer sa fierté. Son entraînement incessant en fait l'un des plus puissants combattants de l'univers. Sa rivalité amicale avec Goku est le moteur d'une grande partie de la série.",
+      "pouvoirs": [
+        "Final Flash — onde d'énergie dévastatrice",
+        "Galick Ho — attaque d'énergie signature",
+        "Transformations de Super Saiyan (et paliers suivants) — décuplent sa puissance",
+        "Ultra Ego — forme de combat apparue dans Dragon Ball Super",
+        "Vol et manipulation d'énergie (ki)",
+        "Intelligence tactique de guerrier — analyse rapide des adversaires"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son nom vient du mot anglais « vegetable » : les noms des Saiyans sont des jeux de mots sur les légumes",
+        "Né l'an 732 du calendrier de la série ; la date du 14 août n'est pas officielle (source : MacMyths)",
+        "Yudai Mino double Vegeta dans sa forme réduite de Dragon Ball Daima",
+        "Sa rivalité avec Goku est considérée comme l'une des relations les plus célèbres du manga"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Son Goku",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Bulma",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Trunks",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Bra",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Freezer",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Piccolo",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Son Gohan",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Ryō Horikawa",
+      "voixAnglaise": "Christopher R. Sabat",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 2
+    },
+    {
+      "id": "db-son-gohan",
+      "nom": "Son Gohan",
+      "nomJaponais": "孫 悟飯 (Son Gohan)",
+      "animeId": "dragon-ball",
+      "animeName": "Dragon Ball",
+      "auteurId": "akira-toriyama",
+      "auteurNom": "Akira Toriyama",
+      "studioId": "toei-animation",
+      "studioNom": "Toei Animation",
+      "age": "Environ 21–23 ans dans Dragon Ball Super (né l'an 757 du calendrier de la série)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Fils aîné de Goku — Demi-Saiyan — Élève de Piccolo — Érudit",
+      "description": "Son Gohan est le fils aîné de Goku et de Chi-Chi, un demi-Saiyan au potentiel de combat caché. Enfant timide et réticent à la violence, il est confié à l'entraînement de Piccolo, qui devient son premier véritable mentor. Il est profondément attaché à son père, dont il cherche l'approbation tout en privilégiant les études, comme le souhaite sa mère. Sa puissance se révèle lors des moments de colère ou de danger extrême, ce qui le rend souvent plus fort qu'il ne le croit. Il joue un rôle décisif lors de plusieurs affrontements majeurs. À l'âge adulte, il mène une vie plus calme comme érudit, et épouse Videl. Il est père de Pan.",
+      "pouvoirs": [
+        "Potentiel caché immense — surpasse ses limites sous forte émotion",
+        "Kamehameha — technique apprise de son père",
+        "Transformations de Super Saiyan et paliers suivants",
+        "Combat à mains nues et vol",
+        "Intelligence supérieure — esprit scientifique et érudit"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il préfère les études au combat et devient érudit à l'âge adulte",
+        "Né le 18 mai selon MacMyths",
+        "Masako Nozawa lui prête aussi sa voix, comme à Goku et Goten",
+        "Il est protégé et entraîné par Piccolo dès l'enfance"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Son Goku",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Chi-Chi",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Son Goten",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Piccolo",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Videl",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Pan",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Krillin",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Vegeta",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Trunks",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Masako Nozawa",
+      "voixAnglaise": "Kyle Hebert",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 3
+    },
+    {
+      "id": "db-piccolo",
+      "nom": "Piccolo",
+      "nomJaponais": "ピッコロ (Pikkoro)",
+      "animeId": "dragon-ball",
+      "animeName": "Dragon Ball",
+      "auteurId": "akira-toriyama",
+      "auteurNom": "Akira Toriyama",
+      "studioId": "toei-animation",
+      "studioNom": "Toei Animation",
+      "age": "Environ 25–27 ans dans Dragon Ball Super (né l'an 753 du calendrier de la série)",
+      "sexe": "Masculin (les Nameks se reproduisent sans sexes biologiques)",
+      "statut": "Vivant",
+      "rang": "Namek — Ancien ennemi devenu allié — Mentor de Gohan — Fusionné avec Kami",
+      "description": "Piccolo est un Namek, né de la réincarnation du Roi Démon Piccolo qui a juré de se venger de Goku. Il apparaît d'abord comme un antagoniste redoutable, avant de se rapprocher de la famille de Goku lorsqu'il prend en charge l'entraînement de Gohan. Il se révèle protecteur et loyal envers lui, au point de se sacrifier pour le protéger. Sa personnalité austère et pragmatique s'adoucit progressivement. Il est capable de régénérer les membres perdus et de modifier son corps. Il fusionne avec Kami, ce qui lui donne accès à des connaissances et pouvoirs supplémentaires. Il est un des alliés les plus fiables des guerriers Z.",
+      "pouvoirs": [
+        "Régénération — peut reconstituer des membres perdus",
+        "Makankosappo (Rayon Tournoyant Perforant) — technique signature",
+        "Allongement des membres et modification du corps",
+        "Fusion avec d'autres Nameks — augmente sa puissance",
+        "Vol et manipulation du ki",
+        "Sens aiguisés — perception des énergies"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son nom vient du « piccolo », la petite flûte : les Nameks portent des noms tirés de la musique",
+        "Né l'an 753 du calendrier ; la date du 9 mai n'est pas officielle",
+        "Toshio Furukawa le double en japonais, Christopher R. Sabat en anglais",
+        "Il devient le mentor et presque un père de substitution pour Gohan"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Son Gohan",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Son Goku",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Kami",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Krillin",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Vegeta",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Pan",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Toshio Furukawa",
+      "voixAnglaise": "Christopher R. Sabat",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 4
+    },
+    {
+      "id": "db-krillin",
+      "nom": "Krillin",
+      "nomJaponais": "クリリン (Kuririn)",
+      "animeId": "dragon-ball",
+      "animeName": "Dragon Ball",
+      "auteurId": "akira-toriyama",
+      "auteurNom": "Akira Toriyama",
+      "studioId": "toei-animation",
+      "studioNom": "Toei Animation",
+      "age": "Environ 42–44 ans dans Dragon Ball Super (né l'an 736 du calendrier de la série)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Meilleur ami de Goku — Humain le plus fort — Ancien moine du temple Orin",
+      "description": "Krillin est l'ami d'enfance de Goku, ancien moine du temple Orin, qui s'entraîne avec lui chez Maître Roshi. Chauve, de petite taille et vaillant, il compense son manque de puissance par sa technique et son courage. Il est souvent présenté comme l'un des humains les plus forts de l'univers. Il épouse Android 18 et devient père de Marron. Sa loyauté envers Goku est indéfectible. Il se bat régulièrement aux côtés des guerriers Z. Il apporte souvent une touche d'humour et d'humanité à la série.",
+      "pouvoirs": [
+        "Kienzan (Destructo-Disk) — disque d'énergie tranchant",
+        "Kamehameha — appris auprès de Maître Roshi",
+        "Éclat solaire (Taiyōken) — technique aveuglante",
+        "Maîtrise du ki et vol",
+        "Technique et stratégie — expérience de combat"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il épouse Android 18 et fonde une famille",
+        "Né le 29 octobre selon MacMyths",
+        "Mayumi Tanaka le double en japonais",
+        "Il est souvent qualifié de plus fort des humains de la série"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Son Goku",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Android 18",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Marron",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Kamesennin",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Yamcha",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Tenshinhan",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Piccolo",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Mayumi Tanaka",
+      "voixAnglaise": "Sonny Strait",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 5
+    },
+    {
+      "id": "db-bulma",
+      "nom": "Bulma",
+      "nomJaponais": "ブルマ (Buruma)",
+      "animeId": "dragon-ball",
+      "animeName": "Dragon Ball",
+      "auteurId": "akira-toriyama",
+      "auteurNom": "Akira Toriyama",
+      "studioId": "toei-animation",
+      "studioNom": "Toei Animation",
+      "age": "Environ 45–47 ans dans Dragon Ball Super (née l'an 733 du calendrier de la série)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Génie scientifique — Présidente de la Capsule Corporation — Épouse de Vegeta",
+      "description": "Bulma est une jeune scientifique brillante, fille du Dr. Brief, fondateur de la Capsule Corporation. Elle croise Goku lors de sa recherche des Dragon Balls et l'entraîne dans l'aventure qui lance la série. Elle invente le radar à Dragon Balls ainsi que de nombreuses technologies décisives pour les héros. Sa personnalité franche, impulsive et sûre d'elle contraste avec la naïveté de Goku. Elle épouse Vegeta, malgré leurs caractères opposés, et devient la mère de Trunks et de Bra. Elle dirige la Capsule Corporation, qu'elle développe. Elle est un pilier de la communauté des héros.",
+      "pouvoirs": [
+        "Génie scientifique et ingénierie",
+        "Radar à Dragon Balls — invention qui permet de les localiser",
+        "Direction d'entreprise — Capsule Corporation",
+        "Courage civil — se met en danger face à des adversaires surpuissants"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle invente le radar à Dragon Balls dès le début de l'histoire",
+        "Née le 18 août selon MacMyths",
+        "Hiromi Tsuru l'a doublée en japonais jusqu'à son décès en 2017 ; elle double aussi sa fille Bra dans Z (source : TVmaze)",
+        "La Capsule Corporation est l'une des entreprises les plus puissantes de l'univers de la série"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Vegeta",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Trunks",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Bra",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Dr. Brief",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Son Goku",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Krillin",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Yamcha",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Yamcha",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Hiromi Tsuru",
+      "voixAnglaise": "Monica Rial",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 6
+    },
+    {
+      "id": "db-freezer",
+      "nom": "Freezer",
+      "nomJaponais": "フリーザ (Furīza)",
+      "animeId": "dragon-ball",
+      "animeName": "Dragon Ball",
+      "auteurId": "akira-toriyama",
+      "auteurNom": "Akira Toriyama",
+      "studioId": "toei-animation",
+      "studioNom": "Toei Animation",
+      "age": "Âge non précisé (équivalent d'une quarantaine à cinquantaine d'années humaines selon MacMyths)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Empereur de l'univers — Antagoniste majeur — Destructeur de la planète Vegeta",
+      "description": "Freezer est un tyran intergalactique qui dirige une armée de conquête et vend des planètes au plus offrant. Il est responsable de la destruction de la planète Vegeta et de l'asservissement des Saiyans. Poli, cruel et orgueilleux, il maintient ses subordonnés sous la menace. Il part à la recherche des Dragon Balls de Namek afin d'obtenir l'immortalité. Il affronte Goku lors de l'arc de Namek, l'un des moments les plus célèbres de la série. Il reste l'un des méchants les plus emblématiques du manga. Il revient dans Dragon Ball Super, où il s'entraîne pour se venger.",
+      "pouvoirs": [
+        "Transformations successives — forme finale dotée d'une puissance extrême",
+        "Death Beam — rayon perforant",
+        "Destruction de planètes — technique d'énergie massive",
+        "Résistance et régénération hors norme",
+        "Armée de soldats — Frieza Force"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il parle poliment même lorsqu'il détruit une planète, un trait devenu emblématique",
+        "Ryūsei Nakao le double en japonais",
+        "Sa taille officielle est de 158 cm (source : MacMyths)",
+        "L'arc de Namek, où il affronte Goku, est l'un des plus célèbres du manga"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Roi Cold",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Son Goku",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Vegeta",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Raditz",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Nappa",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Piccolo",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Gohan",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Krillin",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Zarbon",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Dodoria",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Ryūsei Nakao",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 7
+    },
+    {
+      "id": "db-trunks",
+      "nom": "Trunks",
+      "nomJaponais": "トランクス (Torankusu)",
+      "animeId": "dragon-ball",
+      "animeName": "Dragon Ball",
+      "auteurId": "akira-toriyama",
+      "auteurNom": "Akira Toriyama",
+      "studioId": "toei-animation",
+      "studioNom": "Toei Animation",
+      "age": "12–14 ans (présent) ; 14–15 ans (version future) dans Dragon Ball Super (né l'an 766)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Demi-Saiyan — Fils de Vegeta et Bulma — Existe en version « futur » et « présent »",
+      "description": "Trunks est le fils de Vegeta et de Bulma. Dans la série, il existe sous deux versions : Trunks du futur, un guerrier venu d'un monde ravagé par des androïdes, et Trunks du présent, un enfant plus insouciant. La version du futur voyage dans le temps afin de prévenir Goku de la menace qui pèsera sur la Terre. Il fait preuve d'un grand sens du devoir. Il manie une épée qui devient son emblème. Il est un guerrier talentueux, pragmatique et mature pour son âge. La version du présent est plus espiègle, notamment avec Goten.",
+      "pouvoirs": [
+        "Épée — maniement d'une lame héritée",
+        "Transformations de Super Saiyan et paliers suivants",
+        "Combat polyvalent mêlant sabre et ki",
+        "Voyage temporel — la version future utilise une machine à voyager dans le temps"
+      ],
+      "citations": [],
+      "trivia": [
+        "Sa version du futur ouvre un arc de voyage dans le temps",
+        "Les sources donnent deux tailles : 129 cm (présent) et 150 cm (futur)",
+        "Takeshi Kusao double Trunks en japonais",
+        "Il est associé à une épée devenue emblématique"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Vegeta",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Bulma",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Bra",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Son Goten",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Son Gohan",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Androïdes",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Cell",
+          "type": "ennemi"
+        }
+      ],
+      "voixJaponaise": "Takeshi Kusao",
+      "voixAnglaise": "Alexis Tipton",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 8
+    },
+    {
+      "id": "db-cell",
+      "nom": "Cell",
+      "nomJaponais": "セル (Seru)",
+      "animeId": "dragon-ball",
+      "animeName": "Dragon Ball",
+      "auteurId": "akira-toriyama",
+      "auteurNom": "Akira Toriyama",
+      "studioId": "toei-animation",
+      "studioNom": "Toei Animation",
+      "age": "Âge non précisé",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Bio-android — Antagoniste principal de l'arc Cell — Organisme créé par le Dr. Gero",
+      "description": "Cell est un bio-android créé par le Dr. Gero, un organisme qui absorbe d'autres êtres afin de devenir « parfait ». Il apparaît dans l'arc des Androïdes et se révèle un adversaire redoutable des guerriers Z. Il possède des cellules de Goku, de Vegeta, de Piccolo, de Freezer et d'autres combattants, ce qui lui confère un éventail de techniques variées. Arrogant et sadique, il organise le « Cell Game », un tournoi de combat destiné à éprouver ses adversaires. Il est l'un des antagonistes les plus appréciés de la série. Ses transformations successives en font un adversaire en perpétuelle évolution. Le conflit se noue autour de Gohan, dont la puissance se révèle à cette occasion.",
+      "pouvoirs": [
+        "Absorption — capture d'autres êtres pour renforcer sa puissance",
+        "Cellules multiples — techniques de plusieurs guerriers",
+        "Régénération — se reconstitue même après de lourds dégâts",
+        "Kamehameha — technique copiée de Goku",
+        "Transformations successives"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il est composé de cellules de plusieurs guerriers",
+        "Norio Wakamoto le double en japonais",
+        "Le « Cell Game » est l'un des arcs les plus marquants de la série",
+        "Il est considéré comme un des méchants les plus appréciés du manga"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Dr. Gero",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Son Goku",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Son Gohan",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Piccolo",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Vegeta",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Androïdes 17",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "18",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Trunks du futur",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Norio Wakamoto",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 9
+    },
+    {
+      "id": "db-majin-buu",
+      "nom": "Majin Buu",
+      "nomJaponais": "魔人ブウ (Majin Bū)",
+      "animeId": "dragon-ball",
+      "animeName": "Dragon Ball",
+      "auteurId": "akira-toriyama",
+      "auteurNom": "Akira Toriyama",
+      "studioId": "toei-animation",
+      "studioNom": "Toei Animation",
+      "age": "Très ancien (créé il y a plusieurs millions d'années selon la série)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Antagoniste de l'arc Buu — Créature magique — Esprit d'enfant et pouvoir colossal",
+      "description": "Majin Buu est une créature magique d'une puissance colossale, scellée il y a très longtemps. Il est libéré par le sorcier Babidi, qui cherche à l'utiliser pour dominer l'univers. Il a l'esprit d'un enfant : il est capricieux et se montre cruel par jeu. Il possède une capacité de régénération quasi illimitée et se transforme à mesure qu'il absorbe d'autres êtres. Il affronte les guerriers de la Terre dans le dernier grand arc du manga. Son caractère enfantin le rend à la fois comique et dangereux. Il apparaît aussi dans Dragon Ball Super.",
+      "pouvoirs": [
+        "Régénération — se reconstitue après presque n'importe quelle blessure",
+        "Magie de transformation — change les êtres en bonbons ou en objets",
+        "Absorption — fusionne avec d'autres êtres",
+        "Puissance physique et énergétique immense"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il transforme ses victimes en bonbons ou en objets",
+        "Kōzō Shioya le double en japonais",
+        "Son esprit d'enfant le rend capricieux plus que méchant",
+        "Il reste actif dans Dragon Ball Super"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Babidi",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Mr. Satan",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Son Goku",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Vegeta",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Son Gohan",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Piccolo",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Dabura",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Kōzō Shioya",
+      "voixAnglaise": "Josh Martin",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 10
+    },
+    {
+      "id": "db-beerus",
+      "nom": "Beerus",
+      "nomJaponais": "ビルス (Birusu)",
+      "animeId": "dragon-ball",
+      "animeName": "Dragon Ball",
+      "auteurId": "akira-toriyama",
+      "auteurNom": "Akira Toriyama",
+      "studioId": "toei-animation",
+      "studioNom": "Toei Animation",
+      "age": "Plusieurs millions d'années (implicite selon MacMyths)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Dieu de la Destruction (Univers 7) — Élève du dieu-ange Whis",
+      "description": "Beerus est le Dieu de la Destruction de l'Univers 7, chargé de maintenir l'équilibre de l'univers par la destruction. Il apparaît dans Dragon Ball Z: Battle of Gods, où il cherche un combattant légendaire, le « Super Saiyan Dieu ». Sa personnalité est capricieuse : il aime manger et dormir, mais peut anéantir une planète sur un coup d'humeur. Il est accompagné de Whis, son assistant et instructeur. Sa puissance le place très au-dessus des guerriers rencontrés jusque-là. Il se prend d'une certaine affection pour la Terre, surtout pour sa nourriture. Il entraîne parfois Goku et Vegeta dans Dragon Ball Super.",
+      "pouvoirs": [
+        "Destruction — anéantit des planètes d'un geste",
+        "Force divine — puissance largement supérieure aux guerriers mortels",
+        "Sommeil prophétique — il peut sentir les menaces pendant son sommeil",
+        "Ki divin — énergie spéciale des dieux"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il adore la cuisine terrienne",
+        "Jason Douglas le double en anglais pour Dragon Ball Super",
+        "Il apparaît dès le film Battle of Gods (2013)",
+        "Sa fonction de destructeur maintient l'équilibre de l'univers"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Whis",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Son Goku",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Vegeta",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Bulma",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "dieux de la destruction",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Non vérifiée dans nos sources",
+      "voixAnglaise": "Jason Douglas",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 11
+    },
+    {
+      "id": "db-whis",
+      "nom": "Whis",
+      "nomJaponais": "ウイス (Uisu)",
+      "animeId": "dragon-ball",
+      "animeName": "Dragon Ball",
+      "auteurId": "akira-toriyama",
+      "auteurNom": "Akira Toriyama",
+      "studioId": "toei-animation",
+      "studioNom": "Toei Animation",
+      "age": "Sans âge connu (ageless)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Ange — Assistant et instructeur de Beerus — Maître de Goku et Vegeta",
+      "description": "Whis est un ange, assistant et instructeur de Beerus, qu'il accompagne dans ses missions. Poli et élégant, il apparaît avec un bâton qui lui permet de voyager. Il est l'un des êtres les plus puissants de l'univers et surpasse Beerus en force. Il entraîne Goku et Vegeta dans Dragon Ball Super, en leur enseignant des techniques de combat divines. Il apprécie la cuisine terrienne. Il tient aussi le rôle d'un conseiller bienveillant. Il est un acteur majeur de l'arc Battle of Gods.",
+      "pouvoirs": [
+        "Maîtrise du ki divin",
+        "Voyage dans l'espace et le temps — via son bâton",
+        "Enseignement — apprend des techniques à Goku et Vegeta",
+        "Puissance supérieure à celle de Beerus"
+      ],
+      "citations": [],
+      "trivia": [
+        "Ian Sinclair le double en anglais pour Dragon Ball Super",
+        "Il adore les desserts terriens",
+        "Son bâton lui permet de se déplacer à travers l'espace et le temps",
+        "Sa taille est estimée à environ 180 cm"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Beerus",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Son Goku",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Vegeta",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Bulma",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Non vérifiée dans nos sources",
+      "voixAnglaise": "Ian Sinclair",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 12
+    },
+    {
+      "id": "db-kame-sennin",
+      "nom": "Kame Sennin",
+      "nomJaponais": "Maître Roshi)  (亀仙人 (Kame Sennin)",
+      "animeId": "dragon-ball",
+      "animeName": "Dragon Ball",
+      "auteurId": "akira-toriyama",
+      "auteurNom": "Akira Toriyama",
+      "studioId": "toei-animation",
+      "studioNom": "Toei Animation",
+      "age": "Plus de 300 ans (né plus de 300 ans avant la série, selon MacMyths)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Ermite des tortues — Maître de Goku et Krillin — Inventeur du Kamehameha",
+      "description": "Maître Roshi est un vieux maître d'arts martiaux qui vit sur une petite île, la Kame House, avec une tortue de mer. Il entraîne Goku et Krillin et leur enseigne le Kamehameha, sa technique signature. Malgré son âge, il est puissant et conserve une grande expérience. Il a un penchant pour les magazines et les jeunes femmes, ce qui constitue un gag récurrent. Sage dans les moments décisifs, il guide ses élèves dans la voie des arts martiaux. Il participe au Tenkaichi Budokai sous un déguisement. Il reste un mentor respecté de toute la bande.",
+      "pouvoirs": [
+        "Kamehameha — technique d'origine, enseignée à ses élèves",
+        "Maîtrise des arts martiaux",
+        "Mafuba — technique de scellement",
+        "Sagesse et expérience"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il vit sur une île avec une tortue de mer",
+        "Il est l'inventeur du Kamehameha",
+        "Trois comédiens japonais l'ont doublé dans Z (Kōhei Miyauchi, Hiroshi Masuoka, Masaharu Satō)",
+        "Il participe au tournoi sous un déguisement"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Son Goku",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Krillin",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Yamcha",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Tenshinhan",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Oolong",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Puar",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Tsuru Sennin",
+          "type": "rival"
+        }
+      ],
+      "voixJaponaise": "Kōhei Miyauchi (série originale) ; Hiroshi Masuoka (Z)",
+      "voixAnglaise": "Mike McFarland",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 13
+    },
+    {
+      "id": "db-android-18",
+      "nom": "Android 18",
+      "nomJaponais": "人造人間18号 (Jinzō-ningen Jūhachi-gō)",
+      "animeId": "dragon-ball",
+      "animeName": "Dragon Ball",
+      "auteurId": "akira-toriyama",
+      "auteurNom": "Akira Toriyama",
+      "studioId": "toei-animation",
+      "studioNom": "Toei Animation",
+      "age": "Environ début de quarantaine dans Dragon Ball Super (née vers l'an 737, approximatif)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Androïde — Sœur de l'Androïde 17 — Épouse de Krillin",
+      "description": "Android 18 est une androïde créée par le Dr. Gero, sœur jumelle de l'Androïde 17. Elle fait partie des adversaires des guerriers Z lors de l'arc des Androïdes. Plus calme et réfléchie que son frère, elle est pragmatique. Elle n'éprouve pas de véritable plaisir à détruire. Elle épouse Krillin et devient la mère de Marron. Elle est dotée d'une énergie infinie. Elle reste un personnage influent dans Dragon Ball Super.",
+      "pouvoirs": [
+        "Énergie infinie — ne s'épuise pas",
+        "Force et vitesse surhumaines",
+        "Barrière d'énergie",
+        "Combat à mains nues d'un niveau élevé"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son énergie est illimitée",
+        "Miki Itō la double en japonais, Meredith McCoy en anglais",
+        "Elle épouse Krillin",
+        "Elle était à l'origine une humaine transformée par le Dr. Gero"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Android 17",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Krillin",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Marron",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Dr. Gero",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Miki Itō",
+      "voixAnglaise": "Meredith McCoy",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 14
+    },
+    {
+      "id": "db-tenshinhan",
+      "nom": "Tenshinhan",
+      "nomJaponais": "天津飯 (Tenshinhan)",
+      "animeId": "dragon-ball",
+      "animeName": "Dragon Ball",
+      "auteurId": "akira-toriyama",
+      "auteurNom": "Akira Toriyama",
+      "studioId": "toei-animation",
+      "studioNom": "Toei Animation",
+      "age": "Environ mi-quarantaine (né l'an 733 du calendrier de la série)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Ancien membre de l'École de la Grue — Allié des guerriers Z — Meilleur ami de Chaozu",
+      "description": "Tenshinhan est un artiste martial humain doté de trois yeux. Il apparaît d'abord comme un adversaire de Goku lors du Tenkaichi Budokai, en tant que membre de l'École de la Grue. Il se repent et s'allie ensuite aux héros. Il est le meilleur ami de Chaozu. Sa discipline, sa rigueur et son sens de l'honneur sont mis en avant. Il participe aux grands combats de la série, souvent comme soutien. Il vit principalement à l'écart pour s'entraîner.",
+      "pouvoirs": [
+        "Dodonpa — onde d'énergie perforante",
+        "Kikōhō (Tri-Beam) — onde d'énergie en forme de triangle",
+        "Taiyōken — éclat solaire aveuglant",
+        "Multiplication de soi — technique de duplication"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il a trois yeux, un trait de sa race",
+        "Plusieurs doubleurs japonais, dont Hirotaka Suzuoki et Kōichi Yamadera",
+        "Chaozu l'accompagne partout",
+        "Il est resté l'un des meilleurs humains de la série"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Chaozu",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Son Goku",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Krillin",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Yamcha",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Tsuru Sennin",
+          "type": "mentor"
+        }
+      ],
+      "voixJaponaise": "Hirotaka Suzuoki / Kōichi Yamadera (selon Z)",
+      "voixAnglaise": "John Burgmeier",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 15
+    },
+    {
+      "id": "db-yamcha",
+      "nom": "Yamcha",
+      "nomJaponais": "ヤムチャ (Yamucha)",
+      "animeId": "dragon-ball",
+      "animeName": "Dragon Ball",
+      "auteurId": "akira-toriyama",
+      "auteurNom": "Akira Toriyama",
+      "studioId": "toei-animation",
+      "studioNom": "Toei Animation",
+      "age": "Environ mi-quarantaine (né l'an 733 du calendrier de la série)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Ancien bandit du désert — Ami de Goku et de Bulma — Joueur de baseball",
+      "description": "Yamcha est un ancien bandit du désert qui rencontre Goku et Bulma au début de la série. Il se range dans le camp des héros et devient un ami de Goku. Sa technique, notamment le Kame Hame Ha, reste précieuse, mais il est vite dépassé par des adversaires plus puissants. Il est un ancien compagnon de Bulma. Il se tourne ensuite vers le baseball comme sportif professionnel. Il apporte souvent une note humoristique. Malgré tout, il reste un allié fidèle.",
+      "pouvoirs": [
+        "Rōga Fūfūken (Poing du Loup)",
+        "Sōkidan — boule d'énergie guidée",
+        "Kamehameha",
+        "Maîtrise du ki"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il devient joueur de baseball professionnel",
+        "Tōru Furuya le double en japonais, Ryōta Suzuki dans Daima",
+        "Il combat avec une technique inspirée du loup",
+        "Il était un bandit du désert avant de rejoindre les héros"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Son Goku",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Krillin",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Bulma",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Bulma",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Puar",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Tōru Furuya (Ryōta Suzuki dans Daima)",
+      "voixAnglaise": "Christopher R. Sabat",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 16
+    },
+    {
+      "id": "db-chi-chi",
+      "nom": "Chi-Chi",
+      "nomJaponais": "チチ (Chichi)",
+      "animeId": "dragon-ball",
+      "animeName": "Dragon Ball",
+      "auteurId": "akira-toriyama",
+      "auteurNom": "Akira Toriyama",
+      "studioId": "toei-animation",
+      "studioNom": "Toei Animation",
+      "age": "Âge non précisé dans nos sources",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Épouse de Goku — Mère de Gohan et Goten — Fille du Roi Gyūmaō",
+      "description": "Chi-Chi est la fille du Roi Gyūmaō et l'épouse de Goku. Elle est une artiste martiale talentueuse qui renonce à combattre pour élever sa famille. Elle tient à ce que ses enfants reçoivent une bonne éducation, notamment Gohan. Son caractère fort et protecteur contraste avec la naïveté de Goku. Elle joue un rôle clé dans le foyer. Elle participe à plusieurs événements de la série. Son attachement à sa famille est total.",
+      "pouvoirs": [
+        "Arts martiaux — niveau élevé",
+        "Autorité familiale",
+        "Cuisine et gestion du foyer"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle cuisine en grande quantité pour nourrir sa famille de Saiyans",
+        "Deux comédiennes japonaises sont listées : Mayumi Shō et Naoko Watanabe",
+        "Elle insiste sur l'éducation de Gohan",
+        "Elle est une artiste martiale aguerrie"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Son Goku",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Son Gohan",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Son Goten",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Gyūmaō",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Videl",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Mayumi Shō / Naoko Watanabe",
+      "voixAnglaise": "Cynthia Cranz",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 17
+    },
+    {
+      "id": "db-son-goten",
+      "nom": "Son Goten",
+      "nomJaponais": "孫 悟天 (Son Goten)",
+      "animeId": "dragon-ball",
+      "animeName": "Dragon Ball",
+      "auteurId": "akira-toriyama",
+      "auteurNom": "Akira Toriyama",
+      "studioId": "toei-animation",
+      "studioNom": "Toei Animation",
+      "age": "11–13 ans dans Dragon Ball Super (né l'an 767 du calendrier de la série)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Demi-Saiyan — Fils cadet de Goku — Meilleur ami de Trunks",
+      "description": "Son Goten est le fils cadet de Goku et de Chi-Chi, un petit garçon qui ressemble fortement à son père. Il est un demi-Saiyan au potentiel de combat précoce. Il noue une amitié étroite avec Trunks. Les deux garçons apprennent ensemble la technique de la fusion. Espiègle et joyeux, il est moins sérieux que son frère aîné. Il participe aux derniers arcs de la série. Il évolue vers l'adolescence dans les épisodes ultérieurs.",
+      "pouvoirs": [
+        "Super Saiyan — atteint cet état très jeune",
+        "Fusion avec Trunks — donne Gotenks",
+        "Kamehameha",
+        "Vol et manipulation du ki"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il fusionne avec Trunks pour former Gotenks",
+        "Né le 18 mars selon MacMyths",
+        "Masako Nozawa lui prête aussi sa voix, comme à Goku et Gohan",
+        "La source consultée indique 17 ans dans le film Super Hero, ce qui diffère de son âge dans la série"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Son Goku",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Chi-Chi",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Son Gohan",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Trunks",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Masako Nozawa",
+      "voixAnglaise": "Kara Edwards",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 18
+    },
+    {
+      "id": "db-mr-satan",
+      "nom": "Mr. Satan",
+      "nomJaponais": "Hercule)  (ミスター・サタン (Misutā Satan)",
+      "animeId": "dragon-ball",
+      "animeName": "Dragon Ball",
+      "auteurId": "akira-toriyama",
+      "auteurNom": "Akira Toriyama",
+      "studioId": "toei-animation",
+      "studioNom": "Toei Animation",
+      "age": "Âge non précisé dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Champion du monde d'arts martiaux — Père de Videl — Héros médiatique",
+      "description": "Mr. Satan, appelé Hercule dans certaines éditions occidentales, est le champion du monde d'arts martiaux et une star médiatique. Il se présente comme le sauveur de la Terre, bien qu'il soit en réalité bien moins fort que les guerriers Z. Il est le père de Videl. Fanfaron mais au bon fond, il finit par se lier d'amitié avec Majin Buu. Il se retrouve souvent par hasard au cœur de l'action. Son rôle comique permet d'alléger les arcs les plus sombres. Il est devenu un personnage populaire grâce à son ton burlesque.",
+      "pouvoirs": [
+        "Force physique supérieure à celle d'un humain moyen",
+        "Charisme médiatique",
+        "Courage — il affronte des adversaires bien plus forts"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il est considéré par le public comme le sauveur de la Terre",
+        "Daisuke Gōri le double en japonais",
+        "Son nom japonais « Satan » a été modifié en « Hercule » dans certaines éditions occidentales",
+        "Son rôle comique est central dans l'arc Buu"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Videl",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Son Gohan",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Majin Buu",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Pan",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Daisuke Gōri",
+      "voixAnglaise": "Chris Rager",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 19
+    },
+    {
+      "id": "db-videl",
+      "nom": "Videl",
+      "nomJaponais": "ビーデル (Bīderu)",
+      "animeId": "dragon-ball",
+      "animeName": "Dragon Ball",
+      "auteurId": "akira-toriyama",
+      "auteurNom": "Akira Toriyama",
+      "studioId": "toei-animation",
+      "studioNom": "Toei Animation",
+      "age": "Âge non précisé dans nos sources",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Fille de Mr. Satan — Combattante — Épouse de Son Gohan",
+      "description": "Videl est la fille de Mr. Satan, le champion du monde d'arts martiaux. Elle grandit dans l'ombre médiatique de son père, mais développe son propre talent de combattante. Elle rencontre Gohan au lycée et découvre son secret de super-héros. Franche, courageuse et déterminée, elle s'entraîne pour devenir plus forte. Elle apprend à voler grâce à Gohan. Elle épouse Gohan et devient la mère de Pan. Elle représente le lien entre le monde des humains ordinaires et celui des guerriers Z.",
+      "pouvoirs": [
+        "Arts martiaux — niveau supérieur à celui d'un humain moyen",
+        "Vol — technique apprise grâce à Gohan",
+        "Courage et détermination",
+        "Intelligence et sens de la justice"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle découvre l'identité secrète de Gohan en super-héros",
+        "Yūko Minaguchi la double en japonais ; elle double aussi Pan selon TVmaze",
+        "Elle rencontre Gohan au lycée",
+        "Elle vit dans l'ombre médiatique de son père"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Mr. Satan",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Son Gohan",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Pan",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Son Goku",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Chi-Chi",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Yūko Minaguchi",
+      "voixAnglaise": "Kara Edwards",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 20
+    }
+  ]
+}

@@ -1,0 +1,923 @@
+{
+  "anime": {
+    "titre": "Rent-A-Girlfriend",
+    "titreJaponais": "彼女、お借りします",
+    "synopsis": "Fraîchement largué, Kazuya Kinoshita loue par dépit une petite amie via une application : Chizuru Mizuhara, une inconnue qui se révèle être sa voisine de palier. Après une rencontre désastreuse avec sa grand-mère, les deux doivent continuer à jouer les amoureux pour ne pas la décevoir. Entre sentiments grandissants, malentendus comiques et un casting de « petites amies à louer » toujours plus fourni, leur relation fictive devient de moins en moins feinte.",
+    "genres": [
+      "Shōnen",
+      "Comédie",
+      "Romance",
+      "Tranche de vie"
+    ],
+    "annee": 2020,
+    "episodes": {},
+    "studio": "TMS Entertainment",
+    "studioId": "tms-entertainment",
+    "auteur": "Reiji Miyajima",
+    "auteurId": "reiji-miyajima",
+    "editeur": "Kōdansha — Weekly Shōnen Magazine",
+    "statut": "En cours",
+    "type": "Shōnen"
+  },
+  "creator": {
+    "nom": "Reiji Miyajima",
+    "nomJaponais": "宮島 礼吏",
+    "bio": "Reiji Miyajima est le mangaka créateur de Rent-A-Girlfriend. Né le 15 décembre 1985 à Nakano (Nagano), il déménage à Tokyo après le lycée pour se lancer dans le manga. En octobre 2005, il reçoit le prix Magazine Grand Prix Encouragement Award pour son one-shot Sakka no Tensai, puis une mention honorable au 75e Weekly Shōnen Magazine Newcomer Award pour Pool no Saboten. Il travaille comme assistant sur la série de baseball Ace of Diamond avant de lancer ses propres séries. Sa principale œuvre avant Rent-A-Girlfriend est AKB49 : Ren'ai Kinshi Jōrei (2010–2016), collaboration avec Motoazabu Factory sur le thème des idoles AKB48. Son inspiration pour Rent-A-Girlfriend vint d'un article de presse sur la Chine, où de jeunes travailleurs rentrant en vacances loueraient de fausses petites amies pour rassurer leurs familles. Il lance la série en juillet 2017 dans le Weekly Shōnen Magazine, qui devient rapidement un phénomène commercial.",
+    "dateNaissance": "15 décembre 1985",
+    "nationalite": "Japonais",
+    "occupation": "Mangaka — scénariste et dessinateur",
+    "oeuvres": [
+      "2005 — Sakka no Tensai — One-shot — Prix Magazine Grand Prix Encouragement Award",
+      "2005 — Pool no Saboten — One-shot — Mention honorable 75e WSJ Newcomer Award",
+      "2009 — Suzuki no Shiten — WSJ (écrit par Shigemitsu Harada)",
+      "2010–2016 — AKB49 : Ren'ai Kinshi Jōrei — WSJ (écrit par Motoazabu Factory) — Série sur les idoles AKB48",
+      "2016–2017 — Mononote: Edo Shinobi Kagyō — WSJ",
+      "2017–présent — Rent-A-Girlfriend (彼女、お借りします) — WSJ — 45 volumes (avril 2026) — 13,5M copies",
+      "2020 — 22/7 +α — Sunday Webry (dessin : Nao Kasai) — Série composition anime 22/7",
+      "2020–présent — Rent-A-(Really Shy!)-Girlfriend — Magazine Pocket — Spin-off Sumi Sakurasawa (3 volumes)",
+      "2022–présent — The Shiunji Family Children (紫雲寺家の子供たち) — Young Animal — Série en cours"
+    ],
+    "recompenses": [
+      "2005 — Prix Magazine Grand Prix Encouragement Award (Sakka no Tensai)",
+      "2020 — Anime Rent-A-Girlfriend diffusé dans le monde entier via Crunchyroll",
+      "2025 — 13,5 millions de copies de Rent-A-Girlfriend en circulation (avril 2025)",
+      "2025 — Saison 4 de l'anime (juillet–septembre 2025)",
+      "2026 — Saison 5 de l'anime confirmée"
+    ],
+    "imageUrl": "",
+    "animeIds": [
+      "rent-a-girlfriend"
+    ]
+  },
+  "studio": {
+    "nom": "TMS Entertainment",
+    "fondation": "1964 — Tokyo, Japon",
+    "fondateur": "Non divulgué publiquement",
+    "description": "",
+    "productions": [
+      "Lupin III",
+      "Dr. Slump",
+      "Sonic the Hedgehog",
+      "Fruits Basket"
+    ]
+  },
+  "characters": [
+    {
+      "id": "rag-chizuru-mizuhara-chizuru-ichinose",
+      "nom": "Chizuru Mizuhara / Chizuru Ichinose",
+      "nomJaponais": "水原 千鶴 / 一ノ瀬千鶴",
+      "animeId": "rent-a-girlfriend",
+      "animeName": "Rent-A-Girlfriend",
+      "auteurId": "reiji-miyajima",
+      "auteurNom": "Reiji Miyajima",
+      "studioId": "tms-entertainment",
+      "studioNom": "TMS Entertainment",
+      "age": "19 ans",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Heroine principale — Petite amie à louer (Diamond) — Actrice en devenir",
+      "description": "Chizuru Mizuhara (vrai nom : Chizuru Ichinose) est l'héroïne centrale et l'âme de la série. Étudiante en Littérature à l'Université Nerima, elle exerce en parallèle comme petite amie à louer sous le pseudonyme \"Mizuhara\" via l'application Diamond, l'une des mieux notées de l'agence. Elegante, maîtrisée et professionnelle dans son rôle de rental girlfriend, elle cache derrière cette façade une vraie personnalité — têtue, fière, émotionnelle et profondément passionnée par le théâtre. Sa principale motivation secrète : réaliser le rêve de devenir actrice, inspirée par sa grand-mère Sayuri Ichinose. Elle habitait la chambre 204 du Royal Hills Nerima — juste à côté de Kazuya —, avant que l'immeuble ne s'effondre. Son arc narratif est un lent cheminement de l'ambivalence vers l'amour sincère pour Kazuya, parsemé d'obstacles et de non-dits.",
+      "pouvoirs": [
+        "Professionnelle parfaite en tant que rental girlfriend",
+        "Passionnée de théâtre — actrice en formation",
+        "Fière et indépendante — déteste devoir quoi que ce soit",
+        "Capable de jalousie malgré elle envers Kazuya",
+        "Profondément loyale envers sa grand-mère Sayuri"
+      ],
+      "citations": [],
+      "trivia": [
+        "Personnage le plus populaire de la série — mascotte absolue de la franchise",
+        "Son projet de film financé par crowdfunding (organisé par Kazuya) est l'arc narratif le plus apprécié de la série",
+        "Sa chambre 204 était exactement voisine de la 203 de Kazuya — coïncidence de départ fondatrice",
+        "millions de copies manga en circulation (avril 2025)"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Kazuya Kinoshita",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Sayuri Ichinose",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Ruka Sarashina",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Sumi Sakurasawa",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Yoko Shinbo",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Yuki Kawanaka",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Mini Yaemori",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Nagomi Kinoshita",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Sora Amamiya",
+      "voixAnglaise": "Lizzie Freeman (S1-3) / Celeste Perez (S4+)",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 1
+    },
+    {
+      "id": "rag-kazuya-kinoshita",
+      "nom": "Kazuya Kinoshita",
+      "nomJaponais": "木ノ下 和也",
+      "animeId": "rent-a-girlfriend",
+      "animeName": "Rent-A-Girlfriend",
+      "auteurId": "reiji-miyajima",
+      "auteurNom": "Reiji Miyajima",
+      "studioId": "tms-entertainment",
+      "studioNom": "TMS Entertainment",
+      "age": "20–21 ans",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Protagoniste principal — Étudiant en Gestion à Nerima — Royal Hills Nerima 203",
+      "description": "Kazuya Kinoshita est le protagoniste central, défini dès le départ comme \"lamentable, lâche et crybaby\" — ce qui le distingue radicalement des héros idéalisés du genre. Après un mois de relation avec Mami Nanami (sa première petite amie), il se retrouve largué et utilise l'application Diamond pour louer une petite amie — rencontrant Chizuru. Son mensonge initial (la présenter comme sa vraie petite amie à sa grand-mère hospitalisée) l'entraîne dans une spirale de complications croissantes. Malgré ses innombrables défauts — perrversité, indécision, panique — il possède un cœur sincère qui se révèle progressivement, notamment via son projet de film pour réaliser le rêve de Chizuru. Son évolution de NEET romantique raté vers un jeune homme capable d'aimer vraiment est le fil directeur de la série.",
+      "pouvoirs": [
+        "Indécis et facilement paniqué — réactions disproportionnées comiques",
+        "Sincèrement gentil malgré ses nombreux défauts",
+        "Obsessionnel — trop dans sa tête, rumination constante",
+        "Capacité inattendue d'organisation (projet film, crowdfunding)",
+        "Profondément fidèle à Chizuru une fois ses sentiments clairs"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son monologue intérieur obsessionnel est l'une des caractéristiques les plus mémorables de la série",
+        "Organise un crowdfunding et réalise un court-métrage pour le rêve de Chizuru — arc le plus salué par la critique",
+        "Études en Gestion (Business Administration) — ironie comique avec son incompétence émotionnelle"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Chizuru Mizuhara",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Mami Nanami",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Ruka Sarashina",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Yoshiaki Kibe",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Shun Kuribayashi",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Nagomi Kinoshita",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Mini Yaemori",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Shun Horie",
+      "voixAnglaise": "Aleks Le (S1-3) / Alex Mai (S4+)",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 2
+    },
+    {
+      "id": "rag-mami-nanami",
+      "nom": "Mami Nanami",
+      "nomJaponais": "七海麻美",
+      "animeId": "rent-a-girlfriend",
+      "animeName": "Rent-A-Girlfriend",
+      "auteurId": "reiji-miyajima",
+      "auteurNom": "Reiji Miyajima",
+      "studioId": "tms-entertainment",
+      "studioNom": "TMS Entertainment",
+      "age": "19 ans",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Ex-petite amie de Kazuya — Antagoniste principale — Manipulatrice",
+      "description": "Mami Nanami est la première petite amie de Kazuya et l'antagoniste centrale de la série. D'apparence douce, charmante et sociable, elle cache une nature calculatrice, jalouse et profondément égocentrique. Elle largue Kazuya après un mois sans vraiment d'explications, mais ne supporte pas de le voir heureux — et encore moins avec Chizuru. Sans désirer réellement Kazuya, elle sabote systématiquement sa relation avec Chizuru par pur instinct de possession. Ses motivations restent longtemps ambiguës — est-elle réellement intéressée ? Agit-elle par jalousie pure ? Sa complexité psychologique en fait l'un des personnages les plus débattus et les plus détestés de la franchise.",
+      "pouvoirs": [
+        "Apparence angélique masquant une nature calculatrice",
+        "Jalousie obsessionnelle sans désir véritable",
+        "Manipulation sociale experte",
+        "Moments de vulnérabilité sincère rare mais poignants"
+      ],
+      "citations": [],
+      "trivia": [
+        "Régulièrement citée comme \"la waifu la plus détestée\" du genre romcom — statut quasi légendaire",
+        "Certains fans interprètent ses actions comme de la souffrance refoulée — débat communautaire permanent",
+        "Son potentiel de révéler le secret rental est le principal levier de tension de la série"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Kazuya Kinoshita",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Chizuru Mizuhara",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "révélation du secret rental",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Aoi Yūki",
+      "voixAnglaise": "Laura Stahl",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 3
+    },
+    {
+      "id": "rag-ruka-sarashina",
+      "nom": "Ruka Sarashina",
+      "nomJaponais": "更科 瑠夏",
+      "animeId": "rent-a-girlfriend",
+      "animeName": "Rent-A-Girlfriend",
+      "auteurId": "reiji-miyajima",
+      "auteurNom": "Reiji Miyajima",
+      "studioId": "tms-entertainment",
+      "studioNom": "TMS Entertainment",
+      "age": "18–19 ans",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Petite amie à louer (Diamond) — Petite amie d'essai de Kazuya — Rivale de Chizuru",
+      "description": "Ruka Sarashina est une rental girlfriend de Diamond souffrant d'une particularité médicale : un rythme cardiaque naturellement très lent, qui l'empêchait de ressentir de vraies palpitations. C'est en louant Kazuya qu'elle ressent pour la première fois son cœur s'accélérer — et elle en conclut immédiatement qu'elle est amoureuse. Agressive, directe et déterminée, elle s'impose à Kazuya comme \"petite amie d'essai\" avec une énergie sans faille. Son amour est sincère, bruyant et envahissant — à l'opposé de la retenue de Chizuru. Bien que souvent frustrante pour les fans \"Team Chizuru\", elle est l'un des personnages les plus populaires pour son caractère explosif et sa loyauté émotionnelle totale.",
+      "pouvoirs": [
+        "Rythme cardiaque anormalement lent — Kazuya l'accélère",
+        "Directe, honnête, implacable dans ses désirs",
+        "Possessive et jalouse ouvertement assumée",
+        "Sincèrement amoureuse — pas de manipulation",
+        "Facilement émue aux larmes — vulnérabilité sincère"
+      ],
+      "citations": [],
+      "trivia": [
+        "Sa condition cardiaque est le hook narratif le plus original de son personnage",
+        "La scène de la piscine (sunscreen) est l'une des plus mémorables de la série",
+        "\"Team Ruka\" est l'un des fandoms les plus actifs de la franchise malgré sa position de perdante officielle"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Chizuru Mizuhara",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Sumi Sakurasawa",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Chizuru",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Nao Tōyama",
+      "voixAnglaise": "Sarah Anne Williams",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 4
+    },
+    {
+      "id": "rag-sumi-sakurasawa",
+      "nom": "Sumi Sakurasawa",
+      "nomJaponais": "桜沢 墨",
+      "animeId": "rent-a-girlfriend",
+      "animeName": "Rent-A-Girlfriend",
+      "auteurId": "reiji-miyajima",
+      "auteurNom": "Reiji Miyajima",
+      "studioId": "tms-entertainment",
+      "studioNom": "TMS Entertainment",
+      "age": "19 ans",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Petite amie à louer (Diamond) — Nouvelle recrue timide — Aspirante idole",
+      "description": "Sumi Sakurasawa est la plus récente des rental girlfriends de Diamond, introduite comme une débutante d'une timidité paralysante. Incapable de parler spontanément à des inconnus, elle compense via des gestes expressifs, des pancartes et son téléphone. Ses rendez-vous avec Kazuya (qui l'aide à s'entraîner à surmonter sa timidité) sont parmi les plus touchants et les plus comiques de la série. Son spin-off manga \"Rent-A-(Really Shy!)-Girlfriend\" lui est entièrement consacré. Sa personnalité douce et ses efforts sincères pour grandir en font l'un des personnages les plus aimés malgré son rôle secondaire.",
+      "pouvoirs": [
+        "Timidité sévère — quasi mutisme avec les inconnus",
+        "Expressivité via gestes et pancartes — communication alternative",
+        "Douceur et gentillesse profondes",
+        "Croissance progressive et sincère — l'un des meilleurs arcs de développement",
+        "Rêve de devenir idole"
+      ],
+      "citations": [],
+      "trivia": [
+        "Spin-off manga dédié : \"Rent-A-(Really Shy!)-Girlfriend\" (Magazine Pocket, 2020–présent)",
+        "Son silence communicatif est l'une des caractéristiques les plus créatives et touchantes de la série",
+        "Régulièrement classée favorite féminine parmi les fans préférant les personnages calmes"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Kazuya Kinoshita",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Chizuru Mizuhara",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ruka Sarashina",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Rie Takahashi",
+      "voixAnglaise": "Suzie Yeung",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 5
+    },
+    {
+      "id": "rag-mini-yaemori",
+      "nom": "Mini Yaemori",
+      "nomJaponais": "八重森 みに",
+      "animeId": "rent-a-girlfriend",
+      "animeName": "Rent-A-Girlfriend",
+      "auteurId": "reiji-miyajima",
+      "auteurNom": "Reiji Miyajima",
+      "studioId": "tms-entertainment",
+      "studioNom": "TMS Entertainment",
+      "age": "Non précisé (étudiante)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Cosplayeuse / Livestreameuse — Coinquiline de Kazuya et Chizuru — Catalyseur narrative",
+      "description": "Mini Yaemori est une cosplayeuse et livestreameuse passionnée qui emménage dans l'appartement adjacent à Kazuya et Chizuru. Dès son arrivée, elle découvre la nature fictive de leur relation et, au lieu de les dénoncer, décide de les \"aider\" à devenir un vrai couple à sa façon — c'est-à-dire avec une énergie chaotique et des interventions souvent maladroites mais sincères. Caractère exubérant, direct et imprévisible, Mini est l'injection d'énergie comique et de progression narrative que la série attendait dans ses saisons avancées. Sa connaissance de la culture otaku et ses compétences en streaming lui donnent un rôle unique dans l'arc du film de Chizuru.",
+      "pouvoirs": [
+        "Énergie chaotique et sincère",
+        "Cosplayeuse accomplie — passion assumée",
+        "Catalyseur actif du couple principal",
+        "Directe et non filtrée — dit tout ce que les autres pensent",
+        "Loyale à sa façon particulière"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son rôle de catalyseur du couple est unanimement salué comme une bouffée d'air frais pour les saisons 3+",
+        "Sa chaîne de cosplay / livestream est utilisée narrativement dans plusieurs arcs importants"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Kazuya Kinoshita",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Chizuru Mizuhara",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Yū Serizawa",
+      "voixAnglaise": "Lisette Monique Diaz",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 6
+    },
+    {
+      "id": "rag-nagomi-kinoshita",
+      "nom": "Nagomi Kinoshita",
+      "nomJaponais": "木ノ下 和美",
+      "animeId": "rent-a-girlfriend",
+      "animeName": "Rent-A-Girlfriend",
+      "auteurId": "reiji-miyajima",
+      "auteurNom": "Reiji Miyajima",
+      "studioId": "tms-entertainment",
+      "studioNom": "TMS Entertainment",
+      "age": "76 ans",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Grand-mère paternelle de Kazuya — Ancienne propriétaire du Wa Sake Shop — Fondatrice du mensonge central",
+      "description": "Nagomi Kinoshita est la grand-mère de Kazuya et le déclencheur involontaire de toute la série. Ancienne propriétaire du Wa Sake Shop (depuis le décès de son mari), elle porte seule les dettes et les responsabilités familiales. Lors de son hospitalisation, Kazuya l'a présentée impulsivement à Chizuru comme sa vraie petite amie — et depuis, le mensonge ne peut plus être défait tant Nagomi est attachée à Chizuru. Chaleureuse, aimante et perspicace, elle est le personnage dont l'affection sincère rend le mensonge à la fois impossible à maintenir et impossible à briser. Son hospitalisation récurrente est l'un des moteurs émotionnels de la série.",
+      "pouvoirs": [
+        "Chaleureuse et aimante",
+        "Perspicace — parfois soupçonneuse malgré ses années",
+        "Profondément attachée à Chizuru",
+        "Porteuse des dettes familiales — sacrifice silencieux"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son Wa Sake Shop est un point d'ancrage émotionnel récurrent",
+        "Sa mort éventuelle est l'une des menaces narratives les plus redoutées par les fans"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Kazuya Kinoshita",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Chizuru Mizuhara",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Harumi",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Kazuo Kinoshita",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Hiromi Nishida",
+      "voixAnglaise": "Alex Cazares",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 7
+    },
+    {
+      "id": "rag-sayuri-ichinose",
+      "nom": "Sayuri Ichinose",
+      "nomJaponais": "一ノ瀬 さゆり",
+      "animeId": "rent-a-girlfriend",
+      "animeName": "Rent-A-Girlfriend",
+      "auteurId": "reiji-miyajima",
+      "auteurNom": "Reiji Miyajima",
+      "studioId": "tms-entertainment",
+      "studioNom": "TMS Entertainment",
+      "age": "Grand-mère de Chizuru (âge avancé)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Grand-mère de Chizuru — Actrice — Inspiration principale de Chizuru",
+      "description": "Sayuri Ichinose est la grand-mère maternelle de Chizuru et la raison pour laquelle celle-ci rêve de devenir actrice. Actrice elle-même dans le passé, elle fut la première à reconnaître le talent de Chizuru et à l'encourager. Hospitalisée au même étage que Nagomi Kinoshita (coincidence centrale et fondatrice de la série), son état de santé déclinant donne une urgence émotionnelle particulière au projet de film. Sa mort en cours de série est l'un des moments les plus douloureux — et fondateurs pour la résolution émotionnelle de Chizuru.",
+      "pouvoirs": [
+        "Actrice de cœur",
+        "Soutien indéfectible au talent de Chizuru",
+        "Douceur et sagesse"
+      ],
+      "citations": [],
+      "trivia": [
+        "Sa mort est le déclencheur émotionnel de l'arc film — moment clé de la série",
+        "Son rêve de voir Chizuru jouer unit les deux grand-mères des protagonistes"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Chizuru Ichinose",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Nagomi Kinoshita",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Sayuri Sadaoka",
+      "voixAnglaise": "Colleen O'Shaughnessey",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 8
+    },
+    {
+      "id": "rag-yoshiaki-kibe",
+      "nom": "Yoshiaki Kibe",
+      "nomJaponais": "木部 善明",
+      "animeId": "rent-a-girlfriend",
+      "animeName": "Rent-A-Girlfriend",
+      "auteurId": "reiji-miyajima",
+      "auteurNom": "Reiji Miyajima",
+      "studioId": "tms-entertainment",
+      "studioNom": "TMS Entertainment",
+      "age": "20–21 ans",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Meilleur ami de Kazuya — Étudiant à Nerima",
+      "description": "Yoshiaki Kibe est le meilleur ami de Kazuya à l'université. Bien plus socialement accompli que Kazuya, il est populaire auprès des femmes et ne comprend pas toujours les angoisses de son ami — ce qui crée un décalage comique récurrent. Il est le premier confident de Kazuya sur la relation avec Chizuru et représente le regard du monde \"normal\" sur les situations aberrantes dans lesquelles Kazuya s'embourbe. Son rôle est principalement comique mais sa loyauté amicale est sincère.",
+      "pouvoirs": [
+        "Socialement à l'aise — contraste avec Kazuya",
+        "Loyal dans l'amitié malgré l'incompréhension",
+        "Humoristique — source de réactions légères"
+      ],
+      "citations": [],
+      "trivia": [
+        "Ses réactions aux mensonges de Kazuya sont parmi les sources de comédie les plus régulières de la série"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Kazuya Kinoshita",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Chizuru Mizuhara",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Shun Kuribayashi",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Masayuki Akasaka",
+      "voixAnglaise": "Nicolas Roye",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 9
+    },
+    {
+      "id": "rag-shun-kuribayashi",
+      "nom": "Shun Kuribayashi",
+      "nomJaponais": "栗林 峻",
+      "animeId": "rent-a-girlfriend",
+      "animeName": "Rent-A-Girlfriend",
+      "auteurId": "reiji-miyajima",
+      "auteurNom": "Reiji Miyajima",
+      "studioId": "tms-entertainment",
+      "studioNom": "TMS Entertainment",
+      "age": "20–21 ans",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Ami de Kazuya — Étudiant à Nerima",
+      "description": "Shun Kuribayashi est un ami de Kazuya à Nerima, moins central que Kibe mais présent dans les sorties collectives et les situations de groupe. Son rôle est principalement de composition — il complète le cercle social de Kazuya et contribue aux scènes de groupe sans avoir d'arc personnel développé dans les premières saisons.",
+      "pouvoirs": [
+        "Socialement normal — contraste utile avec Kazuya",
+        "Loyal dans l'amitié"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son rôle s'est développé dans les saisons avancées avec l'introduction d'une relation sentimentale propre"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Kazuya Kinoshita",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Yoshiaki Kibe",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Gakuto Kajiwara",
+      "voixAnglaise": "Landon McDonald",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 10
+    },
+    {
+      "id": "rag-yoko-shinbo",
+      "nom": "Yoko Shinbo",
+      "nomJaponais": "新保 陽子",
+      "animeId": "rent-a-girlfriend",
+      "animeName": "Rent-A-Girlfriend",
+      "auteurId": "reiji-miyajima",
+      "auteurNom": "Reiji Miyajima",
+      "studioId": "tms-entertainment",
+      "studioNom": "TMS Entertainment",
+      "age": "19–20 ans",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Amie de fac de Chizuru — Étudiante à Nerima",
+      "description": "Yoko Shinbo est l'amie de lycée et de fac de Chizuru — l'une des rares personnes à connaître partiellement le double secret de celle-ci. Extravertie et franche, elle sert de contrepoids social à la réserve de Chizuru et représente le monde \"normal\" dans lequel celle-ci évolue en dehors de sa double vie. Son rôle s'enrichit progressivement dans les saisons avancées.",
+      "pouvoirs": [
+        "Extravertie — contraste naturel avec la réserve de Chizuru",
+        "Loyale et directe"
+      ],
+      "citations": [],
+      "trivia": [
+        "L'une des rares personnes ayant accès au \"vrai\" visage de Chizuru en dehors du contexte rental"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Chizuru Ichinose",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Kazuya Kinoshita",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Hitomi Sasaki (S4)",
+      "voixAnglaise": "Laura Stahl",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 11
+    },
+    {
+      "id": "rag-umi-nakano",
+      "nom": "Umi Nakano",
+      "nomJaponais": "中野 海",
+      "animeId": "rent-a-girlfriend",
+      "animeName": "Rent-A-Girlfriend",
+      "auteurId": "reiji-miyajima",
+      "auteurNom": "Reiji Miyajima",
+      "studioId": "tms-entertainment",
+      "studioNom": "TMS Entertainment",
+      "age": "20–21 ans",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Personnage secondaire — Connexion narrative dans les arcs avancés",
+      "description": "Umi Nakano est un personnage masculin secondaire dont le rôle se développe dans les arcs plus avancés de la série. Sa présence ajoute une dimension à la vie sociale autour des protagonistes et crée des dynamiques supplémentaires dans les relations de groupe.",
+      "pouvoirs": [
+        "Personnage de soutien — arc développé progressivement"
+      ],
+      "citations": [],
+      "trivia": [],
+      "relations": [],
+      "voixJaponaise": "Kaito Ishikawa",
+      "voixAnglaise": "Edward Bosco",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 12
+    },
+    {
+      "id": "rag-harumi-kinoshita",
+      "nom": "Harumi Kinoshita",
+      "nomJaponais": "木ノ下 春美",
+      "animeId": "rent-a-girlfriend",
+      "animeName": "Rent-A-Girlfriend",
+      "auteurId": "reiji-miyajima",
+      "auteurNom": "Reiji Miyajima",
+      "studioId": "tms-entertainment",
+      "studioNom": "TMS Entertainment",
+      "age": "Adulte (mère de Kazuya)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Mère de Kazuya — Personnage familial",
+      "description": "Harumi Kinoshita est la mère de Kazuya. Elle et son mari Kazuo représentent le contexte familial \"normal\" dans lequel Kazuya a grandi — contrastant avec ses comportements actuels. Leurs apparitions créent des moments d'humour et de tendresse familiale, notamment lors des révélations progressives sur Chizuru.",
+      "pouvoirs": [
+        "Maternelle et attentionnée",
+        "Naturellement curieuse de la vie amoureuse de son fils"
+      ],
+      "citations": [],
+      "trivia": [],
+      "relations": [
+        {
+          "nomPersonnage": "Kazuya Kinoshita",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Kazuo Kinoshita",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Nagomi Kinoshita",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Akane Fujita (partage)",
+      "voixAnglaise": "Colleen O'Shaughnessey",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 13
+    },
+    {
+      "id": "rag-kazuo-kinoshita",
+      "nom": "Kazuo Kinoshita",
+      "nomJaponais": "木ノ下 一雄",
+      "animeId": "rent-a-girlfriend",
+      "animeName": "Rent-A-Girlfriend",
+      "auteurId": "reiji-miyajima",
+      "auteurNom": "Reiji Miyajima",
+      "studioId": "tms-entertainment",
+      "studioNom": "TMS Entertainment",
+      "age": "Adulte (père de Kazuya)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Père de Kazuya — Personnage familial",
+      "description": "Kazuo Kinoshita est le père de Kazuya. Présent principalement lors des réunions familiales importantes, il représente l'autorité parentale bienveillante dans la vie de Kazuya.",
+      "pouvoirs": [
+        "Paternel",
+        "Discret mais présent dans les moments clés"
+      ],
+      "citations": [],
+      "trivia": [],
+      "relations": [
+        {
+          "nomPersonnage": "Kazuya Kinoshita",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Harumi Kinoshita",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Nagomi Kinoshita",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Non précisé",
+      "voixAnglaise": "Chris Hackney",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 14
+    },
+    {
+      "id": "rag-takeshi-sasano",
+      "nom": "Takeshi Sasano",
+      "nomJaponais": "笹野 武志",
+      "animeId": "rent-a-girlfriend",
+      "animeName": "Rent-A-Girlfriend",
+      "auteurId": "reiji-miyajima",
+      "auteurNom": "Reiji Miyajima",
+      "studioId": "tms-entertainment",
+      "studioNom": "TMS Entertainment",
+      "age": "Adulte",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Personnage secondaire — Connexion professionnelle",
+      "description": "Takeshi Sasano est un personnage adulte secondaire apparaissant dans les arcs professionnels et liés au monde du travail ou du spectacle autour de Chizuru. Son rôle contribue aux dynamiques de l'arc de l'actrice.",
+      "pouvoirs": [
+        "Adulte du monde professionnel"
+      ],
+      "citations": [],
+      "trivia": [],
+      "relations": [],
+      "voixJaponaise": "Takahiro Yoshino (S4)",
+      "voixAnglaise": "Chris Hackney",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 15
+    },
+    {
+      "id": "rag-sonoko-shimae",
+      "nom": "Sonoko Shimae",
+      "nomJaponais": "島江 その子",
+      "animeId": "rent-a-girlfriend",
+      "animeName": "Rent-A-Girlfriend",
+      "auteurId": "reiji-miyajima",
+      "auteurNom": "Reiji Miyajima",
+      "studioId": "tms-entertainment",
+      "studioNom": "TMS Entertainment",
+      "age": "Adulte",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Personnage secondaire adulte",
+      "description": "Sonoko Shimae est un personnage féminin adulte secondaire qui apparaît dans certains arcs de la série, apportant une perspective d'adulte sur les situations des protagonistes.",
+      "pouvoirs": [
+        "Perspective adulte"
+      ],
+      "citations": [],
+      "trivia": [],
+      "relations": [],
+      "voixJaponaise": "Non précisé",
+      "voixAnglaise": "Colleen O'Shaughnessey",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 16
+    },
+    {
+      "id": "rag-hiroshi-ushibe",
+      "nom": "Hiroshi Ushibe",
+      "nomJaponais": "牛部 博",
+      "animeId": "rent-a-girlfriend",
+      "animeName": "Rent-A-Girlfriend",
+      "auteurId": "reiji-miyajima",
+      "auteurNom": "Reiji Miyajima",
+      "studioId": "tms-entertainment",
+      "studioNom": "TMS Entertainment",
+      "age": "Non précisé",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Personnage secondaire — Saison 4",
+      "description": "Hiroshi Ushibe est un personnage secondaire introduit dans la Saison 4. Son rôle s'inscrit dans l'arc Hawaii, apportant de nouvelles complications ou opportunités au développement de la relation principale.",
+      "pouvoirs": [
+        "Nouveau personnage saison 4"
+      ],
+      "citations": [],
+      "trivia": [],
+      "relations": [],
+      "voixJaponaise": "Shōmaru Zōza (S4)",
+      "voixAnglaise": "Landon McDonald",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 17
+    },
+    {
+      "id": "rag-iwafune",
+      "nom": "Iwafune",
+      "nomJaponais": "岩舟",
+      "animeId": "rent-a-girlfriend",
+      "animeName": "Rent-A-Girlfriend",
+      "auteurId": "reiji-miyajima",
+      "auteurNom": "Reiji Miyajima",
+      "studioId": "tms-entertainment",
+      "studioNom": "TMS Entertainment",
+      "age": "Non précisé",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Personnage secondaire récurrent — Connexion professionnelle industrie du cinéma",
+      "description": "Iwafune est un personnage masculin secondaire lié au monde du cinéma et du spectacle, important dans les arcs de carrière de Chizuru. Sa connexion avec l'industrie cinématographique en fait un atout narratif dans les développements professionnels de l'héroïne.",
+      "pouvoirs": [
+        "Connexion industrie cinéma"
+      ],
+      "citations": [],
+      "trivia": [],
+      "relations": [],
+      "voixJaponaise": "Non précisé",
+      "voixAnglaise": "Xander Mobus (S1) / Adam Michael Rowe (S4)",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 18
+    },
+    {
+      "id": "rag-taro-urashima",
+      "nom": "Taro Urashima",
+      "nomJaponais": "浦島 太郎 (personnage)",
+      "animeId": "rent-a-girlfriend",
+      "animeName": "Rent-A-Girlfriend",
+      "auteurId": "reiji-miyajima",
+      "auteurNom": "Reiji Miyajima",
+      "studioId": "tms-entertainment",
+      "studioNom": "TMS Entertainment",
+      "age": "Non précisé",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Personnage secondaire — Connexion narrative arcs avancés",
+      "description": "Taro Urashima est un personnage secondaire des arcs avancés de la série, dont le rôle s'intègre dans les complications narratives entourant les protagonistes principaux.",
+      "pouvoirs": [
+        "Personnage secondaire des arcs tardifs"
+      ],
+      "citations": [],
+      "trivia": [],
+      "relations": [],
+      "voixJaponaise": "Non précisé",
+      "voixAnglaise": "Kevin D. Thelwell",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 19
+    },
+    {
+      "id": "rag-yuki-kawanaka",
+      "nom": "Yuki Kawanaka",
+      "nomJaponais": "川中 雪",
+      "animeId": "rent-a-girlfriend",
+      "animeName": "Rent-A-Girlfriend",
+      "auteurId": "reiji-miyajima",
+      "auteurNom": "Reiji Miyajima",
+      "studioId": "tms-entertainment",
+      "studioNom": "TMS Entertainment",
+      "age": "19–20 ans",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Amie de fac de Chizuru — Personnage de l'entourage universitaire",
+      "description": "Yuki Kawanaka est une camarade de fac de Chizuru, faisant partie du cercle social universitaire de l'héroïne. Sa présence contribue à montrer la vie sociale normale de Chizuru en dehors de son activité de rental girlfriend.",
+      "pouvoirs": [
+        "Amie sincère de Chizuru",
+        "Représente le monde universitaire normal"
+      ],
+      "citations": [],
+      "trivia": [],
+      "relations": [
+        {
+          "nomPersonnage": "Chizuru Ichinose",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Yoko Shinbo",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "kanojo-okarishimasu.fandom.com | fr.wikipedia.org | wikipedia.org | us.oricon-group.com | animenewsnetwork.com | anibase.net",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Non précisé",
+      "voixAnglaise": "Wendee Lee",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 20
+    }
+  ]
+}

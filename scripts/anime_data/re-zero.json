@@ -1,0 +1,1262 @@
+{
+  "anime": {
+    "titre": "Re:Zero − Starting Life in Another World",
+    "titreJaponais": "Re:ゼロから始める異世界生活",
+    "synopsis": "Natsuki Subaru, un jeune reclus japonais, est soudain transporté dans un monde parallèle où il est aussitôt assassiné. Il découvre alors son seul pouvoir : le « Retour par la Mort », qui le ramène dans le passé à chaque fois qu'il meurt, mémoire intacte mais seul à s'en souvenir. Pour sauver Emilia, la candidate elfe à la succession royale dont il s'éprend, il devra revivre inlassablement les mêmes tragédies jusqu'à trouver l'issue qui les évite toutes.",
+    "genres": [
+      "Isekai",
+      "Fantasy",
+      "Drame",
+      "Psychologique"
+    ],
+    "annee": 2016,
+    "episodes": {},
+    "studio": "WHITE FOX",
+    "studioId": "white-fox",
+    "auteur": "Tappei Nagatsuki",
+    "auteurId": "tappei-nagatsuki",
+    "editeur": "Kadokawa — MF Bunko J",
+    "statut": "En cours",
+    "type": "Isekai"
+  },
+  "creator": {
+    "nom": "Tappei Nagatsuki",
+    "nomJaponais": "長月 達平",
+    "bio": "Tappei Nagatsuki (長月 達平) est un romancier japonais né le 11 mars 1987. Il a d'abord écrit des fanfictions de The Familiar of Zero (ゼロの使い魔) sur le site Shōsetsuka ni Narō, avant de reprendre son concept d'isekai pour bâtir sa propre série originale, Re:Zero, publiée à partir d'avril 2012 sous le pseudonyme Nezumi-iro Neko (鼠色猫). L'éditeur de MF Bunko J, Masahito Ikemoto, a découvert le roman web en avril 2013 en le voyant apparaître sur son fil Twitter, et Media Factory a lancé la version imprimée le 24 janvier 2014. Yen Press a obtenu la licence en langue anglaise en décembre 2015, puis White Fox a adapté la série en anime dès avril 2016. L'auteur a ensuite étendu son travail au scénario télévisé (Warlords of Sigrdrifa, Vivy: Fluorite Eye's Song, Suicide Squad Isekai) et à la supervision de jeux vidéo. Il ne montre pas son visage au public.",
+    "dateNaissance": "11 mars 1987",
+    "nationalite": "Japonais",
+    "occupation": "Romancier (light novels) et scénariste d'animation",
+    "oeuvres": [
+      "2012–en cours — Re:Zero − Starting Life in Another World (roman web) — Shōsetsuka ni Narō — depuis le 20 avril 2012 — pseudonyme Nezumi-iro Neko",
+      "2014–en cours — Re:Zero − Starting Life in Another World (light novel) — MF Bunko J (Media Factory / Kadokawa) — illustrations de Shinichirou Otsuka — premier volume le 24 janvier 2014 — 46 volumes (selon Wikipédia EN)",
+      "2017–en cours — Re:Zero Ex (histoires annexes, light novel) — MF Bunko J — 6 volumes (dont The Love Song of the Sword Devil)",
+      "2016–en cours — Re:Zero Short Story Collection (recueils de nouvelles, light novel) — MF Bunko J — 14 recueils (selon Wikipédia EN)",
+      "2016–2026 — Re:Zero − Starting Life in Another World (anime TV) — WHITE FOX — créateur original — saisons 1 à 4",
+      "2018 — Re:Zero − Starting Life in Another World: Memory Snow (OVA) — WHITE FOX — scénario et créateur original",
+      "2019 — Re:Zero − Starting Life in Another World: The Frozen Bond (Hyōketsu no Kizuna) (OVA, manga) — WHITE FOX — histoire originale",
+      "2018 — Pokémon the Movie: The Power of Us (film) — assistant à la composition du scénario",
+      "2020 — Warlords of Sigrdrifa (戦翼のシグルドリーヴァ) (anime TV) — composition de la série et scénario (épisodes 1 à 12) ; light novel Warlords of Sigrdrifa Rusalka",
+      "2021 — Vivy: Fluorite Eye's Song (anime TV) — concept original, composition de la série et scénario (épisodes 1 à 13) ; light novel Vivy Prototype (4 volumes)",
+      "2021 — Re:Zero − Starting Life in Another World: The Prophecy of the Throne (jeu vidéo) — superviseur du scénario",
+      "2022 — Isekai Quartet: Another World (film) — créateur original (Re:Zero)",
+      "2024 — Suicide Squad Isekai (anime TV, Warner Bros. Japan / WIT STUDIO) — composition de la série et scénario (épisodes 1 à 10)",
+      "2024–2025 — Re:Zero − Starting Life in Another World: Witch's Re:surrection (jeu mobile) — superviseur du scénario"
+    ],
+    "recompenses": [
+      "2015–2016 — Newtype Anime Awards : Rem élue meilleur personnage féminin et Puck meilleur personnage mascotte (adaptation animée)",
+      "2016 — Crunchyroll — The Anime Awards 2016 : « Best Girl » pour Rem",
+      "2016 — Sondage Otamart : Rem classée première des « personnages 2D les plus populaires »",
+      "Mars 2023 — Plus de 13 millions d'exemplaires en circulation (romans et mangas, numérique inclus)",
+      "27 avril 2026 — Plus de 16 millions d'exemplaires en circulation dans le monde (annonce de Kadokawa)",
+      "Prix littéraires personnels de l'auteur — Non divulguée dans les sources consultées"
+    ],
+    "imageUrl": "",
+    "animeIds": [
+      "re-zero"
+    ]
+  },
+  "studio": {
+    "nom": "WHITE FOX",
+    "fondation": "Avril 2007, par Gaku Iwasa (岩佐 岳), après la scission de l'équipe Iwasa d'OLM, Inc. — première production : Tears to Tiara (2009) — racheté par l'éditeur AlphaPolis (annonce du 31 juillet 2025) ; Studio Bind (Mushoku Tensei) est sa filiale",
+    "fondateur": "Non divulgué publiquement",
+    "description": "",
+    "productions": [
+      "Steins;Gate",
+      "Akame ga Kill!",
+      "Goblin Slayer",
+      "Is the Order a Rabbit?",
+      "Katanagatari",
+      "Jormungand",
+      "The Devil Is a Part-Timer!",
+      "Girls' Last Tour",
+      "The Hero Is Overpowered but Overly Cautious",
+      "Uglymug",
+      "Epicfighter"
+    ]
+  },
+  "characters": [
+    {
+      "id": "rz-natsuki-subaru",
+      "nom": "Natsuki Subaru",
+      "nomJaponais": "ナツキ・スバル",
+      "animeId": "re-zero",
+      "animeName": "Re:Zero − Starting Life in Another World",
+      "auteurId": "tappei-nagatsuki",
+      "auteurNom": "Tappei Nagatsuki",
+      "studioId": "white-fox",
+      "studioNom": "WHITE FOX",
+      "age": "17 ans (arcs 1 à 4) ; 18 ans à partir de l'arc 5",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Protagoniste — Chevalier d'Emilia — Détenteur du « Retour par la mort » — Surnom : « Barusu » (par Ram)",
+      "description": "Natsuki Subaru est un lycéen japonais de 17 ans, reclus et sans projet, qui se retrouve soudain transporté dans un autre monde alors qu'il rentrait d'une supérette. Désorienté et sans talent apparent, il croise Emilia, une demi-elfe aux cheveux argentés, dont il tombe amoureux et qu'il décide d'aider à retrouver son insigne volé. Dès sa première mort aux mains d'Elsa, il découvre son unique don : le « Retour par la mort » (死に戻り), qui le ramène à un point de contrôle en conservant ses souvenirs. Ce pouvoir le condamne à endurer seul la douleur de chaque échec, sans pouvoir en parler à quiconque. Au fil des arcs — le manoir de Roswaal, la Baleine Blanche, le Sanctuaire puis la Tour de la Pléiade — il apprend à compter sur ses alliés, à négocier et à assumer ses faiblesses. Il noue des liens profonds avec Rem, Beatrice, Reinhard et bien d'autres, et devient le chevalier d'Emilia. Mémorable par sa vulnérabilité, son entêtement et ses échecs répétés, il est l'un des protagonistes d'isekai les plus éprouvés du genre.",
+      "pouvoirs": [
+        "Retour par la mort (死に戻り) — retour à un point de contrôle après chaque mort, avec conservation des souvenirs",
+        "Contrainte du secret — toute tentative d'en parler déclenche une sanction de la Sorcière (serrement du cœur)",
+        "Magie Yin — rendue accessible par son contrat avec Beatrice (Minya, Shamak)",
+        "Contrat d'esprit avec Beatrice — partenaire de combat et amplificatrice de ses sorts",
+        "Stratégie et négociation — exploite les informations des boucles précédentes pour rallier des alliés",
+        "Connaissances du monde moderne — son téléphone à clapet devient un objet de marchandage"
+      ],
+      "citations": [],
+      "trivia": [
+        "Le « Retour par la mort » est attribué par les croyants à Satella, la Sorcière de l'Envie, dont l'odeur le suit",
+        "Son téléphone à clapet, seul objet de son monde, sert de monnaie d'échange dans les négociations avec Crusch",
+        "Il apparaît aussi dans le crossover comique Isekai Quartet et dans plusieurs jeux dérivés (Lost in Memories, Death or Kiss, The Prophecy of the Throne)",
+        "Il passe de 17 à 18 ans à partir de l'arc 5 du récit"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Emilia",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Beatrice",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Rem",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ram",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Roswaal L. Mathers",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Reinhard van Astrea",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Julius Euclius",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Otto Suwen",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Elsa Granhiert",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Petelgeuse Romanée-Conti",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Patrasche",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Yūsuke Kobayashi",
+      "voixAnglaise": "Sean Chiplock",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 1
+    },
+    {
+      "id": "rz-emilia",
+      "nom": "Emilia",
+      "nomJaponais": "エミリア",
+      "animeId": "re-zero",
+      "animeName": "Re:Zero − Starting Life in Another World",
+      "auteurId": "tappei-nagatsuki",
+      "auteurNom": "Tappei Nagatsuki",
+      "studioId": "white-fox",
+      "studioNom": "WHITE FOX",
+      "age": "Environ 115 ans (apparence d'une adolescente d'environ 19 ans)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Héroïne principale — Candidate à la sélection royale — Demi-elfe, utilisatrice d'Arts spirituels — Surnom : « Emilia-tan » (par Subaru)",
+      "description": "Emilia est une demi-elfe aux cheveux argentés et aux yeux violets, candidate à la sélection royale pour devenir la 42e reine du Lugunica. Elle vient de la Forêt Gelée, où elle est restée figée dans la glace pendant des décennies, ce qui explique son esprit encore adolescent malgré plus d'un siècle d'existence. Sa ressemblance avec la Sorcière de l'Envie, Satella, lui vaut la méfiance et la haine d'une grande partie de la population, et elle se présente d'abord à Subaru sous le nom de « Satella ». Son idéal est de bâtir un royaume plus égalitaire où demi-humains et métis ne seraient plus discriminés, ce qui en fait un espoir pour les laissés-pour-compte. Subaru est le premier à la traiter sans préjugé, et elle développe peu à peu des sentiments pour lui. Douce, naïve mais très déterminée, elle porte seule ses fardeaux et hésite à demander de l'aide. Dans le Sanctuaire, elle doit passer des épreuves qui la confrontent à son passé. Accompagnée de l'esprit Puck, qu'elle considère comme un père, elle incarne la cause centrale de la série.",
+      "pouvoirs": [
+        "Arts spirituels — grande affinité avec les esprits et capacité à contracter avec eux",
+        "Magie de glace — étroitement liée à son contrat avec Puck",
+        "Soutien et guérison par les esprits",
+        "Combat rapproché limité, compensé par une grande détermination et un charisme politique fondé sur l'idéal d'égalité"
+      ],
+      "citations": [],
+      "trivia": [
+        "Sa ressemblance avec Satella est la source des discriminations dont elle est victime",
+        "Tappei Nagatsuki a indiqué qu'Emilia est son personnage préféré et que la série est née de son envie d'écrire une héroïne aux cheveux argentés",
+        "Rie Takahashi double à la fois Emilia et Satella dans la version japonaise",
+        "Elle s'est présentée à Subaru sous le nom de « Satella », le nom même de la Sorcière"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Subaru",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Puck",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Fortuna",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Roswaal L. Mathers",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Rem",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ram",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Frederica",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Crusch Karsten",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Anastasia Hoshin",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Priscilla Barielle",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Felt",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Satella",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Rie Takahashi",
+      "voixAnglaise": "Kayli Mills",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 2
+    },
+    {
+      "id": "rz-rem",
+      "nom": "Rem",
+      "nomJaponais": "レム",
+      "animeId": "re-zero",
+      "animeName": "Re:Zero − Starting Life in Another World",
+      "auteurId": "tappei-nagatsuki",
+      "auteurNom": "Tappei Nagatsuki",
+      "studioId": "white-fox",
+      "studioNom": "WHITE FOX",
+      "age": "17 ans au début de la série (18 ans dans les arcs suivants)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Servante de la Maison Mathers — Oni (démone) — Sœur jumelle cadette de Ram",
+      "description": "Rem est l'une des deux servantes du manoir de Roswaal L. Mathers et la sœur jumelle cadette de Ram. Oni aux cheveux bleu ciel, elle a conservé sa corne entière, ce qui lui confère une puissance magique que sa sœur a perdue. Longtemps rongée par un complexe d'infériorité face au génie précoce de Ram, elle compense par un travail acharné et la surpasse dans presque tous les domaines domestiques, cuisine en tête. Animée d'une haine intense pour le Culte de la Sorcière, elle soupçonne d'abord Subaru en raison de l'odeur de la Sorcière qu'il porte, et va jusqu'à le tuer. Lorsque Subaru la sauve des mabêtes de la forêt d'Elior, elle abandonne ses soupçons et tombe profondément amoureuse de lui. Même éconduite au profit d'Emilia, elle reste l'une de ses plus loyales soutiens. Son sort dans les arcs suivants influence durablement Subaru et le cours de l'histoire. Elle est devenue l'un des personnages les plus populaires de la franchise, au point de multiplier distinctions et produits dérivés.",
+      "pouvoirs": [
+        "Corne d'oni intacte — source d'une puissance magique supérieure",
+        "Force physique d'oni et forme de combat renforcée",
+        "Morgenstern — arme de combat (boule hérissée de pointes reliée à une chaîne)",
+        "Compétences domestiques de premier ordre — cuisine supérieure à celle de Ram",
+        "Haine et détermination face au Culte de la Sorcière"
+      ],
+      "citations": [],
+      "trivia": [
+        "Meilleur personnage féminin aux Newtype Anime Awards 2015–2016 et « Best Girl » aux Crunchyroll Anime Awards 2016",
+        "Au classement mensuel de Newtype, elle est passée de la 8e à la 1re place en 2016 avant de redescendre",
+        "Un oreiller-câlin à son effigie a été retardé à cause d'une demande imprévue",
+        "Un récit parallèle de l'arc 3 imagine Subaru et Rem fuyant ensemble pour vivre heureux avec deux enfants"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Ram",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Roswaal L. Mathers",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Subaru",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Culte de la Sorcière",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Emilia",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Inori Minase",
+      "voixAnglaise": "Brianna Knickerbocker",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 3
+    },
+    {
+      "id": "rz-ram",
+      "nom": "Ram",
+      "nomJaponais": "ラム",
+      "animeId": "re-zero",
+      "animeName": "Re:Zero − Starting Life in Another World",
+      "auteurId": "tappei-nagatsuki",
+      "auteurNom": "Tappei Nagatsuki",
+      "studioId": "white-fox",
+      "studioNom": "WHITE FOX",
+      "age": "17 ans au début de la série (18 ans dans les arcs suivants)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Servante de la Maison Mathers — Oni privée de sa corne — Sœur jumelle aînée de Rem",
+      "description": "Ram est la sœur jumelle aînée de Rem et l'une des deux servantes du manoir de Roswaal. Oni aux cheveux roses, elle fut épargnée malgré l'interdiction des jumeaux dans son clan, car elle se révéla un prodige dès son plus jeune âge. Lors de l'attaque du Culte de la Sorcière contre leur village, sa corne fut tranchée, la privant de ses pouvoirs. Depuis, son corps est faible, avec peu d'endurance et de mana ; Roswaal la « soigne » chaque jour. Elle ne surpasse Rem que dans le nettoyage, alors que celle-ci l'emporte presque partout ailleurs, malgré les éloges constants de Rem. Sarcastique et directe, elle appelle Subaru « Barusu » et lui témoigne rarement du respect. Entièrement dévouée à son maître Roswaal, elle protège aussi sa sœur par-dessus tout. Sous ses airs hautains se cache une loyauté sans faille envers ceux qu'elle estime.",
+      "pouvoirs": [
+        "Magie du vent — fortement limitée depuis la perte de sa corne",
+        "Transfert de mana quotidien par Roswaal — soutient sa santé fragile",
+        "Efficacité exceptionnelle dans le nettoyage et l'entretien du manoir",
+        "Esprit vif et répartie cinglante"
+      ],
+      "citations": [],
+      "trivia": [
+        "Les jumeaux étaient interdits dans leur clan ; Ram fut épargnée en raison de son talent précoce",
+        "Elle appelle Subaru « Barusu » et lui témoigne rarement du respect",
+        "Rem la place très haut malgré sa faiblesse actuelle, un contraste récurrent entre les deux sœurs"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Rem",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Roswaal L. Mathers",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Subaru",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Culte de la Sorcière",
+          "type": "ennemi"
+        }
+      ],
+      "voixJaponaise": "Rie Murakawa",
+      "voixAnglaise": "Ryan Bartley",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 4
+    },
+    {
+      "id": "rz-beatrice",
+      "nom": "Beatrice",
+      "nomJaponais": "ベアトリス",
+      "animeId": "re-zero",
+      "animeName": "Re:Zero − Starting Life in Another World",
+      "auteurId": "tappei-nagatsuki",
+      "auteurNom": "Tappei Nagatsuki",
+      "studioId": "white-fox",
+      "studioNom": "WHITE FOX",
+      "age": "Environ 400 ans (apparence d'une fillette)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Gardienne de la Bibliothèque Interdite — Esprit artificiel — Contractante de Subaru — Surnom : « Betty »",
+      "description": "Beatrice est une jeune fille d'apparence enfantine, aux longues boucles blondes en vrilles et aux yeux hétérochromes, gardienne de la Bibliothèque Interdite du manoir de Roswaal. Esprit artificiel âgé d'environ quatre cents ans, elle fut créée par Echidna. Roswaal a conclu un contrat avec elle pour qu'elle veille sur ses grimoires anciens ; elle peut déformer n'importe quelle pièce du manoir pour la relier à la bibliothèque, mais ne peut pas quitter le domaine. Froide et condescendante avec Subaru, qui trouve toujours la porte de sa bibliothèque, elle ponctue ses phrases de « kashira » (« je suppose »). Elle éprouve une profonde affection pour Puck et ne supporte pas de voir quelqu'un souffrir devant elle. Au Sanctuaire, elle se lie à Subaru par un contrat et devient son partenaire de combat. Elle se désigne elle-même par « Betty ». Son évolution de la solitude à la confiance est l'un des fils émotionnels majeurs de la série.",
+      "pouvoirs": [
+        "Magie Yin — sorts tels que Minya et Shamak",
+        "Déformation des pièces du manoir pour les relier à la bibliothèque",
+        "Gardienne des grimoires anciens de Roswaal",
+        "Contrat d'esprit avec Subaru — amplifie ses capacités au combat"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle termine ses phrases par « kashira » (« je suppose »), un tic de langage devenu emblématique",
+        "Elle peut relier n'importe quelle pièce du manoir à sa bibliothèque, mais ne peut pas quitter le domaine",
+        "Créée par Echidna, elle est âgée d'environ quatre cents ans"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Echidna",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Roswaal L. Mathers",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Subaru",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Puck",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Satomi Arai",
+      "voixAnglaise": "Kira Buckland",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 5
+    },
+    {
+      "id": "rz-puck",
+      "nom": "Puck",
+      "nomJaponais": "パック",
+      "animeId": "re-zero",
+      "animeName": "Re:Zero − Starting Life in Another World",
+      "auteurId": "tappei-nagatsuki",
+      "auteurNom": "Tappei Nagatsuki",
+      "studioId": "white-fox",
+      "studioNom": "WHITE FOX",
+      "age": "Environ 420 ans",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Esprit contractant d'Emilia — Grand Esprit — « Bête de la fin des terres éternellement gelées »",
+      "description": "Puck est un esprit contractant d'Emilia qui prend l'apparence d'un petit chat gris. Sa véritable identité est celle de la « Bête de la fin des terres éternellement gelées », l'un des quatre Grands Esprits du monde, capable de contrôler la chaleur. Il traite Emilia comme sa fille et se comporte en père attentif, mais aussi en compagnon espiègle qui taquine volontiers Subaru. Il possède une capacité empathique qui lui permet de lire les intentions de ceux qu'il rencontre à travers leurs émotions. Il travaille selon un horaire fixe de 9 h à 17 h, comme un salarié, ce qui nourrit un running gag. Lié à Emilia par un contrat, il se transformerait en bête géante cherchant à détruire le monde si elle venait à mourir, car il aurait perdu sa raison d'exister. Mascotte de la série, il a remporté le prix du meilleur personnage mascotte aux Newtype Anime Awards 2015–2016.",
+      "pouvoirs": [
+        "Contrôle de la chaleur — Grand Esprit de la glace",
+        "Capacité empathique — lit les intentions à travers les émotions",
+        "Forme de « Bête » géante — se manifeste si Emilia meurt",
+        "Contrat avec Emilia — pilier de sa magie de glace"
+      ],
+      "citations": [],
+      "trivia": [
+        "Meilleur personnage mascotte aux Newtype Anime Awards 2015–2016",
+        "Il travaille de 9 h à 17 h, comme un salarié, ce qui est un running gag de la série",
+        "S'il perdait Emilia, il se transformerait en bête cherchant à détruire le monde"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Emilia",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Echidna",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Beatrice",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Subaru",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Yumi Uchiyama",
+      "voixAnglaise": "Erica Mendez",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 6
+    },
+    {
+      "id": "rz-roswaal-l-mathers",
+      "nom": "Roswaal L. Mathers",
+      "nomJaponais": "ロズワール・L・メイザース",
+      "animeId": "re-zero",
+      "animeName": "Re:Zero − Starting Life in Another World",
+      "auteurId": "tappei-nagatsuki",
+      "auteurNom": "Tappei Nagatsuki",
+      "studioId": "white-fox",
+      "studioNom": "WHITE FOX",
+      "age": "Environ 29 ans apparents (plus de 400 ans en réalité)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Margrave — Mage de la cour impériale — Mécène d'Emilia — Maître du manoir",
+      "description": "Roswaal L. Mathers est le margrave et mage de la cour impériale qui parraine et finance la candidature d'Emilia à la sélection royale. Doté d'une apparence excentrique — maquillage de clown, tenue extravagante, ton théâtral —, il est d'abord pris par Subaru pour un bouffon. Il est pourtant l'un des mages les plus puissants et influents du Lugunica, et le maître du manoir où travaillent Rem et Ram. Le motif de son soutien à Emilia est son projet de tuer le Dragon, révélé progressivement. Il est en réalité bien plus âgé qu'il n'y paraît : il survit en possédant les corps de ses descendants dans l'espoir de ressusciter Echidna, sa maîtresse et l'amour de sa vie. Cette obsession le conduit à s'opposer à Subaru dans l'arc du Sanctuaire, lorsque celui-ci découvre son intention d'utiliser le Retour par la mort. Il soigne quotidiennement Ram par transfert de mana. Calculateur et manipulateur, il reste l'un des personnages les plus ambigus de la série.",
+      "pouvoirs": [
+        "Magie de très haut niveau — l'un des mages les plus puissants du Lugunica",
+        "Possession du corps de ses descendants — survie sur plusieurs siècles",
+        "Transfert de mana pour soigner Ram",
+        "Planification à très long terme — vise la mort du Dragon et la résurrection d'Echidna"
+      ],
+      "citations": [],
+      "trivia": [
+        "Subaru le prend d'abord pour un clown en raison de son apparence",
+        "Né le 16 septembre selon les fiches de personnages",
+        "Sa véritable longévité repose sur la possession successive de corps de ses descendants"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Echidna",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Rem",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ram",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Emilia",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Beatrice",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Subaru",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "le Dragon",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Takehito Koyasu",
+      "voixAnglaise": "Ray Chase",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 7
+    },
+    {
+      "id": "rz-reinhard-van-astrea",
+      "nom": "Reinhard van Astrea",
+      "nomJaponais": "ラインハルト・ヴァン・アストレア",
+      "animeId": "re-zero",
+      "animeName": "Re:Zero − Starting Life in Another World",
+      "auteurId": "tappei-nagatsuki",
+      "auteurNom": "Tappei Nagatsuki",
+      "studioId": "white-fox",
+      "studioNom": "WHITE FOX",
+      "age": "20 ans",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Épée Sacrée — Chevalier de la Garde royale — Chevalier de Felt — « Le plus puissant »",
+      "description": "Reinhard van Astrea est le titulaire du titre d'« Épée Sacrée » (Sword Saint), chevalier de la Garde royale et héritier d'une lignée de légendes de l'escrime. Affable, il se lie rapidement d'amitié avec Subaru, qu'il croise lors du vol de l'insigne d'Emilia. Il possède des pouvoirs de combat extraordinaires : sa capacité à générer des contre-mesures aux techniques de ses adversaires, passés ou présents, le rend plus fort que tous ses prédécesseurs. Après avoir constaté que l'insigne d'Emilia réagissait à Felt, il devient le chevalier de Felt dans la sélection royale. L'auteur l'a lui-même désigné comme le personnage le plus puissant de l'univers de la série. Sa relation avec son grand-père Wilhelm reste tendue : ce dernier lui reproche la mort de sa grand-mère Theresia face à la Baleine Blanche. Sa force démesurée l'isole, et pour tous il incarne le chevalier idéal, ce qui pèse sur lui comme un fardeau.",
+      "pouvoirs": [
+        "Protections divines — peut disposer de n'importe quelle protection divine, sans limite",
+        "Contre-mesures automatiques — s'adapte aux techniques passées ou présentes de ses adversaires",
+        "Titre d'Épée Sacrée — escrime de niveau légendaire",
+        "Épée du Dragon Reid — arme réservée à l'Épée Sacrée"
+      ],
+      "citations": [],
+      "trivia": [
+        "L'auteur le décrit comme le personnage le plus puissant du monde de la série",
+        "Il peut obtenir n'importe quelle protection divine, sans limite",
+        "Wilhelm lui reproche la mort de Theresia, et leur relation est difficile"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Felt",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Wilhelm van Astrea",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Theresia van Astrea",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Subaru",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Julius Euclius",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Felix Argyle",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Yūichi Nakamura",
+      "voixAnglaise": "Robbie Daymond",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 8
+    },
+    {
+      "id": "rz-wilhelm-van-astrea",
+      "nom": "Wilhelm van Astrea",
+      "nomJaponais": "ヴィルヘルム・ヴァン・アストレア",
+      "animeId": "re-zero",
+      "animeName": "Re:Zero − Starting Life in Another World",
+      "auteurId": "tappei-nagatsuki",
+      "auteurNom": "Tappei Nagatsuki",
+      "studioId": "white-fox",
+      "studioNom": "WHITE FOX",
+      "age": "62 ans",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Démon de l'Épée — Majordome de Crusch — Ancien Garde royal — Grand-père de Reinhard",
+      "description": "Wilhelm van Astrea est un vieux sabreur retiré de la Garde royale, surnommé le « Démon de l'Épée » pour ses exploits durant la guerre civile. Majordome de la Maison Karsten et instructeur d'escrime de Crusch, il reste l'un des meilleurs épéistes du Lugunica malgré son âge. Sage et perspicace, il devine au premier regard, aux yeux de Subaru, que celui-ci a connu la mort. Il nourrit une rancune tenace envers la Baleine Blanche, qui a tué son épouse Theresia van Astrea, la précédente Épée Sacrée. Son passé, y compris son nom d'origine Trias et sa rencontre avec Theresia, est raconté dans un roman dérivé. Il a combattu pendant la guerre des demi-humains aux côtés de Bordeaux Zellgef. Grand-père de Reinhard, avec qui il entretient une relation compliquée, il reste dévoué à Crusch. La confrontation avec la Baleine Blanche est l'un des temps forts de la saison 2.",
+      "pouvoirs": [
+        "Escrime légendaire — l'un des meilleurs sabreurs du Lugunica",
+        "Expérience de la guerre des demi-humains — vétéran du champ de bataille",
+        "Perception aiguë — repère chez Subaru l'expérience de la mort",
+        "Instruction d'escrime — forme Crusch et Subaru"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son histoire d'amour avec Theresia est racontée dans le roman dérivé Re:Zero Ex — The Love Song of the Sword Devil",
+        "Né le 7 mai selon les fiches de personnages",
+        "Dans le crossover Isekai Quartet, il est concierge d'établissement scolaire"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Theresia van Astrea",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Reinhard van Astrea",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Heinkel Astrea",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Crusch Karsten",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Subaru",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Bordeaux Zellgef",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "la Baleine Blanche",
+          "type": "ennemi"
+        }
+      ],
+      "voixJaponaise": "Kenyu Horiuchi (adulte) ; Kaito Ishikawa (jeune)",
+      "voixAnglaise": "Marc Diraison (saison 1) ; Brock Foster Powell (saison 2) ; Billy Kametz (jeune)",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 9
+    },
+    {
+      "id": "rz-crusch-karsten",
+      "nom": "Crusch Karsten",
+      "nomJaponais": "クルシュ・カルステン",
+      "animeId": "re-zero",
+      "animeName": "Re:Zero − Starting Life in Another World",
+      "auteurId": "tappei-nagatsuki",
+      "auteurNom": "Tappei Nagatsuki",
+      "studioId": "white-fox",
+      "studioNom": "WHITE FOX",
+      "age": "20 ans (21 ans dans les arcs suivants)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Chef de la Maison Karsten — Candidate à la sélection royale — Prône la méritocratie",
+      "description": "Crusch Karsten est la chef de la Maison Karsten et l'une des candidates à la sélection royale pour devenir la 42e reine du Lugunica. Malgré son jeune âge, elle s'est imposée comme l'une des femmes les plus en vue du royaume, et sa famille entretient des liens étroits avec la défunte famille royale. Son idéal est la méritocratie : elle veut libérer le pays de sa dépendance séculaire envers les prophéties du Dragon, qui selon elle l'a conduit à la stagnation. Dotée d'une protection divine qui lui permet de détecter les mensonges, elle est difficile à tromper. Guerrière fière à la personnalité stricte, elle manie l'épée et la magie du vent. Elle est secondée par Felix, son chevalier, et par Wilhelm, son majordome. Elle offre à Subaru la dragonne Patrasche et collabore avec lui pour la chasse à la Baleine Blanche. Les conservateurs la désignent comme favorite du scrutin.",
+      "pouvoirs": [
+        "Protection divine de détection du mensonge",
+        "Escrime — fierté de guerrière",
+        "Magie du vent",
+        "Leadership politique fondé sur la méritocratie"
+      ],
+      "citations": [],
+      "trivia": [
+        "Sa protection divine lui permet de détecter les mensonges",
+        "Elle offre à Subaru la dragonne Patrasche",
+        "Elle veut libérer le Lugunica de la dépendance aux prophéties du Dragon"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Felix Argyle",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Wilhelm van Astrea",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Emilia",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Subaru",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Patrasche",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Yuka Iguchi",
+      "voixAnglaise": "Erika Harlacher",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 10
+    },
+    {
+      "id": "rz-felt",
+      "nom": "Felt",
+      "nomJaponais": "フェルト",
+      "animeId": "re-zero",
+      "animeName": "Re:Zero − Starting Life in Another World",
+      "auteurId": "tappei-nagatsuki",
+      "auteurNom": "Tappei Nagatsuki",
+      "studioId": "white-fox",
+      "studioNom": "WHITE FOX",
+      "age": "15 ans",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Candidate à la sélection royale — Voleuse des taudis — Protégée de Rom — Chevalier : Reinhard",
+      "description": "Felt est une voleuse de 15 ans qui a grandi dans les taudis de la capitale. Elle apparaît d'abord en dérobant l'insigne d'Emilia, qu'elle tente de vendre au plus offrant. L'insigne réagit à elle, ce qui fait de Felt une candidate légitime à la sélection royale. Marquée par une enfance difficile, elle défend l'anarchisme et rêve de détruire le système en place. Son apparence ressemble à celle de la famille royale, sans qu'on puisse le confirmer, toute la lignée étant éteinte. Il est révélé dans l'arc 5 que « Felt » n'est pas son vrai nom. Elle considère le vieux Rom, qui l'a recueillie, comme son grand-père. Son chevalier est Reinhard.",
+      "pouvoirs": [
+        "Rapidité et agilité de voleuse",
+        "Connaissance des bas-fonds de la capitale",
+        "Insigne de la sélection royale — réagit à elle",
+        "Esprit libre et anarchiste"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle dérobe l'insigne d'Emilia, qui réagit ensuite à elle",
+        "Son apparence évoque la famille royale, sans qu'on puisse le confirmer",
+        "Née le 8 août selon les fiches de personnages"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Reinhard van Astrea",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Rom",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Emilia",
+          "type": "rival"
+        }
+      ],
+      "voixJaponaise": "Chinatsu Akasaki",
+      "voixAnglaise": "Christine Marie Cabanos",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 11
+    },
+    {
+      "id": "rz-priscilla-barielle",
+      "nom": "Priscilla Barielle",
+      "nomJaponais": "プリシラ・バーリエル",
+      "animeId": "re-zero",
+      "animeName": "Re:Zero − Starting Life in Another World",
+      "auteurId": "tappei-nagatsuki",
+      "auteurNom": "Tappei Nagatsuki",
+      "studioId": "white-fox",
+      "studioNom": "WHITE FOX",
+      "age": "19 ans",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Candidate à la sélection royale — Chef de la Maison Barielle — Chevalier : Aldebaran",
+      "description": "Priscilla Barielle est l'une des candidates à la sélection royale et la chef de la Maison Barielle. Sa beauté captive les hommes, et elle apprécie qu'on la complimente. À seulement 19 ans, elle a eu huit maris, tous morts mystérieusement, mais les terres qu'elle acquiert prospèrent grâce à une chance quasi surnaturelle. Extravagante et égocentrique, elle défend le totalitarisme et exige d'être traitée comme une divinité. Elle est dangereuse lorsqu'elle se met en colère. Son chevalier Aldebaran (Al), au visage défiguré, et le jeune Schult lui sont absolument loyaux. À l'arc 5, elle choisit la chanteuse Liliana Masquerade pour l'aider à affronter l'Archevêque de la Colère, Sirius, et la vainc.",
+      "pouvoirs": [
+        "Chance quasi surnaturelle — le monde tourne en sa faveur",
+        "Beauté et prestance captivant les hommes",
+        "Autorité naturelle et exigence d'être traitée comme une divinité",
+        "Entourage loyal — Aldebaran et Schult"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle a eu huit maris qui sont tous morts mystérieusement",
+        "Ses terres prospèrent grâce à une chance presque surnaturelle",
+        "Elle défend le totalitarisme dans la sélection royale"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Aldebaran",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Schult",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Liliana Masquerade",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Sirius",
+          "type": "ennemi"
+        }
+      ],
+      "voixJaponaise": "Yukari Tamura",
+      "voixAnglaise": "Faye Mata",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 12
+    },
+    {
+      "id": "rz-anastasia-hoshin",
+      "nom": "Anastasia Hoshin",
+      "nomJaponais": "アナスタシア・ホーシン",
+      "animeId": "re-zero",
+      "animeName": "Re:Zero − Starting Life in Another World",
+      "auteurId": "tappei-nagatsuki",
+      "auteurNom": "Tappei Nagatsuki",
+      "studioId": "white-fox",
+      "studioNom": "WHITE FOX",
+      "age": "22 ans",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Candidate à la sélection royale — Présidente de la Compagnie commerciale Hoshin — Chevalier : Julius",
+      "description": "Anastasia Hoshin est l'une des candidates à la sélection royale, âgée de 22 ans. Elle dirige la célèbre Compagnie commerciale Hoshin et est considérée comme la nouvelle incarnation de son fondateur, « Hoshin du Désert », pour son succès commercial sans précédent. Originaire de Kararagi, à l'ouest du Lugunica, elle parle avec un accent du Kansai. Elle défend le capitalisme et aime que chacun trouve son compte dans les échanges, tout en se montrant sympathique malgré son avidité d'orpheline. Elle dispose d'une compagnie mercenaire personnelle, le « Croc de Fer » (Iron Fang), dirigé par Ricardo Welkin. Son chevalier est Julius Euclius. Elle aide Subaru à légitimer et finaliser ses négociations commerciales avec Crusch.",
+      "pouvoirs": [
+        "Génie des affaires — dirige la Compagnie Hoshin",
+        "Compagnie mercenaire « Croc de Fer » (Iron Fang)",
+        "Négociation et sens du profit partagé",
+        "Accent du Kansai — marque de son identité"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle parle avec un accent du Kansai",
+        "Considérée comme la nouvelle incarnation de son fondateur « Hoshin du Désert »",
+        "Son Croc de Fer est dirigé par Ricardo, un kobold, et inclut les triplés Pearlbaton"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Julius Euclius",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ricardo Welkin",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Emilia",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Russell Fellow",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Kana Ueda",
+      "voixAnglaise": "Cassandra Lee Morris",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 13
+    },
+    {
+      "id": "rz-julius-euclius",
+      "nom": "Julius Euclius",
+      "nomJaponais": "ユリウス・ユークリウス",
+      "animeId": "re-zero",
+      "animeName": "Re:Zero − Starting Life in Another World",
+      "auteurId": "tappei-nagatsuki",
+      "auteurNom": "Tappei Nagatsuki",
+      "studioId": "white-fox",
+      "studioNom": "WHITE FOX",
+      "age": "Inconnu",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Chevalier de la Garde royale — Chevalier d'esprit — Chevalier d'Anastasia",
+      "description": "Julius Euclius est un chevalier de la Garde royale et le chevalier d'Anastasia dans la sélection royale. Utilisateur d'Arts spirituels de type « chevalier d'esprit », il est lié par contrat à six quasi-esprits, chacun représentant un élément : feu, eau, vent, terre, lumière et ombre. D'une grande rigueur envers les nobles, il remet fermement à leur place ceux qui manquent de respect. Au début, il méprise Subaru, qu'il juge indigne du titre de chevalier, et le bat en duel de façon unilatérale, ce qui ternit sa propre réputation. Lorsque Subaru reconnaît ses torts et participe à l'extermination de la Baleine Blanche, Julius lui voue un profond respect et devient l'un de ses amis de confiance. Il est le frère aîné de Joshua.",
+      "pouvoirs": [
+        "Six quasi-esprits — Ia (feu), Kua (eau), Aro (vent), Ik (terre), In (lumière), Nes (ombre)",
+        "Arts spirituels — chevalier d'esprit",
+        "Escrime de chevalier de la Garde royale",
+        "Rigueur et étiquette nobiliaire"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son duel unilatéral contre Subaru ternit sa propre réputation de chevalier",
+        "Il devient l'un des amis les plus fiables de Subaru après la chasse à la Baleine Blanche",
+        "Il est lié par contrat à six quasi-esprits représentant six éléments"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Anastasia Hoshin",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Joshua",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Reinhard van Astrea",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Felix Argyle",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Subaru",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Takuya Eguchi",
+      "voixAnglaise": "Chris Niosi",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 14
+    },
+    {
+      "id": "rz-otto-suwen",
+      "nom": "Otto Suwen",
+      "nomJaponais": "オットー・スーウェン",
+      "animeId": "re-zero",
+      "animeName": "Re:Zero − Starting Life in Another World",
+      "auteurId": "tappei-nagatsuki",
+      "auteurNom": "Tappei Nagatsuki",
+      "studioId": "white-fox",
+      "studioNom": "WHITE FOX",
+      "age": "20 ans (21 ans dans les arcs suivants)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Marchand ambulant — Officier aux affaires intérieures du camp d'Emilia — Protection divine de la Langue des âmes",
+      "description": "Otto Suwen est un marchand ambulant que Subaru rencontre dans l'arc 3, ivre et désargenté, en route vers le domaine de Roswaal. Un peu craintif et poltron, il reste bienveillant et très loyal envers ceux qui gagnent son amitié. Il bénéficie d'une protection divine, la « Langue des âmes », qui lui permet de communiquer avec n'importe quel animal, plante ou être du monde, ce qui met les gens mal à l'aise et lui donne parfois un air louche. Dans le roman, il explique qu'il soutient Emilia plus que tout autre candidat car, comme elle, il est habitué à être mal compris et maltraité à cause de sa différence. Après des débuts conflictuels avec Subaru, il devient l'un de ses plus fidèles soutiens. Il rejoint le camp d'Emilia dans l'arc 4 et contribue à vaincre Garfiel. Il y occupe ensuite un poste d'officier aux affaires intérieures. Il a dû quitter sa ville natale pour des raisons personnelles.",
+      "pouvoirs": [
+        "Langue des âmes — communique avec animaux, plantes et êtres du monde",
+        "Sens du commerce — marchand ambulant",
+        "Intendance et affaires intérieures du camp d'Emilia",
+        "Courage discret malgré un caractère peureux"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il peut parler à n'importe quel animal, plante ou être — ce qui met mal à l'aise",
+        "Il soutient Emilia plus que tout autre candidat car il connaît le rejet de la différence",
+        "Signe du Bélier selon les fiches de personnages"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Subaru",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Emilia",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Garfiel Tinsel",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Kōhei Amasaki",
+      "voixAnglaise": "Zach Aguilar",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 15
+    },
+    {
+      "id": "rz-garfiel-tinsel",
+      "nom": "Garfiel Tinsel",
+      "nomJaponais": "ガーフィール・ティンゼル",
+      "animeId": "re-zero",
+      "animeName": "Re:Zero − Starting Life in Another World",
+      "auteurId": "tappei-nagatsuki",
+      "auteurNom": "Tappei Nagatsuki",
+      "studioId": "white-fox",
+      "studioNom": "WHITE FOX",
+      "age": "Environ 15 ans (14 ans au début)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Gardien du Sanctuaire — Demi-humain (hybride tigre) — Antagoniste devenu allié",
+      "description": "Garfiel Tinsel est un demi-humain, hybride de tigre, qui garde le Sanctuaire. Demi-frère de Frederica Baumann, avec qui il partage la même mère, il sert d'antagoniste secondaire dans la première moitié de l'arc 4. Après sa défaite face à Subaru et après avoir surmonté son passé, il rejoint le camp d'Emilia. Il affronte Elsa lors de l'attaque du manoir de Roswaal, un combat mené au milieu des ruines en flammes, et la vainc. Rude et fier, il cache une loyauté profonde pour ceux qu'il protège. Il devient un allié précieux de la coalition d'Emilia.",
+      "pouvoirs": [
+        "Forme de bête — transformation de demi-humain hybride de tigre",
+        "Force et vitesse hors du commun",
+        "Combat à mains nues d'une grande violence",
+        "Résistance physique exceptionnelle"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il est hybride de tigre et demi-frère de Frederica Baumann",
+        "Il affronte Elsa au milieu des ruines enflammées du manoir de Roswaal",
+        "Il est né en octobre (signe de la Balance) selon les fiches de personnages"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Frederica Baumann",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Subaru",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Emilia",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Elsa Granhiert",
+          "type": "ennemi"
+        }
+      ],
+      "voixJaponaise": "Nobuhiko Okamoto",
+      "voixAnglaise": "Zeno Robinson",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 16
+    },
+    {
+      "id": "rz-echidna",
+      "nom": "Echidna",
+      "nomJaponais": "エキドナ",
+      "animeId": "re-zero",
+      "animeName": "Re:Zero − Starting Life in Another World",
+      "auteurId": "tappei-nagatsuki",
+      "auteurNom": "Tappei Nagatsuki",
+      "studioId": "white-fox",
+      "studioNom": "WHITE FOX",
+      "age": "Inconnu (Sorcière d'il y a environ 400 ans)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Sorcière de l'Avarice — Mentor de Roswaal — Créatrice de Puck et de Beatrice",
+      "description": "Echidna est la Sorcière de l'Avarice, l'une des sept Sorcières du Péché, et un personnage central du quatrième arc. Définie par une curiosité insatiable pour l'inconnu et une soif de savoir qu'elle nomme « amour », elle porte désormais son intérêt sur le Retour par la mort de Subaru, dont elle souhaite devenir la conseillère pour consigner les possibilités qu'il engendre. Décrite comme au cœur noir, elle ne comprend pas les sentiments des autres et peut être vue comme sociopathe selon les critères habituels. Pour obtenir du savoir, elle recourt sans scrupule à la sophistique, au mensonge et à la tromperie. Elle fut la mentor de Roswaal, qu'elle sauva de l'empoisonnement par le mana, et la créatrice des esprits Puck et Beatrice. Elle expérimentait des moyens de devenir immortelle en transférant son âme dans un autre corps. Elle ne témoigne de la malveillance qu'envers trois personnes : Satella, Emilia et une autre. Son château des rêves, où elle attire Subaru, est l'un des décors les plus marquants de la série.",
+      "pouvoirs": [
+        "Curiosité et savoir — soif de connaissance poussée à l'extrême",
+        "Création d'esprits — a conçu Puck et Beatrice",
+        "Transfert d'âme — expérimentations vers l'immortalité",
+        "Château des rêves — lieu où elle attire Subaru",
+        "Sophistique, mensonge et manipulation"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle est la créatrice des esprits Puck et Beatrice",
+        "Roswaal veut la ressusciter, elle qui est l'amour de sa vie",
+        "Décrite comme au cœur noir, elle ne comprend pas les sentiments d'autrui"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Roswaal L. Mathers",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Puck",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Beatrice",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Subaru",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Satella",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Emilia",
+          "type": "ennemi"
+        }
+      ],
+      "voixJaponaise": "Maaya Sakamoto",
+      "voixAnglaise": "Anairis Quiñones",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 17
+    },
+    {
+      "id": "rz-satella",
+      "nom": "Satella",
+      "nomJaponais": "サテラ",
+      "animeId": "re-zero",
+      "animeName": "Re:Zero − Starting Life in Another World",
+      "auteurId": "tappei-nagatsuki",
+      "auteurNom": "Tappei Nagatsuki",
+      "studioId": "white-fox",
+      "studioNom": "WHITE FOX",
+      "age": "Inconnu (scellée il y a environ 400 ans)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Sorcière de l'Envie — Figure de culte de la Sorcière — Sosie historique d'Emilia",
+      "description": "Satella est la Sorcière de l'Envie, figure principale du Culte de la Sorcière. Il y a environ quatre cents ans, elle absorba des facteurs de Sorcière de l'Envie avec lesquels elle n'était pas compatible, ce qui engendra la personnalité de la Sorcière de l'Envie, devenue incontrôlable. Elle tua les six autres Sorcières du Péché et manqua de détruire le monde. Malgré les efforts du Dragon, de la première Épée Sacrée et du Sage, elle ne put être tuée et fut scellée dans un sanctuaire du Grand Cascade, désormais surveillé par le Sage. On la tient pour responsable de l'arrivée de Subaru dans l'autre monde et de son pouvoir de Retour par la mort. Sa légende, celle d'une demi-elfe aux cheveux argentés, a engendré de sévères préjugés contre les demi-elfes, dont Emilia, dont elle est le sosie. Elle est vénérée par les fanatiques du Culte.",
+      "pouvoirs": [
+        "Autorité de l'Envie — absorbée par ses facteurs de Sorcière",
+        "Puissance capable de détruire le monde",
+        "Sanction du Retour par la mort — frappe Subaru s'il en parle",
+        "Scellée au Grand Cascade — surveillée par le Sage"
+      ],
+      "citations": [],
+      "trivia": [
+        "Emilia se présente à Subaru sous le nom de Satella",
+        "Même voix pour Satella et Emilia dans la version japonaise (Rie Takahashi)",
+        "Le Dragon, la première Épée Sacrée et le Sage ne purent la tuer et la scellèrent"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Emilia",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Culte de la Sorcière",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "les six autres Sorcières du Péché",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "le Sage",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Rie Takahashi",
+      "voixAnglaise": "Kayli Mills",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 18
+    },
+    {
+      "id": "rz-petelgeuse-romanee-conti",
+      "nom": "Petelgeuse Romanée-Conti",
+      "nomJaponais": "ペテルギウス・ロマネコンティ",
+      "animeId": "re-zero",
+      "animeName": "Re:Zero − Starting Life in Another World",
+      "auteurId": "tappei-nagatsuki",
+      "auteurNom": "Tappei Nagatsuki",
+      "studioId": "white-fox",
+      "studioNom": "WHITE FOX",
+      "age": "Inconnu",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Archevêque du Péché de la Paresse — Chef du Culte de la Sorcière — Antagoniste",
+      "description": "Petelgeuse Romanée-Conti est l'un des chefs du Culte de la Sorcière, Archevêque du Péché de la Paresse. Autrefois homme respectable, il a sombré dans la folie il y a bien longtemps. Il se révèle proche de la famille d'Emilia et de sa tante Fortuna. Lorsque la Sorcière de la Vanité attaqua la colonie elfe il y a cent ans, il absorba les facteurs instables de la Sorcière de la Paresse et tua accidentellement Fortuna, ce qui devint la source de sa folie et de sa dévotion envers Satella. Sa véritable nature est celle d'un esprit qui possède les corps compatibles. Il manie l'Autorité de la Paresse, les « mains invisibles », des tentacules d'ombre capables de traverser la matière. Il agit avec dix « Doigts », cultistes triés qui servent de sous-commandants et de corps de rechange. Il cible Subaru, sentant son lien profond avec la Sorcière de l'Envie. Il est finalement vaincu par Julius et Subaru, et écrasé sous les roues d'une carriole.",
+      "pouvoirs": [
+        "Autorité de la Paresse — « mains invisibles » (Unseen Hands)",
+        "Tentacules d'ombre — traversent les objets",
+        "Possession de corps compatibles",
+        "Dix « Doigts » — sous-commandants et corps de rechange"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il est tué par Subaru qui l'écrase sous les roues d'une carriole",
+        "Il tue accidentellement Fortuna, tante d'Emilia, ce qui scelle sa folie",
+        "Ses « mains invisibles » sont capables de traverser la matière"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Satella",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Sirius",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Fortuna",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Subaru",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Julius",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Reinhard",
+          "type": "ennemi"
+        }
+      ],
+      "voixJaponaise": "Yoshitsugu Matsuoka",
+      "voixAnglaise": "Todd Haberkorn ; Mark Whitten (en tant que Geuse)",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 19
+    },
+    {
+      "id": "rz-elsa-granhiert",
+      "nom": "Elsa Granhiert",
+      "nomJaponais": "エルザ・グランヒルテ",
+      "animeId": "re-zero",
+      "animeName": "Re:Zero − Starting Life in Another World",
+      "auteurId": "tappei-nagatsuki",
+      "auteurNom": "Tappei Nagatsuki",
+      "studioId": "white-fox",
+      "studioNom": "WHITE FOX",
+      "age": "Inconnu",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Assassine du pays de Gusteko — « Chasseuse d'Entrailles » — Première à avoir tué Subaru",
+      "description": "Elsa Granhiert est une assassine originaire du pays nordique de Gusteko et la première personne à tuer Subaru, déclenchant ainsi son pouvoir de retour dans le temps. Surnommée la « Chasseuse d'Entrailles », elle tue en ouvrant le ventre de ses proies. Elle recherche l'insigne d'Emilia ; quand les négociations échouent, elle tue Felt et Rom dans les deux premières boucles. Capable de sentir la peur chez les autres, elle repère Subaru. Elle est supposément immortelle, régénérant ses blessures. Dans la dernière boucle de l'affaire de l'insigne, Reinhard la bat et elle se retire en promettant de revenir. Elle réapparaît dans l'arc 4 avec Meili pour attaquer le manoir de Roswaal. Elle est finalement vaincue par Garfiel Tinsel, qui lui inflige assez de dégâts pour annuler sa régénération avant de l'écraser.",
+      "pouvoirs": [
+        "Assassinat — tue en éventrant ses proies",
+        "Régénération — supposément immortelle",
+        "Détection de la peur chez autrui",
+        "Lames de combat — style sanguinaire et précis"
+      ],
+      "citations": [],
+      "trivia": [
+        "Surnommée la « Chasseuse d'Entrailles » pour sa manière de tuer",
+        "Classée par Ranker parmi les personnages les plus clivants de la série",
+        "Elle est écrasée par Garfiel dans l'arc 4"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Meili Portroute",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Subaru",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Reinhard van Astrea",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Garfiel Tinsel",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Emilia",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Mamiko Noto",
+      "voixAnglaise": "Cristina Vee",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 20
+    }
+  ]
+}

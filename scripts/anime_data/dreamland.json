@@ -1,0 +1,761 @@
+{
+  "anime": {
+    "titre": "Dreamland",
+    "titreJaponais": "",
+    "synopsis": "Terrence Meyer, lycéen de Montpellier qui a perdu sa mère dans un incendie, découvre qu'il peut voyager vers Dreamland, un monde parallèle né des rêves et peuplé de « seigneurs cauchemars » tyrannisant chacun un royaume élémentaire. Accompagné de ses amis et guidé par le mystérieux Jung, il apprend à maîtriser son pouvoir sur le feu pour affronter ces seigneurs et percer le secret de la disparition de sa mère. Premier grand succès du manga français (« manfra »), la série est adaptée en anime en 2026.",
+    "genres": [
+      "Shōnen",
+      "Fantasy",
+      "Aventure"
+    ],
+    "annee": 2026,
+    "episodes": {},
+    "studio": "La Chouette Compagnie",
+    "studioId": "la-chouette-compagnie",
+    "auteur": "Reno Lemaire",
+    "auteurId": "reno-lemaire",
+    "editeur": "Pika Édition",
+    "statut": "En cours",
+    "type": "Shōnen"
+  },
+  "creator": {
+    "nom": "Reno Lemaire",
+    "nomJaponais": "",
+    "bio": "Reno Lemaire est un auteur français de manga, souvent présenté comme le premier mangaka français. Selon Lambiek, il est né le 3 octobre 1979 en France et est originaire de Montpellier, ville où se déroule Dreamland ; cette date n'a pas été recoupée par une seconde source. Il dessine depuis l'âge de trois ans, en recopiant Goldorak à la télévision, écrit sa première bande dessinée à sept ans et, vers quinze ans, avait déjà réalisé environ 1 000 pages. Inspiré par le graphisme, la dynamique et le format du manga, il propose son projet à Pika Édition en 2004, qui le prépublie en 2005 avant la sortie du premier tome en 2006. Il affirme vivre de son travail depuis le premier tome et avoir participé à environ 80 festivals en deux ans pour faire connaître la série. Il travaille au sein de Penmerry Studio, avec Salim Kafiz et son cousin Romain Lemaire.",
+    "dateNaissance": "3 octobre 1979 (source : Lambiek, non recoupée)",
+    "nationalite": "Français",
+    "occupation": "Mangaka / auteur de bande dessinée (« manfra »)",
+    "oeuvres": [
+      "2006–en cours — Dreamland — Pika Édition — premier tome « Feu ! » le 25 janvier 2006 ; 21 à 22 volumes selon les sources ; prépublication en 2005",
+      "2022 — Dreamland Remaster (tomes 1 et 2) — Pika Édition — reparution remasterisée dès le 12 octobre 2022 ; le premier chapitre passe de 38 à 78 pages",
+      "2022 — Artbook Dreamland — Pika Édition — né de la préparation du remaster",
+      "Saska — Morning Jump! (Kodansha) — d'après Lambiek ; année non précisée, à confirmer",
+      "2024 — Dreamland (édition japonaise) — Euromanga (traduction japonaise lancée en octobre 2024)",
+      "2026 — Dreamland (anime) — La Chouette Compagnie × Ellipse Animation — adaptation animée de la série"
+    ],
+    "recompenses": [
+      "Série la plus longue du manga français — record signalé par la presse (Journal du Geek, L'Éclaireur Fnac)",
+      "Plus de 700 000 exemplaires vendus de Dreamland (source : L'Éclaireur Fnac / Journal du Geek)",
+      "Troisième manfra publié dans le Shōnen Magazine selon Lambiek, donnée non recoupée",
+      "Récompenses officielles — Non listées dans les sources consultées"
+    ],
+    "imageUrl": "",
+    "animeIds": [
+      "dreamland"
+    ]
+  },
+  "studio": {
+    "nom": "La Chouette Compagnie",
+    "fondation": "Non divulguée dans les sources consultées",
+    "fondateur": "Non divulgué publiquement",
+    "description": "",
+    "productions": [
+      "Non divulguées dans les sources consultées"
+    ]
+  },
+  "characters": [
+    {
+      "id": "dl-terrence-meyer",
+      "nom": "Terrence Meyer",
+      "nomJaponais": "テレンス (Terensu)",
+      "animeId": "dreamland",
+      "animeName": "Dreamland",
+      "auteurId": "reno-lemaire",
+      "auteurNom": "Reno Lemaire",
+      "studioId": "la-chouette-compagnie",
+      "studioNom": "La Chouette Compagnie",
+      "age": "17 ans selon la présentation de l'anime (18 ans, en terminale, selon la fiche française de la série — sources divergentes)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Protagoniste — Voyageur de Dreamland — Pouvoir du feu (Playing with Fire)",
+      "description": "Terrence Meyer est un lycéen de Montpellier, élève du lycée Jules Guesde dans la série originale, qui peine en cours de comptabilité et rêve de séduire Lydia. Sa mère est morte dans un incendie quand il avait sept ans, et il en a gardé une peur panique du feu, qui hante ses nuits. Un soir, il surmonte cette peur en rêve et devient un « voyageur », c'est-à-dire une personne capable de se rendre chaque nuit à Dreamland, le monde des rêves. Sa peur vaincue se transforme en pouvoir : il maîtrise le feu, même s'il reste peu habile avec lui. Paresseux et un peu insouciant, il découvre peu à peu un monde peuplé de seigneurs cauchemars et de voyageurs rivaux. Il se fixe pour objectif de protéger les rêves des gens, et sa quête le conduit à chercher Edenia, selon TV Tropes. Le récit commence réellement dans les rêves, au risque, comme le dit le synopsis de l'anime, que son voyage s'achève dans le monde sombre où il vient d'entrer.",
+      "pouvoirs": [
+        "Maîtrise du feu (Playing with Fire) — pouvoir né de la peur du feu qu'il a surmontée",
+        "Voyage dans Dreamland — accès au monde des rêves chaque nuit",
+        "Langage de l'esprit — dans Dreamland, les personnages se comprennent même sans langue commune",
+        "Chasse aux seigneurs cauchemars — il affronte ceux qui hantent Dreamland"
+      ],
+      "citations": [],
+      "trivia": [
+        "Ses premiers pouvoirs naissent de la peur du feu : chaque voyageur reçoit un pouvoir lié à la phobie qu'il a surmontée",
+        "Le premier épisode de l'anime s'intitule « Terence » et suit la nuit où il surmonte son cauchemar",
+        "Des lecteurs japonais ont fait des retours sur le personnage de Terrence lors de la relecture de la série (Journal du Geek)",
+        "Kakeru Hatano le double en japonais, Luca Garzo en français"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Lydia",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Sabba",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Savane",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ève",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Jung",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ben",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Nity",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Sealvia",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Asmodeus",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Kakeru Hatano (波多野 翔)",
+      "voixAnglaise": "Non applicable (doublage français : Luca Garzo)",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 1
+    },
+    {
+      "id": "dl-sabba",
+      "nom": "Sabba",
+      "nomJaponais": "サバ (graphie japonaise non vérifiée)",
+      "animeId": "dreamland",
+      "animeName": "Dreamland",
+      "auteurId": "reno-lemaire",
+      "auteurNom": "Reno Lemaire",
+      "studioId": "la-chouette-compagnie",
+      "studioNom": "La Chouette Compagnie",
+      "age": "Non divulguée",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Voyageur sans pouvoir — Étudiant en art — Détenteur du Pinceau du Destin",
+      "description": "Sabba est un voyageur sans pouvoir propre, lié à sa peur, qui détient le Pinceau du Destin, un objet magique de Dreamland. Dans le monde réel, il est décrit comme un étudiant en art peureux. Il accompagne Terrence dans ses premières aventures et fait partie du noyau d'amis du héros. Son absence de pouvoir personnel le pousse à compter sur son pinceau et sur ses compagnons. Peu d'informations publiques existent sur son âge et son passé.",
+      "pouvoirs": [
+        "Pinceau du Destin — objet magique de Dreamland qu'il manie",
+        "Voyage dans Dreamland — comme tous les voyageurs"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il détient le Pinceau du Destin, un objet qui compense son absence de pouvoir personnel",
+        "Hiroyuki Yoshino le double en japonais, Gregory Laisné en français",
+        "Il est présenté comme un étudiant en art peureux dans le monde réel (TV Tropes)"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Terrence Meyer",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Savane",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ève",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Hiroyuki Yoshino (吉野 裕行)",
+      "voixAnglaise": "Non applicable (doublage français : Gregory Laisné)",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 2
+    },
+    {
+      "id": "dl-lydia",
+      "nom": "Lydia",
+      "nomJaponais": "リディア (Ridia)",
+      "animeId": "dreamland",
+      "animeName": "Dreamland",
+      "auteurId": "reno-lemaire",
+      "auteurNom": "Reno Lemaire",
+      "studioId": "la-chouette-compagnie",
+      "studioNom": "La Chouette Compagnie",
+      "age": "Non divulguée (lycéenne)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Intérêt amoureux de Terrence dans le monde réel — Meilleure amie d'Ève",
+      "description": "Lydia est la camarade de classe de Terrence, la personne qu'il cherche à séduire au début de l'anime. Elle est décrite comme une brune studieuse, très bonne élève. Elle est la meilleure amie d'Ève, avec qui elle forme un duo très proche. Elle représente pour Terrence la vie ordinaire du monde réel, par contraste avec Dreamland. Peu d'informations publiques existent sur son âge et son passé.",
+      "pouvoirs": [
+        "Aucun pouvoir identifié dans nos sources",
+        "Excellence scolaire — surnommée « studieuse »"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle est décrite comme une brune studieuse",
+        "Kaede Hondo la double en japonais, Emilie Marié en français",
+        "Terrence veut la séduire dès le premier épisode"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Terrence Meyer",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Ève",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Kaede Hondo (本渡 楓)",
+      "voixAnglaise": "Non applicable (doublage français : Emilie Marié)",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 3
+    },
+    {
+      "id": "dl-eve",
+      "nom": "Ève",
+      "nomJaponais": "エーヴ (Ēvu)",
+      "animeId": "dreamland",
+      "animeName": "Dreamland",
+      "auteurId": "reno-lemaire",
+      "auteurNom": "Reno Lemaire",
+      "studioId": "la-chouette-compagnie",
+      "studioNom": "La Chouette Compagnie",
+      "age": "Non divulguée",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Meilleure amie de Lydia — Compagne d'aventures de Terrence",
+      "description": "Ève est la meilleure amie de Lydia et finit par rejoindre le groupe de Terrence. Elle est présentée comme une « victime de la mode » à la personnalité insupportable, selon TV Tropes, ce qui en fait un contrepoint comique du groupe. Elle apporte du caractère et un franc-parler aux scènes de groupe. Peu d'informations publiques existent sur son âge et ses pouvoirs éventuels.",
+      "pouvoirs": [
+        "Aucun pouvoir précis identifié dans nos sources"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle est décrite comme très attachée à la mode",
+        "Asami Tano la double en japonais, Valérie Bescht en français",
+        "Elle forme avec Lydia un duo d'amies très proche"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Lydia",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Terrence",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Sabba",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Savane",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Asami Tano (田野 アサミ)",
+      "voixAnglaise": "Non applicable (doublage français : Valérie Bescht)",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 4
+    },
+    {
+      "id": "dl-savane",
+      "nom": "Savane",
+      "nomJaponais": "サヴァナ (Savana)",
+      "animeId": "dreamland",
+      "animeName": "Dreamland",
+      "auteurId": "reno-lemaire",
+      "auteurNom": "Reno Lemaire",
+      "studioId": "la-chouette-compagnie",
+      "studioNom": "La Chouette Compagnie",
+      "age": "Non divulguée",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Voyageur combattant — Invocateur de poissons — Compagnon de Terrence",
+      "description": "Savane est un voyageur combattant, d'origine rom selon TV Tropes, qui se bat torse nu et peut invoquer des poissons. Exubérant et bruyant, il apporte une énergie directe au groupe. Il fait partie des compagnons de Terrence dans Dreamland. Son pouvoir étonnant est un exemple de la diversité des peurs surmontées par les voyageurs. Peu d'informations publiques existent sur son passé.",
+      "pouvoirs": [
+        "Invocation de poissons — son pouvoir de voyageur",
+        "Combat au corps à corps"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son pouvoir est l'invocation de poissons",
+        "Takuya Eguchi le double en japonais, Adrien Larmande en français",
+        "Il est décrit comme exubérant et bruyant"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Terrence Meyer",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Sabba",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ève",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Takuya Eguchi (江口 拓也)",
+      "voixAnglaise": "Non applicable (doublage français : Adrien Larmande)",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 5
+    },
+    {
+      "id": "dl-asmodeus",
+      "nom": "Asmodeus",
+      "nomJaponais": "Asmodéhus)  (アスモデウス (graphie japonaise non vérifiée)",
+      "animeId": "dreamland",
+      "animeName": "Dreamland",
+      "auteurId": "reno-lemaire",
+      "auteurNom": "Reno Lemaire",
+      "studioId": "la-chouette-compagnie",
+      "studioNom": "La Chouette Compagnie",
+      "age": "Non divulguée",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Seigneur cauchemar du feu — Maître du Royaume du Feu — Chef de Dreamland dans l'anime",
+      "description": "Asmodeus, écrit Asmodéhus en français, est le seigneur cauchemar du feu, qui règne sur le Royaume du Feu. Il est l'un des trois « Enfants Terribles » de l'histoire, avec Prévice et Actarus. Dans l'anime, il est présenté comme le chef de Dreamland, doté de pouvoirs de feu. Terrence est devenu voyageur en maîtrisant le feu, l'élément de son royaume. Un récit annexe sur Asmodéhus a été annoncé, d'après des mots cachés dans un tome. Peu d'informations publiques existent sur son âge et ses motivations réelles.",
+      "pouvoirs": [
+        "Maîtrise du feu à très haut niveau",
+        "Souveraineté sur le Royaume du Feu"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il règne sur le Royaume du Feu",
+        "Junichi Suwabe le double en japonais (connu pour Eraserhead dans My Hero Academia)",
+        "Il est l'un des trois « Enfants Terribles » avec Prévice et Actarus"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Prévice",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Actarus",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Terrence Meyer",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Junichi Suwabe (諏訪部 順一)",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 6
+    },
+    {
+      "id": "dl-shun",
+      "nom": "Shun",
+      "nomJaponais": "シュン (graphie japonaise non vérifiée)",
+      "animeId": "dreamland",
+      "animeName": "Dreamland",
+      "auteurId": "reno-lemaire",
+      "auteurNom": "Reno Lemaire",
+      "studioId": "la-chouette-compagnie",
+      "studioNom": "La Chouette Compagnie",
+      "age": "Jeune (âge précis non divulgué)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Voyageur canadien — Pouvoir lié à la glace — Protégé de Prévice",
+      "description": "Shun est un voyageur canadien capable de créer de la glace à partir de rien, un pouvoir partagé avec peu de personnes, dont Zero, d'après TV Tropes. Il est lié au seigneur cauchemar des glaces, Prévice, qui veille sur lui et sur Zero. Dans l'anime, il est présenté comme un jeune personnage dont les pouvoirs sont liés à l'eau, selon CriticalHits, ce qui diffère de la version de TV Tropes. Il apparaît dans les arcs plus avancés de la série. Peu d'informations publiques existent sur son passé.",
+      "pouvoirs": [
+        "Création de glace — pouvoir de voyageur",
+        "Lien avec le Royaume des Glaces Éternelles"
+      ],
+      "citations": [],
+      "trivia": [
+        "Les sources divergent : glace (TV Tropes) ou eau (CriticalHits)",
+        "Il est présenté comme canadien",
+        "Miyu Irino le double en japonais (connu pour Ritsu Kageyama dans Mob Psycho 100)"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Prévice",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Zero",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Miyu Irino (入野 自由)",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 7
+    },
+    {
+      "id": "dl-jung",
+      "nom": "Jung",
+      "nomJaponais": "ユング (Yungu)",
+      "animeId": "dreamland",
+      "animeName": "Dreamland",
+      "auteurId": "reno-lemaire",
+      "auteurNom": "Reno Lemaire",
+      "studioId": "la-chouette-compagnie",
+      "studioNom": "La Chouette Compagnie",
+      "age": "Âgé (âge précis non divulgué)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Guide mystérieux — Vieil homme à la pipe — Porteur d'un pendentif en croix",
+      "description": "Jung est le vieil homme à la pipe qui explique à Terrence qu'il est devenu un voyageur et qu'il se trouve à Dreamland. Il porte un grand pendentif en forme de croix qui lui permet de rester dans Dreamland. Il joue le rôle de guide pour le héros au début de son parcours. Il est lié à l'une des grandes révélations de la série, que nous ne détaillons pas ici. Peu d'informations publiques existent sur son passé.",
+      "pouvoirs": [
+        "Pendentif en croix — lui permet de demeurer à Dreamland",
+        "Connaissance de Dreamland — il en explique les règles"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il est reconnaissable à sa pipe",
+        "Masahiko Tanaka le double en japonais",
+        "Il apparaît dès les premiers épisodes comme guide du héros"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Terrence Meyer",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Masahiko Tanaka (田中 正彦)",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 8
+    },
+    {
+      "id": "dl-previce",
+      "nom": "Prévice",
+      "nomJaponais": "Prévice (graphie japonaise non vérifiée)",
+      "animeId": "dreamland",
+      "animeName": "Dreamland",
+      "auteurId": "reno-lemaire",
+      "auteurNom": "Reno Lemaire",
+      "studioId": "la-chouette-compagnie",
+      "studioNom": "La Chouette Compagnie",
+      "age": "Non divulguée",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Seigneur cauchemar des glaces — Maître du Royaume des Glaces Éternelles",
+      "description": "Prévice est le seigneur cauchemar des glaces, lié au Royaume des Glaces Éternelles. Il fait partie des trois « Enfants Terribles » avec Asmodéhus et Actarus. Il veille sur Shun et Zero, deux voyageurs dotés de pouvoirs de glace. Peu d'informations publiques existent sur son passé.",
+      "pouvoirs": [
+        "Maîtrise de la glace",
+        "Souveraineté sur le Royaume des Glaces Éternelles"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il règne sur le Royaume des Glaces Éternelles",
+        "Il est l'un des trois « Enfants Terribles »",
+        "Sa distribution vocale n'est pas listée dans nos sources"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Asmodéhus",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Actarus",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Shun",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Zero",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Non listée dans nos sources",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 9
+    },
+    {
+      "id": "dl-actarus",
+      "nom": "Actarus",
+      "nomJaponais": "Actarus (graphie japonaise non vérifiée)",
+      "animeId": "dreamland",
+      "animeName": "Dreamland",
+      "auteurId": "reno-lemaire",
+      "auteurNom": "Reno Lemaire",
+      "studioId": "la-chouette-compagnie",
+      "studioNom": "La Chouette Compagnie",
+      "age": "Non divulguée",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Seigneur cauchemar de la foudre — Maître de Cityvolt",
+      "description": "Actarus est le seigneur de la Foudre, dont la capitale est Cityvolt. Il fait partie des trois « Enfants Terribles » avec Asmodéhus et Prévice. Il règne sur un royaume électrique de Dreamland. Peu d'informations publiques existent sur lui. Il illustre la diversité des royaumes gouvernés par les seigneurs cauchemars.",
+      "pouvoirs": [
+        "Maîtrise de la foudre",
+        "Souveraineté sur Cityvolt"
+      ],
+      "citations": [],
+      "trivia": [
+        "Sa capitale s'appelle Cityvolt",
+        "Il est l'un des trois « Enfants Terribles »",
+        "Sa distribution vocale n'est pas listée dans nos sources"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Asmodéhus",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Prévice",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Non listée dans nos sources",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 10
+    },
+    {
+      "id": "dl-attila",
+      "nom": "Attila",
+      "nomJaponais": "Attila (graphie japonaise non vérifiée)",
+      "animeId": "dreamland",
+      "animeName": "Dreamland",
+      "auteurId": "reno-lemaire",
+      "auteurNom": "Reno Lemaire",
+      "studioId": "la-chouette-compagnie",
+      "studioNom": "La Chouette Compagnie",
+      "age": "Non divulguée",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Seigneur cauchemar des cendres — Détenteur de l'Âme de Feu",
+      "description": "Attila est le seigneur des cendres, qui détient l'Âme de Feu. Il donne son nom au tome 7 de la série, preuve de son importance dans l'intrigue. Peu d'informations publiques existent sur lui. Il apparaît dans la partie plus avancée du récit.",
+      "pouvoirs": [
+        "Âme de Feu — objet ou pouvoir qu'il détient",
+        "Maîtrise des cendres"
+      ],
+      "citations": [],
+      "trivia": [
+        "Le tome 7 de la série porte son nom",
+        "Il règne sur un domaine de cendres",
+        "Sa distribution vocale n'est pas listée dans nos sources"
+      ],
+      "relations": [],
+      "voixJaponaise": "Non listée dans nos sources",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 11
+    },
+    {
+      "id": "dl-nity",
+      "nom": "Nity",
+      "nomJaponais": "ニティ (Niti)",
+      "animeId": "dreamland",
+      "animeName": "Dreamland",
+      "auteurId": "reno-lemaire",
+      "auteurNom": "Reno Lemaire",
+      "studioId": "la-chouette-compagnie",
+      "studioNom": "La Chouette Compagnie",
+      "age": "Non divulguée",
+      "sexe": "Non divulguée",
+      "statut": "Vivant",
+      "rang": "Ami proche de Terrence — Personnage secondaire de l'anime",
+      "description": "Nity est présentée dans l'anime comme une amie proche de Terrence. Elle apparaît dès les premiers épisodes. Les sources consultées décrivent peu son rôle exact. Elle participe à la vie ordinaire du héros, en dehors de Dreamland. Peu d'informations publiques existent sur elle ou lui.",
+      "pouvoirs": [
+        "Aucun pouvoir identifié dans nos sources"
+      ],
+      "citations": [],
+      "trivia": [
+        "Serika Hiromatsu la double en japonais",
+        "Son nom est écrit « Nity » ou « Nyti » selon les sources",
+        "Elle est surtout connue par la distribution de l'anime"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Terrence Meyer",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Serika Hiromatsu (弘松 芹香)",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 12
+    },
+    {
+      "id": "dl-ben",
+      "nom": "Ben",
+      "nomJaponais": "ベン (Ben)",
+      "animeId": "dreamland",
+      "animeName": "Dreamland",
+      "auteurId": "reno-lemaire",
+      "auteurNom": "Reno Lemaire",
+      "studioId": "la-chouette-compagnie",
+      "studioNom": "La Chouette Compagnie",
+      "age": "Non divulguée",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Frère de Terrence (selon la fiche de l'anime) — Personnage secondaire",
+      "description": "Ben est présenté dans la fiche de l'épisode 1 de l'anime comme le frère de Terrence. Il fait partie de l'entourage familial du héros dans le monde réel. Les sources consultées ne détaillent pas son rôle exact. Peu d'informations publiques existent sur son âge et son caractère. Il apparaît dans la distribution annoncée pour le Japon.",
+      "pouvoirs": [
+        "Aucun pouvoir identifié dans nos sources"
+      ],
+      "citations": [],
+      "trivia": [
+        "Takuya Masumoto le double en japonais",
+        "Il est le frère de Terrence selon la fiche de l'épisode 1 (Game*Spark)",
+        "Les sources en disent peu sur lui"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Terrence Meyer",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Takuya Masumoto (増元 拓也 ; orthographié « Matsumoto » dans certaines sources)",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 13
+    },
+    {
+      "id": "dl-sealvia",
+      "nom": "Sealvia",
+      "nomJaponais": "セルヴィア (Seruvia)",
+      "animeId": "dreamland",
+      "animeName": "Dreamland",
+      "auteurId": "reno-lemaire",
+      "auteurNom": "Reno Lemaire",
+      "studioId": "la-chouette-compagnie",
+      "studioNom": "La Chouette Compagnie",
+      "age": "Non divulguée (lycéen)",
+      "sexe": "Non divulguée",
+      "statut": "Vivant",
+      "rang": "Camarade de classe de Terrence — Personnage secondaire",
+      "description": "Sealvia est présenté dans la fiche de l'épisode 1 comme un camarade de classe de Terrence. Il fait partie de l'environnement scolaire du héros. TV Tropes le cite seulement comme un nom inhabituel, parmi ceux de la série. Les sources consultées ne détaillent pas son rôle exact. Peu d'informations publiques existent sur son âge et son rôle dans l'histoire.",
+      "pouvoirs": [
+        "Aucun pouvoir identifié dans nos sources"
+      ],
+      "citations": [],
+      "trivia": [
+        "Makoto Furukawa le double en japonais",
+        "Il est présenté comme un camarade de classe de Terrence",
+        "Les sources en disent peu sur lui"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Terrence Meyer",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Makoto Furukawa (古川 慎)",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 14
+    },
+    {
+      "id": "dl-neil",
+      "nom": "Neil",
+      "nomJaponais": "ネイル (Neiru)",
+      "animeId": "dreamland",
+      "animeName": "Dreamland",
+      "auteurId": "reno-lemaire",
+      "auteurNom": "Reno Lemaire",
+      "studioId": "la-chouette-compagnie",
+      "studioNom": "La Chouette Compagnie",
+      "age": "Non divulguée",
+      "sexe": "Non divulguée",
+      "statut": "Vivant",
+      "rang": "Personnage de la distribution japonaise — Rôle non précisé dans nos sources",
+      "description": "Neil figure dans la distribution japonaise annoncée de l'anime, doublé par Daisuke Namikawa. Les sources consultées ne décrivent ni son rôle ni son origine. Il est cité parmi les personnages secondaires du casting. Aucune description fiable de son rôle n'a été trouvée : cette fiche sera à compléter lorsque l'anime et les sources le préciseront.",
+      "pouvoirs": [
+        "Non divulguée"
+      ],
+      "citations": [],
+      "trivia": [
+        "Daisuke Namikawa le double en japonais",
+        "TV Tropes le cite sans description",
+        "Son rôle est à confirmer avec la diffusion de l'anime"
+      ],
+      "relations": [],
+      "voixJaponaise": "Daisuke Namikawa (浪川 大輔)",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 15
+    },
+    {
+      "id": "dl-rafaelo-midas",
+      "nom": "Rafaelo Midas",
+      "nomJaponais": "Rafaelo Midas (graphie japonaise non vérifiée)",
+      "animeId": "dreamland",
+      "animeName": "Dreamland",
+      "auteurId": "reno-lemaire",
+      "auteurNom": "Reno Lemaire",
+      "studioId": "la-chouette-compagnie",
+      "studioNom": "La Chouette Compagnie",
+      "age": "Non divulguée",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Souverain du Royaume des Chats — Cadre de la saison 2 du manga",
+      "description": "Rafaelo Midas est le souverain du Royaume des Chats, où se déroule la saison 2 du manga. Il porte le même nom de famille qu'Infinity Midas, roi de la richesse. Il représente un royaume plus excentrique de Dreamland. Peu d'informations publiques existent sur son passé.",
+      "pouvoirs": [
+        "Souveraineté sur le Royaume des Chats"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son royaume est celui des chats",
+        "Il est lié à la saison 2 du manga",
+        "Sa distribution vocale n'est pas listée dans nos sources"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Infinity Midas",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Non listée dans nos sources",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 16
+    }
+  ]
+}

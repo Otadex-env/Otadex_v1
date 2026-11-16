@@ -1,0 +1,1268 @@
+{
+  "anime": {
+    "titre": "Tokyo Revengers",
+    "titreJaponais": "東京卍リベンジャーズ",
+    "synopsis": "Takemichi Hanagaki, 26 ans et sans avenir, apprend la mort de son ancienne petite amie de lycée, Hinata, tuée dans une guerre de gangs. Poussé sur une voie ferrée, il voyage douze ans dans le passé et retrouve son corps d'adolescent. Pour empêcher sa mort et celle de ses proches, il doit infiltrer et transformer de l'intérieur le gang Tokyo Manji avant qu'il ne devienne l'organisation criminelle responsable de la tragédie.",
+    "genres": [
+      "Shōnen",
+      "Drame",
+      "Action"
+    ],
+    "annee": 2021,
+    "episodes": {},
+    "studio": "LIDEN FILMS",
+    "studioId": "liden-films",
+    "auteur": "Ken Wakui",
+    "auteurId": "ken-wakui",
+    "editeur": "Kodansha — Weekly Shōnen Magazine",
+    "statut": "En cours",
+    "type": "Shōnen"
+  },
+  "creator": {
+    "nom": "Ken Wakui",
+    "nomJaponais": "和久井 健",
+    "bio": "Ken Wakui (和久井 健, Wakui Ken) est un mangaka japonais qui écrit et dessine lui-même ses séries. Avant de devenir auteur, il a connu un parcours atypique : licencié de son premier emploi, il a fréquenté des bandes de rue pendant ses années de lycée, puis a travaillé comme hôte de bar avant d'obtenir son diplôme. En 2004, son œuvre Shinjuku Swan reçoit une mention honorable au Prix des nouveaux auteurs du Weekly Young Magazine ; la série débute sa prépublication en 2005 et se poursuit jusqu'en 2013. Il enchaîne avec Abaddon, Budgerigar puis Desert Eagle avant de lancer Tokyo Revengers dans le Weekly Shōnen Magazine en mars 2017. La série connaît un succès considérable et lui vaut le Kodansha Manga Award en 2020. Ce vécu dans le milieu des bandes de rue nourrit le réalisme des univers qu'il décrit.",
+    "dateNaissance": "Non divulguée",
+    "nationalite": "Japonais",
+    "occupation": "Mangaka (auteur-dessinateur)",
+    "oeuvres": [
+      "2005–2013 — Shinjuku Swan (新宿スワン) — Weekly Young Magazine (Kodansha) — premier récit sorti après la mention honorable de 2004 ; adapté en film live",
+      "2010–2012 — Abaddon — Weekly Young Magazine (Kodansha)",
+      "2014–2015 — Budgerigar — Weekly Young Magazine (Kodansha)",
+      "2015–2016 — Desert Eagle — Weekly Shōnen Magazine (Kodansha)",
+      "2017–2022 — Tokyo Revengers (東京卍リベンジャーズ) — Weekly Shōnen Magazine (Kodansha) — 278 chapitres, 31 volumes",
+      "2021–2023 — Tōdai Revengers (parodie) — dessin de Shinpei Funatsu — Magazine Pocket (Kodansha), 6 volumes — adaptation dérivée",
+      "2022–2025 — Tokyo Revengers: A Letter from Keisuke Baji — dessin de Yukinori Kawaguchi — Magazine Pocket (Kodansha), 6 volumes — spin-off",
+      "2021–2023 — Adaptations live de Tokyo Revengers — films réalisés par Tsutomu Hanabusa (2021, 2023)"
+    ],
+    "recompenses": [
+      "2004 — Weekly Young Magazine Newcomer Award : mention honorable pour Shinjuku Swan",
+      "Jury recommendation au 12e Japan Media Arts Festival — Shinjuku Swan",
+      "2020 — 44e Kodansha Manga Award, catégorie shōnen — Tokyo Revengers",
+      "2021 — Yahoo! Japan Search Awards (catégorie anime) et Twitter Japan Trend Awards (Anime Award) — adaptation animée de Tokyo Revengers",
+      "2022 — AnimaniA Awards : Best Online Series — Tokyo Revengers",
+      "Plus de 80 millions d'exemplaires en circulation (juin 2024)"
+    ],
+    "imageUrl": "",
+    "animeIds": [
+      "tokyo-revengers"
+    ]
+  },
+  "studio": {
+    "nom": "LIDEN FILMS",
+    "fondation": "22 février 2012 — fondateurs non précisés dans la source consultée ; société représentée par Tetsurō Satomi ; filiale de Ultra Super Pictures (groupe incluant Sanzigen, Trigger et Ordet)",
+    "fondateur": "Non divulgué publiquement",
+    "description": "",
+    "productions": [
+      "Senyu (2013)",
+      "Miss Monochrome: The Animation (2013–2015)",
+      "Terra Formars (2014)",
+      "The Heroic Legend of Arslan (2015)",
+      "Berserk (2016–2017)",
+      "Cells at Work! Code Black (2021)",
+      "Call of the Night (2022)",
+      "Rurouni Kenshin (2023)"
+    ]
+  },
+  "characters": [
+    {
+      "id": "tr-takemichi-hanagaki",
+      "nom": "Takemichi Hanagaki",
+      "nomJaponais": "花垣 武道 (Hanagaki Takemichi)",
+      "animeId": "tokyo-revengers",
+      "animeName": "Tokyo Revengers",
+      "auteurId": "ken-wakui",
+      "auteurNom": "Ken Wakui",
+      "studioId": "liden-films",
+      "studioNom": "LIDEN FILMS",
+      "age": "14 ans en 2005 (époque passée) ; 26 ans en 2017 (époque présente)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Protagoniste — Voyageur temporel (« Time Leap ») — Capitaine de la 1re division de Toman — Surnom : « Takemicchi »",
+      "description": "Takemichi Hanagaki est, au début du récit, un homme de 26 ans qui vit de petits boulots, sans avenir ni amis, et qui n'a jamais su s'imposer face à personne. Il apprend dans un reportage que son ancienne petite amie de collège, Hinata Tachibana, et son frère Naoto sont morts dans un conflit lié au gang Tokyo Manji (Toman). Poussé devant un train, il se retrouve douze ans plus tôt, à l'époque où il sortait avec Hinata, grâce à un pouvoir de voyage temporel déclenché par une poignée de main avec Naoto. Il décide alors de changer le passé pour sauver Hinata, quitte à s'impliquer dans les bagarres de bandes de la banlieue de Tokyo. Faible physiquement mais d'un courage hors norme, il se distingue par une loyauté absolue et par sa capacité à encaisser les coups sans jamais reculer. Cette ténacité lui vaut le respect de Mikey, de Draken et de nombreux chefs de gangs, qui finissent par le suivre. Chaque modification du passé change le présent et l'oblige à recommencer, ce qui le confronte à des morts successives de ses amis. Il devient capitaine de la 1re division de Toman, puis, dans certaines chronologies, président des Black Dragons. Pleurnicheur mais jamais lâche, il est le cœur émotionnel de la série.",
+      "pouvoirs": [
+        "Voyage temporel (タイムリープ) — retour douze ans en arrière, déclenché par une poignée de main avec Naoto Tachibana",
+        "Endurance exceptionnelle — encaisse des coups qui mettraient d'autres hors de combat",
+        "Courage et détermination — refuse de reculer, même face à des adversaires bien plus forts",
+        "Charisme d'allié — fédère les chefs rivaux autour d'un même objectif",
+        "Connaissance du futur — utilise ce qu'il sait pour anticiper les drames",
+        "Combat à mains nues limité — compense par la ténacité plutôt que par la technique"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il voyage douze ans dans le passé : 2017 pour l'époque présente, 2005 pour l'époque passée",
+        "Ses amis l'appellent « Takemicchi » (タケミっち), un surnom affectueux repris dans tout le récit",
+        "Il est joué par Takumi Kitamura dans l'adaptation en film live (2021)",
+        "La série a remporté le 44e Kodansha Manga Award (catégorie shōnen, 2020), propulsant Takemichi parmi les héros les plus populaires de la décennie"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Hinata Tachibana",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Naoto Tachibana",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Manjiro « Mikey » Sano",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Ken « Draken » Ryūgūji",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Chifuyu Matsuno",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Kakuchō",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Hakkai Shiba",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Tetta Kisaki",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Atsushi « Akkun » Sendō",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Yūki Shin (graphie japonaise non vérifiée)",
+      "voixAnglaise": "A.J. Beckles",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 1
+    },
+    {
+      "id": "tr-manjiro-sano-mikey",
+      "nom": "Manjiro Sano « Mikey »",
+      "nomJaponais": "佐野 万次郎 (Sano Manjirō)",
+      "animeId": "tokyo-revengers",
+      "animeName": "Tokyo Revengers",
+      "auteurId": "ken-wakui",
+      "auteurNom": "Ken Wakui",
+      "studioId": "liden-films",
+      "studioNom": "LIDEN FILMS",
+      "age": "15 ans en 2005 ; 27 ans en 2017",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Fondateur et président de Toman — « L'Invincible Mikey » — Meilleur combattant de la série",
+      "description": "Manjiro Sano, surnommé Mikey, est le fondateur et le président du gang Tokyo Manji (Toman), surnommé « l'Invincible Mikey » (無敵のマイキー). Malgré sa petite taille, il est capable de vaincre la plupart de ses adversaires d'un seul coup de pied, ce qui en fait le combattant le plus redouté de la série. Derrière son air nonchalant et ses goûts d'enfant (il adore notamment les dorayaki), il est animé d'un fort sens de la justice et d'un attachement viscéral à ses amis. Il a créé Toman avec Draken, Mitsuya, Baji, Pah-chin et Kazutora, avec l'idée d'un gang fondé sur la camaraderie et non sur la violence gratuite. Orphelin de ses parents, il a été élevé par son grand-père et par son frère aîné Shinichiro, dont la mort marque durablement sa personnalité. Il noue une amitié profonde avec Takemichi, qui devient pour lui un repère. Sa part d'ombre — liée à une colère qu'il peine à contenir — se manifeste de plus en plus dans les arcs plus avancés. Il reste l'axe autour duquel s'organise toute l'intrigue.",
+      "pouvoirs": [
+        "Coup de pied surpuissant — peut mettre à terre un adversaire d'un seul coup",
+        "Talent de combat naturel — considéré comme le plus fort de tous les gangs",
+        "Charisme de chef — inspire une loyauté totale à ses subordonnés",
+        "Réflexes et vitesse exceptionnels",
+        "Endurance hors norme malgré une taille réduite"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il adore les dorayaki, ces pâtisseries japonaises fourrées à la pâte de haricots rouges",
+        "Son anniversaire tombe le 20 août, le même mois que celui de Shinichiro (1er août)",
+        "Il est incarné par Ryō Yoshizawa dans les films live",
+        "Son surnom anglicisé « Mikey » (マイキー) est devenu sa signature dans toute la série"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Shinichiro Sano",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Izana Kurokawa",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Emma Sano",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Ken « Draken » Ryūgūji",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Keisuke Baji",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Takemichi Hanagaki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Kakuchō / Mitsuya / Pah-chin",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Tetta Kisaki",
+          "type": "ennemi"
+        }
+      ],
+      "voixJaponaise": "Yū Hayashi",
+      "voixAnglaise": "Aleks Le",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 2
+    },
+    {
+      "id": "tr-ken-ryuguji-draken",
+      "nom": "Ken Ryūgūji « Draken »",
+      "nomJaponais": "龍宮寺 堅 (Ryūgūji Ken)",
+      "animeId": "tokyo-revengers",
+      "animeName": "Tokyo Revengers",
+      "auteurId": "ken-wakui",
+      "auteurNom": "Ken Wakui",
+      "studioId": "liden-films",
+      "studioNom": "LIDEN FILMS",
+      "age": "15 ans en 2005 ; 27 ans en 2017",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Vice-président et co-fondateur de Toman — Bras droit de Mikey — Surnom : « Dragon » (Draken)",
+      "description": "Ken Ryūgūji, dit Draken (ドラケン), est le vice-président et l'un des fondateurs de Toman, toujours aux côtés de Mikey. Grand, imposant, marqué d'un tatouage de dragon sur la tempe, il incarne la force tranquille du gang et son sens de l'honneur. C'est lui qui tempère Mikey dans les moments de colère et qui assure la cohésion du groupe. Il est loyal, protecteur et fiable, ce qui fait de lui l'un des personnages les plus appréciés de la série. Même gravement blessé, il continue de se battre pour ses camarades, ce qui impressionne Takemichi. Il ressent une affection particulière pour Emma Sano, la demi-sœur de Mikey. Son dilemme principal est de protéger Mikey de lui-même sans jamais le trahir. Il est considéré comme la figure de grand frère du gang.",
+      "pouvoirs": [
+        "Force physique supérieure — l'un des meilleurs combattants de Toman",
+        "Résistance exceptionnelle — continue le combat malgré des blessures graves",
+        "Leadership discret — second de confiance de Mikey",
+        "Sens tactique du combat de rue",
+        "Capacité à apaiser Mikey dans ses accès de colère"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son surnom « Draken » est la contraction de « Dragon » (龍) et de « Ken »",
+        "Tatsuhisa Suzuki est remplacé par Masaya Fukunishi à partir de la saison 2 (source : Epicstream)",
+        "Il est joué par Yuki Yamada dans le film live",
+        "Il est vu comme le grand frère du gang et le garde-fou de Mikey"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Manjiro « Mikey » Sano",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Takemichi Hanagaki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Mitsuya",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Pah-chin",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Baji",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Emma Sano",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Shuji Hanma",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Tetta Kisaki",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Izana Kurokawa",
+          "type": "ennemi"
+        }
+      ],
+      "voixJaponaise": "Tatsuhisa Suzuki (saison 1) puis Masaya Fukunishi (à partir de la saison 2)",
+      "voixAnglaise": "Sean Chiplock",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 3
+    },
+    {
+      "id": "tr-keisuke-baji",
+      "nom": "Keisuke Baji",
+      "nomJaponais": "場地 圭介 (Baji Keisuke)",
+      "animeId": "tokyo-revengers",
+      "animeName": "Tokyo Revengers",
+      "auteurId": "ken-wakui",
+      "auteurNom": "Ken Wakui",
+      "studioId": "liden-films",
+      "studioNom": "LIDEN FILMS",
+      "age": "14 ans en 2005 (âge de sa mort)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Capitaine de la 1re division de Toman — Ami d'enfance de Mikey — Passé tragique lié à Valhalla",
+      "description": "Keisuke Baji est le capitaine de la 1re division de Toman et un ami d'enfance de Mikey. Impulsif, bagarreur et un peu fou, il a l'habitude de se battre avec une telle ardeur qu'il peut vaincre à mains nues plusieurs adversaires à la fois. Son attachement à Mikey et à Toman est sans faille, au point qu'il accepte de rejoindre le camp adverse pour protéger le gang de l'intérieur. Il passe aussi pour une personne chaleureuse malgré ses airs durs : il est proche de Chifuyu, son vice-capitaine, qu'il a pris sous son aile. Son arc narratif, notamment lors de la bataille de la Bloody Halloween, est l'un des plus dramatiques et marquants de la série. Il a un sens de l'honneur très fort et refuse de trahir ceux qu'il aime. Sous ses airs brutaux, il cache une grande tendresse pour ses proches.",
+      "pouvoirs": [
+        "Combat à mains nues — peut venir à bout d'environ dix adversaires seul",
+        "Sens aigus — réflexes et perception supérieurs",
+        "Charisme de capitaine — entraîne ses hommes par l'exemple",
+        "Loyauté absolue envers Mikey"
+      ],
+      "citations": [],
+      "trivia": [
+        "Sa tendresse pour ses proches contraste avec son tempérament de bagarreur",
+        "Un spin-off, A Letter from Keisuke Baji, lui est consacré (dessin de Yukinori Kawaguchi, 6 volumes, 2022–2025)",
+        "Né le 3 novembre selon Game Rant et Epicstream",
+        "Son arc dans Bloody Halloween est considéré comme un des plus poignants de la saison 1"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Manjiro « Mikey » Sano",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Chifuyu Matsuno",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Kazutora Hanemiya",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Takemichi Hanagaki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Draken",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Mitsuya",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Hanma",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Masaaki Mizunaka",
+      "voixAnglaise": "Lucien Dodge",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 4
+    },
+    {
+      "id": "tr-chifuyu-matsuno",
+      "nom": "Chifuyu Matsuno",
+      "nomJaponais": "松野 千冬 (Matsuno Chifuyu)",
+      "animeId": "tokyo-revengers",
+      "animeName": "Tokyo Revengers",
+      "auteurId": "ken-wakui",
+      "auteurNom": "Ken Wakui",
+      "studioId": "liden-films",
+      "studioNom": "LIDEN FILMS",
+      "age": "13 ans en 2005 ; 25 ans en 2017",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Vice-capitaine de la 1re division de Toman — Conseiller de Takemichi — Éleveur de chats",
+      "description": "Chifuyu Matsuno est le vice-capitaine de la 1re division de Toman, aux côtés de Baji, dont il est le protégé. Fin stratège, observateur et très débrouillard, il devient rapidement le meilleur allié de Takemichi et son principal conseiller dans toutes ses tentatives de changer le futur. Contrairement à Takemichi, il est un excellent combattant, et sa lucidité compense l'impulsivité du héros. Son admiration pour Baji est sans limite, ce qui rend sa relation avec lui particulièrement touchante. Dans le présent, il tient une boutique d'animaux de compagnie et reste proche de Takemichi. Il se montre souvent plus raisonnable que les autres membres du gang, ce qui en fait une figure d'équilibre. Sa fidélité à ses amis en fait l'un des personnages préférés des fans.",
+      "pouvoirs": [
+        "Intelligence tactique — analyse la situation avant d'agir",
+        "Combat de rue solide — meilleur techniquement que Takemichi",
+        "Connaissance de l'histoire des gangs",
+        "Loyauté absolue envers Baji et Takemichi"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il dirige une boutique d'animaux de compagnie à l'époque présente",
+        "Né le 19 décembre selon Game Rant et Epicstream",
+        "Il est le vice-capitaine de Baji, sous les ordres duquel il a gagné ses galons",
+        "Sa fidélité envers Baji est un des fils rouges émotionnels de la saison 1"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Keisuke Baji",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Takemichi Hanagaki",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Hakkai",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Mitsuya",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Draken",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Mikey",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Shō Karino",
+      "voixAnglaise": "Adam McArthur",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 5
+    },
+    {
+      "id": "tr-hinata-tachibana",
+      "nom": "Hinata Tachibana",
+      "nomJaponais": "橘 日向 (Tachibana Hinata)",
+      "animeId": "tokyo-revengers",
+      "animeName": "Tokyo Revengers",
+      "auteurId": "ken-wakui",
+      "auteurNom": "Ken Wakui",
+      "studioId": "liden-films",
+      "studioNom": "LIDEN FILMS",
+      "age": "14 ans en 2005 ; 26 ans en 2017 (au moment de sa mort)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Amour de Takemichi — Sœur de Naoto — Cible récurrente de Kisaki",
+      "description": "Hinata Tachibana est l'amour d'adolescence de Takemichi, celle que tout le récit cherche à sauver. Douce, courageuse et lucide, elle est la sœur aînée de Naoto, avec qui elle vit dans la banlieue de Tokyo. Elle devient la petite amie de Takemichi au collège et reste son plus grand moteur : il refuse de la laisser mourir. Elle a un caractère affirmé et n'hésite pas à reprocher à Takemichi sa faiblesse, tout en l'encourageant sans relâche. Dans l'ensemble des chronologies, elle est la cible récurrente de Tetta Kisaki, ce qui est la clef de l'intrigue. Elle noue aussi une amitié forte avec Emma Sano. Son sourire et sa volonté font d'elle un repère moral pour Takemichi.",
+      "pouvoirs": [
+        "Aucun pouvoir spécial — son atout est sa force morale",
+        "Courage et lucidité face au danger",
+        "Soutien affectif décisif pour Takemichi"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle est le but premier du voyage temporel de Takemichi",
+        "Elle est incarnée par Mio Imada dans l'adaptation live",
+        "Née le 21 mai selon Game Rant et Epicstream",
+        "Sa relation avec Takemichi est la colonne vertébrale romantique de la série"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Takemichi Hanagaki",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Naoto Tachibana",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Emma Sano",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Tetta Kisaki",
+          "type": "ennemi"
+        }
+      ],
+      "voixJaponaise": "Azumi Waki",
+      "voixAnglaise": "Lizzie Freeman",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 6
+    },
+    {
+      "id": "tr-tetta-kisaki",
+      "nom": "Tetta Kisaki",
+      "nomJaponais": "稀咲 鉄太 (Kisaki Tetta)",
+      "animeId": "tokyo-revengers",
+      "animeName": "Tokyo Revengers",
+      "auteurId": "ken-wakui",
+      "auteurNom": "Ken Wakui",
+      "studioId": "liden-films",
+      "studioNom": "LIDEN FILMS",
+      "age": "13 ans en 2005 ; 25 ans en 2017",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Antagoniste principal — Stratège manipulateur — Chef de Valhalla (dans l'ombre) — Obsédé par Hinata",
+      "description": "Tetta Kisaki est l'antagoniste principal de Tokyo Revengers. Collégien brillant et manipulateur, il a pour ambition de s'emparer du pouvoir au sein de la pègre en s'appuyant sur Toman. Dans toutes les chronologies connues de Takemichi, il est la cause directe de la mort de Hinata, par obsession pour elle. Il agit toujours de manière indirecte, en manipulant les autres, ce qui le rend d'autant plus redoutable. Il a successivement tenu les rôles de capitaine de la 3e division de Toman, de véritable chef de Valhalla et d'officier d'état-major de Tenjiku. Son intelligence stratégique est son arme principale. Il garde les mêmes alliés de confiance, notamment Hanma, qu'il utilise comme bras armé. Il est l'un des méchants les plus détestés et les plus fascinants du genre.",
+      "pouvoirs": [
+        "Intelligence stratégique et manipulation — joue sur les failles des autres",
+        "Préparation à long terme — anticipe plusieurs coups à l'avance",
+        "Capacité à infiltrer et retourner les gangs",
+        "Détermination obsessionnelle"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il apparaît dans plusieurs gangs sous des titres différents (Toman, Valhalla, Tenjiku)",
+        "Né le 20 janvier selon Game Rant et Epicstream",
+        "Il est joué par Shōtarō Mamiya dans le film live",
+        "Il est considéré comme l'un des antagonistes les plus emblématiques des mangas shōnen récents"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Hinata Tachibana",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Shuji Hanma",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Takemichi Hanagaki",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Mikey",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Draken",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Izana Kurokawa",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Emma Sano",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Shōtarō Morikubo",
+      "voixAnglaise": "Nicolas Roye",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 7
+    },
+    {
+      "id": "tr-izana-kurokawa",
+      "nom": "Izana Kurokawa",
+      "nomJaponais": "黒川 イザナ (Kurokawa Izana)",
+      "animeId": "tokyo-revengers",
+      "animeName": "Tokyo Revengers",
+      "auteurId": "ken-wakui",
+      "auteurNom": "Ken Wakui",
+      "studioId": "liden-films",
+      "studioNom": "LIDEN FILMS",
+      "age": "18 ans en 2006 ; 29 ans en 2017 (30 ans en 2018)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Président de Tenjiku — Ancien chef de la 8e génération des Black Dragons — Demi-frère de Mikey",
+      "description": "Izana Kurokawa est le président de Tenjiku et le demi-frère aîné de Mikey. Né de la même mère que Emma, il a été placé en institution à l'âge de sept ans, ce qui l'a profondément marqué. Il a ensuite grandi dans la violence, devenant le chef de la 8e génération des Black Dragons avant de fonder sa propre organisation. Sa dureté et son charisme lui valent la loyauté de ses hommes, notamment Kakuchō. Il porte une ancienne rancœur envers la famille Sano, qui a eu la vie qu'on lui a refusée. Doté de sens quasi surnaturels, il est capable d'anticiper les mouvements de ses adversaires. Il est la figure centrale de l'arc Tenjiku, où il affronte Mikey. Sa quête d'une famille qu'il n'a jamais eue fait de lui un antagoniste tragique.",
+      "pouvoirs": [
+        "Sens exceptionnels — anticipe les attaques adverses",
+        "Force de combat redoutable — considéré comme l'égal de Mikey",
+        "Charisme de chef — fédère les « Quatre Rois Célestes » de Tenjiku",
+        "Détermination sans faille"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il dirige Tenjiku, gang dont le nom évoque l'Inde (天竺)",
+        "Né le 30 août selon Game Rant",
+        "Les sources divergent sur sa filiation exacte (fils de Karen, ou de son ex-mari et d'une femme philippine)",
+        "L'arc Tenjiku (saison 3, 2023) lui est entièrement consacré"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Manjiro « Mikey » Sano",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Emma Sano",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Shinichiro Sano",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Kakuchō",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Tetta Kisaki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Karen Kurokawa",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Nobunaga Shimazaki",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 8
+    },
+    {
+      "id": "tr-kazutora-hanemiya",
+      "nom": "Kazutora Hanemiya",
+      "nomJaponais": "羽宮 一虎 (Hanemiya Kazutora)",
+      "animeId": "tokyo-revengers",
+      "animeName": "Tokyo Revengers",
+      "auteurId": "ken-wakui",
+      "auteurNom": "Ken Wakui",
+      "studioId": "liden-films",
+      "studioNom": "LIDEN FILMS",
+      "age": "15 ans en 2005 ; 27 ans en 2017",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Chef de Valhalla — Ancien membre fondateur de Toman — Rancunier envers Mikey",
+      "description": "Kazutora Hanemiya est un ancien membre fondateur de Toman devenu le chef de la bande anti-Toman Valhalla. Ami d'enfance de Baji, il a connu une enfance difficile, utilisé par de faux amis comme Junpeke. Son sentiment d'abandon et sa colère l'entraînent dans un acte irréparable lors de la formation de Toman, qui le sépare de Mikey. Il reste enfermé quelque temps puis revient avec une haine profonde du gang qui l'a rejeté. Son arc dans la Bloody Halloween est parmi les plus dramatiques du récit. Il se montre à la fois manipulable et tragique, ce qui nuance son rôle d'antagoniste. Sa relation avec Baji est une des clefs émotionnelles de la saison 1.",
+      "pouvoirs": [
+        "Combat de rue acharné — très mobile",
+        "Détermination obsessionnelle",
+        "Capacité à fédérer les mécontents de Toman"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son prénom « Kazutora » contient le mot « tigre » (虎)",
+        "Son faux ami Junpeke l'a utilisé pour de l'argent, ce qui nourrit sa méfiance envers les autres",
+        "Né le 16 septembre selon Game Rant et Epicstream",
+        "Il a été un des méchants les plus controversés de la saison 1"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Keisuke Baji",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Manjiro « Mikey » Sano",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Shuji Hanma",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Tetta Kisaki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Takemichi Hanagaki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Junpeke",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Shunichi Toki",
+      "voixAnglaise": "Joe Zieja",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 9
+    },
+    {
+      "id": "tr-shinichiro-sano",
+      "nom": "Shinichiro Sano",
+      "nomJaponais": "佐野 真一郎 (Sano Shinichirō)",
+      "animeId": "tokyo-revengers",
+      "animeName": "Tokyo Revengers",
+      "auteurId": "ken-wakui",
+      "auteurNom": "Ken Wakui",
+      "studioId": "liden-films",
+      "studioNom": "LIDEN FILMS",
+      "age": "23 ans en 2003 (âge de sa mort)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Frère aîné de Mikey — Premier chef des Black Dragons — Garagiste",
+      "description": "Shinichiro Sano est le frère aîné de Mikey et d'Emma, et le premier chef des Black Dragons, qu'il fonde dans les années 1990. Garagiste, il est le mentor de Mikey et de Draken, dont il a façonné le sens de l'honneur. Gentil, bienveillant et droit, il est vu comme un modèle par tous ses proches. Sa mort marque un tournant dans la vie de Mikey, qui n'arrive pas à le surmonter. Il a aussi un lien avec Takeomi Akashi, son ami. Ses valeurs ont inspiré la création de Toman. Il reste une figure morale du récit malgré sa disparition précoce.",
+      "pouvoirs": [
+        "Combat de rue expert à son époque",
+        "Mécanique moto — dirige un garage",
+        "Leadership bienveillant"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il tient un garage de motos dans la banlieue de Tokyo",
+        "Né le 1er août selon Wegotthiscovered",
+        "Deux voix anglaises sont créditées (Billy Kametz et Alejandro Saab)",
+        "Sa disparition est le traumatisme fondateur de Mikey"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Manjiro « Mikey » Sano",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Izana Kurokawa",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Emma Sano",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Takeomi Akashi",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Draken",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Masaya Matsukaze",
+      "voixAnglaise": "Billy Kametz (également Alejandro Saab selon MyAnimeList)",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 10
+    },
+    {
+      "id": "tr-naoto-tachibana",
+      "nom": "Naoto Tachibana",
+      "nomJaponais": "橘 直人 (Tachibana Naoto)",
+      "animeId": "tokyo-revengers",
+      "animeName": "Tokyo Revengers",
+      "auteurId": "ken-wakui",
+      "auteurNom": "Ken Wakui",
+      "studioId": "liden-films",
+      "studioNom": "LIDEN FILMS",
+      "age": "13 ans en 2005 ; 25 ans en 2017",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Frère de Hinata — Policier — Vecteur du voyage temporel de Takemichi",
+      "description": "Naoto Tachibana est le petit frère de Hinata et un policier brillant à l'époque présente. C'est lui qui retrouve Takemichi dans le futur et lui explique les événements, avant que la poignée de main ne déclenche le voyage temporel. À l'époque passée, il est un collégien sérieux et très mûr, qui devient l'allié stratégique de Takemichi. Il cherche à comprendre les causes réelles de la mort de sa sœur. Son esprit analytique et sa détermination en font un partenaire précieux. Il partage son dévouement pour Hinata. Il est aussi un lien entre les époques.",
+      "pouvoirs": [
+        "Enquête et analyse — esprit déductif de policier",
+        "Lien temporel avec Takemichi — la poignée de main déclenche le voyage",
+        "Calme et sang-froid face au danger"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il est inspecteur de police à l'époque présente",
+        "Il passe de 148 cm (2005) à 175 cm (2017), une croissance marquée",
+        "Il est joué par Yōsuke Sugino dans le film live",
+        "Son rôle de « clef » du voyage temporel lui donne une importance narrative majeure"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Hinata Tachibana",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Takemichi Hanagaki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Tetta Kisaki",
+          "type": "ennemi"
+        }
+      ],
+      "voixJaponaise": "Ryōta Ōsaka",
+      "voixAnglaise": "Griffin Puatu",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 11
+    },
+    {
+      "id": "tr-emma-sano",
+      "nom": "Emma Sano",
+      "nomJaponais": "佐野 エマ (Sano Ema)",
+      "animeId": "tokyo-revengers",
+      "animeName": "Tokyo Revengers",
+      "auteurId": "ken-wakui",
+      "auteurNom": "Ken Wakui",
+      "studioId": "liden-films",
+      "studioNom": "LIDEN FILMS",
+      "age": "13–14 ans en 2005",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Demi-sœur de Mikey — Amie de Hinata — Intérêt amoureux de Draken",
+      "description": "Emma Sano est la demi-sœur de Mikey et de Shinichiro, élevée dans la famille Sano après l'abandon de sa mère. Douce, généreuse et loyale, elle aide à garder Mikey ancré dans la réalité. Elle ressent un amour discret pour Draken, avec qui elle tisse un lien fort. Elle devient aussi proche de Hinata. Elle est la sœur d'Izana, ce qui la place au cœur du conflit de l'arc Tenjiku. Sa gentillesse masque une grande force de caractère. Elle est l'une des figures les plus tendres de la série.",
+      "pouvoirs": [
+        "Aucun pouvoir de combat — soutien moral",
+        "Générosité et empathie",
+        "Capacité à apaiser Mikey"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son affection pour Draken est un fil romantique secondaire",
+        "Née le 25 novembre selon Game Rant et Epicstream",
+        "Elle vit chez les Sano après l'abandon de sa mère",
+        "Mikey la protège farouchement, malgré leurs liens de demi-frère et demi-sœur"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Manjiro « Mikey » Sano",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Izana Kurokawa",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Shinichiro Sano",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Ken « Draken » Ryūgūji",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Hinata Tachibana",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Karen Kurokawa",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Yumi Uchiyama",
+      "voixAnglaise": "Carrie Keranen",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 12
+    },
+    {
+      "id": "tr-haruchiyo-sanzu",
+      "nom": "Haruchiyo Sanzu",
+      "nomJaponais": "三途 春千夜 (Sanzu Haruchiyo)",
+      "animeId": "tokyo-revengers",
+      "animeName": "Tokyo Revengers",
+      "auteurId": "ken-wakui",
+      "auteurNom": "Ken Wakui",
+      "studioId": "liden-films",
+      "studioNom": "LIDEN FILMS",
+      "age": "16 ans en 2005",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Numéro 2 de la Kantō Manji et de Bonten — Ancien membre de Tenjiku — Dangereux",
+      "description": "Haruchiyo Sanzu est l'un des personnages les plus imprévisibles de Tokyo Revengers. Il apparaît dans l'arc Tenjiku comme membre de la bande, puis devient le numéro 2 de la Kantō Manji et de Bonten à l'époque présente. Fidèle à Mikey, il est capable d'une grande violence. Il se distingue par un style extravagant et une cicatrice de chaque côté de la bouche. Il est rongé par une dévotion presque obsessionnelle. Il agit souvent par impulsion plus que par stratégie. Son rôle dans les chronologies évolue selon les modifications du passé.",
+      "pouvoirs": [
+        "Combat sauvage et imprévisible",
+        "Dévotion fanatique envers Mikey",
+        "Résistance à la douleur"
+      ],
+      "citations": [],
+      "trivia": [
+        "Nobuhiko Okamoto reprend le rôle à partir de l'arc Tenjiku",
+        "Né le 3 juillet selon Game Rant",
+        "Il est l'un des antagonistes les plus extravagants de la série",
+        "Son importance croît nettement dans les arcs de l'époque présente"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Manjiro « Mikey » Sano",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Kokonoi",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Kakuchō",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ran",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Rindo Haitani",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Nobuhiko Okamoto",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 13
+    },
+    {
+      "id": "tr-shuji-hanma",
+      "nom": "Shuji Hanma",
+      "nomJaponais": "半間 修二 (Hanma Shūji)",
+      "animeId": "tokyo-revengers",
+      "animeName": "Tokyo Revengers",
+      "auteurId": "ken-wakui",
+      "auteurNom": "Ken Wakui",
+      "studioId": "liden-films",
+      "studioNom": "LIDEN FILMS",
+      "age": "16 ans en 2005 ; 28 ans en 2017",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Chef provisoire de Moebius / Valhalla — Ancien capitaine de la 6e division — Allié de Kisaki",
+      "description": "Shuji Hanma est le chef provisoire de Moebius puis de Valhalla et l'allié le plus fidèle de Tetta Kisaki. Grand et imposant, il adopte un style de combat rapide et brutal. Ancien capitaine de la 6e division de Toman, il quitte le gang pour suivre son propre chemin. Sa relation avec Kisaki est à la fois une alliance et une quasi-amitié. Il est surnommé « Zombie » par Draken à cause de sa résistance. Il aime provoquer et semer le chaos. Il reste un adversaire coriace dans de nombreuses chronologies.",
+      "pouvoirs": [
+        "Combat brutal et rapide",
+        "Endurance hors norme",
+        "Loyauté indéfectible envers Kisaki"
+      ],
+      "citations": [],
+      "trivia": [
+        "Draken le surnomme « Zombie »",
+        "Né le 27 octobre selon Game Rant et Epicstream",
+        "Il est joué par Hiroya Shimizu dans le film live",
+        "Sa fidélité à Kisaki traverse toutes les chronologies"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Tetta Kisaki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ken « Draken » Ryūgūji",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Toman",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Takemichi Hanagaki",
+          "type": "rival"
+        }
+      ],
+      "voixJaponaise": "Takuya Eguchi",
+      "voixAnglaise": "Zeno Robinson",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 14
+    },
+    {
+      "id": "tr-takashi-mitsuya",
+      "nom": "Takashi Mitsuya",
+      "nomJaponais": "三ツ谷 隆 (Mitsuya Takashi)",
+      "animeId": "tokyo-revengers",
+      "animeName": "Tokyo Revengers",
+      "auteurId": "ken-wakui",
+      "auteurNom": "Ken Wakui",
+      "studioId": "liden-films",
+      "studioNom": "LIDEN FILMS",
+      "age": "15 ans en 2005 ; 27–28 ans en 2017",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Capitaine de la 2e division de Toman — Membre fondateur — Couturier du gang",
+      "description": "Takashi Mitsuya est le capitaine de la 2e division de Toman et l'un des membres fondateurs. Cheveux violets, yeux bleus et tatouage à la tempe, il est le grand frère de ses cadets et s'occupe de ses sœurs à la maison. Il confectionne les uniformes du gang et il est doué en couture. Calme et pacifique, il évite les combats quand c'est possible, mais se montre redoutable lorsqu'il y est obligé. Il est très apprécié de ses camarades. Il joue souvent le rôle de médiateur. Sa relation avec Hakkai, son vice-capitaine, est très solide.",
+      "pouvoirs": [
+        "Combat de rue efficace",
+        "Talent de couturier",
+        "Calme et diplomatie"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il fabrique les uniformes de Toman",
+        "Né le 12 juin selon Game Rant et Epicstream",
+        "Il est joué par Gordon Maeda dans le film live",
+        "Il s'occupe de ses jeunes sœurs"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Hakkai Shiba",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Manjiro « Mikey » Sano",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Draken",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Takemichi Hanagaki",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Yoshitsugu Matsuoka",
+      "voixAnglaise": "Grant George",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 15
+    },
+    {
+      "id": "tr-kakucho",
+      "nom": "Kakuchō",
+      "nomJaponais": "鶴蝶 (Kakuchō)",
+      "animeId": "tokyo-revengers",
+      "animeName": "Tokyo Revengers",
+      "auteurId": "ken-wakui",
+      "auteurNom": "Ken Wakui",
+      "studioId": "liden-films",
+      "studioNom": "LIDEN FILMS",
+      "age": "14 ans en 2005 (estimé) ; 26 ans en 2017 (estimé)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Roi Céleste de Tenjiku — Loyal à Izana — Ami d'enfance de Takemichi",
+      "description": "Kakuchō est l'un des Quatre Rois Célestes de Tenjiku et le plus fidèle compagnon d'Izana. Un œil aveugle suite à une cicatrice, il est présenté par Izana comme son plus fort combattant. Il est un ami d'enfance de Takemichi, dont celui-ci ne se souvenait plus. Sa loyauté envers Izana est absolue, ce qui crée un déchirement quand il affronte Takemichi. Il évolue vers le rôle de numéro 3 de Bonten à l'époque présente. Il est l'un des guerriers les plus respectés. Son sens de l'honneur le rend sympathique malgré son camp.",
+      "pouvoirs": [
+        "Combat de très haut niveau — considéré comme le plus fort selon Izana",
+        "Loyauté totale",
+        "Endurance et technique"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il a l'œil gauche aveugle suite à une cicatrice",
+        "Date de naissance inconnue dans les sources",
+        "Il se lie à Takemichi dès l'enfance",
+        "Seiichirō Yamashita le double dans l'arc Tenjiku"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Izana Kurokawa",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Takemichi Hanagaki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Sanzu",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Kokonoi",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Haitani",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Seiichirō Yamashita",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 16
+    },
+    {
+      "id": "tr-hajime-kokonoi-koko",
+      "nom": "Hajime Kokonoi « Koko »",
+      "nomJaponais": "九井 一 (Kokonoi Hajime)",
+      "animeId": "tokyo-revengers",
+      "animeName": "Tokyo Revengers",
+      "auteurId": "ken-wakui",
+      "auteurNom": "Ken Wakui",
+      "studioId": "liden-films",
+      "studioNom": "LIDEN FILMS",
+      "age": "15 ans en 2005 ; 27 ans en 2017",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Ancien capitaine de la Garde élite des Black Dragons (10e génération) — Génie de l'argent",
+      "description": "Hajime Kokonoi est un ancien capitaine de la Garde élite des Black Dragons et un brillant gagneur d'argent. Ami d'enfance de Seishu Inui, il s'est tourné vers les activités de gang après l'incendie de la maison d'Inui afin de réunir l'argent nécessaire à la chirurgie d'Akane, la sœur d'Inui. Il rejoint ensuite Toman puis Kantō Manji et Bonten. Il devient le numéro 3 de la Kantō Manji et un des financiers de Bonten. Son sens des affaires est sans égal. Il est calculateur mais loyal envers Inui. Son parcours est lié aux moments les plus sombres de la série.",
+      "pouvoirs": [
+        "Génie financier",
+        "Combat solide",
+        "Loyauté envers Inui"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il excelle dans l'argent",
+        "Né le 1er avril selon Game Rant",
+        "L'incendie qui a défiguré Inui est son moteur d'action",
+        "Natsuki Hanae lui prête sa voix en japonais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Seishu Inui",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Mikey",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Sanzu",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Kakuchō",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Haitani",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Takemichi",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Natsuki Hanae",
+      "voixAnglaise": "Howard Wang",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 17
+    },
+    {
+      "id": "tr-seishu-inui-inupi",
+      "nom": "Seishu Inui « Inupi »",
+      "nomJaponais": "乾 青宗 (Inui Seishū)",
+      "animeId": "tokyo-revengers",
+      "animeName": "Tokyo Revengers",
+      "auteurId": "ken-wakui",
+      "auteurNom": "Ken Wakui",
+      "studioId": "liden-films",
+      "studioNom": "LIDEN FILMS",
+      "age": "16 ans en 2005 ; 29 ans en 2017",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Ancien capitaine de la Garde d'attaque des Black Dragons — Vice-capitaine des Black Dragons de Takemichi",
+      "description": "Seishu Inui est l'ancien capitaine de la Garde d'attaque de la 10e génération des Black Dragons. Une cicatrice sur le visage, trace d'un incendie d'enfance, marque son apparence. Froid et excellent combattant, il est l'ami d'enfance de Kokonoi. Il perd sa sœur Akane dans cet incendie, ce qui détermine la suite de sa vie. Dans certaines chronologies, il devient le vice-capitaine des Black Dragons sous Takemichi. Il possède un sens du devoir profond. Sa loyauté envers Kokonoi est inébranlable.",
+      "pouvoirs": [
+        "Combat de haut niveau",
+        "Sang-froid",
+        "Loyauté envers Koko"
+      ],
+      "citations": [],
+      "trivia": [
+        "Sa cicatrice vient d'un incendie d'enfance",
+        "Né le 18 octobre selon Game Rant",
+        "Junya Enoki lui prête sa voix en japonais",
+        "Le sort de sa sœur Akane marque durablement sa trajectoire"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Hajime Kokonoi",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Akane Inui",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Takemichi",
+          "type": "mentor"
+        }
+      ],
+      "voixJaponaise": "Junya Enoki",
+      "voixAnglaise": "Cory Yee",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 18
+    },
+    {
+      "id": "tr-hakkai-shiba",
+      "nom": "Hakkai Shiba",
+      "nomJaponais": "柴 八戒 (Shiba Hakkai)",
+      "animeId": "tokyo-revengers",
+      "animeName": "Tokyo Revengers",
+      "auteurId": "ken-wakui",
+      "auteurNom": "Ken Wakui",
+      "studioId": "liden-films",
+      "studioNom": "LIDEN FILMS",
+      "age": "14 ans en 2005 ; 27 ans en 2017",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Vice-capitaine de la 2e division de Toman — Frère cadet de Taiju — Grand gabarit",
+      "description": "Hakkai Shiba est le vice-capitaine de la 2e division de Toman. Cheveux bleu roi, yeux indigo, boucle d'oreille à gauche et cicatrice à la lèvre, il est un colosse au tempérament doux. Il est le frère cadet de Taiju, un chef des Black Dragons violent, et de Yuzuha. Sa loyauté à Mitsuya est totale. Il doit la vie à Takemichi et lui voue une grande reconnaissance. Il combat avec force mais doute de lui. Son parcours est marqué par la relation difficile avec son frère aîné.",
+      "pouvoirs": [
+        "Force physique",
+        "Endurance",
+        "Loyauté envers Mitsuya"
+      ],
+      "citations": [],
+      "trivia": [
+        "Né le 4 septembre selon Game Rant",
+        "Il grandit de 183 cm à 193 cm entre 2005 et 2008",
+        "Voix japonaise : Tasuku Hatanaka",
+        "Son arc de Christmas Showdown est très marquant"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Takashi Mitsuya",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Taiju Shiba",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Yuzuha Shiba",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Takemichi",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Tasuku Hatanaka",
+      "voixAnglaise": "Landon McDonald",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 19
+    },
+    {
+      "id": "tr-ran-haitani",
+      "nom": "Ran Haitani",
+      "nomJaponais": "灰谷 蘭 (Haitani Ran)",
+      "animeId": "tokyo-revengers",
+      "animeName": "Tokyo Revengers",
+      "auteurId": "ken-wakui",
+      "auteurNom": "Ken Wakui",
+      "studioId": "liden-films",
+      "studioNom": "LIDEN FILMS",
+      "age": "Inconnu",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Roi Céleste de Tenjiku — Génération S62 — Cadre de Bonten — Frère aîné de Rindo",
+      "description": "Ran Haitani est le frère aîné de Rindo et l'un des Rois Célestes de Tenjiku, issu de la génération S62. Membre de Rokuhara Tandai, il y occupe le 2e siège. Il deviendra un cadre de Bonten sous Mikey. Il combat souvent en duo avec son frère Rindo, avec qui il forme un tandem très redouté. Sa relation avec Rindo est le cœur de son personnage. Il reste un adversaire redouté.",
+      "pouvoirs": [
+        "Combat de haut niveau",
+        "Coordination avec son frère",
+        "Sang-froid"
+      ],
+      "citations": [],
+      "trivia": [
+        "Les Haitani forment un duo emblématique",
+        "Daisuke Namikawa le double dans l'arc Tenjiku",
+        "Il occupe le 2e siège de Rokuhara Tandai",
+        "Date de naissance non divulguée"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Rindo Haitani",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Izana puis Mikey",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Sanzu",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Kakuchō",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Kokonoi",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Daisuke Namikawa",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 20
+    }
+  ]
+}
