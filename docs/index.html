@@ -15,6 +15,19 @@
       content="Collectionnez, découvrez et classez vos personnages d'animés préférés."
     />
     <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://otadex.tilstack.me/assets/img/logo-full.png"
+    />
+    <link rel="icon" type="image/png" href="assets/img/favicon-32.png" />
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700;800&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,600&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
       *,
@@ -26,10 +39,18 @@
       }
 
       /* ── DARK THEME (default) ───────────────────────────────────────── */
+      /* Couleurs reprises à l'identique de l'app (lib/core/theme/app_colors.dart) :
+         l'orange est extrait du logo officiel, les trois teintes de rang
+         (Genin/Jonin/Kage) sont celles que l'utilisateur voit réellement
+         dans OTADEX — le site ne doit pas inventer sa propre palette. */
       :root,
       [data-theme="dark"] {
         --primary: #5c2be2;
         --accent: #ff6500;
+        --accent-bright: #ff8c00;
+        --genin: #7eabc9;
+        --jonin: #9b59b6;
+        --kage: #ff6500;
         --bg-deep: #0d0d14;
         --bg-card: #1a1a28;
         --bg-raised: #22223a;
@@ -63,7 +84,7 @@
 
       body {
         font-family:
-          "Segoe UI",
+          "Nunito Sans",
           system-ui,
           -apple-system,
           sans-serif;
@@ -74,6 +95,19 @@
         transition:
           background 0.3s,
           color 0.3s;
+      }
+
+      h1,
+      h2,
+      h3,
+      .logo,
+      .rank-name,
+      .count-num,
+      .hero-badge,
+      .nav-cta,
+      .btn-primary,
+      .btn-ghost {
+        font-family: "Rajdhani", "Nunito Sans", system-ui, sans-serif;
       }
 
       .container {
@@ -109,12 +143,19 @@
       }
 
       .logo {
-        font-size: 1.5rem;
-        font-weight: 900;
-        letter-spacing: 3px;
-        color: var(--accent);
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-size: 1.3rem;
+        font-weight: 800;
+        letter-spacing: 1px;
+        color: var(--text);
         text-decoration: none;
         flex-shrink: 0;
+      }
+      .logo img {
+        height: 30px;
+        width: 30px;
       }
 
       .nav-links {
@@ -286,53 +327,33 @@
       .hero-badge {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        background: rgba(255, 101, 0, 0.12);
-        border: 1px solid rgba(255, 101, 0, 0.35);
-        color: var(--accent);
-        font-size: 0.8rem;
+        gap: 9px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--kage);
+        color: var(--text);
+        font-size: 0.85rem;
         font-weight: 700;
-        padding: 5px 14px;
-        border-radius: 50px;
-        letter-spacing: 0.5px;
-        margin-bottom: 20px;
+        padding: 7px 16px 7px 13px;
+        border-radius: 6px;
+        margin-bottom: 24px;
       }
       .hero-badge .dot {
         width: 6px;
         height: 6px;
         border-radius: 50%;
-        background: var(--accent);
-        animation: pulse 1.4s ease-in-out infinite;
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-          opacity: 1;
-        }
-        50% {
-          transform: scale(1.5);
-          opacity: 0.6;
-        }
+        background: var(--green);
       }
 
       .hero h1 {
-        font-size: clamp(2.2rem, 4vw, 3.4rem);
-        font-weight: 900;
-        line-height: 1.1;
-        letter-spacing: -1px;
-        margin-bottom: 20px;
+        font-weight: 800;
+        font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+        line-height: 0.98;
+        letter-spacing: -0.5px;
+        margin-bottom: 22px;
       }
-      .hero h1 .gradient {
-        background: linear-gradient(
-          135deg,
-          var(--accent) 0%,
-          var(--primary) 100%
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+      .hero h1 span {
+        display: block;
       }
 
       .hero-desc {
@@ -384,194 +405,136 @@
         color: var(--accent);
       }
 
-      /* Phone mockup */
+      /* Marque — le tourbillon du logo OTADEX comme pièce centrale du hero,
+         avec les trois rangs (Genin/Jonin/Kage) en orbite autour : la
+         mécanique de progression de l'app, montrée plutôt que décrite. */
       .hero-visual {
         display: flex;
         justify-content: center;
         align-items: center;
-      }
-
-      .phone-mockup {
-        width: 220px;
-        height: 420px;
-        background: var(--bg-card);
-        border-radius: 36px;
-        border: 2px solid var(--border);
-        box-shadow:
-          0 40px 80px var(--shadow-card),
-          0 0 0 1px rgba(255, 255, 255, 0.05);
         position: relative;
-        overflow: hidden;
-      }
-      .phone-notch {
-        position: absolute;
-        top: 12px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 60px;
-        height: 8px;
-        background: var(--bg-deep);
-        border-radius: 4px;
-      }
-      .phone-screen {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(160deg, #1a1a28 0%, #0d0d14 100%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 40px 16px 16px;
-      }
-      [data-theme="light"] .phone-screen {
-        background: linear-gradient(160deg, #1a1a28 0%, #0d0d14 100%);
-      }
-      .phone-logo {
-        font-size: 0.75rem;
-        font-weight: 900;
-        letter-spacing: 3px;
-        color: var(--accent);
-        margin-bottom: 16px;
+        min-height: 420px;
       }
 
-      .phone-card {
-        width: 100%;
-        border-radius: 14px;
-        background: linear-gradient(135deg, #4a148c, #880e4f);
-        padding: 14px;
-        margin-bottom: 10px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      .mark-glow {
+        position: absolute;
+        width: 380px;
+        height: 380px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 101, 0, 0.22) 0%,
+          transparent 70%
+        );
+        filter: blur(10px);
       }
-      .phone-card-name {
+
+      .mark-spin {
+        width: 280px;
+        height: 280px;
+        position: relative;
+        z-index: 1;
+        animation: spin 90s linear infinite;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .mark-spin {
+          animation: none;
+        }
+      }
+      .mark-spin img {
+        width: 100%;
+        height: 100%;
+        filter: drop-shadow(0 20px 48px rgba(255, 101, 0, 0.35));
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .orbit-chip {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 8px 14px;
         font-size: 0.8rem;
         font-weight: 700;
-        color: #fff;
-        margin-bottom: 2px;
+        box-shadow: 0 12px 28px var(--shadow-card);
+        z-index: 2;
       }
-      .phone-card-anime {
-        font-size: 0.65rem;
-        color: rgba(255, 255, 255, 0.6);
-        margin-bottom: 8px;
+      .orbit-chip::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
       }
-      .phone-card-tier {
-        display: inline-block;
-        background: rgba(255, 101, 0, 0.2);
-        color: var(--accent);
-        font-size: 0.6rem;
-        font-weight: 700;
-        padding: 2px 8px;
-        border-radius: 20px;
-        border: 1px solid rgba(255, 101, 0, 0.3);
+      .orbit-chip.genin {
+        top: 6%;
+        left: -4%;
       }
-      .phone-card.card2 {
-        background: linear-gradient(135deg, #006064, #1b5e20);
+      .orbit-chip.genin::before {
+        background: var(--genin);
       }
-      .phone-card.card2 .phone-card-tier {
-        background: rgba(16, 185, 129, 0.2);
-        color: #10b981;
-        border-color: rgba(16, 185, 129, 0.3);
+      .orbit-chip.jonin {
+        top: 46%;
+        right: -8%;
       }
-
-      .phone-tabs {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: rgba(13, 13, 20, 0.9);
-        border-top: 1px solid #2a2a40;
-        display: flex;
-        justify-content: space-around;
-        padding: 10px 0;
+      .orbit-chip.jonin::before {
+        background: var(--jonin);
       }
-      .phone-tab {
-        font-size: 0.65rem;
-        color: #9090a8;
-        text-align: center;
+      .orbit-chip.kage {
+        bottom: 8%;
+        left: 2%;
       }
-      .phone-tab.active {
-        color: var(--accent);
+      .orbit-chip.kage::before {
+        background: var(--kage);
       }
 
-      /* ── COUNTDOWN ────────────────────────────────────────────────────── */
-      .countdown-section {
+      /* ── STATS ────────────────────────────────────────────────────────── */
+      .stats-section {
         background: var(--bg-card);
         border-top: 1px solid var(--border);
         border-bottom: 1px solid var(--border);
-        padding: 48px 0;
+        padding: 56px 0;
       }
 
-      .countdown-inner {
-        display: flex;
-        flex-direction: column;
+      .stats-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr) auto;
         align-items: center;
-        gap: 24px;
+        gap: 32px;
       }
 
-      .countdown-label {
-        font-size: 0.8rem;
-        font-weight: 700;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: var(--accent);
-      }
-
-      .countdown-title {
-        font-size: clamp(1.4rem, 2.5vw, 2rem);
+      .stat-num {
+        font-size: clamp(2rem, 4vw, 2.8rem);
         font-weight: 800;
-        text-align: center;
-      }
-
-      .countdown-timer {
-        display: flex;
-        gap: 12px;
-        align-items: center;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .count-block {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: var(--bg-raised);
-        border: 1px solid var(--border);
-        border-radius: var(--radius-lg);
-        padding: 20px 24px;
-        min-width: 80px;
-        box-shadow: 0 4px 16px var(--shadow-card);
-      }
-
-      .count-num {
-        font-size: 2.4rem;
-        font-weight: 900;
+        color: var(--kage);
         line-height: 1;
-        background: linear-gradient(135deg, var(--accent), var(--primary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
       }
-
-      .count-sep {
-        font-size: 2rem;
-        font-weight: 900;
-        color: var(--accent);
-        opacity: 0.5;
-        margin-top: -8px;
-      }
-
-      .count-unit {
-        font-size: 0.7rem;
-        font-weight: 700;
+      .stat-label {
+        font-size: 0.85rem;
         color: var(--muted);
-        text-transform: uppercase;
-        letter-spacing: 1px;
         margin-top: 6px;
       }
 
-      .countdown-expired {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: var(--green);
-        display: none;
+      .stats-row .playstore-badge {
+        justify-self: end;
+      }
+
+      .playstore-badge {
+        display: inline-block;
+        transition: transform 0.2s ease;
+      }
+      .playstore-badge:hover {
+        transform: scale(1.05);
+      }
+      .playstore-badge img {
+        height: 54px;
+        width: auto;
       }
 
       /* ── RANKS ────────────────────────────────────────────────────────── */
@@ -579,19 +542,11 @@
         padding: 100px 0;
       }
 
-      .section-eyebrow {
-        text-align: center;
-        font-size: 0.8rem;
-        font-weight: 700;
-        letter-spacing: 3px;
-        color: var(--accent);
-        margin-bottom: 12px;
-        text-transform: uppercase;
-      }
       .section-title {
         text-align: center;
         font-size: clamp(1.8rem, 3vw, 2.6rem);
         font-weight: 800;
+        line-height: 1.15;
         margin-bottom: 16px;
       }
       .section-sub {
@@ -629,37 +584,40 @@
         height: 3px;
       }
       .rank-card.genin::before {
-        background: var(--muted);
+        background: var(--genin);
       }
       .rank-card.jonin::before {
-        background: #3b82f6;
+        background: var(--jonin);
       }
       .rank-card.kage::before {
-        background: linear-gradient(90deg, var(--accent), var(--primary));
+        background: var(--kage);
+      }
+      .rank-card.jonin {
+        border-color: rgba(155, 89, 182, 0.35);
       }
       .rank-card.kage {
-        border-color: rgba(92, 43, 226, 0.4);
+        border-color: rgba(255, 101, 0, 0.4);
       }
       .rank-card:hover {
         transform: translateY(-6px);
         box-shadow: 0 20px 48px var(--shadow-card);
       }
+      .rank-card.jonin:hover {
+        border-color: var(--jonin);
+        box-shadow: 0 20px 48px rgba(155, 89, 182, 0.22);
+      }
       .rank-card.kage:hover {
-        border-color: var(--primary);
-        box-shadow: 0 20px 48px rgba(92, 43, 226, 0.25);
+        border-color: var(--kage);
+        box-shadow: 0 20px 48px rgba(255, 101, 0, 0.25);
       }
 
       .rank-popular {
         position: absolute;
-        top: 16px;
-        right: 16px;
-        background: linear-gradient(135deg, var(--accent), var(--primary));
-        color: #fff;
-        font-size: 0.65rem;
-        font-weight: 800;
-        padding: 4px 10px;
-        border-radius: 50px;
-        letter-spacing: 0.5px;
+        top: 20px;
+        right: 20px;
+        color: var(--jonin);
+        font-size: 0.7rem;
+        font-weight: 700;
       }
 
       .rank-icon {
@@ -672,10 +630,19 @@
         letter-spacing: 1px;
         margin-bottom: 4px;
       }
+      .rank-card.genin .rank-name {
+        color: var(--genin);
+      }
+      .rank-card.jonin .rank-name {
+        color: var(--jonin);
+      }
+      .rank-card.kage .rank-name {
+        color: var(--kage);
+      }
       .rank-price {
         font-size: 1.6rem;
         font-weight: 900;
-        color: var(--accent);
+        color: var(--text);
         margin-bottom: 4px;
       }
       .rank-price .period {
@@ -809,10 +776,6 @@
         font-size: 0.8rem;
         color: var(--muted);
       }
-      .legal-arrow {
-        color: var(--accent);
-        font-size: 1.1rem;
-      }
 
       /* ── CTA ──────────────────────────────────────────────────────────── */
       .cta-section {
@@ -827,6 +790,7 @@
       .cta-section h2 {
         font-size: clamp(1.8rem, 3vw, 2.6rem);
         font-weight: 800;
+        line-height: 1.15;
         margin-bottom: 14px;
       }
       .cta-section p {
@@ -836,19 +800,6 @@
         max-width: 500px;
         margin-left: auto;
         margin-right: auto;
-      }
-
-      .cta-badge {
-        display: inline-block;
-        background: rgba(16, 185, 129, 0.1);
-        border: 1px solid rgba(16, 185, 129, 0.3);
-        color: var(--green);
-        font-size: 0.8rem;
-        font-weight: 700;
-        padding: 5px 14px;
-        border-radius: 50px;
-        margin-bottom: 28px;
-        letter-spacing: 0.5px;
       }
 
       /* ── FOOTER ───────────────────────────────────────────────────────── */
@@ -867,7 +818,6 @@
 
       .footer-brand .logo {
         font-size: 1.4rem;
-        display: block;
         margin-bottom: 14px;
       }
       .footer-brand p {
@@ -934,6 +884,15 @@
         }
         .hero-visual {
           display: none;
+        }
+        .stats-row {
+          grid-template-columns: repeat(3, 1fr);
+          text-align: center;
+          row-gap: 24px;
+        }
+        .stats-row .playstore-badge {
+          grid-column: 1 / -1;
+          justify-self: center;
         }
         .ranks-grid {
           grid-template-columns: 1fr;
@@ -1018,7 +977,9 @@
     <!-- ── HEADER ────────────────────────────────────────────────────────── -->
     <header id="site-header">
       <nav class="container">
-        <a class="logo" href="#">OTADEX</a>
+        <a class="logo" href="#"
+          ><img src="assets/img/logo-swirl.webp" alt="" /> OTADEX</a
+        >
 
         <ul class="nav-links" id="nav-links">
           <li>
@@ -1057,7 +1018,14 @@
             🌙
           </button>
           <!-- CTA -->
-          <a href="#contact" class="nav-cta" data-key="nav_cta">Commencer</a>
+          <a
+            href="https://play.google.com/store/apps/details?id=com.otadex.otadex"
+            target="_blank"
+            rel="noopener"
+            class="nav-cta"
+            data-key="nav_cta"
+            >Télécharger</a
+          >
         </div>
 
         <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -1074,16 +1042,11 @@
           <div class="hero-content">
             <div class="hero-badge">
               <span class="dot"></span
-              ><span data-key="hero_badge"
-                >Bientôt sur Play Store — dans 10 jours</span
-              >
+              ><span data-key="hero_badge">Disponible sur Google Play</span>
             </div>
             <h1>
-              <span data-key="hero_h1_1">Ton encyclopédie</span><br /><span
-                data-key="hero_h1_2"
-                >d'animés</span
-              >
-              <span class="gradient" data-key="hero_h1_3">gamifiée</span>
+              <span data-key="hero_h1_1">Ton encyclopédie d'animés</span
+              ><span data-key="hero_h1_2">gamifiée</span>
             </h1>
             <p class="hero-desc" data-key="hero_desc">
               Collecte des personnages, monte en rang, découvre de nouvelles
@@ -1091,8 +1054,13 @@
               interactive.
             </p>
             <div class="hero-actions">
-              <a href="#contact" class="btn-primary" data-key="hero_cta1"
-                >Être notifié au lancement</a
+              <a
+                href="https://play.google.com/store/apps/details?id=com.otadex.otadex"
+                target="_blank"
+                rel="noopener"
+                class="btn-primary"
+                data-key="hero_cta1"
+                >Télécharger sur Google Play</a
               >
               <a href="#fonctionnalites" class="btn-ghost" data-key="hero_cta2"
                 >Voir les fonctionnalités</a
@@ -1101,71 +1069,53 @@
           </div>
 
           <div class="hero-visual">
-            <div class="phone-mockup">
-              <div class="phone-notch"></div>
-              <div class="phone-screen">
-                <div class="phone-logo">OTADEX</div>
-                <div class="phone-card">
-                  <div class="phone-card-name">Gojo Satoru</div>
-                  <div class="phone-card-anime">Jujutsu Kaisen</div>
-                  <span class="phone-card-tier">SS TIER · 38 247 ♥</span>
-                </div>
-                <div class="phone-card card2">
-                  <div class="phone-card-name">Levi Ackerman</div>
-                  <div class="phone-card-anime">Attack on Titan</div>
-                  <span class="phone-card-tier">S TIER · 44 100 ♥</span>
-                </div>
-                <div class="phone-tabs">
-                  <div class="phone-tab active">🏠</div>
-                  <div class="phone-tab">🔍</div>
-                  <div class="phone-tab">📦</div>
-                  <div class="phone-tab">👤</div>
-                </div>
-              </div>
+            <div class="mark-glow"></div>
+            <div class="mark-spin">
+              <img src="assets/img/logo-swirl.webp" alt="OTADEX" />
             </div>
+            <div class="orbit-chip genin">GENIN</div>
+            <div class="orbit-chip jonin">JONIN</div>
+            <div class="orbit-chip kage">KAGE</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── COUNTDOWN ──────────────────────────────────────────────────────── -->
-    <section class="countdown-section">
+    <!-- ── STATS ──────────────────────────────────────────────────────────── -->
+    <section class="stats-section">
       <div class="container">
-        <div class="countdown-inner">
-          <p class="countdown-label reveal" data-key="countdown_label">
-            Lancement officiel
-          </p>
-          <h2 class="countdown-title reveal" data-key="countdown_title">
-            OTADEX arrive sur Google Play dans…
-          </h2>
-          <div class="countdown-timer reveal" id="countdown-timer">
-            <div class="count-block">
-              <span class="count-num" id="cd-days">10</span>
-              <span class="count-unit" data-key="cd_days">Jours</span>
-            </div>
-            <span class="count-sep">:</span>
-            <div class="count-block">
-              <span class="count-num" id="cd-hours">00</span>
-              <span class="count-unit" data-key="cd_hours">Heures</span>
-            </div>
-            <span class="count-sep">:</span>
-            <div class="count-block">
-              <span class="count-num" id="cd-minutes">00</span>
-              <span class="count-unit" data-key="cd_min">Min</span>
-            </div>
-            <span class="count-sep">:</span>
-            <div class="count-block">
-              <span class="count-num" id="cd-seconds">00</span>
-              <span class="count-unit" data-key="cd_sec">Sec</span>
-            </div>
+        <div class="stats-row">
+          <div class="reveal">
+            <div class="stat-num">8</div>
+            <div class="stat-label" data-key="stat1_label">univers animé</div>
           </div>
-          <p
-            class="countdown-expired"
-            id="countdown-expired"
-            data-key="countdown_expired"
+          <div class="reveal reveal-delay-1">
+            <div class="stat-num">134+</div>
+            <div class="stat-label" data-key="stat2_label">personnages</div>
+          </div>
+          <div class="reveal reveal-delay-2">
+            <div class="stat-num">3</div>
+            <div class="stat-label" data-key="stat3_label">rangs ninja</div>
+          </div>
+          <a
+            href="https://play.google.com/store/apps/details?id=com.otadex.otadex"
+            target="_blank"
+            rel="noopener"
+            class="playstore-badge reveal reveal-delay-3"
+            aria-label="Disponible sur Google Play"
           >
-            🎉 OTADEX est disponible — télécharge maintenant !
-          </p>
+            <img
+              data-lang="fr"
+              src="https://play.google.com/intl/en_us/badges/static/images/badges/fr_badge_web_generic.png"
+              alt="Disponible sur Google Play"
+            />
+            <img
+              data-lang="en"
+              hidden
+              src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+              alt="Get it on Google Play"
+            />
+          </a>
         </div>
       </div>
     </section>
@@ -1173,9 +1123,6 @@
     <!-- ── FEATURES ───────────────────────────────────────────────────────── -->
     <section id="fonctionnalites" class="features">
       <div class="container">
-        <p class="section-eyebrow reveal" data-key="feat_eyebrow">
-          Fonctionnalités
-        </p>
         <h2 class="section-title reveal" data-key="feat_title">
           Pourquoi OTADEX ?
         </h2>
@@ -1239,9 +1186,6 @@
     <!-- ── PLANS ──────────────────────────────────────────────────────────── -->
     <section id="plans" class="ranks">
       <div class="container">
-        <p class="section-eyebrow reveal" data-key="plans_eyebrow">
-          Abonnements
-        </p>
         <h2 class="section-title reveal" data-key="plans_title">
           Choisis ton rang
         </h2>
@@ -1271,7 +1215,7 @@
           </div>
           <div class="rank-card jonin reveal reveal-delay-2">
             <div class="rank-popular" data-key="popular">POPULAIRE</div>
-            <div class="rank-icon">🔵</div>
+            <div class="rank-icon">🟣</div>
             <div class="rank-name">JONIN</div>
             <div class="rank-price">
               2 000 FCFA
@@ -1313,9 +1257,6 @@
     <!-- ── LEGAL ──────────────────────────────────────────────────────────── -->
     <section id="legal" class="legal-bar">
       <div class="container">
-        <p class="section-eyebrow reveal" data-key="legal_eyebrow">
-          Transparence
-        </p>
         <h2
           class="section-title reveal"
           style="margin-bottom: 12px"
@@ -1336,10 +1277,9 @@
                 Politique de confidentialité
               </div>
               <div class="legal-card-sub" data-key="legal1_sub">
-                Données, droits, sécurité · FR / EN
+                Tes données, tes droits
               </div>
             </div>
-            <span class="legal-arrow">→</span>
           </a>
           <a class="legal-card reveal reveal-delay-2" href="terms.html">
             <div>
@@ -1347,10 +1287,9 @@
                 Conditions d'utilisation
               </div>
               <div class="legal-card-sub" data-key="legal2_sub">
-                CGU, abonnements, PI · FR / EN
+                Abonnements et propriété intellectuelle
               </div>
             </div>
-            <span class="legal-arrow">→</span>
           </a>
           <a
             class="legal-card reveal reveal-delay-3"
@@ -1361,10 +1300,9 @@
                 Suppression de compte
               </div>
               <div class="legal-card-sub" data-key="legal3_sub">
-                Procédure in-app ou e-mail · FR / EN
+                Depuis l'app ou par e-mail
               </div>
             </div>
-            <span class="legal-arrow">→</span>
           </a>
         </div>
       </div>
@@ -1373,9 +1311,6 @@
     <!-- ── CTA ────────────────────────────────────────────────────────────── -->
     <section id="contact" class="cta-section">
       <div class="container">
-        <div class="cta-badge reveal" data-key="cta_badge">
-          Disponible dans 10 jours
-        </div>
         <h2 class="reveal" data-key="cta_title">
           Prêt à commencer<br />ta collection ?
         </h2>
@@ -1384,10 +1319,12 @@
         </p>
         <div class="reveal">
           <a
-            href="mailto:contact@otadex.app?subject=Notification%20lancement%20OTADEX&body=Bonjour%2C%0AJe%20souhaite%20être%20notifié(e)%20au%20lancement%20d'OTADEX%20sur%20Google%20Play.%0AMerci%20!"
+            href="https://play.google.com/store/apps/details?id=com.otadex.otadex"
+            target="_blank"
+            rel="noopener"
             class="btn-primary"
             data-key="cta_btn"
-            >✉ Être notifié au lancement</a
+            >📲 Télécharger sur Google Play</a
           >
         </div>
       </div>
@@ -1398,7 +1335,9 @@
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <span class="logo">OTADEX</span>
+            <span class="logo"
+              ><img src="assets/img/logo-swirl.webp" alt="" /> OTADEX</span
+            >
             <p data-key="footer_brand_desc">
               L'encyclopédie animée interactive avec système de rangs unique.
               Développée par TilStack.
@@ -1416,7 +1355,13 @@
                 <a href="#plans" data-key="footer_plans">Plans &amp; tarifs</a>
               </li>
               <li>
-                <a href="#contact" data-key="footer_notify">Être notifié</a>
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.otadex.otadex"
+                  target="_blank"
+                  rel="noopener"
+                  data-key="footer_notify"
+                  >Télécharger l'app</a
+                >
               </li>
             </ul>
           </div>
@@ -1482,24 +1427,17 @@
           nav_legal: "Légal",
           nav_contact: "Contact",
           nav_portfolio: "Portfolio ↗",
-          nav_cta: "Commencer",
-          hero_badge: "Bientôt sur Play Store — dans 10 jours",
-          hero_h1_1: "Ton encyclopédie",
-          hero_h1_2: "d'animés",
-          hero_h1_3: "gamifiée",
+          nav_cta: "Télécharger",
+          hero_badge: "Disponible sur Google Play",
+          hero_h1_1: "Ton encyclopédie d'animés",
+          hero_h1_2: "gamifiée",
           hero_desc:
             "Collecte des personnages, monte en rang, découvre de nouvelles œuvres. OTADEX transforme ta passion pour l'animé en aventure interactive.",
-          hero_cta1: "Être notifié au lancement",
+          hero_cta1: "Télécharger sur Google Play",
           hero_cta2: "Voir les fonctionnalités",
-          countdown_label: "Lancement officiel",
-          countdown_title: "OTADEX arrive sur Google Play dans…",
-          cd_days: "Jours",
-          cd_hours: "Heures",
-          cd_min: "Min",
-          cd_sec: "Sec",
-          countdown_expired:
-            "🎉 OTADEX est disponible — télécharge maintenant !",
-          feat_eyebrow: "Fonctionnalités",
+          stat1_label: "univers animé",
+          stat2_label: "personnages",
+          stat3_label: "rangs ninja",
           feat_title: "Pourquoi OTADEX ?",
           feat_sub: "Une encyclopédie vivante conçue pour les vrais fans.",
           feat1_title: "Fiches Personnages Complètes",
@@ -1520,7 +1458,6 @@
           feat6_title: "Galerie Plein Écran",
           feat6_desc:
             "Explore les images en galerie immersive avec zoom 4× et téléchargement haute résolution (Kage).",
-          plans_eyebrow: "Abonnements",
           plans_title: "Choisis ton rang",
           plans_sub: "Commence gratuitement, monte en puissance à ton rythme.",
           genin_price: "Gratuit",
@@ -1549,26 +1486,24 @@
           kage_f4: "Thèmes visuels exclusifs",
           kage_f5: "Priorité Fan du Mois",
           kage_f6: "Accès en avant-première",
-          legal_eyebrow: "Transparence",
           legal_title: "Pages légales",
           legal_sub: "Conformes RGPD et exigences Google Play.",
           legal1_title: "Politique de confidentialité",
-          legal1_sub: "Données, droits, sécurité · FR / EN",
+          legal1_sub: "Tes données, tes droits",
           legal2_title: "Conditions d'utilisation",
-          legal2_sub: "CGU, abonnements, PI · FR / EN",
+          legal2_sub: "Abonnements et propriété intellectuelle",
           legal3_title: "Suppression de compte",
-          legal3_sub: "Procédure in-app ou e-mail · FR / EN",
-          cta_badge: "Disponible dans 10 jours",
+          legal3_sub: "Depuis l'app ou par e-mail",
           cta_title: "Prêt à commencer<br>ta collection ?",
           cta_desc:
             "Rejoins la communauté OTADEX. Genin, c'est gratuit pour toujours.",
-          cta_btn: "✉ Être notifié au lancement",
+          cta_btn: "📲 Télécharger sur Google Play",
           footer_brand_desc:
             "L'encyclopédie animée interactive avec système de rangs unique. Développée par TilStack.",
           footer_app: "Application",
           footer_features: "Fonctionnalités",
           footer_plans: "Plans & tarifs",
-          footer_notify: "Être notifié",
+          footer_notify: "Télécharger l'app",
           footer_legal: "Légal",
           footer_privacy: "Confidentialité",
           footer_terms: "CGU",
@@ -1585,23 +1520,17 @@
           nav_legal: "Legal",
           nav_contact: "Contact",
           nav_portfolio: "Portfolio ↗",
-          nav_cta: "Get started",
-          hero_badge: "Coming to Play Store — in 10 days",
-          hero_h1_1: "Your anime",
-          hero_h1_2: "encyclopedia",
-          hero_h1_3: "gamified",
+          nav_cta: "Download",
+          hero_badge: "Available on Google Play",
+          hero_h1_1: "Your anime encyclopedia",
+          hero_h1_2: "gamified",
           hero_desc:
             "Collect characters, level up your rank, discover new shows. OTADEX turns your passion for anime into an interactive adventure.",
-          hero_cta1: "Get notified at launch",
+          hero_cta1: "Download on Google Play",
           hero_cta2: "See features",
-          countdown_label: "Official launch",
-          countdown_title: "OTADEX arrives on Google Play in…",
-          cd_days: "Days",
-          cd_hours: "Hours",
-          cd_min: "Min",
-          cd_sec: "Sec",
-          countdown_expired: "🎉 OTADEX is available — download now!",
-          feat_eyebrow: "Features",
+          stat1_label: "anime worlds",
+          stat2_label: "characters",
+          stat3_label: "ninja ranks",
           feat_title: "Why OTADEX?",
           feat_sub: "A living encyclopedia built for true fans.",
           feat1_title: "Complete Character Sheets",
@@ -1622,7 +1551,6 @@
           feat6_title: "Full-Screen Gallery",
           feat6_desc:
             "Explore images in an immersive gallery with 4× zoom and high-res downloads (Kage).",
-          plans_eyebrow: "Subscriptions",
           plans_title: "Choose your rank",
           plans_sub: "Start free, power up at your pace.",
           genin_price: "Free",
@@ -1651,25 +1579,23 @@
           kage_f4: "Exclusive visual themes",
           kage_f5: "Fan of the Month priority",
           kage_f6: "Early access",
-          legal_eyebrow: "Transparency",
           legal_title: "Legal pages",
           legal_sub: "Compliant with GDPR and Google Play requirements.",
           legal1_title: "Privacy Policy",
-          legal1_sub: "Data, rights, security · FR / EN",
+          legal1_sub: "Your data, your rights",
           legal2_title: "Terms of Use",
-          legal2_sub: "ToU, subscriptions, IP · FR / EN",
+          legal2_sub: "Subscriptions and intellectual property",
           legal3_title: "Account Deletion",
-          legal3_sub: "In-app or email procedure · FR / EN",
-          cta_badge: "Available in 10 days",
+          legal3_sub: "From the app or by email",
           cta_title: "Ready to start<br>your collection?",
           cta_desc: "Join the OTADEX community. Genin is free forever.",
-          cta_btn: "✉ Get notified at launch",
+          cta_btn: "📲 Download on Google Play",
           footer_brand_desc:
             "The interactive anime encyclopedia with a unique rank system. Built by TilStack.",
           footer_app: "App",
           footer_features: "Features",
           footer_plans: "Plans & pricing",
-          footer_notify: "Get notified",
+          footer_notify: "Download the app",
           footer_legal: "Legal",
           footer_privacy: "Privacy",
           footer_terms: "Terms",
@@ -1699,44 +1625,11 @@
           );
         });
         document.documentElement.lang = lang;
-        // update countdown units
-        updateCountdownUnits(lang);
-      }
-
-      function updateCountdownUnits(lang) {
-        const t = translations[lang];
-        ["cd_days", "cd_hours", "cd_min", "cd_sec"].forEach((key) => {
-          const el = document.querySelector(`[data-key="${key}"]`);
-          if (el) el.textContent = t[key];
+        // swap the Play Store badge image to match the chosen language
+        document.querySelectorAll(".playstore-badge img").forEach((img) => {
+          img.hidden = img.getAttribute("data-lang") !== lang;
         });
       }
-
-      /* ── COUNTDOWN ── */
-      const LAUNCH = new Date("2026-05-20T00:00:00");
-
-      function pad(n) {
-        return String(n).padStart(2, "0");
-      }
-
-      function updateCountdown() {
-        const now = new Date();
-        const diff = LAUNCH - now;
-        if (diff <= 0) {
-          document.getElementById("countdown-timer").style.display = "none";
-          document.getElementById("countdown-expired").style.display = "block";
-          return;
-        }
-        const days = Math.floor(diff / 86400000);
-        const hours = Math.floor((diff % 86400000) / 3600000);
-        const minutes = Math.floor((diff % 3600000) / 60000);
-        const seconds = Math.floor((diff % 60000) / 1000);
-        document.getElementById("cd-days").textContent = pad(days);
-        document.getElementById("cd-hours").textContent = pad(hours);
-        document.getElementById("cd-minutes").textContent = pad(minutes);
-        document.getElementById("cd-seconds").textContent = pad(seconds);
-      }
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
 
       /* ── THEME ── */
       const savedTheme = localStorage.getItem("otadex_theme") || "dark";
