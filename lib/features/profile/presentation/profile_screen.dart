@@ -271,9 +271,9 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     final collectionItems = ref
             .watch(collectedCharactersProvider)
             .valueOrNull
-            ?.map((c) => (c.name, c.cardColor, c.accentColor, true))
+            ?.map((c) => (c.name, c.cardColor, c.accentColor, true, c.imagePath))
             .toList() ??
-        const <(String, Color, Color, bool)>[];
+        const <(String, Color, Color, bool, String?)>[];
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
