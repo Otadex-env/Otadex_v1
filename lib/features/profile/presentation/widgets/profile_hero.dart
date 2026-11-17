@@ -92,8 +92,18 @@ class ProfileHero extends StatelessWidget {
                 ),
               ],
             ),
-            child: avatarPath == null
-                ? null
+            // Sans photo : l'initiale du pseudo, plutôt qu'une forme vide.
+            child: avatarPath == null && username.trim().isNotEmpty
+                ? Center(
+                    child: Text(
+                      username.trim()[0].toUpperCase(),
+                      style: GoogleFonts.rajdhani(
+                        fontSize: 40,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
+                      ),
+                    ),
+                  )
                 : null,
           ),
           const SizedBox(height: 12),
