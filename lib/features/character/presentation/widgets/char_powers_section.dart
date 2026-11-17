@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/theme/app_colors.dart';
+import 'char_section_header.dart';
 
 /// Section « Pouvoirs & Capacités » d'une fiche personnage.
 ///
@@ -45,7 +46,12 @@ class _CharPowersSectionState extends State<CharPowersSection> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _Header(count: powers.length, accent: widget.accent),
+          CharSectionHeader(
+            icon: Icons.bolt_rounded,
+            title: 'Pouvoirs & Capacités',
+            accent: widget.accent,
+            count: powers.length,
+          ),
           const SizedBox(height: 12),
           _SignatureCard(name: signature, accent: widget.accent)
               .animate()
@@ -74,44 +80,6 @@ class _CharPowersSectionState extends State<CharPowersSection> {
             ),
         ],
       ),
-    );
-  }
-}
-
-class _Header extends StatelessWidget {
-  final int count;
-  final Color accent;
-  const _Header({required this.count, required this.accent});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          'Pouvoirs & Capacités',
-          style: GoogleFonts.nunitoSans(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: AppColors.textPrimary,
-          ),
-        ),
-        const SizedBox(width: 8),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-          decoration: BoxDecoration(
-            color: accent.withValues(alpha: 0.18),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Text(
-            '$count',
-            style: GoogleFonts.nunitoSans(
-              fontSize: 12,
-              fontWeight: FontWeight.w700,
-              color: accent,
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

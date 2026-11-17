@@ -315,6 +315,7 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen> {
       CharDetailTab.infos => CharDetailInfosTab(
           character: c,
           anilistId: _anilistId,
+          images: _effectiveImages,
         ),
       CharDetailTab.galerie => CharDetailGalerieTab(
           character: c,
