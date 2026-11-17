@@ -1,4 +1,4 @@
-import 'dart:math' as math;
+﻿import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -14,6 +14,7 @@ import '../../../../core/widgets/otadex_image.dart';
 import '../../../../core/widgets/skeleton_loader.dart';
 import '../../../../core/widgets/subscription_modal.dart';
 import 'char_discover_section.dart';
+import 'char_powers_section.dart';
 
 class CharDetailInfosTab extends ConsumerStatefulWidget {
   final Character character;
@@ -42,7 +43,8 @@ class _CharDetailInfosTabState extends ConsumerState<CharDetailInfosTab> {
       children: [
         _buildIdentiteSection(),
         _buildAboutSection(),
-        if (c.powers.isNotEmpty) _buildPowersSection(),
+        if (c.powers.isNotEmpty)
+          CharPowersSection(powers: c.powers, accent: c.accentColor),
         if (c.quotes.isNotEmpty) _buildQuotesSection(),
         _buildVoiceActorsSection(),
         _buildTriviaSection(),
@@ -161,52 +163,6 @@ class _CharDetailInfosTabState extends ConsumerState<CharDetailInfosTab> {
                 fontWeight: FontWeight.w600,
               ),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  // ── Pouvoirs ──────────────────────────────────────────────────────
-
-  Widget _buildPowersSection() {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            '⚔️ Pouvoirs & Capacités',
-            style: GoogleFonts.nunitoSans(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: AppColors.textPrimary,
-            ),
-          ),
-          const SizedBox(height: 12),
-          Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            children: c.powers.map((power) {
-              return Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-                decoration: BoxDecoration(
-                  color: AppColors.statPurple.withValues(alpha: 0.10),
-                  borderRadius: BorderRadius.circular(22),
-                  border: Border.all(
-                      color: AppColors.statPurple.withValues(alpha: 0.55)),
-                ),
-                child: Text(
-                  power,
-                  style: GoogleFonts.nunitoSans(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.statPurplePastel,
-                  ),
-                ),
-              );
-            }).toList(),
           ),
         ],
       ),
