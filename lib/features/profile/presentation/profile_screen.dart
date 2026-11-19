@@ -10,7 +10,6 @@ import '../../../core/subscription/rank_providers.dart';
 import '../../../core/providers/user_profile_provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/theme_mode_provider.dart';
-import 'widgets/avatar_picker.dart';
 import 'widgets/change_password_sheet.dart';
 import 'widgets/edit_profile_sheet.dart';
 import 'widgets/kage_banner.dart';
@@ -272,9 +271,9 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     final collectionItems = ref
             .watch(collectedCharactersProvider)
             .valueOrNull
-            ?.map((c) => (c.name, c.cardColor, c.accentColor, true))
+            ?.map((c) => (c.name, c.cardColor, c.accentColor, true, c.imagePath))
             .toList() ??
-        const <(String, Color, Color, bool)>[];
+        const <(String, Color, Color, bool, String?)>[];
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -308,8 +307,6 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
             fanLevel: profile.fanLevel,
             fanLevelName: profile.fanLevelName,
           ),
-          const SizedBox(height: 28),
-          const AvatarPicker(),
           if (_showKageBanner && kEnablePaidPlans) ...[
             const SizedBox(height: 20),
             KageBanner(

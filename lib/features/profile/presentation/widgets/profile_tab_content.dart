@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/l10n/app_strings.dart';
 import '../../../../core/theme/otadex_theme.dart';
+import '../../../../core/widgets/otadex_image.dart';
 
 class ProfileTabContent extends StatelessWidget {
   final int selectedTab;
@@ -9,7 +10,7 @@ class ProfileTabContent extends StatelessWidget {
   final int currentPts;
   final int maxPts;
   final int collectCount;
-  final List<(String, Color, Color, bool)> collectionItems;
+  final List<(String, Color, Color, bool, String?)> collectionItems;
   final int fanLevel;
   final String fanLevelName;
 
@@ -51,7 +52,7 @@ class _CollectionTab extends StatelessWidget {
   final int currentPts;
   final int maxPts;
   final int collectCount;
-  final List<(String, Color, Color, bool)> collectionItems;
+  final List<(String, Color, Color, bool, String?)> collectionItems;
   final int fanLevel;
   final String fanLevelName;
 
@@ -180,7 +181,7 @@ class _CollectionHeader extends StatelessWidget {
 }
 
 class _CollectionGrid extends StatelessWidget {
-  final List<(String, Color, Color, bool)> items;
+  final List<(String, Color, Color, bool, String?)> items;
   const _CollectionGrid({required this.items});
 
   @override
@@ -201,6 +202,7 @@ class _CollectionGrid extends StatelessWidget {
                 c1: item.$2,
                 c2: item.$3,
                 selected: item.$4,
+                imagePath: item.$5,
               ))
           .toList(),
     );
@@ -213,6 +215,7 @@ class _CollectionCard extends StatelessWidget {
   final Color c1;
   final Color c2;
   final bool selected;
+  final String? imagePath;
 
   const _CollectionCard({
     required this.theme,
@@ -220,6 +223,7 @@ class _CollectionCard extends StatelessWidget {
     required this.c1,
     required this.c2,
     required this.selected,
+    this.imagePath,
   });
 
   @override
@@ -229,6 +233,7 @@ class _CollectionCard extends StatelessWidget {
       children: [
         Expanded(
           child: Container(
+            clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
               gradient: LinearGradient(
@@ -238,8 +243,14 @@ class _CollectionCard extends StatelessWidget {
               ),
               border: selected ? Border.all(color: t.accentColor, width: 2) : null,
             ),
-            child: selected
-                ? Align(
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                // Portrait du personnage ; le dégradé reste le repli.
+                if (imagePath != null && imagePath!.isNotEmpty)
+                  OtadexImage(imagePath: imagePath!, fit: BoxFit.cover),
+                if (selected)
+                  Align(
                     alignment: Alignment.topRight,
                     child: Padding(
                       padding: const EdgeInsets.all(6),
@@ -254,8 +265,9 @@ class _CollectionCard extends StatelessWidget {
                             color: Colors.white, size: 11),
                       ),
                     ),
-                  )
-                : null,
+                  ),
+              ],
+            ),
           ),
         ),
         const SizedBox(height: 5),

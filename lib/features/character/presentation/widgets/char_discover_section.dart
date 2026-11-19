@@ -8,6 +8,7 @@ import '../../../../core/utils/image_prefetcher.dart';
 import '../../../../core/providers/otadex_providers.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/widgets/otadex_image.dart';
+import 'char_section_header.dart';
 
 class CharDiscoverSection extends ConsumerWidget {
   final String currentCharId;
@@ -27,17 +28,15 @@ class CharDiscoverSection extends ConsumerWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 26, 16, 4),
-              child: Text(
-                '👥 Découvrir d\'autres personnages',
-                style: GoogleFonts.nunitoSans(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.textPrimary,
-                ),
+            const Padding(
+              padding: EdgeInsets.fromLTRB(16, 26, 16, 4),
+              child: CharSectionHeader(
+                icon: Icons.groups_rounded,
+                title: 'Découvrir d\'autres personnages',
+                accent: AppColors.accent,
               ),
             ),
+            const SizedBox(height: 6),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(

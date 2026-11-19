@@ -1,5 +1,4 @@
-import 'dart:math' as math;
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,19 +9,30 @@ import '../../../../core/providers/auth_provider.dart';
 import '../../../../core/subscription/rank_providers.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/widgets/auth_gate_modal.dart';
-import '../../../../core/widgets/otadex_image.dart';
 import '../../../../core/widgets/skeleton_loader.dart';
 import '../../../../core/widgets/subscription_modal.dart';
 import 'char_discover_section.dart';
+import 'char_gallery_strip.dart';
+import 'char_identity_grid.dart';
+import 'char_powers_section.dart';
+import 'char_quotes_carousel.dart';
+import 'char_section_header.dart';
+import 'char_voice_actors_row.dart';
 
+/// Onglet « Infos » d'une fiche personnage.
+///
+/// Ordre voulu : on MONTRE d'abord (fiche rapide, galerie), on RACONTE ensuite
+/// (histoire, pouvoirs, citations), puis la communauté (commentaires).
 class CharDetailInfosTab extends ConsumerStatefulWidget {
   final Character character;
   final int? anilistId;
+  final List<String> images;
 
   const CharDetailInfosTab({
     super.key,
     required this.character,
     required this.anilistId,
+    this.images = const [],
   });
 
   @override
@@ -33,6 +43,7 @@ class _CharDetailInfosTabState extends ConsumerState<CharDetailInfosTab> {
   bool _aboutExpanded = false;
 
   Character get c => widget.character;
+  Color get _accent => c.accentColor;
   bool get _isKage => ref.watch(effectiveRankProvider) == UserRank.kage;
 
   @override
@@ -40,10 +51,12 @@ class _CharDetailInfosTabState extends ConsumerState<CharDetailInfosTab> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildIdentiteSection(),
+        CharIdentityGrid(character: c),
+        CharGalleryStrip(character: c, images: widget.images),
         _buildAboutSection(),
-        if (c.powers.isNotEmpty) _buildPowersSection(),
-        if (c.quotes.isNotEmpty) _buildQuotesSection(),
+        if (c.powers.isNotEmpty)
+          CharPowersSection(powers: c.powers, accent: _accent),
+        CharQuotesCarousel(character: c),
         _buildVoiceActorsSection(),
         _buildTriviaSection(),
         _buildCommentsSection(),
@@ -52,247 +65,100 @@ class _CharDetailInfosTabState extends ConsumerState<CharDetailInfosTab> {
     );
   }
 
-  // ── Identité ──────────────────────────────────────────────────────
-
-  Widget _buildIdentiteSection() {
-    final cells = [
-      ('Âge', c.age ?? '—'),
-      ('Genre', c.gender ?? '—'),
-      ('Statut', c.status ?? c.role ?? '—'),
-      ('Nationalité', c.nationality ?? '—'),
-      ('Groupe sanguin', c.bloodType ?? '—'),
-      ('Naissance', c.birthday ?? c.dateOfBirth ?? '—'),
-    ];
-
-    // Ratio 2.6 pour la largeur, mais plancher absolu : libellé + valeur
-    // grossissent avec la police système et débordaient de la cellule.
-    final mq = MediaQuery.of(context);
-    final textScale = mq.textScaler.scale(1.0);
-    final cellWidth = (mq.size.width - 32 - 8) / 2;
-    final cellHeight = math.max(cellWidth / 2.6, 24 + 34 * textScale);
-
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 20, 16, 0),
-      child: GridView(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisExtent: cellHeight,
-          crossAxisSpacing: 8,
-          mainAxisSpacing: 8,
-        ),
-        children: cells.map((cell) {
-          final (label, value) = cell;
-          return Container(
-            decoration: BoxDecoration(
-              color: AppColors.backgroundElevated,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  label,
-                  style: GoogleFonts.nunitoSans(
-                    fontSize: 10,
-                    color: AppColors.textSecondary,
-                    fontWeight: FontWeight.w500,
-                    letterSpacing: 0.3,
-                  ),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  value,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: GoogleFonts.nunitoSans(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.textPrimary,
-                  ),
-                ),
-              ],
-            ),
-          );
-        }).toList(),
-      ),
-    );
-  }
-
   // ── À propos ──────────────────────────────────────────────────────
 
-  Widget _buildAboutSection() {
-    final bio = c.bio ?? 'Aucune description disponible.';
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 22, 16, 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'À propos',
-            style: GoogleFonts.nunitoSans(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: AppColors.textPrimary,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            bio,
-            maxLines: _aboutExpanded ? null : 6,
-            overflow: _aboutExpanded ? null : TextOverflow.ellipsis,
-            style: GoogleFonts.nunitoSans(
-              fontSize: 14,
-              color: AppColors.textSecondary,
-              height: 1.6,
-            ),
-          ),
-          const SizedBox(height: 6),
-          GestureDetector(
-            onTap: () => setState(() => _aboutExpanded = !_aboutExpanded),
-            child: Text(
-              _aboutExpanded ? 'Réduire ↑' : 'Lire la suite ↓',
-              style: GoogleFonts.nunitoSans(
-                fontSize: 13,
-                color: AppColors.accent,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
+  /// Sépare la 1re phrase (accroche, mise en avant) du reste de la bio.
+  /// Si la 1re phrase est trop longue pour être une accroche, tout reste en corps.
+  (String?, String) _splitBio(String bio) {
+    final m = RegExp(r'[.!?](\s|$)').firstMatch(bio);
+    if (m == null) return (null, bio);
+    final lead = bio.substring(0, m.start + 1).trim();
+    if (lead.length < 25 || lead.length > 170) return (null, bio);
+    return (lead, bio.substring(m.end).trim());
   }
 
-  // ── Pouvoirs ──────────────────────────────────────────────────────
+  Widget _buildAboutSection() {
+    final bio = c.bio?.trim();
+    final hasBio = bio != null && bio.isNotEmpty;
+    final (lead, rest) = hasBio ? _splitBio(bio) : (null, '');
 
-  Widget _buildPowersSection() {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+      padding: const EdgeInsets.fromLTRB(16, 22, 16, 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            '⚔️ Pouvoirs & Capacités',
-            style: GoogleFonts.nunitoSans(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: AppColors.textPrimary,
-            ),
+          CharSectionHeader(
+            icon: Icons.auto_stories_rounded,
+            title: 'Histoire',
+            accent: _accent,
           ),
           const SizedBox(height: 12),
-          Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            children: c.powers.map((power) {
-              return Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-                decoration: BoxDecoration(
-                  color: AppColors.statPurple.withValues(alpha: 0.10),
-                  borderRadius: BorderRadius.circular(22),
-                  border: Border.all(
-                      color: AppColors.statPurple.withValues(alpha: 0.55)),
-                ),
-                child: Text(
-                  power,
-                  style: GoogleFonts.nunitoSans(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.statPurplePastel,
-                  ),
-                ),
-              );
-            }).toList(),
-          ),
-        ],
-      ),
-    );
-  }
-
-  // ── Citations ─────────────────────────────────────────────────────
-
-  Widget _buildQuotesSection() {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            '💬 Citations',
-            style: GoogleFonts.nunitoSans(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: AppColors.textPrimary,
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
+            decoration: BoxDecoration(
+              color: AppColors.backgroundElevated,
+              borderRadius: BorderRadius.circular(16),
+              border: Border(left: BorderSide(color: _accent, width: 3)),
             ),
-          ),
-          const SizedBox(height: 10),
-          ...c.quotes.map(_buildQuoteCard),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildQuoteCard(String quote) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 8),
-      decoration: BoxDecoration(
-        color: AppColors.backgroundElevated,
-        borderRadius: BorderRadius.circular(14),
-      ),
-      padding: const EdgeInsets.all(16),
-      child: Stack(
-        children: [
-          Positioned(
-            top: -8,
-            left: 2,
-            child: Text(
-              '"',
-              style: GoogleFonts.nunitoSans(
-                fontSize: 64,
-                fontWeight: FontWeight.w800,
-                color: AppColors.accent.withValues(alpha: 0.16),
-                height: 1,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 28, top: 2),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  quote,
-                  style: GoogleFonts.nunitoSans(
-                    fontSize: 15,
-                    fontStyle: FontStyle.italic,
-                    color: AppColors.textPrimary,
-                    height: 1.6,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Row(
-                  children: [
-                    Flexible(
-                      child: Text(
-                        '— ${c.name}, ${c.animeName}',
-                        overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.nunitoSans(
-                          fontSize: 11,
-                          color: AppColors.textSecondary,
+            child: !hasBio
+                ? Text(
+                    'Aucune description disponible.',
+                    style: GoogleFonts.nunitoSans(
+                        fontSize: 14, color: AppColors.textSecondary),
+                  )
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (lead != null)
+                        Text(
+                          lead,
+                          style: GoogleFonts.nunitoSans(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.textPrimary,
+                            height: 1.4,
+                          ),
                         ),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    const Icon(Icons.ios_share_rounded,
-                        color: AppColors.textSecondary, size: 14),
-                  ],
-                ),
-              ],
-            ),
+                      if (rest.isNotEmpty) ...[
+                        if (lead != null) const SizedBox(height: 8),
+                        AnimatedSize(
+                          duration: const Duration(milliseconds: 250),
+                          curve: Curves.easeOutCubic,
+                          alignment: Alignment.topCenter,
+                          child: Text(
+                            rest,
+                            maxLines: _aboutExpanded ? null : 3,
+                            overflow: _aboutExpanded
+                                ? TextOverflow.visible
+                                : TextOverflow.ellipsis,
+                            style: GoogleFonts.nunitoSans(
+                              fontSize: 14,
+                              color: AppColors.textSecondary,
+                              height: 1.6,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        GestureDetector(
+                          onTap: () =>
+                              setState(() => _aboutExpanded = !_aboutExpanded),
+                          behavior: HitTestBehavior.opaque,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 4),
+                            child: Text(
+                              _aboutExpanded ? 'Réduire ↑' : 'Lire la suite ↓',
+                              style: GoogleFonts.nunitoSans(
+                                fontSize: 13,
+                                color: AppColors.accent,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
           ),
         ],
       ),
@@ -302,157 +168,70 @@ class _CharDetailInfosTabState extends ConsumerState<CharDetailInfosTab> {
   // ── Doubleurs ─────────────────────────────────────────────────────
 
   Widget _buildVoiceActorsSection() {
+    // Sans doubleur Otadex ni identifiant AniList : on n'affiche rien plutôt
+    // qu'un titre suivi de « Aucun doubleur disponible ».
+    if (c.voiceActors.isEmpty && widget.anilistId == null) {
+      return const SizedBox.shrink();
+    }
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+      padding: const EdgeInsets.fromLTRB(16, 22, 16, 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            '🎙️ Doubleurs',
-            style: GoogleFonts.nunitoSans(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: AppColors.textPrimary,
-            ),
+          CharSectionHeader(
+            icon: Icons.mic_rounded,
+            title: 'Doubleurs',
+            accent: _accent,
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 14),
           if (c.voiceActors.isNotEmpty)
-            _buildMockVoiceActors()
-          else if (widget.anilistId != null)
-            _buildVoiceActorsList()
+            CharVoiceActorsRow(
+              accent: _accent,
+              actors: [
+                for (final va in c.voiceActors)
+                  VoiceActorItem(
+                    name: va.nom,
+                    language: va.langue,
+                    imageUrl: va.imageUrl,
+                  ),
+              ],
+            )
           else
-            Text(
-              'Aucun doubleur disponible',
-              style: GoogleFonts.nunitoSans(
-                  fontSize: 13, color: AppColors.textSecondary),
-            ),
+            _buildVoiceActorsFromAnilist(),
         ],
       ),
     );
   }
 
-  Widget _buildMockVoiceActors() {
-    return Column(
-      children: c.voiceActors.map((va) {
-        return Container(
-          height: 64,
-          margin: const EdgeInsets.only(bottom: 8),
-          decoration: BoxDecoration(
-            color: AppColors.backgroundElevated,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: _buildVoiceActorRow(
-            name: va.nom,
-            lang: va.langue,
-            imageChild: va.imageUrl.isNotEmpty
-                ? OtadexImage(imagePath: va.imageUrl, fit: BoxFit.cover)
-                : Container(
-                    color: AppColors.backgroundCard,
-                    child: Center(
-                      child: Text(
-                        va.nom.isNotEmpty ? va.nom[0].toUpperCase() : '?',
-                        style: GoogleFonts.rajdhani(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.textSecondary,
-                        ),
-                      ),
-                    ),
-                  ),
-          ),
-        );
-      }).toList(),
-    );
-  }
-
-  Widget _buildVoiceActorsList() {
+  Widget _buildVoiceActorsFromAnilist() {
     final dataAsync = ref.watch(charFullDataProvider(widget.anilistId!));
     return dataAsync.when(
-      loading: () => Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8),
-        child: shimmerBox(height: 80, radius: 12),
-      ),
-      error: (_, __) => Text('Aucun doubleur disponible',
-          style: GoogleFonts.nunitoSans(
-              fontSize: 13, color: AppColors.textSecondary)),
+      loading: () => shimmerBox(height: 110, radius: 12),
+      error: (_, __) => const SizedBox.shrink(),
       data: (data) {
-        if (data == null) {
-          return Text('Aucun doubleur disponible',
-              style: GoogleFonts.nunitoSans(
-                  fontSize: 13, color: AppColors.textSecondary));
-        }
+        if (data == null) return const SizedBox.shrink();
         final edges = (data['media']?['edges'] as List<dynamic>?) ?? [];
-        final voiceActors = <Map<String, dynamic>>[];
+        final actors = <VoiceActorItem>[];
+        final seen = <Object?>{};
         for (final edge in edges) {
-          final vas = (edge['voiceActors'] as List<dynamic>?) ?? [];
-          for (final va in vas) {
-            final vaMap = va as Map<String, dynamic>;
-            if (!voiceActors.any((v) => v['id'] == vaMap['id'])) {
-              voiceActors.add(vaMap);
-            }
+          for (final va in (edge['voiceActors'] as List<dynamic>?) ?? []) {
+            final m = va as Map<String, dynamic>;
+            if (!seen.add(m['id'])) continue;
+            actors.add(VoiceActorItem(
+              name: (m['name']?['full'] as String?) ?? '—',
+              language: (m['languageV2'] as String?) ?? '',
+              imageUrl: (m['image']?['large'] as String?) ?? '',
+              id: '${m['id']}',
+            ));
           }
         }
-        if (voiceActors.isEmpty) {
-          return Text('Aucun doubleur disponible',
-              style: GoogleFonts.nunitoSans(
-                  fontSize: 13, color: AppColors.textSecondary));
-        }
-        return Column(
-          children: voiceActors.map((va) {
-            final name = (va['name']?['full'] as String?) ?? '—';
-            final lang = (va['languageV2'] as String?) ?? '';
-            final img = (va['image']?['large'] as String?) ?? '';
-            return GestureDetector(
-              onTap: () => context.push('/voice-actor/${va['id']}'),
-              child: Container(
-                height: 64,
-                margin: const EdgeInsets.only(bottom: 8),
-                decoration: BoxDecoration(
-                  color: AppColors.backgroundElevated,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: _buildVoiceActorRow(
-                  name: name,
-                  lang: lang,
-                  imageChild: OtadexImage(imagePath: img, fit: BoxFit.cover),
-                ),
-              ),
-            );
-          }).toList(),
+        if (actors.isEmpty) return const SizedBox.shrink();
+        return CharVoiceActorsRow(
+          accent: _accent,
+          actors: actors,
+          onTap: (a) => context.push('/voice-actor/${a.id}'),
         );
       },
-    );
-  }
-
-  Widget _buildVoiceActorRow({
-    required String name,
-    required String lang,
-    required Widget imageChild,
-  }) {
-    return Row(
-      children: [
-        ClipOval(child: SizedBox(width: 48, height: 48, child: imageChild)),
-        const SizedBox(width: 12),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(name,
-                  overflow: TextOverflow.ellipsis,
-                  style: GoogleFonts.nunitoSans(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.textPrimary)),
-              Text(lang,
-                  style: GoogleFonts.nunitoSans(
-                      fontSize: 12, color: AppColors.textSecondary)),
-            ],
-          ),
-        ),
-      ],
     );
   }
 
@@ -461,59 +240,69 @@ class _CharDetailInfosTabState extends ConsumerState<CharDetailInfosTab> {
   Widget _buildCommentsSection() {
     final commentsAsync = ref.watch(commentsForCharacterProvider(c.id));
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+      padding: const EdgeInsets.fromLTRB(16, 22, 16, 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Flexible(
-                child: Text(
-                  '💬 Commentaires',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: GoogleFonts.nunitoSans(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.textPrimary,
-                  ),
+          CharSectionHeader(
+            icon: Icons.forum_rounded,
+            title: 'Commentaires',
+            accent: _accent,
+            trailing: GestureDetector(
+              onTap: _showCommentSheet,
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                decoration: BoxDecoration(
+                  color: AppColors.accent.withValues(alpha: 0.12),
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                      color: AppColors.accent.withValues(alpha: 0.35)),
                 ),
-              ),
-              const SizedBox(width: 8),
-              GestureDetector(
-                onTap: _showCommentSheet,
-                child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                  decoration: BoxDecoration(
-                    color: AppColors.accent.withValues(alpha: 0.12),
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
-                        color: AppColors.accent.withValues(alpha: 0.35)),
-                  ),
-                  child: Text(
-                    'Commenter ✏️',
-                    style: GoogleFonts.nunitoSans(
-                      fontSize: 12,
-                      color: AppColors.accent,
-                      fontWeight: FontWeight.w600,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(Icons.edit_rounded,
+                        size: 13, color: AppColors.accent),
+                    const SizedBox(width: 5),
+                    Text(
+                      'Commenter',
+                      style: GoogleFonts.nunitoSans(
+                        fontSize: 12,
+                        color: AppColors.accent,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ),
-            ],
+            ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 12),
           commentsAsync.when(
             loading: () => shimmerBox(height: 60, radius: 10),
             error: (_, __) => const SizedBox.shrink(),
             data: (comments) {
               if (comments.isEmpty) {
-                return Text(
-                  'Sois le premier à commenter !',
-                  style: GoogleFonts.nunitoSans(
-                      fontSize: 13, color: AppColors.textSecondary),
+                return Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(vertical: 22),
+                  decoration: BoxDecoration(
+                    color: AppColors.backgroundElevated,
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: Column(
+                    children: [
+                      Icon(Icons.chat_bubble_outline_rounded,
+                          color: _accent.withValues(alpha: 0.7), size: 26),
+                      const SizedBox(height: 8),
+                      Text(
+                        'Sois le premier à commenter !',
+                        style: GoogleFonts.nunitoSans(
+                            fontSize: 13, color: AppColors.textSecondary),
+                      ),
+                    ],
+                  ),
                 );
               }
               return Column(
@@ -534,26 +323,53 @@ class _CharDetailInfosTabState extends ConsumerState<CharDetailInfosTab> {
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: AppColors.backgroundElevated,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(14),
       ),
-      child: Column(
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            pseudo,
-            style: GoogleFonts.nunitoSans(
-              fontSize: 12,
-              fontWeight: FontWeight.w700,
-              color: AppColors.accent,
+          // Avatar : initiale du pseudo, à la couleur du personnage.
+          Container(
+            width: 34,
+            height: 34,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: _accent.withValues(alpha: 0.2),
+            ),
+            child: Center(
+              child: Text(
+                pseudo.isNotEmpty ? pseudo[0].toUpperCase() : '?',
+                style: GoogleFonts.rajdhani(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: _accent,
+                ),
+              ),
             ),
           ),
-          const SizedBox(height: 4),
-          Text(
-            texte,
-            style: GoogleFonts.nunitoSans(
-              fontSize: 13,
-              color: AppColors.textSecondary,
-              height: 1.4,
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  pseudo,
+                  style: GoogleFonts.nunitoSans(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.textPrimary,
+                  ),
+                ),
+                const SizedBox(height: 3),
+                Text(
+                  texte,
+                  style: GoogleFonts.nunitoSans(
+                    fontSize: 13,
+                    color: AppColors.textSecondary,
+                    height: 1.4,
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -690,19 +506,16 @@ class _CharDetailInfosTabState extends ConsumerState<CharDetailInfosTab> {
     if (c.trivia.isEmpty) return const SizedBox.shrink();
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+      padding: const EdgeInsets.fromLTRB(16, 22, 16, 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            '⚡ Le savais-tu ?',
-            style: GoogleFonts.nunitoSans(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: AppColors.textPrimary,
-            ),
+          CharSectionHeader(
+            icon: Icons.lightbulb_rounded,
+            title: 'Le savais-tu ?',
+            accent: _accent,
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 12),
           if (!_isKage)
             GestureDetector(
               // Carte informative « Exclusif Kage ». Le renvoi vers le modal
@@ -711,61 +524,92 @@ class _CharDetailInfosTabState extends ConsumerState<CharDetailInfosTab> {
                   ? () => showSubscriptionModal(context, SubscriptionPlan.kage)
                   : null,
               child: Container(
+                width: double.infinity,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      AppColors.statPurple.withValues(alpha: 0.15),
+                      AppColors.statPurple.withValues(alpha: 0.18),
                       AppColors.backgroundElevated,
                     ],
                   ),
                   borderRadius: BorderRadius.circular(16),
+                  border: Border.all(
+                      color: AppColors.statPurple.withValues(alpha: 0.3)),
                 ),
                 padding: const EdgeInsets.all(20),
-                child: Center(
-                  child: Column(
-                    children: [
-                      Text(
-                        '👑 Exclusif Kage',
-                        style: GoogleFonts.rajdhani(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.statPurple,
-                        ),
+                child: Column(
+                  children: [
+                    const Icon(Icons.lock_rounded,
+                        color: AppColors.statPurple, size: 26),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Exclusif Kage',
+                      style: GoogleFonts.rajdhani(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.statPurple,
                       ),
-                      const SizedBox(height: 6),
-                      Text(
-                        'Contenu réservé aux Kage',
-                        style: GoogleFonts.nunitoSans(
-                          fontSize: 12,
-                          color: AppColors.textSecondary,
-                        ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      '${c.trivia.length} anecdotes réservées aux Kage',
+                      style: GoogleFonts.nunitoSans(
+                        fontSize: 12,
+                        color: AppColors.textSecondary,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             )
           else
             Column(
-              children: c.trivia.map((fact) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('✦',
-                          style: GoogleFonts.nunitoSans(
-                              fontSize: 16, color: AppColors.accent)),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: Text(fact,
+              children: [
+                for (var i = 0; i < c.trivia.length; i++)
+                  Container(
+                    width: double.infinity,
+                    margin: const EdgeInsets.only(bottom: 8),
+                    padding: const EdgeInsets.all(14),
+                    decoration: BoxDecoration(
+                      color: AppColors.backgroundElevated,
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: 26,
+                          height: 26,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: _accent.withValues(alpha: 0.2),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '${i + 1}',
+                              style: GoogleFonts.rajdhani(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w700,
+                                color: _accent,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            c.trivia[i],
                             style: GoogleFonts.nunitoSans(
-                                fontSize: 14, color: AppColors.textSecondary)),
-                      ),
-                    ],
+                              fontSize: 14,
+                              color: AppColors.textSecondary,
+                              height: 1.45,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                );
-              }).toList(),
+              ],
             ),
         ],
       ),

@@ -243,7 +243,7 @@ class _CollectionHeader extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
       child: Text(
-        'Ma Collection ($count)',
+        '$count personnage${count > 1 ? 's' : ''} collecté${count > 1 ? 's' : ''}',
         style: GoogleFonts.nunitoSans(
           fontSize: 16,
           fontWeight: FontWeight.w600,
