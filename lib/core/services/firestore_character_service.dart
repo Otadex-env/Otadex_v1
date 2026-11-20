@@ -521,6 +521,12 @@ class FirestoreCharacterService {
                 accentColor: AppColors.animeTrAccent,
                 category: 'Shōnen'
               ),
+            'my-hero-academia' => (
+                prefix: 'mha',
+                cardColor: AppColors.animeMhaCard,
+                accentColor: AppColors.animeMhaAccent,
+                category: 'Shōnen'
+              ),
             _ => (
                 prefix: '',
                 cardColor: AppColors.animeDefaultCard,

@@ -1639,6 +1639,148 @@ class AppAssets {
     'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Revengers/Ran Haitani/tr_ranh3.jpeg',
   ];
 
+
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // MHA — My Hero Academia   prefix: mha_
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // ignore: unused_field
+  static const String _mha = 'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia';
+
+  static const List<String> izukuMidoriya = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Izuku Midoriya/mha_izuk1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Izuku Midoriya/mha_izuk2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Izuku Midoriya/mha_izuk3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Izuku Midoriya/mha_izuk4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Izuku Midoriya/mha_izuk5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Izuku Midoriya/mha_izuk6.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Izuku Midoriya/mha_izuk7.jpeg',
+  ];
+  static const List<String> katsukiBakugo = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Katsuki Bakugo/mha_kats1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Katsuki Bakugo/mha_kats2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Katsuki Bakugo/mha_kats3.jpeg',
+  ];
+  static const List<String> shotoTodoroki = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Shoto Todoroki/mha_shot1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Shoto Todoroki/mha_shot2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Shoto Todoroki/mha_shot3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Shoto Todoroki/mha_shot4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Shoto Todoroki/mha_shot5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Shoto Todoroki/mha_shot6.jpeg',
+  ];
+  static const List<String> ochacoUraraka = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Ochaco Uraraka/mha_ocha1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Ochaco Uraraka/mha_ocha2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Ochaco Uraraka/mha_ocha3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Ochaco Uraraka/mha_ocha4.jpeg',
+  ];
+  static const List<String> tenyaIda = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Tenya Ida/mha_teny1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Tenya Ida/mha_teny2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Tenya Ida/mha_teny3.jpeg',
+  ];
+  static const List<String> allMight = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/All Might/mha_allm1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/All Might/mha_allm2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/All Might/mha_allm3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/All Might/mha_allm4.jpeg',
+  ];
+  static const List<String> shotaAizawa = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Shota Aizawa/mha_shot1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Shota Aizawa/mha_shot2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Shota Aizawa/mha_shot3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Shota Aizawa/mha_shot4.jpeg',
+  ];
+  static const List<String> enjiTodoroki = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Enji Todoroki/mha_enji1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Enji Todoroki/mha_enji2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Enji Todoroki/mha_enji3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Enji Todoroki/mha_enji4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Enji Todoroki/mha_enji5.jpeg',
+  ];
+  static const List<String> tomuraShigaraki = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Tomura Shigaraki/mha_tomu1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Tomura Shigaraki/mha_tomu2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Tomura Shigaraki/mha_tomu3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Tomura Shigaraki/mha_tomu4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Tomura Shigaraki/mha_tomu5.jpeg',
+  ];
+  static const List<String> allForOne = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/All For One/mha_allf1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/All For One/mha_allf2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/All For One/mha_allf3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/All For One/mha_allf4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/All For One/mha_allf5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/All For One/mha_allf6.jpeg',
+  ];
+  static const List<String> dabi = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Dabi/mha_dabi1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Dabi/mha_dabi2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Dabi/mha_dabi3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Dabi/mha_dabi4.jpeg',
+  ];
+  static const List<String> himikoToga = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Himiko Toga/mha_himi1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Himiko Toga/mha_himi2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Himiko Toga/mha_himi3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Himiko Toga/mha_himi4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Himiko Toga/mha_himi5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Himiko Toga/mha_himi6.jpeg',
+  ];
+  static const List<String> keigoTakami = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Keigo Takami/mha_keig1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Keigo Takami/mha_keig2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Keigo Takami/mha_keig3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Keigo Takami/mha_keig4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Keigo Takami/mha_keig5.jpeg',
+  ];
+  static const List<String> mirioTogata = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Mirio Togata/mha_miri1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Mirio Togata/mha_miri2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Mirio Togata/mha_miri3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Mirio Togata/mha_miri4.jpeg',
+  ];
+  static const List<String> eijiroKirishima = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Eijiro Kirishima/mha_eiji1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Eijiro Kirishima/mha_eiji2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Eijiro Kirishima/mha_eiji3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Eijiro Kirishima/mha_eiji4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Eijiro Kirishima/mha_eiji5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Eijiro Kirishima/mha_eiji6.jpeg',
+  ];
+  static const List<String> tsuyuAsui = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Tsuyu Asui/mha_tsuy1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Tsuyu Asui/mha_tsuy2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Tsuyu Asui/mha_tsuy3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Tsuyu Asui/mha_tsuy4.jpeg',
+  ];
+  static const List<String> momoYaoyorozu = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Momo Yaoyorozu/mha_momo1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Momo Yaoyorozu/mha_momo2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Momo Yaoyorozu/mha_momo3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Momo Yaoyorozu/mha_momo4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Momo Yaoyorozu/mha_momo5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Momo Yaoyorozu/mha_momo6.jpeg',
+  ];
+  static const List<String> fumikageTokoyami = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Fumikage Tokoyami/mha_fumi1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Fumikage Tokoyami/mha_fumi2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Fumikage Tokoyami/mha_fumi3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Fumikage Tokoyami/mha_fumi4.jpeg',
+  ];
+  static const List<String> denkiKaminari = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Denki Kaminari/mha_denk1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Denki Kaminari/mha_denk2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Denki Kaminari/mha_denk3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Denki Kaminari/mha_denk4.jpeg',
+  ];
+  static const List<String> minoruMineta = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Minoru Mineta/mha_mino1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Minoru Mineta/mha_mino2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Minoru Mineta/mha_mino3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Minoru Mineta/mha_mino4.jpeg',
+  ];
+
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // Résolution par charId
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -2005,6 +2147,47 @@ class AppAssets {
         return hakkaiShiba;
       case 'tr-ran-haitani':
         return ranHaitani;
+      // MHA
+      case 'mha-izuku-midoriya':
+        return izukuMidoriya;
+      case 'mha-katsuki-bakugo':
+        return katsukiBakugo;
+      case 'mha-shoto-todoroki':
+        return shotoTodoroki;
+      case 'mha-ochaco-uraraka':
+        return ochacoUraraka;
+      case 'mha-tenya-ida':
+        return tenyaIda;
+      case 'mha-all-might':
+        return allMight;
+      case 'mha-shota-aizawa':
+        return shotaAizawa;
+      case 'mha-enji-todoroki':
+        return enjiTodoroki;
+      case 'mha-tomura-shigaraki':
+        return tomuraShigaraki;
+      case 'mha-all-for-one':
+        return allForOne;
+      case 'mha-dabi':
+        return dabi;
+      case 'mha-himiko-toga':
+        return himikoToga;
+      case 'mha-keigo-takami':
+        return keigoTakami;
+      case 'mha-mirio-togata':
+        return mirioTogata;
+      case 'mha-eijiro-kirishima':
+        return eijiroKirishima;
+      case 'mha-tsuyu-asui':
+        return tsuyuAsui;
+      case 'mha-momo-yaoyorozu':
+        return momoYaoyorozu;
+      case 'mha-fumikage-tokoyami':
+        return fumikageTokoyami;
+      case 'mha-denki-kaminari':
+        return denkiKaminari;
+      case 'mha-minoru-mineta':
+        return minoruMineta;
       default:
         return const [];
     }
