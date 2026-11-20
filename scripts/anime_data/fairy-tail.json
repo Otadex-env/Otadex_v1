@@ -1,0 +1,1191 @@
+{
+  "anime": {
+    "titre": "Fairy Tail",
+    "titreJaponais": "フェアリーテイル",
+    "synopsis": "Lucy Heartfilia, une jeune mage rêvant de rejoindre la célèbre guilde Fairy Tail, rencontre Natsu Dragneel, un mage de feu à la recherche de son père adoptif, le dragon Igneel. Elle intègre la guilde et se lie d'amitié avec Natsu, Gray Fullbuster, Erza Scarlet et leurs camarades. Ensemble, ils enchaînent les missions, affrontent des guildes noires et des ennemis redoutables, dans un monde où la magie façonne chaque aspect de la vie quotidienne — et où les liens de la guilde comptent plus que tout.",
+    "genres": [
+      "Shōnen",
+      "Action",
+      "Fantasy",
+      "Aventure"
+    ],
+    "annee": 2009,
+    "episodes": {},
+    "studio": "A-1 Pictures",
+    "studioId": "a1-pictures",
+    "auteur": "Hiro Mashima",
+    "auteurId": "hiro-mashima",
+    "editeur": "Kodansha — Weekly Shōnen Magazine",
+    "statut": "Terminé",
+    "type": "Shōnen"
+  },
+  "creator": {
+    "nom": "Hiro Mashima",
+    "nomJaponais": "真島 ヒロ",
+    "bio": "Hiro Mashima (真島 ヒロ) est un mangaka japonais né le 3 mai 1977 à Nagano (une autre source indique le 19 juillet 1977). Son père, artiste en devenir, est mort quand il était jeune ; il a grandi dans les montagnes en recopiant des mangas offerts par son grand-père. Au lycée, il a joué de la guitare dans le groupe Night Meeting ; suspendu pour indiscipline, il a décidé de devenir mangaka. En 1998, il a écrit le one-shot Magician en travaillant dans une salle d'arcade, couronné du Rookie Prize du Weekly Shōnen Magazine. Rave Master (1999–2005) l'a fait connaître, avant que Fairy Tail ne devienne son œuvre la plus célèbre.",
+    "dateNaissance": "3 mai 1977",
+    "nationalite": "Japonais",
+    "occupation": "Mangaka (auteur-dessinateur)",
+    "oeuvres": [
+      "1998 — Magician (one-shot) — Weekly Shōnen Magazine — Rookie Prize",
+      "1998 — Bad Boys Song (one-shot) — août 1998",
+      "1999–2005 — Rave Master — Weekly Shōnen Magazine — 35 volumes",
+      "2003 — Hiro Mashima's Playground — recueil de one-shots — 2 volumes",
+      "2005–2007 — Monster Soul — Comic BomBom — 2 volumes",
+      "2006–2017 — Fairy Tail — Weekly Shōnen Magazine — 63 volumes",
+      "2008–2009 — Monster Hunter Orage — Monthly Shōnen Rival — 4 volumes",
+      "2014–2015 — Fairy Tail Zero — 1 volume",
+      "2018–2024 — Edens Zero — Weekly Shōnen Magazine — 33 volumes",
+      "2018–en cours — Fairy Tail: 100 Years Quest — Magazine Pocket — storyboards et écriture",
+      "2019 — Mashima Hero's — 1 volume",
+      "2022 — Gate of Nightmares — 2 volumes (création originale)",
+      "2023–en cours — Dead Rock — Monthly Shōnen Magazine — 7 volumes",
+      "2026 — Fairy Tail Re:Fantasia — Weekly Shōnen Magazine"
+    ],
+    "recompenses": [
+      "Rookie Prize, Weekly Shōnen Magazine (1998)",
+      "Prix Kodansha du manga, catégorie shōnen — 2009, pour Fairy Tail",
+      "Harvey Awards — International Spotlight (2017)",
+      "Prix spécial Fauve, Festival d'Angoulême (2018)",
+      "Fairy Tail — Meilleur nouveau manga shōnen de 2008 (About.com, Deb Aoki) ; meilleur manga comique 2009 (Anime Expo)"
+    ],
+    "imageUrl": "",
+    "animeIds": [
+      "fairy-tail"
+    ]
+  },
+  "studio": {
+    "nom": "A-1 Pictures",
+    "fondation": "9 mai 2005, filiale d'Aniplex, fondée par Mikihiro Iwata",
+    "fondateur": "Mikihiro Iwata",
+    "description": "",
+    "productions": [
+      "Sword Art Online",
+      "Erased",
+      "Macross Delta (Satelight)",
+      "100 Years Quest (J.C.Staff)",
+      "Shokugeki no Soma (J.C.Staff)"
+    ]
+  },
+  "characters": [
+    {
+      "id": "ft-natsu-dragneel",
+      "nom": "Natsu Dragneel",
+      "nomJaponais": "ナツ・ドラグニル (Natsu Doraguniru)",
+      "animeId": "fairy-tail",
+      "animeName": "Fairy Tail",
+      "auteurId": "hiro-mashima",
+      "auteurNom": "Hiro Mashima",
+      "studioId": "a1-pictures",
+      "studioNom": "A-1 Pictures",
+      "age": "18-19 ans au début de l'histoire (plus de 400 ans chronologiquement)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Protagoniste — Mage de Fairy Tail — Dragon Slayer du Feu",
+      "description": "Natsu Dragneel est un jeune mage de la guilde Fairy Tail, impulsif, bruyant et d'une loyauté absolue envers ses compagnons. Il a été élevé par le dragon Igneel, qui lui a appris la magie des Dragon Slayers et lui a offert l'écharpe qu'il ne quitte jamais. Il parcourt le royaume de Fiore à la recherche de son père adoptif, accompagné de son meilleur ami, le chat Happy. Il est sujet au mal des transports, ce qui contraste avec sa puissance destructrice. Rival de Gray, il se bat avant tout pour protéger ceux qu'il aime, quitte à provoquer des dégâts considérables autour de lui. Il devient la figure centrale de la guilde et de l'équipe formée avec Lucy, Gray, Erza et Wendy. Un lien familial avec Zeref est révélé dans la dernière partie du récit.",
+      "pouvoirs": [
+        "Magie Dragon Slayer du Feu — maîtrise et ingestion du feu",
+        "Dragon Force — état de puissance accrue des Dragon Slayers",
+        "Combat au corps à corps — endurance et résistance exceptionnelles",
+        "Sens aiguisés — odorat et ouïe de dragon"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son écharpe écailleuse lui a été offerte par Igneel",
+        "Date de naissance : 16 janvier X765 selon Game Rant ; une autre date (7 juillet X300) apparaît pour sa naissance chronologique",
+        "Tetsuya Kakihara le double en japonais, Todd Haberkorn en anglais",
+        "Les héros de Rave Master et de Fairy Tail n'ont pas de père, ce que Hiro Mashima relie à la perte de son propre père"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Igneel",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Happy",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Lucy Heartfilia",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Gray Fullbuster",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Erza Scarlet",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Wendy Marvell",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Gray Fullbuster",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Gajeel Redfox",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Zeref Dragneel",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Tetsuya Kakihara",
+      "voixAnglaise": "Todd Haberkorn",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 1
+    },
+    {
+      "id": "ft-lucy-heartfilia",
+      "nom": "Lucy Heartfilia",
+      "nomJaponais": "ルーシィ・ハートフィリア (Rūshii Hātofiria)",
+      "animeId": "fairy-tail",
+      "animeName": "Fairy Tail",
+      "auteurId": "hiro-mashima",
+      "auteurNom": "Hiro Mashima",
+      "studioId": "a1-pictures",
+      "studioNom": "A-1 Pictures",
+      "age": "17 ans (18 ans environ après les premiers arcs)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Mage Céleste de Fairy Tail — Héroïne de l'histoire",
+      "description": "Lucy Heartfilia est la fille d'une riche famille qui quitte la maison paternelle à seize ans pour réaliser son rêve : rejoindre la guilde Fairy Tail. Elle est secourue par Natsu et Happy alors qu'elle tombe dans le piège d'un marchand d'esclaves, puis intègre la guilde. Mage Céleste, elle invoque des esprits célestes grâce à des clés magiques, et noue avec eux des liens d'amitié sincères. Son rêve d'écrire un roman nourrit une partie de son parcours. Elle est le point d'entrée du spectateur dans le monde de Fairy Tail. Son sens de la loyauté et son courage s'affirment au fil des épreuves, et elle devient le cœur de l'équipe qu'elle forme avec Natsu, Happy, Gray et Erza.",
+      "pouvoirs": [
+        "Magie Céleste — invocation d'esprits grâce aux clés du zodiaque et autres clés",
+        "Fouet — arme de combat rapproché",
+        "Contrat d'invocation — lien de confiance avec ses esprits",
+        "Écriture — talent littéraire qu'elle cultive"
+      ],
+      "citations": [],
+      "trivia": [
+        "Ses clés d'or permettent d'invoquer les esprits du zodiaque",
+        "Aya Hirano la double en japonais, Cherami Leigh en anglais",
+        "Sa taille officielle est de 165 cm",
+        "Sa date de naissance varie selon les sources consultées (1er juillet ou 4 juin)"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Natsu Dragneel",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Happy",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Gray Fullbuster",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Erza Scarlet",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Wendy Marvell",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Jude Heartfilia",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Layla Heartfilia",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Loke (Leo) et d'autres",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Levy McGarden",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Aya Hirano",
+      "voixAnglaise": "Cherami Leigh",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 2
+    },
+    {
+      "id": "ft-erza-scarlet",
+      "nom": "Erza Scarlet",
+      "nomJaponais": "エルザ・スカーレット (Eruza Sukāretto)",
+      "animeId": "fairy-tail",
+      "animeName": "Fairy Tail",
+      "auteurId": "hiro-mashima",
+      "auteurNom": "Hiro Mashima",
+      "studioId": "a1-pictures",
+      "studioNom": "A-1 Pictures",
+      "age": "19 ans",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Reine des Fées — Mage de classe S de Fairy Tail — Mage de la Requip",
+      "description": "Erza Scarlet, surnommée Titania, la Reine des Fées, est l'une des plus puissantes mages de Fairy Tail. Elle est connue pour sa Requip, qui lui permet de changer d'armure et d'arme en un instant. Disciplinée, exigeante et très protectrice, elle veille à la bonne tenue de la guilde et impose le respect à ses compagnons. Son passé d'enfant esclave marque profondément sa personnalité et son attachement à ses amis. Elle est liée à Jellal depuis l'enfance. Elle fait partie de l'équipe formée avec Natsu, Lucy, Gray et Happy. Elle est l'un des personnages féminins les plus populaires de l'œuvre.",
+      "pouvoirs": [
+        "Requip — changement instantané d'armures et d'armes",
+        "Escrime — maîtrise de nombreuses épées",
+        "Armure du Purgatoire, Armure Tenrin et autres — armures spécialisées",
+        "Force de volonté — résistance à la douleur et sang-froid"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle est surnommée « Titania », la Reine des Fées",
+        "Date de naissance : 7 avril X765",
+        "Sayaka Ōhara la double en japonais, Colleen Clinkenbeard en anglais",
+        "Sa taille est de 175 cm selon Game Rant"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Jellal Fernandes",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Natsu",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Lucy",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Gray",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Happy",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "les membres de Fairy Tail",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Irene",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Sayaka Ōhara",
+      "voixAnglaise": "Colleen Clinkenbeard",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 3
+    },
+    {
+      "id": "ft-gray-fullbuster",
+      "nom": "Gray Fullbuster",
+      "nomJaponais": "グレイ・フルバスター (Gurei Furubasutā)",
+      "animeId": "fairy-tail",
+      "animeName": "Fairy Tail",
+      "auteurId": "hiro-mashima",
+      "auteurNom": "Hiro Mashima",
+      "studioId": "a1-pictures",
+      "studioNom": "A-1 Pictures",
+      "age": "18 ans",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Mage de glace de Fairy Tail — Rival et ami de Natsu",
+      "description": "Gray Fullbuster est un mage de glace de la guilde Fairy Tail, rival de Natsu depuis l'enfance. Il a été formé par la mage Ur, dont l'enseignement a changé sa vie. Calme et réfléchi, il se retrouve souvent à se déshabiller sans s'en rendre compte, un trait comique de la série. Il s'entend et se dispute avec Natsu, mais reste un allié fidèle. Il cache un passé douloureux lié à la perte de sa famille. Il est admiré par Juvia, qui lui voue un attachement sans limite. Il fait partie de l'équipe principale de la guilde.",
+      "pouvoirs": [
+        "Ice Make — création de formes de glace",
+        "Ice Demon Slayer Magic — magie de glace avancée",
+        "Combat à mains nues",
+        "Résistance au froid"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son habitude de perdre ses vêtements est un gag récurrent",
+        "Date de naissance : 13 février X766",
+        "Yūichi Nakamura le double en japonais, Newton Pittman en anglais",
+        "Sa taille est de 180 cm selon Game Rant"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Ur",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Silver Fullbuster",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Natsu Dragneel",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Juvia Lockser",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Natsu",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Lucy",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Erza",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Happy",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Yūichi Nakamura",
+      "voixAnglaise": "Newton Pittman",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 4
+    },
+    {
+      "id": "ft-happy",
+      "nom": "Happy",
+      "nomJaponais": "ハッピー (Happī)",
+      "animeId": "fairy-tail",
+      "animeName": "Fairy Tail",
+      "auteurId": "hiro-mashima",
+      "auteurNom": "Hiro Mashima",
+      "studioId": "a1-pictures",
+      "studioNom": "A-1 Pictures",
+      "age": "6 ans",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Exceed bleu de Fairy Tail — Meilleur ami de Natsu",
+      "description": "Happy est un chat bleu doté d'ailes et de la parole, éclos d'un œuf trouvé par Natsu. Il est son meilleur ami, son compagnon de voyage et son principal soutien. Il utilise la magie Aera, qui lui permet de déployer ses ailes pour voler et de transporter ses compagnons. Il est gourmand, espiègle et très attaché au poisson. Il est secrètement amoureux de Carla. Il accompagne l'équipe lors de toutes ses missions. Il donne à la série une grande part de son humour et de sa tendresse.",
+      "pouvoirs": [
+        "Aera — magie des ailes permettant le vol",
+        "Transport — peut porter un compagnon en vol",
+        "Rapidité et agilité"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il adore le poisson",
+        "Date de naissance : 20 juin X778",
+        "Rie Kugimiya le double en japonais, Tia Ballard en anglais",
+        "Hiro Mashima a dit que l'auteur Sensha Yoshida, avec ses mascottes, a pu influencer l'usage de personnages comme Happy"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Natsu Dragneel",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Carla",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Lucy",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Gray",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Erza",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Lucky et Marl",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Rie Kugimiya",
+      "voixAnglaise": "Tia Ballard",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 5
+    },
+    {
+      "id": "ft-wendy-marvell",
+      "nom": "Wendy Marvell",
+      "nomJaponais": "ウェンディ・マーベル (Wendi Māberu)",
+      "animeId": "fairy-tail",
+      "animeName": "Fairy Tail",
+      "auteurId": "hiro-mashima",
+      "auteurNom": "Hiro Mashima",
+      "studioId": "a1-pictures",
+      "studioNom": "A-1 Pictures",
+      "age": "12 ans (plus de 400 ans chronologiquement)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Mage Dragon Slayer du Ciel — Plus jeune membre de l'équipe principale",
+      "description": "Wendy Marvell est une jeune mage Dragon Slayer du Ciel, élevée par la dragonne Grandeeney. Elle rejoint Fairy Tail avec Carla et devient rapidement l'un des membres les plus appréciés de la guilde. Elle utilise des sorts de soutien et de soin, ainsi que des attaques fondées sur le vent. Son courage et sa détermination contrastent avec sa timidité apparente. Elle voit en Natsu une sorte de grand frère. Carla, qui l'accompagne, joue le rôle de protectrice. Elle s'intègre à l'équipe principale aux côtés de Natsu, Lucy, Gray et Erza.",
+      "pouvoirs": [
+        "Magie Dragon Slayer du Ciel — attaques de vent et sorts de soutien",
+        "Soins — capacité de guérir les blessures",
+        "Renforts — amélioration des capacités de ses alliés",
+        "Dragon Force"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle est la Dragon Slayer du Ciel, spécialisée en soutien",
+        "Date de naissance : 27 février X777",
+        "Satomi Satō la double en japonais, Brittney Karbowski en anglais",
+        "Sa taille est de 150 cm selon Game Rant"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Grandeeney",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Carla",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Natsu Dragneel",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Lucy",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Gray",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Erza",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Happy",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Satomi Satō",
+      "voixAnglaise": "Brittney Karbowski",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 6
+    },
+    {
+      "id": "ft-carla",
+      "nom": "Carla",
+      "nomJaponais": "シャルル (Sharuru)",
+      "animeId": "fairy-tail",
+      "animeName": "Fairy Tail",
+      "auteurId": "hiro-mashima",
+      "auteurNom": "Hiro Mashima",
+      "studioId": "a1-pictures",
+      "studioNom": "A-1 Pictures",
+      "age": "6 ans",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Exceed blanche de Fairy Tail — Gardienne de Wendy",
+      "description": "Carla (Charle en version japonaise) est une Exceed blanche, partenaire et gardienne de Wendy. Elle est dotée d'une capacité de précognition qui lui permet d'entrevoir des événements futurs. Fière, sérieuse et parfois sévère, elle veille attentivement sur Wendy. Elle apprend plus tard à utiliser la magie de transformation. Elle est la cible de l'affection de Happy, qu'elle repousse avec constance. Elle appartient à la guilde Fairy Tail aux côtés de Wendy. Elle forme avec elle un duo central de la seconde partie de l'histoire.",
+      "pouvoirs": [
+        "Précognition — vision de scènes futures",
+        "Aera — magie des ailes",
+        "Transformation — apprise plus tard"
+      ],
+      "citations": [],
+      "trivia": [
+        "Ses prémonitions interviennent dans plusieurs arcs",
+        "Date de naissance : 21 juin X778",
+        "Yui Horie la double en japonais, Jād Saxton en anglais",
+        "Son nom japonais est « Sharuru » (Charle)"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Wendy Marvell",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Happy",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Chagot",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Natsu",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Lucy",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Gray",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Erza",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Yui Horie",
+      "voixAnglaise": "Jād Saxton",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 7
+    },
+    {
+      "id": "ft-gajeel-redfox",
+      "nom": "Gajeel Redfox",
+      "nomJaponais": "ガジル・レッドフォックス (Gajīru Reddofokkusu)",
+      "animeId": "fairy-tail",
+      "animeName": "Fairy Tail",
+      "auteurId": "hiro-mashima",
+      "auteurNom": "Hiro Mashima",
+      "studioId": "a1-pictures",
+      "studioNom": "A-1 Pictures",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Mage Dragon Slayer du Fer — Ancien membre de Phantom Lord",
+      "description": "Gajeel Redfox est un mage Dragon Slayer du Fer, d'abord ennemi de Fairy Tail au sein de la guilde Phantom Lord. Il est élevé par le dragon Metalicana, dont il hérite la magie. Au fil de l'histoire, il devient un allié et rejoint Fairy Tail. Il noue une relation particulière avec Levy, son amie et partenaire de mission. Sa nature rude et son sens de l'honneur le rendent à la fois redoutable et loyal. Il est l'un des rivaux de Natsu. Il devient l'un des piliers de la guilde.",
+      "pouvoirs": [
+        "Magie Dragon Slayer du Fer — transformation de son corps en fer",
+        "Ingestion de métal — récupère de l'énergie",
+        "Dragon Force",
+        "Combat au corps à corps"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il se nourrit de métal",
+        "Wataru Hatano le double en japonais, David Wald en anglais",
+        "Ancien membre de Phantom Lord, il rejoint ensuite Fairy Tail"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Metalicana",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Levy McGarden",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Natsu Dragneel",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Pantherlily",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Wataru Hatano",
+      "voixAnglaise": "David Wald",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 8
+    },
+    {
+      "id": "ft-laxus-dreyar",
+      "nom": "Laxus Dreyar",
+      "nomJaponais": "ラクサス・ドレアー (Rakusasu Dorēa)",
+      "animeId": "fairy-tail",
+      "animeName": "Fairy Tail",
+      "auteurId": "hiro-mashima",
+      "auteurNom": "Hiro Mashima",
+      "studioId": "a1-pictures",
+      "studioNom": "A-1 Pictures",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Mage Dragon Slayer de la Foudre — Petit-fils du maître de Fairy Tail",
+      "description": "Laxus Dreyar est le petit-fils de Makarov, maître de Fairy Tail, et un mage Dragon Slayer de la Foudre. Il est reconnu comme l'un des mages les plus puissants de la guilde. Ambitieux et orgueilleux, il entretient une relation tendue avec son grand-père. Son attitude le conduit à un conflit interne à Fairy Tail, avant qu'il ne retrouve sa place. Il finit par se révéler un allié précieux. Il dirige la Raijinshū, son équipe de fidèles compagnons. Il est l'un des personnages les plus respectés de la guilde.",
+      "pouvoirs": [
+        "Magie Dragon Slayer de la Foudre — attaques électriques",
+        "Dragon Force",
+        "Vitesse et réflexes",
+        "Combat au corps à corps"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il est le plus célèbre Dragon Slayer de la Foudre",
+        "Katsuyuki Konishi le double en japonais, Patrick Seitz en anglais",
+        "Il est l'héritier présumé du titre de maître de la guilde"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Makarov Dreyar",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Ivan Dreyar",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "la Raijinshū (Freed",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Evergreen",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Bickslow)",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Katsuyuki Konishi",
+      "voixAnglaise": "Patrick Seitz",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 9
+    },
+    {
+      "id": "ft-mirajane-strauss",
+      "nom": "Mirajane Strauss",
+      "nomJaponais": "ミラジェーン・ストラウス (Mirajēn Sutorausu)",
+      "animeId": "fairy-tail",
+      "animeName": "Fairy Tail",
+      "auteurId": "hiro-mashima",
+      "auteurNom": "Hiro Mashima",
+      "studioId": "a1-pictures",
+      "studioNom": "A-1 Pictures",
+      "age": "Non listée dans nos sources",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Mage de classe S — Serveuse et gestionnaire de la guilde",
+      "description": "Mirajane Strauss est une mage de classe S de Fairy Tail, qui tient le bar de la guilde. Aimable et accueillante, elle cache un caractère redoutable lorsqu'elle utilise sa magie. Elle est la sœur aînée d'Elfman et de Lisanna. Son passé de « Démone » lui vaut une réputation redoutée. Elle s'occupe de l'administration quotidienne de la guilde. Elle est profondément attachée à ses frère et sœur. Elle reste l'un des personnages les plus appréciés de la guilde.",
+      "pouvoirs": [
+        "Take Over : Satan Soul — transformation en démon",
+        "Combat au corps à corps",
+        "Sens de l'organisation"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle tient le bar de Fairy Tail",
+        "Ryōko Ōno la double en japonais, Monica Rial en anglais",
+        "Sa transformation Satan Soul est l'une des plus connues de la série"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Elfman Strauss",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Lisanna Strauss",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Makarov Dreyar",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Ryōko Ōno",
+      "voixAnglaise": "Monica Rial",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 10
+    },
+    {
+      "id": "ft-makarov-dreyar",
+      "nom": "Makarov Dreyar",
+      "nomJaponais": "マカロフ・ドレアー (Makarofu Dorēa)",
+      "animeId": "fairy-tail",
+      "animeName": "Fairy Tail",
+      "auteurId": "hiro-mashima",
+      "auteurNom": "Hiro Mashima",
+      "studioId": "a1-pictures",
+      "studioNom": "A-1 Pictures",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Troisième maître de Fairy Tail — Grand-père de Laxus",
+      "description": "Makarov Dreyar est le troisième maître de Fairy Tail et l'un des dix Saints Mages du royaume. Il est le grand-père de Laxus et considère chaque membre de la guilde comme un membre de sa famille. Malgré sa petite taille, il maîtrise la magie des géants et la Fairy Law. Il dirige la guilde avec bienveillance et fermeté. Il enseigne la solidarité et le soutien mutuel. Il est le gardien de l'esprit de Fairy Tail. Sa relation avec Laxus est l'un des fils conducteurs de l'histoire.",
+      "pouvoirs": [
+        "Magie des Géants — transformation en géant",
+        "Fairy Law — sort de très grande puissance",
+        "Leadership de la guilde"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il est le troisième maître de la guilde",
+        "Shinpachi Tsuji le double en japonais, R. Bruce Elliott en anglais",
+        "Il est l'un des dix Saints Mages du royaume"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Laxus Dreyar",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Ivan Dreyar",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "tous les membres de Fairy Tail",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Shinpachi Tsuji",
+      "voixAnglaise": "R. Bruce Elliott",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 11
+    },
+    {
+      "id": "ft-juvia-lockser",
+      "nom": "Juvia Lockser",
+      "nomJaponais": "ジュビア・ロクサー (Jubia Rokusā)",
+      "animeId": "fairy-tail",
+      "animeName": "Fairy Tail",
+      "auteurId": "hiro-mashima",
+      "auteurNom": "Hiro Mashima",
+      "studioId": "a1-pictures",
+      "studioNom": "A-1 Pictures",
+      "age": "17 ans",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Mage de l'eau de Fairy Tail — Ancienne membre de Phantom Lord",
+      "description": "Juvia Lockser est une mage de l'eau, d'abord membre de l'équipe Element 4 de la guilde Phantom Lord. Elle devient l'adversaire de Gray avant de tomber amoureuse de lui. Elle rejoint ensuite Fairy Tail, où elle trouve enfin des amis. Sa passion pour Gray est un ressort comique et touchant de la série. Elle est capable de transformer son corps en eau, ce qui la rend difficile à atteindre. Sa personnalité timide et intense évolue au contact de ses nouveaux compagnons. Elle devient une alliée fidèle et courageuse.",
+      "pouvoirs": [
+        "Magie de l'eau — contrôle et création d'eau",
+        "Corps d'eau — son corps peut devenir liquide",
+        "Attaques de vagues et de tourbillons"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle a le pouvoir de devenir de l'eau",
+        "Date de naissance : 7 juillet X767",
+        "Mai Nakahara la double en japonais, Brina Palencia en anglais",
+        "Sa taille est de 165 cm selon Game Rant"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Gray Fullbuster",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Phantom Lord",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Lucy",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Levy",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Erza",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Mai Nakahara",
+      "voixAnglaise": "Brina Palencia",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 12
+    },
+    {
+      "id": "ft-levy-mcgarden",
+      "nom": "Levy McGarden",
+      "nomJaponais": "レビィ・マクガーデン (Rebī Makugāden)",
+      "animeId": "fairy-tail",
+      "animeName": "Fairy Tail",
+      "auteurId": "hiro-mashima",
+      "auteurNom": "Hiro Mashima",
+      "studioId": "a1-pictures",
+      "studioNom": "A-1 Pictures",
+      "age": "Non listée dans nos sources",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Mage des Mots Solides — Membre de l'équipe Shadow Gear",
+      "description": "Levy McGarden est une mage de Fairy Tail, passionnée de lecture et grande amie de Lucy. Elle fait partie de l'équipe Shadow Gear avec Jet et Droy. Sa magie, les Mots Solides, lui permet de donner vie à des mots écrits. Intelligente et curieuse, elle excelle dans le déchiffrage d'énigmes et de codes. Elle noue une relation particulière avec Gajeel. Elle apporte souvent des solutions décisives dans les missions de recherche. Elle partage avec Lucy un goût pour la littérature.",
+      "pouvoirs": [
+        "Solid Script — mots écrits rendus réels",
+        "Décryptage — lecture de textes anciens",
+        "Résolution d'énigmes"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle est une grande lectrice",
+        "Mariya Ise la double en japonais, Kristi Kang en anglais",
+        "Elle est l'experte en codes et en énigmes de la guilde"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Lucy Heartfilia",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Gajeel Redfox",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Jet et Droy",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Mariya Ise",
+      "voixAnglaise": "Kristi Kang",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 13
+    },
+    {
+      "id": "ft-cana-alberona",
+      "nom": "Cana Alberona",
+      "nomJaponais": "カナ・アルベローナ (Kana Aberōna)",
+      "animeId": "fairy-tail",
+      "animeName": "Fairy Tail",
+      "auteurId": "hiro-mashima",
+      "auteurNom": "Hiro Mashima",
+      "studioId": "a1-pictures",
+      "studioNom": "A-1 Pictures",
+      "age": "Non listée dans nos sources",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Mage des cartes de Fairy Tail — Fille de Gildarts",
+      "description": "Cana Alberona est une mage de Fairy Tail connue pour sa passion pour l'alcool et pour la magie des cartes. Elle est la fille de Gildarts, ce qu'elle garde secret pendant longtemps. Elle utilise des cartes magiques pour prédire l'avenir et combattre. Elle poursuit un but personnel lié à son père. Elle est une amie proche de Lucy et de Mirajane. Son goût de la fête cache un caractère profond. Elle devient l'une des mages les plus fiables de la guilde.",
+      "pouvoirs": [
+        "Magie des cartes — attaques, divination et soutien",
+        "Fairy Glitter — sort puissant (appris plus tard)",
+        "Prédiction"
+      ],
+      "citations": [],
+      "trivia": [
+        "🃏 Elle utilise des cartes pour prédire l'avenir",
+        "Eri Kitamura la double en japonais, Jamie Marchi en anglais",
+        "Sa passion pour l'alcool est un trait récurrent"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Gildarts Clive",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Lucy Heartfilia",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Mirajane Strauss",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Eri Kitamura",
+      "voixAnglaise": "Jamie Marchi",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 14
+    },
+    {
+      "id": "ft-gildarts-clive",
+      "nom": "Gildarts Clive",
+      "nomJaponais": "ギルダーツ・クライヴ (Girudātsu Kuraibu)",
+      "animeId": "fairy-tail",
+      "animeName": "Fairy Tail",
+      "auteurId": "hiro-mashima",
+      "auteurNom": "Hiro Mashima",
+      "studioId": "a1-pictures",
+      "studioNom": "A-1 Pictures",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Mage de classe S — Considéré comme le plus puissant de Fairy Tail",
+      "description": "Gildarts Clive est un mage de classe S, réputé comme le plus puissant membre de Fairy Tail. Il voyage souvent en mission et revient rarement à la guilde. Sa magie lui permet de détruire presque n'importe quel objet. Il est le père de Cana, qu'il a longtemps laissée sans révéler leur lien. Il est un mentor pour de nombreux membres, dont Natsu. Il a brièvement dirigé la guilde en l'absence du maître. Il reste un symbole de force et de liberté.",
+      "pouvoirs": [
+        "Crush — destruction d'objets et de matières",
+        "Force physique exceptionnelle",
+        "Expérience du combat"
+      ],
+      "citations": [],
+      "trivia": [
+        "Sa magie le rend redoutable",
+        "Kazuhiko Inoue le double en japonais, Jason Douglas en anglais",
+        "Il est considéré comme le plus fort de la guilde"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Cana Alberona",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Natsu Dragneel et d'autres membres de la guilde",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Fairy Tail",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Kazuhiko Inoue",
+      "voixAnglaise": "Jason Douglas",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 15
+    },
+    {
+      "id": "ft-jellal-fernandes",
+      "nom": "Jellal Fernandes",
+      "nomJaponais": "ジェラール・フェルナンデス (Jerāru Fernandesu)",
+      "animeId": "fairy-tail",
+      "animeName": "Fairy Tail",
+      "auteurId": "hiro-mashima",
+      "auteurNom": "Hiro Mashima",
+      "studioId": "a1-pictures",
+      "studioNom": "A-1 Pictures",
+      "age": "Environ 18-20 ans (estimation)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Mage — Ami d'enfance d'Erza — Ancien antagoniste",
+      "description": "Jellal Fernandes est l'ami d'enfance d'Erza, rencontré lors de leur captivité. Il est d'abord présenté comme un antagoniste, lié à la Tour du Paradis. Son passé et ses actions influencent profondément le destin d'Erza. Il est ensuite impliqué dans plusieurs arcs de l'histoire. Sa quête de rédemption devient un fil conducteur de son parcours. Il fait partie des mages de grande puissance du royaume. Il garde une relation complexe avec Erza.",
+      "pouvoirs": [
+        "Magie du corps céleste — attaques de météores",
+        "Contrôle de l'espace",
+        "Sens stratégique"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son histoire est liée à la Tour du Paradis",
+        "Daisuke Namikawa le double en japonais, Robert McCollum en anglais",
+        "Sa taille est de 183 cm selon Game Rant"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Erza Scarlet",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Fairy Tail",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Tour du Paradis",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Daisuke Namikawa",
+      "voixAnglaise": "Robert McCollum",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 16
+    },
+    {
+      "id": "ft-zeref-dragneel",
+      "nom": "Zeref Dragneel",
+      "nomJaponais": "ゼレフ・ドラグニル (Zerefu Doraguniru)",
+      "animeId": "fairy-tail",
+      "animeName": "Fairy Tail",
+      "auteurId": "hiro-mashima",
+      "auteurNom": "Hiro Mashima",
+      "studioId": "a1-pictures",
+      "studioNom": "A-1 Pictures",
+      "age": "Plus de 400 ans",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Mage noir immortel — Principal antagoniste de la série",
+      "description": "Zeref Dragneel est un mage noir immortel, considéré comme le principal antagoniste de Fairy Tail. Il porte une malédiction qui entraîne la mort autour de lui. Son histoire est liée à celle de Mavis et de Natsu. Il cherche à mettre fin à sa propre existence. Il agit dans l'ombre pendant une grande partie du récit. Sa tragédie personnelle nuance son rôle d'ennemi. Il est le moteur de plusieurs événements majeurs de l'œuvre.",
+      "pouvoirs": [
+        "Magie noire d'Ankhselam — pouvoir de mort",
+        "Immortalité",
+        "Magie des démons"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il est l'antagoniste central de la série",
+        "Date de naissance : 19 juillet X300",
+        "Akira Ishida le double en japonais, Joel McDonald en anglais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Natsu Dragneel",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Mavis Vermillion",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Larcade",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Akira Ishida",
+      "voixAnglaise": "Joel McDonald",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 17
+    },
+    {
+      "id": "ft-mavis-vermillion",
+      "nom": "Mavis Vermillion",
+      "nomJaponais": "メイビス・ヴァーミリオン (Meibisu Vāmirion)",
+      "animeId": "fairy-tail",
+      "animeName": "Fairy Tail",
+      "auteurId": "hiro-mashima",
+      "auteurNom": "Hiro Mashima",
+      "studioId": "a1-pictures",
+      "studioNom": "A-1 Pictures",
+      "age": "Environ 100 ans (estimation)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Fondatrice et première maîtresse de Fairy Tail",
+      "description": "Mavis Vermillion est la fondatrice et la première maîtresse de la guilde Fairy Tail. Elle est connue sous le surnom de « Fairy Tactician ». Elle apparaît d'abord sous une forme spirituelle pour guider la guilde. Son histoire est liée à celle de Zeref. Elle porte un lourd secret. Elle représente l'esprit originel de la guilde. Elle reste une figure vénérée de Fairy Tail.",
+      "pouvoirs": [
+        "Fairy Sphere — barrière protectrice",
+        "Fairy Glitter — sort de lumière",
+        "Fairy Law — sort de très grande puissance"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle est la fondatrice de Fairy Tail",
+        "Mamiko Noto la double en japonais, Leah Clark en anglais",
+        "Date de naissance estimée : X673"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Fairy Tail",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Zeref Dragneel",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Larcade",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Mamiko Noto",
+      "voixAnglaise": "Leah Clark",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 18
+    },
+    {
+      "id": "ft-igneel",
+      "nom": "Igneel",
+      "nomJaponais": "イグニール (Igunīru)",
+      "animeId": "fairy-tail",
+      "animeName": "Fairy Tail",
+      "auteurId": "hiro-mashima",
+      "auteurNom": "Hiro Mashima",
+      "studioId": "a1-pictures",
+      "studioNom": "A-1 Pictures",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Roi Dragon du Feu — Père adoptif de Natsu",
+      "description": "Igneel est le Roi Dragon du Feu, qui a élevé Natsu et lui a enseigné la magie des Dragon Slayers. Il disparaît un jour sans prévenir, laissant Natsu à sa recherche. Sa présence imprègne tout le récit, même lorsqu'il est absent. Il est un symbole de la relation père-fils dans l'œuvre. Son destin est lié à la menace d'Acnologia. Il est respecté par les autres dragons. Son souvenir motive les actions de Natsu.",
+      "pouvoirs": [
+        "Feu de dragon",
+        "Force et durée de vie dragon",
+        "Enseignement de la magie des Dragon Slayers"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il est le père adoptif de Natsu",
+        "Hidekatsu Shibata le double en japonais ; Bob Magruder puis Jim White en anglais",
+        "Son destin est lié à Acnologia"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Natsu Dragneel",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Acnologia",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Hidekatsu Shibata",
+      "voixAnglaise": "Bob Magruder, puis Jim White",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 19
+    },
+    {
+      "id": "ft-acnologia",
+      "nom": "Acnologia",
+      "nomJaponais": "アクノロギア (Akunorogia)",
+      "animeId": "fairy-tail",
+      "animeName": "Fairy Tail",
+      "auteurId": "hiro-mashima",
+      "auteurNom": "Hiro Mashima",
+      "studioId": "a1-pictures",
+      "studioNom": "A-1 Pictures",
+      "age": "Plus de 400 ans",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Dragon destructeur — Ancien humain devenu Dragon Slayer — Antagoniste majeur",
+      "description": "Acnologia est un dragon destructeur, ancien humain devenu Dragon Slayer. Il est connu pour avoir décimé de nombreux dragons. Sa puissance est considérée comme l'une des plus grandes de la série. Il menace le monde entier. Son objectif reste longtemps mystérieux. Il apparaît à des moments décisifs de l'histoire. Il est l'une des figures les plus redoutées de Fairy Tail.",
+      "pouvoirs": [
+        "Magie Dragon Slayer — Lost Magic",
+        "Force de dragon",
+        "Souffle destructeur"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il est un antagoniste d'une puissance considérable",
+        "Kōsuke Toriumi le double en japonais",
+        "Sa taille sous forme de dragon est d'environ 18,9 m selon Game Rant"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "les dragons",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "dont Igneel",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "le royaume de Fiore",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Kōsuke Toriumi",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 20
+    }
+  ]
+}

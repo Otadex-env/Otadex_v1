@@ -1781,6 +1781,289 @@ class AppAssets {
     'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/My Hero Academia/Minoru Mineta/mha_mino4.jpeg',
   ];
 
+
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // AOT — L'Attaque des Titans   prefix: aot_
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // ignore: unused_field
+  static const String _aot = 'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans';
+
+  static const List<String> erenYeager = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Eren Yeager/aot_eren1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Eren Yeager/aot_eren2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Eren Yeager/aot_eren3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Eren Yeager/aot_eren4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Eren Yeager/aot_eren5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Eren Yeager/aot_eren6.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Eren Yeager/aot_eren7.jpeg',
+  ];
+  static const List<String> leviAckerman = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Levi Ackerman/aot_levi1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Levi Ackerman/aot_levi2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Levi Ackerman/aot_levi3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Levi Ackerman/aot_levi4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Levi Ackerman/aot_levi5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Levi Ackerman/aot_levi6.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Levi Ackerman/aot_levi7.jpeg',
+  ];
+  static const List<String> mikasaAckerman = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Mikasa Ackerman/aot_mika1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Mikasa Ackerman/aot_mika2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Mikasa Ackerman/aot_mika3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Mikasa Ackerman/aot_mika4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Mikasa Ackerman/aot_mika5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Mikasa Ackerman/aot_mika6.jpeg',
+  ];
+  static const List<String> arminArlert = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Armin Arlert/aot_armi1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Armin Arlert/aot_armi2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Armin Arlert/aot_armi3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Armin Arlert/aot_armi4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Armin Arlert/aot_armi5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Armin Arlert/aot_armi6.jpeg',
+  ];
+  static const List<String> erwinSmith = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Erwin Smith/aot_erwi1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Erwin Smith/aot_erwi2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Erwin Smith/aot_erwi3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Erwin Smith/aot_erwi4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Erwin Smith/aot_erwi5.jpeg',
+  ];
+  static const List<String> hangeZoe = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Hange Zoë/aot_hang1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Hange Zoë/aot_hang2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Hange Zoë/aot_hang3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Hange Zoë/aot_hang4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Hange Zoë/aot_hang5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Hange Zoë/aot_hang6.jpeg',
+  ];
+  static const List<String> reinerBraun = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Reiner Braun/aot_rein1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Reiner Braun/aot_rein2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Reiner Braun/aot_rein3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Reiner Braun/aot_rein4.jpeg',
+  ];
+  static const List<String> annieLeonhart = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Annie Leonhart/aot_anni1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Annie Leonhart/aot_anni2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Annie Leonhart/aot_anni3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Annie Leonhart/aot_anni4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Annie Leonhart/aot_anni5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Annie Leonhart/aot_anni6.jpeg',
+  ];
+  static const List<String> zekeYeager = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Zeke Yeager/aot_zeke1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Zeke Yeager/aot_zeke2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Zeke Yeager/aot_zeke3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Zeke Yeager/aot_zeke4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Zeke Yeager/aot_zeke5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Zeke Yeager/aot_zeke6.jpeg',
+  ];
+  static const List<String> jeanKirstein = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Jean Kirstein/aot_jean1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Jean Kirstein/aot_jean2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Jean Kirstein/aot_jean3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Jean Kirstein/aot_jean4.jpeg',
+  ];
+  static const List<String> historiaReiss = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Historia Reiss/aot_hist1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Historia Reiss/aot_hist2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Historia Reiss/aot_hist3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Historia Reiss/aot_hist4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Historia Reiss/aot_hist5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Historia Reiss/aot_hist6.jpeg',
+  ];
+  static const List<String> sashaBlouse = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Sasha Blouse/aot_sash1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Sasha Blouse/aot_sash2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Sasha Blouse/aot_sash3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Sasha Blouse/aot_sash4.jpeg',
+  ];
+  static const List<String> connieSpringer = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Connie Springer/aot_conn1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Connie Springer/aot_conn2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Connie Springer/aot_conn3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Connie Springer/aot_conn4.jpeg',
+  ];
+  static const List<String> bertholdtHoover = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Bertholdt Hoover/aot_bert1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Bertholdt Hoover/aot_bert2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Bertholdt Hoover/aot_bert3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Bertholdt Hoover/aot_bert4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Bertholdt Hoover/aot_bert5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Bertholdt Hoover/aot_bert6.jpeg',
+  ];
+  static const List<String> ymir = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Ymir/aot_ymir1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Ymir/aot_ymir2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Ymir/aot_ymir3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Ymir/aot_ymir4.jpeg',
+  ];
+  static const List<String> grishaYeager = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Grisha Yeager/aot_gris1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Grisha Yeager/aot_gris2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Grisha Yeager/aot_gris3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Grisha Yeager/aot_gris4.jpeg',
+  ];
+  static const List<String> falcoGrice = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Falco Grice/aot_falc1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Falco Grice/aot_falc2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Falco Grice/aot_falc3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Falco Grice/aot_falc4.jpeg',
+  ];
+  static const List<String> gabiBraun = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Gabi Braun/aot_gabi1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Gabi Braun/aot_gabi2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Gabi Braun/aot_gabi3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Gabi Braun/aot_gabi4.jpeg',
+  ];
+  static const List<String> pieckFinger = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Pieck Finger/aot_piec1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Pieck Finger/aot_piec2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Pieck Finger/aot_piec3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Pieck Finger/aot_piec4.jpeg',
+  ];
+  static const List<String> porcoGalliard = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Porco Galliard/aot_porc1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Porco Galliard/aot_porc2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Porco Galliard/aot_porc3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Attaque des Titans/Porco Galliard/aot_porc4.jpeg',
+  ];
+
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // FT — Fairy Tail   prefix: ft_
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // ignore: unused_field
+  static const String _ft = 'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail';
+
+  static const List<String> natsuDragneel = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Natsu Dragneel/ft_nats1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Natsu Dragneel/ft_nats2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Natsu Dragneel/ft_nats3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Natsu Dragneel/ft_nats4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Natsu Dragneel/ft_nats5.jpeg',
+  ];
+  static const List<String> lucyHeartfilia = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Lucy Heartfilia/ft_lucy1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Lucy Heartfilia/ft_lucy2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Lucy Heartfilia/ft_lucy3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Lucy Heartfilia/ft_lucy4.jpeg',
+  ];
+  static const List<String> erzaScarlet = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Erza Scarlet/ft_erza1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Erza Scarlet/ft_erza2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Erza Scarlet/ft_erza3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Erza Scarlet/ft_erza4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Erza Scarlet/ft_erza5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Erza Scarlet/ft_erza6.jpeg',
+  ];
+  static const List<String> grayFullbuster = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Gray Fullbuster/ft_gray1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Gray Fullbuster/ft_gray2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Gray Fullbuster/ft_gray3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Gray Fullbuster/ft_gray4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Gray Fullbuster/ft_gray5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Gray Fullbuster/ft_gray6.jpeg',
+  ];
+  static const List<String> happy = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Happy/ft_happ1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Happy/ft_happ2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Happy/ft_happ3.jpeg',
+  ];
+  static const List<String> wendyMarvell = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Wendy Marvell/ft_wend1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Wendy Marvell/ft_wend2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Wendy Marvell/ft_wend3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Wendy Marvell/ft_wend4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Wendy Marvell/ft_wend5.jpeg',
+  ];
+  static const List<String> carla = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Carla/ft_carl1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Carla/ft_carl2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Carla/ft_carl3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Carla/ft_carl4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Carla/ft_carl5.jpeg',
+  ];
+  static const List<String> gajeelRedfox = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Gajeel Redfox/ft_gaje1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Gajeel Redfox/ft_gaje2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Gajeel Redfox/ft_gaje3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Gajeel Redfox/ft_gaje4.jpeg',
+  ];
+  static const List<String> laxusDreyar = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Laxus Dreyar/ft_laxu1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Laxus Dreyar/ft_laxu2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Laxus Dreyar/ft_laxu3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Laxus Dreyar/ft_laxu4.jpeg',
+  ];
+  static const List<String> mirajaneStrauss = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Mirajane Strauss/ft_mira1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Mirajane Strauss/ft_mira2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Mirajane Strauss/ft_mira3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Mirajane Strauss/ft_mira4.jpeg',
+  ];
+  static const List<String> makarovDreyar = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Makarov Dreyar/ft_maka1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Makarov Dreyar/ft_maka2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Makarov Dreyar/ft_maka3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Makarov Dreyar/ft_maka4.jpeg',
+  ];
+  static const List<String> juviaLockser = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Juvia Lockser/ft_juvi1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Juvia Lockser/ft_juvi2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Juvia Lockser/ft_juvi3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Juvia Lockser/ft_juvi4.jpeg',
+  ];
+  static const List<String> levyMcGarden = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Levy McGarden/ft_levy1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Levy McGarden/ft_levy2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Levy McGarden/ft_levy3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Levy McGarden/ft_levy4.jpeg',
+  ];
+  static const List<String> canaAlberona = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Cana Alberona/ft_cana1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Cana Alberona/ft_cana2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Cana Alberona/ft_cana3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Cana Alberona/ft_cana4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Cana Alberona/ft_cana5.jpeg',
+  ];
+  static const List<String> gildartsClive = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Gildarts Clive/ft_gild1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Gildarts Clive/ft_gild2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Gildarts Clive/ft_gild3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Gildarts Clive/ft_gild4.jpeg',
+  ];
+  static const List<String> jellalFernandes = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Jellal Fernandes/ft_jell1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Jellal Fernandes/ft_jell2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Jellal Fernandes/ft_jell3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Jellal Fernandes/ft_jell4.jpeg',
+  ];
+  static const List<String> zerefDragneel = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Zeref Dragneel/ft_zere1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Zeref Dragneel/ft_zere2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Zeref Dragneel/ft_zere3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Zeref Dragneel/ft_zere4.jpeg',
+  ];
+  static const List<String> mavisVermillion = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Mavis Vermillion/ft_mavi1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Mavis Vermillion/ft_mavi2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Mavis Vermillion/ft_mavi3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Mavis Vermillion/ft_mavi4.jpeg',
+  ];
+  static const List<String> igneel = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Igneel/ft_igne1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Igneel/ft_igne2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Igneel/ft_igne3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Igneel/ft_igne4.jpeg',
+  ];
+  static const List<String> acnologia = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Acnologia/ft_acno1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Acnologia/ft_acno2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Acnologia/ft_acno3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Fairy Tail/Acnologia/ft_acno4.jpeg',
+  ];
+
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // Résolution par charId
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -2188,6 +2471,88 @@ class AppAssets {
         return denkiKaminari;
       case 'mha-minoru-mineta':
         return minoruMineta;
+      // AOT
+      case 'aot-eren-yeager':
+        return erenYeager;
+      case 'aot-levi-ackerman':
+        return leviAckerman;
+      case 'aot-mikasa-ackerman':
+        return mikasaAckerman;
+      case 'aot-armin-arlert':
+        return arminArlert;
+      case 'aot-erwin-smith':
+        return erwinSmith;
+      case 'aot-hange-zoe':
+        return hangeZoe;
+      case 'aot-reiner-braun':
+        return reinerBraun;
+      case 'aot-annie-leonhart':
+        return annieLeonhart;
+      case 'aot-zeke-yeager':
+        return zekeYeager;
+      case 'aot-jean-kirstein':
+        return jeanKirstein;
+      case 'aot-historia-reiss':
+        return historiaReiss;
+      case 'aot-sasha-blouse':
+        return sashaBlouse;
+      case 'aot-connie-springer':
+        return connieSpringer;
+      case 'aot-bertholdt-hoover':
+        return bertholdtHoover;
+      case 'aot-ymir':
+        return ymir;
+      case 'aot-grisha-yeager':
+        return grishaYeager;
+      case 'aot-falco-grice':
+        return falcoGrice;
+      case 'aot-gabi-braun':
+        return gabiBraun;
+      case 'aot-pieck-finger':
+        return pieckFinger;
+      case 'aot-porco-galliard':
+        return porcoGalliard;
+      // FT
+      case 'ft-natsu-dragneel':
+        return natsuDragneel;
+      case 'ft-lucy-heartfilia':
+        return lucyHeartfilia;
+      case 'ft-erza-scarlet':
+        return erzaScarlet;
+      case 'ft-gray-fullbuster':
+        return grayFullbuster;
+      case 'ft-happy':
+        return happy;
+      case 'ft-wendy-marvell':
+        return wendyMarvell;
+      case 'ft-carla':
+        return carla;
+      case 'ft-gajeel-redfox':
+        return gajeelRedfox;
+      case 'ft-laxus-dreyar':
+        return laxusDreyar;
+      case 'ft-mirajane-strauss':
+        return mirajaneStrauss;
+      case 'ft-makarov-dreyar':
+        return makarovDreyar;
+      case 'ft-juvia-lockser':
+        return juviaLockser;
+      case 'ft-levy-mcgarden':
+        return levyMcGarden;
+      case 'ft-cana-alberona':
+        return canaAlberona;
+      case 'ft-gildarts-clive':
+        return gildartsClive;
+      case 'ft-jellal-fernandes':
+        return jellalFernandes;
+      case 'ft-zeref-dragneel':
+        return zerefDragneel;
+      case 'ft-mavis-vermillion':
+        return mavisVermillion;
+      case 'ft-igneel':
+        return igneel;
+      case 'ft-acnologia':
+        return acnologia;
       default:
         return const [];
     }

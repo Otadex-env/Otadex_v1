@@ -1,0 +1,1223 @@
+{
+  "anime": {
+    "titre": "L'Attaque des Titans",
+    "titreJaponais": "進撃の巨人",
+    "synopsis": "Dans un monde où l'humanité vit retranchée derrière d'immenses murailles pour se protéger des Titans, des géants humanoïdes dévoreurs d'hommes, Eren Yeager voit sa ville natale détruite et sa mère tuée lors de l'irruption du Titan Colossal. Déterminé à exterminer tous les Titans, il s'engage dans le Bataillon d'exploration aux côtés de Mikasa Ackerman et Armin Arlert. Au fil de son combat, il découvre que la vérité sur les Titans et sur le monde extérieur est bien plus complexe — et plus sombre — qu'il ne l'imaginait.",
+    "genres": [
+      "Seinen",
+      "Action",
+      "Drame"
+    ],
+    "annee": 2013,
+    "episodes": {},
+    "studio": "Wit Studio",
+    "studioId": "wit-studio",
+    "auteur": "Hajime Isayama",
+    "auteurId": "hajime-isayama",
+    "editeur": "Kodansha — Bessatsu Shōnen Magazine",
+    "statut": "Terminé",
+    "type": "Seinen"
+  },
+  "creator": {
+    "nom": "Hajime Isayama",
+    "nomJaponais": "諫山 創",
+    "bio": "Hajime Isayama (諫山 創) est un mangaka japonais né le 29 août 1986 à Ōyama, dans la préfecture d'Ōita. Passionné de dessin dès l'enfance, il a travaillé à temps partiel dans un cybercafé avant son succès ; il a expliqué que l'attitude agressive d'un client lui a inspiré l'idée d'êtres incompréhensibles et menaçants, à l'origine des Titans. Son projet a d'abord été refusé, selon certaines sources par un autre magazine, avant d'être accepté par Kodansha ; les sources consultées divergent sur le détail de ces refus. Attack on Titan a démarré dans le Bessatsu Shōnen Magazine en septembre 2009 et a fait de lui l'un des auteurs japonais les plus lus au monde.",
+    "dateNaissance": "29 août 1986",
+    "nationalite": "Japonais",
+    "occupation": "Mangaka (auteur-dessinateur)",
+    "oeuvres": [
+      "2009–2021 — L'Attaque des Titans (Shingeki no Kyojin) — Kodansha — Bessatsu Shōnen Magazine ; 34 volumes",
+      "Hangeki no Tsubasa (反撃の翼) — one-shot antérieur ; éditeur et année à confirmer",
+      "Attack on Titan: Before the Fall — préquelle dérivée (roman et manga) ; supervisée par Isayama, écrite et dessinée par d'autres auteurs",
+      "Attack on Titan: No Regrets — manga dérivé centré sur Levi et Erwin ; réalisé par d'autres auteurs, supervisé par Isayama",
+      "Attack on Titan: Junior High — manga parodique réalisé par un autre auteur"
+    ],
+    "recompenses": [
+      "Prix Kodansha du manga, catégorie shōnen — 2011 pour L'Attaque des Titans",
+      "Plus de 100 millions d'exemplaires en circulation dans le monde",
+      "Autres distinctions — Non listées de façon vérifiée dans les sources consultées"
+    ],
+    "imageUrl": "",
+    "animeIds": [
+      "attack-on-titan"
+    ]
+  },
+  "studio": {
+    "nom": "Wit Studio",
+    "fondation": "2012, créé par d'anciens membres de Production I.G (saisons finales reprises par MAPPA, fondé en 2011 par Masao Maruyama)",
+    "fondateur": "D'anciens membres de Production I.G",
+    "description": "",
+    "productions": [
+      "Vinland Saga (saison 1)",
+      "Le Classement des rois",
+      "Jujutsu Kaisen (MAPPA)",
+      "Chainsaw Man (MAPPA)",
+      "Yuri!!! on Ice (MAPPA)"
+    ]
+  },
+  "characters": [
+    {
+      "id": "aot-eren-yeager",
+      "nom": "Eren Yeager",
+      "nomJaponais": "エレン・イェーガー (Eren Yēgā)",
+      "animeId": "attack-on-titan",
+      "animeName": "L'Attaque des Titans",
+      "auteurId": "hajime-isayama",
+      "auteurNom": "Hajime Isayama",
+      "studioId": "wit-studio",
+      "studioNom": "Wit Studio",
+      "age": "15 ans (an 850) ; 19 ans (an 854)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Protagoniste — Recrue puis soldat du Bataillon d'exploration — Détenteur du Titan Assaillant",
+      "description": "Eren Yeager est un garçon de la ville de Shiganshina qui voit sa mère dévorée par un Titan lorsque la Muraille Maria est brisée. Il jure alors d'exterminer tous les Titans et s'engage dans l'armée avec ses amis Mikasa et Armin. Impulsif, têtu et animé d'une rage constante, il rêve de liberté et de voir le monde au-delà des murs. Il découvre en lui un pouvoir de transformation en Titan qui change son destin et celui de l'humanité. Au fil du récit, ses convictions se durcissent et son rapport à la liberté devient de plus en plus radical. Le personnage évolue du jeune soldat plein d'espoir à une figure ambiguë, dont les choix marquent profondément l'histoire. Il reste le cœur émotionnel et narratif de toute la série.",
+      "pouvoirs": [
+        "Transformation en Titan — pouvoir hérité qui lui permet de se transformer en géant",
+        "Pouvoir de durcissement — capacité liée à ses talents de Titan",
+        "Combat au corps à corps et manœuvre tridimensionnelle",
+        "Volonté inébranlable — détermination qui motive chacun de ses actes"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il déclare vouloir exterminer tous les Titans après la destruction de sa ville",
+        "Yūki Kaji le double en japonais, Bryce Papenbrook en anglais",
+        "Son anniversaire est le 30 mars selon Epicstream",
+        "Le nom « Jaeger » (Jäger) est écrit « Yeager » dans la version anglaise : il signifie « chasseur » en allemand"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Mikasa Ackerman",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Armin Arlert",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Grisha Yeager",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Carla Yeager",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Zeke Yeager",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Levi Ackerman",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Erwin Smith",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Reiner Braun",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Bertholdt Hoover",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Annie Leonhart",
+          "type": "ennemi"
+        }
+      ],
+      "voixJaponaise": "Yūki Kaji",
+      "voixAnglaise": "Bryce Papenbrook",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 1
+    },
+    {
+      "id": "aot-levi-ackerman",
+      "nom": "Levi Ackerman",
+      "nomJaponais": "リヴァイ・アッカーマン (Rivai Akkāman)",
+      "animeId": "attack-on-titan",
+      "animeName": "L'Attaque des Titans",
+      "auteurId": "hajime-isayama",
+      "auteurNom": "Hajime Isayama",
+      "studioId": "wit-studio",
+      "studioNom": "Wit Studio",
+      "age": "Entre 30 et 33 ans (source : Epicstream)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Soldat le plus fort de l'humanité — Capitaine de l'escouade Levi du Bataillon d'exploration",
+      "description": "Levi Ackerman est le capitaine de l'escouade d'élite du Bataillon d'exploration et passe pour le soldat le plus fort de l'humanité. Il est connu pour sa maîtrise de la manœuvre tridimensionnelle et sa capacité à tuer des Titans à une vitesse hors du commun. D'un tempérament froid, exigeant et obsédé par la propreté, il se montre rude avec ses subordonnés, mais profondément loyal envers ses camarades. Il a grandi dans les bas-fonds de la ville souterraine avant de rejoindre l'armée. Il prend Eren sous sa surveillance et l'entraîne. Il porte en lui les pertes de ses compagnons, qu'il cache sous une façade stoïque. Il est devenu l'un des personnages les plus populaires de la série.",
+      "pouvoirs": [
+        "Manœuvre tridimensionnelle — maîtrise exceptionnelle de l'équipement",
+        "Force et vitesse hors du commun — liées à sa lignée Ackerman",
+        "Combat à l'épée — élimine des Titans en un temps record",
+        "Sang-froid et sens tactique"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il est célèbre pour sa manie de la propreté",
+        "Son anniversaire est le 25 décembre selon Epicstream",
+        "Hiroshi Kamiya le double en japonais, Matthew Mercer en anglais",
+        "Sa taille officielle est de 160 cm, ce qui contraste avec sa réputation de soldat le plus fort"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Erwin Smith",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Eren Yeager",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Mikasa Ackerman",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Hange Zoë",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Jean",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Connie",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Sasha",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Kenny Ackerman",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Hiroshi Kamiya",
+      "voixAnglaise": "Matthew Mercer",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 2
+    },
+    {
+      "id": "aot-mikasa-ackerman",
+      "nom": "Mikasa Ackerman",
+      "nomJaponais": "ミカサ・アッカーマン (Mikasa Akkāman)",
+      "animeId": "attack-on-titan",
+      "animeName": "L'Attaque des Titans",
+      "auteurId": "hajime-isayama",
+      "auteurNom": "Hajime Isayama",
+      "studioId": "wit-studio",
+      "studioNom": "Wit Studio",
+      "age": "15 ans (an 850) ; 19 ans (an 854)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Soldat d'élite du Bataillon — Protectrice d'Eren — Lignée Ackerman",
+      "description": "Mikasa Ackerman est l'amie d'enfance d'Eren, recueillie par sa famille après un drame, et sa protectrice acharnée. Silencieuse, disciplinée et d'une grande force, elle termine première de sa promotion de cadets. Son attachement à Eren, qui lui a offert son écharpe rouge, guide toutes ses décisions. Elle appartient à la lignée Ackerman, dont les membres possèdent des capacités de combat exceptionnelles. Au sein du Bataillon d'exploration, elle devient l'un des meilleurs soldats d'élite. Sa loyauté envers ses amis est sans faille, ce qui la place parfois face à des choix douloureux. Elle est l'un des personnages féminins les plus marquants de la série.",
+      "pouvoirs": [
+        "Force et réflexes surhumains — liés à son éveil Ackerman",
+        "Manœuvre tridimensionnelle — maîtrise de haut niveau",
+        "Combat à l'épée",
+        "Résistance et détermination"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son écharpe rouge, offerte par Eren, est un objet emblématique",
+        "Son anniversaire est le 10 février selon Epicstream",
+        "Yui Ishikawa la double en japonais, Trina Nishimura en anglais",
+        "Elle est première de sa promotion de cadets"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Eren Yeager",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Armin Arlert",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Carla et Grisha Yeager",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Jean",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Connie",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Sasha",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Levi",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Yui Ishikawa",
+      "voixAnglaise": "Trina Nishimura (orthographié « Trisha » dans certaines sources)",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 3
+    },
+    {
+      "id": "aot-armin-arlert",
+      "nom": "Armin Arlert",
+      "nomJaponais": "アルミン・アルレルト (Arumin Arureruto)",
+      "animeId": "attack-on-titan",
+      "animeName": "L'Attaque des Titans",
+      "auteurId": "hajime-isayama",
+      "auteurNom": "Hajime Isayama",
+      "studioId": "wit-studio",
+      "studioNom": "Wit Studio",
+      "age": "15 ans (an 850) ; 19 ans (an 854)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Stratège du Bataillon d'exploration — Ami d'enfance d'Eren et Mikasa",
+      "description": "Armin Arlert est le troisième membre du trio d'amis d'enfance avec Eren et Mikasa. Frêle et réservé, il est brillant, lecteur passionné et doté d'une intelligence stratégique remarquable. C'est lui qui a donné à Eren le goût de l'exploration en lui parlant d'un livre sur le monde extérieur. Il manque de confiance en lui sur le plan physique, mais compense par sa capacité d'analyse et de persuasion. Il se révèle un tacticien décisif dans de nombreuses batailles du Bataillon d'exploration. Il hérite aussi d'une responsabilité importante au cours du récit. Il incarne l'idéal de l'intelligence au service du collectif.",
+      "pouvoirs": [
+        "Stratégie et analyse — élabore des plans décisifs",
+        "Persuasion et négociation",
+        "Manœuvre tridimensionnelle — appliquée avec précision",
+        "Connaissances du monde extérieur — passion pour les livres"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il rêve de voir l'océan, qu'il a découvert dans un livre",
+        "Son anniversaire est le 3 novembre selon Epicstream",
+        "Marina Inoue le double en japonais, Josh Grelle en anglais",
+        "Il est le stratège du trio"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Eren Yeager",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Mikasa Ackerman",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "figure familiale de son enfance",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Jean",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Connie",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Sasha",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Erwin Smith",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Marina Inoue",
+      "voixAnglaise": "Josh Grelle",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 4
+    },
+    {
+      "id": "aot-erwin-smith",
+      "nom": "Erwin Smith",
+      "nomJaponais": "エルヴィン・スミス (Eruvin Sumisu)",
+      "animeId": "attack-on-titan",
+      "animeName": "L'Attaque des Titans",
+      "auteurId": "hajime-isayama",
+      "auteurNom": "Hajime Isayama",
+      "studioId": "wit-studio",
+      "studioNom": "Wit Studio",
+      "age": "Entre 35 et 39 ans (source : Epicstream)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Commandant du Bataillon d'exploration — Stratège charismatique",
+      "description": "Erwin Smith est le treizième commandant du Bataillon d'exploration, chargé de mener les expéditions hors des murs. Stratège brillant, charismatique et déterminé, il sait mobiliser les hommes autour d'un objectif commun. Il est prêt à sacrifier beaucoup pour atteindre la vérité sur le monde et les Titans. Il impose un sens du devoir et de la responsabilité, mais cache des motivations profondément personnelles. Son rapport au sacrifice nourrit des débats moraux dans la série. Il entretient une relation de confiance avec Levi. Il est un exemple de chef de guerre à la fois admirable et ambigu.",
+      "pouvoirs": [
+        "Stratégie militaire — plans d'expédition à grande échelle",
+        "Charisme et leadership",
+        "Manœuvre tridimensionnelle",
+        "Sens du sacrifice"
+      ],
+      "citations": [],
+      "trivia": [
+        "Sa devise est « Offrez vos cœurs » (Shinzō wo sasageyo)",
+        "Son anniversaire est le 14 octobre selon Epicstream",
+        "Daisuke Ōno le double en japonais",
+        "Il est le treizième commandant du Bataillon d'exploration"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Levi Ackerman",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Hange Zoë",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Dot Pixis",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Eren Yeager",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Daisuke Ōno",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 5
+    },
+    {
+      "id": "aot-hange-zoe",
+      "nom": "Hange Zoë",
+      "nomJaponais": "ハンジ・ゾエ (Hanji Zoe)",
+      "animeId": "attack-on-titan",
+      "animeName": "L'Attaque des Titans",
+      "auteurId": "hajime-isayama",
+      "auteurNom": "Hajime Isayama",
+      "studioId": "wit-studio",
+      "studioNom": "Wit Studio",
+      "age": "Entre 29 et 31 ans (source : Epicstream)",
+      "sexe": "Non précisé de façon stable (le personnage est traité au féminin ou au neutre selon les adaptations)",
+      "statut": "Vivant",
+      "rang": "Chef d'escouade puis commandant du Bataillon — Chercheuse passionnée par les Titans",
+      "description": "Hange Zoë (aussi orthographié Hanji) est la chef de l'escouade de recherche du Bataillon d'exploration, passionnée par l'étude des Titans. Enthousiaste, excentrique et d'une curiosité sans limite, elle capture des Titans vivants pour les étudier. Sa personnalité extravagante contraste avec une grande intelligence et un sens aigu de la stratégie. Elle devient l'un des piliers du Bataillon et soutient Eren dans ses périodes difficiles. Sa relation avec les Titans qu'elle étudie, notamment Sawney et Bean, est à la fois comique et touchante. Elle reste très attachée à ses camarades. Elle est un personnage important de l'équipe de commandement.",
+      "pouvoirs": [
+        "Recherche scientifique — étude des Titans",
+        "Manœuvre tridimensionnelle",
+        "Invention — conçoit des équipements pour le Bataillon",
+        "Leadership d'escouade"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle baptise ses Titans de recherche avec des noms affectueux",
+        "Son anniversaire est le 5 septembre selon Epicstream",
+        "Romi Park la double en japonais, Jessica Calvello en anglais",
+        "Le nom est écrit « Hange » ou « Hanji » selon les éditions"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Erwin Smith",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Levi Ackerman",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Eren Yeager",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Armin Arlert",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Sawney et Bean",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Romi Park (Romi Paku)",
+      "voixAnglaise": "Jessica Calvello",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 6
+    },
+    {
+      "id": "aot-reiner-braun",
+      "nom": "Reiner Braun",
+      "nomJaponais": "ライナー・ブラウン (Rainā Buraun)",
+      "animeId": "attack-on-titan",
+      "animeName": "L'Attaque des Titans",
+      "auteurId": "hajime-isayama",
+      "auteurNom": "Hajime Isayama",
+      "studioId": "wit-studio",
+      "studioNom": "Wit Studio",
+      "age": "17 ans (an 850) ; 21 ans (an 854)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Guerrier du Pays de Marley — Détenteur du Titan Cuirassé — Ancien cadet infiltré",
+      "description": "Reiner Braun est un cadet de l'armée qui s'impose comme un camarade fiable et un chef naturel. Il cache en réalité une identité de guerrier du Pays de Marley, détenteur du Titan Cuirassé, venu infiltrer les murs. Son dédoublement entre le soldat dévoué et le guerrier en mission le tourmente profondément. Il porte un lourd sentiment de culpabilité qui nourrit sa fragilité psychologique. Sa relation avec Eren est à la fois celle d'un ennemi et d'un frère d'armes. Son parcours est l'un des plus complexes de la série. Il est l'un des personnages les plus discutés de l'œuvre.",
+      "pouvoirs": [
+        "Titan Cuirassé — transformation recouverte d'une armure durcie",
+        "Endurance et résistance exceptionnelles",
+        "Force physique",
+        "Entraînement de guerrier de Marley"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il détient le Titan Cuirassé, doté d'une armure durcie",
+        "Son anniversaire est le 1er août selon Epicstream",
+        "Yoshimasa Hosoya le double en japonais, Robert McCollum en anglais",
+        "Son double rôle de soldat et de guerrier est au cœur de son personnage"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Bertholdt Hoover",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Annie Leonhart",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Karina Braun",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Gabi Braun",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Eren Yeager",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Zeke Yeager",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Yoshimasa Hosoya",
+      "voixAnglaise": "Robert McCollum",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 7
+    },
+    {
+      "id": "aot-annie-leonhart",
+      "nom": "Annie Leonhart",
+      "nomJaponais": "アニ・レオンハート (Ani Reonhāto)",
+      "animeId": "attack-on-titan",
+      "animeName": "L'Attaque des Titans",
+      "auteurId": "hajime-isayama",
+      "auteurNom": "Hajime Isayama",
+      "studioId": "wit-studio",
+      "studioNom": "Wit Studio",
+      "age": "16 ans (an 850) ; 20 ans (an 854)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Guerrière du Pays de Marley — Détentrice du Titan Féminin — Ancienne cadette",
+      "description": "Annie Leonhart est une cadette solitaire et réservée, sortie parmi les premiers de sa promotion, qui préfère les postes de la Police militaire. Elle est en réalité une guerrière de Marley, détentrice du Titan Féminin. Son rapport au combat est froid et efficace, grâce à un entraînement de style martial. Elle noue une relation ambiguë avec Eren, avec qui elle s'est entraînée. Elle porte un lourd fardeau lié à sa mission et à ses sentiments. Son arc est l'un des plus marquants de la saison 1. Elle reste un personnage central des révélations de la série.",
+      "pouvoirs": [
+        "Titan Féminin — transformation agile et puissante",
+        "Combat à mains nues — style de combat appris auprès de son père",
+        "Cristallisation — capacité de s'envelopper dans du cristal",
+        "Furtivité et discipline"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle utilise un style de combat appris de son père",
+        "Son anniversaire est le 22 mars selon Epicstream",
+        "Yū Shimamura la double en japonais, Lauren Landa en anglais",
+        "Sa capacité à s'envelopper de cristal est l'un des grands moments de la saison 1"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Reiner Braun",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Bertholdt Hoover",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "relation importante dans son histoire",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Eren Yeager",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Armin Arlert",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Yū Shimamura",
+      "voixAnglaise": "Lauren Landa",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 8
+    },
+    {
+      "id": "aot-zeke-yeager",
+      "nom": "Zeke Yeager",
+      "nomJaponais": "ジーク・イェーガー (Jīku Yēgā)",
+      "animeId": "attack-on-titan",
+      "animeName": "L'Attaque des Titans",
+      "auteurId": "hajime-isayama",
+      "auteurNom": "Hajime Isayama",
+      "studioId": "wit-studio",
+      "studioNom": "Wit Studio",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Chef des Guerriers — Détenteur du Titan Bestial — Demi-frère d'Eren",
+      "description": "Zeke Yeager est le chef des Guerriers de Marley et le détenteur du Titan Bestial, connu pour sa capacité à lancer des projectiles avec une précision redoutable. Il est le demi-frère aîné d'Eren, ce qui lie les deux familles. Il porte un regard désabusé sur le monde et sur le sort des Eldiens. Il a un lien complexe avec son père Grisha et avec sa propre mission. Il apparaît dans l'arc de la saison 3 comme une menace majeure pour le Bataillon. Il nourrit un projet qui bouleverse le cours de l'histoire. Il est l'un des antagonistes les plus importants de l'œuvre.",
+      "pouvoirs": [
+        "Titan Bestial — contrôle des projectiles",
+        "Cri de Titan — capacité de commandement sur des Titans",
+        "Stratégie et manipulation",
+        "Lancer de précision"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son Titan Bestial est reconnaissable à son aspect de grand singe",
+        "Takehito Koyasu le double en japonais",
+        "Son projet est l'un des fils conducteurs de la dernière partie de la série"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Eren Yeager",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Grisha Yeager",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Reiner Braun",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Pieck Finger",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Porco Galliard",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Levi Ackerman",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Erwin Smith",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Takehito Koyasu",
+      "voixAnglaise": "Ernesto Jason Liebrecht (orthographié « Zeke Jaeger » dans certaines sources)",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 9
+    },
+    {
+      "id": "aot-jean-kirstein",
+      "nom": "Jean Kirstein",
+      "nomJaponais": "ジャン・キルシュタイン (Jan Kirushutain)",
+      "animeId": "attack-on-titan",
+      "animeName": "L'Attaque des Titans",
+      "auteurId": "hajime-isayama",
+      "auteurNom": "Hajime Isayama",
+      "studioId": "wit-studio",
+      "studioNom": "Wit Studio",
+      "age": "15 ans (an 850) ; 19 ans (an 854)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Soldat du Bataillon d'exploration — Rival et allié d'Eren — Admirateur de Mikasa",
+      "description": "Jean Kirstein est un cadet ambitieux qui rêve d'intégrer la Police militaire pour vivre en sécurité à l'intérieur des murs. Franc et direct, il est souvent en conflit avec Eren, dont il critique la témérité. Il est attiré par Mikasa. Après avoir vu la mort d'un camarade, il décide de rejoindre le Bataillon d'exploration. Il se révèle un soldat courageux et un leader naturel. Il garde un sens réaliste qui équilibre le groupe. Il devient l'un des personnages les plus respectés de la série.",
+      "pouvoirs": [
+        "Manœuvre tridimensionnelle — maîtrise de haut niveau",
+        "Esprit tactique et sens de l'observation",
+        "Leadership naturel"
+      ],
+      "citations": [],
+      "trivia": [
+        "On le surnomme « Face de cheval » en raison de son visage allongé",
+        "Son anniversaire est le 7 avril selon Epicstream",
+        "Kishō Taniyama le double en japonais, Mike McFarland en anglais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Eren Yeager",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Mikasa Ackerman",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Armin",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Connie",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Sasha",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Marco Bott",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Kishō Taniyama",
+      "voixAnglaise": "Mike McFarland",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 10
+    },
+    {
+      "id": "aot-historia-reiss",
+      "nom": "Historia Reiss",
+      "nomJaponais": "ヒストリア・レイス (Hisutoria Reisu)",
+      "animeId": "attack-on-titan",
+      "animeName": "L'Attaque des Titans",
+      "auteurId": "hajime-isayama",
+      "auteurNom": "Hajime Isayama",
+      "studioId": "wit-studio",
+      "studioNom": "Wit Studio",
+      "age": "Non listée dans nos sources",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Ancienne cadette (alias Krista Lenz) — Héritière de la lignée royale",
+      "description": "Historia Reiss est une cadette connue sous le nom de Krista Lenz, appréciée de tous pour sa gentillesse. Elle cache en réalité son appartenance à la lignée royale. Sa jeunesse a été marquée par l'abandon et par un manque d'affection. Elle apprend à affirmer sa véritable identité et à choisir son propre chemin. Elle noue une relation profonde avec Ymir, qui l'encourage à vivre pour elle-même. Elle prend des décisions importantes pour l'avenir du royaume. Elle est l'une des figures féminines centrales de la série.",
+      "pouvoirs": [
+        "Légitimité royale — héritière de la lignée Reiss",
+        "Courage et gentillesse",
+        "Leadership politique"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle vit d'abord sous le nom de « Krista Lenz »",
+        "Shiori Mikami la double en japonais",
+        "Sa relation avec Ymir est l'un des moments forts de la série"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Ymir",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Rod Reiss",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Eren",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Sasha",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Connie",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Shiori Mikami",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 11
+    },
+    {
+      "id": "aot-sasha-blouse",
+      "nom": "Sasha Blouse",
+      "nomJaponais": "サシャ・ブラウス (Sasha Burausu)",
+      "animeId": "attack-on-titan",
+      "animeName": "L'Attaque des Titans",
+      "auteurId": "hajime-isayama",
+      "auteurNom": "Hajime Isayama",
+      "studioId": "wit-studio",
+      "studioNom": "Wit Studio",
+      "age": "16 ans (an 850) ; 20 ans (an 854)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Soldat du Bataillon d'exploration — Archère — « La fille aux patates »",
+      "description": "Sasha Blouse est une cadette originaire d'un village de chasseurs, connue pour son appétit sans fin. Elle apporte de l'humour dans les moments de tension et célèbre chaque repas avec ferveur. Elle est une archère très habile, habituée à chasser pour survivre. Elle témoigne d'une grande franchise et d'une sensibilité sincère envers ses amis. Elle devient un membre précieux du Bataillon d'exploration. Elle noue une amitié particulière avec Connie. Elle reste l'un des personnages les plus appréciés de la série.",
+      "pouvoirs": [
+        "Tir à l'arc — chasseuse hors pair",
+        "Sens de l'observation — habituée à la vie en forêt",
+        "Manœuvre tridimensionnelle",
+        "Endurance"
+      ],
+      "citations": [],
+      "trivia": [
+        "On la surnomme « la fille aux patates » après un épisode célèbre de ses débuts",
+        "Son anniversaire est le 26 juillet selon Epicstream",
+        "Yū Kobayashi la double en japonais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Connie Springer",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Jean Kirstein",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Armin Arlert",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Mikasa",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Eren",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "« la fille aux patates »",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Yū Kobayashi",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 12
+    },
+    {
+      "id": "aot-connie-springer",
+      "nom": "Connie Springer",
+      "nomJaponais": "コニー・スプリンガー (Konī Supuringā)",
+      "animeId": "attack-on-titan",
+      "animeName": "L'Attaque des Titans",
+      "auteurId": "hajime-isayama",
+      "auteurNom": "Hajime Isayama",
+      "studioId": "wit-studio",
+      "studioNom": "Wit Studio",
+      "age": "15 ans (an 850) ; 19 ans (an 854)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Soldat du Bataillon d'exploration — Ami proche de Sasha",
+      "description": "Connie Springer est un cadet vif et joyeux, souvent à l'origine des moments comiques. Il se lie d'amitié avec Sasha, avec qui il partage plusieurs aventures. Sous son attitude légère, il montre une grande loyauté envers ses camarades. Il vit une épreuve personnelle majeure en retrouvant son village. Il prouve sa valeur au sein du Bataillon d'exploration. Il devient un soldat courageux et fiable. Il fait partie du noyau d'amis proches d'Eren.",
+      "pouvoirs": [
+        "Manœuvre tridimensionnelle — rapide et agile",
+        "Esprit vif et humour",
+        "Loyauté envers ses amis"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il est l'un des personnages comiques de la série",
+        "Son anniversaire est le 2 mai selon Epicstream",
+        "Hiro Shimono le double en japonais, Clifford Chapin en anglais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Sasha Blouse",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Jean",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Armin",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Mikasa",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "sa mère et son village",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Hiro Shimono",
+      "voixAnglaise": "Clifford Chapin",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 13
+    },
+    {
+      "id": "aot-bertholdt-hoover",
+      "nom": "Bertholdt Hoover",
+      "nomJaponais": "ベルトルト・フーバー (Berutoruto Fūbā)",
+      "animeId": "attack-on-titan",
+      "animeName": "L'Attaque des Titans",
+      "auteurId": "hajime-isayama",
+      "auteurNom": "Hajime Isayama",
+      "studioId": "wit-studio",
+      "studioNom": "Wit Studio",
+      "age": "17 ans (an 850)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Guerrier du Pays de Marley — Détenteur du Titan Colossal — Ancien cadet infiltré",
+      "description": "Bertholdt Hoover est un cadet timide et effacé, très proche de Reiner. Il est en réalité le détenteur du Titan Colossal, celui qui a brisé la Muraille Maria. Il vit son infiltration avec un lourd sentiment de culpabilité. Son comportement discret cache une capacité d'analyse remarquable. Il suit Reiner et Annie dans leur mission. Sa dualité entre ami et ennemi nourrit sa complexité. Il est l'un des personnages les plus tragiques de l'histoire.",
+      "pouvoirs": [
+        "Titan Colossal — transformation de taille gigantesque",
+        "Vapeur brûlante — émission de chaleur intense lors de sa transformation",
+        "Intelligence tactique"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il détient le Titan Colossal, le plus grand de tous",
+        "Son anniversaire est le 30 décembre selon Epicstream",
+        "Tomohisa Hashizume le double en japonais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Reiner Braun",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Annie Leonhart",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Armin Arlert",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Eren Yeager",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Tomohisa Hashizume",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 14
+    },
+    {
+      "id": "aot-ymir",
+      "nom": "Ymir",
+      "nomJaponais": "ユミル (Yumiru)",
+      "animeId": "attack-on-titan",
+      "animeName": "L'Attaque des Titans",
+      "auteurId": "hajime-isayama",
+      "auteurNom": "Hajime Isayama",
+      "studioId": "wit-studio",
+      "studioNom": "Wit Studio",
+      "age": "Non listée dans nos sources",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Ancienne cadette — Détentrice du Titan Mâchoire — Compagne de Krista",
+      "description": "Ymir est une cadette au caractère franc et rebelle, qui vit selon ses propres règles. Elle est très proche de Krista, qu'elle encourage à être elle-même. Elle cache un pouvoir de Titan, la rendant capable de se transformer. Elle a vécu une longue captivité avant de rejoindre l'armée. Son parcours est marqué par la loyauté à son amie. Son choix de rejoindre les Guerriers marque un tournant. Elle reste l'un des personnages les plus complexes du récit.",
+      "pouvoirs": [
+        "Titan Mâchoire — forme rapide à mâchoire puissante",
+        "Combat acharné",
+        "Sens de l'observation"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son Titan est le Titan Mâchoire",
+        "Saki Fujita la double en japonais",
+        "Sa relation avec Historia est un fil rouge de la série"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Historia Reiss",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Reiner",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Bertholdt",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Annie",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Saki Fujita",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 15
+    },
+    {
+      "id": "aot-grisha-yeager",
+      "nom": "Grisha Yeager",
+      "nomJaponais": "グリシャ・イェーガー (Gurisha Yēgā)",
+      "animeId": "attack-on-titan",
+      "animeName": "L'Attaque des Titans",
+      "auteurId": "hajime-isayama",
+      "auteurNom": "Hajime Isayama",
+      "studioId": "wit-studio",
+      "studioNom": "Wit Studio",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Père d'Eren — Médecin de Shiganshina — Détenteur du Titan Assaillant avant Eren",
+      "description": "Grisha Yeager est un médecin de la ville de Shiganshina, père d'Eren et époux de Carla. Il cache un passé complexe lié à l'histoire des Eldiens. Il transmet à son fils une clé qui sera décisive. Son rôle dans l'histoire est central pour comprendre l'origine des événements. Il est une figure à la fois discrète et déterminante. Il apparaît dans plusieurs retours en arrière importants. Son destin est étroitement lié à celui de ses enfants.",
+      "pouvoirs": [
+        "Titan Assaillant (avant Eren) — pouvoir transmis à son fils",
+        "Médecine — profession à Shiganshina",
+        "Connaissance de l'histoire du monde"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il est médecin de profession",
+        "Hiroshi Tsuchida le double en japonais",
+        "Son rôle est essentiel pour comprendre l'intrigue"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Eren Yeager",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Zeke Yeager",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Carla Yeager",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Mikasa Ackerman",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Hiroshi Tsuchida",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 16
+    },
+    {
+      "id": "aot-falco-grice",
+      "nom": "Falco Grice",
+      "nomJaponais": "ファルコ・グライス (Faruko Guraisu)",
+      "animeId": "attack-on-titan",
+      "animeName": "L'Attaque des Titans",
+      "auteurId": "hajime-isayama",
+      "auteurNom": "Hajime Isayama",
+      "studioId": "wit-studio",
+      "studioNom": "Wit Studio",
+      "age": "Non listée dans nos sources (adolescent)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Apprenti guerrier de Marley — Camarade de Gabi",
+      "description": "Falco Grice est un jeune apprenti guerrier du Pays de Marley, ami de Gabi. Sensible et réfléchi, il hésite face aux ordres qu'on lui impose. Il cherche à protéger ses proches et à comprendre la réalité de ceux qu'il combat. Il noue une relation particulière avec Gabi. Il se retrouve au centre d'événements qui le dépassent. Sa sensibilité contraste avec celle des Guerriers. Il joue un rôle important dans la dernière partie de la série.",
+      "pouvoirs": [
+        "Aptitudes de guerrier en formation",
+        "Sens de l'empathie"
+      ],
+      "citations": [],
+      "trivia": [
+        "Natsuki Hanae le double en japonais, Bryan Baugus en anglais",
+        "Il est introduit dans la saison finale"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Gabi Braun",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Colt Grice",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Reiner Braun",
+          "type": "mentor"
+        }
+      ],
+      "voixJaponaise": "Natsuki Hanae",
+      "voixAnglaise": "Bryan Baugus",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 17
+    },
+    {
+      "id": "aot-gabi-braun",
+      "nom": "Gabi Braun",
+      "nomJaponais": "ガビ・ブラウン (Gabi Buraun)",
+      "animeId": "attack-on-titan",
+      "animeName": "L'Attaque des Titans",
+      "auteurId": "hajime-isayama",
+      "auteurNom": "Hajime Isayama",
+      "studioId": "wit-studio",
+      "studioNom": "Wit Studio",
+      "age": "Non listée dans nos sources (adolescente)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Apprentie guerrière de Marley — Cousine de Reiner",
+      "description": "Gabi Braun est une jeune apprentie guerrière de Marley, cousine de Reiner. Ambitieuse et déterminée, elle veut devenir le prochain Titan Cuirassé. Elle nourrit une foi profonde dans la cause de Marley. Son tempérament impétueux la pousse à agir sans réfléchir. Elle apprend progressivement à voir le monde autrement. Sa trajectoire est marquée par ses choix et leurs conséquences. Elle est un personnage clé de la saison finale.",
+      "pouvoirs": [
+        "Tir et entraînement de guerrière",
+        "Détermination"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son anniversaire est le 14 avril selon Epicstream",
+        "Ayane Sakura la double en japonais, Lindsay Seidel en anglais",
+        "Sa taille est de 138 cm"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Reiner Braun",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Falco Grice",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Zeke Yeager",
+          "type": "mentor"
+        }
+      ],
+      "voixJaponaise": "Ayane Sakura",
+      "voixAnglaise": "Lindsay Seidel",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 18
+    },
+    {
+      "id": "aot-pieck-finger",
+      "nom": "Pieck Finger",
+      "nomJaponais": "ピーク・フィンガー (Pīku Fingā)",
+      "animeId": "attack-on-titan",
+      "animeName": "L'Attaque des Titans",
+      "auteurId": "hajime-isayama",
+      "auteurNom": "Hajime Isayama",
+      "studioId": "wit-studio",
+      "studioNom": "Wit Studio",
+      "age": "Non listée dans nos sources",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Guerrière du Pays de Marley — Détentrice du Titan Charrette",
+      "description": "Pieck Finger est une guerrière du Pays de Marley, détentrice du Titan Charrette. Elle se distingue par sa capacité d'endurance et sa mobilité. Calme, observatrice et un peu nonchalante, elle observe le monde avec lucidité. Elle accompagne les autres Guerriers dans leurs missions. Elle apporte un regard détaché sur les événements. Son pouvoir est utile pour les opérations de longue durée. Elle apparaît dans la dernière partie de la série.",
+      "pouvoirs": [
+        "Titan Charrette — grande endurance et capacité de transport",
+        "Mobilité",
+        "Observation"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son anniversaire est le 5 août selon Epicstream",
+        "Manami Numakura la double en japonais, Amber Lee Connors en anglais",
+        "Sa taille est de 155 cm"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Reiner Braun",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Zeke Yeager",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Porco Galliard",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Manami Numakura",
+      "voixAnglaise": "Amber Lee Connors",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 19
+    },
+    {
+      "id": "aot-porco-galliard",
+      "nom": "Porco Galliard",
+      "nomJaponais": "ポルコ・ガリアード (Poruko Gariādo)",
+      "animeId": "attack-on-titan",
+      "animeName": "L'Attaque des Titans",
+      "auteurId": "hajime-isayama",
+      "auteurNom": "Hajime Isayama",
+      "studioId": "wit-studio",
+      "studioNom": "Wit Studio",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Guerrier du Pays de Marley — Détenteur du Titan Mâchoire — Frère de Marcel",
+      "description": "Porco Galliard est un guerrier du Pays de Marley, détenteur du Titan Mâchoire. Il est le frère cadet de Marcel, le précédent détenteur de ce pouvoir. Impulsif et orgueilleux, il entretient une rivalité marquée avec Reiner. Il est animé par le désir de prouver sa valeur à Marley. Sa forme de Titan se distingue par sa rapidité et la puissance de sa mâchoire. Il combat aux côtés de Zeke et des autres Guerriers lors de l'offensive contre les ennemis de Marley. Il est l'un des acteurs importants de la dernière partie de la série.",
+      "pouvoirs": [
+        "Titan Mâchoire — rapidité et morsure puissante",
+        "Agilité en combat",
+        "Entraînement de guerrier de Marley"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il détient le Titan Mâchoire, auparavant porté par son frère Marcel",
+        "Toshiki Masuda le double en japonais",
+        "Sa rivalité avec Reiner est un ressort récurrent des scènes de Marley"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Marcel Galliard",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Reiner Braun",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Pieck Finger",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Zeke Yeager",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Reiner Braun",
+          "type": "rival"
+        }
+      ],
+      "voixJaponaise": "Toshiki Masuda",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 20
+    }
+  ]
+}
