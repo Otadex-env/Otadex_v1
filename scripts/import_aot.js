@@ -202,7 +202,7 @@ const charactersData = characters.map((c) => {
 });
 
 async function main() {
-  console.log('\n━━━ OTADEX — Import L'Attaque des Titans ━━━\n');
+  console.log("\n━━━ OTADEX — Import L'Attaque des Titans ━━━\n");
 
   await db.collection('creators').doc("hajime-isayama").set(creatorData, { merge: true });
   console.log('✅  Créateur ' + creatorData.nom + ' importé');
@@ -226,7 +226,7 @@ async function main() {
   }
   console.log(`✅  ${charactersData.length} personnages importés`);
 
-  console.log('\n🎉  Import L'Attaque des Titans terminé !');
+  console.log("\n🎉  Import L'Attaque des Titans terminé !");
   process.exit(0);
 }
 
