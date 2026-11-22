@@ -119,6 +119,11 @@ final featuredSlidesProvider =
 // ── Real-time search ─────────────────────────────────────────────────────────
 final searchQueryProvider = StateProvider<String>((_) => '');
 
+/// Compteur incrémenté quand l'utilisateur touche la barre de recherche de
+/// l'Accueil : l'écran Recherche le surveille et active aussitôt la saisie
+/// (clavier ouvert), au lieu d'obliger à toucher le champ une 2e fois.
+final searchFocusRequestProvider = StateProvider<int>((_) => 0);
+
 final searchCharactersProvider = FutureProvider.autoDispose
     .family<List<Character>, String>((ref, query) async {
   if (query.trim().length < 2) return [];

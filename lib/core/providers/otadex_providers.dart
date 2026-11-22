@@ -33,6 +33,19 @@ final allCharactersProvider = FutureProvider<List<Character>>((ref) async {
   return jsonService.characters;
 });
 
+// ── Catalogue pour la recherche ─────────────────────────────────────────────
+// `allCharactersProvider` ne charge que 20 personnages (Accueil rapide) : la
+// recherche, elle, doit pouvoir trouver n'importe quel personnage. Ce
+// fournisseur charge le catalogue élargi, UNE fois par session, et seulement
+// quand l'utilisateur active la recherche (pas au lancement de l'app).
+final searchPoolProvider = FutureProvider<List<Character>>((ref) async {
+  ref.keepAlive();
+  final chars =
+      await ref.watch(_firestoreServiceProvider).getAllCharacters(limit: 300);
+  if (chars.isNotEmpty) return chars;
+  return ref.watch(allCharactersProvider.future);
+});
+
 // ── Trending : top 5 par animé, interleaved pour diversité visuelle ────────
 final trendingCharactersProvider = FutureProvider<List<Character>>((ref) async {
   final all = await ref.watch(allCharactersProvider.future);

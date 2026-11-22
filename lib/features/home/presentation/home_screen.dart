@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/subscription/rank_providers.dart';
+import '../../../core/providers/anilist_providers.dart';
 import '../../../core/providers/auth_provider.dart';
 import '../../../core/providers/user_profile_provider.dart';
 import '../../../core/theme/otadex_theme.dart';
@@ -128,7 +129,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ),
                   SliverPersistentHeader(
                     delegate: SearchBarSliverDelegate(
-                      onTap: () => _onNavTap(1),
+                      onTap: () {
+                        ref.read(searchFocusRequestProvider.notifier).state++;
+                        _onNavTap(1);
+                      },
                     ),
                     pinned: true,
                   ),

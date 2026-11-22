@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import '../../../core/constants/app_assets.dart';
 import '../../../core/utils/image_prefetcher.dart';
+import '../../../core/utils/search_match.dart';
 import '../../../core/l10n/app_strings.dart';
 import '../../../core/models/anime_entry.dart';
 import '../../../core/models/character.dart';
@@ -80,31 +81,73 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   bool get _showResults =>
       (_submitted || _selectedSubFilter != null) && !_isFocused;
 
-  List<_Suggestion> get _suggestions {
-    if (_query.isEmpty) return [];
-    final q = _query.toLowerCase();
-    final results = <_Suggestion>[];
-    final chars = _localChars;
-    final animes = _localAnimes;
-    final creators = _localCreators;
+  // ── Suggestions « as-you-type » ──────────────────────────────────────
+  // Dès [_minSuggestChars] lettres, on propose des personnages (avec portrait),
+  // quelques animés et créateurs, du plus pertinent au moins pertinent. Pensé
+  // pour qui ne connaît pas le nom complet : « kil » ressort Killua, « zol »
+  // aussi (le début de n'importe quel mot du nom compte).
+  static const _minSuggestChars = 2;
+  static const _maxCharSuggestions = 6;
 
-    for (final c in chars) {
-      if (c.name.toLowerCase().contains(q)) {
-        results.add(_Suggestion(c.name, 'Personnage'));
-        if (results.length >= 3) break;
-      }
+  List<_Suggestion> get _suggestions {
+    final q = _query.trim();
+    if (q.length < _minSuggestChars) return [];
+
+    // Personnages : base locale + résultats AniList déjà arrivés (sans doublon).
+    final seen = <String>{};
+    final pool = [
+      for (final c in [..._localChars, ..._anilistSearchResults])
+        if (seen.add(c.id)) c,
+    ];
+    final scored = <(int, Character)>[];
+    for (final c in pool) {
+      final best = _charScore(c, q);
+      if (best != -1) scored.add((best, c));
     }
-    for (final a in animes) {
-      if (a.name.toLowerCase().contains(q) && results.length < 5) {
-        results.add(_Suggestion(a.name, 'Animé'));
-      }
+    scored.sort((a, b) {
+      final byScore = a.$1.compareTo(b.$1);
+      return byScore != 0
+          ? byScore
+          : a.$2.name.toLowerCase().compareTo(b.$2.name.toLowerCase());
+    });
+
+    final results = <_Suggestion>[
+      for (final (_, c) in scored.take(_maxCharSuggestions))
+        _Suggestion(c.name, 'Personnage',
+            subtitle: c.animeName, imagePath: c.imagePath, character: c),
+    ];
+
+    final animes = _localAnimes
+        .where((a) => matchScore(a.name, q) != -1)
+        .toList()
+      ..sort((a, b) =>
+          matchScore(a.name, q).compareTo(matchScore(b.name, q)));
+    for (final a in animes.take(2)) {
+      results.add(_Suggestion(a.name, 'Animé', subtitle: a.studio, anime: a));
     }
-    for (final c in creators) {
-      if (c.name.toLowerCase().contains(q) && results.length < 6) {
-        results.add(_Suggestion(c.name, 'Créateur'));
-      }
+
+    for (final c in _localCreators
+        .where((c) => matchScore(c.name, q) != -1)
+        .take(1)) {
+      results.add(_Suggestion(c.name, 'Créateur'));
     }
-    return results.take(5).toList();
+    return results;
+  }
+
+  /// Ouvre directement la fiche proposée (au lieu de relancer une recherche).
+  void _openSuggestion(_Suggestion s) {
+    if (s.character != null) {
+      _saveQuery(s.text);
+      _focusNode.unfocus();
+      ImagePrefetcher.prefetchCharacterImages(context, s.character!);
+      context.push('/character/${s.character!.id}');
+    } else if (s.anime != null) {
+      _saveQuery(s.text);
+      _focusNode.unfocus();
+      context.push('/anime/${s.anime!.id}');
+    } else {
+      _selectSuggestion(s.text);
+    }
   }
 
   List<Character> get _filteredCharacters {
@@ -119,45 +162,105 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
           .toList();
     }
 
-    // Fallback: filter local mock data
-    final q = _query.toLowerCase();
-    final chars = _localChars;
-    return chars.where((c) {
-      final queryMatch = q.isEmpty ||
-          c.name.toLowerCase().contains(q) ||
-          c.animeName.toLowerCase().contains(q) ||
-          c.aliases.any((a) => a.toLowerCase().contains(q));
-      final catMatch =
-          _selectedSubFilter == null || c.category == _selectedSubFilter;
-      return queryMatch && catMatch;
-    }).toList();
+    // Base locale (tout le catalogue une fois chargé), avec tolérance aux
+    // fautes : « kiotaka » retrouve « Kiyotaka ». Les correspondances fautives
+    // ne s'affichent que s'il n'y a aucune correspondance exacte.
+    final q = _query.trim();
+    final matched = <(int, Character)>[];
+    for (final c in _localChars) {
+      if (_selectedSubFilter != null && c.category != _selectedSubFilter) {
+        continue;
+      }
+      if (q.isEmpty) {
+        matched.add((0, c));
+        continue;
+      }
+      final s = _charScore(c, q);
+      if (s != -1) matched.add((s, c));
+    }
+    if (q.isEmpty) return matched.map((m) => m.$2).toList();
+    final exact = matched.where((m) => m.$1 < 4).toList();
+    final kept = exact.isNotEmpty ? exact : matched;
+    kept.sort((a, b) => a.$1.compareTo(b.$1));
+    return kept.map((m) => m.$2).toList();
+  }
+
+  /// Meilleur score d'un personnage pour la saisie : nom, puis alias, puis
+  /// titre de l'animé (taper « hunter » ressort les personnages de Hunter x
+  /// Hunter). -1 = aucun rapport.
+  int _charScore(Character c, String q) {
+    var best = matchScore(c.name, q);
+    for (final alias in c.aliases) {
+      final s = matchScore(alias, q);
+      if (s != -1 && (best == -1 || s + 1 < best)) best = s + 1;
+    }
+    final sa = matchScore(c.animeName, q);
+    if (sa != -1 && (best == -1 || sa + 2 < best)) best = sa + 2;
+    return best;
   }
 
   List<AnimeEntry> get _filteredAnimes {
-    final q = _query.toLowerCase();
-    final animes = _localAnimes;
-    return animes.where((a) {
-      final queryMatch = q.isEmpty ||
-          a.name.toLowerCase().contains(q) ||
-          a.category.toLowerCase().contains(q) ||
-          a.studio.toLowerCase().contains(q);
-      final catMatch =
-          _selectedSubFilter == null || a.category == _selectedSubFilter;
-      final typeFilter = _selectedFilter == 0 || _selectedFilter == 2;
-      return queryMatch && catMatch && typeFilter;
-    }).toList();
+    final q = _query.trim();
+    final typeFilter = _selectedFilter == 0 || _selectedFilter == 2;
+    final matched = <(int, AnimeEntry)>[];
+    for (final a in _localAnimes) {
+      if (!typeFilter) break;
+      if (_selectedSubFilter != null && a.category != _selectedSubFilter) {
+        continue;
+      }
+      if (q.isEmpty) {
+        matched.add((0, a));
+        continue;
+      }
+      var s = matchScore(a.name, q);
+      final alt = matchScore(a.originalTitle, q); // titre japonais d'origine
+      if (alt != -1 && (s == -1 || alt < s)) s = alt;
+      for (final other in [a.category, a.studio]) {
+        final so = matchScore(other, q);
+        if (so != -1 && so < 4 && (s == -1 || so + 2 < s)) s = so + 2;
+      }
+      if (s != -1) matched.add((s, a));
+    }
+    if (q.isEmpty) return matched.map((m) => m.$2).toList();
+    final exact = matched.where((m) => m.$1 < 4).toList();
+    final kept = exact.isNotEmpty ? exact : matched;
+    kept.sort((a, b) => a.$1.compareTo(b.$1));
+    return kept.map((m) => m.$2).toList();
   }
 
   List<CreatorEntry> get _filteredCreators {
-    final q = _query.toLowerCase();
-    final creators = _localCreators;
-    return creators.where((c) {
-      final queryMatch = q.isEmpty ||
-          c.name.toLowerCase().contains(q) ||
-          c.works.any((w) => w.toLowerCase().contains(q));
-      final typeFilter = _selectedFilter == 0 || _selectedFilter == 3;
-      return queryMatch && typeFilter;
-    }).toList();
+    final q = _query.trim();
+    if (!(_selectedFilter == 0 || _selectedFilter == 3)) return [];
+    final matched = <(int, CreatorEntry)>[];
+    for (final c in _localCreators) {
+      if (q.isEmpty) {
+        matched.add((0, c));
+        continue;
+      }
+      var s = matchScore(c.name, q);
+      for (final w in c.works) {
+        final sw = matchScore(w, q);
+        if (sw != -1 && sw < 4 && (s == -1 || sw + 2 < s)) s = sw + 2;
+      }
+      if (s != -1) matched.add((s, c));
+    }
+    if (q.isEmpty) return matched.map((m) => m.$2).toList();
+    final exact = matched.where((m) => m.$1 < 4).toList();
+    final kept = exact.isNotEmpty ? exact : matched;
+    kept.sort((a, b) => a.$1.compareTo(b.$1));
+    return kept.map((m) => m.$2).toList();
+  }
+
+  /// « Vouliez-vous dire… » : meilleure correction parmi les noms connus, si la
+  /// saisie ressemble à une faute de frappe (sinon `null`).
+  String? get _didYouMean {
+    final q = _query.trim();
+    if (q.length < 4) return null;
+    return didYouMean([
+      ..._localChars.map((c) => c.name),
+      ..._localAnimes.map((a) => a.name),
+      ..._localCreators.map((c) => c.name),
+    ], q);
   }
 
   // ── Historique SharedPreferences ─────────────────────────────────────
@@ -239,9 +342,21 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   }
 
   // ── Handlers ──────────────────────────────────────────────────────────
+  bool _poolRequested = false;
+
   void _onFocusChange() {
     setState(() => _isFocused = _focusNode.hasFocus);
     if (_focusNode.hasFocus) {
+      // Premier usage de la saisie : on charge tout le catalogue pour la
+      // recherche (jusque-là, seuls les 20 premiers personnages sont connus).
+      if (!_poolRequested) {
+        _poolRequested = true;
+        ref.read(searchPoolProvider.future).then((chars) {
+          if (mounted && chars.length > _localChars.length) {
+            setState(() => _localChars = chars);
+          }
+        });
+      }
       _cancelCtrl.forward();
     } else {
       _cancelCtrl.reverse();
@@ -399,6 +514,13 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   @override
   Widget build(BuildContext context) {
     final theme = OtadexTheme.of(context);
+
+    // Arrivée depuis la barre de l'Accueil : on active la saisie tout de suite.
+    ref.listen<int>(searchFocusRequestProvider, (_, __) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) _focusNode.requestFocus();
+      });
+    });
 
     // Watch AniList results for the debounced query
     final debouncedQuery = ref.watch(searchQueryProvider);
@@ -686,6 +808,51 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
         ...List.generate(_suggestions.length, (i) {
           return _buildSuggestionRow(theme, _suggestions[i], i);
         }),
+        if (_suggestions.isEmpty && _query.trim().length < _minSuggestChars)
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 14),
+            child: Text(
+              'Continue à écrire : les suggestions arrivent dès $_minSuggestChars lettres.',
+              style: GoogleFonts.nunitoSans(
+                  color: theme.textSecondary, fontSize: 13),
+            ),
+          ),
+        if (_suggestions.isEmpty && _query.trim().length >= _minSuggestChars)
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 14),
+            child: Text(
+              'Aucune suggestion pour « ${_query.trim()} » : essaie une autre orthographe ou lance la recherche complète.',
+              style: GoogleFonts.nunitoSans(
+                  color: theme.textSecondary, fontSize: 13, height: 1.4),
+            ),
+          ),
+        if (_query.trim().length >= _minSuggestChars)
+          InkWell(
+            onTap: _submitSearch,
+            borderRadius: BorderRadius.circular(10),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 13),
+              child: Row(
+                children: [
+                  Icon(Icons.manage_search_rounded,
+                      color: theme.accentColor, size: 22),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      'Voir tous les résultats pour « ${_query.trim()} »',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.nunitoSans(
+                        color: theme.accentColor,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         if (_recentSearches.isNotEmpty) ...[
           const SizedBox(height: 16),
           _buildRecentHeader(theme),
@@ -719,19 +886,35 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
         ),
       ),
       child: InkWell(
-        onTap: () => _selectSuggestion(s.text),
+        onTap: () => _openSuggestion(s),
         borderRadius: BorderRadius.circular(8),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 13),
+          padding: const EdgeInsets.symmetric(vertical: 8),
           child: Row(
             children: [
-              Icon(
-                isRecent ? Icons.history_rounded : Icons.search_rounded,
-                color: theme.textSecondary,
-                size: 18,
-              ),
+              _buildSuggestionLeading(theme, s, isRecent),
               const SizedBox(width: 12),
-              Expanded(child: _buildHighlightedText(theme, s.text)),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildHighlightedText(theme, s.text),
+                    if (s.subtitle != null && s.subtitle!.isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 2),
+                        child: Text(
+                          s.subtitle!,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: GoogleFonts.nunitoSans(
+                            color: theme.textSecondary,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
+              ),
               const SizedBox(width: 8),
               if (!isRecent) ...[
                 Text(
@@ -760,10 +943,51 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
     );
   }
 
+  /// Portrait rond pour un personnage ; icône pour animé / créateur / historique.
+  Widget _buildSuggestionLeading(
+      RankTheme theme, _Suggestion s, bool isRecent) {
+    final path = s.imagePath;
+    if (path != null && path.isNotEmpty) {
+      return ClipOval(
+        child: SizedBox(
+          width: 44,
+          height: 44,
+          child: OtadexImage(
+            imagePath: path,
+            fit: BoxFit.cover,
+            alignment: Alignment.topCenter,
+          ),
+        ),
+      );
+    }
+    final icon = isRecent
+        ? Icons.history_rounded
+        : s.anime != null
+            ? Icons.movie_rounded
+            : s.type == 'Créateur'
+                ? Icons.draw_rounded
+                : Icons.search_rounded;
+    return Container(
+      width: 44,
+      height: 44,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: theme.accentColor.withValues(alpha: 0.12),
+      ),
+      child: Icon(icon, color: theme.accentColor, size: 20),
+    );
+  }
+
   Widget _buildHighlightedText(RankTheme theme, String text) {
-    final q = _query.toLowerCase();
-    final lower = text.toLowerCase();
-    final idx = lower.indexOf(q);
+    final q = foldAccents(_query.trim());
+    final lower = foldAccents(text);
+    // Début de mot correspondant en priorité (« zol » dans « Killua Zoldyck »).
+    var idx = q.isEmpty
+        ? -1
+        : RegExp(r'(^|[\s\-_:·.,])' + RegExp.escape(q)).firstMatch(lower)?.end ??
+            -1;
+    if (idx != -1) idx -= q.length;
+    if (idx == -1 && q.isNotEmpty) idx = lower.indexOf(q);
     if (idx == -1 || q.isEmpty) {
       return Text(
         text,
@@ -1281,6 +1505,47 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
               fontSize: 13,
             ),
           ),
+          // « Vouliez-vous dire… » : un tap applique la correction.
+          if (_didYouMean case final guess?) ...[
+            const SizedBox(height: 18),
+            GestureDetector(
+              onTap: () => _selectSuggestion(guess),
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                decoration: BoxDecoration(
+                  color: theme.accentColor.withValues(alpha: 0.12),
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                      color: theme.accentColor.withValues(alpha: 0.4)),
+                ),
+                child: Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'Vouliez-vous dire : ',
+                        style: GoogleFonts.nunitoSans(
+                            color: theme.textSecondary, fontSize: 13),
+                      ),
+                      TextSpan(
+                        text: guess,
+                        style: GoogleFonts.nunitoSans(
+                          color: theme.accentColor,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      TextSpan(
+                        text: ' ?',
+                        style: GoogleFonts.nunitoSans(
+                            color: theme.textSecondary, fontSize: 13),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
         ],
       ),
     );
@@ -1706,5 +1971,21 @@ class _TrendItem {
 class _Suggestion {
   final String text;
   final String type;
-  const _Suggestion(this.text, this.type);
+
+  /// Ligne secondaire (animé du personnage, studio…) et portrait éventuel.
+  final String? subtitle;
+  final String? imagePath;
+
+  /// Cible : si renseignée, un tap ouvre directement la fiche.
+  final Character? character;
+  final AnimeEntry? anime;
+
+  const _Suggestion(
+    this.text,
+    this.type, {
+    this.subtitle,
+    this.imagePath,
+    this.character,
+    this.anime,
+  });
 }
