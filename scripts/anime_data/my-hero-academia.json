@@ -1,0 +1,1156 @@
+{
+  "anime": {
+    "titre": "My Hero Academia",
+    "titreJaponais": "僕のヒーローアカデミア",
+    "synopsis": "L'histoire se déroule dans un monde où la majorité de la population possède un super-pouvoir appelé Alter (Quirk en version originale). Izuku Midoriya, né sans Alter, rêve de devenir un héros ; All Might, le Symbole de la Paix, lui transmet le One For All. Il entre au lycée héroïque U.A., où il rejoint la classe 1-A. L'œuvre mêle formation héroïque, rivalités et lutte contre la Ligue des Vilains.",
+    "genres": [
+      "Shōnen",
+      "Action",
+      "Aventure"
+    ],
+    "annee": 2016,
+    "episodes": {},
+    "studio": "Bones",
+    "studioId": "bones",
+    "auteur": "Kōhei Horikoshi",
+    "auteurId": "kohei-horikoshi",
+    "editeur": "Shueisha — Weekly Shōnen Jump",
+    "statut": "Terminé",
+    "type": "Shōnen"
+  },
+  "creator": {
+    "nom": "Kōhei Horikoshi",
+    "nomJaponais": "堀越 耕平",
+    "bio": "Kōhei Horikoshi (堀越 耕平) est un mangaka japonais né le 20 novembre 1986 dans la préfecture d'Aichi (une base de données indique le 19 novembre). Diplômé du lycée Toho et de l'université des arts de Nagoya, il a été assistant de Yasuki Tanaka. Il s'est fait remarquer en 2006 grâce à une mention honorable au 72e prix Tezuka, puis a publié plusieurs one-shots dans l'Akamaru Jump, dont Shinka Rhapsody (2008). Sa première série dans le Weekly Shōnen Jump, Oumagadoki Zoo, a paru en 2010-2011, suivie de Barrage en 2012. My Hero Academia, lancé en 2014, est devenu son œuvre la plus célèbre.",
+    "dateNaissance": "20 novembre 1986",
+    "nationalite": "Japonais",
+    "occupation": "Mangaka (auteur-dessinateur)",
+    "oeuvres": [
+      "2008 — Shinka Rhapsody (one-shot) — Akamaru Jump — Shueisha",
+      "2010–2011 — Oumagadoki Zoo — Weekly Shōnen Jump — Shueisha",
+      "2012 — Barrage (Sensei no Baruji) — Weekly Shōnen Jump — Shueisha ; publié en anglais par Viz Media",
+      "2014–2024 — My Hero Academia — Weekly Shōnen Jump — Shueisha — 42 volumes"
+    ],
+    "recompenses": [
+      "Mention honorable, 72e prix Tezuka (2006)",
+      "Prix Mandō Kobayashi du manga, Grand Prix du manga (2015)",
+      "3e Sugoi Japan Award, meilleur manga (2017)",
+      "Salón del Manga de Barcelone, meilleur manga shōnen (2017 et 2018)",
+      "Seoul Media Comics — prix du créateur de manga (2018)",
+      "31e Harvey Awards, meilleur manga (2019)"
+    ],
+    "imageUrl": "",
+    "animeIds": [
+      "my-hero-academia"
+    ]
+  },
+  "studio": {
+    "nom": "Bones",
+    "fondation": "Octobre 1998, par les anciens de Sunrise Masahiko Minami, Hiroshi Ōsaka et Toshihiro Kawamoto",
+    "fondateur": "Masahiko Minami, Hiroshi Ōsaka, Toshihiro Kawamoto",
+    "description": "",
+    "productions": [
+      "Fullmetal Alchemist",
+      "Soul Eater",
+      "Noragami",
+      "Bungo Stray Dogs",
+      "Eureka Seven"
+    ]
+  },
+  "characters": [
+    {
+      "id": "mha-izuku-midoriya",
+      "nom": "Izuku Midoriya",
+      "nomJaponais": "緑谷 出久 (Midoriya Izuku)",
+      "animeId": "my-hero-academia",
+      "animeName": "My Hero Academia",
+      "auteurId": "kohei-horikoshi",
+      "auteurNom": "Kōhei Horikoshi",
+      "studioId": "bones",
+      "studioNom": "Bones",
+      "age": "14-15 ans au début de l’histoire (16 ans selon certaines sources)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Protagoniste — Élève de la classe 1-A de l’U.A. — Héritier du One For All",
+      "description": "Izuku Midoriya, surnommé « Deku », est un adolescent qui rêve de devenir un héros dans un monde où presque tout le monde possède un super-pouvoir appelé Alter (Quirk), alors qu'il est né sans en avoir. Fan absolu d'All Might, il prend des notes sur chaque héros et analyse leurs capacités avec une précision remarquable. Sa générosité le pousse à se jeter au secours d'autrui sans calcul, ce qui attire l'attention d'All Might. Celui-ci lui transmet le One For All, un pouvoir transmis de génération en génération. Admis au lycée héroïque U.A., il intègre la classe 1-A et doit apprendre à maîtriser une force que son corps supporte mal au début. Il progresse grâce à ses amis, à ses rivaux et à ses enseignants. Il est le cœur émotionnel et narratif de la série.",
+      "pouvoirs": [
+        "One For All — pouvoir cumulatif transmis par All Might",
+        "Full Cowl — répartition du pouvoir sur tout le corps",
+        "Analyse — carnets d'observation des héros et des vilains",
+        "Attaques « Smash » — coups à haute puissance",
+        "Sens tactique et improvisation"
+      ],
+      "citations": [],
+      "trivia": [
+        "Ses carnets d'analyse de héros sont l'un des symboles de la série",
+        "Date de naissance : 15 juillet ; taille : 166 cm",
+        "Daiki Yamashita le double en japonais, Justin Briner en anglais",
+        "Dans l'édition française, les Quirks sont appelés « Alters »"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "All Might",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Inko Midoriya",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Katsuki Bakugo",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Ochaco Uraraka",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Tenya Ida",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Shoto Todoroki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Shota Aizawa",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Tomura Shigaraki",
+          "type": "ennemi"
+        }
+      ],
+      "voixJaponaise": "Daiki Yamashita",
+      "voixAnglaise": "Justin Briner",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 1
+    },
+    {
+      "id": "mha-katsuki-bakugo",
+      "nom": "Katsuki Bakugo",
+      "nomJaponais": "爆豪 勝己 (Bakugō Katsuki)",
+      "animeId": "my-hero-academia",
+      "animeName": "My Hero Academia",
+      "auteurId": "kohei-horikoshi",
+      "auteurNom": "Kōhei Horikoshi",
+      "studioId": "bones",
+      "studioNom": "Bones",
+      "age": "14-15 ans au début de l’histoire (16 ans selon certaines sources)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Élève de la classe 1-A — Rival et ami d’enfance de Deku — Alter Explosion",
+      "description": "Katsuki Bakugo est l'ami d'enfance de Deku, devenu son tourmenteur en découvrant que celui-ci n'avait pas d'Alter. Brillant, ambitieux et très compétitif, il possède l'Alter Explosion, qui produit des détonations à partir de sa sueur. Il vise la première place et ne supporte pas d'être dépassé, ce qui nourrit sa rivalité avec Deku. Son tempérament explosif cache une grande exigence envers lui-même. Il admire All Might et rêve d'être le héros numéro un. Au fil de l'histoire, il mûrit et apprend à travailler avec les autres, sans perdre son caractère. Il est l'un des personnages les plus populaires de la série.",
+      "pouvoirs": [
+        "Explosion — détonations produites par sa transpiration",
+        "Combat au corps à corps et sens tactique remarquable",
+        "Endurance — résistance aux entraînements les plus intenses",
+        "Créativité dans l'usage de son Alter"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il est célèbre pour son tempérament explosif",
+        "Date de naissance : 20 avril ; taille : 172 cm",
+        "Nobuhiko Okamoto le double en japonais, Clifford Chapin en anglais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Izuku Midoriya",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "All Might",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Eijiro Kirishima",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Denki Kaminari",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Shota Aizawa",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Nobuhiko Okamoto",
+      "voixAnglaise": "Clifford Chapin",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 2
+    },
+    {
+      "id": "mha-shoto-todoroki",
+      "nom": "Shoto Todoroki",
+      "nomJaponais": "轟 焦凍 (Todoroki Shōto)",
+      "animeId": "my-hero-academia",
+      "animeName": "My Hero Academia",
+      "auteurId": "kohei-horikoshi",
+      "auteurNom": "Kōhei Horikoshi",
+      "studioId": "bones",
+      "studioNom": "Bones",
+      "age": "15 ans au début de l’histoire (16 ans selon certaines sources)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Élève de la classe 1-A — Fils d’Endeavor — Alter Half-Cold Half-Hot",
+      "description": "Shoto Todoroki est le plus jeune fils d'Enji Todoroki, le héros Endeavor. Il est le seul de sa famille à avoir hérité des deux Alters de ses parents : la glace du côté droit et le feu du côté gauche. Sa jeunesse a été marquée par un entraînement très dur imposé par son père, ce qui l'a poussé à refuser d'utiliser sa flamme. Réservé et discipliné, il est l'un des élèves les plus puissants de sa promotion. Sa rencontre avec Deku l'aide à accepter sa nature et à choisir le héros qu'il veut devenir. Il fait partie du noyau de la classe 1-A et noue des liens solides avec ses camarades. Il est l'un des personnages centraux de la série.",
+      "pouvoirs": [
+        "Half-Cold Half-Hot — glace du côté droit, feu du côté gauche",
+        "Combinaison des deux Alters pour des attaques de grande ampleur",
+        "Combat tactique à distance et au corps à corps",
+        "Sang-froid sous la pression"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son Alter combine feu et glace",
+        "Date de naissance : 11 janvier selon Attack of the Fanboy ; une autre source indique le 16 janvier",
+        "Yūki Kaji le double en japonais, David Matranga en anglais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Enji Todoroki",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Rei Todoroki",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Toya",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Natsuo",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Fuyumi",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Izuku Midoriya",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Momo Yaoyorozu",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Tenya Ida",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Yūki Kaji",
+      "voixAnglaise": "David Matranga",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 3
+    },
+    {
+      "id": "mha-ochaco-uraraka",
+      "nom": "Ochaco Uraraka",
+      "nomJaponais": "麗日 お茶子 (Uraraka Ochako)",
+      "animeId": "my-hero-academia",
+      "animeName": "My Hero Academia",
+      "auteurId": "kohei-horikoshi",
+      "auteurNom": "Kōhei Horikoshi",
+      "studioId": "bones",
+      "studioNom": "Bones",
+      "age": "15 ans au début de l’histoire (16 ans selon certaines sources)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Élève de la classe 1-A — Alter Zero Gravity — Héroïne « Uravity »",
+      "description": "Ochaco Uraraka est une élève de la classe 1-A, qui entre à l'U.A. pour soutenir financièrement sa famille. Son Alter, Zero Gravity, lui permet de rendre léger tout ce qu'elle touche. Joyeuse, courageuse et très attachée à ses camarades, elle devient l'une des amies les plus proches de Deku. Elle s'entraîne durement pour surmonter les limites physiques de son pouvoir. Sa détermination s'affirme dès l'examen d'entrée et lors du festival sportif. Elle se démarque par sa gentillesse et sa force de caractère. Elle devient une héroïne respectée de la classe.",
+      "pouvoirs": [
+        "Zero Gravity — rend les objets et les personnes en apesanteur",
+        "Combat au corps à corps — apprentissage auprès de maîtres d'arts martiaux",
+        "Soutien tactique et sauvetage"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son nom de héroïne est « Uravity »",
+        "Date de naissance : 27 décembre ; taille : environ 156 cm",
+        "Ayane Sakura la double en japonais, Luci Christian en anglais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Izuku Midoriya",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Tenya Ida",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Tsuyu Asui",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "ses parents",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Ayane Sakura",
+      "voixAnglaise": "Luci Christian",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 4
+    },
+    {
+      "id": "mha-tenya-ida",
+      "nom": "Tenya Ida",
+      "nomJaponais": "飯田 天哉 (Iida Tenya)",
+      "animeId": "my-hero-academia",
+      "animeName": "My Hero Academia",
+      "auteurId": "kohei-horikoshi",
+      "auteurNom": "Kōhei Horikoshi",
+      "studioId": "bones",
+      "studioNom": "Bones",
+      "age": "15 ans au début de l’histoire (16 ans selon certaines sources)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Délégué de la classe 1-A — Alter Engine",
+      "description": "Tenya Ida est le délégué de la classe 1-A, issu d'une longue lignée de héros. Son Alter, Engine, lui confère une vitesse exceptionnelle grâce à des moteurs situés dans ses jambes. Sérieux, rigoureux et très attaché aux règles, il prend son rôle de délégué à cœur. Il admire son frère aîné, un héros respecté. Sa rencontre avec Deku et ses camarades lui apprend à nuancer sa rigueur. Il évolue d'élève strict à ami fidèle. Il reste un pilier de la classe.",
+      "pouvoirs": [
+        "Engine — course à grande vitesse grâce à ses moteurs",
+        "Recipro Burst — accélération extrême (technique avancée)",
+        "Sens du devoir et leadership"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il est le délégué de la classe 1-A",
+        "Date de naissance : 22 août ; taille : environ 179 cm",
+        "Kaito Ishikawa le double en japonais, J. Michael Tatum en anglais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Tensei Ida",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Izuku Midoriya",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ochaco Uraraka",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "1-A",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Kaito Ishikawa",
+      "voixAnglaise": "J. Michael Tatum",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 5
+    },
+    {
+      "id": "mha-all-might",
+      "nom": "All Might",
+      "nomJaponais": "オールマイト (Ōru Maito) — Toshinori Yagi (八木 俊典)",
+      "animeId": "my-hero-academia",
+      "animeName": "My Hero Academia",
+      "auteurId": "kohei-horikoshi",
+      "auteurNom": "Kōhei Horikoshi",
+      "studioId": "bones",
+      "studioNom": "Bones",
+      "age": "Non officielle (sources divergentes)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Symbole de la Paix — Héros numéro un — Maître de Deku",
+      "description": "All Might, de son vrai nom Toshinori Yagi, est le héros numéro un et le Symbole de la Paix. Sa présence rassure la société et dissuade bon nombre de criminels. Il est le huitième détenteur du One For All, qu'il transmet à Deku après l'avoir remarqué. Une blessure ancienne limite le temps qu'il peut passer sous sa forme héroïque. Devenu enseignant à l'U.A., il forme la prochaine génération. Il combine un caractère chaleureux, un sens du devoir élevé et une grande force. Il reste l'une des figures les plus emblématiques de l'œuvre.",
+      "pouvoirs": [
+        "One For All — pouvoir cumulatif transmis de génération en génération",
+        "Force et vitesse hors du commun",
+        "Techniques « Smash » — coups de grande puissance",
+        "Leadership et charisme"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il est le Symbole de la Paix",
+        "Date de naissance : 10 juin",
+        "Kenta Miyake le double en japonais, Christopher Sabat en anglais",
+        "Sa taille de 220 cm correspond à sa forme musclée seulement"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Izuku Midoriya",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Gran Torino",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "All For One",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Shota Aizawa",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "le corps enseignant de l'U.A.",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Kenta Miyake",
+      "voixAnglaise": "Christopher Sabat",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 6
+    },
+    {
+      "id": "mha-shota-aizawa",
+      "nom": "Shota Aizawa",
+      "nomJaponais": "相澤 消太 (Aizawa Shōta) — Eraser Head",
+      "animeId": "my-hero-academia",
+      "animeName": "My Hero Academia",
+      "auteurId": "kohei-horikoshi",
+      "auteurNom": "Kōhei Horikoshi",
+      "studioId": "bones",
+      "studioNom": "Bones",
+      "age": "31 ans selon certaines sources (non officiel)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Professeur principal de la classe 1-A — Héros « Eraser Head »",
+      "description": "Shota Aizawa est le professeur principal de la classe 1-A et un héros discret nommé Eraser Head. Son Alter, Erasure, annule temporairement les Alters de ceux qu'il regarde. Exigeant, pragmatique et fatigué, il suit une approche rationnelle de l'enseignement. Il n'hésite pas à exclure des élèves qui ne répondent pas à ses attentes. Derrière sa rigueur, il se soucie profondément de ses élèves. Il apprend à les protéger sans les affaiblir. Il devient un repère pour la classe.",
+      "pouvoirs": [
+        "Erasure — annule l'Alter d'une personne qu'il regarde",
+        "Bande de capture — arme de contention",
+        "Combat au corps à corps",
+        "Sens de l'observation"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il est connu pour son manque de sommeil",
+        "Date de naissance : 8 novembre ; taille : environ 183 cm",
+        "Junichi Suwabe le double en japonais, Christopher Wehkamp en anglais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "classe 1-A (Deku",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Bakugo",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Todoroki…)",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "All Might",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Present Mic",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Junichi Suwabe",
+      "voixAnglaise": "Christopher Wehkamp",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 7
+    },
+    {
+      "id": "mha-enji-todoroki",
+      "nom": "Enji Todoroki",
+      "nomJaponais": "轟 炎司 (Todoroki Enji) — Endeavor",
+      "animeId": "my-hero-academia",
+      "animeName": "My Hero Academia",
+      "auteurId": "kohei-horikoshi",
+      "auteurNom": "Kōhei Horikoshi",
+      "studioId": "bones",
+      "studioNom": "Bones",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Héros « Endeavor » — Père de Shoto — Alter Hellflame",
+      "description": "Enji Todoroki, connu comme Endeavor, est un héros de premier plan qui se retrouve numéro un du classement après la retraite d'All Might. Son Alter, Hellflame, lui permet de produire des flammes d'une grande intensité. Longtemps obsédé par l'idée de dépasser All Might, il a imposé à ses enfants un entraînement très dur. Sa relation avec sa famille est marquée par des fautes qu'il doit affronter. Il s'efforce de changer et de devenir un héros plus digne. Sa trajectoire illustre le thème de la rédemption dans la série. Il reste un personnage ambivalent et central.",
+      "pouvoirs": [
+        "Hellflame — flammes de très haute température",
+        "Prominence Burn — attaque dévastatrice",
+        "Combat au corps à corps",
+        "Endurance"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il est le héros numéro un après All Might",
+        "Sa taille est de 195,6 cm selon une source",
+        "Tetsu Inada le double en japonais, Patrick Seitz en anglais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Rei Todoroki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Toya",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Fuyumi",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Natsuo",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Shoto",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "All Might",
+          "type": "rival"
+        }
+      ],
+      "voixJaponaise": "Tetsu Inada",
+      "voixAnglaise": "Patrick Seitz",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 8
+    },
+    {
+      "id": "mha-tomura-shigaraki",
+      "nom": "Tomura Shigaraki",
+      "nomJaponais": "死柄木 弔 (Shigaraki Tomura)",
+      "animeId": "my-hero-academia",
+      "animeName": "My Hero Academia",
+      "auteurId": "kohei-horikoshi",
+      "auteurNom": "Kōhei Horikoshi",
+      "studioId": "bones",
+      "studioNom": "Bones",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Chef de la Ligue des Vilains — Alter Decay — Né Tenko Shimura",
+      "description": "Tomura Shigaraki est le chef de la Ligue des Vilains, une organisation qui veut renverser l'ordre social et détruire le Symbole de la Paix. Son Alter, Decay, désintègre tout ce que touchent ses cinq doigts. Il se montre au début comme un jeune homme capricieux et instable, avant de gagner en cruauté et en puissance. Il a été formé par All For One, qui l'accompagne dans son ascension. Son passé, lié à une enfance douloureuse, est dévoilé progressivement. Il est le principal antagoniste de Deku. Il reste l'un des vilains les plus marquants de la série.",
+      "pouvoirs": [
+        "Decay — désintègre ce qu'il touche avec ses cinq doigts",
+        "Régénération — rendue possible par ses transformations",
+        "Leadership de la Ligue des Vilains",
+        "Hérite de pouvoirs d'All For One"
+      ],
+      "citations": [],
+      "trivia": [
+        "Les mains qui le recouvrent sont son symbole",
+        "Sa taille est de 175 cm selon une source",
+        "Kōki Uchiyama le double en japonais, Eric Vale en anglais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "All For One",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Izuku Midoriya",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Dabi",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Himiko Toga",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Kurogiri",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Kōki Uchiyama",
+      "voixAnglaise": "Eric Vale",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 9
+    },
+    {
+      "id": "mha-all-for-one",
+      "nom": "All For One",
+      "nomJaponais": "オール・フォー・ワン (Ōru Fō Wan)",
+      "animeId": "my-hero-academia",
+      "animeName": "My Hero Academia",
+      "auteurId": "kohei-horikoshi",
+      "auteurNom": "Kōhei Horikoshi",
+      "studioId": "bones",
+      "studioNom": "Bones",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Principal antagoniste — Mentor de Shigaraki — Alter All For One",
+      "description": "All For One est le principal antagoniste de la série, un criminel ancien qui domine l'ombre du monde. Son Alter lui permet de voler les Alters d'autrui et de les offrir à d'autres. Il a mené des années d'activité criminelle et affronté All Might. Il manipule ses subordonnés et cultive ses alliances. Il guide Shigaraki et lui transmet son projet. Sa longévité et son pouvoir en font une menace pour toute la société. Il est le contrepoint sombre du Symbole de la Paix.",
+      "pouvoirs": [
+        "All For One — vol et transfert d'Alters",
+        "Pouvoirs multiples — accumulation d'Alters volés",
+        "Stratégie et manipulation"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il est l'ennemi historique de la lignée du One For All",
+        "Akio Ōtsuka le double en japonais, John Swasey en anglais",
+        "⏳ Son âge n'est pas précisé de façon officielle"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Tomura Shigaraki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "All Might",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Kurogiri",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Akio Ōtsuka",
+      "voixAnglaise": "John Swasey",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 10
+    },
+    {
+      "id": "mha-dabi",
+      "nom": "Dabi",
+      "nomJaponais": "荼毘 (Dabi) — Toya Todoroki (轟 燈矢)",
+      "animeId": "my-hero-academia",
+      "animeName": "My Hero Academia",
+      "auteurId": "kohei-horikoshi",
+      "auteurNom": "Kōhei Horikoshi",
+      "studioId": "bones",
+      "studioNom": "Bones",
+      "age": "23 ans (source unique)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Vilain de la Ligue des Vilains — Alter Cremation — Lié à la famille Todoroki",
+      "description": "Dabi est un vilain de la Ligue des Vilains, reconnaissable à sa peau recouverte de brûlures et de sutures. Son Alter, Cremation, produit des flammes bleues d'une grande intensité, au prix de dommages à son propre corps. Froid, calculateur et sarcastique, il alimente les plans de l'organisation. Son identité est dévoilée au cours du récit et révèle un lien avec la famille Todoroki. Ce lien donne à son parcours une dimension tragique. Il entretient une hostilité particulière envers Endeavor. Il est l'un des antagonistes les plus redoutés de la série.",
+      "pouvoirs": [
+        "Cremation — flammes bleues de grande puissance",
+        "Stratégie et manipulation",
+        "Combat au corps à corps"
+      ],
+      "citations": [],
+      "trivia": [
+        "Ses flammes sont bleues",
+        "Hiro Shimono le double en japonais, Jason Liebrecht en anglais",
+        "Âge, date de naissance et taille proviennent d'une seule source (non recoupée)"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Enji Todoroki",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Rei",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Fuyumi",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Natsuo",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Shoto",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Tomura Shigaraki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Himiko Toga",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Hiro Shimono",
+      "voixAnglaise": "Jason Liebrecht",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 11
+    },
+    {
+      "id": "mha-himiko-toga",
+      "nom": "Himiko Toga",
+      "nomJaponais": "渡我 被身子 (Toga Himiko)",
+      "animeId": "my-hero-academia",
+      "animeName": "My Hero Academia",
+      "auteurId": "kohei-horikoshi",
+      "auteurNom": "Kōhei Horikoshi",
+      "studioId": "bones",
+      "studioNom": "Bones",
+      "age": "Non listée dans nos sources",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Membre de la Ligue des Vilains — Alter Transform",
+      "description": "Himiko Toga est une membre de la Ligue des Vilains, d'allure juvénile et d'attitude imprévisible. Son Alter, Transform, lui permet de prendre l'apparence d'une personne dont elle a bu le sang. Elle poursuit des désirs qui la mettent en conflit avec la société. Sa relation avec les autres membres de la Ligue est marquée par une loyauté particulière. Elle croise le chemin de plusieurs élèves de l'U.A. Son caractère à la fois enjoué et dangereux la rend inquiétante. Elle est l'un des personnages les plus marquants du camp adverse.",
+      "pouvoirs": [
+        "Transform — imitation de l'apparence d'une personne",
+        "Agilité et furtivité",
+        "Combat avec armes blanches"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son Alter dépend du sang",
+        "Misato Fukuen la double en japonais, Leah Clark en anglais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Ligue des Vilains",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Tomura Shigaraki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Dabi",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Izuku Midoriya",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ochaco Uraraka",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Misato Fukuen",
+      "voixAnglaise": "Leah Clark",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 12
+    },
+    {
+      "id": "mha-keigo-takami",
+      "nom": "Keigo Takami",
+      "nomJaponais": "鷹見 啓悟 (Takami Keigo) — Hawks",
+      "animeId": "my-hero-academia",
+      "animeName": "My Hero Academia",
+      "auteurId": "kohei-horikoshi",
+      "auteurNom": "Kōhei Horikoshi",
+      "studioId": "bones",
+      "studioNom": "Bones",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Héros « Hawks » — Alter Fierce Wings",
+      "description": "Keigo Takami, connu sous le nom de Hawks, est un héros de premier plan classé deuxième du classement. Son Alter, Fierce Wings, lui confère des ailes de plumes qu'il peut contrôler à distance. Décontracté en apparence, il est en réalité très stratégique. Il possède une grande vitesse et une vision d'ensemble remarquable. Sa position dans la société héroïque lui confère un rôle clé. Il joue un rôle important dans plusieurs arcs de l'histoire. Il reste l'un des héros les plus brillants de la série.",
+      "pouvoirs": [
+        "Fierce Wings — plumes contrôlables et vol rapide",
+        "Vitesse et réflexes",
+        "Stratégie et renseignement"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il est le héros numéro deux",
+        "Yūichi Nakamura le double en japonais, Zeno Robinson en anglais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Endeavor",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "All Might",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "élèves et héros du réseau",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Yūichi Nakamura",
+      "voixAnglaise": "Zeno Robinson",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 13
+    },
+    {
+      "id": "mha-mirio-togata",
+      "nom": "Mirio Togata",
+      "nomJaponais": "通形 ミリオ (Togata Mirio) — Lemillion",
+      "animeId": "my-hero-academia",
+      "animeName": "My Hero Academia",
+      "auteurId": "kohei-horikoshi",
+      "auteurNom": "Kōhei Horikoshi",
+      "studioId": "bones",
+      "studioNom": "Bones",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Étudiant de la « Big Three » de l’U.A. — Alter Permeation — Héros « Lemillion »",
+      "description": "Mirio Togata est un étudiant de troisième année de l'U.A., membre de la « Big Three » des élèves les plus talentueux. Son Alter, Permeation, lui permet de traverser la matière. Il est optimiste, énergique et très proche de ses camarades. Il avait été envisagé comme successeur du One For All avant que ce rôle ne revienne à Deku. Il continue néanmoins à se dévouer à son idéal de héros. Il devient un mentor informel pour les plus jeunes. Il reste un exemple de dévouement dans la série.",
+      "pouvoirs": [
+        "Permeation — traverse la matière solide",
+        "Combat au corps à corps",
+        "Réflexes et sens tactique"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son nom de héros est « Lemillion »",
+        "Tarusuke Shingaki le double en japonais, Ricco Fajardo en anglais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Tamaki Amajiki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Nejire Hado",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Izuku Midoriya",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Sir Nighteye",
+          "type": "mentor"
+        }
+      ],
+      "voixJaponaise": "Tarusuke Shingaki",
+      "voixAnglaise": "Ricco Fajardo",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 14
+    },
+    {
+      "id": "mha-eijiro-kirishima",
+      "nom": "Eijiro Kirishima",
+      "nomJaponais": "切島 鋭児郎 (Kirishima Eijirō)",
+      "animeId": "my-hero-academia",
+      "animeName": "My Hero Academia",
+      "auteurId": "kohei-horikoshi",
+      "auteurNom": "Kōhei Horikoshi",
+      "studioId": "bones",
+      "studioNom": "Bones",
+      "age": "15 ans au début de l’histoire (16 ans selon certaines sources)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Élève de la classe 1-A — Alter Hardening — Héros « Red Riot »",
+      "description": "Eijiro Kirishima est un élève de la classe 1-A, au caractère franc et courageux. Son Alter, Hardening, durcit son corps pour le rendre résistant et offensif. Il est l'un des meilleurs amis de Bakugo, malgré le caractère de celui-ci. Il valorise l'honneur et la virilité, au point d'en faire sa ligne de conduite. Il travaille dur pour combler l'écart avec ses camarades. Il apporte à la classe une énergie sincère. Il devient un pilier moral du groupe.",
+      "pouvoirs": [
+        "Hardening — durcissement du corps",
+        "Unbreakable — version renforcée de son Alter",
+        "Résistance physique et combat au corps à corps"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son nom de héros est « Red Riot »",
+        "Date de naissance : 16 octobre ; taille : environ 170 cm",
+        "Toshiki Masuda le double en japonais, Justin Cook en anglais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Katsuki Bakugo",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Denki Kaminari",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Mina Ashido",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Toshiki Masuda",
+      "voixAnglaise": "Justin Cook",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 15
+    },
+    {
+      "id": "mha-tsuyu-asui",
+      "nom": "Tsuyu Asui",
+      "nomJaponais": "蛙吹 梅雨 (Asui Tsuyu)",
+      "animeId": "my-hero-academia",
+      "animeName": "My Hero Academia",
+      "auteurId": "kohei-horikoshi",
+      "auteurNom": "Kōhei Horikoshi",
+      "studioId": "bones",
+      "studioNom": "Bones",
+      "age": "15 ans au début de l’histoire (16 ans selon certaines sources)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Élève de la classe 1-A — Alter Frog — Héroïne « Froppy »",
+      "description": "Tsuyu Asui est une élève de la classe 1-A, dotée de l'Alter Frog qui lui donne des capacités de grenouille. Elle est directe et lucide, et dit ce qu'elle pense sans détour. Elle aide ses camarades par ses conseils et son calme. Elle noue une amitié solide avec Ochaco Uraraka. Elle possède une grande agilité et une aptitude au combat à distance comme en milieu aquatique. Elle prend soin de ses frères et sœurs. Elle est appréciée pour sa franchise.",
+      "pouvoirs": [
+        "Frog — langue longue, saut et adhérence",
+        "Aptitudes aquatiques"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son nom de héroïne est « Froppy »",
+        "Date de naissance : 12 février ; taille : 150 cm",
+        "Aoi Yūki la double en japonais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Ochaco Uraraka",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Izuku Midoriya",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Momo Yaoyorozu",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "ses frères et sœurs",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Aoi Yūki",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 16
+    },
+    {
+      "id": "mha-momo-yaoyorozu",
+      "nom": "Momo Yaoyorozu",
+      "nomJaponais": "八百万 百 (Yaoyorozu Momo)",
+      "animeId": "my-hero-academia",
+      "animeName": "My Hero Academia",
+      "auteurId": "kohei-horikoshi",
+      "auteurNom": "Kōhei Horikoshi",
+      "studioId": "bones",
+      "studioNom": "Bones",
+      "age": "15 ans au début de l’histoire (16 ans selon certaines sources)",
+      "sexe": "Féminin",
+      "statut": "Vivant",
+      "rang": "Vice-déléguée de la classe 1-A — Alter Creation — Héroïne « Creati »",
+      "description": "Momo Yaoyorozu est la vice-déléguée de la classe 1-A, issue d'une famille aisée. Son Alter, Creation, lui permet de créer des objets à partir de ses cellules. Intelligente et cultivée, elle est l'une des élèves les plus brillantes de sa promotion. Elle manque parfois de confiance en elle, ce qui la pousse à travailler davantage. Elle devient un soutien tactique pour ses camarades. Sa persévérance lui permet de développer ses capacités. Elle est l'une des élèves les plus fiables de la classe.",
+      "pouvoirs": [
+        "Creation — fabrication d'objets à partir de lipides",
+        "Connaissances encyclopédiques",
+        "Planification tactique"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle est réputée pour son sens de la stratégie",
+        "Date de naissance : 23 septembre ; taille : environ 173 cm",
+        "Marina Inoue la double en japonais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Shoto Todoroki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Tenya Ida",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Tsuyu Asui",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "1-A",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Marina Inoue",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 17
+    },
+    {
+      "id": "mha-fumikage-tokoyami",
+      "nom": "Fumikage Tokoyami",
+      "nomJaponais": "常闇 踏陰 (Tokoyami Fumikage)",
+      "animeId": "my-hero-academia",
+      "animeName": "My Hero Academia",
+      "auteurId": "kohei-horikoshi",
+      "auteurNom": "Kōhei Horikoshi",
+      "studioId": "bones",
+      "studioNom": "Bones",
+      "age": "15 ans au début de l’histoire (16 ans selon certaines sources)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Élève de la classe 1-A — Alter Dark Shadow",
+      "description": "Fumikage Tokoyami est un élève de la classe 1-A à la tête d'oiseau. Il possède l'Alter Dark Shadow, une créature d'ombre qui l'accompagne et combat à ses côtés. Calme et réservé, il adopte un style solennel. Son Alter est plus puissant dans l'obscurité, mais plus difficile à contrôler. Il apprend à maîtriser cette force avec l'aide de ses camarades. Il se montre loyal et serviable. Il est l'un des élèves les plus singuliers de la classe.",
+      "pouvoirs": [
+        "Dark Shadow — entité d'ombre autonome",
+        "Combat à distance et au corps à corps",
+        "Sang-froid"
+      ],
+      "citations": [],
+      "trivia": [
+        "Sa tête d'oiseau est un trait distinctif",
+        "Date de naissance : 30 octobre ; taille : environ 158 cm",
+        "Yoshimasa Hosoya le double en japonais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Izuku Midoriya",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Katsuki Bakugo",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Dark Shadow",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Yoshimasa Hosoya",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 18
+    },
+    {
+      "id": "mha-denki-kaminari",
+      "nom": "Denki Kaminari",
+      "nomJaponais": "上鳴 電気 (Kaminari Denki)",
+      "animeId": "my-hero-academia",
+      "animeName": "My Hero Academia",
+      "auteurId": "kohei-horikoshi",
+      "auteurNom": "Kōhei Horikoshi",
+      "studioId": "bones",
+      "studioNom": "Bones",
+      "age": "15 ans au début de l’histoire (16 ans selon certaines sources)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Élève de la classe 1-A — Alter Electrification — Héros « Chargebolt »",
+      "description": "Denki Kaminari est un élève de la classe 1-A, apprécié pour sa bonne humeur et son sens de l'humour. Son Alter, Electrification, lui permet de produire de l'électricité. S'il dépasse sa limite, il perd temporairement ses facultés. Il est proche de Kirishima et d'autres camarades de classe. Il compense par la coopération ce qu'il peut manquer en précision. Il apporte une touche de légèreté au groupe. Il progresse en travaillant sur ses limites.",
+      "pouvoirs": [
+        "Electrification — production de décharges électriques",
+        "Attaques de zone",
+        "Soutien d'équipe"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son nom de héros est « Chargebolt »",
+        "Date de naissance : 29 juin ; taille : environ 168 cm",
+        "Tasuku Hatanaka le double en japonais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Eijiro Kirishima",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Katsuki Bakugo",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Kyoka Jiro",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Tasuku Hatanaka",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 19
+    },
+    {
+      "id": "mha-minoru-mineta",
+      "nom": "Minoru Mineta",
+      "nomJaponais": "峰田 実 (Mineta Minoru)",
+      "animeId": "my-hero-academia",
+      "animeName": "My Hero Academia",
+      "auteurId": "kohei-horikoshi",
+      "auteurNom": "Kōhei Horikoshi",
+      "studioId": "bones",
+      "studioNom": "Bones",
+      "age": "15 ans au début de l’histoire (16 ans selon certaines sources)",
+      "sexe": "Masculin",
+      "statut": "Vivant",
+      "rang": "Élève de la classe 1-A — Alter Pop Off — Héros « Grape Juice »",
+      "description": "Minoru Mineta est le plus petit élève de la classe 1-A. Son Alter, Pop Off, produit des boules collantes qu'il détache de sa tête. Il est apprécié pour son humour, même si son comportement provoque souvent des réactions de ses camarades. Sa timidité et son besoin de se faire remarquer lui valent des situations comiques. Il s'améliore au fil des épreuves. Son Alter se révèle efficace pour immobiliser ses adversaires. Il apporte du comique à la série.",
+      "pouvoirs": [
+        "Pop Off — boules collantes",
+        "Immobilisation d'adversaires",
+        "Grande agilité malgré sa petite taille"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son nom de héros est « Grape Juice »",
+        "Date de naissance : 8 octobre ; taille : 108 cm",
+        "Ryō Hirohashi le double en japonais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Denki Kaminari",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Izuku Midoriya",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "1-A",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Ryō Hirohashi",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 20
+    }
+  ]
+}

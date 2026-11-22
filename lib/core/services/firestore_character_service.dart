@@ -509,6 +509,36 @@ class FirestoreCharacterService {
                 accentColor: AppColors.animeMtAccent,
                 category: 'Isekai'
               ),
+            're-zero' => (
+                prefix: 'rz',
+                cardColor: AppColors.animeRzCard,
+                accentColor: AppColors.animeRzAccent,
+                category: 'Isekai'
+              ),
+            'tokyo-revengers' => (
+                prefix: 'tr',
+                cardColor: AppColors.animeTrCard,
+                accentColor: AppColors.animeTrAccent,
+                category: 'Shōnen'
+              ),
+            'my-hero-academia' => (
+                prefix: 'mha',
+                cardColor: AppColors.animeMhaCard,
+                accentColor: AppColors.animeMhaAccent,
+                category: 'Shōnen'
+              ),
+            'fairy-tail' => (
+                prefix: 'ft',
+                cardColor: AppColors.animeFtCard,
+                accentColor: AppColors.animeFtAccent,
+                category: 'Shōnen'
+              ),
+            'dragon-ball' => (
+                prefix: 'db',
+                cardColor: AppColors.animeDbCard,
+                accentColor: AppColors.animeDbAccent,
+                category: 'Shōnen'
+              ),
             _ => (
                 prefix: '',
                 cardColor: AppColors.animeDefaultCard,

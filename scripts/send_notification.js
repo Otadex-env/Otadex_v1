@@ -13,6 +13,9 @@
 const https = require('https');
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+// Secrets serveur uniquement (clé REST OneSignal...) : jamais dans ../.env,
+// qui est embarqué tel quel comme asset Flutter dans l'APK/AAB.
+require('dotenv').config({ path: path.resolve(__dirname, '.env.secrets') });
 
 const admin = require('firebase-admin');
 

@@ -537,6 +537,97 @@
         width: auto;
       }
 
+      /* ── SHOWCASE ─────────────────────────────────────────────────────── */
+      /* Bande défilante de vrais personnages déjà fichés dans l'app : la
+         preuve visuelle derrière le chiffre "134+ personnages" des stats. */
+      .showcase {
+        padding: 90px 0 100px;
+        border-top: 1px solid var(--border);
+      }
+
+      .showcase-track-wrap {
+        overflow: hidden;
+        margin-top: 48px;
+        -webkit-mask-image: linear-gradient(
+          90deg,
+          transparent,
+          black 6%,
+          black 94%,
+          transparent
+        );
+        mask-image: linear-gradient(
+          90deg,
+          transparent,
+          black 6%,
+          black 94%,
+          transparent
+        );
+      }
+
+      .showcase-track {
+        display: flex;
+        width: max-content;
+        gap: 18px;
+        animation: showcase-scroll 42s linear infinite;
+      }
+      .showcase-track-wrap:hover .showcase-track {
+        animation-play-state: paused;
+      }
+      @keyframes showcase-scroll {
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .showcase-track {
+          animation: none;
+          overflow-x: auto;
+        }
+      }
+
+      .char-card {
+        position: relative;
+        flex: 0 0 168px;
+        aspect-ratio: 3 / 4;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        border: 1px solid var(--border);
+      }
+      .char-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease;
+      }
+      .char-card:hover img {
+        transform: scale(1.06);
+      }
+      .char-card-info {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 16px 12px 12px;
+        background: linear-gradient(
+          180deg,
+          transparent,
+          rgba(0, 0, 0, 0.88) 88%
+        );
+      }
+      .char-card-name {
+        font-family: "Rajdhani", "Nunito Sans", system-ui, sans-serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: #fff;
+        line-height: 1.2;
+      }
+      .char-card-anime {
+        font-size: 0.72rem;
+        color: rgba(255, 255, 255, 0.68);
+        margin-top: 2px;
+      }
+
       /* ── RANKS ────────────────────────────────────────────────────────── */
       .ranks {
         padding: 100px 0;
@@ -902,6 +993,9 @@
         .legal-cards {
           grid-template-columns: 1fr;
         }
+        .char-card {
+          flex-basis: 136px;
+        }
         .footer-grid {
           grid-template-columns: 1fr 1fr;
         }
@@ -1117,6 +1211,22 @@
             />
           </a>
         </div>
+      </div>
+    </section>
+
+    <!-- ── SHOWCASE ───────────────────────────────────────────────────────── -->
+    <section class="showcase">
+      <div class="container">
+        <h2 class="section-title reveal" data-key="showcase_title">
+          Déjà dans la collection
+        </h2>
+        <p class="section-sub reveal" data-key="showcase_sub">
+          Naruto, Luffy, Gojo, Edward Elric... un aperçu des 134+ personnages
+          déjà fichés dans OTADEX, tous univers confondus.
+        </p>
+      </div>
+      <div class="showcase-track-wrap">
+        <div class="showcase-track" id="showcase-track"></div>
       </div>
     </section>
 
@@ -1438,6 +1548,9 @@
           stat1_label: "univers animé",
           stat2_label: "personnages",
           stat3_label: "rangs ninja",
+          showcase_title: "Déjà dans la collection",
+          showcase_sub:
+            "Naruto, Luffy, Gojo, Edward Elric... un aperçu des 134+ personnages déjà fichés dans OTADEX, tous univers confondus.",
           feat_title: "Pourquoi OTADEX ?",
           feat_sub: "Une encyclopédie vivante conçue pour les vrais fans.",
           feat1_title: "Fiches Personnages Complètes",
@@ -1531,6 +1644,9 @@
           stat1_label: "anime worlds",
           stat2_label: "characters",
           stat3_label: "ninja ranks",
+          showcase_title: "Already in the collection",
+          showcase_sub:
+            "Naruto, Luffy, Gojo, Edward Elric... a glimpse of the 134+ characters already profiled in OTADEX, across every series.",
           feat_title: "Why OTADEX?",
           feat_sub: "A living encyclopedia built for true fans.",
           feat1_title: "Complete Character Sheets",
@@ -1607,6 +1723,33 @@
           footer_made: "Built with passion for the anime community.",
         },
       };
+
+      /* ── SHOWCASE CARDS ── */
+      const showcaseChars = [
+        { name: "Naruto Uzumaki", anime: "Naruto Shippuden", img: "naruto.jpeg" },
+        { name: "Monkey D. Luffy", anime: "One Piece", img: "luffy.jpeg" },
+        { name: "Gojo Satoru", anime: "Jujutsu Kaisen", img: "gojo.jpeg" },
+        { name: "Edward Elric", anime: "Fullmetal Alchemist", img: "edward.jpeg" },
+        { name: "Gon Freecss", anime: "Hunter x Hunter", img: "gon.jpeg" },
+        { name: "Rudeus Greyrat", anime: "Mushoku Tensei", img: "rudeus.jpeg" },
+        { name: "Seijūrō Akashi", anime: "Kuroko no Basket", img: "akashi.jpeg" },
+        { name: "Kiyotaka Ayanokōji", anime: "Classroom of the Elite", img: "ayanokoji.jpeg" },
+      ];
+      const showcaseTrack = document.getElementById("showcase-track");
+      if (showcaseTrack) {
+        const cardHTML = (c) => `
+          <div class="char-card">
+            <img src="assets/img/characters/${c.img}" alt="${c.name} — ${c.anime}" loading="lazy" />
+            <div class="char-card-info">
+              <div class="char-card-name">${c.name}</div>
+              <div class="char-card-anime">${c.anime}</div>
+            </div>
+          </div>`;
+        // Dupliqué une fois pour boucler le défilement sans coupure visible.
+        showcaseTrack.innerHTML =
+          showcaseChars.map(cardHTML).join("") +
+          showcaseChars.map(cardHTML).join("");
+      }
 
       let currentLang = localStorage.getItem("otadex_lang") || "fr";
 
