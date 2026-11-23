@@ -33,6 +33,30 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   List<Character> _localChars = [];
   List<AnimeEntry> _localAnimes = [];
   List<CreatorEntry> _localCreators = [];
+  // ── Indice animé de la barre de recherche ────────────────────────────
+  Timer? _hintTimer;
+  int _hintIndex = 0;
+
+  /// Indices : le texte habituel, puis des noms de personnages à essayer.
+  List<String> get _hints {
+    final base = AppStrings.of(context).searchHint;
+    final names = <String>[];
+    for (var i = 0; i < _localChars.length && names.length < 5; i++) {
+      final c = _localChars[(i + _coverSeed) % _localChars.length];
+      final first = c.name.split(' ').first;
+      if (first.length >= 3 && !names.contains(first)) names.add(first);
+    }
+    return [base, for (final n in names) 'Essaie : $n…'];
+  }
+
+  void _startHintTimer() {
+    _hintTimer = Timer.periodic(const Duration(seconds: 3), (_) {
+      if (mounted && !_isFocused && _query.isEmpty) {
+        setState(() => _hintIndex++);
+      }
+    });
+  }
+
   // ── Controllers ──────────────────────────────────────────────────────
   final _controller = TextEditingController();
   final _focusNode = FocusNode();
@@ -303,6 +327,7 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
     // Pas d'init de la reconnaissance vocale ici : elle déclenche la demande de
     // permission micro, qui ne doit survenir qu'au tap sur l'icône micro.
     _loadHistory();
+    _startHintTimer();
     // Charger depuis Firestore (priorité) → fallback JSON si vide
     ref.read(allCharactersProvider.future).then((chars) {
       if (mounted) setState(() => _localChars = chars);
@@ -331,6 +356,7 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   @override
   void dispose() {
     _debounce?.cancel();
+    _hintTimer?.cancel();
     _focusNode.removeListener(_onFocusChange);
     _controller.removeListener(_onQueryChange);
     _controller.dispose();
@@ -595,34 +621,66 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
                       color: theme.accentColor, size: 20),
                   const SizedBox(width: 8),
                   Expanded(
-                    child: TextField(
-                      controller: _controller,
-                      focusNode: _focusNode,
-                      style: GoogleFonts.nunitoSans(
-                        color: theme.textPrimary,
-                        fontSize: 15,
-                      ),
-                      decoration: InputDecoration(
-                        isDense: true,
-                        // Le conteneur autour dessine déjà la bordure : on
-                        // supprime TOUTES les bordures du thème (activée,
-                        // focus, erreur…), sinon on voit une double bordure.
-                        filled: false,
-                        border: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        disabledBorder: InputBorder.none,
-                        errorBorder: InputBorder.none,
-                        focusedErrorBorder: InputBorder.none,
-                        hintText: AppStrings.of(context).searchHint,
-                        hintStyle: GoogleFonts.nunitoSans(
-                          color: theme.textSecondary,
-                          fontSize: 15,
+                    child: Stack(
+                      alignment: Alignment.centerLeft,
+                      children: [
+                        TextField(
+                          controller: _controller,
+                          focusNode: _focusNode,
+                          style: GoogleFonts.nunitoSans(
+                            color: theme.textPrimary,
+                            fontSize: 15,
+                          ),
+                          decoration: const InputDecoration(
+                            isDense: true,
+                            // Le conteneur autour dessine déjà la bordure : on
+                            // supprime TOUTES les bordures du thème (activée,
+                            // focus, erreur…), sinon on voit une double bordure.
+                            filled: false,
+                            border: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            disabledBorder: InputBorder.none,
+                            errorBorder: InputBorder.none,
+                            focusedErrorBorder: InputBorder.none,
+                            contentPadding: EdgeInsets.zero,
+                          ),
+                          textInputAction: TextInputAction.search,
+                          onSubmitted: (_) => _submitSearch(),
                         ),
-                        contentPadding: EdgeInsets.zero,
-                      ),
-                      textInputAction: TextInputAction.search,
-                      onSubmitted: (_) => _submitSearch(),
+                        if (_query.isEmpty)
+                          Positioned.fill(
+                            child: IgnorePointer(
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: AnimatedSwitcher(
+                                  duration: const Duration(milliseconds: 450),
+                                  transitionBuilder: (child, anim) =>
+                                      FadeTransition(
+                                    opacity: anim,
+                                    child: SlideTransition(
+                                      position: Tween<Offset>(
+                                        begin: const Offset(0, 0.5),
+                                        end: Offset.zero,
+                                      ).animate(anim),
+                                      child: child,
+                                    ),
+                                  ),
+                                  child: Text(
+                                    _hints[_hintIndex % _hints.length],
+                                    key: ValueKey(_hintIndex % _hints.length),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: GoogleFonts.nunitoSans(
+                                      color: theme.textSecondary,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                      ],
                     ),
                   ),
                   if (_query.isNotEmpty)
@@ -988,6 +1046,7 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
         Padding(padding: side, child: _buildSectionTitle(theme, trendingTitle)),
         const SizedBox(height: 12),
         _buildTrendingList(theme),
+        _buildDiscoverCard(theme),
         const SizedBox(height: 100),
       ],
     );
@@ -1283,6 +1342,122 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
     );
   }
 
+  void _openCharacter(Character c) {
+    ImagePrefetcher.prefetchCharacterImages(context, c);
+    context.push('/character/${c.id}');
+  }
+
+  /// « À découvrir » : un grand bandeau sur un personnage tiré au hasard à
+  /// chaque ouverture (hors des 8 tendances déjà montrées), pour que la page
+  /// change d'une visite à l'autre.
+  Widget _buildDiscoverCard(RankTheme theme) {
+    final trendingIds = (ref.watch(trendingCharactersProvider).valueOrNull ??
+            const <Character>[])
+        .take(8)
+        .map((c) => c.id)
+        .toSet();
+    final pool = _localChars
+        .where((c) => !trendingIds.contains(c.id) && _charImage(c) != null)
+        .toList();
+    if (pool.isEmpty) return const SizedBox.shrink();
+    final c = pool[_coverSeed % pool.length];
+    final img = _charImage(c)!;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 26, 16, 0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildSectionTitle(theme, 'À découvrir'),
+          const SizedBox(height: 12),
+          _PressScale(
+            onTap: () => _openCharacter(c),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(18),
+              child: SizedBox(
+                height: 150,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    DecoratedBox(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [c.cardColor, c.accentColor],
+                        ),
+                      ),
+                    ),
+                    OtadexImage(
+                      imagePath: img,
+                      fit: BoxFit.cover,
+                      alignment: const Alignment(0, -0.6),
+                    ),
+                    DecoratedBox(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          stops: const [0.0, 0.75],
+                          colors: [
+                            AppColors.backgroundDeep.withValues(alpha: 0.92),
+                            AppColors.backgroundDeep.withValues(alpha: 0.0),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 16,
+                      top: 0,
+                      bottom: 0,
+                      right: 150,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            c.category.toUpperCase(),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.rajdhani(
+                              color: theme.accentColor,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w800,
+                              letterSpacing: 1.4,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            c.name,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.rajdhani(
+                              color: Colors.white,
+                              fontSize: 22,
+                              fontWeight: FontWeight.w800,
+                              height: 1.05,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            c.animeName,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.nunitoSans(
+                              color: Colors.white.withValues(alpha: 0.75),
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _buildTrendPoster(RankTheme theme, Character c, int index) {
     final img = _charImage(c);
     return TweenAnimationBuilder<double>(
@@ -1296,107 +1471,97 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
           child: child,
         ),
       ),
-      child: SizedBox(
-        width: 132,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(16),
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [c.cardColor, c.accentColor],
+      child: _PressScale(
+        onTap: () => _openCharacter(c),
+        child: SizedBox(
+          width: 132,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [c.cardColor, c.accentColor],
+                    ),
                   ),
                 ),
-              ),
-              if (img != null)
-                OtadexImage(
-                  imagePath: img,
-                  fit: BoxFit.cover,
-                  alignment: Alignment.topCenter,
+                if (img != null)
+                  OtadexImage(
+                    imagePath: img,
+                    fit: BoxFit.cover,
+                    alignment: Alignment.topCenter,
+                  ),
+                DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: const [0.45, 1.0],
+                      colors: [
+                        AppColors.backgroundDeep.withValues(alpha: 0.0),
+                        AppColors.backgroundDeep.withValues(alpha: 0.94),
+                      ],
+                    ),
+                  ),
                 ),
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    stops: const [0.45, 1.0],
-                    colors: [
-                      AppColors.backgroundDeep.withValues(alpha: 0.0),
-                      AppColors.backgroundDeep.withValues(alpha: 0.94),
+                // Rang en grand, façon classement.
+                Positioned(
+                  top: 2,
+                  left: 10,
+                  child: Text(
+                    '${index + 1}',
+                    style: GoogleFonts.rajdhani(
+                      color: Colors.white,
+                      fontSize: 38,
+                      fontWeight: FontWeight.w800,
+                      height: 1.1,
+                      shadows: [
+                        Shadow(
+                          color: Colors.black.withValues(alpha: 0.7),
+                          blurRadius: 10,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: 10,
+                  right: 10,
+                  bottom: 10,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        c.name,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.rajdhani(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w800,
+                          height: 1.05,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        c.animeName,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.nunitoSans(
+                          color: Colors.white.withValues(alpha: 0.75),
+                          fontSize: 10,
+                        ),
+                      ),
                     ],
                   ),
                 ),
-              ),
-              // Rang en grand, façon classement.
-              Positioned(
-                top: 2,
-                left: 10,
-                child: Text(
-                  '${index + 1}',
-                  style: GoogleFonts.rajdhani(
-                    color: Colors.white,
-                    fontSize: 38,
-                    fontWeight: FontWeight.w800,
-                    height: 1.1,
-                    shadows: [
-                      Shadow(
-                        color: Colors.black.withValues(alpha: 0.7),
-                        blurRadius: 10,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 10,
-                right: 10,
-                bottom: 10,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      c.name,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: GoogleFonts.rajdhani(
-                        color: Colors.white,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w800,
-                        height: 1.05,
-                      ),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      c.animeName,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: GoogleFonts.nunitoSans(
-                        color: Colors.white.withValues(alpha: 0.75),
-                        fontSize: 10,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Positioned.fill(
-                child: Material(
-                  type: MaterialType.transparency,
-                  child: InkWell(
-                    splashColor: Colors.white.withValues(alpha: 0.18),
-                    onTap: () {
-                      _saveQuery(c.name);
-                      ImagePrefetcher.prefetchCharacterImages(context, c);
-                      context.push('/character/${c.id}');
-                    },
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -2039,4 +2204,35 @@ class _Suggestion {
     this.character,
     this.anime,
   });
+}
+
+/// Réaction au toucher : la carte s'enfonce légèrement tant qu'on l'appuie.
+class _PressScale extends StatefulWidget {
+  final Widget child;
+  final VoidCallback onTap;
+  const _PressScale({required this.child, required this.onTap});
+
+  @override
+  State<_PressScale> createState() => _PressScaleState();
+}
+
+class _PressScaleState extends State<_PressScale> {
+  bool _pressed = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTapDown: (_) => setState(() => _pressed = true),
+      onTapUp: (_) => setState(() => _pressed = false),
+      onTapCancel: () => setState(() => _pressed = false),
+      onTap: widget.onTap,
+      child: AnimatedScale(
+        scale: _pressed ? 0.96 : 1.0,
+        duration: const Duration(milliseconds: 120),
+        curve: Curves.easeOut,
+        child: widget.child,
+      ),
+    );
+  }
 }
