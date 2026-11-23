@@ -454,75 +454,85 @@ class _CharacterRow extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: theme.borderSubtle),
       ),
-      child: Row(
-        children: [
-          const SizedBox(width: 10),
-          // Avatar — assets locaux en priorité
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: SizedBox(
-              width: 52,
-              height: 52,
-              child: Builder(builder: (_) {
-                final localImgs = AppAssets.getByCharacterId(character.id);
-                final imgPath = localImgs.isNotEmpty
-                    ? localImgs.first
-                    : character.imagePath ?? '';
-                return imgPath.isNotEmpty
-                    ? OtadexImage(imagePath: imgPath, fit: BoxFit.cover)
-                    : _InitialsBox(character: character);
-              }),
-            ),
-          ),
-          const SizedBox(width: 12),
-          // Info
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(12),
+          onTap: () => context.push('/character/${character.id}'),
+          child: Row(
+            children: [
+              const SizedBox(width: 10),
+              // Avatar — assets locaux en priorité
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: SizedBox(
+                  width: 52,
+                  height: 52,
+                  child: Builder(builder: (_) {
+                    final localImgs = AppAssets.getByCharacterId(character.id);
+                    final imgPath = localImgs.isNotEmpty
+                        ? localImgs.first
+                        : character.imagePath ?? '';
+                    return imgPath.isNotEmpty
+                        ? OtadexImage(imagePath: imgPath, fit: BoxFit.cover)
+                        : _InitialsBox(character: character);
+                  }),
+                ),
+              ),
+              const SizedBox(width: 12),
+              // Info
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Flexible(
-                      child: Text(
-                        character.name,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.rajdhani(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: theme.textPrimary,
+                    Row(
+                      children: [
+                        Flexible(
+                          child: Text(
+                            character.name,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.rajdhani(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: theme.textPrimary,
+                            ),
+                          ),
                         ),
+                        if (character.role != null) ...[
+                          const SizedBox(width: 6),
+                          Flexible(
+                            fit: FlexFit.loose,
+                            child: CharPill(
+                              character.role!,
+                              bg: theme.accentColor.withValues(alpha: 0.15),
+                              color: theme.accentColor,
+                              fontSize: 9,
+                            ),
+                          ),
+                        ],
+                      ],
+                    ),
+                    Text(
+                      character.animeName,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.nunitoSans(
+                        fontSize: 12,
+                        color: theme.textSecondary,
                       ),
                     ),
-                    if (character.role != null) ...[
-                      const SizedBox(width: 6),
-                      Flexible(
-                        fit: FlexFit.loose,
-                        child: CharPill(
-                          character.role!,
-                          bg: theme.accentColor.withValues(alpha: 0.15),
-                          color: theme.accentColor,
-                          fontSize: 9,
-                        ),
-                      ),
-                    ],
                   ],
                 ),
-                Text(
-                  character.animeName,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: GoogleFonts.nunitoSans(
-                    fontSize: 12,
-                    color: theme.textSecondary,
-                  ),
-                ),
-              ],
-            ),
+              ),
+              const SizedBox(width: 4),
+              Icon(Icons.chevron_right_rounded,
+                  color: theme.textSecondary, size: 22),
+              const SizedBox(width: 8),
+            ],
           ),
-          const SizedBox(width: 12),
-        ],
+        ),
       ),
     );
   }
