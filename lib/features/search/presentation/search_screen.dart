@@ -61,12 +61,12 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   late Animation<Offset> _cancelSlide;
   late Animation<double> _cancelFade;
 
+  final int _coverSeed = DateTime.now().millisecondsSinceEpoch ~/ 1000;
+
   // ── Static data ───────────────────────────────────────────────────────
   // Pour ajouter une catégorie : 1) AppColors.catXxxC1/C2 dans app_colors.dart
   //   2) Ajouter ici dans _subFilters et _categories
   //   3) Ajouter dans _categoryForAnime() dans firestore_character_service.dart
-  static const _subFilters = ['Shōnen', 'Seinen', 'Sport'];
-
   static const _categories = [
     _Category('SHŌNEN', 'Shōnen', 'Action · Aventure', '⚡',
         AppColors.catShonenC1, AppColors.catShonenC2),
@@ -120,15 +120,13 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
     final animes = _localAnimes
         .where((a) => matchScore(a.name, q) != -1)
         .toList()
-      ..sort((a, b) =>
-          matchScore(a.name, q).compareTo(matchScore(b.name, q)));
+      ..sort((a, b) => matchScore(a.name, q).compareTo(matchScore(b.name, q)));
     for (final a in animes.take(2)) {
       results.add(_Suggestion(a.name, 'Animé', subtitle: a.studio, anime: a));
     }
 
-    for (final c in _localCreators
-        .where((c) => matchScore(c.name, q) != -1)
-        .take(1)) {
+    for (final c
+        in _localCreators.where((c) => matchScore(c.name, q) != -1).take(1)) {
       results.add(_Suggestion(c.name, 'Créateur'));
     }
     return results;
@@ -694,108 +692,53 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   }
 
   // ── Filter chips ──────────────────────────────────────────────────────
+  // Une seule rangée compacte : les genres (Shōnen, Seinen, Sport) sont déjà
+  // proposés par les vignettes « Explorer par catégorie », inutile de les
+  // répéter ici.
   Widget _buildFilterRow(RankTheme theme) {
     final s = AppStrings.of(context);
     final mainFilters = [s.all, s.characters, s.animes, s.creators];
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          height: 36,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            itemCount: mainFilters.length,
-            separatorBuilder: (_, __) => const SizedBox(width: 8),
-            itemBuilder: (context, i) {
-              final active = i == _selectedFilter;
-              return GestureDetector(
-                onTap: () => setState(() => _selectedFilter = i),
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
-                  decoration: BoxDecoration(
-                    color: active ? theme.accentColor : Colors.transparent,
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
-                      color: active ? theme.accentColor : theme.borderDefault,
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      if (active) ...[
-                        const Icon(
-                          Icons.check_rounded,
-                          color: Colors.white,
-                          size: 12,
-                        ),
-                        const SizedBox(width: 4),
-                      ],
-                      Text(
-                        mainFilters[i],
-                        style: GoogleFonts.nunitoSans(
-                          color: active ? Colors.white : theme.textSecondary,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
+    final scale = math.min(MediaQuery.textScalerOf(context).scale(1.0), 1.3);
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: SizedBox(
+        height: 34 * scale,
+        child: ListView.separated(
+          scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          itemCount: mainFilters.length,
+          separatorBuilder: (_, __) => const SizedBox(width: 8),
+          itemBuilder: (context, i) {
+            final active = i == _selectedFilter;
+            return GestureDetector(
+              onTap: () => setState(() => _selectedFilter = i),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 220),
+                curve: Curves.easeOutCubic,
+                alignment: Alignment.center,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                  color: active
+                      ? theme.accentColor.withValues(alpha: 0.16)
+                      : Colors.transparent,
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                    color: active ? theme.accentColor : theme.borderSubtle,
                   ),
                 ),
-              );
-            },
-          ),
-        ),
-        const SizedBox(height: 6),
-        SizedBox(
-          height: 32,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            itemCount: _subFilters.length,
-            separatorBuilder: (_, __) => const SizedBox(width: 8),
-            itemBuilder: (context, i) {
-              final active = _selectedSubFilter == _subFilters[i];
-              return GestureDetector(
-                onTap: () => setState(() {
-                  if (active) {
-                    _selectedSubFilter = null;
-                    if (_query.isEmpty) _submitted = false;
-                  } else {
-                    _selectedSubFilter = _subFilters[i];
-                    _submitted = true;
-                  }
-                }),
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
-                  decoration: BoxDecoration(
-                    color: active
-                        ? theme.accentColor.withValues(alpha: 0.15)
-                        : Colors.transparent,
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(
-                      color: active ? theme.accentColor : theme.borderSubtle,
-                    ),
-                  ),
-                  child: Text(
-                    _subFilters[i],
-                    style: GoogleFonts.nunitoSans(
-                      color: active ? theme.accentColor : theme.textSecondary,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                    ),
+                child: Text(
+                  mainFilters[i],
+                  style: GoogleFonts.nunitoSans(
+                    color: active ? theme.accentColor : theme.textSecondary,
+                    fontSize: 13,
+                    fontWeight: active ? FontWeight.w800 : FontWeight.w600,
                   ),
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         ),
-        const SizedBox(height: 8),
-      ],
+      ),
     );
   }
 
@@ -984,7 +927,9 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
     // Début de mot correspondant en priorité (« zol » dans « Killua Zoldyck »).
     var idx = q.isEmpty
         ? -1
-        : RegExp(r'(^|[\s\-_:·.,])' + RegExp.escape(q)).firstMatch(lower)?.end ??
+        : RegExp(r'(^|[\s\-_:·.,])' + RegExp.escape(q))
+                .firstMatch(lower)
+                ?.end ??
             -1;
     if (idx != -1) idx -= q.length;
     if (idx == -1 && q.isNotEmpty) idx = lower.indexOf(q);
@@ -1019,21 +964,28 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
 
   // ── STATE A — Home content ─────────────────────────────────────────────
   Widget _buildHomeContent(RankTheme theme) {
+    const side = EdgeInsets.symmetric(horizontal: 16);
+    final trendingTitle = AppStrings.of(context)
+        .trendingNow
+        .replaceFirst(RegExp(r'^[^\p{L}\p{N}]+', unicode: true), '');
     return ListView(
       key: const ValueKey('home'),
-      padding: const EdgeInsets.symmetric(horizontal: 16),
       children: [
         if (_recentSearches.isNotEmpty) ...[
-          _buildRecentHeader(theme),
+          Padding(padding: side, child: _buildRecentHeader(theme)),
           const SizedBox(height: 10),
-          _buildRecentChipsWrap(theme),
+          Padding(padding: side, child: _buildRecentChipsWrap(theme)),
           const SizedBox(height: 24),
         ],
-        _buildSectionTitle(theme, AppStrings.of(context).exploreByCategory),
+        Padding(
+          padding: side,
+          child: _buildSectionTitle(
+              theme, AppStrings.of(context).exploreByCategory),
+        ),
         const SizedBox(height: 12),
-        _buildCategoryGrid(theme),
-        const SizedBox(height: 24),
-        _buildSectionTitle(theme, AppStrings.of(context).trendingNow),
+        Padding(padding: side, child: _buildCategoryGrid(theme)),
+        const SizedBox(height: 26),
+        Padding(padding: side, child: _buildSectionTitle(theme, trendingTitle)),
         const SizedBox(height: 12),
         _buildTrendingList(theme),
         const SizedBox(height: 100),
@@ -1108,13 +1060,31 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
   }
 
   Widget _buildSectionTitle(RankTheme theme, String title) {
-    return Text(
-      title,
-      style: GoogleFonts.rajdhani(
-        color: theme.textPrimary,
-        fontSize: 18,
-        fontWeight: FontWeight.w700,
-      ),
+    return Row(
+      children: [
+        Flexible(
+          child: Text(
+            title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: GoogleFonts.rajdhani(
+              color: theme.textPrimary,
+              fontSize: 19,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ),
+        const SizedBox(width: 7),
+        Container(
+          width: 7,
+          height: 7,
+          margin: const EdgeInsets.only(top: 6),
+          decoration: BoxDecoration(
+            color: theme.accentColor,
+            shape: BoxShape.circle,
+          ),
+        ),
+      ],
     );
   }
 
@@ -1130,120 +1100,157 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
     );
   }
 
+  /// Image à afficher pour un personnage : assets locaux d'abord.
+  String? _charImage(Character c) {
+    final local = AppAssets.getByCharacterId(c.id);
+    if (local.isNotEmpty) return local.first;
+    final p = c.imagePath;
+    return (p != null && p.isNotEmpty) ? p : null;
+  }
+
   Widget _buildCategoryGrid(RankTheme theme) {
-    // Hauteur de carte = padding (20) + 3 lignes de texte qui grossissent avec
-    // la police système. Un mainAxisExtent fixe à 80 débordait dès ×1,3.
-    final textScale = MediaQuery.textScalerOf(context).scale(1.0);
-    final cardHeight = math.max(80.0, 24 + 56 * textScale);
-
-    // Grille à 2 colonnes faite de simples lignes (Row) plutôt que d'un
-    // GridView : sur téléphone, le GridView en `shrinkWrap` réservait de la
-    // place pour une ligne fantôme sous les cartes (grand vide avant
-    // « Tendances »). Ici la hauteur est exactement celle des cartes.
-    Widget cell(int i) => i < _categories.length
-        ? SizedBox(
-            height: cardHeight,
-            child: _buildCategoryCard(theme, _categories[i], i),
-          )
-        : SizedBox(height: cardHeight);
-
-    return Column(
-      children: [
-        for (var i = 0; i < _categories.length; i += 2) ...[
-          if (i > 0) const SizedBox(height: 10),
-          Row(
-            children: [
-              Expanded(child: cell(i)),
-              const SizedBox(width: 10),
-              Expanded(child: cell(i + 1)),
-            ],
-          ),
+    final scale = math.min(MediaQuery.textScalerOf(context).scale(1.0), 1.3);
+    return SizedBox(
+      height: 128 * scale,
+      child: Row(
+        children: [
+          for (var i = 0; i < _categories.length; i++) ...[
+            if (i > 0) const SizedBox(width: 10),
+            Expanded(child: _buildCategoryCard(theme, _categories[i], i)),
+          ],
         ],
-      ],
+      ),
     );
   }
 
+  /// Vignette de catégorie : la photo d'un personnage du genre, qui change à
+  /// chaque ouverture de l'application, sous un voile de la couleur du genre.
   Widget _buildCategoryCard(RankTheme theme, _Category cat, int index) {
     final isSelected = _selectedSubFilter == cat.label;
+    final candidates = _localChars
+        .where((c) => c.category == cat.label && _charImage(c) != null)
+        .toList();
+    final cover = candidates.isEmpty
+        ? null
+        : _charImage(candidates[(_coverSeed + index) % candidates.length]);
     return TweenAnimationBuilder<double>(
       tween: Tween(begin: 0.0, end: 1.0),
-      duration: Duration(milliseconds: 300 + index * 50),
-      curve: Curves.easeOut,
+      duration: Duration(milliseconds: 350 + index * 80),
+      curve: Curves.easeOutCubic,
       builder: (context, value, child) => Opacity(
         opacity: value,
         child: Transform.translate(
-          offset: Offset(0, 16 * (1 - value)),
+          offset: Offset(0, 18 * (1 - value)),
           child: child,
         ),
       ),
-      child: GestureDetector(
-        onTap: () => _selectCategory(cat),
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [cat.color1, cat.color2],
-            ),
-            borderRadius: BorderRadius.circular(12),
-            border: isSelected
-                ? Border.all(
-                    color: Colors.white.withValues(alpha: 0.6), width: 1.5)
-                : null,
-          ),
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.min,
+      child: AnimatedScale(
+        scale: isSelected ? 0.97 : 1.0,
+        duration: const Duration(milliseconds: 180),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(14),
+          child: Stack(
+            fit: StackFit.expand,
             children: [
-              Text(
-                cat.id,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: GoogleFonts.rajdhani(
-                  color: Colors.white.withValues(alpha: 0.6),
-                  fontSize: 10,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 1.5,
+              DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [cat.color1, cat.color2],
+                  ),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Flexible(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          cat.label,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: GoogleFonts.rajdhani(
-                            color: Colors.white,
-                            fontSize: 17,
-                            fontWeight: FontWeight.w800,
-                            height: 1,
-                          ),
-                        ),
-                        const SizedBox(height: 2),
-                        Text(
-                          cat.sub,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: GoogleFonts.nunitoSans(
-                            color: Colors.white.withValues(alpha: 0.7),
-                            fontSize: 10,
-                          ),
-                        ),
-                      ],
-                    ),
+              if (cover != null)
+                OtadexImage(
+                  imagePath: cover,
+                  fit: BoxFit.cover,
+                  alignment: Alignment.topCenter,
+                )
+              else
+                // Pas encore de portrait de ce genre chargé : grande icône
+                // en filigrane plutôt qu'un aplat vide.
+                Positioned(
+                  top: 10,
+                  right: -8,
+                  child: Icon(
+                    switch (cat.label) {
+                      'Seinen' => Icons.edit_rounded,
+                      'Sport' => Icons.sports_basketball_rounded,
+                      _ => Icons.bolt_rounded,
+                    },
+                    size: 74,
+                    color: Colors.white.withValues(alpha: 0.18),
                   ),
-                  Text(cat.icon, style: const TextStyle(fontSize: 18)),
-                ],
+                ),
+              DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    stops: const [0.30, 1.0],
+                    colors: [
+                      cat.color2.withValues(alpha: 0.0),
+                      cat.color2.withValues(alpha: 0.96),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 10,
+                right: 10,
+                bottom: 9,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      cat.label,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.rajdhani(
+                        color: Colors.white,
+                        fontSize: 19,
+                        fontWeight: FontWeight.w800,
+                        height: 1,
+                      ),
+                    ),
+                    const SizedBox(height: 3),
+                    Text(
+                      cat.sub,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.nunitoSans(
+                        color: Colors.white.withValues(alpha: 0.78),
+                        fontSize: 10,
+                        height: 1.15,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              if (isSelected)
+                Positioned(
+                  top: 8,
+                  right: 8,
+                  child: Container(
+                    padding: const EdgeInsets.all(3),
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child:
+                        Icon(Icons.check_rounded, size: 14, color: cat.color2),
+                  ),
+                ),
+              Positioned.fill(
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: InkWell(
+                    onTap: () => _selectCategory(cat),
+                    splashColor: Colors.white.withValues(alpha: 0.18),
+                  ),
+                ),
               ),
             ],
           ),
@@ -1254,91 +1261,143 @@ class _RechercheScreenState extends ConsumerState<RechercheScreen>
 
   /// Tendances : mêmes données que l'accueil (`trendingCharactersProvider`),
   /// pour que les deux écrans ne se contredisent plus. Pendant le chargement
-  /// ou en cas d'erreur, on n'affiche rien plutôt que de fausses valeurs.
+  /// ou en cas d'erreur, on réserve la place sans afficher de fausses valeurs.
+  /// Affiches de personnages pleine largeur d'écran (la liste déborde du
+  /// padding de la page : voir [_buildHomeContent]).
   Widget _buildTrendingList(RankTheme theme) {
     final trending = ref.watch(trendingCharactersProvider).valueOrNull;
-    if (trending == null || trending.isEmpty) return const SizedBox(height: 64);
-    final items = [
-      for (var i = 0; i < trending.length && i < 6; i++)
-        _TrendItem('#${i + 1}', trending[i].name, trending[i].animeName,
-            trending[i].cardColor),
-    ];
+    if (trending == null || trending.isEmpty) {
+      return const SizedBox(height: 200);
+    }
+    final items = trending.take(8).toList();
+    final scale = math.min(MediaQuery.textScalerOf(context).scale(1.0), 1.3);
     return SizedBox(
-      height: 64,
+      height: 204 * scale,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         itemCount: items.length,
-        separatorBuilder: (_, __) => const SizedBox(width: 10),
-        itemBuilder: (context, i) => _buildTrendCard(theme, items[i]),
+        separatorBuilder: (_, __) => const SizedBox(width: 12),
+        itemBuilder: (context, i) => _buildTrendPoster(theme, items[i], i),
       ),
     );
   }
 
-  Widget _buildTrendCard(RankTheme theme, _TrendItem item) {
-    return GestureDetector(
-      onTap: () {
-        _controller.text = item.name;
-        setState(() {
-          _query = item.name;
-          _submitted = true;
-        });
-        _saveQuery(item.name);
-      },
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        decoration: BoxDecoration(
-          color: theme.backgroundCard,
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: theme.borderSubtle),
+  Widget _buildTrendPoster(RankTheme theme, Character c, int index) {
+    final img = _charImage(c);
+    return TweenAnimationBuilder<double>(
+      tween: Tween(begin: 0.0, end: 1.0),
+      duration: Duration(milliseconds: 380 + math.min(index, 4) * 90),
+      curve: Curves.easeOutCubic,
+      builder: (context, value, child) => Opacity(
+        opacity: value,
+        child: Transform.translate(
+          offset: Offset(24 * (1 - value), 0),
+          child: child,
         ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              width: 36,
-              height: 36,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [item.color, item.color.withValues(alpha: 0.4)],
+      ),
+      child: SizedBox(
+        width: 132,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(16),
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [c.cardColor, c.accentColor],
+                  ),
                 ),
-                borderRadius: BorderRadius.circular(8),
               ),
-              child: Center(
+              if (img != null)
+                OtadexImage(
+                  imagePath: img,
+                  fit: BoxFit.cover,
+                  alignment: Alignment.topCenter,
+                ),
+              DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    stops: const [0.45, 1.0],
+                    colors: [
+                      AppColors.backgroundDeep.withValues(alpha: 0.0),
+                      AppColors.backgroundDeep.withValues(alpha: 0.94),
+                    ],
+                  ),
+                ),
+              ),
+              // Rang en grand, façon classement.
+              Positioned(
+                top: 2,
+                left: 10,
                 child: Text(
-                  item.rank,
+                  '${index + 1}',
                   style: GoogleFonts.rajdhani(
                     color: Colors.white,
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
+                    fontSize: 38,
+                    fontWeight: FontWeight.w800,
+                    height: 1.1,
+                    shadows: [
+                      Shadow(
+                        color: Colors.black.withValues(alpha: 0.7),
+                        blurRadius: 10,
+                      ),
+                    ],
                   ),
                 ),
               ),
-            ),
-            const SizedBox(width: 8),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  item.name,
-                  style: GoogleFonts.nunitoSans(
-                    color: theme.textPrimary,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
+              Positioned(
+                left: 10,
+                right: 10,
+                bottom: 10,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      c.name,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.rajdhani(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w800,
+                        height: 1.05,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      c.animeName,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.nunitoSans(
+                        color: Colors.white.withValues(alpha: 0.75),
+                        fontSize: 10,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Positioned.fill(
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: InkWell(
+                    splashColor: Colors.white.withValues(alpha: 0.18),
+                    onTap: () {
+                      _saveQuery(c.name);
+                      ImagePrefetcher.prefetchCharacterImages(context, c);
+                      context.push('/character/${c.id}');
+                    },
                   ),
                 ),
-                Text(
-                  item.anime,
-                  style: GoogleFonts.nunitoSans(
-                    color: theme.textSecondary,
-                    fontSize: 10,
-                  ),
-                ),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -1958,14 +2017,6 @@ class _Category {
   final Color color2;
   const _Category(
       this.id, this.label, this.sub, this.icon, this.color1, this.color2);
-}
-
-class _TrendItem {
-  final String rank;
-  final String name;
-  final String anime;
-  final Color color;
-  const _TrendItem(this.rank, this.name, this.anime, this.color);
 }
 
 class _Suggestion {
