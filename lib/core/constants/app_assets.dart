@@ -2215,6 +2215,149 @@ class AppAssets {
   ];
 
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // TG — Tokyo Ghoul   prefix: tg_
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // ignore: unused_field
+  static const String _tg = 'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul';
+
+  static const List<String> kenKaneki = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Ken Kaneki/tg_kane1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Ken Kaneki/tg_kane2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Ken Kaneki/tg_kane3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Ken Kaneki/tg_kane4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Ken Kaneki/tg_kane5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Ken Kaneki/tg_kane6.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Ken Kaneki/tg_kane7.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Ken Kaneki/tg_kane8.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Ken Kaneki/tg_kane9.jpeg',
+  ];
+  static const List<String> toukaKirishima = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Touka Kirishima/tg_touk1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Touka Kirishima/tg_touk2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Touka Kirishima/tg_touk3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Touka Kirishima/tg_touk4.jpeg',
+  ];
+  static const List<String> hideNagachika = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Hideyoshi « Hide » Nagachika/tg_hide1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Hideyoshi « Hide » Nagachika/tg_hide2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Hideyoshi « Hide » Nagachika/tg_hide3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Hideyoshi « Hide » Nagachika/tg_hide4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Hideyoshi « Hide » Nagachika/tg_hide5.jpeg',
+  ];
+  static const List<String> rizeKamishiro = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Rize Kamishiro/tg_rize1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Rize Kamishiro/tg_rize2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Rize Kamishiro/tg_rize3.jpeg',
+  ];
+  static const List<String> yoshimura = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Yoshimura/tg_yoshi1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Yoshimura/tg_yoshi2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Yoshimura/tg_yoshi3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Yoshimura/tg_yoshi4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Yoshimura/tg_yoshi5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Yoshimura/tg_yoshi6.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Yoshimura/tg_yoshi7.jpeg',
+  ];
+  static const List<String> nishikiNishio = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Nishiki Nishio/tg_nishi1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Nishiki Nishio/tg_nishi2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Nishiki Nishio/tg_nishi3.jpeg',
+  ];
+  static const List<String> shuuTsukiyama = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Shuu Tsukiyama/tg_tsuki1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Shuu Tsukiyama/tg_tsuki2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Shuu Tsukiyama/tg_tsuki3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Shuu Tsukiyama/tg_tsuki4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Shuu Tsukiyama/tg_tsuki5.jpeg',
+  ];
+  static const List<String> uta = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Uta/tg_uta1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Uta/tg_uta2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Uta/tg_uta3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Uta/tg_uta4.jpeg',
+  ];
+  static const List<String> etoYoshimura = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Eto Yoshimura/tg_eto1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Eto Yoshimura/tg_eto2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Eto Yoshimura/tg_eto3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Eto Yoshimura/tg_eto4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Eto Yoshimura/tg_eto5.jpeg',
+  ];
+  static const List<String> koutarouAmon = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Koutarou Amon/tg_amon1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Koutarou Amon/tg_amon2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Koutarou Amon/tg_amon3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Koutarou Amon/tg_amon4.jpeg',
+  ];
+  static const List<String> akiraMado = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Akira Mado/tg_akira1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Akira Mado/tg_akira2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Akira Mado/tg_akira3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Akira Mado/tg_akira4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Akira Mado/tg_akira5.jpeg',
+  ];
+  static const List<String> kishouArima = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Kishou Arima/tg_arima1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Kishou Arima/tg_arima2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Kishou Arima/tg_arima3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Kishou Arima/tg_arima4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Kishou Arima/tg_arima5.jpeg',
+  ];
+  static const List<String> juuzouSuzuya = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Juuzou Suzuya/tg_juzo1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Juuzou Suzuya/tg_juzo2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Juuzou Suzuya/tg_juzo3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Juuzou Suzuya/tg_juzo4.jpeg',
+  ];
+  static const List<String> ayatoKirishima = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Ayato Kirishima/tg_ayato1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Ayato Kirishima/tg_ayato2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Ayato Kirishima/tg_ayato3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Ayato Kirishima/tg_ayato4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Ayato Kirishima/tg_ayato5.jpeg',
+  ];
+  static const List<String> hinamiFueguchi = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Hinami Fueguchi/tg_hinami1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Hinami Fueguchi/tg_hinami2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Hinami Fueguchi/tg_hinami3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Hinami Fueguchi/tg_hinami4.jpeg',
+  ];
+  static const List<String> renjiYomo = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Renji Yomo/tg_renji1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Renji Yomo/tg_renji2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Renji Yomo/tg_renji3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Renji Yomo/tg_renji4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Renji Yomo/tg_renji5.jpeg',
+  ];
+  static const List<String> yakumoOomori = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Yakumo Oomori/tg_yamori1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Yakumo Oomori/tg_yamori2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Yakumo Oomori/tg_yamori3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Yakumo Oomori/tg_yamori4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Yakumo Oomori/tg_yamori5.jpeg',
+  ];
+  static const List<String> kureoMado = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Kureo Mado/tg_kureo1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Kureo Mado/tg_kureo2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Kureo Mado/tg_kureo3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Kureo Mado/tg_kureo4.jpeg',
+  ];
+  static const List<String> tatara = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Tatara/tg_tatara1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Tatara/tg_tatara2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Tatara/tg_tatara3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Tatara/tg_tatara4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Tatara/tg_tatara5.jpeg',
+  ];
+  static const List<String> naki = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Naki/tg_naki1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Naki/tg_naki2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Naki/tg_naki3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Naki/tg_naki4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Tokyo Ghoul/Naki/tg_naki5.jpeg',
+  ];
+
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // Résolution par charId
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   static List<String> getByCharacterId(String charId) {
@@ -2742,6 +2885,47 @@ class AppAssets {
         return mrSatan;
       case 'db-videl':
         return videl;
+      // TG
+      case 'tg-ken-kaneki':
+        return kenKaneki;
+      case 'tg-touka-kirishima':
+        return toukaKirishima;
+      case 'tg-hideyoshi-hide-nagachika':
+        return hideNagachika;
+      case 'tg-rize-kamishiro':
+        return rizeKamishiro;
+      case 'tg-yoshimura':
+        return yoshimura;
+      case 'tg-nishiki-nishio':
+        return nishikiNishio;
+      case 'tg-shuu-tsukiyama':
+        return shuuTsukiyama;
+      case 'tg-uta':
+        return uta;
+      case 'tg-eto-yoshimura':
+        return etoYoshimura;
+      case 'tg-koutarou-amon':
+        return koutarouAmon;
+      case 'tg-akira-mado':
+        return akiraMado;
+      case 'tg-kishou-arima':
+        return kishouArima;
+      case 'tg-juuzou-suzuya':
+        return juuzouSuzuya;
+      case 'tg-ayato-kirishima':
+        return ayatoKirishima;
+      case 'tg-hinami-fueguchi':
+        return hinamiFueguchi;
+      case 'tg-renji-yomo':
+        return renjiYomo;
+      case 'tg-yakumo-oomori':
+        return yakumoOomori;
+      case 'tg-kureo-mado':
+        return kureoMado;
+      case 'tg-tatara':
+        return tatara;
+      case 'tg-naki':
+        return naki;
       default:
         return const [];
     }

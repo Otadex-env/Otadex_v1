@@ -1,0 +1,1015 @@
+{
+  "anime": {
+    "titre": "Tokyo Ghoul",
+    "titreJaponais": "東京喰種トーキョーグール",
+    "synopsis": "À Tokyo, des créatures appelées goules se nourrissent de chair humaine et se dissimulent parmi la population. Ken Kaneki, étudiant ordinaire, survit à une attaque et reçoit les organes de son agresseuse, Rize Kamishiro, devenant à moitié goule. Il découvre alors le café Anteiku, refuge de goules cherchant à coexister avec les humains, tandis que le CCG traque sans relâche les goules de la ville. L'histoire se poursuit dans Tokyo Ghoul:re, qui prolonge l'intrigue et explore l'identité, la violence et la frontière entre humanité et monstruosité.",
+    "genres": [
+      "Seinen",
+      "Horreur",
+      "Action",
+      "Drame"
+    ],
+    "annee": 2011,
+    "episodes": {},
+    "studio": "Studio Pierrot",
+    "studioId": "studio-pierrot",
+    "auteur": "Sui Ishida",
+    "auteurId": "sui-ishida",
+    "editeur": "Shueisha — Weekly Young Jump",
+    "statut": "Terminé",
+    "type": "Seinen"
+  },
+  "creator": {
+    "nom": "Sui Ishida",
+    "nomJaponais": "石田 スイ",
+    "bio": "Sui Ishida (石田 スイ) est un mangaka japonais né le 28 décembre 1986 dans la préfecture de Fukuoka. Sa sœur aînée, Shin Towada, est autrice de romans légers. Il remporte la deuxième place du 113e Grand Prix du Young Jump en 2010 avec le one-shot Tokyo Ghoul, qui devient une série en 2011. Après Tokyo Ghoul:re, il lance Choujin X en 2021.",
+    "dateNaissance": "28 décembre 1986",
+    "nationalite": "Japonais",
+    "occupation": "Mangaka (auteur-dessinateur)",
+    "oeuvres": [
+      "2011 — Tokyo Ghoul: Rize (one-shot) — Miracle Jump — Shueisha",
+      "2011–2014 — Tokyo Ghoul — Weekly Young Jump — Shueisha",
+      "2013 — Tokyo Ghoul [Jack] — Jump Live — Shueisha",
+      "2014 — Tokyo Ghoul: Joker (one-shot) — Shueisha",
+      "2014–2018 — Tokyo Ghoul:re — Weekly Young Jump — Shueisha",
+      "2016 — Hunter × Hunter: origine d'Hisoka (one-shot) — Shueisha",
+      "2021–en cours — Choujin X — Tonari no Young Jump — Shueisha"
+    ],
+    "recompenses": [
+      "2e place du 113e Grand Prix du Young Jump (2010) pour le one-shot Tokyo Ghoul"
+    ],
+    "imageUrl": "",
+    "animeIds": [
+      "tokyo-ghoul"
+    ]
+  },
+  "characters": [
+    {
+      "id": "tg-ken-kaneki",
+      "nom": "Ken Kaneki",
+      "nomJaponais": "金木 研",
+      "animeId": "tokyo-ghoul",
+      "animeName": "Tokyo Ghoul",
+      "auteurId": "sui-ishida",
+      "auteurNom": "Sui Ishida",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "18–19 ans (Tokyo Ghoul) ; adulte dans Tokyo Ghoul:re",
+      "sexe": "Masculin",
+      "statut": "Protagoniste — Demi-goule (Anteiku) — Statut : Voir œuvre",
+      "rang": "Protagoniste — Demi-goule (Anteiku) — Statut : Voir œuvre",
+      "description": "Ken Kaneki est un étudiant timide de l'université Kamii, passionné de littérature. Après un rendez-vous qui tourne au cauchemar avec Rize Kamishiro, il survit à un accident grâce à une greffe de ses organes et devient à moitié goule. Il se retrouve alors à cheval entre deux mondes, incapable de manger de la nourriture humaine, et trouve refuge au café Anteiku. Sa personnalité évolue profondément au fil de l'œuvre sous l'effet des épreuves, jusqu'à devenir une figure centrale de la guerre entre goules et humains. Il apparaît dans la suite Tokyo Ghoul:re sous l'identité de Haise Sasaki. Son parcours explore la perte d'humanité, la culpabilité et l'amitié.",
+      "pouvoirs": [
+        "Kagune de type Rinkaku (hérité de Rize), à l'origine de ses tentacules offensifs",
+        "Régénération et force physiques supérieures à celles d'un humain",
+        "Maîtrise croissante du combat grâce à l'entraînement avec Touka",
+        "Résistance exceptionnelle à la douleur"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son prénom, Ken (研), et le nom Kaneki (金木) sont liés à l'imagerie du métal et du bois dans le manga.",
+        "Il est passionné de livres, et en particulier des romans de Sen Takatsuki.",
+        "Le personnage est au centre de l'œuvre de Sui Ishida, du premier chapitre à Tokyo Ghoul:re."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Touka Kirishima",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Hide (Hideyoshi Nagachika)",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Yoshimura",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Rize Kamishiro",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Natsuki Hanae (花江 夏樹)",
+      "voixAnglaise": "Austin Tindle",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 1
+    },
+    {
+      "id": "tg-touka-kirishima",
+      "nom": "Touka Kirishima",
+      "nomJaponais": "霧嶋 董香",
+      "animeId": "tokyo-ghoul",
+      "animeName": "Tokyo Ghoul",
+      "auteurId": "sui-ishida",
+      "auteurNom": "Sui Ishida",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "16–18 ans selon les sources (Tokyo Ghoul) ; 20 ans dans :re",
+      "sexe": "Féminin",
+      "statut": "Héroïne — Goule (Anteiku) — Statut : Voir œuvre",
+      "rang": "Héroïne — Goule (Anteiku) — Statut : Voir œuvre",
+      "description": "Touka Kirishima est une jeune goule du 20e arrondissement. Elle travaille comme serveuse au café Anteiku tout en poursuivant sa scolarité au lycée. D'un caractère direct et farouche, elle cache sous cette dureté une profonde loyauté envers les siens. Elle devient la partenaire d'entraînement de Ken Kaneki et son soutien dans sa nouvelle vie. Elle partage un lourd passé familial avec son frère Ayato. Son évolution au fil de l'histoire témoigne de son attachement à la coexistence entre goules et humains.",
+      "pouvoirs": [
+        "Kagune de type Ukaku, rapide et à fort potentiel offensif",
+        "Combattante redoutée, plus forte que Tsukiyama ou Nishiki à armes égales",
+        "Excellente maîtrise du corps à corps",
+        "Capacité à s'adapter rapidement au terrain"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son kagune est de type Ukaku, associé à la vitesse.",
+        "Sora Amamiya a évoqué les difficultés vocales rencontrées pour trouver la voix de Touka.",
+        "Elle travaille à Anteiku, café qui sert de refuge pour les goules du 20e arrondissement."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Ken Kaneki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ayato Kirishima",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Hinami Fueguchi",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Yoshimura",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Sora Amamiya (雨宮 天)",
+      "voixAnglaise": "Brina Palencia",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 2
+    },
+    {
+      "id": "tg-hideyoshi-hide-nagachika",
+      "nom": "Hideyoshi « Hide » Nagachika",
+      "nomJaponais": "永近 英良",
+      "animeId": "tokyo-ghoul",
+      "animeName": "Tokyo Ghoul",
+      "auteurId": "sui-ishida",
+      "auteurNom": "Sui Ishida",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Étudiant universitaire (âge exact : Non listé dans nos sources)",
+      "sexe": "Masculin",
+      "statut": "Allié clé — Humain — Statut : Voir œuvre",
+      "rang": "Allié clé — Humain — Statut : Voir œuvre",
+      "description": "Hideyoshi Nagachika, surnommé Hide, est le meilleur ami de Ken Kaneki depuis l'enfance et étudie comme lui à l'université Kamii. Extraverti et chaleureux, il joue le rôle d'ancrage émotionnel de Kaneki et l'aide à rester connecté à son humanité. Après la disparition de Kaneki, il décide de travailler au CCG comme assistant d'enquêteur auprès de Koutarou Amon et d'Akira Mado. Ce choix le place au cœur du conflit entre humains et goules. Son attachement indéfectible à son ami en fait l'un des personnages les plus marquants du récit.",
+      "pouvoirs": [
+        "Aucun pouvoir surnaturel : humain ordinaire",
+        "Sens de l'observation et ingéniosité remarquables",
+        "Grande capacité d'infiltration et de collecte d'informations",
+        "Fort lien affectif servant de moteur à ses actes"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il fréquente l'université Kamii, comme Kaneki et Nishiki.",
+        "Son rôle de pilier de Kaneki est central dans l'émotion de l'œuvre.",
+        "Dans le doublage anglais, il est interprété par Clifford Chapin."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Ken Kaneki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Koutarou Amon et Akira Mado",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Nishiki Nishio",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Toshiyuki Toyonaga (豊永 利行)",
+      "voixAnglaise": "Clifford Chapin",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 3
+    },
+    {
+      "id": "tg-rize-kamishiro",
+      "nom": "Rize Kamishiro",
+      "nomJaponais": "神代 利世",
+      "animeId": "tokyo-ghoul",
+      "animeName": "Tokyo Ghoul",
+      "auteurId": "sui-ishida",
+      "auteurNom": "Sui Ishida",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Féminin",
+      "statut": "Antagoniste initiale — Goule (Aogiri) — Statut : Voir œuvre",
+      "rang": "Antagoniste initiale — Goule (Aogiri) — Statut : Voir œuvre",
+      "description": "Rize Kamishiro est une jeune femme à lunettes que Ken Kaneki rencontre au café et dont il s'éprend. Elle se révèle être une goule dangereuse et l'attire dans une rencontre qui tourne au drame. Les organes qui lui sont greffés après l'accident transforment Kaneki en demi-goule, ce qui fait d'elle le point de départ de toute l'intrigue. Elle incarne la prédatrice séduisante, dotée d'une forte puissance de combat. Son influence continue de peser sur Kaneki tout au long de l'œuvre.",
+      "pouvoirs": [
+        "Kagune de type Rinkaku très puissant",
+        "Force et régénération exceptionnelles",
+        "Appétit insatiable pour la chair humaine",
+        "Capacité de séduction et de manipulation"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle a été interprétée par Yū Aoi dans l'adaptation en film live.",
+        "Son anniversaire officiel est le 18 octobre.",
+        "Dans l'œuvre, elle est associée à l'araignée."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Ken Kaneki",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Organisation Aogiri",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Kana Hanazawa (花澤 香菜)",
+      "voixAnglaise": "Monica Rial",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 4
+    },
+    {
+      "id": "tg-yoshimura",
+      "nom": "Yoshimura",
+      "nomJaponais": "芳村",
+      "animeId": "tokyo-ghoul",
+      "animeName": "Tokyo Ghoul",
+      "auteurId": "sui-ishida",
+      "auteurNom": "Sui Ishida",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Mentor — Goule (Anteiku) — Statut : Voir œuvre",
+      "rang": "Mentor — Goule (Anteiku) — Statut : Voir œuvre",
+      "description": "Yoshimura est le gérant du café Anteiku, où il accueille les goules en difficulté. Calme et bienveillant, il cultive la coexistence pacifique entre goules et humains et guide Ken Kaneki dans son nouveau mode de vie. Il est également connu sous le nom de Hibou sans meurtre, dont la réputation est redoutable. Son passé et ses liens avec plusieurs personnages clés font de lui une figure essentielle du récit. Il joue le rôle de père de substitution pour de nombreux membres d'Anteiku.",
+      "pouvoirs": [
+        "Combattant de très haut niveau en cas de nécessité",
+        "Grande expérience du monde des goules",
+        "Autorité morale reconnue par les goules du 20e arrondissement",
+        "Capacité de médiation"
+      ],
+      "citations": [],
+      "trivia": [
+        "Anteiku est son café-refuge.",
+        "Son surnom de Hibou est un symbole du récit.",
+        "Son doubleur japonais est Takayuki Sugō."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Ken Kaneki",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Touka Kirishima",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Eto Yoshimura",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Renji Yomo",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Takayuki Sugō (菅生 隆之)",
+      "voixAnglaise": "Sean Hennigan",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 5
+    },
+    {
+      "id": "tg-nishiki-nishio",
+      "nom": "Nishiki Nishio",
+      "nomJaponais": "西尾 錦",
+      "animeId": "tokyo-ghoul",
+      "animeName": "Tokyo Ghoul",
+      "auteurId": "sui-ishida",
+      "auteurNom": "Sui Ishida",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Étudiant universitaire",
+      "sexe": "Masculin",
+      "statut": "Allié ambivalent — Goule — Statut : Voir œuvre",
+      "rang": "Allié ambivalent — Goule — Statut : Voir œuvre",
+      "description": "Nishiki Nishio est un étudiant de l'université Kamii qui cache sa nature de goule. D'abord hostile envers Kaneki, il le traite avec mépris et rancœur. Son orgueil et son goût pour la chair humaine contribuent à le placer en opposition avec la philosophie pacifiste d'Anteiku. Au fil de l'histoire, sa relation avec Kaneki évolue et ses motivations se précisent. Il fait partie des personnages dont l'évolution est l'une des plus nuancées.",
+      "pouvoirs": [
+        "Kagune de type Koukaku",
+        "Résistance physique élevée",
+        "Combat au corps à corps efficace",
+        "Capacité à se fondre dans la vie étudiante"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il fréquente la même université que Kaneki et Hide.",
+        "Son anniversaire est le 4 février.",
+        "Il est interprété en live par Shunya Shiraishi."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Ken Kaneki",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Hide",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Anteiku",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Shintarō Asanuma (浅沼 晋太郎)",
+      "voixAnglaise": "Eric Vale",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 6
+    },
+    {
+      "id": "tg-shuu-tsukiyama",
+      "nom": "Shuu Tsukiyama",
+      "nomJaponais": "月山 習",
+      "animeId": "tokyo-ghoul",
+      "animeName": "Tokyo Ghoul",
+      "auteurId": "sui-ishida",
+      "auteurNom": "Sui Ishida",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Allié/Antagoniste — Goule — Statut : Voir œuvre",
+      "rang": "Allié/Antagoniste — Goule — Statut : Voir œuvre",
+      "description": "Shuu Tsukiyama est un goule raffiné et excentrique, surnommé le Gourmet pour son goût obsessionnel de la chair humaine. Issu d'une famille aisée, il se montre à la fois théâtral, élégant et imprévisible. Il s'intéresse particulièrement à Ken Kaneki dont il est fasciné par la nature hybride. Son comportement oscille entre menace et loyauté, ce qui le rend difficile à cerner. Il devient une figure incontournable de l'histoire grâce à son charisme.",
+      "pouvoirs": [
+        "Kagune de type Koukaku",
+        "Grande maîtrise du combat et de l'escrime",
+        "Intelligence et sens de la stratégie",
+        "Ressources financières et réseau social étendus"
+      ],
+      "citations": [],
+      "trivia": [
+        "Son surnom, le Gourmet, reflète sa passion pour la gastronomie.",
+        "Mamoru Miyano lui prête sa voix en japonais.",
+        "Son anniversaire est le 3 mars."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Ken Kaneki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Touka Kirishima",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Anteiku",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Mamoru Miyano (宮野 真守)",
+      "voixAnglaise": "J. Michael Tatum",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 7
+    },
+    {
+      "id": "tg-uta",
+      "nom": "Uta",
+      "nomJaponais": "ウタ",
+      "animeId": "tokyo-ghoul",
+      "animeName": "Tokyo Ghoul",
+      "auteurId": "sui-ishida",
+      "auteurNom": "Sui Ishida",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Allié — Goule — Statut : Voir œuvre",
+      "rang": "Allié — Goule — Statut : Voir œuvre",
+      "description": "Uta est un goule artiste qui tient un atelier de fabrication de masques dans le 4e arrondissement. Calme et énigmatique, il confectionne les masques portés par de nombreuses goules, dont celui de Ken Kaneki. Son apparence marquée par des piercings et des tatouages tranche avec son tempérament posé. Il entretient des liens étroits avec Yoshimura et Anteiku. Sa discrétion et son talent en font une figure respectée de la communauté.",
+      "pouvoirs": [
+        "Kagune de grande puissance (détails : Non listés dans nos sources)",
+        "Talent d'artiste et d'artisan",
+        "Excellente connaissance de la société des goules"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il est le créateur de masques de plusieurs personnages.",
+        "Takahiro Sakurai l'interprète en japonais.",
+        "Son anniversaire est le 2 décembre."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Ken Kaneki",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Yoshimura",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Anteiku",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Takahiro Sakurai (櫻井 孝宏)",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 8
+    },
+    {
+      "id": "tg-eto-yoshimura",
+      "nom": "Eto Yoshimura",
+      "nomJaponais": "芳村 エト",
+      "animeId": "tokyo-ghoul",
+      "animeName": "Tokyo Ghoul",
+      "auteurId": "sui-ishida",
+      "auteurNom": "Sui Ishida",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "24–27 ans selon les périodes",
+      "sexe": "Féminin",
+      "statut": "Antagoniste majeure — Goule (Aogiri) — Statut : Voir œuvre",
+      "rang": "Antagoniste majeure — Goule (Aogiri) — Statut : Voir œuvre",
+      "description": "Eto Yoshimura est une romancière à succès connue sous le nom de Sen Takatsuki, dont Ken Kaneki est un grand lecteur. Elle mène en parallèle une double vie de goule au sein d'Aogiri. Énigmatique, elle apparaît sous plusieurs identités et manipule les événements à distance. Elle partage un lien familial avec Yoshimura. Sa quête et ses desseins influencent en profondeur le destin des personnages principaux.",
+      "pouvoirs": [
+        "Kagune de type Ukaku redoutable",
+        "Intelligence stratégique et sens de la dissimulation",
+        "Pouvoir d'influence via sa notoriété d'écrivaine"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle écrit sous le pseudonyme de Sen Takatsuki.",
+        "Maaya Sakamoto la double en japonais.",
+        "Elle est liée au symbole du Hibou dans l'œuvre."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Ken Kaneki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Yoshimura",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Aogiri",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Maaya Sakamoto (坂本 真綾)",
+      "voixAnglaise": "Lindsay Seidel",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 9
+    },
+    {
+      "id": "tg-koutarou-amon",
+      "nom": "Koutarou Amon",
+      "nomJaponais": "亜門 鋼太朗",
+      "animeId": "tokyo-ghoul",
+      "animeName": "Tokyo Ghoul",
+      "auteurId": "sui-ishida",
+      "auteurNom": "Sui Ishida",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Enquêteur — Humain (CCG) — Statut : Voir œuvre",
+      "rang": "Enquêteur — Humain (CCG) — Statut : Voir œuvre",
+      "description": "Koutarou Amon est un enquêteur du Commissariat de contrôle des goules (CCG). Droit, sérieux et obstiné, il croit fermement en sa mission de protéger les humains. Il fait équipe avec Akira Mado et mène la traque de plusieurs goules importantes. Sa vision du monde est remise en question par ses rencontres avec les goules. Il illustre le conflit moral entre devoir et empathie.",
+      "pouvoirs": [
+        "Maniement de quinques",
+        "Grande résistance physique",
+        "Esprit d'enquête et sens du devoir"
+      ],
+      "citations": [],
+      "trivia": [
+        "Katsuyuki Konishi lui prête sa voix.",
+        "Son anniversaire est le 7 avril.",
+        "Il est un personnage clé du CCG dans la première saison."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Akira Mado",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Hide",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Kureo Mado",
+          "type": "mentor"
+        }
+      ],
+      "voixJaponaise": "Katsuyuki Konishi (小西 克幸)",
+      "voixAnglaise": "Mike McFarland",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 10
+    },
+    {
+      "id": "tg-akira-mado",
+      "nom": "Akira Mado",
+      "nomJaponais": "真戸 暁",
+      "animeId": "tokyo-ghoul",
+      "animeName": "Tokyo Ghoul",
+      "auteurId": "sui-ishida",
+      "auteurNom": "Sui Ishida",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "21 ans (Tokyo Ghoul) ; 24 ans (:re)",
+      "sexe": "Féminin",
+      "statut": "Enquêtrice — Humaine (CCG) — Statut : Voir œuvre",
+      "rang": "Enquêtrice — Humaine (CCG) — Statut : Voir œuvre",
+      "description": "Akira Mado est la fille de Kureo Mado et enquêtrice au CCG. Intelligente et passionnée par son travail, elle excelle dans la résolution d'enquêtes complexes. Elle aime fabriquer des quinques, résoudre des énigmes et aime les chats. Elle forme un duo efficace avec Koutarou Amon. Dans Tokyo Ghoul:re, elle supervise l'équipe liée à Haise Sasaki.",
+      "pouvoirs": [
+        "Maniement de quinques de type Koukaku et Bikaku (Amatsu)",
+        "Sens déductif aiguisé",
+        "Compétences d'enquête et de planification"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle aime les chats.",
+        "Asami Seto l'interprète en japonais.",
+        "Son anniversaire est le 6 juin."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Kureo Mado",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Koutarou Amon",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Haise Sasaki",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Asami Seto (瀬戸 麻沙美)",
+      "voixAnglaise": "Morgan Garrett",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 11
+    },
+    {
+      "id": "tg-kishou-arima",
+      "nom": "Kishou Arima",
+      "nomJaponais": "有馬 貴将",
+      "animeId": "tokyo-ghoul",
+      "animeName": "Tokyo Ghoul",
+      "auteurId": "sui-ishida",
+      "auteurNom": "Sui Ishida",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Enquêteur légendaire — Humain (CCG) — Statut : Voir œuvre",
+      "rang": "Enquêteur légendaire — Humain (CCG) — Statut : Voir œuvre",
+      "description": "Kishou Arima est considéré comme l'enquêteur le plus puissant du CCG. Réservé et énigmatique, il est surnommé la Mort Vivante en raison de ses exploits face aux goules. Son calme apparent cache une personnalité complexe. Il joue un rôle central dans les grands événements opposant le CCG aux goules. Sa légende dépasse la simple force de combat.",
+      "pouvoirs": [
+        "Maîtrise exceptionnelle des quinques",
+        "Habileté de combat hors norme",
+        "Stratège respecté au sein du CCG"
+      ],
+      "citations": [],
+      "trivia": [
+        "Il est reconnu comme une légende vivante du CCG.",
+        "Daisuke Namikawa le double en japonais.",
+        "Il partage son anniversaire (20 décembre) avec Kaneki."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Haise Sasaki",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Akira Mado",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Juuzou Suzuya",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Daisuke Namikawa (浪川 大輔)",
+      "voixAnglaise": "Alex Organ",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 12
+    },
+    {
+      "id": "tg-juuzou-suzuya",
+      "nom": "Juuzou Suzuya",
+      "nomJaponais": "鈴屋 什造",
+      "animeId": "tokyo-ghoul",
+      "animeName": "Tokyo Ghoul",
+      "auteurId": "sui-ishida",
+      "auteurNom": "Sui Ishida",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "19 ans (Tokyo Ghoul) ; 22 ans (:re)",
+      "sexe": "Masculin",
+      "statut": "Enquêteur — Humain (CCG) — Statut : Voir œuvre",
+      "rang": "Enquêteur — Humain (CCG) — Statut : Voir œuvre",
+      "description": "Juuzou Suzuya est un enquêteur de rang 3 du CCG, au tempérament excentrique et déroutant. Brillant et imprévisible, il adopte une attitude ludique face aux combats les plus dangereux. Il a un lourd passé et utilise des quinques singuliers. Il est le partenaire de Yukinori Shinohara. Il évolue au fil des arcs et occupe une place importante côté CCG.",
+      "pouvoirs": [
+        "Quinque Scorpion 1/56 (Bikaku)",
+        "Quinque 13's Jason (Rinkaku)",
+        "Agilité et instinct de combat remarquables"
+      ],
+      "citations": [],
+      "trivia": [
+        "Rie Kugimiya lui prête sa voix en japonais.",
+        "Son anniversaire est le 8 juin.",
+        "Son ancien nom est Rei Suzuya."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Yukinori Shinohara",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Kishou Arima",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Haise Sasaki",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Rie Kugimiya (釘宮 理恵)",
+      "voixAnglaise": "Maxey Whitehead",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 13
+    },
+    {
+      "id": "tg-ayato-kirishima",
+      "nom": "Ayato Kirishima",
+      "nomJaponais": "霧嶋 絢都",
+      "animeId": "tokyo-ghoul",
+      "animeName": "Tokyo Ghoul",
+      "auteurId": "sui-ishida",
+      "auteurNom": "Sui Ishida",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Antagoniste — Goule (Aogiri) — Statut : Voir œuvre",
+      "rang": "Antagoniste — Goule (Aogiri) — Statut : Voir œuvre",
+      "description": "Ayato Kirishima est le frère cadet de Touka. Il rejoint l'organisation Aogiri, où il adopte une attitude agressive. Impulsif et orgueilleux, il entretient des relations tendues avec sa sœur. Sa force de combat est remarquée dans les confrontations avec le CCG. Son parcours est marqué par ses liens familiaux.",
+      "pouvoirs": [
+        "Kagune de type Ukaku",
+        "Combat rapide et agressif",
+        "Résistance aux blessures"
+      ],
+      "citations": [],
+      "trivia": [
+        "Yūki Kaji le double en japonais.",
+        "Todd Haberkorn est sa voix anglaise.",
+        "Il partage le type de kagune de sa sœur."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Touka Kirishima",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Aogiri",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ken Kaneki",
+          "type": "ennemi"
+        }
+      ],
+      "voixJaponaise": "Yūki Kaji (梶 裕貴)",
+      "voixAnglaise": "Todd Haberkorn",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 14
+    },
+    {
+      "id": "tg-hinami-fueguchi",
+      "nom": "Hinami Fueguchi",
+      "nomJaponais": "笛口 雛実",
+      "animeId": "tokyo-ghoul",
+      "animeName": "Tokyo Ghoul",
+      "auteurId": "sui-ishida",
+      "auteurNom": "Sui Ishida",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "13–14 ans (Tokyo Ghoul) ; 16–17 ans (:re)",
+      "sexe": "Féminin",
+      "statut": "Alliée — Goule — Statut : Voir œuvre",
+      "rang": "Alliée — Goule — Statut : Voir œuvre",
+      "description": "Hinami Fueguchi est une jeune goule du 20e arrondissement qui vit avec sa mère après la mort de son père. Curieuse et douce, elle apprécie les livres de Sen Takatsuki et aime apprendre de nouvelles choses. Après la perte de sa mère, elle est accueillie par Touka. Elle devient proche de Kaneki. Son évolution au fil des saisons la mène à devenir plus forte.",
+      "pouvoirs": [
+        "Kagune de types Rinkaku et Koukaku",
+        "Sens olfactif développé",
+        "Maturité émotionnelle croissante"
+      ],
+      "citations": [],
+      "trivia": [
+        "Elle adore les livres de Sen Takatsuki.",
+        "Sumire Morohoshi lui prête sa voix.",
+        "Son anniversaire est le 21 mai."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Touka Kirishima",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Ken Kaneki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Kureo Mado",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Sumire Morohoshi (諸星 すみれ)",
+      "voixAnglaise": "Lara Woodhull",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 15
+    },
+    {
+      "id": "tg-renji-yomo",
+      "nom": "Renji Yomo",
+      "nomJaponais": "四方 蓮示",
+      "animeId": "tokyo-ghoul",
+      "animeName": "Tokyo Ghoul",
+      "auteurId": "sui-ishida",
+      "auteurNom": "Sui Ishida",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Allié — Goule (Anteiku) — Statut : Voir œuvre",
+      "rang": "Allié — Goule (Anteiku) — Statut : Voir œuvre",
+      "description": "Renji Yomo est le bras droit de Yoshimura à Anteiku. Silencieux et redoutable, il est considéré comme un combattant d'élite parmi les goules. Il protège la paix du café et veille sur ses membres. Il entretient une relation de longue date avec Yoshimura. Son calme cache une loyauté sans faille.",
+      "pouvoirs": [
+        "Kagune de type Rinkaku",
+        "Combattant de très haut niveau",
+        "Excellent sens de la protection"
+      ],
+      "citations": [],
+      "trivia": [
+        "Dans l'œuvre, il est associé aux corbeaux.",
+        "Yūichi Nakamura le double en japonais.",
+        "Son anniversaire est le 9 juillet."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Yoshimura",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Touka Kirishima",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Anteiku",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Yūichi Nakamura (中村 悠一)",
+      "voixAnglaise": "Phil Parsons",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 16
+    },
+    {
+      "id": "tg-yakumo-oomori",
+      "nom": "Yakumo Oomori (Yamori)",
+      "nomJaponais": "大森 ヤモリ",
+      "animeId": "tokyo-ghoul",
+      "animeName": "Tokyo Ghoul",
+      "auteurId": "sui-ishida",
+      "auteurNom": "Sui Ishida",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Antagoniste — Goule (Aogiri) — Statut : Voir œuvre",
+      "rang": "Antagoniste — Goule (Aogiri) — Statut : Voir œuvre",
+      "description": "Yakumo Oomori, surnommé Jason ou Yamori, est un membre d'Aogiri connu pour sa cruauté. Il apparaît comme un antagoniste majeur de la première saison. Il joue un rôle déterminant dans la transformation de Kaneki. Son comportement sadique en fait l'un des visages les plus marquants du mal dans l'œuvre. Il est aussi lié au passé de Juuzou.",
+      "pouvoirs": [
+        "Kagune puissant",
+        "Résistance physique élevée",
+        "Sadisme et manipulation psychologique"
+      ],
+      "citations": [],
+      "trivia": [
+        "Rintarō Nishi l'interprète en japonais.",
+        "Christopher Sabat lui prête sa voix anglaise.",
+        "Son anniversaire est le 15 mars."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Ken Kaneki",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Aogiri",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Juuzou Suzuya",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Rintarō Nishi (西 凛太朗)",
+      "voixAnglaise": "Christopher Sabat",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 17
+    },
+    {
+      "id": "tg-kureo-mado",
+      "nom": "Kureo Mado",
+      "nomJaponais": "真戸 呉緒",
+      "animeId": "tokyo-ghoul",
+      "animeName": "Tokyo Ghoul",
+      "auteurId": "sui-ishida",
+      "auteurNom": "Sui Ishida",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Enquêteur — Humain (CCG) — Statut : Voir œuvre",
+      "rang": "Enquêteur — Humain (CCG) — Statut : Voir œuvre",
+      "description": "Kureo Mado est un enquêteur chevronné du CCG et le père d'Akira. Obstiné et expérimenté, il mène une traque implacable contre les goules. Il forme Koutarou Amon et lui transmet sa vision de la mission. Il est lié à plusieurs drames, notamment celui de la famille Fueguchi. Il incarne la dureté du monde du CCG.",
+      "pouvoirs": [
+        "Maîtrise des quinques",
+        "Grande expérience du terrain",
+        "Esprit d'équipe et rigueur"
+      ],
+      "citations": [],
+      "trivia": [
+        "Tōru Ōkawa le double en japonais.",
+        "Kenny Green est sa voix anglaise.",
+        "Il est incarné par Yō Ōizumi en live."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Akira Mado",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Koutarou Amon",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Hinami Fueguchi",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Tōru Ōkawa (大川 透)",
+      "voixAnglaise": "Kenny Green",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 18
+    },
+    {
+      "id": "tg-tatara",
+      "nom": "Tatara",
+      "nomJaponais": "タタラ",
+      "animeId": "tokyo-ghoul",
+      "animeName": "Tokyo Ghoul",
+      "auteurId": "sui-ishida",
+      "auteurNom": "Sui Ishida",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Antagoniste — Goule (Aogiri) — Statut : Voir œuvre",
+      "rang": "Antagoniste — Goule (Aogiri) — Statut : Voir œuvre",
+      "description": "Tatara est un membre important d'Aogiri, organisation de goules extrémistes. Il agit comme exécutant des plans de l'organisation. Sa force et sa loyauté le placent à un poste de confiance. Il se distingue par son rôle dans les affrontements avec le CCG. Il est une pièce du dispositif d'Aogiri dans l'œuvre.",
+      "pouvoirs": [
+        "Kagune de grande puissance",
+        "Combat de haut niveau",
+        "Discipline et loyauté envers Aogiri"
+      ],
+      "citations": [],
+      "trivia": [
+        "Kōji Yusa le double en japonais.",
+        "Christopher Wehkamp lui prête sa voix anglaise.",
+        "Il apparaît dans Tokyo Ghoul √A et :re."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Aogiri",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Eto Yoshimura",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Kōji Yusa (遊佐 浩二)",
+      "voixAnglaise": "Christopher Wehkamp",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 19
+    },
+    {
+      "id": "tg-naki",
+      "nom": "Naki",
+      "nomJaponais": "ナキ",
+      "animeId": "tokyo-ghoul",
+      "animeName": "Tokyo Ghoul",
+      "auteurId": "sui-ishida",
+      "auteurNom": "Sui Ishida",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Antagoniste puis allié — Goule — Statut : Voir œuvre",
+      "rang": "Antagoniste puis allié — Goule — Statut : Voir œuvre",
+      "description": "Naki est une goule connue pour son caractère impulsif et son franc-parler. Il apparaît dans les arcs liés à Aogiri puis dans Tokyo Ghoul:re. Son comportement direct et sa loyauté marquent ses interactions. Il évolue au fil du récit et gagne en profondeur. Il illustre la diversité des goules de l'œuvre.",
+      "pouvoirs": [
+        "Kagune offensif",
+        "Force physique élevée",
+        "Tempérament combatif"
+      ],
+      "citations": [],
+      "trivia": [
+        "Hiro Shimono lui prête sa voix.",
+        "Son anniversaire est le 28 janvier.",
+        "Il apparaît notamment dans Tokyo Ghoul:re."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Aogiri",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ken Kaneki",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Hiro Shimono (下野 紘)",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 20
+    }
+  ]
+}

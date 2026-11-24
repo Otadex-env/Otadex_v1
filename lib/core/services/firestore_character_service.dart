@@ -539,6 +539,12 @@ class FirestoreCharacterService {
                 accentColor: AppColors.animeDbAccent,
                 category: 'Shōnen'
               ),
+            'tokyo-ghoul' => (
+                prefix: 'tg',
+                cardColor: AppColors.animeTgCard,
+                accentColor: AppColors.animeTgAccent,
+                category: 'Seinen'
+              ),
             _ => (
                 prefix: '',
                 cardColor: AppColors.animeDefaultCard,
