@@ -2358,6 +2358,140 @@ class AppAssets {
   ];
 
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // PN — The Promised Neverland   prefix: pn_
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  static const List<String> emma = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Emma/pn_emma1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Emma/pn_emma2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Emma/pn_emma3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Emma/pn_emma4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Emma/pn_emma5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Emma/pn_emma6.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Emma/pn_emma7.jpeg',
+  ];
+  static const List<String> norman = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Norman/pn_norm1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Norman/pn_norm2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Norman/pn_norm3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Norman/pn_norm4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Norman/pn_norm5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Norman/pn_norm6.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Norman/pn_norm7.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Norman/pn_norm8.jpeg',
+  ];
+  static const List<String> ray = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Ray/pn_ray1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Ray/pn_ray2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Ray/pn_ray3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Ray/pn_ray4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Ray/pn_ray5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Ray/pn_ray6.jpeg',
+  ];
+  static const List<String> isabella = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Isabella/pn_isab1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Isabella/pn_isab2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Isabella/pn_isab3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Isabella/pn_isab4.jpeg',
+  ];
+  static const List<String> don = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Don/pn_don1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Don/pn_don2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Don/pn_don3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Don/pn_don4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Don/pn_don5.jpeg',
+  ];
+  static const List<String> gilda = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Gilda/pn_gild1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Gilda/pn_gild2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Gilda/pn_gild3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Gilda/pn_gild4.jpeg',
+  ];
+  static const List<String> sisterKrone = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Sister Krone/pn_kron1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Sister Krone/pn_kron2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Sister Krone/pn_kron3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Sister Krone/pn_kron4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Sister Krone/pn_kron5.jpeg',
+  ];
+  static const List<String> phil = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Phil/pn_phil1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Phil/pn_phil2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Phil/pn_phil3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Phil/pn_phil4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Phil/pn_phil5.jpeg',
+  ];
+  static const List<String> mujika = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Mujika/pn_muji1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Mujika/pn_muji2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Mujika/pn_muji3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Mujika/pn_muji4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Mujika/pn_muji5.jpeg',
+  ];
+  static const List<String> sonju = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Sonju/pn_sonj1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Sonju/pn_sonj2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Sonju/pn_sonj3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Sonju/pn_sonj4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Sonju/pn_sonj5.jpeg',
+  ];
+  static const List<String> peterRatri = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Peter Ratri/pn_petr1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Peter Ratri/pn_petr2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Peter Ratri/pn_petr3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Peter Ratri/pn_petr4.jpeg',
+  ];
+  static const List<String> anna = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Anna/pn_anna1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Anna/pn_anna2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Anna/pn_anna3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Anna/pn_anna4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Anna/pn_anna5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Anna/pn_anna6.jpeg',
+  ];
+  static const List<String> thoma = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Thoma/pn_thom1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Thoma/pn_thom2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Thoma/pn_thom3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Thoma/pn_thom4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Thoma/pn_thom5.jpeg',
+  ];
+  static const List<String> lannion = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Lannion/pn_lann1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Lannion/pn_lann2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Lannion/pn_lann3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Lannion/pn_lann4.jpeg',
+  ];
+  static const List<String> conny = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Conny/pn_conn1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Conny/pn_conn2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Conny/pn_conn3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Conny/pn_conn4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Conny/pn_conn5.jpeg',
+  ];
+  static const List<String> barbara = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Barbara/pn_barb1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Barbara/pn_barb2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Barbara/pn_barb3.jpeg',
+  ];
+  static const List<String> zazie = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Zazie/pn_zazi1.jpeg',
+  ];
+  static const List<String> cislo = [];
+  static const List<String> leslie = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Leslie/pn_lesl1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Leslie/pn_lesl2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Leslie/pn_lesl3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Leslie/pn_lesl4.jpeg',
+  ];
+  static const List<String> jemima = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Jemima/pn_jemi1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Jemima/pn_jemi2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Jemima/pn_jemi3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Jemima/pn_jemi4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Jemima/pn_jemi5.jpeg',
+  ];
+
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // Résolution par charId
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   static List<String> getByCharacterId(String charId) {
@@ -2926,6 +3060,47 @@ class AppAssets {
         return tatara;
       case 'tg-naki':
         return naki;
+      // PN
+      case 'pn-emma':
+        return emma;
+      case 'pn-norman':
+        return norman;
+      case 'pn-ray':
+        return ray;
+      case 'pn-isabella':
+        return isabella;
+      case 'pn-don':
+        return don;
+      case 'pn-gilda':
+        return gilda;
+      case 'pn-sister-krone':
+        return sisterKrone;
+      case 'pn-phil':
+        return phil;
+      case 'pn-mujika':
+        return mujika;
+      case 'pn-sonju':
+        return sonju;
+      case 'pn-peter-ratri':
+        return peterRatri;
+      case 'pn-anna':
+        return anna;
+      case 'pn-thoma':
+        return thoma;
+      case 'pn-lannion':
+        return lannion;
+      case 'pn-conny':
+        return conny;
+      case 'pn-barbara':
+        return barbara;
+      case 'pn-zazie':
+        return zazie;
+      case 'pn-cislo':
+        return cislo;
+      case 'pn-leslie':
+        return leslie;
+      case 'pn-jemima':
+        return jemima;
       default:
         return const [];
     }

@@ -545,6 +545,12 @@ class FirestoreCharacterService {
                 accentColor: AppColors.animeTgAccent,
                 category: 'Seinen'
               ),
+            'the-promised-neverland' => (
+                prefix: 'pn',
+                cardColor: AppColors.animePnCard,
+                accentColor: AppColors.animePnAccent,
+                category: 'Shōnen'
+              ),
             _ => (
                 prefix: '',
                 cardColor: AppColors.animeDefaultCard,

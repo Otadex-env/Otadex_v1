@@ -1,0 +1,998 @@
+{
+  "anime": {
+    "titre": "The Promised Neverland",
+    "titreJaponais": "約束のネバーランド",
+    "synopsis": "The Promised Neverland (約束のネバーランド, Yakusoku no Nebārando) est un manga écrit par Kaiu Shirai et illustré par Posuka Demizu, publié dans le Weekly Shōnen Jump de Shueisha d'août 2016 à juin 2020, et réuni en 20 volumes. L'histoire se déroule à Grace Field House, un orphelinat où vivent des enfants choyés par leur Maman, Isabella. Un soir, Emma et Norman découvrent la vérité terrifiante sur leur foyer. Avec Ray, ils décident de s'évader avec tous les autres enfants.",
+    "genres": [
+      "Shōnen",
+      "Psychologique",
+      "Fantasy"
+    ],
+    "annee": 2019,
+    "episodes": {
+      "saison1": 12,
+      "saison2": 11
+    },
+    "studio": "CloverWorks",
+    "studioId": "cloverworks",
+    "auteur": "Kaiu Shirai",
+    "auteurId": "kaiu-shirai",
+    "editeur": "Shueisha — Weekly Shōnen Jump",
+    "statut": "Terminé",
+    "type": "Shōnen"
+  },
+  "creator": {
+    "nom": "Kaiu Shirai",
+    "nomJaponais": "白井 カイウ",
+    "bio": "Kaiu Shirai (白井 カイウ) est le scénariste de The Promised Neverland, qu'il crée à partir de 2016 avec l'illustratrice Posuka Demizu (出水 ぽすか, née le 17 janvier 1988 à Tokyo). Son identité réelle et sa date de naissance ne sont pas rendues publiques ; originaire de Gifu, il a travaillé dans une entreprise extérieure au manga avant de se consacrer à l'écriture. Le duo publie l'œuvre dans le Weekly Shōnen Jump de 2016 à 2020, puis le recueil Beyond The Promised Neverland en 2021.",
+    "dateNaissance": "Non divulguée",
+    "nationalite": "Japonais",
+    "occupation": "Mangaka (scénariste)",
+    "oeuvres": [
+      "2016–2020 — The Promised Neverland — Weekly Shōnen Jump — Shueisha",
+      "2020 — Spirit Photographer Saburo Kono (one-shot) — Shueisha",
+      "2021 — Kaiu Shirai x Posuka Demizu: Beyond The Promised Neverland (recueil) — Shueisha"
+    ],
+    "recompenses": [
+      "2016 — Prix Mandō Kobayashi, nouvelle série (The Promised Neverland)",
+      "2018 — 63e prix Shōgakukan, catégorie shōnen",
+      "3e Next Manga Awards, catégorie comics : 2e place"
+    ],
+    "imageUrl": "",
+    "animeIds": [
+      "the-promised-neverland"
+    ]
+  },
+  "studio": {
+    "nom": "CloverWorks",
+    "fondation": "2018 (filiale d'A-1 Pictures), siège à Tokyo",
+    "fondateur": "Non divulgué publiquement",
+    "description": "",
+    "productions": [
+      "Persona 5 the Animation",
+      "Spy × Family (en coproduction)",
+      "Bocchi the Rock!",
+      "My Dress-Up Darling"
+    ]
+  },
+  "characters": [
+    {
+      "id": "pn-emma",
+      "nom": "Emma",
+      "nomJaponais": "エマ",
+      "animeId": "the-promised-neverland",
+      "animeName": "The Promised Neverland",
+      "auteurId": "kaiu-shirai",
+      "auteurNom": "Kaiu Shirai",
+      "studioId": "cloverworks",
+      "studioNom": "CloverWorks",
+      "age": "11 ans",
+      "sexe": "Féminin",
+      "statut": "Protagoniste — Humaine (Grace Field House) — Statut : Voir œuvre",
+      "rang": "Protagoniste — Humaine (Grace Field House) — Statut : Voir œuvre",
+      "description": "Emma est une orpheline de onze ans qui vit à Grace Field House, un orphelinat en apparence paisible. Optimiste et énergique, elle est animée par un fort désir de protéger sa famille. En découvrant la vérité sur la maison, elle s'allie à Norman et Ray pour organiser une évasion. Sa conviction est de sauver tous les enfants, ce qui la distingue de ses camarades. Elle est le cœur émotionnel de l'œuvre et incarne la volonté de ne laisser personne derrière.",
+      "pouvoirs": [
+        "Condition physique et réflexes remarquables",
+        "Capacité d'adaptation et esprit de décision",
+        "Leadership naturel qui fédère les autres enfants",
+        "Résistance à l'épreuve mentale"
+      ],
+      "citations": [],
+      "trivia": [
+        "🎂 Son anniversaire est le 22 août.",
+        "🎬 Elle est incarnée par Minami Hamabe dans l'adaptation en film live.",
+        "🎙️ Sumire Morohoshi la double en japonais, Erica Mendez en anglais."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Norman",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ray",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Isabella",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Don",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Gilda",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Sumire Morohoshi",
+      "voixAnglaise": "Erica Mendez",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 1
+    },
+    {
+      "id": "pn-norman",
+      "nom": "Norman",
+      "nomJaponais": "ノーマン",
+      "animeId": "the-promised-neverland",
+      "animeName": "The Promised Neverland",
+      "auteurId": "kaiu-shirai",
+      "auteurNom": "Kaiu Shirai",
+      "studioId": "cloverworks",
+      "studioNom": "CloverWorks",
+      "age": "11 ans",
+      "sexe": "Masculin",
+      "statut": "Orphelin — Humain (Grace Field House) — Statut : Voir œuvre",
+      "rang": "Orphelin — Humain (Grace Field House) — Statut : Voir œuvre",
+      "description": "Norman est un orphelin rationnel de onze ans, doté d'un grand talent pour la stratégie. Il est l'un des trois meilleurs élèves de Grace Field House avec Emma et Ray. Son esprit d'analyse et son sang-froid font de lui le pilier du groupe. Il conçoit des plans minutieux pour réaliser l'évasion. Sa relation avec Emma et Ray structure une grande partie du récit.",
+      "pouvoirs": [
+        "Intelligence stratégique exceptionnelle",
+        "Planification méthodique",
+        "Sang-froid face au danger",
+        "Bonnes aptitudes physiques et scolaires"
+      ],
+      "citations": [],
+      "trivia": [
+        "🎂 Son anniversaire est le 21 mars.",
+        "🎙️ Maaya Uchida double ce personnage masculin en japonais.",
+        "🧠 Il est décrit comme le pilier du groupe."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Emma",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ray",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Isabella",
+          "type": "rival"
+        }
+      ],
+      "voixJaponaise": "Maaya Uchida",
+      "voixAnglaise": "Jeannie Tirado",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 2
+    },
+    {
+      "id": "pn-ray",
+      "nom": "Ray",
+      "nomJaponais": "レイ",
+      "animeId": "the-promised-neverland",
+      "animeName": "The Promised Neverland",
+      "auteurId": "kaiu-shirai",
+      "auteurNom": "Kaiu Shirai",
+      "studioId": "cloverworks",
+      "studioNom": "CloverWorks",
+      "age": "11 ans",
+      "sexe": "Masculin",
+      "statut": "Orphelin — Humain (Grace Field House) — Statut : Voir œuvre",
+      "rang": "Orphelin — Humain (Grace Field House) — Statut : Voir œuvre",
+      "description": "Ray est un orphelin de onze ans, pragmatique et grand lecteur. Il possède un caractère plus sombre et réservé que celui d'Emma. Il fait partie du trio de tête de Grace Field House et contribue activement à la préparation de l'évasion. Son sens de l'observation et son sarcasme masquent des intentions profondes. Il joue un rôle central dans l'intrigue.",
+      "pouvoirs": [
+        "Intelligence et sens de l'observation",
+        "Esprit de calcul",
+        "Connaissances étendues grâce à ses lectures"
+      ],
+      "citations": [],
+      "trivia": [
+        "🎂 Son anniversaire est le 15 janvier.",
+        "📚 Il est présenté comme un lecteur assidu.",
+        "🎙️ Mariya Ise le double en japonais."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Emma",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Norman",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Isabella",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Mariya Ise",
+      "voixAnglaise": "Laura Stahl",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 3
+    },
+    {
+      "id": "pn-isabella",
+      "nom": "Isabella",
+      "nomJaponais": "イザベラ",
+      "animeId": "the-promised-neverland",
+      "animeName": "The Promised Neverland",
+      "auteurId": "kaiu-shirai",
+      "auteurNom": "Kaiu Shirai",
+      "studioId": "cloverworks",
+      "studioNom": "CloverWorks",
+      "age": "31 ans (puis 33 ans)",
+      "sexe": "Féminin",
+      "statut": "Gardienne — Humaine (Grace Field House) — Statut : Voir œuvre",
+      "rang": "Gardienne — Humaine (Grace Field House) — Statut : Voir œuvre",
+      "description": "Isabella est la femme qui veille sur les enfants de Grace Field House et qu'ils appellent Maman. Elle semble douce, attentive et aimante. Derrière cette image se cache un rôle bien plus complexe dans le système de l'orphelinat. Elle fait face à Emma, Norman et Ray avec intelligence et fermeté. Elle est l'un des antagonistes les plus mémorables de la première saison.",
+      "pouvoirs": [
+        "Intelligence et sens de la stratégie",
+        "Maîtrise de soi remarquable",
+        "Capacité à surveiller et contrôler la maison"
+      ],
+      "citations": [],
+      "trivia": [
+        "🎙️ Yūko Kaida la double en japonais.",
+        "🎙️ Laura Post lui prête sa voix anglaise.",
+        "🎂 Son anniversaire est le 9 septembre."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Emma",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Norman",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ray",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Sister Krone",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Grandma",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Yūko Kaida",
+      "voixAnglaise": "Laura Post",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 4
+    },
+    {
+      "id": "pn-don",
+      "nom": "Don",
+      "nomJaponais": "ドン",
+      "animeId": "the-promised-neverland",
+      "animeName": "The Promised Neverland",
+      "auteurId": "kaiu-shirai",
+      "auteurNom": "Kaiu Shirai",
+      "studioId": "cloverworks",
+      "studioNom": "CloverWorks",
+      "age": "10 ans",
+      "sexe": "Masculin",
+      "statut": "Orphelin — Humain (Grace Field House) — Statut : Voir œuvre",
+      "rang": "Orphelin — Humain (Grace Field House) — Statut : Voir œuvre",
+      "description": "Don est un garçon de dix ans, bruyant et joyeux, qui tient profondément à sa famille. Il rejoint l'évasion avec Gilda lorsque Emma, Norman et Ray lui révèlent la vérité. Il se montre loyal et courageux, malgré le sentiment de ne pas être aussi intelligent que les autres. Il apporte sa force physique et son énergie au groupe. Son attachement à ses frères et sœurs est constant.",
+      "pouvoirs": [
+        "Force physique supérieure à celle des enfants de son âge",
+        "Loyauté et courage",
+        "Bonne humeur qui soutient le moral du groupe"
+      ],
+      "citations": [],
+      "trivia": [
+        "🎂 Son anniversaire est le 4 juillet.",
+        "🆔 Son numéro d'identification est 16194.",
+        "🎙️ Il est l'un des rares personnages masculins doublés par un homme en japonais."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Gilda",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Emma",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Norman",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ray",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Shinei Ueki",
+      "voixAnglaise": "Cedric Williams",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 5
+    },
+    {
+      "id": "pn-gilda",
+      "nom": "Gilda",
+      "nomJaponais": "ギルダ",
+      "animeId": "the-promised-neverland",
+      "animeName": "The Promised Neverland",
+      "auteurId": "kaiu-shirai",
+      "auteurNom": "Kaiu Shirai",
+      "studioId": "cloverworks",
+      "studioNom": "CloverWorks",
+      "age": "10 ans",
+      "sexe": "Féminin",
+      "statut": "Orpheline — Humaine (Grace Field House) — Statut : Voir œuvre",
+      "rang": "Orpheline — Humaine (Grace Field House) — Statut : Voir œuvre",
+      "description": "Gilda est une fille de dix ans, calme, observatrice et fiable. Elle aide à prendre soin des plus jeunes à Grace Field House. Avec Don, elle est intégrée au plan d'évasion après avoir découvert la vérité. Son sens de l'écoute et sa discrétion en font une alliée précieuse. Elle fait preuve de maturité dans les moments difficiles.",
+      "pouvoirs": [
+        "Sens de l'observation",
+        "Capacité à soutenir les plus jeunes",
+        "Sang-froid"
+      ],
+      "citations": [],
+      "trivia": [
+        "🎂 Son anniversaire est le 13 mai.",
+        "🎙️ Lynn la double en japonais.",
+        "🎙️ Ryan Bartley est sa voix anglaise."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Don",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Emma",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Sister Krone",
+          "type": "ennemi"
+        }
+      ],
+      "voixJaponaise": "Lynn",
+      "voixAnglaise": "Ryan Bartley",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 6
+    },
+    {
+      "id": "pn-sister-krone",
+      "nom": "Sister Krone",
+      "nomJaponais": "シスター・クローネ",
+      "animeId": "the-promised-neverland",
+      "animeName": "The Promised Neverland",
+      "auteurId": "kaiu-shirai",
+      "auteurNom": "Kaiu Shirai",
+      "studioId": "cloverworks",
+      "studioNom": "CloverWorks",
+      "age": "26 ans",
+      "sexe": "Féminin",
+      "statut": "Gardienne — Humaine — Statut : Voir œuvre",
+      "rang": "Gardienne — Humaine — Statut : Voir œuvre",
+      "description": "Sister Krone est une religieuse grande et athlétique qui aide à diriger Grace Field House avec Isabella. Énergique et ambitieuse, elle ne cache pas sa jalousie envers la Maman de la maison. Elle cherche à prendre sa place et à obtenir de meilleures conditions. Elle crée de nombreuses tensions avec les enfants. Elle est très populaire parmi les fans.",
+      "pouvoirs": [
+        "Condition physique remarquable",
+        "Ruse et opportunisme",
+        "Bonne connaissance du fonctionnement de la maison"
+      ],
+      "citations": [],
+      "trivia": [
+        "🎂 Son anniversaire est le 15 juillet.",
+        "🏅 Elle figure dans les sondages de popularité de plusieurs séries.",
+        "🎙️ Nao Fujita la double en japonais."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Isabella",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Emma",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Gilda",
+          "type": "ennemi"
+        }
+      ],
+      "voixJaponaise": "Nao Fujita",
+      "voixAnglaise": "Rebeka Thomas",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 7
+    },
+    {
+      "id": "pn-phil",
+      "nom": "Phil",
+      "nomJaponais": "フィル",
+      "animeId": "the-promised-neverland",
+      "animeName": "The Promised Neverland",
+      "auteurId": "kaiu-shirai",
+      "auteurNom": "Kaiu Shirai",
+      "studioId": "cloverworks",
+      "studioNom": "CloverWorks",
+      "age": "4 ans",
+      "sexe": "Masculin",
+      "statut": "Orphelin — Humain (Grace Field House) — Statut : Voir œuvre",
+      "rang": "Orphelin — Humain (Grace Field House) — Statut : Voir œuvre",
+      "description": "Phil est un garçon de quatre ans, considéré comme l'un des plus intelligents de sa tranche d'âge. Très observateur, il comprend parfaitement les sentiments des autres. Il est franc et affectueux envers ses frères et sœurs. Son rôle est important dans l'intrigue et dans la sensibilité de l'œuvre. Il symbolise ce que les héros veulent protéger.",
+      "pouvoirs": [
+        "Sens de l'observation aigu",
+        "Grande sensibilité émotionnelle",
+        "Franchise désarmante"
+      ],
+      "citations": [],
+      "trivia": [
+        "🎂 Son anniversaire est le 31 juillet.",
+        "🎙️ Hiyori Kono le double en japonais.",
+        "🎙️ Amber Connor est sa voix anglaise."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Emma",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Les autres enfants de Grace Field",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Hiyori Kono",
+      "voixAnglaise": "Amber Connor",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 8
+    },
+    {
+      "id": "pn-mujika",
+      "nom": "Mujika",
+      "nomJaponais": "ムジカ",
+      "animeId": "the-promised-neverland",
+      "animeName": "The Promised Neverland",
+      "auteurId": "kaiu-shirai",
+      "auteurNom": "Kaiu Shirai",
+      "studioId": "cloverworks",
+      "studioNom": "CloverWorks",
+      "age": "Non listée dans nos sources",
+      "sexe": "Féminin",
+      "statut": "Alliée — Démone — Statut : Voir œuvre",
+      "rang": "Alliée — Démone — Statut : Voir œuvre",
+      "description": "Mujika est une démone qui refuse de manger des humains élevés en ferme. Elle croise le chemin des enfants après leur évasion et les aide à survivre dans le monde extérieur. Avec Sonju, elle leur enseigne des compétences de base pour se débrouiller. Elle adopte une attitude douce et protectrice. Elle représente l'espoir d'une autre relation entre les deux espèces.",
+      "pouvoirs": [
+        "Force et capacités propres aux démons",
+        "Connaissance du monde extérieur",
+        "Talent d'enseignement des techniques de survie"
+      ],
+      "citations": [],
+      "trivia": [
+        "🎙️ Atsumi Tanezaki la double en japonais.",
+        "🎙️ Lizzie Freeman est sa voix anglaise.",
+        "🌍 Elle apparaît dès la deuxième saison."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Sonju",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Emma",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "les enfants évadés",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Atsumi Tanezaki",
+      "voixAnglaise": "Lizzie Freeman",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 9
+    },
+    {
+      "id": "pn-sonju",
+      "nom": "Sonju",
+      "nomJaponais": "ソンジュ",
+      "animeId": "the-promised-neverland",
+      "animeName": "The Promised Neverland",
+      "auteurId": "kaiu-shirai",
+      "auteurNom": "Kaiu Shirai",
+      "studioId": "cloverworks",
+      "studioNom": "CloverWorks",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Allié — Démon — Statut : Voir œuvre",
+      "rang": "Allié — Démon — Statut : Voir œuvre",
+      "description": "Sonju est un démon imposant et stoïque, chasseur expérimenté. Il partage les convictions de Mujika et choisit d'aider les enfants. Il leur enseigne des techniques de survie. D'une grande discrétion, il protège le groupe avec sérieux. Sa présence rassure les enfants dans un monde dangereux.",
+      "pouvoirs": [
+        "Force physique imposante",
+        "Excellent chasseur",
+        "Grande connaissance du terrain"
+      ],
+      "citations": [],
+      "trivia": [
+        "📏 Il mesure 230 cm.",
+        "🎙️ Shin'ichirō Kamio le double en japonais.",
+        "🎙️ Daman Mills est sa voix anglaise."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Mujika",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Emma",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "les enfants",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Shin'ichirō Kamio",
+      "voixAnglaise": "Daman Mills",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 10
+    },
+    {
+      "id": "pn-peter-ratri",
+      "nom": "Peter Ratri",
+      "nomJaponais": "ピーター・ラートリー",
+      "animeId": "the-promised-neverland",
+      "animeName": "The Promised Neverland",
+      "auteurId": "kaiu-shirai",
+      "auteurNom": "Kaiu Shirai",
+      "studioId": "cloverworks",
+      "studioNom": "CloverWorks",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Antagoniste — Humain (clan Ratri) — Statut : Voir œuvre",
+      "rang": "Antagoniste — Humain (clan Ratri) — Statut : Voir œuvre",
+      "description": "Peter Ratri est le chef du clan Ratri, qui supervise le système des fermes. Il agit dans l'ombre et manipule les événements avec calme. Il apparaît dans la suite de l'histoire comme un adversaire redoutable. Son autorité et son intelligence en font une figure majeure du conflit. Sa motivation est un fil conducteur de l'arc final.",
+      "pouvoirs": [
+        "Intelligence stratégique",
+        "Influence politique et sociale",
+        "Contrôle d'un vaste réseau"
+      ],
+      "citations": [],
+      "trivia": [
+        "🎂 Son anniversaire est le 23 septembre.",
+        "📏 Il mesure 183 cm.",
+        "🎙️ Yoshimasa Hosoya le double en japonais."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Clan Ratri",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Les fermes d'élevage",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Yoshimasa Hosoya",
+      "voixAnglaise": "Crispin Freeman",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 11
+    },
+    {
+      "id": "pn-anna",
+      "nom": "Anna",
+      "nomJaponais": "アンナ",
+      "animeId": "the-promised-neverland",
+      "animeName": "The Promised Neverland",
+      "auteurId": "kaiu-shirai",
+      "auteurNom": "Kaiu Shirai",
+      "studioId": "cloverworks",
+      "studioNom": "CloverWorks",
+      "age": "9 ans",
+      "sexe": "Féminin",
+      "statut": "Orpheline — Humaine (Grace Field House) — Statut : Voir œuvre",
+      "rang": "Orpheline — Humaine (Grace Field House) — Statut : Voir œuvre",
+      "description": "Anna est une fillette de neuf ans, douce mais déterminée. Elle aime profondément sa famille. Elle fait partie des enfants qui rejoignent l'évasion. Sa gentillesse la rend appréciée de tous. Elle apporte une touche de tendresse dans le groupe.",
+      "pouvoirs": [
+        "Sens du soin envers les plus jeunes",
+        "Détermination discrète",
+        "Esprit d'équipe"
+      ],
+      "citations": [],
+      "trivia": [
+        "🎙️ Ai Kayano la double en japonais.",
+        "🎙️ Brianna Knickerbocker est sa voix anglaise.",
+        "🧒 Elle a neuf ans dans l'histoire."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Emma",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Les autres enfants",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Ai Kayano",
+      "voixAnglaise": "Brianna Knickerbocker",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 12
+    },
+    {
+      "id": "pn-thoma",
+      "nom": "Thoma",
+      "nomJaponais": "トーマ",
+      "animeId": "the-promised-neverland",
+      "animeName": "The Promised Neverland",
+      "auteurId": "kaiu-shirai",
+      "auteurNom": "Kaiu Shirai",
+      "studioId": "cloverworks",
+      "studioNom": "CloverWorks",
+      "age": "7 ans",
+      "sexe": "Masculin",
+      "statut": "Orphelin — Humain (Grace Field House) — Statut : Voir œuvre",
+      "rang": "Orphelin — Humain (Grace Field House) — Statut : Voir œuvre",
+      "description": "Thoma est un garçon espiègle de sept ans qui aime faire des farces avec Lannion. Il vit à Grace Field House et porte le numéro 55294. Il est le meilleur ami de Lannion. Il suit l'évasion avec le reste de ses frères et sœurs. Son humour allège l'atmosphère tendue du récit.",
+      "pouvoirs": [
+        "Agilité propre aux enfants",
+        "Sens de l'humour",
+        "Loyauté envers ses amis"
+      ],
+      "citations": [],
+      "trivia": [
+        "🆔 Son numéro d'identification est 55294.",
+        "🎙️ Mari Hino le double en japonais.",
+        "🎙️ Cristina Vee est sa voix anglaise."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Lannion",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Emma",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Mari Hino",
+      "voixAnglaise": "Cristina Vee",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 13
+    },
+    {
+      "id": "pn-lannion",
+      "nom": "Lannion",
+      "nomJaponais": "ラニオン",
+      "animeId": "the-promised-neverland",
+      "animeName": "The Promised Neverland",
+      "auteurId": "kaiu-shirai",
+      "auteurNom": "Kaiu Shirai",
+      "studioId": "cloverworks",
+      "studioNom": "CloverWorks",
+      "age": "7 ans",
+      "sexe": "Masculin",
+      "statut": "Orphelin — Humain (Grace Field House) — Statut : Voir œuvre",
+      "rang": "Orphelin — Humain (Grace Field House) — Statut : Voir œuvre",
+      "description": "Lannion est un garçon de sept ans aux cheveux blonds hérissés, qui adore faire des bêtises avec Thoma. Joyeux et dynamique, il fait partie des enfants de Grace Field House. Il rejoint l'évasion avec les autres. Son énergie contribue à la cohésion du groupe. Il illustre l'innocence que l'œuvre cherche à protéger.",
+      "pouvoirs": [
+        "Vivacité et dynamisme",
+        "Esprit de camaraderie"
+      ],
+      "citations": [],
+      "trivia": [
+        "🎙️ Yūko Mori le double en japonais.",
+        "🎙️ Philece Sampler est sa voix anglaise.",
+        "🤹 Il forme un duo comique avec Thoma."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Thoma",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Emma",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Yūko Mori",
+      "voixAnglaise": "Philece Sampler",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 14
+    },
+    {
+      "id": "pn-conny",
+      "nom": "Conny",
+      "nomJaponais": "コニー",
+      "animeId": "the-promised-neverland",
+      "animeName": "The Promised Neverland",
+      "auteurId": "kaiu-shirai",
+      "auteurNom": "Kaiu Shirai",
+      "studioId": "cloverworks",
+      "studioNom": "CloverWorks",
+      "age": "6 ans",
+      "sexe": "Féminin",
+      "statut": "Orpheline — Humaine (Grace Field House) — Statut : Voir œuvre",
+      "rang": "Orpheline — Humaine (Grace Field House) — Statut : Voir œuvre",
+      "description": "Conny est une fillette de six ans aux couettes blondes qui garde toujours près d'elle son lapin en peluche. Elle est très attachée à ses frères et sœurs. Son rôle dans l'histoire est déterminant pour l'éveil des héros. Elle apparaît dès les premiers épisodes. Sa présence souligne la fragilité de l'innocence à Grace Field House.",
+      "pouvoirs": [
+        "Aucun pouvoir particulier",
+        "Grande affection pour ses proches"
+      ],
+      "citations": [],
+      "trivia": [
+        "🐰 Elle est inséparable de son lapin en peluche.",
+        "🎙️ Ari Ozawa la double en japonais.",
+        "🎙️ Jackie Lastra est sa voix anglaise."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Emma",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Don",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Ari Ozawa",
+      "voixAnglaise": "Jackie Lastra",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 15
+    },
+    {
+      "id": "pn-barbara",
+      "nom": "Barbara",
+      "nomJaponais": "バーバラ",
+      "animeId": "the-promised-neverland",
+      "animeName": "The Promised Neverland",
+      "auteurId": "kaiu-shirai",
+      "auteurNom": "Kaiu Shirai",
+      "studioId": "cloverworks",
+      "studioNom": "CloverWorks",
+      "age": "16 ans",
+      "sexe": "Féminin",
+      "statut": "Alliée — Humaine (Goodwill Ridge) — Statut : Voir œuvre",
+      "rang": "Alliée — Humaine (Goodwill Ridge) — Statut : Voir œuvre",
+      "description": "Barbara est une jeune fille de seize ans issue de l'orphelinat Goodwill Ridge. Déterminée, elle croise la route d'Emma et de ses compagnons dans le monde extérieur. Elle apporte son expérience d'évadée au groupe. Elle fait preuve de courage dans les moments critiques. Elle illustre que d'autres enfants ont affronté la même épreuve.",
+      "pouvoirs": [
+        "Détermination",
+        "Expérience de survie en dehors des fermes"
+      ],
+      "citations": [],
+      "trivia": [
+        "🎙️ Chika Anzai la double en japonais.",
+        "🎙️ Allegra Clark est sa voix anglaise.",
+        "🏚️ Elle vient de l'orphelinat Goodwill Ridge."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Emma",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "ses compagnons",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Cislo",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Chika Anzai",
+      "voixAnglaise": "Allegra Clark",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 16
+    },
+    {
+      "id": "pn-zazie",
+      "nom": "Zazie",
+      "nomJaponais": "ザジー",
+      "animeId": "the-promised-neverland",
+      "animeName": "The Promised Neverland",
+      "auteurId": "kaiu-shirai",
+      "auteurNom": "Kaiu Shirai",
+      "studioId": "cloverworks",
+      "studioNom": "CloverWorks",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Allié — Humain (Lambda) — Statut : Voir œuvre",
+      "rang": "Allié — Humain (Lambda) — Statut : Voir œuvre",
+      "description": "Zazie est un garçon élevé à Lambda qui porte un sac en papier sur la tête. Combattant adulte dans son gabarit, il agit avec discrétion. Il est lié aux événements de la seconde partie de l'histoire. Son allure inhabituelle le distingue des autres personnages. Il illustre l'univers plus vaste de la ferme Lambda.",
+      "pouvoirs": [
+        "Combat de haut niveau",
+        "Discrétion et efficacité"
+      ],
+      "citations": [],
+      "trivia": [
+        "🛍️ Il porte un sac en papier sur la tête.",
+        "🎙️ Hidenori Takahashi le double en japonais.",
+        "🎙️ Jalen K. Cassell est sa voix anglaise."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Norman",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "les évadés de Lambda",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Hidenori Takahashi",
+      "voixAnglaise": "Jalen K. Cassell",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 17
+    },
+    {
+      "id": "pn-cislo",
+      "nom": "Cislo",
+      "nomJaponais": "シスロ",
+      "animeId": "the-promised-neverland",
+      "animeName": "The Promised Neverland",
+      "auteurId": "kaiu-shirai",
+      "auteurNom": "Kaiu Shirai",
+      "studioId": "cloverworks",
+      "studioNom": "CloverWorks",
+      "age": "17 ans",
+      "sexe": "Masculin",
+      "statut": "Allié — Humain (Goodwill Ridge) — Statut : Voir œuvre",
+      "rang": "Allié — Humain (Goodwill Ridge) — Statut : Voir œuvre",
+      "description": "Cislo est un jeune homme de dix-sept ans venu de l'orphelinat Goodwill Ridge. Il combat avec des nunchaku et se distingue par sa vigueur. Il rejoint les évadés dans la lutte contre le système. Il est un allié précieux pour les héros. Son courage appuie les actions d'Emma et de ses compagnons.",
+      "pouvoirs": [
+        "Maîtrise des nunchaku",
+        "Condition physique remarquable"
+      ],
+      "citations": [],
+      "trivia": [
+        "🥋 Son arme de prédilection est le nunchaku.",
+        "🎙️ Yoshiki Nakajima le double en japonais.",
+        "🎙️ Mark Whitten est sa voix anglaise."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Barbara",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Emma",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "ses alliés",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Yoshiki Nakajima",
+      "voixAnglaise": "Mark Whitten",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 18
+    },
+    {
+      "id": "pn-leslie",
+      "nom": "Leslie",
+      "nomJaponais": "レスリー",
+      "animeId": "the-promised-neverland",
+      "animeName": "The Promised Neverland",
+      "auteurId": "kaiu-shirai",
+      "auteurNom": "Kaiu Shirai",
+      "studioId": "cloverworks",
+      "studioNom": "CloverWorks",
+      "age": "12 ans",
+      "sexe": "Masculin",
+      "statut": "Personnage secondaire — Humain (Grace Field House) — Statut : Voir œuvre",
+      "rang": "Personnage secondaire — Humain (Grace Field House) — Statut : Voir œuvre",
+      "description": "Leslie est un ancien résident de Grace Field House, timide et réservé, qui aime avant tout chanter. Il est l'auteur d'une chanson qui marque durablement certains personnages. Sa discrétion contraste avec l'importance de sa mélodie dans l'œuvre. Il porte le numéro 71584. Il illustre la dimension émotionnelle de l'orphelinat.",
+      "pouvoirs": [
+        "Talent de chant et de composition"
+      ],
+      "citations": [],
+      "trivia": [
+        "🎂 Son anniversaire est le 7 janvier.",
+        "🆔 Son numéro d'identification est 71584.",
+        "🎙️ Sanae Kobayashi le double en japonais."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Isabella",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ray",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Sanae Kobayashi",
+      "voixAnglaise": "Morgan Berry",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 19
+    },
+    {
+      "id": "pn-jemima",
+      "nom": "Jemima",
+      "nomJaponais": "ジェミマ",
+      "animeId": "the-promised-neverland",
+      "animeName": "The Promised Neverland",
+      "auteurId": "kaiu-shirai",
+      "auteurNom": "Kaiu Shirai",
+      "studioId": "cloverworks",
+      "studioNom": "CloverWorks",
+      "age": "5 ans",
+      "sexe": "Féminin",
+      "statut": "Orpheline — Humaine (Grace Field House) — Statut : Voir œuvre",
+      "rang": "Orpheline — Humaine (Grace Field House) — Statut : Voir œuvre",
+      "description": "Jemima est une fillette de cinq ans, appliquée et directe. Elle vit à Grace Field House et suit l'évasion avec les autres. Son sérieux contraste avec son jeune âge. Elle apporte une voix claire dans les moments de tension. Elle fait partie des plus jeunes que les héros veulent préserver.",
+      "pouvoirs": [
+        "Sérieux et application",
+        "Franchise"
+      ],
+      "citations": [],
+      "trivia": [
+        "🎙️ Erisa Kuon la double en japonais.",
+        "🎙️ Kimberley Anne Campbell est sa voix anglaise.",
+        "🧒 Elle a cinq ans dans l'histoire."
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Emma",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Les autres enfants",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Erisa Kuon",
+      "voixAnglaise": "Kimberley Anne Campbell",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 20
+    }
+  ]
+}
