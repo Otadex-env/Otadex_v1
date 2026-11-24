@@ -438,9 +438,29 @@ class AppAssets {
   ];
 
   // ── Characters sans images pour l'instant (dossiers à venir) ────────────
-  static const List<String> obitoUchiha = [];
-  static const List<String> shikamaruNara = [];
-  static const List<String> tsunade = [];
+  static const List<String> obitoUchiha = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Naruto Shippuden/Obito Uchiha/ns_obito1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Naruto Shippuden/Obito Uchiha/ns_obito2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Naruto Shippuden/Obito Uchiha/ns_obito3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Naruto Shippuden/Obito Uchiha/ns_obito4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Naruto Shippuden/Obito Uchiha/ns_obito5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Naruto Shippuden/Obito Uchiha/ns_obito6.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Naruto Shippuden/Obito Uchiha/ns_obito7.jpeg',
+  ];
+  static const List<String> shikamaruNara = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Naruto Shippuden/Shikamaru Nara/ns_shika1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Naruto Shippuden/Shikamaru Nara/ns_shika2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Naruto Shippuden/Shikamaru Nara/ns_shika3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Naruto Shippuden/Shikamaru Nara/ns_shika4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Naruto Shippuden/Shikamaru Nara/ns_shika5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Naruto Shippuden/Shikamaru Nara/ns_shika6.jpeg',
+  ];
+  static const List<String> tsunade = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Naruto Shippuden/Tsunade/ns_tsuna1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Naruto Shippuden/Tsunade/ns_tsuna2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Naruto Shippuden/Tsunade/ns_tsuna3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Naruto Shippuden/Tsunade/ns_tsuna4.jpeg',
+  ];
 
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // CLK — Classroom of the Elite   prefix: clk_
@@ -449,15 +469,10 @@ class AppAssets {
 
   // ── Arisu Sakayanagi ─────────────────────────────────────────────────────
   static const List<String> arisuSakayanagi = [
-    '$_clk/Arisu Sakayanagi /clk_saka1.jpeg',
-    '$_clk/Arisu Sakayanagi /clk_saka2.jpeg',
-    '$_clk/Arisu Sakayanagi /clk_saka3.jpeg',
     '$_clk/Arisu Sakayanagi /clk_saka4.jpeg',
-    '$_clk/Arisu Sakayanagi /clk_saka5.jpeg',
-    '$_clk/Arisu Sakayanagi /clk_saka6.jpeg',
-    '$_clk/Arisu Sakayanagi /clk_saka7.jpeg',
-    '$_clk/Arisu Sakayanagi /clk_saka8.jpeg',
     '$_clk/Arisu Sakayanagi /clk_saka9.jpeg',
+    '$_clk/Arisu Sakayanagi /clk_saka10.jpeg',
+    '$_clk/Arisu Sakayanagi /clk_saka11.jpeg',
   ];
 
   // ── Honami Ichinose ───────────────────────────────────────────────────────
@@ -466,21 +481,15 @@ class AppAssets {
     '$_clk/honami ichinose/clk_ichi2.jpeg',
     '$_clk/honami ichinose/clk_ichi3.jpeg',
     '$_clk/honami ichinose/clk_ichi4.jpeg',
-    '$_clk/honami ichinose/clk_ichi5.jpeg',
-    '$_clk/honami ichinose/clk_ichi6.jpeg',
   ];
 
   // ── Kakeru Ryuen ──────────────────────────────────────────────────────────
   static const List<String> kakeruRyuen = [
-    '$_clk/kakeru ryuen/clk_ryue1.jpeg',
-    '$_clk/kakeru ryuen/clk_ryue2.jpeg',
-    '$_clk/kakeru ryuen/clk_ryue3.jpeg',
-    '$_clk/kakeru ryuen/clk_ryue4.jpeg',
-    '$_clk/kakeru ryuen/clk_ryue5.jpeg',
-    '$_clk/kakeru ryuen/clk_ryue6.jpeg',
     '$_clk/kakeru ryuen/clk_ryue7.jpeg',
     '$_clk/kakeru ryuen/clk_ryue8.jpeg',
     '$_clk/kakeru ryuen/clk_ryue9.jpeg',
+    '$_clk/kakeru ryuen/clk_ryue10.jpeg',
+    '$_clk/kakeru ryuen/clk_ryue11.jpeg',
   ];
 
   // ── Kiyotaka Ayanokoji ────────────────────────────────────────────────────
@@ -527,6 +536,11 @@ class AppAssets {
     '$_clk/ken sudo/clk_sudo3.jpeg',
     '$_clk/ken sudo/clk_sudo4.jpeg',
     '$_clk/ken sudo/clk_sudo5.jpeg',
+    '$_clk/ken sudo/clk_sudo6.jpeg',
+    '$_clk/ken sudo/clk_sudo7.jpeg',
+    '$_clk/ken sudo/clk_sudo8.jpeg',
+    '$_clk/ken sudo/clk_sudo9.jpeg',
+    '$_clk/ken sudo/clk_sudo10.jpeg',
   ];
 
   // ── Yosuke Hirata ─────────────────────────────────────────────────────────
@@ -547,17 +561,75 @@ class AppAssets {
   ];
 
   // ── Characters sans images pour l'instant (dossiers créés) ───────────────
-  static const List<String> kikyoKushida = [];
-  static const List<String> saeChabashira = [];
-  static const List<String> rokusukeKoenji = [];
-  static const List<String> airiSakura = [];
-  static const List<String> miyabiNagumo = [];
-  static const List<String> hiyoriShinaa = [];
-  static const List<String> tsubasaNanase = [];
-  static const List<String> ichikaAmasawa = [];
-  static const List<String> takuyaYagami = [];
-  static const List<String> koheiKatsuragi = [];
-  static const List<String> mioIbuki = [];
+  static const List<String> kikyoKushida = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Kikyo Kushida/clk_kikyo1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Kikyo Kushida/clk_kikyo2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Kikyo Kushida/clk_kikyo3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Kikyo Kushida/clk_kikyo4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Kikyo Kushida/clk_kikyo5.jpeg',
+  ];
+  static const List<String> saeChabashira = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Sae Chabashira/clk_sae1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Sae Chabashira/clk_sae2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Sae Chabashira/clk_sae3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Sae Chabashira/clk_sae4.jpeg',
+  ];
+  static const List<String> rokusukeKoenji = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Rokusuke Koenji/clk_koenji1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Rokusuke Koenji/clk_koenji2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Rokusuke Koenji/clk_koenji3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Rokusuke Koenji/clk_koenji4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Rokusuke Koenji/clk_koenji5.jpeg',
+  ];
+  static const List<String> airiSakura = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Airi Sakura/clk_airi1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Airi Sakura/clk_airi2.jpeg',
+  ];
+  static const List<String> miyabiNagumo = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Miyabi Nagumo/clk_miyabi1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Miyabi Nagumo/clk_miyabi2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Miyabi Nagumo/clk_miyabi3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Miyabi Nagumo/clk_miyabi4.jpeg',
+  ];
+  static const List<String> hiyoriShinaa = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Hiyori Shiina/clk_hiyo1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Hiyori Shiina/clk_hiyo2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Hiyori Shiina/clk_hiyo3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Hiyori Shiina/clk_hiyo4.jpeg',
+  ];
+  static const List<String> tsubasaNanase = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Tsubasa Nanase/clk_nanase1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Tsubasa Nanase/clk_nanase2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Tsubasa Nanase/clk_nanase3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Tsubasa Nanase/clk_nanase4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Tsubasa Nanase/clk_nanase5.jpeg',
+  ];
+  static const List<String> ichikaAmasawa = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Ichika Amasawa/clk_ichika1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Ichika Amasawa/clk_ichika2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Ichika Amasawa/clk_ichika3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Ichika Amasawa/clk_ichika4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Ichika Amasawa/clk_ichika5.jpeg',
+  ];
+  static const List<String> takuyaYagami = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Takuya Yagami/clk_yagami1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Takuya Yagami/clk_yagami2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Takuya Yagami/clk_yagami3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Takuya Yagami/clk_yagami4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Takuya Yagami/clk_yagami5.jpeg',
+  ];
+  static const List<String> koheiKatsuragi = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Kohei Katsuragi/clk_kohei1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Kohei Katsuragi/clk_kohei2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Kohei Katsuragi/clk_kohei3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Kohei Katsuragi/clk_kohei4.jpeg',
+  ];
+  static const List<String> mioIbuki = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Mio Ibuki/clk_ibuki1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Mio Ibuki/clk_ibuki2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Mio Ibuki/clk_ibuki3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Classroom of Elite/Mio Ibuki/clk_ibuki4.jpeg',
+  ];
 
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // OP — One Piece
