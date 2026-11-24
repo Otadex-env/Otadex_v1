@@ -1,0 +1,1052 @@
+{
+  "anime": {
+    "titre": "Bleach",
+    "titreJaponais": "BLEACH",
+    "synopsis": "Bleach suit Ichigo Kurosaki, un lycéen capable de voir les esprits, qui devient Shinigami remplaçant après avoir reçu les pouvoirs de Rukia Kuchiki. Il protège les vivants des Hollows et découvre la Soul Society, l'au-delà des Shinigami. L'histoire s'étend de la Soul Society à Hueco Mundo, puis jusqu'à l'arc final Thousand-Year Blood War, où Ichigo affronte Yhwach, le roi des Quincy.",
+    "genres": [
+      "Shōnen",
+      "Action",
+      "Surnaturel"
+    ],
+    "annee": 2004,
+    "episodes": {
+      "serie_originale": 366,
+      "thousand_year_blood_war": null
+    },
+    "studio": "Studio Pierrot",
+    "studioId": "studio-pierrot",
+    "auteur": "Tite Kubo",
+    "auteurId": "tite-kubo",
+    "editeur": "Shueisha — Weekly Shōnen Jump",
+    "statut": "Terminé",
+    "type": "Shōnen"
+  },
+  "creator": {
+    "nom": "Tite Kubo",
+    "nomJaponais": "久保 帯人",
+    "bio": "Tite Kubo (久保 帯人) est un mangaka japonais né le 26 juin 1977 à Hiroshima. Son nom de naissance serait Noriaki Kubo (久保 宣章), selon les sources. Il fait ses débuts avec le one-shot Ultra Unholy Hearted Machine, puis publie Zombiepowder (2000–2001) dans le Weekly Shōnen Jump. Il lance Bleach en 2001, série qui s'impose comme l'un des piliers du magazine, mêlant esthétique urbaine, mythologie japonaise et sabres d'âme. Il lance ensuite Burn the Witch en 2018, œuvre liée à l'univers de Bleach.",
+    "dateNaissance": "26 juin 1977",
+    "nationalite": "Japonais",
+    "occupation": "Mangaka (auteur-dessinateur)",
+    "oeuvres": [
+      "1996 — Ultra Unholy Hearted Machine (one-shot) — Shueisha",
+      "2000–2001 — Zombiepowder — Weekly Shōnen Jump — Shueisha",
+      "2001–2016 — Bleach — Weekly Shōnen Jump — Shueisha — 74 volumes",
+      "2018 — Burn the Witch — Weekly Shōnen Jump — Shueisha"
+    ],
+    "recompenses": [
+      "Shogakukan Manga Award, catégorie shōnen, pour Bleach"
+    ],
+    "imageUrl": "",
+    "animeIds": [
+      "bleach"
+    ]
+  },
+  "characters": [
+    {
+      "id": "ble-ichigo-kurosaki",
+      "nom": "Ichigo Kurosaki",
+      "animeId": "bleach",
+      "animeName": "Bleach",
+      "auteurId": "tite-kubo",
+      "auteurNom": "Tite Kubo",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "15 ans au début de l’histoire ; 17 ans après le premier saut temporel",
+      "sexe": "Masculin",
+      "statut": "Protagoniste — Shinigami remplaçant — Lycéen de Karakura",
+      "rang": "Protagoniste — Shinigami remplaçant — Lycéen de Karakura",
+      "description": "Ichigo Kurosaki est un lycéen de la ville de Karakura, capable de voir les esprits depuis l'enfance. Il rencontre la Shinigami Rukia Kuchiki, qui, blessée, lui transmet ses pouvoirs pour qu'il puisse combattre un Hollow. Il devient alors Shinigami remplaçant et protège les vivants contre les esprits malfaisants. Têtu, protecteur et impulsif, il se jette au secours de ses proches sans calcul, quitte à affronter des adversaires bien plus forts que lui. Ses combats le conduisent d'abord à la Soul Society, puis à Hueco Mundo et au-delà. Il évolue de lycéen ordinaire à figure centrale d'un conflit qui dépasse son monde. Il reste l'un des protagonistes de shōnen les plus connus.",
+      "pouvoirs": [
+        "Pouvoirs de Shinigami — combat au sabre et sens spirituel développé",
+        "Zangetsu — son Zanpakutō (sabre d'âme)",
+        "Bankai — forme libérée de son ZanpakutōGetsuga Tenshō — attaque d'énergie spirituelle",
+        "Forme de Hollow — pouvoir instable qui s'éveille en lui"
+      ],
+      "citations": [],
+      "trivia": [
+        "🍊 Ses cheveux orange sont l'un de ses traits distinctifs",
+        "🎂 Date de naissance : 15 juillet",
+        "🎙️ Masakazu Morita le double en japonais, Johnny Yong Bosch en anglais",
+        "📏 Sa taille passe de 174 cm au début à 181 cm selon la fiche officielle"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Rukia Kuchiki",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Isshin Kurosaki",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Orihime Inoue",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Yasutora Sado",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Uryu Ishida",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Renji Abarai",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Toshiro Hitsugaya",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Kisuke Urahara",
+          "type": "mentor"
+        }
+      ],
+      "voixJaponaise": "Masakazu Morita",
+      "voixAnglaise": "Johnny Yong Bosch",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 1
+    },
+    {
+      "id": "ble-rukia-kuchiki",
+      "nom": "Rukia Kuchiki",
+      "animeId": "bleach",
+      "animeName": "Bleach",
+      "auteurId": "tite-kubo",
+      "auteurNom": "Tite Kubo",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Inconnue (au moins 150 ans selon les fans)",
+      "sexe": "Féminin",
+      "statut": "Shinigami — Lieutenante de la 13e division — Membre du clan Kuchiki",
+      "rang": "Shinigami — Lieutenante de la 13e division — Membre du clan Kuchiki",
+      "description": "Rukia Kuchiki est une Shinigami chargée d'éliminer les Hollows à Karakura, qui rencontre Ichigo au début de l'histoire. Elle lui transmet ses pouvoirs pour le sauver, ce qui lui vaut d'être rappelée à la Soul Society et condamnée. Originaire des bas quartiers du Rukongai, elle a été adoptée par le clan Kuchiki. Réservée et digne, elle cache une grande loyauté envers ses amis. Elle maîtrise le Kidō et manie un Zanpakutō de glace. Elle est l'un des piliers du groupe autour d'Ichigo. Elle est aussi connue pour son goût des dessins du lapin Chappy.",
+      "pouvoirs": [
+        "Sode no Shirayuki — Zanpakutō de glace",
+        "Kidō — arts démoniaques, son point fort",
+        "Escrime",
+        "Sens spirituel développé"
+      ],
+      "citations": [],
+      "trivia": [
+        "🐰 Elle dessine le lapin Chappy",
+        "🎂 Date de naissance : 14 janvier",
+        "🎙️ Fumiko Orikasa la double en japonais, Michelle Ruff en anglais",
+        "✏️ Elle est le premier personnage créé par Tite Kubo ; son design a servi de base aux autres Shinigami"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Byakuya Kuchiki",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Renji Abarai",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ichigo Kurosaki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Jushiro Ukitake",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Fumiko Orikasa",
+      "voixAnglaise": "Michelle Ruff",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 2
+    },
+    {
+      "id": "ble-orihime-inoue",
+      "nom": "Orihime Inoue",
+      "animeId": "bleach",
+      "animeName": "Bleach",
+      "auteurId": "tite-kubo",
+      "auteurNom": "Tite Kubo",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "15 ans au début de l’histoire",
+      "sexe": "Féminin",
+      "statut": "Camarade d’Ichigo — Pouvoirs de guérison et de rejet",
+      "rang": "Camarade d’Ichigo — Pouvoirs de guérison et de rejet",
+      "description": "Orihime Inoue est une camarade de classe d'Ichigo, au caractère doux et optimiste. Elle vit seule depuis la mort de son frère aîné, qui l'a élevée. Ses pouvoirs spirituels s'éveillent après qu'Ichigo l'a sauvée lors de la transformation de son frère en Hollow. Ses capacités de soutien et de protection deviennent essentielles à l'équipe. Elle est prête à tout pour aider ses amis, parfois au prix de grands risques. Elle cache un attachement profond pour Ichigo. Elle devient l'un des personnages les plus importants de la série.",
+      "pouvoirs": [
+        "Shun Shun Rikka — six esprits de fées au service de ses alliés",
+        "Sōten Kisshun — pouvoir de rejet et de restauration",
+        "Soutien et protection"
+      ],
+      "citations": [],
+      "trivia": [
+        "🌸 Ses barrettes en forme de fleurs sont ses armes",
+        "🎂 Date de naissance : 3 septembre ; taille : 157 cm",
+        "🎙️ Yuki Matsuoka la double en japonais, Stephanie Sheh en anglais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Ichigo Kurosaki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Yasutora Sado",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Uryu Ishida",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Sora Inoue",
+          "type": "famille"
+        }
+      ],
+      "voixJaponaise": "Yuki Matsuoka",
+      "voixAnglaise": "Stephanie Sheh",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 3
+    },
+    {
+      "id": "ble-yasutora-sado",
+      "nom": "Yasutora Sado (Chad)",
+      "animeId": "bleach",
+      "animeName": "Bleach",
+      "auteurId": "tite-kubo",
+      "auteurNom": "Tite Kubo",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Ami d’Ichigo — Combattant aux bras de géant et de diable",
+      "rang": "Ami d’Ichigo — Combattant aux bras de géant et de diable",
+      "description": "Yasutora Sado, surnommé « Chad », est un camarade d'Ichigo depuis le collège. Sa grande taille et son calme lui donnent l'air plus âgé qu'il ne l'est. Silencieux et loyal, il se bat pour protéger ceux qu'il aime. Il éveille un pouvoir spirituel qui lui permet de combattre aux côtés d'Ichigo. Il a un passé lié à la perte de proches qui nourrit sa détermination. Il est l'un des amis les plus fiables du groupe. Il apporte une force tranquille à l'équipe.",
+      "pouvoirs": [
+        "Brazo Derecha de Gigante — bras droit puissant",
+        "Brazo Izquierda del Diablo — bras gauche à énergie spirituelle",
+        "Force physique exceptionnelle"
+      ],
+      "citations": [],
+      "trivia": [
+        "🎂 Date de naissance : 7 avril",
+        "📏 Sa taille officielle est de 197 cm",
+        "🎙️ Hiroki Yasumoto le double en japonais, Alain Mesa en anglais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Ichigo Kurosaki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Orihime Inoue",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Uryu Ishida",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Hiroki Yasumoto",
+      "voixAnglaise": "Alain Mesa",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 4
+    },
+    {
+      "id": "ble-uryu-ishida",
+      "nom": "Uryu Ishida",
+      "animeId": "bleach",
+      "animeName": "Bleach",
+      "auteurId": "tite-kubo",
+      "auteurNom": "Tite Kubo",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "15 à 17 ans selon les sources",
+      "sexe": "Masculin",
+      "statut": "Quincy — Rival puis allié d’Ichigo",
+      "rang": "Quincy — Rival puis allié d’Ichigo",
+      "description": "Uryu Ishida est un lycéen de Karakura, camarade d'Ichigo, et l'un des derniers Quincy. Il a été formé par son grand-père, qui lui a transmis l'art des Quincy. Il nourrit au début une forte hostilité envers les Shinigami, en raison de son passé. Il se mesure à Ichigo dans une rivalité qui devient une alliance. Il excelle dans le combat à distance et la couture. Il porte l'héritage de son clan face aux événements de l'arc final. Son évolution est l'un des fils conducteurs de la série.",
+      "pouvoirs": [
+        "Arc spirituel Quincy — tir à distance",
+        "Ginrei Kojaku — arc de lumière",
+        "Seele Schneider — lames spirituelles",
+        "Hirenkyaku — déplacement rapide"
+      ],
+      "citations": [],
+      "trivia": [
+        "🏹 Il est l'un des derniers Quincy parmi les personnages principaux",
+        "🎂 Date de naissance : 6 novembre",
+        "🎙️ Noriaki Sugiyama le double en japonais, Derek Stephen Prince en anglais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Ryuken Ishida",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Soken Ishida",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Ichigo Kurosaki",
+          "type": "rival"
+        },
+        {
+          "nomPersonnage": "Orihime Inoue",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Chad",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Noriaki Sugiyama",
+      "voixAnglaise": "Derek Stephen Prince",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 5
+    },
+    {
+      "id": "ble-renji-abarai",
+      "nom": "Renji Abarai",
+      "animeId": "bleach",
+      "animeName": "Bleach",
+      "auteurId": "tite-kubo",
+      "auteurNom": "Tite Kubo",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Plus de 150 ans selon les fans",
+      "sexe": "Masculin",
+      "statut": "Shinigami — Lieutenant de la 6e division — Ami d’enfance de Rukia",
+      "rang": "Shinigami — Lieutenant de la 6e division — Ami d’enfance de Rukia",
+      "description": "Renji Abarai est le lieutenant de la 6e division du Gotei 13, ami d'enfance de Rukia. Il a grandi dans les bas quartiers du Rukongai et a atteint un rang élevé grâce à ses efforts. Il apparaît d'abord comme un adversaire d'Ichigo, lorsqu'il vient arrêter Rukia avec son capitaine. Au fil de l'histoire, il devient un allié fiable. Il porte un Zanpakutō qui se déploie comme une chaîne de segments. Il admire son capitaine Byakuya et cherche à le dépasser. Il est l'un des Shinigami les plus attachants de la série.",
+      "pouvoirs": [
+        "Zabimaru — Zanpakutō à lame segmentée",
+        "Bankai — forme libérée de Zabimaru",
+        "Escrime et combat au corps à corps"
+      ],
+      "citations": [],
+      "trivia": [
+        "🦁",
+        "🐍 Son Zanpakutō combine deux créatures",
+        "🎂 Date de naissance : 31 août ; taille : 188 cm",
+        "🎙️ Kentaro Ito le double en japonais, Wally Wingert en anglais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Byakuya Kuchiki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Rukia Kuchiki",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ichigo Kurosaki",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Kentaro Ito",
+      "voixAnglaise": "Wally Wingert",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 6
+    },
+    {
+      "id": "ble-byakuya-kuchiki",
+      "nom": "Byakuya Kuchiki",
+      "animeId": "bleach",
+      "animeName": "Bleach",
+      "auteurId": "tite-kubo",
+      "auteurNom": "Tite Kubo",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Capitaine de la 6e division — Chef du clan Kuchiki",
+      "rang": "Capitaine de la 6e division — Chef du clan Kuchiki",
+      "description": "Byakuya Kuchiki est le capitaine de la 6e division et le chef du clan Kuchiki, l'une des quatre grandes familles nobles. Il est le frère adoptif de Rukia et son beau-frère. Froid, digne et attaché aux règles, il se montre d'abord hostile à Ichigo. Son rapport à la loi et à sa famille est le cœur de son caractère. Il cache une grande sensibilité derrière sa rigueur. Il noue peu à peu une relation de respect avec Ichigo. Il est l'un des capitaines les plus emblématiques.",
+      "pouvoirs": [
+        "Senbonzakura — Zanpakutō aux mille lames de pétales",
+        "Bankai — Senbonzakura Kageyoshi",
+        "Shunpo et KidōEscrime"
+      ],
+      "citations": [],
+      "trivia": [
+        "🌸 Son Zanpakutō déploie des lames semblables à des pétales",
+        "🎂 Date de naissance : 31 janvier ; taille : 180 cm",
+        "🎙️ Ryotaro Okiayu le double en japonais, Dan Woren en anglais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Rukia Kuchiki",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Hisana",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Renji Abarai",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ichigo Kurosaki",
+          "type": "rival"
+        }
+      ],
+      "voixJaponaise": "Ryotaro Okiayu",
+      "voixAnglaise": "Dan Woren",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 7
+    },
+    {
+      "id": "ble-kenpachi-zaraki",
+      "nom": "Kenpachi Zaraki",
+      "animeId": "bleach",
+      "animeName": "Bleach",
+      "auteurId": "tite-kubo",
+      "auteurNom": "Tite Kubo",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Capitaine de la 11e division — Guerrier avide de combat",
+      "rang": "Capitaine de la 11e division — Guerrier avide de combat",
+      "description": "Kenpachi Zaraki est le capitaine de la 11e division, réputée pour son goût du combat. Originaire du quartier de Zaraki dans le Rukongai, il porte le nom de « Kenpachi », donné au plus fort Shinigami de sa génération. Il cherche sans cesse des adversaires à sa mesure. Il limite sa propre puissance pour s'offrir des combats plus longs. Il se lie d'une étrange amitié avec Ichigo. Il est accompagné de la jeune Yachiru, sa lieutenante. Il est l'un des combattants les plus craints de la série.",
+      "pouvoirs": [
+        "Force physique exceptionnelle",
+        "Maîtrise du combat à l'épée",
+        "Puissance spirituelle brute"
+      ],
+      "citations": [],
+      "trivia": [
+        "⚔️ Il cherche les combats les plus intenses",
+        "🎂 Date de naissance : 19 novembre ; taille : 202 cm",
+        "🎙️ Fumihiko Tachiki le double en japonais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Yachiru Kusajishi",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ikkaku Madarame",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Yumichika Ayasegawa",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ichigo Kurosaki",
+          "type": "rival"
+        }
+      ],
+      "voixJaponaise": "Fumihiko Tachiki",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 8
+    },
+    {
+      "id": "ble-toshiro-hitsugaya",
+      "nom": "Toshiro Hitsugaya",
+      "animeId": "bleach",
+      "animeName": "Bleach",
+      "auteurId": "tite-kubo",
+      "auteurNom": "Tite Kubo",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Capitaine de la 10e division — Prodige du Gotei 13",
+      "rang": "Capitaine de la 10e division — Prodige du Gotei 13",
+      "description": "Toshiro Hitsugaya est le capitaine de la 10e division, devenu officier à un âge très jeune. Malgré son apparence d'enfant, il est considéré comme un prodige. Sérieux, exigeant et protecteur, il dirige sa division avec rigueur. Il utilise le plus puissant Zanpakutō de glace de la Soul Society. Il a un lien d'enfance avec Momo Hinamori. Il collabore avec Ichigo et ses amis lors de plusieurs arcs. Il est l'un des capitaines les plus populaires.",
+      "pouvoirs": [
+        "Hyōrinmaru — Zanpakutō de glace",
+        "Bankai — Daiguren Hyōrinmaru",
+        "Contrôle du froid et de la glace"
+      ],
+      "citations": [],
+      "trivia": [
+        "❄️ Il est le capitaine le plus jeune de l'histoire",
+        "🎂 Date de naissance : 20 décembre ; taille : 133 cm",
+        "🎙️ Romi Park le double en japonais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Rangiku Matsumoto",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Momo Hinamori",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ichigo Kurosaki",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Romi Park",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 9
+    },
+    {
+      "id": "ble-sosuke-aizen",
+      "nom": "Sosuke Aizen",
+      "animeId": "bleach",
+      "animeName": "Bleach",
+      "auteurId": "tite-kubo",
+      "auteurNom": "Tite Kubo",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Ancien capitaine de la 5e division — Antagoniste majeur",
+      "rang": "Ancien capitaine de la 5e division — Antagoniste majeur",
+      "description": "Sosuke Aizen est le capitaine de la 5e division, apprécié pour sa douceur et son calme apparents. Il révèle à la Soul Society son vrai visage de stratège manipulateur. Son ambition le pousse à créer une armée d'Arrancars à Hueco Mundo. Il cherche à acquérir un pouvoir supérieur grâce à l'objet appelé Hōgyoku. Il manipule ses alliés comme ses ennemis. Son Zanpakutō repose sur l'illusion. Il est l'un des antagonistes les plus célèbres de la série.",
+      "pouvoirs": [
+        "Kyōka Suigetsu — Zanpakutō d'hypnose complète",
+        "Hōgyoku — objet de pouvoir",
+        "Stratégie et manipulation",
+        "Kidō avancé"
+      ],
+      "citations": [],
+      "trivia": [
+        "🎭 Son Zanpakutō repose sur l'illusion",
+        "🎂 Date de naissance : 29 mai ; taille : 186 cm",
+        "🎙️ Show Hayami le double en japonais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Momo Hinamori",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Gin Ichimaru",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Kaname Tōsen",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ichigo Kurosaki",
+          "type": "ennemi"
+        }
+      ],
+      "voixJaponaise": "Show Hayami",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 10
+    },
+    {
+      "id": "ble-kisuke-urahara",
+      "nom": "Kisuke Urahara",
+      "animeId": "bleach",
+      "animeName": "Bleach",
+      "auteurId": "tite-kubo",
+      "auteurNom": "Tite Kubo",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Plus de 400 ans (âge exact inconnu)",
+      "sexe": "Masculin",
+      "statut": "Propriétaire de la boutique Urahara — Ancien capitaine de la 12e division",
+      "rang": "Propriétaire de la boutique Urahara — Ancien capitaine de la 12e division",
+      "description": "Kisuke Urahara est le propriétaire d'une petite boutique à Karakura, qui cache un passé de capitaine du Gotei 13. Il aide Ichigo et ses amis en leur offrant entraînement et conseils. Rusé et énigmatique, il détient de nombreuses réponses sur la Soul Society. Il est un inventeur de talent, à l'origine d'outils utilisés par les Shinigami. Son passé est lié à l'un des tournants de l'histoire. Il prépare les pions dont il aura besoin pour l'avenir. Il est l'un des personnages les plus mystérieux.",
+      "pouvoirs": [
+        "Benihime — son ZanpakutōInvention — conçoit des dispositifs spirituels",
+        "Stratégie",
+        "Combat au sabre"
+      ],
+      "citations": [],
+      "trivia": [
+        "🎩 Il porte un chapeau à rayures",
+        "🎂 Date de naissance : 31 décembre ; taille : 183 cm",
+        "🎙️ Shin-ichiro Miki le double en japonais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Yoruichi Shihoin",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ichigo Kurosaki",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Tessai",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Jinta",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ururu",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Shin-ichiro Miki",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 11
+    },
+    {
+      "id": "ble-yoruichi-shihoin",
+      "nom": "Yoruichi Shihoin",
+      "animeId": "bleach",
+      "animeName": "Bleach",
+      "auteurId": "tite-kubo",
+      "auteurNom": "Tite Kubo",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Féminin",
+      "statut": "Ancienne capitaine de la 2e division — Maîtresse du Shunpo",
+      "rang": "Ancienne capitaine de la 2e division — Maîtresse du Shunpo",
+      "description": "Yoruichi Shihoin est une ancienne capitaine de la 2e division et ancienne cheffe du clan noble Shihoin. Elle apparaît d'abord sous la forme d'un chat noir qui parle, ce qui surprend Ichigo et ses amis. Elle est surnommée « la Déesse du Shunpo » pour sa vitesse exceptionnelle. Amie de longue date de Kisuke Urahara, elle a quitté la Soul Society à ses côtés. Elle entraîne Ichigo et l'aide à maîtriser ses nouvelles capacités. Espiègle, directe et loyale, elle protège ses alliés avec détermination. Elle est l'un des personnages les plus appréciés de la série.",
+      "pouvoirs": [
+        "Shunpo — déplacement ultra-rapide, sa spécialité",
+        "Arts martiaux — combat à mains nues",
+        "Shunkō — technique associant Kidō et Shunpo",
+        "Transformation — peut prendre la forme d'un chat"
+      ],
+      "citations": [],
+      "trivia": [
+        "🐈‍",
+        "⬛ Sa forme de chat noir est l'une de ses premières apparitions",
+        "🎂 Date de naissance : 1er janvier ; taille : 152 cm",
+        "🎙️ Ryoka Yuzuki la double en japonais, Cynthia Cranz en anglais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Kisuke Urahara",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ichigo Kurosaki",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Soi Fon",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Ryoka Yuzuki",
+      "voixAnglaise": "Cynthia Cranz",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 12
+    },
+    {
+      "id": "ble-isshin-kurosaki",
+      "nom": "Isshin Kurosaki",
+      "animeId": "bleach",
+      "animeName": "Bleach",
+      "auteurId": "tite-kubo",
+      "auteurNom": "Tite Kubo",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Père d’Ichigo — Médecin de Karakura — Ancien capitaine",
+      "rang": "Père d’Ichigo — Médecin de Karakura — Ancien capitaine",
+      "description": "Isshin Kurosaki est le père d'Ichigo, de Karin et de Yuzu, et dirige la clinique Kurosaki à Karakura. Excentrique et chaleureux en apparence, il cache un passé de capitaine de la 10e division. Il a vécu une histoire liée à la mort de son épouse Masaki, dont l'issue marque profondément la famille. Il veille sur ses enfants sans toujours le montrer. Il maîtrise des capacités de Shinigami qu'il dissimule à son entourage. Son passé est un fil conducteur important de l'histoire d'Ichigo. Il apporte à la série à la fois humour et gravité.",
+      "pouvoirs": [
+        "Pouvoirs de Shinigami — combat au sabre",
+        "Zanpakutō de feu — Engetsu",
+        "Getsuga Tenshō — technique transmise à son fils",
+        "Expérience au combat"
+      ],
+      "citations": [],
+      "trivia": [
+        "🏥 Il dirige la clinique familiale",
+        "🎂 Date de naissance : 6 juin ; taille : 186 cm",
+        "🎙️ Toshiyuki Morikawa le double en japonais, Patrick Seitz en anglais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Ichigo Kurosaki",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Karin",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Yuzu Kurosaki",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Masaki Kurosaki",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Kisuke Urahara",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Toshiyuki Morikawa",
+      "voixAnglaise": "Patrick Seitz",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 13
+    },
+    {
+      "id": "ble-genryusai-yamamoto",
+      "nom": "Genryusai Shigekuni Yamamoto",
+      "animeId": "bleach",
+      "animeName": "Bleach",
+      "auteurId": "tite-kubo",
+      "auteurNom": "Tite Kubo",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Plus de 2 000 ans",
+      "sexe": "Masculin",
+      "statut": "Capitaine-commandant du Gotei 13 — Capitaine de la 1re division",
+      "rang": "Capitaine-commandant du Gotei 13 — Capitaine de la 1re division",
+      "description": "Genryusai Shigekuni Yamamoto est le capitaine-commandant du Gotei 13 et le capitaine de la 1re division. Il est le fondateur de l'académie des Shinigami et le plus ancien combattant de la Soul Society. Austère et strict, il dirige l'organisation avec fermeté et un sens aigu du devoir. Il est considéré comme l'un des Shinigami les plus puissants de tous les temps. Son Zanpakutō maîtrise le feu. Il est respecté et craint par les autres capitaines. Il joue un rôle central dans les conflits majeurs de la série.",
+      "pouvoirs": [
+        "Ryūjin Jakka — Zanpakutō de feu",
+        "Maîtrise du combat à l'épée",
+        "Puissance spirituelle exceptionnelle",
+        "Leadership"
+      ],
+      "citations": [],
+      "trivia": [
+        "🔥 Son Zanpakutō est considéré comme le plus puissant de feu",
+        "📏 Taille : 178 cm",
+        "🎙️ Tamio Oki le double en japonais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Chōjirō Sasakibe",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Shunsui Kyōraku",
+          "type": "mentor"
+        },
+        {
+          "nomPersonnage": "Jūshirō Ukitake",
+          "type": "mentor"
+        }
+      ],
+      "voixJaponaise": "Tamio Oki",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 14
+    },
+    {
+      "id": "ble-retsu-unohana",
+      "nom": "Retsu Unohana",
+      "animeId": "bleach",
+      "animeName": "Bleach",
+      "auteurId": "tite-kubo",
+      "auteurNom": "Tite Kubo",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Féminin",
+      "statut": "Capitaine de la 4e division — Cheffe des soins",
+      "rang": "Capitaine de la 4e division — Cheffe des soins",
+      "description": "Retsu Unohana est la capitaine de la 4e division, chargée des soins et de la médecine du Gotei 13. Douce et sereine, elle semble incarner la bienveillance. Elle cache un passé de combattante redoutée dont l'ampleur est révélée au fil de l'histoire. Elle dirige sa division avec soin et dévouement. Elle est l'une des plus anciennes capitaines. Sa personnalité mêle calme et profondeur. Elle compte parmi les personnages les plus mystérieux.",
+      "pouvoirs": [
+        "Médecine et soins spirituels",
+        "Kidō de guérison",
+        "Maîtrise du combat à l'épée",
+        "Puissance spirituelle élevée"
+      ],
+      "citations": [],
+      "trivia": [
+        "💚 Elle dirige la division de soins",
+        "📏 Taille : 168 cm",
+        "🎙️ Aya Hisakawa la double en japonais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Isane Kotetsu",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Hanatarō Yamada",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Aya Hisakawa",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 15
+    },
+    {
+      "id": "ble-shunsui-kyoraku",
+      "nom": "Shunsui Kyoraku",
+      "animeId": "bleach",
+      "animeName": "Bleach",
+      "auteurId": "tite-kubo",
+      "auteurNom": "Tite Kubo",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Capitaine de la 8e division — Ami de Jushiro Ukitake",
+      "rang": "Capitaine de la 8e division — Ami de Jushiro Ukitake",
+      "description": "Shunsui Kyoraku est le capitaine de la 8e division, d'abord présenté comme nonchalant et amateur de sieste. Derrière cette apparence se cache un combattant redoutable et un stratège avisé. Il est l'ami de longue date de Jushiro Ukitake et l'ancien élève du capitaine-commandant Yamamoto. Il dirige sa division avec décontraction. Il porte un chapeau de paille et un kimono rose. Son calme cache une grande lucidité. Il compte parmi les capitaines les plus appréciés.",
+      "pouvoirs": [
+        "Katen Kyōkotsu — Zanpakutō à deux lames",
+        "Escrime à deux sabres",
+        "Stratégie",
+        "Puissance spirituelle élevée"
+      ],
+      "citations": [],
+      "trivia": [
+        "🎂 Date de naissance : 11 juillet ; taille : 192 cm",
+        "🎙️ Akio Otsuka le double en japonais",
+        "🌸 Il porte un kimono rose par-dessus son uniforme"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Jushiro Ukitake",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Nanao Ise",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Yamamoto",
+          "type": "mentor"
+        }
+      ],
+      "voixJaponaise": "Akio Otsuka",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 16
+    },
+    {
+      "id": "ble-mayuri-kurotsuchi",
+      "nom": "Mayuri Kurotsuchi",
+      "animeId": "bleach",
+      "animeName": "Bleach",
+      "auteurId": "tite-kubo",
+      "auteurNom": "Tite Kubo",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Capitaine de la 12e division — Président de l’Institut de recherche",
+      "rang": "Capitaine de la 12e division — Président de l’Institut de recherche",
+      "description": "Mayuri Kurotsuchi est le capitaine de la 12e division et le président de l'Institut de recherche et de développement des Shinigami. Scientifique inventif et sans scrupules, il cherche à repousser les limites du savoir. Il est reconnaissable à son maquillage et à son comportement excentrique. Il a développé de nombreuses technologies utilisées par le Gotei 13. Il considère ses adversaires comme des sujets d'étude. Il se montre souvent cruel et calculateur. Il est l'un des personnages les plus dérangeants de la série.",
+      "pouvoirs": [
+        "Ashisogi Jizō — Zanpakutō à capacités de poison",
+        "Sciences et inventions",
+        "Stratégie et expérimentation"
+      ],
+      "citations": [],
+      "trivia": [
+        "🧪 Il est le fondateur de l'Institut de recherche",
+        "🎂 Date de naissance : 30 mars ; taille : 200 cm",
+        "🎙️ Kazuya Nakai le double en japonais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Nemu Kurotsuchi",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Kisuke Urahara",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Kazuya Nakai",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 17
+    },
+    {
+      "id": "ble-yhwach",
+      "nom": "Yhwach",
+      "animeId": "bleach",
+      "animeName": "Bleach",
+      "auteurId": "tite-kubo",
+      "auteurNom": "Tite Kubo",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Masculin",
+      "statut": "Roi des Quincy — Antagoniste de l’arc Thousand-Year Blood War",
+      "rang": "Roi des Quincy — Antagoniste de l’arc Thousand-Year Blood War",
+      "description": "Yhwach est le roi des Quincy et l'antagoniste principal de l'arc Thousand-Year Blood War. Il mène son armée, les Sternritter, contre la Soul Society. Il possède des pouvoirs liés à l'âme de ses subordonnés. Il poursuit un projet d'unification du monde des âmes, des vivants et de la mort. Son histoire est liée aux origines de la Soul Society et du roi des âmes. Il est le principal adversaire d'Ichigo et de ses alliés dans la dernière partie de l'œuvre. Il est l'un des antagonistes les plus puissants de la série.",
+      "pouvoirs": [
+        "Pouvoirs de Quincy — maîtrise à grande échelle",
+        "Contrôle de l'énergie spirituelle",
+        "Capacités liées à l'âme de ses subordonnés",
+        "Armée des Sternritter"
+      ],
+      "citations": [],
+      "trivia": [
+        "👑 Il est le roi des Quincy",
+        "🎙️ Tetsu Inada le double en japonais",
+        "⚠️ Les données sur son âge et sa taille ne sont pas listées dans nos sources"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Haschwalth",
+          "type": "famille"
+        },
+        {
+          "nomPersonnage": "Sternritter",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Ichigo Kurosaki",
+          "type": "ennemi"
+        },
+        {
+          "nomPersonnage": "Soul Society",
+          "type": "ennemi"
+        }
+      ],
+      "voixJaponaise": "Tetsu Inada",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 18
+    },
+    {
+      "id": "ble-rangiku-matsumoto",
+      "nom": "Rangiku Matsumoto",
+      "animeId": "bleach",
+      "animeName": "Bleach",
+      "auteurId": "tite-kubo",
+      "auteurNom": "Tite Kubo",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Féminin",
+      "statut": "Lieutenante de la 10e division — Amie de Gin Ichimaru",
+      "rang": "Lieutenante de la 10e division — Amie de Gin Ichimaru",
+      "description": "Rangiku Matsumoto est la lieutenante de la 10e division, sous les ordres de Toshiro Hitsugaya. Elle est connue pour son tempérament enjoué et son goût pour les distractions. Derrière cette apparence se cache une combattante aguerrie, attachée à ceux qu'elle aime. Elle partage un lien d'enfance avec Gin Ichimaru, ce qui pèse sur ses choix. Elle protège son capitaine avec dévouement. Elle représente la loyauté et l'humanité du Gotei 13. Elle est l'un des personnages féminins les plus populaires.",
+      "pouvoirs": [
+        "Haineko — Zanpakutō de cendres",
+        "Escrime",
+        "Sens spirituel développé"
+      ],
+      "citations": [],
+      "trivia": [
+        "🎂 Date de naissance : 29 septembre ; taille : 172 cm",
+        "🎙️ Kaori Yamagata la double en japonais",
+        "🐱 Son Zanpakutō se transforme en cendres, d'où son nom"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Toshiro Hitsugaya",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Gin Ichimaru",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Kaori Yamagata",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 19
+    },
+    {
+      "id": "ble-momo-hinamori",
+      "nom": "Momo Hinamori",
+      "animeId": "bleach",
+      "animeName": "Bleach",
+      "auteurId": "tite-kubo",
+      "auteurNom": "Tite Kubo",
+      "studioId": "studio-pierrot",
+      "studioNom": "Studio Pierrot",
+      "age": "Non listée dans nos sources",
+      "sexe": "Féminin",
+      "statut": "Lieutenante de la 5e division — Amie d’enfance de Toshiro",
+      "rang": "Lieutenante de la 5e division — Amie d’enfance de Toshiro",
+      "description": "Momo Hinamori est la lieutenante de la 5e division, dont elle admire profondément le capitaine. Elle est l'amie d'enfance de Toshiro Hitsugaya, avec qui elle a grandi dans le Rukongai. Douce et sensible, elle est profondément affectée par les événements qui touchent son capitaine. Elle maîtrise le Kidō et manie un Zanpakutō lié à la lumière et au feu. Elle fait preuve d'une grande détermination. Son parcours est marqué par la trahison et la reconstruction. Elle est l'un des personnages les plus émouvants de la série.",
+      "pouvoirs": [
+        "Tobiume — son ZanpakutōKidō — arts démoniaques",
+        "Escrime"
+      ],
+      "citations": [],
+      "trivia": [
+        "🎂 Date de naissance : 3 mai ; taille : 151 cm",
+        "🎙️ Ayumi Fujimura la double en japonais",
+        "🍑 Son prénom signifie « pêche » en japonais"
+      ],
+      "relations": [
+        {
+          "nomPersonnage": "Toshiro Hitsugaya",
+          "type": "allié"
+        },
+        {
+          "nomPersonnage": "Sosuke Aizen",
+          "type": "allié"
+        }
+      ],
+      "voixJaponaise": "Ayumi Fujimura",
+      "voixAnglaise": "Non listée dans nos sources",
+      "images": [],
+      "imagePath": "",
+      "likesCount": 0,
+      "collectCount": 0,
+      "popularityRank": 20
+    }
+  ]
+}

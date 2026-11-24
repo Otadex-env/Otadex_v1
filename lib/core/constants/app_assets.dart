@@ -2563,6 +2563,162 @@ class AppAssets {
     'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/The Promised Neverland/Jemima/pn_jemi5.jpeg',
   ];
 
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // BLE — Bleach   prefix: ble_
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  static const List<String> ichigoKurosaki = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Ichigo Kurosaki/ble_ichigo1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Ichigo Kurosaki/ble_ichigo2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Ichigo Kurosaki/ble_ichigo3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Ichigo Kurosaki/ble_ichigo4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Ichigo Kurosaki/ble_ichigo5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Ichigo Kurosaki/ble_ichigo6.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Ichigo Kurosaki/ble_ichigo7.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Ichigo Kurosaki/ble_ichigo8.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Ichigo Kurosaki/ble_ichigo9.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Ichigo Kurosaki/ble_ichigo10.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Ichigo Kurosaki/ble_ichigo11.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Ichigo Kurosaki/ble_ichigo12.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Ichigo Kurosaki/ble_ichigo13.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Ichigo Kurosaki/ble_ichigo14.jpeg',
+  ];
+  static const List<String> rukiaKuchiki = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Rukia Kuchiki/ble_rukia1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Rukia Kuchiki/ble_rukia2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Rukia Kuchiki/ble_rukia3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Rukia Kuchiki/ble_rukia4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Rukia Kuchiki/ble_rukia5.jpeg',
+  ];
+  static const List<String> orihimeInoue = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Orihime Inoue/ble_orihime1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Orihime Inoue/ble_orihime2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Orihime Inoue/ble_orihime3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Orihime Inoue/ble_orihime4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Orihime Inoue/ble_orihime5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Orihime Inoue/ble_orihime6.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Orihime Inoue/ble_orihime7.jpeg',
+  ];
+  static const List<String> yasutoraSado = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Yasutora Sado (Chad)/ble_chad1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Yasutora Sado (Chad)/ble_chad2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Yasutora Sado (Chad)/ble_chad3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Yasutora Sado (Chad)/ble_chad4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Yasutora Sado (Chad)/ble_chad5.jpeg',
+  ];
+  static const List<String> uryuIshida = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Uryu Ishida/ble_uryu1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Uryu Ishida/ble_uryu2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Uryu Ishida/ble_uryu3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Uryu Ishida/ble_uryu4.jpeg',
+  ];
+  static const List<String> renjiAbarai = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Renji Abarai/ble_renji1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Renji Abarai/ble_renji2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Renji Abarai/ble_renji3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Renji Abarai/ble_renji4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Renji Abarai/ble_renji5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Renji Abarai/ble_renji6.jpeg',
+  ];
+  static const List<String> byakuyaKuchiki = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Byakuya Kuchiki/ble_byaku1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Byakuya Kuchiki/ble_byaku2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Byakuya Kuchiki/ble_byaku3.jpeg',
+  ];
+  static const List<String> kenpachiZaraki = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Kenpachi Zaraki/ble_kenpa1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Kenpachi Zaraki/ble_kenpa2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Kenpachi Zaraki/ble_kenpa3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Kenpachi Zaraki/ble_kenpa4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Kenpachi Zaraki/ble_kenpa5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Kenpachi Zaraki/ble_kenpa6.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Kenpachi Zaraki/ble_kenpa7.jpeg',
+  ];
+  static const List<String> toshiroHitsugaya = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Toshiro Hitsugaya/ble_toshi1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Toshiro Hitsugaya/ble_toshi2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Toshiro Hitsugaya/ble_toshi3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Toshiro Hitsugaya/ble_toshi4.jpeg',
+  ];
+  static const List<String> sosukeAizen = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Sosuke Aizen/ble_aizen1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Sosuke Aizen/ble_aizen2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Sosuke Aizen/ble_aizen3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Sosuke Aizen/ble_aizen4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Sosuke Aizen/ble_aizen5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Sosuke Aizen/ble_aizen6.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Sosuke Aizen/ble_aizen7.jpeg',
+  ];
+  static const List<String> kisukeUrahara = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Kisuke Urahara/ble_kisuke1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Kisuke Urahara/ble_kisuke2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Kisuke Urahara/ble_kisuke3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Kisuke Urahara/ble_kisuke4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Kisuke Urahara/ble_kisuke5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Kisuke Urahara/ble_kisuke6.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Kisuke Urahara/ble_kisuke7.jpeg',
+  ];
+  static const List<String> yoruichiShihoin = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Yoruichi Shihoin/ble_yoruichi1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Yoruichi Shihoin/ble_yoruichi2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Yoruichi Shihoin/ble_yoruichi3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Yoruichi Shihoin/ble_yoruichi4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Yoruichi Shihoin/ble_yoruichi5.jpeg',
+  ];
+  static const List<String> isshinKurosaki = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Isshin Kurosaki/ble_isshin1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Isshin Kurosaki/ble_isshin2.jpeg',
+  ];
+  static const List<String> genryusaiYamamoto = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Genryusai Shigekuni Yamamoto/ble_yamamoto1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Genryusai Shigekuni Yamamoto/ble_yamamoto2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Genryusai Shigekuni Yamamoto/ble_yamamoto3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Genryusai Shigekuni Yamamoto/ble_yamamoto4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Genryusai Shigekuni Yamamoto/ble_yamamoto5.jpeg',
+  ];
+  static const List<String> retsuUnohana = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Retsu Unohana/ble_unohana1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Retsu Unohana/ble_unohana2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Retsu Unohana/ble_unohana3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Retsu Unohana/ble_unohana4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Retsu Unohana/ble_unohana5.jpeg',
+  ];
+  static const List<String> shunsuiKyoraku = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Shunsui Kyoraku/ble_shunsui1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Shunsui Kyoraku/ble_shunsui2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Shunsui Kyoraku/ble_shunsui3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Shunsui Kyoraku/ble_shunsui4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Shunsui Kyoraku/ble_shunsui5.jpeg',
+  ];
+  static const List<String> mayuriKurotsuchi = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Mayuri Kurotsuchi/ble_mayuri1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Mayuri Kurotsuchi/ble_mayuri2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Mayuri Kurotsuchi/ble_mayuri3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Mayuri Kurotsuchi/ble_mayuri4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Mayuri Kurotsuchi/ble_mayuri5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Mayuri Kurotsuchi/ble_mayuri6.jpeg',
+  ];
+  static const List<String> yhwach = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Yhwach/ble_yhwach1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Yhwach/ble_yhwach2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Yhwach/ble_yhwach3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Yhwach/ble_yhwach4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Yhwach/ble_yhwach5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Yhwach/ble_yhwach6.jpeg',
+  ];
+  static const List<String> rangikuMatsumoto = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Rangiku Matsumoto/ble_rangiku1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Rangiku Matsumoto/ble_rangiku2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Rangiku Matsumoto/ble_rangiku3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Rangiku Matsumoto/ble_rangiku4.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Rangiku Matsumoto/ble_rangiku5.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Rangiku Matsumoto/ble_rangiku6.jpeg',
+  ];
+  static const List<String> momoHinamori = [
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Momo Hinamori/ble_momo1.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Momo Hinamori/ble_momo2.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Momo Hinamori/ble_momo3.jpeg',
+    'https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Animé pictures/Bleach/Momo Hinamori/ble_momo4.jpeg',
+  ];
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // Résolution par charId
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -3173,6 +3329,47 @@ class AppAssets {
         return leslie;
       case 'pn-jemima':
         return jemima;
+      // BLE
+      case 'ble-ichigo-kurosaki':
+        return ichigoKurosaki;
+      case 'ble-rukia-kuchiki':
+        return rukiaKuchiki;
+      case 'ble-orihime-inoue':
+        return orihimeInoue;
+      case 'ble-yasutora-sado':
+        return yasutoraSado;
+      case 'ble-uryu-ishida':
+        return uryuIshida;
+      case 'ble-renji-abarai':
+        return renjiAbarai;
+      case 'ble-byakuya-kuchiki':
+        return byakuyaKuchiki;
+      case 'ble-kenpachi-zaraki':
+        return kenpachiZaraki;
+      case 'ble-toshiro-hitsugaya':
+        return toshiroHitsugaya;
+      case 'ble-sosuke-aizen':
+        return sosukeAizen;
+      case 'ble-kisuke-urahara':
+        return kisukeUrahara;
+      case 'ble-yoruichi-shihoin':
+        return yoruichiShihoin;
+      case 'ble-isshin-kurosaki':
+        return isshinKurosaki;
+      case 'ble-genryusai-yamamoto':
+        return genryusaiYamamoto;
+      case 'ble-retsu-unohana':
+        return retsuUnohana;
+      case 'ble-shunsui-kyoraku':
+        return shunsuiKyoraku;
+      case 'ble-mayuri-kurotsuchi':
+        return mayuriKurotsuchi;
+      case 'ble-yhwach':
+        return yhwach;
+      case 'ble-rangiku-matsumoto':
+        return rangikuMatsumoto;
+      case 'ble-momo-hinamori':
+        return momoHinamori;
       default:
         return const [];
     }
