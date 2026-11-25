@@ -40,8 +40,8 @@ final allCharactersProvider = FutureProvider<List<Character>>((ref) async {
 // quand l'utilisateur active la recherche (pas au lancement de l'app).
 final searchPoolProvider = FutureProvider<List<Character>>((ref) async {
   ref.keepAlive();
-  final chars =
-      await ref.watch(_firestoreServiceProvider).getAllCharacters(limit: 300);
+  // Copie mise en cache 24 h sur l'appareil : ~0 lecture Firestore au quotidien.
+  final chars = await ref.watch(_firestoreServiceProvider).getSearchPool();
   if (chars.isNotEmpty) return chars;
   return ref.watch(allCharactersProvider.future);
 });

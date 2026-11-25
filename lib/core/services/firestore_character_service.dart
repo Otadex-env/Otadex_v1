@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../models/character.dart';
@@ -37,6 +39,79 @@ class FirestoreCharacterService {
       return [];
     }
   }
+
+  static const _poolKey = 'search_pool_v1';
+  static const _poolTtl = Duration(hours: 24);
+
+  /// Catalogue élargi pour la recherche, mis en cache 24 h sur le téléphone.
+  ///
+  /// Le plan Firestore gratuit plafonne à 50 000 lectures/jour pour tout le
+  /// projet : relire 300 documents à chaque session de recherche coûtait ~300
+  /// lectures par utilisateur. Ici, on les lit une fois par jour et par
+  /// appareil ; seuls les champs utiles à la recherche sont conservés (la fiche
+  /// complète d'un personnage est relue à l'ouverture, document par document).
+  /// Si Firestore refuse (quota dépassé, hors ligne), on retombe sur la copie
+  /// périmée plutôt que sur une liste vide.
+  Future<List<Character>> getSearchPool({int limit = 300}) async {
+    final prefs = await SharedPreferences.getInstance();
+    List<Map<String, dynamic>>? cached;
+    DateTime? cachedAt;
+    try {
+      final raw = prefs.getString(_poolKey);
+      if (raw != null) {
+        final m = jsonDecode(raw) as Map<String, dynamic>;
+        cachedAt = DateTime.fromMillisecondsSinceEpoch(m['ts'] as int);
+        cached = (m['docs'] as List<dynamic>).cast<Map<String, dynamic>>();
+      }
+    } catch (_) {
+      cached = null; // cache illisible : on l'ignore
+    }
+
+    final fresh = cached != null &&
+        cached.isNotEmpty &&
+        cachedAt != null &&
+        DateTime.now().difference(cachedAt) < _poolTtl;
+    if (fresh) return _poolToCharacters(cached);
+
+    try {
+      final snap = await _db
+          .collection('characters')
+          .orderBy('popularityRank')
+          .limit(limit)
+          .get();
+      if (snap.docs.isEmpty) {
+        return cached == null ? [] : _poolToCharacters(cached);
+      }
+      final slim = snap.docs.map((d) {
+        final m = d.data();
+        final images = (m['images'] as List<dynamic>?)?.cast<String>() ?? [];
+        return <String, dynamic>{
+          'id': d.id,
+          'nom': m['nom'],
+          'animeName': m['animeName'],
+          'animeId': m['animeId'],
+          'rang': m['rang'],
+          'likesCount': m['likesCount'],
+          'popularityRank': m['popularityRank'],
+          'imagePath': m['imagePath'],
+          'auteurId': m['auteurId'],
+          'images': images.take(3).toList(),
+        };
+      }).toList();
+      await prefs.setString(
+        _poolKey,
+        jsonEncode({'ts': DateTime.now().millisecondsSinceEpoch, 'docs': slim}),
+      );
+      return _poolToCharacters(slim);
+    } catch (e) {
+      debugPrint('⚠️ Firestore getSearchPool error: $e');
+      return cached == null ? [] : _poolToCharacters(cached);
+    }
+  }
+
+  List<Character> _poolToCharacters(List<Map<String, dynamic>> docs) => docs
+      .map((m) => _characterFromFirestore(m['id'] as String, m))
+      .toList();
 
   Future<(List<Character>, DocumentSnapshot?)> getCharactersPaginated({
     int limit = 20,
