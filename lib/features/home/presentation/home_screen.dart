@@ -20,6 +20,7 @@ import 'widgets/search_bar_widget.dart';
 import 'widgets/trending_section.dart';
 import 'widgets/upsell_banner.dart';
 import '../../collection/presentation/collection_screen.dart';
+import '../../newsletter/presentation/newsletter_invite.dart';
 import '../../profile/presentation/profile_screen.dart';
 import '../../search/presentation/search_screen.dart';
 
@@ -39,6 +40,17 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     super.initState();
     _syncAuthState();
     _initUnreadStream();
+    _inviteToNewsletter();
+  }
+
+  /// Invitation facultative, une fois la connexion connue (jamais en invité).
+  void _inviteToNewsletter() {
+    ref.listenManual(isLoggedInProvider, (_, isLoggedIn) {
+      if (!isLoggedIn) return;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) maybeShowNewsletterInvite(context, ref);
+      });
+    }, fireImmediately: true);
   }
 
   void _initUnreadStream() {

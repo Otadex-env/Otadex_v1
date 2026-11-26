@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/l10n/app_strings.dart';
@@ -48,8 +49,22 @@ class PlanSection extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 12),
-          BillingToggle(cycle: billingCycle, onChanged: onBillingChanged),
-          const SizedBox(height: 16),
+          // Sans achat dans l'app : ni prix ni cycle de facturation, aucun lien
+          // ni indication de lieu d'achat (règle Play Store). On dit seulement
+          // comment un rang se débloque.
+          if (kEnablePaidPlans) ...[
+            BillingToggle(cycle: billingCycle, onChanged: onBillingChanged),
+            const SizedBox(height: 16),
+          ] else if (kEnableLicenseEntry) ...[
+            Text(
+              s.licenseUnlockNote,
+              style: GoogleFonts.nunitoSans(
+                fontSize: 12,
+                color: theme.textSecondary,
+              ),
+            ),
+            const SizedBox(height: 12),
+          ],
           // Genin
           PlanCard(
             name: 'Genin',
@@ -74,7 +89,9 @@ class PlanSection extends ConsumerWidget {
             name: 'Jonin',
             tag: rank == UserRank.jonin ? s.currentPlanTag : null,
             tagColor: joninColor,
-            price: PlanPrices.jonin(annual: isAnnual),
+            price: kEnablePaidPlans
+                ? PlanPrices.jonin(annual: isAnnual)
+                : s.keyPriceLabel,
             priceColor: joninColor,
             features: [
               (true, s.unlimitedCollection),
@@ -84,18 +101,21 @@ class PlanSection extends ConsumerWidget {
             ],
             buttonLabel: rank == UserRank.jonin
                 ? s.planActualButton
-                : s.upgradeToJoninButton,
+                : kEnablePaidPlans
+                    ? s.upgradeToJoninButton
+                    : s.haveLicenseKey,
             buttonEnabled: rank != UserRank.jonin,
             borderColor: joninColor,
             isCta: false,
-            // CTA d'achat masqué hors Play Billing ; le badge "PLAN ACTUEL"
-            // reste affiché pour le plan courant, sinon un bouton désactivé
-            // "Bientôt disponible" (aucune zone tapable inerte).
-            hideButton: !kEnablePaidPlans && rank != UserRank.jonin,
-            unavailableLabel: s.comingSoon,
+            // Hors Play Billing : saisie d'une clé pour un rang supérieur au
+            // rang actuel, aucun bouton pour un rang déjà couvert.
+            hideButton: !kEnablePaidPlans &&
+                rank != UserRank.jonin &&
+                !(kEnableLicenseEntry && rank == UserRank.genin),
+            unavailableLabel: rank == UserRank.genin ? s.comingSoon : null,
             onUpgrade: kEnablePaidPlans
                 ? () => showSubscriptionModal(context, SubscriptionPlan.jonin)
-                : null,
+                : () => context.push('/activate-license'),
           ),
           const SizedBox(height: 12),
           // Kage
@@ -103,7 +123,9 @@ class PlanSection extends ConsumerWidget {
             name: '⭐ Kage Pass',
             tag: rank == UserRank.kage ? s.currentPlanTag : null,
             tagColor: kageColor,
-            price: PlanPrices.kage(annual: isAnnual),
+            price: kEnablePaidPlans
+                ? PlanPrices.kage(annual: isAnnual)
+                : s.keyPriceLabel,
             priceColor: kageColor,
             features: [
               (true, s.joninIncluded),
@@ -113,15 +135,19 @@ class PlanSection extends ConsumerWidget {
             ],
             buttonLabel: rank == UserRank.kage
                 ? s.planActualButton
-                : s.upgradeToKageButton,
+                : kEnablePaidPlans
+                    ? s.upgradeToKageButton
+                    : s.haveLicenseKey,
             buttonEnabled: rank != UserRank.kage,
             borderColor: kageColor,
             isCta: true,
-            hideButton: !kEnablePaidPlans && rank != UserRank.kage,
+            hideButton: !kEnablePaidPlans &&
+                rank != UserRank.kage &&
+                !kEnableLicenseEntry,
             unavailableLabel: s.comingSoon,
             onUpgrade: kEnablePaidPlans
                 ? () => showSubscriptionModal(context, SubscriptionPlan.kage)
-                : null,
+                : () => context.push('/activate-license'),
           ),
         ],
       ),

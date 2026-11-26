@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/l10n/app_strings.dart';
 import '../../../../core/services/url_launcher_service.dart';
 import '../../../../core/theme/otadex_theme.dart';
+import '../../../newsletter/presentation/newsletter_invite.dart';
 
 class SettingsSection extends StatelessWidget {
   final bool notificationsEnabled;
@@ -251,6 +253,22 @@ class SettingsSection extends StatelessWidget {
                 value: s.locked,
                 hasArrow: true,
                 onTap: () => _openKageTheme(context, s)),
+            Consumer(
+              builder: (context, ref, _) {
+                if (ref.watch(newsletterFormUrlProvider).isEmpty) {
+                  return const SizedBox.shrink();
+                }
+                return Column(children: [
+                  const _SettingsDivider(),
+                  _SettingsRow(
+                    icon: '📰',
+                    label: 'Newsletter',
+                    hasArrow: true,
+                    onTap: () => showNewsletterDialog(context),
+                  ),
+                ]);
+              },
+            ),
           ]),
           const SizedBox(height: 24),
           _SectionLabel(label: s.contentSection),

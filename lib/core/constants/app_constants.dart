@@ -25,6 +25,9 @@ class AppConstants {
   // SharedPreferences keys — notifications
   static const String keyNotificationsEnabled = 'notifications_enabled';
 
+  // Invitation à la newsletter déjà présentée sur cet appareil.
+  static const String keyNewsletterInviteSeen = 'newsletter_invite_seen';
+
   // SharedPreferences keys — onboarding data
   static const String keyBirthDate = 'user_birth_date';
   static const String keyUserAge = 'user_age';
@@ -50,6 +53,13 @@ class AppConstants {
   static const String playStoreUrl =
       'https://play.google.com/store/apps/details?id=com.otadex.otadex';
 }
+
+// ── Newsletter ───────────────────────────────────────────────────────────────
+/// Page d'inscription du site, qui intègre le formulaire Brevo (double
+/// confirmation). NE PAS publier de version de l'app tant que la page n'est pas
+/// en ligne avec le formulaire actif. Vide : invitation et entrée Profil
+/// masquées.
+const String kNewsletterFormUrl = 'https://otadexcat.tilstack.me/newsletter';
 
 // ── Firestore ────────────────────────────────────────────────────────────────
 /// Champ `users/{uid}` portant le rang réel de l'utilisateur.

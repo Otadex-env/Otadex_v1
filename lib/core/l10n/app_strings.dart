@@ -119,6 +119,8 @@ class AppStrings {
     required this.upgradeToJoninButton,
     required this.upgradeToKageButton,
     required this.comingSoon,
+    required this.keyPriceLabel,
+    required this.licenseUnlockNote,
     required this.haveLicenseKey,
     required this.onboardingStartsAsGenin,
     required this.onboardingRanksComingSoon,
@@ -161,6 +163,10 @@ class AppStrings {
     required this.otadexVersion,
     required this.termsOfService,
     required this.privacyPolicy,
+    required this.newsletterTitle,
+    required this.newsletterMessage,
+    required this.newsletterSubscribe,
+    required this.newsletterDecline,
     required this.rateApp,
     // ── Logout ─────────────────────────────────────────────────────────────
     required this.logout,
@@ -301,6 +307,8 @@ class AppStrings {
   final String upgradeToJoninButton;
   final String upgradeToKageButton;
   final String comingSoon;
+  final String keyPriceLabel;
+  final String licenseUnlockNote;
   final String haveLicenseKey;
   final String onboardingStartsAsGenin;
   final String onboardingRanksComingSoon;
@@ -343,6 +351,10 @@ class AppStrings {
   final String otadexVersion;
   final String termsOfService;
   final String privacyPolicy;
+  final String newsletterTitle;
+  final String newsletterMessage;
+  final String newsletterSubscribe;
+  final String newsletterDecline;
   final String rateApp;
   // ── Logout ─────────────────────────────────────────────────────────────────
   final String logout;
@@ -505,6 +517,8 @@ class AppStrings {
       upgradeToJoninButton: 'Passer Jonin 🦊',
       upgradeToKageButton: 'Passer Kage 👑',
       comingSoon: 'Bientôt disponible',
+      keyPriceLabel: 'Avec clé de licence',
+      licenseUnlockNote: 'Les rangs Jonin et Kage se débloquent avec une clé de licence.',
       haveLicenseKey: "J'ai une clé de licence",
       onboardingStartsAsGenin: 'Tu commences ton aventure en Genin',
       onboardingRanksComingSoon: 'Jonin et Kage arriveront bientôt dans l\'app.',
@@ -544,6 +558,12 @@ class AppStrings {
       otadexVersion: 'Version OTADEX',
       termsOfService: "Conditions d'utilisation",
       privacyPolicy: 'Politique de confidentialité',
+      newsletterTitle: 'Newsletter OTADEX',
+      newsletterMessage: 'Une fois par semaine, l’actu OTADEX par e-mail. C’est facultatif : '
+          'tu saisis ton adresse sur notre formulaire (hébergé par Brevo), '
+          'puis tu confirmes par e-mail. Désinscription à tout moment.',
+      newsletterSubscribe: 'S’inscrire',
+      newsletterDecline: 'Non merci',
       rateApp: "Noter l'app",
       logout: 'Se déconnecter',
       appVersion: 'OTADEX · v1.0.0 par TilStack',
@@ -688,6 +708,8 @@ class AppStrings {
     upgradeToJoninButton: 'Get Jonin 🦊',
     upgradeToKageButton: 'Get Kage 👑',
     comingSoon: 'Coming soon',
+    keyPriceLabel: 'With a license key',
+    licenseUnlockNote: 'Jonin and Kage ranks are unlocked with a license key.',
     haveLicenseKey: 'I have a license key',
     onboardingStartsAsGenin: 'You\'re starting your adventure as Genin',
     onboardingRanksComingSoon: 'Jonin and Kage are coming soon to the app.',
@@ -727,6 +749,12 @@ class AppStrings {
     otadexVersion: 'OTADEX Version',
     termsOfService: 'Terms of service',
     privacyPolicy: 'Privacy policy',
+    newsletterTitle: 'OTADEX newsletter',
+    newsletterMessage: 'OTADEX news by email, once a week. It is optional: you enter your '
+        'address on our form (hosted by Brevo), then confirm by email. '
+        'Unsubscribe at any time.',
+    newsletterSubscribe: 'Subscribe',
+    newsletterDecline: 'No thanks',
     rateApp: 'Rate the app',
     logout: 'Log out',
     appVersion: 'OTADEX · v1.0.0 By TilStack',
@@ -863,6 +891,8 @@ class AppStrings {
     upgradeToJoninButton: 'ジョニンへ 🦊',
     upgradeToKageButton: 'カゲへ 👑',
     comingSoon: '近日公開',
+    keyPriceLabel: 'ライセンスキーで利用',
+    licenseUnlockNote: 'JoninとKageのランクはライセンスキーで解除できます。',
     haveLicenseKey: 'ライセンスキーを持っています',
     onboardingStartsAsGenin: 'Geninとして冒険を始めます',
     onboardingRanksComingSoon: 'JoninとKageは近日アプリに登場予定です。',
@@ -902,6 +932,12 @@ class AppStrings {
     otadexVersion: 'OTADEXバージョン',
     termsOfService: '利用規約',
     privacyPolicy: 'プライバシーポリシー',
+    newsletterTitle: 'OTADEXニュースレター',
+    newsletterMessage: '週に一度、OTADEXの最新情報をメールでお届けします。登録は任意です。'
+        'Brevoが提供するフォームにメールアドレスを入力し、確認メールで'
+        '登録を完了してください。いつでも配信停止できます。',
+    newsletterSubscribe: '登録する',
+    newsletterDecline: '今はしない',
     rateApp: 'アプリを評価',
     logout: 'ログアウト',
     appVersion: 'OTADEX · v1.0.0 By TilStack',
@@ -1038,6 +1074,8 @@ class AppStrings {
     upgradeToJoninButton: '升至上忍 🦊',
     upgradeToKageButton: '升至影 👑',
     comingSoon: '即将推出',
+    keyPriceLabel: '凭许可证密钥解锁',
+    licenseUnlockNote: 'Jonin 和 Kage 等级可通过许可证密钥解锁。',
     haveLicenseKey: '我有许可密钥',
     onboardingStartsAsGenin: '你将以忍者(Genin)身份开始冒险',
     onboardingRanksComingSoon: '忍者(Jonin)和影(Kage)即将上线。',
@@ -1077,6 +1115,11 @@ class AppStrings {
     otadexVersion: 'OTADEX 版本',
     termsOfService: '服务条款',
     privacyPolicy: '隐私政策',
+    newsletterTitle: 'OTADEX 邮件通讯',
+    newsletterMessage: '每周一次，通过邮件获取 OTADEX 动态。订阅完全自愿：在由 Brevo '
+        '托管的表单中填写邮箱，再通过邮件确认。可随时退订。',
+    newsletterSubscribe: '订阅',
+    newsletterDecline: '不用了',
     rateApp: '评价应用',
     logout: '退出登录',
     appVersion: 'OTADEX · v1.0.0 By TilStack',
