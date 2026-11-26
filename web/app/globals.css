@@ -150,3 +150,13 @@ footer .legal { margin-top: 32px; font-size: 12px; }
   footer .cols { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) { .card, .anime { transition: none; } }
+
+/* Newsletter */
+.newsletter { max-width: 640px; margin: 0 auto; }
+.newsletter .list { margin-top: 8px; }
+.newsletter iframe { display: block; width: 100%; height: 520px; border: 0; border-radius: 16px; margin-top: 24px; background: #fff; }
+.soon { margin-top: 24px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 28px; text-align: center; }
+.soon p { color: var(--muted); margin: 8px 0 18px; }
+.soon a { display: inline-block; background: var(--accent); color: #fff; font-weight: 800; padding: 11px 22px; border-radius: 999px; }
+.note { color: var(--muted); font-size: 13px; text-align: center; margin-top: 14px; }
+.note a { color: var(--accent); }

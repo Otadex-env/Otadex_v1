@@ -1,0 +1,86 @@
+<!doctype html>
+<!--
+  Modèle de la newsletter hebdomadaire OTADEX (Brevo, éditeur « code HTML »).
+  Objet : Cette semaine sur OTADEX : Satoru Gojo
+  Texte d'aperçu : le bloc caché en tête de <body>.
+
+  À changer chaque semaine, repéré par « SEMAINE » : aperçu, personnage (image,
+  nom, animé, texte, lien), anecdote, nouveautés.
+  À remplacer une seule fois : [ADRESSE POSTALE].
+  {{ unsubscribe }} et {{ mirror }} sont remplis par Brevo à l'envoi.
+-->
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>La newsletter OTADEX</title>
+</head>
+<body style="margin:0;padding:0;background:#0d0d14;">
+  <!-- SEMAINE : aperçu -->
+  <div style="display:none;max-height:0;overflow:hidden;">L'exorciste aux Six Yeux, une anecdote inattendue et les univers du catalogue.</div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0d0d14">
+    <tr><td align="center" style="padding:24px 12px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;font-family:Arial,Helvetica,sans-serif;color:#f0f0f8;">
+
+        <tr><td align="center" style="padding:0 0 8px;font-size:12px;">
+          <a href="{{ mirror }}" style="color:#a0a0bc;">Voir dans le navigateur</a>
+        </td></tr>
+
+        <tr><td align="center" style="padding:12px 0 20px;">
+          <img src="https://otadexcat.tilstack.me/og.png" width="64" height="64" alt="" style="display:block;border:0;">
+          <div style="font-size:26px;font-weight:bold;letter-spacing:2px;padding-top:8px;">OTADEX</div>
+        </td></tr>
+
+        <!-- SEMAINE : personnage -->
+        <tr><td bgcolor="#1a1a28" style="border-radius:16px;padding:24px;">
+          <div style="color:#ff6500;font-size:12px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;">Le personnage de la semaine</div>
+          <h1 style="margin:8px 0 4px;font-size:28px;line-height:1.2;color:#f0f0f8;">Satoru Gojo</h1>
+          <div style="color:#a0a0bc;font-size:14px;padding-bottom:16px;">Jujutsu Kaisen</div>
+          <div align="center">
+            <img src="https://raw.githubusercontent.com/Otadex-env/otadex-assets/main/Anim%C3%A9%20pictures/Jujutsu%20kaizen/Gojo%20satoru/jj_gojo.jpeg" width="280" alt="Satoru Gojo" style="display:block;width:100%;max-width:280px;height:auto;border:0;border-radius:12px;">
+          </div>
+          <p style="margin:20px 0;font-size:16px;line-height:1.6;color:#d6d6ea;">Issu du clan Gojo, il maîtrise à la fois l'Infini et les Six Yeux, une première depuis 400 ans. Derrière sa désinvolture, un professeur décidé à réformer le monde des exorcistes.</p>
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center">
+            <tr><td bgcolor="#ff6500" style="border-radius:999px;">
+              <a href="https://otadexcat.tilstack.me/personnage/jjk-gojo-satoru" style="display:inline-block;padding:13px 28px;color:#ffffff;font-size:16px;font-weight:bold;text-decoration:none;">Voir sa fiche</a>
+            </td></tr>
+          </table>
+        </td></tr>
+
+        <tr><td height="16" style="font-size:0;line-height:0;">&nbsp;</td></tr>
+
+        <!-- SEMAINE : anecdote -->
+        <tr><td bgcolor="#1a1a28" style="border-radius:16px;padding:24px;">
+          <h2 style="margin:0 0 8px;font-size:19px;color:#f0f0f8;">Le savais-tu ?</h2>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#d6d6ea;">D'après les extras officiels du manga, Gojo est fan de Digimon.</p>
+        </td></tr>
+
+        <tr><td height="16" style="font-size:0;line-height:0;">&nbsp;</td></tr>
+
+        <!-- SEMAINE : nouveautés -->
+        <tr><td bgcolor="#1a1a28" style="border-radius:16px;padding:24px;">
+          <h2 style="margin:0 0 8px;font-size:19px;color:#f0f0f8;">À explorer</h2>
+          <p style="margin:0;font-size:15px;line-height:1.8;color:#d6d6ea;">
+            <a href="https://otadexcat.tilstack.me/anime/jujutsu-kaisen" style="color:#ff6500;">Tous les personnages de Jujutsu Kaisen</a><br>
+            <a href="https://otadexcat.tilstack.me/animes" style="color:#ff6500;">Les 18 univers du catalogue</a>
+          </p>
+        </td></tr>
+
+        <tr><td align="center" style="padding:28px 16px 8px;">
+          <a href="https://play.google.com/store/apps/details?id=com.otadex.otadex" style="color:#f0f0f8;font-size:15px;font-weight:bold;">Télécharger l'app sur Google Play</a>
+        </td></tr>
+
+        <tr><td align="center" style="padding:16px;font-size:12px;line-height:1.7;color:#a0a0bc;">
+          Tu reçois cet e-mail parce que tu t'es inscrit à la newsletter OTADEX.<br>
+          <a href="{{ unsubscribe }}" style="color:#a0a0bc;">Se désinscrire</a> ·
+          <a href="https://otadex.tilstack.me/privacy-policy.html" style="color:#a0a0bc;">Confidentialité</a> ·
+          <a href="mailto:contact@tilstack.me" style="color:#a0a0bc;">contact@tilstack.me</a><br>
+          TilStack · [ADRESSE POSTALE]
+        </td></tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>

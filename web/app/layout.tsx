@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Nunito_Sans, Rajdhani } from "next/font/google";
 import Link from "next/link";
 import { SearchForm } from "@/components/SearchForm";
-import { CONTACT, LANDING, PLAY, SITE_URL } from "@/lib/site";
+import { CONTACT, LANDING, NEWSLETTER_FORM, PLAY, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 // Mêmes polices que la page de l'application (docs/index.html).
@@ -53,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <h2>Catalogue</h2>
               <Link href="/animes">Animés</Link>
               <Link href="/personnages">Personnages</Link>
+              {NEWSLETTER_FORM && <Link href="/newsletter">Newsletter</Link>}
             </div>
             <div>
               <h2>Application</h2>
