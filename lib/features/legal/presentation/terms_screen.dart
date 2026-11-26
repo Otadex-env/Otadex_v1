@@ -110,7 +110,7 @@ class TermsScreen extends ConsumerWidget {
         _body(theme,
             'TilStack se réserve le droit de modifier ces conditions à tout moment. Les modifications entrent en vigueur dès leur publication dans l\'application. La poursuite de l\'utilisation du service après notification vaut acceptation des nouvelles conditions.'),
         _heading(theme, '10. Contact'),
-        _body(theme, 'TilStack · contact@otadex.app'),
+        _body(theme, 'TilStack · contact@tilstack.me'),
         const SizedBox(height: 20),
       ];
 
@@ -144,7 +144,7 @@ class TermsScreen extends ConsumerWidget {
         _body(theme,
             'TilStack reserves the right to modify these terms at any time. Changes take effect upon publication in the application. Continued use of the service after notification constitutes acceptance of the updated terms.'),
         _heading(theme, '10. Contact'),
-        _body(theme, 'TilStack · contact@otadex.app'),
+        _body(theme, 'TilStack · contact@tilstack.me'),
         const SizedBox(height: 20),
       ];
 }

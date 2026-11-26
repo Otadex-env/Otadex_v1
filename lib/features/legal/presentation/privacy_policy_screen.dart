@@ -100,7 +100,7 @@ class PrivacyPolicyScreen extends ConsumerWidget {
             'Vos données sont conservées tant que votre compte est actif. En cas de demande de suppression de compte, vos données personnelles sont effacées dans un délai maximum de 30 jours, à l\'exception des données requises par la loi.'),
         _heading(theme, '6. Vos droits'),
         _body(theme,
-            'Conformément aux réglementations applicables, vous disposez des droits suivants :\n\n• Droit d\'accès à vos données personnelles\n• Droit de rectification des données inexactes\n• Droit à la suppression de votre compte et de vos données\n• Droit à la portabilité de vos données\n• Droit d\'opposition au traitement de vos données\n\nPour exercer ces droits, contactez-nous à contact@otadex.app.'),
+            'Conformément aux réglementations applicables, vous disposez des droits suivants :\n\n• Droit d\'accès à vos données personnelles\n• Droit de rectification des données inexactes\n• Droit à la suppression de votre compte et de vos données\n• Droit à la portabilité de vos données\n• Droit d\'opposition au traitement de vos données\n\nPour exercer ces droits, contactez-nous à contact@tilstack.me.'),
         _heading(theme, '7. Sécurité'),
         _body(theme,
             'Nous mettons en œuvre des mesures de sécurité appropriées incluant le chiffrement des données en transit et au repos, la restriction des accès et des audits réguliers de nos systèmes.'),
@@ -111,7 +111,7 @@ class PrivacyPolicyScreen extends ConsumerWidget {
         _body(theme,
             'Nous nous réservons le droit de modifier cette politique à tout moment. Toute modification significative vous sera notifiée via l\'application. La poursuite de l\'utilisation du service vaut acceptation des nouvelles conditions.'),
         _heading(theme, '10. Contact'),
-        _body(theme, 'TilStack · contact@otadex.app'),
+        _body(theme, 'TilStack · contact@tilstack.me'),
         const SizedBox(height: 20),
       ];
 
@@ -134,7 +134,7 @@ class PrivacyPolicyScreen extends ConsumerWidget {
             'Your data is retained while your account is active. Upon account deletion request, your personal data is erased within 30 days, except for data required by law.'),
         _heading(theme, '6. Your rights'),
         _body(theme,
-            'Under applicable regulations, you have the following rights:\n\n• Right to access your personal data\n• Right to correct inaccurate data\n• Right to delete your account and data\n• Right to data portability\n• Right to object to data processing\n\nTo exercise these rights, contact us at contact@otadex.app.'),
+            'Under applicable regulations, you have the following rights:\n\n• Right to access your personal data\n• Right to correct inaccurate data\n• Right to delete your account and data\n• Right to data portability\n• Right to object to data processing\n\nTo exercise these rights, contact us at contact@tilstack.me.'),
         _heading(theme, '7. Security'),
         _body(theme,
             'We implement appropriate security measures including data encryption in transit and at rest, access restrictions and regular security audits.'),
@@ -145,7 +145,7 @@ class PrivacyPolicyScreen extends ConsumerWidget {
         _body(theme,
             'We reserve the right to modify this policy at any time. Any significant change will be notified via the application. Continued use of the service constitutes acceptance of the updated policy.'),
         _heading(theme, '10. Contact'),
-        _body(theme, 'TilStack · contact@otadex.app'),
+        _body(theme, 'TilStack · contact@tilstack.me'),
         const SizedBox(height: 20),
       ];
 }
