@@ -194,4 +194,12 @@ footer .legal { margin-top: 32px; font-size: 12px; }
   .filters select { flex: 1 1 100%; }
   footer .cols { grid-template-columns: 1fr; }
 }
+.menu .prefs { display: none; }
+@media (max-width: 1020px) {
+  body > .prefs { display: none; }
+  .menu .prefs { display: flex; position: static; }
+  .newsletter iframe { height: 560px; }
+}
+@media (min-width: 1021px) { footer { padding-bottom: 72px; } }
+.sechead { flex-wrap: wrap; }
 @media (prefers-reduced-motion: reduce) { .card, .anime { transition: none; } }

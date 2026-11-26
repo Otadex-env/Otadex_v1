@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { NEWSLETTER_FORM, PLAY } from "@/lib/site";
+import { Prefs } from "./prefs";
 import { SearchForm } from "./SearchForm";
 import { T } from "./T";
 
@@ -47,6 +48,7 @@ export function Header() {
             )}
           </nav>
           <SearchForm className="small" />
+          <Prefs />
         </div>
         <a className="cta" href={PLAY} target="_blank" rel="noopener">
           <T fr="Télécharger" en="Download" />

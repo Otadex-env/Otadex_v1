@@ -774,7 +774,7 @@
 
       .features-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
         gap: 20px;
       }
 
@@ -1099,6 +1099,13 @@
   #site-header .menu form { width: 100%; margin: 0; }
 }
       .prefs { position: fixed; right: 16px; bottom: 16px; z-index: 90; display: flex; align-items: center; gap: 8px; }
+      @media (max-width: 1020px) {
+        .menu .prefs { position: static; }
+        .hero { min-height: auto; padding: 120px 0 56px; }
+      }
+      @media (min-width: 1021px) {
+        footer { padding-bottom: 80px; }
+      }
     </style>
   </head>
   <body>
@@ -1881,6 +1888,13 @@
       document
         .querySelectorAll(".reveal")
         .forEach((el) => observer.observe(el));
+
+      /* Sur petit écran, langue et thème vont dans le menu : rien ne flotte sur le contenu. */
+      const prefs = document.querySelector(".prefs");
+      const narrow = window.matchMedia("(max-width: 1020px)");
+      const placePrefs = () => (narrow.matches ? navLinks : document.body).appendChild(prefs);
+      narrow.addEventListener("change", placePrefs);
+      placePrefs();
 
       /* ── INIT LANG ── */
       setLang(currentLang);
