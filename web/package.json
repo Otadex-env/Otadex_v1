@@ -3,7 +3,8 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "sync": "node scripts/sync-data.mjs",
+    "sync": "node scripts/sync-data.mjs && node scripts/fix-images.mjs",
+    "images": "node scripts/fix-images.mjs",
     "dev": "next dev -p 3100",
     "build": "next build",
     "start": "next start -p 3100"

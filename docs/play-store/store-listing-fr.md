@@ -17,7 +17,7 @@ Decouvre des personnages populaires, consulte leurs fiches, explore leurs univer
 Fonctionnalites principales:
 
 - Accueil visuel avec personnages et tendances.
-- Recherche de personnages et d'animes via AniList.
+- Recherche de personnages et d'animes dans le catalogue OTADEX.
 - Fiches detaillees avec description, statistiques, images et oeuvres liees.
 - Galerie plein ecran avec zoom.
 - Profil utilisateur avec rang Genin, Jonin ou Kage.

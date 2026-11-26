@@ -1,52 +1,39 @@
 import Link from "next/link";
-import { byPopularity, getAnimes, getCharacters, img } from "@/lib/firestore";
+import { AppBanner } from "@/components/AppBanner";
+import { AnimeGrid, CharacterGrid } from "@/components/Cards";
+import { SearchForm } from "@/components/SearchForm";
+import { getAnimeCards, getCharacters, toCard } from "@/lib/data";
 
-export const revalidate = 3600;
-
-export default async function Home() {
-  const [animes, chars] = await Promise.all([getAnimes(), getCharacters()]);
-  const top = [...chars].filter((c) => img(c)).sort(byPopularity).slice(0, 12);
-  const count = (id: string) => chars.filter((c) => c.animeId === id).length;
-  const withChars = animes.filter((a) => count(a.id) > 0);
+export default function Home() {
+  const animes = getAnimeCards();
+  const chars = getCharacters();
+  const popular = chars.filter((c) => c.images?.length).slice(0, 12).map(toCard);
 
   return (
     <>
       <section className="hero">
         <h1>
-          Toute l&apos;encyclopédie <span>d&apos;animés</span>, aussi sur le web.
+          Tous tes personnages d&apos;<span>animés</span>, fiche par fiche.
         </h1>
         <p>
-          {withChars.length} univers et {chars.length} personnages, lus en direct depuis la même
-          base que l&apos;application mobile.
+          {chars.length} personnages et {animes.length} univers : biographies, pouvoirs, relations, citations et galeries.
         </p>
+        <SearchForm />
       </section>
 
-      <h2 className="sec">Personnages populaires</h2>
-      <div className="grid">
-        {top.map((c) => (
-          <Link key={c.id} href={`/personnage/${c.id}`} className="card">
-            <div className="ph">
-              <img src={img(c)} alt={c.nom} loading="lazy" />
-            </div>
-            <div className="tx">
-              <div className="nm">{c.nom}</div>
-              <div className="sb">{c.animeName}</div>
-            </div>
-          </Link>
-        ))}
+      <div className="sechead">
+        <h2>Personnages populaires</h2>
+        <Link href="/personnages">Tous les personnages</Link>
       </div>
+      <CharacterGrid items={popular} />
 
-      <h2 className="sec">Tous les animés</h2>
-      <div className="animes">
-        {withChars.map((a) => (
-          <Link key={a.id} href={`/anime/${a.id}`} className="anime">
-            <b>{a.titre}</b>
-            <small>
-              {count(a.id)} personnages{a.annee ? ` · ${a.annee}` : ""}
-            </small>
-          </Link>
-        ))}
+      <div className="sechead">
+        <h2>Les univers</h2>
+        <Link href="/animes">Tous les animés</Link>
       </div>
+      <AnimeGrid items={[...animes].sort((a, b) => b.count - a.count).slice(0, 8)} />
+
+      <AppBanner title="Collectionne tes personnages préférés" />
     </>
   );
 }
