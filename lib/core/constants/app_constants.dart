@@ -47,6 +47,8 @@ class AppConstants {
   static const String appName = 'OTADEX';
   static const String appVersion = '1.0.0';
   static const String appTagline = 'The Ultimate Anime Character Encyclopedia';
+  static const String playStoreUrl =
+      'https://play.google.com/store/apps/details?id=com.otadex.otadex';
 }
 
 // ── Firestore ────────────────────────────────────────────────────────────────

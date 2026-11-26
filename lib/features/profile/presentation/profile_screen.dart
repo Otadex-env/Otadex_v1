@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/l10n/locale_provider.dart';
 import '../../../core/providers/anilist_providers.dart';
+import '../../../core/providers/fan_score_provider.dart';
 import '../../../core/subscription/rank_providers.dart';
 import '../../../core/providers/user_profile_provider.dart';
 import '../../../core/theme/app_colors.dart';
@@ -265,7 +266,10 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final locale = ref.watch(localeProvider);
-    final profile = ref.watch(userProfileProvider);
+    // Le score vient de Firestore ; `fanLevel` / `fanLevelName` en découlent.
+    final profile = ref.watch(userProfileProvider).copyWith(
+          fanScore: ref.watch(fanScoreProvider).valueOrNull ?? 0,
+        );
     // Compteur & personnages : MÊME source unique que l'écran Collection.
     final collectCount = ref.watch(collectionCountProvider);
     final collectionItems = ref

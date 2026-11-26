@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/services/image_export_service.dart';
+import '../../../core/constants/app_constants.dart';
 import '../../../core/constants/app_assets.dart';
 import '../../../core/models/anime_entry.dart';
 import '../../../core/models/character.dart';
@@ -81,13 +82,6 @@ class _AnimeDetailScreenState extends ConsumerState<AnimeDetailScreen> {
                       .firstOrNull,
                 ),
                 _StatsBand(anime: anime, theme: theme),
-                if (characters.isNotEmpty) ...[
-                  const SectionHeader(title: 'Personnages principaux'),
-                  _CharactersList(
-                    characters: characters,
-                    theme: theme,
-                  ),
-                ],
                 _SynopsisSection(
                   synopsis: anime.synopsis,
                   showFull: _showFullSynopsis,
@@ -95,6 +89,13 @@ class _AnimeDetailScreenState extends ConsumerState<AnimeDetailScreen> {
                       setState(() => _showFullSynopsis = !_showFullSynopsis),
                   theme: theme,
                 ),
+                if (characters.isNotEmpty) ...[
+                  const SectionHeader(title: 'Personnages principaux'),
+                  _CharactersList(
+                    characters: characters,
+                    theme: theme,
+                  ),
+                ],
                 if (creator != null) ...[
                   const SectionHeader(title: 'Créateur'),
                   _CreatorCard(
@@ -247,7 +248,8 @@ class _HeroBanner extends StatelessWidget {
                     _CircleIconButton(
                       icon: Icons.share_rounded,
                       onTap: () => ImageExportService.shareText(
-                        '${anime.name} (${anime.year}) — à découvrir sur OTADEX',
+                        '${anime.name} (${anime.year}) — à découvrir sur OTADEX\n'
+                        '${AppConstants.playStoreUrl}',
                       ),
                     ),
                   ],
