@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OTADEX — Conditions d'utilisation / Terms of Service</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root, [data-theme="dark"] {
+      --bg: #0D0D14; --card: #1A1A28; --raised: #22223A;
+      --accent: #FF6500; --primary: #5C2BE2;
+      --text: #E8E8F0; --muted: #9090A0; --border: #2A2A3A;
+      --nav-bg: rgba(13,13,20,.92);
+    }
+    [data-theme="light"] {
+      --bg: #F4F4FA; --card: #FFFFFF; --raised: #EBEBF8;
+      --text: #111122; --muted: #606080; --border: #D8D8EC;
+      --nav-bg: rgba(244,244,250,.95);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, sans-serif; transition: background .3s, color .3s; }
+
+    /* ── NAV ── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--nav-bg); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 16px rgba(0,0,0,.15);
+    }
+    nav {
+      max-width: 1100px; margin: 0 auto; padding: 12px 20px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .nav-logo { font-size: 1.3rem; font-weight: 900; letter-spacing: 3px; color: var(--accent); text-decoration: none; }
+
+    .nav-links { display: flex; list-style: none; gap: 1.4rem; align-items: center; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: .88rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-portfolio { color: var(--accent) !important; font-weight: 700 !important; }
+
+    .nav-right { display: flex; align-items: center; gap: 8px; }
+
+    .lang-toggle { display: flex; background: var(--raised); border: 1px solid var(--border); border-radius: 50px; padding: 3px; gap: 2px; }
+    .lang-btn { border: none; background: transparent; color: var(--muted); font-size: .73rem; font-weight: 700; padding: 4px 10px; border-radius: 50px; cursor: pointer; letter-spacing: .5px; transition: background .15s, color .15s; }
+    .lang-btn.active { background: var(--accent); color: #fff; }
+
+    .theme-btn { width: 34px; height: 34px; border-radius: 50%; background: var(--raised); border: 1px solid var(--border); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: .95rem; transition: border-color .2s, transform .2s; }
+    .theme-btn:hover { border-color: var(--accent); transform: rotate(20deg); }
+
+    /* ── CONTENT ── */
+    main { max-width: 760px; margin: 0 auto; padding: 44px 24px 80px; }
+
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .85rem; color: var(--muted); text-decoration: none;
+      margin-bottom: 32px; padding: 8px 16px;
+      background: var(--card); border: 1px solid var(--border); border-radius: 50px;
+      transition: color .2s, border-color .2s;
+    }
+    .back-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+    h1 { font-size: 1.6rem; font-weight: 900; letter-spacing: .5px; margin-bottom: 6px; }
+    .meta { font-size: .78rem; color: var(--muted); font-style: italic; margin-bottom: 40px; }
+    h2 {
+      font-size: .9rem; font-weight: 700; color: var(--accent);
+      letter-spacing: .3px; margin: 36px 0 10px;
+      padding-bottom: 6px; border-bottom: 1px solid var(--border);
+    }
+    p { font-size: .93rem; line-height: 1.8; color: var(--text); }
+    ul { margin: 10px 0 0 20px; }
+    li { font-size: .93rem; line-height: 1.8; margin-bottom: 4px; }
+    a { color: var(--accent); }
+
+    .section-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px 28px 20px; margin-top: 28px;
+    }
+    .section-card h2 { margin-top: 0; }
+
+    .plan-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    .plan-table th, .plan-table td { text-align: left; padding: 10px 14px; font-size: .88rem; border-bottom: 1px solid var(--border); }
+    .plan-table th { color: var(--muted); font-weight: 600; background: var(--raised); }
+    .plan-table td:first-child { font-weight: 700; color: var(--accent); }
+    .plan-table tr:last-child td { border-bottom: none; }
+
+    footer { border-top: 1px solid var(--border); margin-top: 60px; padding-top: 20px; font-size: .8rem; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    footer a { color: var(--accent); }
+
+    [lang-content] { display: none; }
+    [lang-content].visible { display: block; }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      main { padding: 32px 16px 60px; }
+      .section-card { padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a class="nav-logo" href="index.html">OTADEX</a>
+      <ul class="nav-links">
+        <li><a href="index.html">← Accueil</a></li>
+        <li><a href="privacy-policy.html">Confidentialité</a></li>
+        <li><a href="account-deletion.html">Suppression</a></li>
+        <li><a href="https://tilstack.me" target="_blank" rel="noopener" class="nav-portfolio">Portfolio ↗</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="lang-toggle">
+          <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+          <button class="lang-btn" onclick="setLang('en')">EN</button>
+        </div>
+        <button class="theme-btn" id="theme-btn" title="Toggle theme">🌙</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <a class="back-btn" href="index.html">← Accueil / Home</a>
+
+    <!-- ── FRANÇAIS ── -->
+    <div lang-content="fr" class="visible">
+      <h1>Conditions d'utilisation</h1>
+      <p class="meta">Dernière mise à jour : Avril 2026 · Applicable à OTADEX sur Android</p>
+
+      <div class="section-card">
+        <h2>1. Acceptation des conditions</h2>
+        <p>En créant un compte ou en utilisant l'application OTADEX, vous acceptez les présentes Conditions d'utilisation dans leur intégralité. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser l'application.</p>
+      </div>
+
+      <div class="section-card">
+        <h2>2. Description du service</h2>
+        <p>OTADEX est une encyclopédie interactive et gamifiée dédiée à l'univers de l'animation japonaise, coréenne et mondiale. Le service permet de :</p>
+        <ul>
+          <li>Explorer des fiches de personnages, d'animés, de créateurs et d'univers narratifs</li>
+          <li>Construire et gérer une collection personnelle de personnages</li>
+          <li>Progresser à travers un système de rangs (Genin, Jonin, Kage) et de points</li>
+          <li>Interagir avec une communauté de fans via commentaires et classements</li>
+        </ul>
+      </div>
+
+      <div class="section-card">
+        <h2>3. Inscription et compte</h2>
+        <ul>
+          <li>Vous devez avoir au moins <strong>13 ans</strong> pour vous inscrire sur OTADEX.</li>
+          <li>Vous êtes seul responsable de la confidentialité de vos identifiants de connexion.</li>
+          <li>Votre pseudo doit comporter au moins 3 caractères et ne pas contenir de contenu offensant ou trompeur.</li>
+          <li>TilStack se réserve le droit de suspendre ou supprimer tout compte enfreignant les présentes conditions.</li>
+        </ul>
+      </div>
+
+      <div class="section-card">
+        <h2>4. Système de rangs et abonnements</h2>
+        <p>OTADEX propose trois niveaux d'accès :</p>
+        <table class="plan-table">
+          <thead><tr><th>Rang</th><th>Type</th><th>Fonctionnalités</th></tr></thead>
+          <tbody>
+            <tr><td>Genin</td><td>Gratuit</td><td>Accès de base, publicités affichées</td></tr>
+            <tr><td>Jonin</td><td>Premium · 2 000 FCFA/mois</td><td>Sans publicités, collection illimitée, IA chatbot et quiz</td></tr>
+            <tr><td>Kage</td><td>Premium+ · 5 000 FCFA/mois</td><td>Tout Jonin + génération IA, téléchargement sans filigrane, thèmes exclusifs</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:14px">Les abonnements Jonin et Kage sont facturés mensuellement. Ils sont résiliables à tout moment depuis les paramètres de l'application. Aucun remboursement n'est accordé pour la période d'abonnement en cours.</p>
+      </div>
+
+      <div class="section-card">
+        <h2>5. Propriété intellectuelle</h2>
+        <p>Les personnages, animés, studios, créateurs et univers référencés dans OTADEX appartiennent à leurs auteurs et détenteurs de droits respectifs. OTADEX est un service encyclopédique à vocation informative et communautaire, sans affiliation avec les ayants droit. L'interface, le design et les fonctionnalités propres à OTADEX sont la propriété exclusive de TilStack.</p>
+      </div>
+
+      <div class="section-card">
+        <h2>6. Conduite et contenu interdit</h2>
+        <p>Il est strictement interdit de :</p>
+        <ul>
+          <li>Publier du contenu offensant, haineux, discriminatoire, pornographique ou illégal</li>
+          <li>Utiliser des bots, scripts ou automatisations pour accéder au service</li>
+          <li>Tenter de contourner les mécanismes de sécurité ou de monétisation de l'application</li>
+          <li>Usurper l'identité d'un autre utilisateur ou de TilStack</li>
+          <li>Vendre, louer ou transférer son compte à un tiers</li>
+          <li>Collecter des données d'autres utilisateurs sans leur consentement</li>
+        </ul>
+      </div>
+
+      <div class="section-card">
+        <h2>7. Limitation de responsabilité</h2>
+        <p>OTADEX est fourni « en l'état » et « selon disponibilité ». TilStack ne garantit pas l'exactitude absolue de toutes les informations encyclopédiques ni la disponibilité continue du service. TilStack ne peut être tenu responsable des interruptions de service, des pertes de données, des dommages indirects ou des préjudices liés à l'utilisation ou à l'impossibilité d'utiliser l'application.</p>
+      </div>
+
+      <div class="section-card">
+        <h2>8. Droit applicable</h2>
+        <p>Les présentes conditions sont régies par les lois en vigueur dans le pays de résidence de l'exploitant. Tout litige non résolu à l'amiable sera soumis aux juridictions compétentes.</p>
+      </div>
+
+      <div class="section-card">
+        <h2>9. Modifications</h2>
+        <p>TilStack se réserve le droit de modifier ces conditions à tout moment. Les modifications entrent en vigueur dès leur publication dans l'application. La poursuite de l'utilisation du service après notification vaut acceptation des nouvelles conditions.</p>
+      </div>
+
+      <div class="section-card">
+        <h2>10. Contact</h2>
+        <p>TilStack · <a href="mailto:contact@tilstack.me">contact@tilstack.me</a></p>
+      </div>
+
+      <footer>
+        <span>© 2026 TilStack — OTADEX</span>
+        <span><a href="index.html">Accueil</a> · <a href="privacy-policy.html">Confidentialité</a> · <a href="account-deletion.html">Suppression</a> · <a href="https://tilstack.me" target="_blank" rel="noopener">Portfolio ↗</a></span>
+      </footer>
+    </div>
+
+    <!-- ── ENGLISH ── -->
+    <div lang-content="en">
+      <h1>Terms of Service</h1>
+      <p class="meta">Last updated: April 2026 · Applicable to OTADEX on Android</p>
+
+      <div class="section-card">
+        <h2>1. Acceptance of terms</h2>
+        <p>By creating an account or using the OTADEX application, you accept these Terms of Service in full. If you do not accept these terms, please do not use the application.</p>
+      </div>
+
+      <div class="section-card">
+        <h2>2. Service description</h2>
+        <p>OTADEX is an interactive, gamified encyclopedia dedicated to Japanese, Korean and world animation. The service lets you:</p>
+        <ul>
+          <li>Browse character, anime, creator and narrative universe profiles</li>
+          <li>Build and manage a personal character collection</li>
+          <li>Progress through a rank system (Genin, Jonin, Kage) with points</li>
+          <li>Interact with a fan community via comments and leaderboards</li>
+        </ul>
+      </div>
+
+      <div class="section-card">
+        <h2>3. Registration and account</h2>
+        <ul>
+          <li>You must be at least <strong>13 years old</strong> to register on OTADEX.</li>
+          <li>You are solely responsible for the security of your login credentials.</li>
+          <li>Your username must be at least 3 characters long and must not contain offensive or misleading content.</li>
+          <li>TilStack reserves the right to suspend or delete any account that violates these terms.</li>
+        </ul>
+      </div>
+
+      <div class="section-card">
+        <h2>4. Rank system and subscriptions</h2>
+        <p>OTADEX offers three access tiers:</p>
+        <table class="plan-table">
+          <thead><tr><th>Rank</th><th>Type</th><th>Features</th></tr></thead>
+          <tbody>
+            <tr><td>Genin</td><td>Free</td><td>Basic features, ads displayed</td></tr>
+            <tr><td>Jonin</td><td>Premium · 2,000 FCFA/mo</td><td>Ad-free, unlimited collection, AI chatbot and quiz</td></tr>
+            <tr><td>Kage</td><td>Premium+ · 5,000 FCFA/mo</td><td>All Jonin + AI image generation, watermark-free downloads, exclusive themes</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:14px">Jonin and Kage subscriptions are billed monthly and can be cancelled at any time from the app settings. No refunds are issued for the current billing period.</p>
+      </div>
+
+      <div class="section-card">
+        <h2>5. Intellectual property</h2>
+        <p>Characters, animes, studios, creators and universes referenced in OTADEX belong to their respective authors and rights holders. OTADEX is an encyclopaedic service for informational and community purposes, with no affiliation with rights holders. The OTADEX interface, design and proprietary features are the exclusive property of TilStack.</p>
+      </div>
+
+      <div class="section-card">
+        <h2>6. Prohibited conduct and content</h2>
+        <p>It is strictly forbidden to:</p>
+        <ul>
+          <li>Post offensive, hateful, discriminatory, pornographic or illegal content</li>
+          <li>Use bots, scripts or automation to access the service</li>
+          <li>Attempt to circumvent the application's security or monetisation mechanisms</li>
+          <li>Impersonate another user or TilStack</li>
+          <li>Sell, rent or transfer your account to a third party</li>
+          <li>Collect other users' data without their consent</li>
+        </ul>
+      </div>
+
+      <div class="section-card">
+        <h2>7. Limitation of liability</h2>
+        <p>OTADEX is provided "as is" and "as available". TilStack does not guarantee the absolute accuracy of all encyclopaedic content or the continuous availability of the service. TilStack shall not be liable for service interruptions, data loss, indirect damages or harm related to the use or inability to use the application.</p>
+      </div>
+
+      <div class="section-card">
+        <h2>8. Governing law</h2>
+        <p>These terms are governed by the laws in force in the operator's country of residence. Any dispute not resolved amicably shall be submitted to the competent courts.</p>
+      </div>
+
+      <div class="section-card">
+        <h2>9. Changes</h2>
+        <p>TilStack reserves the right to modify these terms at any time. Changes take effect upon publication in the application. Continued use of the service after notification constitutes acceptance of the updated terms.</p>
+      </div>
+
+      <div class="section-card">
+        <h2>10. Contact</h2>
+        <p>TilStack · <a href="mailto:contact@tilstack.me">contact@tilstack.me</a></p>
+      </div>
+
+      <footer>
+        <span>© 2026 TilStack — OTADEX</span>
+        <span><a href="index.html">Home</a> · <a href="privacy-policy.html">Privacy</a> · <a href="account-deletion.html">Account Deletion</a> · <a href="https://tilstack.me" target="_blank" rel="noopener">Portfolio ↗</a></span>
+      </footer>
+    </div>
+  </main>
+
+  <script>
+    /* ── THEME ── */
+    const saved = localStorage.getItem('otadex_theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
+    document.getElementById('theme-btn').textContent = saved === 'dark' ? '🌙' : '☀️';
+
+    document.getElementById('theme-btn').addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-theme');
+      const next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      document.getElementById('theme-btn').textContent = next === 'dark' ? '🌙' : '☀️';
+      localStorage.setItem('otadex_theme', next);
+    });
+
+    /* ── LANG ── */
+    function setLang(lang) {
+      document.querySelectorAll('[lang-content]').forEach(el => {
+        el.classList.toggle('visible', el.getAttribute('lang-content') === lang);
+      });
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
+      });
+      document.documentElement.lang = lang;
+      localStorage.setItem('otadex_lang', lang);
+    }
+
+    const initLang = localStorage.getItem('otadex_lang') || 'fr';
+    setLang(initLang);
+  </script>
+</body>
+</html>

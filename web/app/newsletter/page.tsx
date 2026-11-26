@@ -1,5 +1,6 @@
+import { T } from "@/components/T";
 import type { Metadata } from "next";
-import { LANDING, NEWSLETTER_FORM, PLAY } from "@/lib/site";
+import { NEWSLETTER_FORM, PLAY } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Newsletter",
@@ -14,22 +15,23 @@ export default function NewsletterPage() {
     <div className="newsletter">
       <section className="hero">
         <h1>
-          La newsletter <span>OTADEX</span>
+          <T fr={<>La newsletter <em>OTADEX</em></>} en={<>The <em>OTADEX</em> newsletter</>} />
         </h1>
-        <p>Un e-mail par semaine pour découvrir un personnage et ne rien manquer du catalogue.</p>
+        <p><T fr="Un e-mail par semaine pour découvrir un personnage et ne rien manquer du catalogue." en="One email a week to discover a character and keep up with the catalogue. The newsletter and the form are in French." /></p>
       </section>
 
       <ul className="list">
-        <li><strong>Le personnage de la semaine</strong>, avec le lien vers sa fiche.</li>
-        <li><strong>Une anecdote</strong> tirée du catalogue.</li>
-        <li><strong>Les nouveautés</strong> : animés et personnages ajoutés.</li>
+        <li><T fr={<><strong>Le personnage de la semaine</strong>, avec le lien vers sa fiche.</>} en={<><strong>Character of the week</strong>, with a link to their sheet.</>} /></li>
+        <li><T fr={<><strong>Une anecdote</strong> tirée du catalogue.</>} en={<><strong>A fun fact</strong> from the catalogue.</>} /></li>
+        <li><T fr={<><strong>Les nouveautés</strong> : animés et personnages ajoutés.</>} en={<><strong>What's new</strong>: added anime and characters.</>} /></li>
       </ul>
 
       {NEWSLETTER_FORM ? (
         <>
           <iframe src={NEWSLETTER_FORM} title="Inscription à la newsletter OTADEX" />
           <p className="note">
-            Le formulaire ne s&apos;affiche pas ? <a href={NEWSLETTER_FORM} target="_blank" rel="noopener">Ouvre-le dans un nouvel onglet</a>.
+            <T fr="Le formulaire ne s'affiche pas ?" en="Form not showing?" />{" "}
+            <a href={NEWSLETTER_FORM} target="_blank" rel="noopener"><T fr="Ouvre-le dans un nouvel onglet" en="Open it in a new tab" /></a>.
           </p>
         </>
       ) : (
@@ -41,8 +43,8 @@ export default function NewsletterPage() {
       )}
 
       <p className="note">
-        Inscription facultative, confirmée par e-mail, et désinscription en un clic.{" "}
-        <a href={`${LANDING}/privacy-policy.html`}>Politique de confidentialité</a>
+        <T fr="Inscription facultative, confirmée par e-mail, et désinscription en un clic." en="Optional, confirmed by email, unsubscribe in one click." />{" "}
+        <a href="/privacy-policy.html"><T fr="Politique de confidentialité" en="Privacy policy" /></a>
       </p>
     </div>
   );

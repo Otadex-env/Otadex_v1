@@ -1,3 +1,4 @@
+import { T } from "@/components/T";
 import Link from "next/link";
 import type { AnimeCardData, Card } from "@/lib/data";
 
@@ -39,7 +40,7 @@ export function AnimeGrid({ items }: { items: AnimeCardData[] }) {
             <div className="tx">
               <div className="nm">{a.titre}</div>
               <div className="sb">
-                {a.count} personnages{a.annee ? ` · ${a.annee}` : ""}
+                {a.count} <T fr="personnages" en="characters" />{a.annee ? ` · ${a.annee}` : ""}
               </div>
             </div>
           </Link>

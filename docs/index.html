@@ -330,12 +330,11 @@
         gap: 9px;
         background: var(--bg-card);
         border: 1px solid var(--border);
-        border-left: 3px solid var(--kage);
         color: var(--text);
         font-size: 0.85rem;
         font-weight: 700;
         padding: 7px 16px 7px 13px;
-        border-radius: 6px;
+        border-radius: 50px;
         margin-bottom: 24px;
       }
       .hero-badge .dot {
@@ -666,22 +665,14 @@
         position: relative;
         overflow: hidden;
       }
-      .rank-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
+      .rank-card.genin {
+        background: radial-gradient(circle at 50% 0, rgba(126, 171, 201, 0.16), transparent 55%), var(--bg-card);
       }
-      .rank-card.genin::before {
-        background: var(--genin);
+      .rank-card.jonin {
+        background: radial-gradient(circle at 50% 0, rgba(155, 89, 182, 0.2), transparent 55%), var(--bg-card);
       }
-      .rank-card.jonin::before {
-        background: var(--jonin);
-      }
-      .rank-card.kage::before {
-        background: var(--kage);
+      .rank-card.kage {
+        background: radial-gradient(circle at 50% 0, rgba(255, 101, 0, 0.18), transparent 55%), var(--bg-card);
       }
       .rank-card.jonin {
         border-color: rgba(155, 89, 182, 0.35);
@@ -826,6 +817,19 @@
         font-size: 0.9rem;
         color: var(--muted);
         line-height: 1.65;
+      }
+
+      /* ── NEWSLETTER ──────────────────────────────────────────────────── */
+      .news {
+        padding: 80px 0;
+        border-top: 1px solid var(--border);
+        text-align: center;
+      }
+      .news .section-sub {
+        margin-bottom: 28px;
+      }
+      .news .btn-primary {
+        display: inline-block;
       }
 
       /* ── LEGAL LINKS ──────────────────────────────────────────────────── */
@@ -1006,7 +1010,7 @@
         }
       }
 
-      @media (max-width: 768px) {
+      @media (max-width: 960px) {
         .nav-links {
           display: none;
           flex-direction: column;
@@ -1029,6 +1033,9 @@
         .hamburger {
           display: flex;
         }
+      }
+
+      @media (max-width: 768px) {
         .footer-grid {
           grid-template-columns: 1fr;
         }
@@ -1082,6 +1089,7 @@
             >
           </li>
           <li><a href="#plans" data-key="nav_plans">Plans</a></li>
+          <li><a href="#newsletter" data-key="nav_newsletter">Newsletter</a></li>
           <li><a href="#legal" data-key="nav_legal">Légal</a></li>
           <li><a href="#contact" data-key="nav_contact">Contact</a></li>
           <li>
@@ -1370,6 +1378,23 @@
       </div>
     </section>
 
+    <!-- ── NEWSLETTER ─────────────────────────────────────────────────────── -->
+    <section id="newsletter" class="news">
+      <div class="container">
+        <h2 class="section-title reveal" data-key="news_title">
+          La newsletter OTADEX
+        </h2>
+        <p class="section-sub reveal" data-key="news_sub">
+          Chaque semaine dans ta boîte mail : un personnage, une anecdote et les nouveautés.
+        </p>
+        <div class="reveal">
+          <a class="btn-primary" href="https://otadexcat.tilstack.me/newsletter" data-key="news_btn"
+            >S'inscrire gratuitement</a
+          >
+        </div>
+      </div>
+    </section>
+
     <!-- ── LEGAL ──────────────────────────────────────────────────────────── -->
     <section id="legal" class="legal-bar">
       <div class="container">
@@ -1545,6 +1570,10 @@
         fr: {
           nav_features: "Fonctionnalités",
           nav_plans: "Plans",
+          nav_newsletter: "Newsletter",
+          news_title: "La newsletter OTADEX",
+          news_sub: "Chaque semaine dans ta boîte mail : un personnage, une anecdote et les nouveautés.",
+          news_btn: "S'inscrire gratuitement",
           nav_legal: "Légal",
           nav_contact: "Contact",
           nav_portfolio: "Portfolio ↗",
@@ -1643,6 +1672,10 @@
         en: {
           nav_features: "Features",
           nav_plans: "Plans",
+          nav_newsletter: "Newsletter",
+          news_title: "The OTADEX newsletter",
+          news_sub: "Every week in your inbox: a character, a fun fact and what's new. Written in French.",
+          news_btn: "Subscribe for free",
           nav_legal: "Legal",
           nav_contact: "Contact",
           nav_portfolio: "Portfolio ↗",

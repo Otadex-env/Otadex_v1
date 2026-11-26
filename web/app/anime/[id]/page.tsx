@@ -1,3 +1,4 @@
+import { T } from "@/components/T";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -34,16 +35,16 @@ export default async function AnimePage({ params }: Props) {
     .sort((a, b) => shared(b.genres) - shared(a.genres))
     .slice(0, 4);
   const facts = [
-    ["Année", anime.annee],
-    ["Statut", anime.statut],
+    [<T fr="Année" en="Year" />, anime.annee],
+    [<T fr="Statut" en="Status" />, anime.statut],
     ["Studio", anime.studio],
-    ["Auteur", anime.auteur],
+    [<T fr="Auteur" en="Author" />, anime.auteur],
   ].filter(([, v]) => v);
 
   return (
     <>
       <nav className="crumb" aria-label="Fil d'Ariane">
-        <Link href="/">Accueil</Link> › <Link href="/animes">Animés</Link> › {anime.titre}
+        <Link href="/catalogue">Catalogue</Link> › <Link href="/animes"><T fr="Animés" en="Anime" /></Link> › {anime.titre}
       </nav>
       <h1 className="title">{anime.titre}</h1>
       {anime.titreJaponais && <p className="jp" lang="ja">{anime.titreJaponais}</p>}
@@ -52,8 +53,8 @@ export default async function AnimePage({ params }: Props) {
       </div>
       {anime.synopsis && <p className="bio">{anime.synopsis}</p>}
       <dl className="facts row">
-        {facts.map(([k, v]) => (
-          <div key={k}>
+        {facts.map(([k, v], i) => (
+          <div key={i}>
             <dt>{k}</dt>
             <dd>{v}</dd>
           </div>
@@ -61,14 +62,14 @@ export default async function AnimePage({ params }: Props) {
       </dl>
 
       <div className="sechead">
-        <h2>Personnages ({chars.length})</h2>
+        <h2><T fr="Personnages" en="Characters" /> ({chars.length})</h2>
       </div>
       <CharacterGrid items={chars} />
 
       {similar.length > 0 && (
         <>
           <div className="sechead">
-            <h2>Dans le même genre</h2>
+            <h2><T fr="Dans le même genre" en="Similar series" /></h2>
           </div>
           <AnimeGrid items={similar} />
         </>

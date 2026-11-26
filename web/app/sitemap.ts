@@ -5,6 +5,11 @@ import { SITE_URL } from "@/lib/site";
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [
     "",
+    "/catalogue",
+    "/newsletter",
+    "/privacy-policy.html",
+    "/terms.html",
+    "/account-deletion.html",
     "/animes",
     "/personnages",
     ...getAnimeCards().map((a) => `/anime/${a.id}`),

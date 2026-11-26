@@ -1,9 +1,11 @@
+import { T } from "@/components/T";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AppBanner } from "@/components/AppBanner";
 import { CharacterGrid } from "@/components/Cards";
 import { Gallery } from "@/components/Gallery";
+import { NewsletterBand } from "@/components/NewsletterBand";
 import { getCharacters, toCard } from "@/lib/data";
 import { fold } from "@/lib/search";
 
@@ -40,19 +42,19 @@ export default async function CharacterPage({ params }: Props) {
   const relations = (c.relations ?? []).flatMap((r) => (r.nomPersonnage ? [{ ...r, nom: r.nomPersonnage }] : []));
   const images = c.images ?? [];
   const facts = [
-    ["Âge", c.age],
-    ["Sexe", c.sexe],
-    ["Statut", c.statut],
-    ["Nationalité", c.nationalite],
-    ["Naissance", c.dateNaissance],
-    ["Voix japonaise", c.voixJaponaise],
-    ["Voix anglaise", c.voixAnglaise],
+    [<T fr="Âge" en="Age" />, c.age],
+    [<T fr="Sexe" en="Gender" />, c.sexe],
+    [<T fr="Statut" en="Status" />, c.statut],
+    [<T fr="Nationalité" en="Nationality" />, c.nationalite],
+    [<T fr="Naissance" en="Born" />, c.dateNaissance],
+    [<T fr="Voix japonaise" en="Japanese voice" />, c.voixJaponaise],
+    [<T fr="Voix anglaise" en="English voice" />, c.voixAnglaise],
   ].filter(([, v]) => v);
 
   return (
     <>
       <nav className="crumb" aria-label="Fil d'Ariane">
-        <Link href="/">Accueil</Link> › <Link href={`/anime/${c.animeId}`}>{c.animeName}</Link> › {c.nom}
+        <Link href="/catalogue">Catalogue</Link> › <Link href={`/anime/${c.animeId}`}>{c.animeName}</Link> › {c.nom}
       </nav>
 
       <div className="profile">
@@ -71,8 +73,8 @@ export default async function CharacterPage({ params }: Props) {
           </div>
           {facts.length > 0 && (
             <dl className="facts">
-              {facts.map(([k, v]) => (
-                <div key={k}>
+              {facts.map(([k, v], i) => (
+                <div key={i}>
                   <dt>{k}</dt>
                   <dd>{v}</dd>
                 </div>
@@ -86,27 +88,27 @@ export default async function CharacterPage({ params }: Props) {
 
           {images.length > 1 && (
             <section>
-              <h2>Galerie</h2>
+              <h2><T fr="Galerie" en="Gallery" /></h2>
               <Gallery images={images} name={c.nom} />
             </section>
           )}
 
           {!!c.pouvoirs?.length && (
             <section>
-              <h2>Pouvoirs et capacités</h2>
+              <h2><T fr="Pouvoirs et capacités" en="Powers and abilities" /></h2>
               <ul className="list">{c.pouvoirs.map((p) => <li key={p}>{p}</li>)}</ul>
             </section>
           )}
 
           {relations.length > 0 && (
             <section>
-              <h2>Relations</h2>
+              <h2><T fr="Relations" en="Relationships" /></h2>
               <ul className="relations">
                 {relations.map((r) => {
                   const target = find(r.nom);
                   return (
                     <li key={`${r.nom}-${r.type}`}>
-                      {target ? <Link href={`/personnage/${target.id}`}>{r.nom}</Link> : <span>{r.nom}</span>}
+                      {target ? <Link href={`/personnage/${target.id}`}>{r.nom}</Link> : <strong>{r.nom}</strong>}
                       {r.type && <small>{r.type}</small>}
                     </li>
                   );
@@ -117,14 +119,14 @@ export default async function CharacterPage({ params }: Props) {
 
           {!!c.citations?.length && (
             <section>
-              <h2>Citations</h2>
+              <h2><T fr="Citations" en="Quotes" /></h2>
               <ul className="list">{c.citations.map((q) => <li key={q}>« {q} »</li>)}</ul>
             </section>
           )}
 
           {!!c.trivia?.length && (
             <section>
-              <h2>Le savais-tu ?</h2>
+              <h2><T fr="Le savais-tu ?" en="Did you know?" /></h2>
               <ul className="list">{c.trivia.map((t) => <li key={t}>{t}</li>)}</ul>
             </section>
           )}
@@ -134,14 +136,16 @@ export default async function CharacterPage({ params }: Props) {
       {others.length > 0 && (
         <>
           <div className="sechead">
-            <h2>Aussi dans {c.animeName}</h2>
-            <Link href={`/anime/${c.animeId}`}>Voir les {cast.length}</Link>
+            <h2><T fr="Aussi dans" en="Also in" /> {c.animeName}</h2>
+            <Link href={`/anime/${c.animeId}`}><T fr="Voir les" en="See all" /> {cast.length}</Link>
           </div>
           <CharacterGrid items={others} />
         </>
       )}
 
-      <AppBanner title={`Ajoute ${c.nom} à ta collection`} />
+      <NewsletterBand />
+
+      <AppBanner title={<T fr={`Ajoute ${c.nom} à ta collection`} en={`Add ${c.nom} to your collection`} />} />
     </>
   );
 }
