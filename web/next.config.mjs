@@ -2,7 +2,10 @@
 const nextConfig = {
   // L'ancienne adresse du catalogue renvoie vers le site principal, chemin conservé.
   async redirects() {
+    const oldHost = [{ type: "host", value: "otadexcat.tilstack.me" }];
     return [
+      // L'application publiée ouvre cette adresse : page sans lien vers les offres.
+      { source: "/newsletter", has: oldHost, destination: "https://otadex.tilstack.me/newsletter/app.html", permanent: false },
       {
         source: "/:path*",
         has: [{ type: "host", value: "otadexcat.tilstack.me" }],

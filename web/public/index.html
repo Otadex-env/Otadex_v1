@@ -765,6 +765,27 @@
         color: var(--border);
       }
 
+      .rank-buy {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 24px;
+      }
+      .rank-buy a {
+        display: block;
+        text-align: center;
+      }
+      .buy-how {
+        max-width: 640px;
+        margin: 28px auto 0;
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      .buy-how a {
+        color: var(--accent);
+      }
+
       /* ── FEATURES ─────────────────────────────────────────────────────── */
       .features {
         background: var(--bg-card);
@@ -1336,11 +1357,8 @@
           </div>
           <div class="feature-card reveal reveal-delay-1">
             <div class="feature-icon-wrap">🤖</div>
-            <h3 data-key="feat4_title">IA Chatbot Personnage</h3>
-            <p data-key="feat4_desc">
-              Parle directement à tes personnages favoris grâce à notre IA
-              conversationnelle (Jonin+).
-            </p>
+            <h3 data-key="feat4_title">Discute avec tes personnages</h3>
+            <p data-key="feat4_desc">Écris à un personnage : il te répond avec des répliques préparées, dans son style (Jonin+).</p>
           </div>
           <div class="feature-card reveal reveal-delay-2">
             <div class="feature-icon-wrap">🔍</div>
@@ -1353,10 +1371,7 @@
           <div class="feature-card reveal reveal-delay-3">
             <div class="feature-icon-wrap">🎨</div>
             <h3 data-key="feat6_title">Galerie Plein Écran</h3>
-            <p data-key="feat6_desc">
-              Explore les images en galerie immersive avec zoom 4× et
-              téléchargement haute résolution (Kage).
-            </p>
+            <p data-key="feat6_desc">Explore les images en galerie immersive avec zoom 4× et téléchargement, sans filigrane en Kage.</p>
           </div>
         </div>
       </div>
@@ -1388,8 +1403,7 @@
               <li data-key="genin_f2">Recherche illimitée</li>
               <li data-key="genin_f3">Collection jusqu'à 10 personnages</li>
               <li data-key="genin_f4">Commentaires &amp; likes</li>
-              <li class="off" data-key="genin_f5">Publicités affichées</li>
-              <li class="off" data-key="genin_f6">IA désactivée</li>
+              <li class="off" data-key="genin_f5">Quiz et discussions non inclus</li>
             </ul>
           </div>
           <div class="rank-card jonin reveal reveal-delay-2">
@@ -1406,11 +1420,14 @@
             <ul class="rank-features">
               <li data-key="jonin_f1">Tout Genin inclus</li>
               <li data-key="jonin_f2">Collection <strong>illimitée</strong></li>
-              <li data-key="jonin_f3">Sans publicités</li>
-              <li data-key="jonin_f4">IA Chatbot personnage ✨</li>
-              <li data-key="jonin_f5">Quiz IA personnalisé</li>
-              <li data-key="jonin_f6">Recommandations IA</li>
+              <li data-key="jonin_f3">Quiz sur les personnages</li>
+              <li data-key="jonin_f4">Discussion avec un personnage (réponses préparées)</li>
+              <li data-key="jonin_f5">Thème aux couleurs Jonin</li>
             </ul>
+            <div class="rank-buy">
+              <a class="btn-primary" href="https://store.tilstack.me/prd_1epnxl/checkout" target="_blank" rel="noopener" data-key="buy_month">S'abonner au mois</a>
+              <a class="btn-ghost" href="https://store.tilstack.me/prd_xqbqdx/checkout" target="_blank" rel="noopener" data-key="buy_year_jonin">À l'année : 21 600 FCFA</a>
+            </div>
           </div>
           <div class="rank-card kage reveal reveal-delay-3">
             <div class="rank-icon">👁️</div>
@@ -1422,14 +1439,20 @@
             <div class="rank-desc" data-key="kage_desc">Le rang ultime.</div>
             <ul class="rank-features">
               <li data-key="kage_f1">Tout Jonin inclus</li>
-              <li data-key="kage_f2">Génération image IA citation</li>
+              <li data-key="kage_f2">Carte citation du personnage</li>
               <li data-key="kage_f3">Téléchargement sans filigrane</li>
-              <li data-key="kage_f4">Thèmes visuels exclusifs</li>
-              <li data-key="kage_f5">Priorité Fan du Mois</li>
-              <li data-key="kage_f6">Accès en avant-première</li>
+              <li data-key="kage_f4">Thème aux couleurs Kage</li>
             </ul>
+            <div class="rank-buy">
+              <a class="btn-primary" href="https://store.tilstack.me/prd_hdj1oy/checkout" target="_blank" rel="noopener" data-key="buy_month">S'abonner au mois</a>
+              <a class="btn-ghost" href="https://store.tilstack.me/prd_0jx2mh/checkout" target="_blank" rel="noopener" data-key="buy_year_kage">À l'année : 54 000 FCFA</a>
+            </div>
           </div>
         </div>
+        <p class="buy-how">
+          <span data-key="buy_how"><strong>Comment ça marche :</strong> paie sur TilStack Store, récupère ta clé de licence, puis dans l'application connecte-toi, ouvre ton Profil et touche « J'ai une clé de licence ».</span>
+          <a href="terms.html" data-key="buy_terms">Conditions d'utilisation</a>
+        </p>
       </div>
     </section>
 
@@ -1679,15 +1702,18 @@
           feat3_title: "Système de Rangs",
           feat3_desc:
             "Progresse de Genin à Kage. Chaque rang débloque des fonctionnalités exclusives et un thème visuel unique.",
-          feat4_title: "IA Chatbot Personnage",
-          feat4_desc:
-            "Parle directement à tes personnages favoris grâce à notre IA conversationnelle (Jonin+).",
+          feat4_title: "Discute avec tes personnages",
+          feat4_desc: "Écris à un personnage : il te répond avec des répliques préparées, dans son style (Jonin+).",
           feat5_title: "Recherche Intelligente",
           feat5_desc:
             "Trouve instantanément n'importe quel personnage ou animé, avec une barre de navigation simple pour passer d'un écran à l'autre.",
           feat6_title: "Galerie Plein Écran",
-          feat6_desc:
-            "Explore les images en galerie immersive avec zoom 4× et téléchargement haute résolution (Kage).",
+          feat6_desc: "Explore les images en galerie immersive avec zoom 4× et téléchargement, sans filigrane en Kage.",
+          buy_month: "S'abonner au mois",
+          buy_year_jonin: "À l'année : 21 600 FCFA",
+          buy_year_kage: "À l'année : 54 000 FCFA",
+          buy_how: "<strong>Comment ça marche :</strong> paie sur TilStack Store, récupère ta clé de licence, puis dans l'application connecte-toi, ouvre ton Profil et touche « J'ai une clé de licence ».",
+          buy_terms: "Conditions d'utilisation",
           plans_title: "Choisis ton rang",
           plans_sub: "Commence gratuitement, monte en puissance à ton rythme.",
           genin_price: "Gratuit",
@@ -1697,25 +1723,21 @@
           genin_f2: "Recherche illimitée",
           genin_f3: "Collection jusqu'à 10 personnages",
           genin_f4: "Commentaires & likes",
-          genin_f5: "Publicités affichées",
-          genin_f6: "IA désactivée",
+          genin_f5: "Quiz et discussions non inclus",
           popular: "POPULAIRE",
           period_month: "/ mois",
           period_month2: "/ mois",
           jonin_desc: "Pour les fans sérieux.",
           jonin_f1: "Tout Genin inclus",
           jonin_f2: "Collection <strong>illimitée</strong>",
-          jonin_f3: "Sans publicités",
-          jonin_f4: "IA Chatbot personnage ✨",
-          jonin_f5: "Quiz IA personnalisé",
-          jonin_f6: "Recommandations IA",
+          jonin_f3: "Quiz sur les personnages",
+          jonin_f4: "Discussion avec un personnage (réponses préparées)",
+          jonin_f5: "Thème aux couleurs Jonin",
           kage_desc: "Le rang ultime.",
           kage_f1: "Tout Jonin inclus",
-          kage_f2: "Génération image IA citation",
+          kage_f2: "Carte citation du personnage",
           kage_f3: "Téléchargement sans filigrane",
-          kage_f4: "Thèmes visuels exclusifs",
-          kage_f5: "Priorité Fan du Mois",
-          kage_f6: "Accès en avant-première",
+          kage_f4: "Thème aux couleurs Kage",
           legal_title: "Pages légales",
           legal_sub: "Conformes RGPD et exigences Google Play.",
           legal1_title: "Politique de confidentialité",
@@ -1790,15 +1812,18 @@
           feat3_title: "Rank System",
           feat3_desc:
             "Progress from Genin to Kage. Each rank unlocks exclusive features and a unique visual theme.",
-          feat4_title: "AI Character Chatbot",
-          feat4_desc:
-            "Talk directly to your favorite characters via our conversational AI (Jonin+).",
+          feat4_title: "Chat with your characters",
+          feat4_desc: "Write to a character and get prepared replies in their style (Jonin+).",
           feat5_title: "Smart Search",
           feat5_desc:
             "Instantly find any character or anime, with a simple navigation bar to move between screens.",
           feat6_title: "Full-Screen Gallery",
-          feat6_desc:
-            "Explore images in an immersive gallery with 4× zoom and high-res downloads (Kage).",
+          feat6_desc: "Explore images in an immersive gallery with 4× zoom and downloads, watermark-free with Kage.",
+          buy_month: "Subscribe monthly",
+          buy_year_jonin: "Yearly: 21,600 FCFA",
+          buy_year_kage: "Yearly: 54,000 FCFA",
+          buy_how: "<strong>How it works:</strong> pay on TilStack Store, get your licence key, then sign in to the app, open your Profile and tap the licence key entry.",
+          buy_terms: "Terms of service",
           plans_title: "Choose your rank",
           plans_sub: "Start free, power up at your pace.",
           genin_price: "Free",
@@ -1808,25 +1833,21 @@
           genin_f2: "Unlimited search",
           genin_f3: "Collection up to 10 characters",
           genin_f4: "Comments & likes",
-          genin_f5: "Ads shown",
-          genin_f6: "AI disabled",
+          genin_f5: "No quizzes or chats",
           popular: "POPULAR",
           period_month: "/ month",
           period_month2: "/ month",
           jonin_desc: "For serious fans.",
           jonin_f1: "All Genin included",
           jonin_f2: "<strong>Unlimited</strong> collection",
-          jonin_f3: "Ad-free",
-          jonin_f4: "AI Character Chatbot ✨",
-          jonin_f5: "Personalized AI quiz",
-          jonin_f6: "AI recommendations",
+          jonin_f3: "Character quizzes",
+          jonin_f4: "Chat with a character (prepared replies)",
+          jonin_f5: "Jonin colour theme",
           kage_desc: "The ultimate rank.",
           kage_f1: "All Jonin included",
-          kage_f2: "AI quote image generation",
+          kage_f2: "Character quote card",
           kage_f3: "Watermark-free downloads",
-          kage_f4: "Exclusive visual themes",
-          kage_f5: "Fan of the Month priority",
-          kage_f6: "Early access",
+          kage_f4: "Kage colour theme",
           legal_title: "Legal pages",
           legal_sub: "Compliant with GDPR and Google Play requirements.",
           legal1_title: "Privacy Policy",

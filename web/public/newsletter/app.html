@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Newsletter · OTADEX</title>
+<!-- Page ouverte depuis l'application : volontairement sans lien vers le reste
+     du site (règle de paiement de Google Play). -->
+<style>
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0d0d14;color:#f0f0f8;font-family:system-ui,sans-serif;text-align:center;padding:24px;box-sizing:border-box}
+main{width:100%;max-width:420px;background:#1a1a28;border:1px solid #2a2a40;border-radius:16px;padding:28px;box-sizing:border-box}
+h1{font-size:24px;margin:16px 0 10px}p{color:#a0a0bc;line-height:1.6;margin:0 0 16px}
+input[type=email],button{box-sizing:border-box;width:100%;font:inherit;border-radius:999px;padding:13px 18px}
+input[type=email]{background:#0d0d14;border:1px solid #2a2a40;color:#f0f0f8;margin-bottom:10px}
+button{background:#ff6500;border:0;color:#fff;font-weight:700}
+button:disabled{opacity:.6}
+.hp{position:absolute;left:-9999px}
+#msg{color:#f0f0f8;font-weight:700;margin:16px 0 0}
+.note{font-size:13px;margin:18px 0 0}.note a{color:#ff6500}
+</style>
+</head>
+<body>
+<main>
+<img src="/logo.webp" alt="OTADEX" width="56" height="56">
+<h1>La newsletter OTADEX</h1>
+<p>Chaque semaine : un personnage, une anecdote et les nouveautés.</p>
+<form id="form" method="post" action="https://b93c1f72.sibforms.com/v2/serve/MUIFAGgYY2vIWNQnDPH1ua7sH7wPnrGQb0YOvjbC6ps9DaaKp9amo-BSql6f7b0m5ENJ3wnXsTRVRsfhzuN4xatTh8OCRYS5D3uKPSMQzCbxzKnwg0kwz6Zp8bytbAAFgjxBsavuKbxFYaNLhAGvp4chq5slHLhKZ5JCmtRROCDArll1dCNSYwgIak9FIPFpiAQNYcOgQ3wygU928w==">
+<input type="email" name="EMAIL" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+" autocomplete="email" placeholder="toi@exemple.com" aria-label="Ton adresse e-mail">
+<input class="hp" type="text" name="email_address_check" tabindex="-1" autocomplete="off" aria-hidden="true">
+<input type="hidden" name="locale" value="en">
+<button type="submit">S'inscrire</button>
+</form>
+<p id="msg" role="status"></p>
+<p class="note">Inscription facultative, confirmée par e-mail, désinscription en un clic. <a href="/privacy-policy.html">Confidentialité</a></p>
+</main>
+<script>
+const form = document.getElementById("form");
+const msg = document.getElementById("msg");
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const button = form.querySelector("button");
+  button.disabled = true;
+  try {
+    const res = await fetch(form.action + "?isAjax=1", { method: "POST", body: new FormData(form) });
+    const json = await res.json();
+    if (!res.ok || !json.success) throw new Error("refus");
+    form.hidden = true;
+    msg.textContent = "Vérifie tes e-mails et clique sur le lien de confirmation. Pense aux spams.";
+  } catch {
+    msg.textContent = "L'inscription n'est pas passée. Réessaie dans un instant.";
+  }
+  button.disabled = false;
+});
+</script>
+</body>
+</html>
