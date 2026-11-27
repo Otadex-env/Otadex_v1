@@ -19,6 +19,15 @@ val keystoreProperties = Properties().apply {
 }
 val hasReleaseKeystore = keystorePropertiesFile.exists()
 
+// App ID AdMob (public). Le vrai se met dans android/local.properties :
+// `admob.appId=ca-app-pub-XXXXXXXXXXXXXXXX~YYYYYYYYYY`. Sans lui, l'App ID de
+// test de Google est utilisé (debug/profile l'utilisent toujours).
+val admobTestAppId = "ca-app-pub-3940256099942544~3347511713"
+val admobAppId: String = Properties().apply {
+    val f = rootProject.file("local.properties")
+    if (f.exists()) f.inputStream().use { load(it) }
+}.getProperty("admob.appId")?.trim()?.takeIf { it.isNotEmpty() } ?: admobTestAppId
+
 // Garde-fou : sans key.properties, le release est signé avec la clé de debug,
 // et le Play Store refuse un bundle signé ainsi. On bloque donc la commande
 // `flutter build appbundle` plutôt que de produire un AAB inutilisable.
@@ -55,6 +64,7 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        manifestPlaceholders["admobAppId"] = admobTestAppId
     }
 
     signingConfigs {
@@ -70,6 +80,7 @@ android {
 
     buildTypes {
         release {
+            manifestPlaceholders["admobAppId"] = admobAppId
             signingConfig = if (hasReleaseKeystore) {
                 signingConfigs.getByName("release")
             } else {

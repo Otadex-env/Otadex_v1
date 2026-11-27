@@ -25,6 +25,15 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <!-- AdMob : App ID injecté par Gradle (voir build.gradle.kts). -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="${admobAppId}" />
+        <!-- Aucune mesure publicitaire avant l'initialisation du SDK, qui n'a
+             lieu que pour le rang Genin, après consentement. -->
+        <meta-data
+            android:name="com.google.android.gms.ads.DELAY_APP_MEASUREMENT_INIT"
+            android:value="true" />
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data

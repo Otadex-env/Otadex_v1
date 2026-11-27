@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../../core/ads/otadex_banner_ad.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/subscription/rank_providers.dart';
 import '../../../core/providers/anilist_providers.dart';
@@ -104,6 +105,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final rank = OtadexTheme.rankOf(context);
     final isLoggedIn = ref.watch(isLoggedInProvider);
     final profile = ref.watch(userProfileProvider);
+    // Bannière sur Accueil, Recherche et Collection (pas sur Profil).
+    final showsAds = ref.watch(effectiveRankProvider).showsAds;
+    final bannerTab = _navIndex != 3;
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -111,7 +115,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       body: Container(
         decoration: BoxDecoration(gradient: theme.backgroundGradient),
         child: SafeArea(
-          bottom: false,
+          // Avec une bannière, le contenu s'arrête au-dessus : une annonce ne
+          // doit jamais recouvrir des éléments cliquables.
+          bottom: showsAds && bannerTab,
           child: IndexedStack(
             index: _navIndex,
             children: [
@@ -172,9 +178,26 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: OtadexBottomNavBar(
-        currentIndex: _navIndex,
-        onTap: _onNavTap,
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (showsAds)
+            // Masquée sur Profil sans être détruite : pas de rechargement à
+            // chaque changement d'onglet.
+            Visibility(
+              visible: bannerTab,
+              maintainState: true,
+              // La marge basse éloigne l'annonce des boutons de navigation
+              // (clics accidentels, interdits par AdMob).
+              child: const OtadexBannerAd(
+                padding: EdgeInsets.symmetric(vertical: 6),
+              ),
+            ),
+          OtadexBottomNavBar(
+            currentIndex: _navIndex,
+            onTap: _onNavTap,
+          ),
+        ],
       ),
     );
   }

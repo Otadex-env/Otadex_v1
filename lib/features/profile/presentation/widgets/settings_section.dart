@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/ads/ads_service.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/l10n/app_strings.dart';
 import '../../../../core/services/url_launcher_service.dart';
@@ -318,6 +319,21 @@ class SettingsSection extends StatelessWidget {
                 label: s.privacyPolicy,
                 hasArrow: true,
                 onTap: _openPrivacyPolicy),
+            // Retrait du consentement publicitaire (obligatoire en zone RGPD).
+            ValueListenableBuilder<bool>(
+              valueListenable: AdsService.privacyOptionsRequired,
+              builder: (context, required, _) => required
+                  ? const Column(children: [
+                      _SettingsDivider(),
+                      _SettingsRow(
+                        icon: '🛡️',
+                        label: 'Choix publicitaires',
+                        hasArrow: true,
+                        onTap: AdsService.showPrivacyOptions,
+                      ),
+                    ])
+                  : const SizedBox.shrink(),
+            ),
             const _SettingsDivider(),
             const _SettingsRow(
                 icon: '🗑️',
