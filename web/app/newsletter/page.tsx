@@ -1,3 +1,4 @@
+import { NewsletterForm } from "@/components/NewsletterForm";
 import { T } from "@/components/T";
 import type { Metadata } from "next";
 import { NEWSLETTER_FORM, PLAY } from "@/lib/site";
@@ -17,7 +18,7 @@ export default function NewsletterPage() {
         <h1>
           <T fr={<>La newsletter <em>OTADEX</em></>} en={<>The <em>OTADEX</em> newsletter</>} />
         </h1>
-        <p><T fr="Un e-mail par semaine pour découvrir un personnage et ne rien manquer du catalogue." en="One email a week to discover a character and keep up with the catalogue. The newsletter and the form are in French." /></p>
+        <p><T fr="Un e-mail par semaine pour découvrir un personnage et ne rien manquer du catalogue." en="One email a week to discover a character and keep up with the catalogue. The newsletter is written in French." /></p>
       </section>
 
       <ul className="list">
@@ -27,13 +28,7 @@ export default function NewsletterPage() {
       </ul>
 
       {NEWSLETTER_FORM ? (
-        <>
-          <iframe src={NEWSLETTER_FORM} title="Inscription à la newsletter OTADEX" />
-          <p className="note">
-            <T fr="Le formulaire ne s'affiche pas ?" en="Form not showing?" />{" "}
-            <a href={NEWSLETTER_FORM} target="_blank" rel="noopener"><T fr="Ouvre-le dans un nouvel onglet" en="Open it in a new tab" /></a>.
-          </p>
-        </>
+        <NewsletterForm />
       ) : (
         <div className="soon">
           <h2>Les inscriptions ouvrent bientôt</h2>
